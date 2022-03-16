@@ -1,0 +1,20 @@
+FROM golang:1.18-alpine
+
+RUN mkdir /swagger
+
+COPY swagger /swagger/
+
+RUN apk add curl jq && \
+    download_url=$(curl -s https://api.github.com/repos/go-swagger/go-swagger/releases/latest | \
+      jq -r --arg f "$(uname | tr '[:upper:]' '[:lower:]')_$(arch | sed 's/aarch/arm/')" \
+      '.assets[] | select(.name | contains($f)) | .browser_download_url') && \
+    curl -o /usr/bin/swagger -L'#' "$download_url" && \
+    chmod +x /usr/bin/swagger
+
+RUN mkdir -p /go/src/github.com/skycubed/nifi-go/pkg/nifi && mkdir -p /go/src/github.com/skycubed/nifi-go/pkg/registry
+
+WORKDIR /go/src/github.com/skycubed/nifi-go/pkg/nifi
+RUN swagger generate client --skip-validation -f /swagger/nifi/swagger.json -A nifi -m models -c nifi
+
+WORKDIR /go/src/github.com/skycubed/nifi-go/pkg/registry
+RUN swagger generate client --skip-validation -f /swagger/registry/swagger.json -A registry -m models -c registry
