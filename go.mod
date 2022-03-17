@@ -2,6 +2,11 @@ module github.com/skycubed/nifi-go
 
 go 1.18
 
+retract (
+	v1.15.0 // intent was to track upstread nifi version, but go-swagger generated code is not working as expected.
+	v1.15.1 // contains retractions only
+)
+
 require (
 	github.com/go-openapi/errors v0.20.2
 	github.com/go-openapi/runtime v0.23.2
