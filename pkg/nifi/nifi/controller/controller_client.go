@@ -32,9 +32,9 @@ type ClientOption func(*runtime.ClientOperation)
 type ClientService interface {
 	CreateBulletin(params *CreateBulletinParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateBulletinOK, error)
 
-	CreateRegistryClient(params *CreateRegistryClientParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateRegistryClientOK, error)
+	CreateRegistryClient(params *CreateRegistryClientParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateRegistryClientCreated, error)
 
-	CreateReportingTask(params *CreateReportingTaskParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateReportingTaskOK, error)
+	CreateReportingTask(params *CreateReportingTaskParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateReportingTaskCreated, error)
 
 	DeleteHistory(params *DeleteHistoryParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteHistoryOK, error)
 
@@ -105,7 +105,7 @@ func (a *Client) CreateBulletin(params *CreateBulletinParams, authInfo runtime.C
 /*
   CreateRegistryClient creates a new registry client
 */
-func (a *Client) CreateRegistryClient(params *CreateRegistryClientParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateRegistryClientOK, error) {
+func (a *Client) CreateRegistryClient(params *CreateRegistryClientParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateRegistryClientCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateRegistryClientParams()
@@ -131,7 +131,7 @@ func (a *Client) CreateRegistryClient(params *CreateRegistryClientParams, authIn
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*CreateRegistryClientOK)
+	success, ok := result.(*CreateRegistryClientCreated)
 	if ok {
 		return success, nil
 	}
@@ -144,7 +144,7 @@ func (a *Client) CreateRegistryClient(params *CreateRegistryClientParams, authIn
 /*
   CreateReportingTask creates a new reporting task
 */
-func (a *Client) CreateReportingTask(params *CreateReportingTaskParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateReportingTaskOK, error) {
+func (a *Client) CreateReportingTask(params *CreateReportingTaskParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateReportingTaskCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateReportingTaskParams()
@@ -170,7 +170,7 @@ func (a *Client) CreateReportingTask(params *CreateReportingTaskParams, authInfo
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*CreateReportingTaskOK)
+	success, ok := result.(*CreateReportingTaskCreated)
 	if ok {
 		return success, nil
 	}

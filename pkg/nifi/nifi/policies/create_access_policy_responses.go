@@ -23,8 +23,8 @@ type CreateAccessPolicyReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *CreateAccessPolicyReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-	case 200:
-		result := NewCreateAccessPolicyOK()
+	case 201:
+		result := NewCreateAccessPolicyCreated()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -64,27 +64,27 @@ func (o *CreateAccessPolicyReader) ReadResponse(response runtime.ClientResponse,
 	}
 }
 
-// NewCreateAccessPolicyOK creates a CreateAccessPolicyOK with default headers values
-func NewCreateAccessPolicyOK() *CreateAccessPolicyOK {
-	return &CreateAccessPolicyOK{}
+// NewCreateAccessPolicyCreated creates a CreateAccessPolicyCreated with default headers values
+func NewCreateAccessPolicyCreated() *CreateAccessPolicyCreated {
+	return &CreateAccessPolicyCreated{}
 }
 
-/* CreateAccessPolicyOK describes a response with status code 200, with default header values.
+/* CreateAccessPolicyCreated describes a response with status code 201, with default header values.
 
 successful operation
 */
-type CreateAccessPolicyOK struct {
+type CreateAccessPolicyCreated struct {
 	Payload *models.AccessPolicyEntity
 }
 
-func (o *CreateAccessPolicyOK) Error() string {
-	return fmt.Sprintf("[POST /policies][%d] createAccessPolicyOK  %+v", 200, o.Payload)
+func (o *CreateAccessPolicyCreated) Error() string {
+	return fmt.Sprintf("[POST /policies][%d] createAccessPolicyCreated  %+v", 201, o.Payload)
 }
-func (o *CreateAccessPolicyOK) GetPayload() *models.AccessPolicyEntity {
+func (o *CreateAccessPolicyCreated) GetPayload() *models.AccessPolicyEntity {
 	return o.Payload
 }
 
-func (o *CreateAccessPolicyOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *CreateAccessPolicyCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.AccessPolicyEntity)
 

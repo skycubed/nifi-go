@@ -23,8 +23,8 @@ type CreateFunnelReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *CreateFunnelReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-	case 200:
-		result := NewCreateFunnelOK()
+	case 201:
+		result := NewCreateFunnelCreated()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -64,27 +64,27 @@ func (o *CreateFunnelReader) ReadResponse(response runtime.ClientResponse, consu
 	}
 }
 
-// NewCreateFunnelOK creates a CreateFunnelOK with default headers values
-func NewCreateFunnelOK() *CreateFunnelOK {
-	return &CreateFunnelOK{}
+// NewCreateFunnelCreated creates a CreateFunnelCreated with default headers values
+func NewCreateFunnelCreated() *CreateFunnelCreated {
+	return &CreateFunnelCreated{}
 }
 
-/* CreateFunnelOK describes a response with status code 200, with default header values.
+/* CreateFunnelCreated describes a response with status code 201, with default header values.
 
 successful operation
 */
-type CreateFunnelOK struct {
+type CreateFunnelCreated struct {
 	Payload *models.FunnelEntity
 }
 
-func (o *CreateFunnelOK) Error() string {
-	return fmt.Sprintf("[POST /process-groups/{id}/funnels][%d] createFunnelOK  %+v", 200, o.Payload)
+func (o *CreateFunnelCreated) Error() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/funnels][%d] createFunnelCreated  %+v", 201, o.Payload)
 }
-func (o *CreateFunnelOK) GetPayload() *models.FunnelEntity {
+func (o *CreateFunnelCreated) GetPayload() *models.FunnelEntity {
 	return o.Payload
 }
 
-func (o *CreateFunnelOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *CreateFunnelCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.FunnelEntity)
 

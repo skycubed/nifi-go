@@ -30,7 +30,7 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateSnippet(params *CreateSnippetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateSnippetOK, error)
+	CreateSnippet(params *CreateSnippetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateSnippetCreated, error)
 
 	DeleteSnippet(params *DeleteSnippetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteSnippetOK, error)
 
@@ -42,7 +42,7 @@ type ClientService interface {
 /*
   CreateSnippet creates a snippet the snippet will be automatically discarded if not used in a subsequent request after 1 minute
 */
-func (a *Client) CreateSnippet(params *CreateSnippetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateSnippetOK, error) {
+func (a *Client) CreateSnippet(params *CreateSnippetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateSnippetCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateSnippetParams()
@@ -68,7 +68,7 @@ func (a *Client) CreateSnippet(params *CreateSnippetParams, authInfo runtime.Cli
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*CreateSnippetOK)
+	success, ok := result.(*CreateSnippetCreated)
 	if ok {
 		return success, nil
 	}

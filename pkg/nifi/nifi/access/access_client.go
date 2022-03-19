@@ -30,9 +30,9 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateAccessToken(params *CreateAccessTokenParams, opts ...ClientOption) (*CreateAccessTokenOK, error)
+	CreateAccessToken(params *CreateAccessTokenParams, opts ...ClientOption) (*CreateAccessTokenCreated, error)
 
-	CreateAccessTokenFromTicket(params *CreateAccessTokenFromTicketParams, opts ...ClientOption) (*CreateAccessTokenFromTicketOK, error)
+	CreateAccessTokenFromTicket(params *CreateAccessTokenFromTicketParams, opts ...ClientOption) (*CreateAccessTokenFromTicketCreated, error)
 
 	GetAccessStatus(params *GetAccessStatusParams, opts ...ClientOption) (*GetAccessStatusOK, error)
 
@@ -56,7 +56,7 @@ type ClientService interface {
 
   The token returned is formatted as a JSON Web Token (JWT). The token is base64 encoded and comprised of three parts. The header, the body, and the signature. The expiration of the token is a contained within the body. It is stored in the browser as a cookie, but also returned inthe response body to be stored/used by third party client scripts.
 */
-func (a *Client) CreateAccessToken(params *CreateAccessTokenParams, opts ...ClientOption) (*CreateAccessTokenOK, error) {
+func (a *Client) CreateAccessToken(params *CreateAccessTokenParams, opts ...ClientOption) (*CreateAccessTokenCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateAccessTokenParams()
@@ -81,7 +81,7 @@ func (a *Client) CreateAccessToken(params *CreateAccessTokenParams, opts ...Clie
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*CreateAccessTokenOK)
+	success, ok := result.(*CreateAccessTokenCreated)
 	if ok {
 		return success, nil
 	}
@@ -96,7 +96,7 @@ func (a *Client) CreateAccessToken(params *CreateAccessTokenParams, opts ...Clie
 
   The token returned is formatted as a JSON Web Token (JWT). The token is base64 encoded and comprised of three parts. The header, the body, and the signature. The expiration of the token is a contained within the body. The token can be used in the Authorization header in the format 'Authorization: Bearer <token>'. It is also stored in the browser as a cookie.
 */
-func (a *Client) CreateAccessTokenFromTicket(params *CreateAccessTokenFromTicketParams, opts ...ClientOption) (*CreateAccessTokenFromTicketOK, error) {
+func (a *Client) CreateAccessTokenFromTicket(params *CreateAccessTokenFromTicketParams, opts ...ClientOption) (*CreateAccessTokenFromTicketCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateAccessTokenFromTicketParams()
@@ -121,7 +121,7 @@ func (a *Client) CreateAccessTokenFromTicket(params *CreateAccessTokenFromTicket
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*CreateAccessTokenFromTicketOK)
+	success, ok := result.(*CreateAccessTokenFromTicketCreated)
 	if ok {
 		return success, nil
 	}

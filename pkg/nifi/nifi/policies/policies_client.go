@@ -30,7 +30,7 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateAccessPolicy(params *CreateAccessPolicyParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateAccessPolicyOK, error)
+	CreateAccessPolicy(params *CreateAccessPolicyParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateAccessPolicyCreated, error)
 
 	GetAccessPolicy(params *GetAccessPolicyParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetAccessPolicyOK, error)
 
@@ -46,7 +46,7 @@ type ClientService interface {
 /*
   CreateAccessPolicy creates an access policy
 */
-func (a *Client) CreateAccessPolicy(params *CreateAccessPolicyParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateAccessPolicyOK, error) {
+func (a *Client) CreateAccessPolicy(params *CreateAccessPolicyParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateAccessPolicyCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateAccessPolicyParams()
@@ -72,7 +72,7 @@ func (a *Client) CreateAccessPolicy(params *CreateAccessPolicyParams, authInfo r
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*CreateAccessPolicyOK)
+	success, ok := result.(*CreateAccessPolicyCreated)
 	if ok {
 		return success, nil
 	}

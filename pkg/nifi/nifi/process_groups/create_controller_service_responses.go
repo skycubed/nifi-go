@@ -23,8 +23,8 @@ type CreateControllerServiceReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *CreateControllerServiceReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-	case 200:
-		result := NewCreateControllerServiceOK()
+	case 201:
+		result := NewCreateControllerServiceCreated()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -58,27 +58,27 @@ func (o *CreateControllerServiceReader) ReadResponse(response runtime.ClientResp
 	}
 }
 
-// NewCreateControllerServiceOK creates a CreateControllerServiceOK with default headers values
-func NewCreateControllerServiceOK() *CreateControllerServiceOK {
-	return &CreateControllerServiceOK{}
+// NewCreateControllerServiceCreated creates a CreateControllerServiceCreated with default headers values
+func NewCreateControllerServiceCreated() *CreateControllerServiceCreated {
+	return &CreateControllerServiceCreated{}
 }
 
-/* CreateControllerServiceOK describes a response with status code 200, with default header values.
+/* CreateControllerServiceCreated describes a response with status code 201, with default header values.
 
 successful operation
 */
-type CreateControllerServiceOK struct {
+type CreateControllerServiceCreated struct {
 	Payload *models.ControllerServiceEntity
 }
 
-func (o *CreateControllerServiceOK) Error() string {
-	return fmt.Sprintf("[POST /process-groups/{id}/controller-services][%d] createControllerServiceOK  %+v", 200, o.Payload)
+func (o *CreateControllerServiceCreated) Error() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/controller-services][%d] createControllerServiceCreated  %+v", 201, o.Payload)
 }
-func (o *CreateControllerServiceOK) GetPayload() *models.ControllerServiceEntity {
+func (o *CreateControllerServiceCreated) GetPayload() *models.ControllerServiceEntity {
 	return o.Payload
 }
 
-func (o *CreateControllerServiceOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *CreateControllerServiceCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ControllerServiceEntity)
 

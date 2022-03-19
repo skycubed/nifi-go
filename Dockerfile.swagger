@@ -5,7 +5,7 @@ ARG NIFI_VER
 RUN mkdir /nifi && \
     mkdir /registry && \
     apt update && \
-    apt -y install git maven && \
+    apt -y install git maven jq && \
     git clone --depth 1 --branch rel/nifi-${NIFI_VER} https://github.com/apache/nifi.git && \
     cd /nifi/nifi-nar-bundles/nifi-framework-bundle/nifi-framework/nifi-web/nifi-web-api/ && \
     mvn install && \
@@ -13,3 +13,7 @@ RUN mkdir /nifi && \
     cd /nifi/nifi-registry/nifi-registry-core/nifi-registry-web-api && \
     mvn install && \
     mv target/swagger/swagger.json /registry/
+
+COPY bin/swagger.sh /
+
+RUN chmod +x /swagger.sh && ./swagger.sh /nifi/swagger.json

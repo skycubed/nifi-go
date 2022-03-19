@@ -30,9 +30,9 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateUser(params *CreateUserParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateUserOK, error)
+	CreateUser(params *CreateUserParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateUserCreated, error)
 
-	CreateUserGroup(params *CreateUserGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateUserGroupOK, error)
+	CreateUserGroup(params *CreateUserGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateUserGroupCreated, error)
 
 	GetUser(params *GetUserParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetUserOK, error)
 
@@ -60,7 +60,7 @@ type ClientService interface {
 
   Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 */
-func (a *Client) CreateUser(params *CreateUserParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateUserOK, error) {
+func (a *Client) CreateUser(params *CreateUserParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateUserCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateUserParams()
@@ -86,7 +86,7 @@ func (a *Client) CreateUser(params *CreateUserParams, authInfo runtime.ClientAut
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*CreateUserOK)
+	success, ok := result.(*CreateUserCreated)
 	if ok {
 		return success, nil
 	}
@@ -101,7 +101,7 @@ func (a *Client) CreateUser(params *CreateUserParams, authInfo runtime.ClientAut
 
   Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 */
-func (a *Client) CreateUserGroup(params *CreateUserGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateUserGroupOK, error) {
+func (a *Client) CreateUserGroup(params *CreateUserGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateUserGroupCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateUserGroupParams()
@@ -127,7 +127,7 @@ func (a *Client) CreateUserGroup(params *CreateUserGroupParams, authInfo runtime
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*CreateUserGroupOK)
+	success, ok := result.(*CreateUserGroupCreated)
 	if ok {
 		return success, nil
 	}

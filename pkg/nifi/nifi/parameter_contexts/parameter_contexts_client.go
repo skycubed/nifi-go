@@ -30,7 +30,7 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateParameterContext(params *CreateParameterContextParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateParameterContextOK, error)
+	CreateParameterContext(params *CreateParameterContextParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateParameterContextCreated, error)
 
 	DeleteParameterContext(params *DeleteParameterContextParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteParameterContextOK, error)
 
@@ -52,7 +52,7 @@ type ClientService interface {
 /*
   CreateParameterContext creates a parameter context
 */
-func (a *Client) CreateParameterContext(params *CreateParameterContextParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateParameterContextOK, error) {
+func (a *Client) CreateParameterContext(params *CreateParameterContextParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateParameterContextCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateParameterContextParams()
@@ -78,7 +78,7 @@ func (a *Client) CreateParameterContext(params *CreateParameterContextParams, au
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*CreateParameterContextOK)
+	success, ok := result.(*CreateParameterContextCreated)
 	if ok {
 		return success, nil
 	}
