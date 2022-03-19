@@ -3,8 +3,8 @@ module github.com/skycubed/nifi-go
 go 1.18
 
 retract (
-	v1.15.0 // intent was to track upstread nifi version, but go-swagger generated code is not working as expected.
 	v1.15.1 // contains retractions only
+	v1.15.0 // intent was to track upstream nifi version using go module versioning, but go-swagger generated code is not working as expected. Updates will be made on "beta" tags.
 )
 
 require (
@@ -30,8 +30,8 @@ require (
 	github.com/mitchellh/mapstructure v1.4.3 // indirect
 	github.com/oklog/ulid v1.3.1 // indirect
 	github.com/opentracing/opentracing-go v1.2.0 // indirect
-	go.mongodb.org/mongo-driver v1.8.3 // indirect
-	golang.org/x/net v0.0.0-20220127200216-cd36cc0744dd // indirect
+	go.mongodb.org/mongo-driver v1.8.4 // indirect
+	golang.org/x/net v0.0.0-20220225172249-27dd8689420f // indirect
 	golang.org/x/text v0.3.7 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 )
