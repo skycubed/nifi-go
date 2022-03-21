@@ -1,5 +1,5 @@
 TRG := target
-NIFI_VER := 1.15.2
+NIFI_VER := 1.15.3
 
 .PHONY: swagger
 swagger:

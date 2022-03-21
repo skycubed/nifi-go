@@ -2,7 +2,7 @@
   "swagger" : "2.0",
   "info" : {
     "description" : "The REST API provides an interface to a registry with operations for saving, versioning, reading NiFi flows and components.",
-    "version" : "1.15.2",
+    "version" : "1.15.3",
     "title" : "Apache NiFi Registry REST API",
     "termsOfService" : "As described in the license",
     "contact" : {
