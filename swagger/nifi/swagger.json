@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "description": "The Rest API provides programmatic access to command and control a NiFi instance in real time. Start and\n                                            stop processors, monitor queues, query provenance data, and more. Each endpoint below includes a description,\n                                            definitions of the expected input and output, potential response codes, and the authorizations required\n                                            to invoke each service.",
-    "version": "1.15.1",
+    "version": "1.15.2",
     "title": "NiFi Rest API",
     "contact": {
       "url": "https://nifi.apache.org",
@@ -25911,14 +25911,6 @@
           "type": "string",
           "description": "Default value used in this Process Group for the maximum data size of objects that can be queued before back pressure is applied."
         },
-        "flowFileConcurrency": {
-          "type": "string",
-          "description": "The configured FlowFile Concurrency for the Process Group"
-        },
-        "flowFileOutboundPolicy": {
-          "type": "string",
-          "description": "The FlowFile Outbound Policy for the Process Group"
-        },
         "componentType": {
           "type": "string",
           "enum": [
@@ -25934,6 +25926,14 @@
             "LABEL",
             "CONTROLLER_SERVICE"
           ]
+        },
+        "flowFileConcurrency": {
+          "type": "string",
+          "description": "The configured FlowFile Concurrency for the Process Group"
+        },
+        "flowFileOutboundPolicy": {
+          "type": "string",
+          "description": "The FlowFile Outbound Policy for the Process Group"
         },
         "groupIdentifier": {
           "type": "string",
