@@ -11,5 +11,3 @@ To import code compatible with nifi version 1.15.0, import the latest tag with a
 ``
 go get github.com/skycubed/nifi-go@v1.15.0-beta.3
 ``
-
-Note that only v1.15.0 is currently supported. Addition versions may be added in the future.
