@@ -6,7 +6,7 @@ COPY swagger /swagger/
 
 RUN apk add curl jq && \
     download_url=$(curl -s https://api.github.com/repos/go-swagger/go-swagger/releases/latest | \
-      jq -r --arg f "$(uname | tr '[:upper:]' '[:lower:]')_$(arch | sed 's/aarch/arm/')" \
+      jq -r --arg f "$(uname | tr '[:upper:]' '[:lower:]')_$(arch | sed -e 's/aarch/arm/' -e 's/x86_64/amd/')" \
       '.assets[] | select(.name | contains($f)) | .browser_download_url') && \
     curl -o /usr/bin/swagger -L'#' "$download_url" && \
     chmod +x /usr/bin/swagger
