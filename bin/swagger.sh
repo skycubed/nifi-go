@@ -1,8 +1,8 @@
-#!/bin/bash
+#!/bin/bash -x
 
 set -euo pipefail
 
-files=(
+paths201=(
   "/access/kerberos"
   "/access/token"
   "/controller/controller-services"
@@ -30,13 +30,25 @@ files=(
   "/snippets"
   "/tenants/user-groups"
   "/tenants/users"
- )
+)
+
+declare -A modelFieldMap
+modelFieldMap=(
+  [RevisionDTO.1]="version"
+)
 
 sf=$1
-for path in "${files[@]}"
+for path in "${paths201[@]}"
 do
   jq --arg p "$path" '(.paths[$p].post.responses |= (. + {"201":."200"}|del(."200")))' "${sf}" > "${sf}".tmp
-  mv  "${sf}".tmp "${sf}"
+  mv "${sf}".tmp "${sf}"
+done
+
+for model in "${!modelFieldMap[@]}"; do
+  m=${model%.*}
+  f=${modelFieldMap[$model]}
+  jq --arg m "$m" --arg f "$f" '(.definitions[$m].properties[$f] |= (. + {"x-omitempty":false}))' "${sf}" > "${sf}".tmp
+  mv "${sf}".tmp "${sf}"
 done
 
 jq '. += {"securityDefinitions" : {

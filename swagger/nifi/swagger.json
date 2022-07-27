@@ -15978,13 +15978,13 @@
           "format": "int32",
           "description": "The number of nodes in the cluster, regardless of whether or not they are connected"
         },
-        "connectedToCluster": {
-          "type": "boolean",
-          "description": "Whether this NiFi instance is connected to a cluster."
-        },
         "clustered": {
           "type": "boolean",
           "description": "Whether this NiFi instance is clustered."
+        },
+        "connectedToCluster": {
+          "type": "boolean",
+          "description": "Whether this NiFi instance is connected to a cluster."
         }
       }
     },
@@ -23437,7 +23437,8 @@
         "version": {
           "type": "integer",
           "format": "int64",
-          "description": "NiFi employs an optimistic locking strategy where the client must include a revision in their request when performing an update. In a response to a mutable flow request, this field represents the updated base version."
+          "description": "NiFi employs an optimistic locking strategy where the client must include a revision in their request when performing an update. In a response to a mutable flow request, this field represents the updated base version.",
+          "x-omitempty": false
         },
         "lastModifier": {
           "type": "string",
