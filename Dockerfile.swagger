@@ -14,6 +14,7 @@ RUN mkdir /nifi && \
     mvn install && \
     mv target/swagger/swagger.json /registry/
 
-COPY bin/swagger.sh /
+COPY bin/swagger-nifi.sh bin/swagger-nifi-registry.sh /
 
-RUN chmod +x /swagger.sh && ./swagger.sh /nifi/swagger.json
+RUN chmod +x /swagger-nifi.sh          && ./swagger-nifi.sh /nifi/swagger.json
+RUN chmod +x /swagger-nifi-registry.sh && ./swagger-nifi-registry.sh /registry/swagger.json
