@@ -21,7 +21,7 @@ import (
 type VersionedProcessor struct {
 
 	// The annotation data for the processor used to relay configuration between a custom UI and the procesosr.
-	AnnotationData string `json:"annotationData,omitempty"`
+	AnnotationData string `json:"annotationData"`
 
 	// The names of all relationships that cause a flow file to be terminated if the relationship is not connected elsewhere. This property differs from the 'isAutoTerminate' property of the RelationshipDTO in that the RelationshipDTO is meant to depict the current configuration, whereas this property can be set in a DTO when updating a Processor in order to change which Relationships should be auto-terminated.
 	// Unique: true
@@ -34,7 +34,7 @@ type VersionedProcessor struct {
 	Bundle *Bundle `json:"bundle,omitempty"`
 
 	// The user-supplied comments for the component
-	Comments string `json:"comments,omitempty"`
+	Comments string `json:"comments"`
 
 	// component type
 	// Enum: [CONNECTION PROCESSOR PROCESS_GROUP REMOTE_PROCESS_GROUP INPUT_PORT OUTPUT_PORT REMOTE_INPUT_PORT REMOTE_OUTPUT_PORT FUNNEL LABEL CONTROLLER_SERVICE]
@@ -68,7 +68,7 @@ type VersionedProcessor struct {
 	PropertyDescriptors map[string]VersionedPropertyDescriptor `json:"propertyDescriptors,omitempty"`
 
 	// The run duration for the processor in milliseconds.
-	RunDurationMillis int64 `json:"runDurationMillis,omitempty"`
+	RunDurationMillis int64 `json:"runDurationMillis"`
 
 	// The scheduled state of the component
 	// Enum: [ENABLED DISABLED]
@@ -81,7 +81,7 @@ type VersionedProcessor struct {
 	SchedulingStrategy string `json:"schedulingStrategy,omitempty"`
 
 	// Stylistic data for rendering in a UI
-	Style map[string]string `json:"style,omitempty"`
+	Style map[string]string `json:"style"`
 
 	// The type of Processor
 	Type string `json:"type,omitempty"`

@@ -7559,7 +7559,8 @@
         },
         "comments": {
           "type": "string",
-          "description": "The user-supplied comments for the component"
+          "description": "The user-supplied comments for the component",
+          "x-omitempty": false
         },
         "position": {
           "description": "The component's position on the graph",
@@ -7574,7 +7575,8 @@
           "description": "Stylistic data for rendering in a UI",
           "additionalProperties": {
             "type": "string"
-          }
+          },
+          "x-omitempty": false
         },
         "type": {
           "type": "string",
@@ -7596,7 +7598,8 @@
         },
         "annotationData": {
           "type": "string",
-          "description": "The annotation data for the processor used to relay configuration between a custom UI and the procesosr."
+          "description": "The annotation data for the processor used to relay configuration between a custom UI and the procesosr.",
+          "x-omitempty": false
         },
         "schedulingPeriod": {
           "type": "string",
@@ -7625,7 +7628,8 @@
         "runDurationMillis": {
           "type": "integer",
           "format": "int64",
-          "description": "The run duration for the processor in milliseconds."
+          "description": "The run duration for the processor in milliseconds.",
+          "x-omitempty": false
         },
         "concurrentlySchedulableTaskCount": {
           "type": "integer",
