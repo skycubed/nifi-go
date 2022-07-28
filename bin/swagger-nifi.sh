@@ -35,6 +35,10 @@ paths201=(
 declare -A modelFieldMap
 modelFieldMap=(
   [RevisionDTO.1]="version"
+  [VersionedProcessor.1]="runDurationMillis"
+  [VersionedProcessor.2]="annotationData"
+  [VersionedProcessor.3]="style"
+  [VersionedProcessor.4]="comments"
 )
 
 sf=$1
