@@ -6559,8 +6559,7 @@
         "version": {
           "type": "integer",
           "format": "int64",
-          "description": "NiFi Registry employs an optimistic locking strategy where the client must include a revision in their request when performing an update. In a response to a mutable flow request, this field represents the updated base version.",
-          "x-omitempty": false
+          "description": "NiFi Registry employs an optimistic locking strategy where the client must include a revision in their request when performing an update. In a response to a mutable flow request, this field represents the updated base version."
         },
         "lastModifier": {
           "type": "string",
@@ -7587,7 +7586,8 @@
           "description": "The properties for the processor. Properties whose value is not set will only contain the property name.",
           "additionalProperties": {
             "type": "string"
-          }
+          },
+          "x-omitempty": true
         },
         "propertyDescriptors": {
           "type": "object",
@@ -7888,6 +7888,13 @@
               "URL"
             ]
           }
+        }
+      }
+    },
+    "RevisionDTO": {
+      "properties": {
+        "version": {
+          "x-omitempty": false
         }
       }
     }

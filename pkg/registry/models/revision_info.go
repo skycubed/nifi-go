@@ -27,7 +27,7 @@ type RevisionInfo struct {
 	LastModifier string `json:"lastModifier,omitempty"`
 
 	// NiFi Registry employs an optimistic locking strategy where the client must include a revision in their request when performing an update. In a response to a mutable flow request, this field represents the updated base version.
-	Version int64 `json:"version"`
+	Version int64 `json:"version,omitempty"`
 }
 
 // Validate validates this revision info

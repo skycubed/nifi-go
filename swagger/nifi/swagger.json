@@ -25983,7 +25983,8 @@
           "description": "The properties for the processor. Properties whose value is not set will only contain the property name.",
           "additionalProperties": {
             "type": "string"
-          }
+          },
+          "x-omitempty": true
         },
         "propertyDescriptors": {
           "type": "object",
