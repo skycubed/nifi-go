@@ -9,6 +9,7 @@ import (
 	"github.com/go-openapi/runtime"
 	httptransport "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+	"github.com/skycubed/nifi-go/pkg/nifi/nifi/operations"
 
 	"github.com/skycubed/nifi-go/pkg/nifi/nifi/access"
 	"github.com/skycubed/nifi-go/pkg/nifi/nifi/accessoidc"
@@ -96,6 +97,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Nifi {
 	cli.Funnel = funnel.New(transport, formats)
 	cli.InputPorts = input_ports.New(transport, formats)
 	cli.Labels = labels.New(transport, formats)
+	cli.Operations = operations.New(transport, formats)
 	cli.OutputPorts = output_ports.New(transport, formats)
 	cli.ParameterContexts = parameter_contexts.New(transport, formats)
 	cli.Policies = policies.New(transport, formats)
@@ -182,6 +184,8 @@ type Nifi struct {
 
 	Labels labels.ClientService
 
+	Operations operations.ClientService
+
 	OutputPorts output_ports.ClientService
 
 	ParameterContexts parameter_contexts.ClientService
@@ -233,6 +237,7 @@ func (c *Nifi) SetTransport(transport runtime.ClientTransport) {
 	c.Funnel.SetTransport(transport)
 	c.InputPorts.SetTransport(transport)
 	c.Labels.SetTransport(transport)
+	c.Operations.SetTransport(transport)
 	c.OutputPorts.SetTransport(transport)
 	c.ParameterContexts.SetTransport(transport)
 	c.Policies.SetTransport(transport)
