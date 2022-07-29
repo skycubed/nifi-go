@@ -7605,11 +7605,6 @@
             "Read - /policies/{resource}": []
           }
         ]
-      },
-      "post": {
-        "responses": {
-          "201": null
-        }
       }
     },
     "/policies/{id}": {
@@ -7799,11 +7794,6 @@
             "Write - Policy of the parent resource - /policies/{resource}": []
           }
         ]
-      },
-      "post": {
-        "responses": {
-          "201": null
-        }
       }
     },
     "/process-groups/replace-requests/{id}": {

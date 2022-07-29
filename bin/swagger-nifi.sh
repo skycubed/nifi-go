@@ -10,8 +10,6 @@ paths201=(
   "/controller/reporting-tasks"
   "/parameter-contexts"
   "/policies"
-  "/policies/{action}/{resource}"
-  "/policies/{id}"
   "/process-groups/{id}/connections"
   "/process-groups/{id}/controller-services"
   "/process-groups/{id}/funnels"
