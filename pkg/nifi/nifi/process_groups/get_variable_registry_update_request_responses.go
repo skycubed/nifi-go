@@ -69,7 +69,8 @@ func NewGetVariableRegistryUpdateRequestOK() *GetVariableRegistryUpdateRequestOK
 	return &GetVariableRegistryUpdateRequestOK{}
 }
 
-/* GetVariableRegistryUpdateRequestOK describes a response with status code 200, with default header values.
+/*
+GetVariableRegistryUpdateRequestOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,39 @@ type GetVariableRegistryUpdateRequestOK struct {
 	Payload *models.VariableRegistryUpdateRequestEntity
 }
 
+// IsSuccess returns true when this get variable registry update request o k response has a 2xx status code
+func (o *GetVariableRegistryUpdateRequestOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get variable registry update request o k response has a 3xx status code
+func (o *GetVariableRegistryUpdateRequestOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get variable registry update request o k response has a 4xx status code
+func (o *GetVariableRegistryUpdateRequestOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get variable registry update request o k response has a 5xx status code
+func (o *GetVariableRegistryUpdateRequestOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get variable registry update request o k response a status code equal to that given
+func (o *GetVariableRegistryUpdateRequestOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetVariableRegistryUpdateRequestOK) Error() string {
 	return fmt.Sprintf("[GET /process-groups/{groupId}/variable-registry/update-requests/{updateId}][%d] getVariableRegistryUpdateRequestOK  %+v", 200, o.Payload)
 }
+
+func (o *GetVariableRegistryUpdateRequestOK) String() string {
+	return fmt.Sprintf("[GET /process-groups/{groupId}/variable-registry/update-requests/{updateId}][%d] getVariableRegistryUpdateRequestOK  %+v", 200, o.Payload)
+}
+
 func (o *GetVariableRegistryUpdateRequestOK) GetPayload() *models.VariableRegistryUpdateRequestEntity {
 	return o.Payload
 }
@@ -101,14 +132,44 @@ func NewGetVariableRegistryUpdateRequestBadRequest() *GetVariableRegistryUpdateR
 	return &GetVariableRegistryUpdateRequestBadRequest{}
 }
 
-/* GetVariableRegistryUpdateRequestBadRequest describes a response with status code 400, with default header values.
+/*
+GetVariableRegistryUpdateRequestBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type GetVariableRegistryUpdateRequestBadRequest struct {
 }
 
+// IsSuccess returns true when this get variable registry update request bad request response has a 2xx status code
+func (o *GetVariableRegistryUpdateRequestBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get variable registry update request bad request response has a 3xx status code
+func (o *GetVariableRegistryUpdateRequestBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get variable registry update request bad request response has a 4xx status code
+func (o *GetVariableRegistryUpdateRequestBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get variable registry update request bad request response has a 5xx status code
+func (o *GetVariableRegistryUpdateRequestBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get variable registry update request bad request response a status code equal to that given
+func (o *GetVariableRegistryUpdateRequestBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *GetVariableRegistryUpdateRequestBadRequest) Error() string {
+	return fmt.Sprintf("[GET /process-groups/{groupId}/variable-registry/update-requests/{updateId}][%d] getVariableRegistryUpdateRequestBadRequest ", 400)
+}
+
+func (o *GetVariableRegistryUpdateRequestBadRequest) String() string {
 	return fmt.Sprintf("[GET /process-groups/{groupId}/variable-registry/update-requests/{updateId}][%d] getVariableRegistryUpdateRequestBadRequest ", 400)
 }
 
@@ -122,14 +183,44 @@ func NewGetVariableRegistryUpdateRequestUnauthorized() *GetVariableRegistryUpdat
 	return &GetVariableRegistryUpdateRequestUnauthorized{}
 }
 
-/* GetVariableRegistryUpdateRequestUnauthorized describes a response with status code 401, with default header values.
+/*
+GetVariableRegistryUpdateRequestUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type GetVariableRegistryUpdateRequestUnauthorized struct {
 }
 
+// IsSuccess returns true when this get variable registry update request unauthorized response has a 2xx status code
+func (o *GetVariableRegistryUpdateRequestUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get variable registry update request unauthorized response has a 3xx status code
+func (o *GetVariableRegistryUpdateRequestUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get variable registry update request unauthorized response has a 4xx status code
+func (o *GetVariableRegistryUpdateRequestUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get variable registry update request unauthorized response has a 5xx status code
+func (o *GetVariableRegistryUpdateRequestUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get variable registry update request unauthorized response a status code equal to that given
+func (o *GetVariableRegistryUpdateRequestUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GetVariableRegistryUpdateRequestUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /process-groups/{groupId}/variable-registry/update-requests/{updateId}][%d] getVariableRegistryUpdateRequestUnauthorized ", 401)
+}
+
+func (o *GetVariableRegistryUpdateRequestUnauthorized) String() string {
 	return fmt.Sprintf("[GET /process-groups/{groupId}/variable-registry/update-requests/{updateId}][%d] getVariableRegistryUpdateRequestUnauthorized ", 401)
 }
 
@@ -143,14 +234,44 @@ func NewGetVariableRegistryUpdateRequestForbidden() *GetVariableRegistryUpdateRe
 	return &GetVariableRegistryUpdateRequestForbidden{}
 }
 
-/* GetVariableRegistryUpdateRequestForbidden describes a response with status code 403, with default header values.
+/*
+GetVariableRegistryUpdateRequestForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type GetVariableRegistryUpdateRequestForbidden struct {
 }
 
+// IsSuccess returns true when this get variable registry update request forbidden response has a 2xx status code
+func (o *GetVariableRegistryUpdateRequestForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get variable registry update request forbidden response has a 3xx status code
+func (o *GetVariableRegistryUpdateRequestForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get variable registry update request forbidden response has a 4xx status code
+func (o *GetVariableRegistryUpdateRequestForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get variable registry update request forbidden response has a 5xx status code
+func (o *GetVariableRegistryUpdateRequestForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get variable registry update request forbidden response a status code equal to that given
+func (o *GetVariableRegistryUpdateRequestForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetVariableRegistryUpdateRequestForbidden) Error() string {
+	return fmt.Sprintf("[GET /process-groups/{groupId}/variable-registry/update-requests/{updateId}][%d] getVariableRegistryUpdateRequestForbidden ", 403)
+}
+
+func (o *GetVariableRegistryUpdateRequestForbidden) String() string {
 	return fmt.Sprintf("[GET /process-groups/{groupId}/variable-registry/update-requests/{updateId}][%d] getVariableRegistryUpdateRequestForbidden ", 403)
 }
 
@@ -164,14 +285,44 @@ func NewGetVariableRegistryUpdateRequestNotFound() *GetVariableRegistryUpdateReq
 	return &GetVariableRegistryUpdateRequestNotFound{}
 }
 
-/* GetVariableRegistryUpdateRequestNotFound describes a response with status code 404, with default header values.
+/*
+GetVariableRegistryUpdateRequestNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type GetVariableRegistryUpdateRequestNotFound struct {
 }
 
+// IsSuccess returns true when this get variable registry update request not found response has a 2xx status code
+func (o *GetVariableRegistryUpdateRequestNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get variable registry update request not found response has a 3xx status code
+func (o *GetVariableRegistryUpdateRequestNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get variable registry update request not found response has a 4xx status code
+func (o *GetVariableRegistryUpdateRequestNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get variable registry update request not found response has a 5xx status code
+func (o *GetVariableRegistryUpdateRequestNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get variable registry update request not found response a status code equal to that given
+func (o *GetVariableRegistryUpdateRequestNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetVariableRegistryUpdateRequestNotFound) Error() string {
+	return fmt.Sprintf("[GET /process-groups/{groupId}/variable-registry/update-requests/{updateId}][%d] getVariableRegistryUpdateRequestNotFound ", 404)
+}
+
+func (o *GetVariableRegistryUpdateRequestNotFound) String() string {
 	return fmt.Sprintf("[GET /process-groups/{groupId}/variable-registry/update-requests/{updateId}][%d] getVariableRegistryUpdateRequestNotFound ", 404)
 }
 
@@ -185,14 +336,44 @@ func NewGetVariableRegistryUpdateRequestConflict() *GetVariableRegistryUpdateReq
 	return &GetVariableRegistryUpdateRequestConflict{}
 }
 
-/* GetVariableRegistryUpdateRequestConflict describes a response with status code 409, with default header values.
+/*
+GetVariableRegistryUpdateRequestConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type GetVariableRegistryUpdateRequestConflict struct {
 }
 
+// IsSuccess returns true when this get variable registry update request conflict response has a 2xx status code
+func (o *GetVariableRegistryUpdateRequestConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get variable registry update request conflict response has a 3xx status code
+func (o *GetVariableRegistryUpdateRequestConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get variable registry update request conflict response has a 4xx status code
+func (o *GetVariableRegistryUpdateRequestConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get variable registry update request conflict response has a 5xx status code
+func (o *GetVariableRegistryUpdateRequestConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get variable registry update request conflict response a status code equal to that given
+func (o *GetVariableRegistryUpdateRequestConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *GetVariableRegistryUpdateRequestConflict) Error() string {
+	return fmt.Sprintf("[GET /process-groups/{groupId}/variable-registry/update-requests/{updateId}][%d] getVariableRegistryUpdateRequestConflict ", 409)
+}
+
+func (o *GetVariableRegistryUpdateRequestConflict) String() string {
 	return fmt.Sprintf("[GET /process-groups/{groupId}/variable-registry/update-requests/{updateId}][%d] getVariableRegistryUpdateRequestConflict ", 409)
 }
 

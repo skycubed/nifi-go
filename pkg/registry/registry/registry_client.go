@@ -10,6 +10,7 @@ import (
 	httptransport "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
 
+	"github.com/skycubed/nifi-go/pkg/registry/registry/about"
 	"github.com/skycubed/nifi-go/pkg/registry/registry/access"
 	"github.com/skycubed/nifi-go/pkg/registry/registry/bucket_bundles"
 	"github.com/skycubed/nifi-go/pkg/registry/registry/bucket_flows"
@@ -66,6 +67,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Registry {
 
 	cli := new(Registry)
 	cli.Transport = transport
+	cli.About = about.New(transport, formats)
 	cli.Access = access.New(transport, formats)
 	cli.BucketBundles = bucket_bundles.New(transport, formats)
 	cli.BucketFlows = bucket_flows.New(transport, formats)
@@ -122,6 +124,8 @@ func (cfg *TransportConfig) WithSchemes(schemes []string) *TransportConfig {
 
 // Registry is a client for registry
 type Registry struct {
+	About about.ClientService
+
 	Access access.ClientService
 
 	BucketBundles bucket_bundles.ClientService
@@ -152,6 +156,7 @@ type Registry struct {
 // SetTransport changes the transport on the client and all its subresources
 func (c *Registry) SetTransport(transport runtime.ClientTransport) {
 	c.Transport = transport
+	c.About.SetTransport(transport)
 	c.Access.SetTransport(transport)
 	c.BucketBundles.SetTransport(transport)
 	c.BucketFlows.SetTransport(transport)

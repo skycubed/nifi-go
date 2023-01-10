@@ -14,6 +14,7 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+	"github.com/go-openapi/swag"
 )
 
 // NewExportProcessGroupParams creates a new ExportProcessGroupParams object,
@@ -52,10 +53,12 @@ func NewExportProcessGroupParamsWithHTTPClient(client *http.Client) *ExportProce
 	}
 }
 
-/* ExportProcessGroupParams contains all the parameters to send to the API endpoint
-   for the export process group operation.
+/*
+ExportProcessGroupParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the export process group operation.
+
+	Typically these are written to a http.Request.
 */
 type ExportProcessGroupParams struct {
 
@@ -64,6 +67,12 @@ type ExportProcessGroupParams struct {
 	   The process group id.
 	*/
 	ID string
+
+	/* IncludeReferencedServices.
+
+	   If referenced services from outside the target group should be included
+	*/
+	IncludeReferencedServices *bool
 
 	timeout    time.Duration
 	Context    context.Context
@@ -82,7 +91,18 @@ func (o *ExportProcessGroupParams) WithDefaults() *ExportProcessGroupParams {
 //
 // All values with no default are reset to their zero value.
 func (o *ExportProcessGroupParams) SetDefaults() {
-	// no default values defined for this parameter
+	var (
+		includeReferencedServicesDefault = bool(false)
+	)
+
+	val := ExportProcessGroupParams{
+		IncludeReferencedServices: &includeReferencedServicesDefault,
+	}
+
+	val.timeout = o.timeout
+	val.Context = o.Context
+	val.HTTPClient = o.HTTPClient
+	*o = val
 }
 
 // WithTimeout adds the timeout to the export process group params
@@ -129,6 +149,17 @@ func (o *ExportProcessGroupParams) SetID(id string) {
 	o.ID = id
 }
 
+// WithIncludeReferencedServices adds the includeReferencedServices to the export process group params
+func (o *ExportProcessGroupParams) WithIncludeReferencedServices(includeReferencedServices *bool) *ExportProcessGroupParams {
+	o.SetIncludeReferencedServices(includeReferencedServices)
+	return o
+}
+
+// SetIncludeReferencedServices adds the includeReferencedServices to the export process group params
+func (o *ExportProcessGroupParams) SetIncludeReferencedServices(includeReferencedServices *bool) {
+	o.IncludeReferencedServices = includeReferencedServices
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *ExportProcessGroupParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -140,6 +171,23 @@ func (o *ExportProcessGroupParams) WriteToRequest(r runtime.ClientRequest, reg s
 	// path param id
 	if err := r.SetPathParam("id", o.ID); err != nil {
 		return err
+	}
+
+	if o.IncludeReferencedServices != nil {
+
+		// query param includeReferencedServices
+		var qrIncludeReferencedServices bool
+
+		if o.IncludeReferencedServices != nil {
+			qrIncludeReferencedServices = *o.IncludeReferencedServices
+		}
+		qIncludeReferencedServices := swag.FormatBool(qrIncludeReferencedServices)
+		if qIncludeReferencedServices != "" {
+
+			if err := r.SetQueryParam("includeReferencedServices", qIncludeReferencedServices); err != nil {
+				return err
+			}
+		}
 	}
 
 	if len(res) > 0 {

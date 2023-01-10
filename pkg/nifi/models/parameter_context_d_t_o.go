@@ -36,6 +36,9 @@ type ParameterContextDTO struct {
 	// The Name of the Parameter Context.
 	Name string `json:"name,omitempty"`
 
+	// Optional configuration for a Parameter Provider
+	ParameterProviderConfiguration *ParameterProviderConfigurationEntity `json:"parameterProviderConfiguration,omitempty"`
+
 	// The Parameters for the Parameter Context
 	// Unique: true
 	Parameters []*ParameterEntity `json:"parameters"`
@@ -50,6 +53,10 @@ func (m *ParameterContextDTO) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateInheritedParameterContexts(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateParameterProviderConfiguration(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -119,6 +126,25 @@ func (m *ParameterContextDTO) validateInheritedParameterContexts(formats strfmt.
 	return nil
 }
 
+func (m *ParameterContextDTO) validateParameterProviderConfiguration(formats strfmt.Registry) error {
+	if swag.IsZero(m.ParameterProviderConfiguration) { // not required
+		return nil
+	}
+
+	if m.ParameterProviderConfiguration != nil {
+		if err := m.ParameterProviderConfiguration.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("parameterProviderConfiguration")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("parameterProviderConfiguration")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *ParameterContextDTO) validateParameters(formats strfmt.Registry) error {
 	if swag.IsZero(m.Parameters) { // not required
 		return nil
@@ -158,6 +184,10 @@ func (m *ParameterContextDTO) ContextValidate(ctx context.Context, formats strfm
 	}
 
 	if err := m.contextValidateInheritedParameterContexts(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateParameterProviderConfiguration(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -206,6 +236,22 @@ func (m *ParameterContextDTO) contextValidateInheritedParameterContexts(ctx cont
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *ParameterContextDTO) contextValidateParameterProviderConfiguration(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ParameterProviderConfiguration != nil {
+		if err := m.ParameterProviderConfiguration.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("parameterProviderConfiguration")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("parameterProviderConfiguration")
+			}
+			return err
+		}
 	}
 
 	return nil

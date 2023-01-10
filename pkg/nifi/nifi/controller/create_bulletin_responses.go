@@ -63,7 +63,8 @@ func NewCreateBulletinOK() *CreateBulletinOK {
 	return &CreateBulletinOK{}
 }
 
-/* CreateBulletinOK describes a response with status code 200, with default header values.
+/*
+CreateBulletinOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -71,9 +72,39 @@ type CreateBulletinOK struct {
 	Payload *models.BulletinEntity
 }
 
+// IsSuccess returns true when this create bulletin o k response has a 2xx status code
+func (o *CreateBulletinOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create bulletin o k response has a 3xx status code
+func (o *CreateBulletinOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create bulletin o k response has a 4xx status code
+func (o *CreateBulletinOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create bulletin o k response has a 5xx status code
+func (o *CreateBulletinOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create bulletin o k response a status code equal to that given
+func (o *CreateBulletinOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *CreateBulletinOK) Error() string {
 	return fmt.Sprintf("[POST /controller/bulletin][%d] createBulletinOK  %+v", 200, o.Payload)
 }
+
+func (o *CreateBulletinOK) String() string {
+	return fmt.Sprintf("[POST /controller/bulletin][%d] createBulletinOK  %+v", 200, o.Payload)
+}
+
 func (o *CreateBulletinOK) GetPayload() *models.BulletinEntity {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewCreateBulletinBadRequest() *CreateBulletinBadRequest {
 	return &CreateBulletinBadRequest{}
 }
 
-/* CreateBulletinBadRequest describes a response with status code 400, with default header values.
+/*
+CreateBulletinBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type CreateBulletinBadRequest struct {
 }
 
+// IsSuccess returns true when this create bulletin bad request response has a 2xx status code
+func (o *CreateBulletinBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create bulletin bad request response has a 3xx status code
+func (o *CreateBulletinBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create bulletin bad request response has a 4xx status code
+func (o *CreateBulletinBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create bulletin bad request response has a 5xx status code
+func (o *CreateBulletinBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create bulletin bad request response a status code equal to that given
+func (o *CreateBulletinBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CreateBulletinBadRequest) Error() string {
+	return fmt.Sprintf("[POST /controller/bulletin][%d] createBulletinBadRequest ", 400)
+}
+
+func (o *CreateBulletinBadRequest) String() string {
 	return fmt.Sprintf("[POST /controller/bulletin][%d] createBulletinBadRequest ", 400)
 }
 
@@ -116,14 +177,44 @@ func NewCreateBulletinUnauthorized() *CreateBulletinUnauthorized {
 	return &CreateBulletinUnauthorized{}
 }
 
-/* CreateBulletinUnauthorized describes a response with status code 401, with default header values.
+/*
+CreateBulletinUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type CreateBulletinUnauthorized struct {
 }
 
+// IsSuccess returns true when this create bulletin unauthorized response has a 2xx status code
+func (o *CreateBulletinUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create bulletin unauthorized response has a 3xx status code
+func (o *CreateBulletinUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create bulletin unauthorized response has a 4xx status code
+func (o *CreateBulletinUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create bulletin unauthorized response has a 5xx status code
+func (o *CreateBulletinUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create bulletin unauthorized response a status code equal to that given
+func (o *CreateBulletinUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *CreateBulletinUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /controller/bulletin][%d] createBulletinUnauthorized ", 401)
+}
+
+func (o *CreateBulletinUnauthorized) String() string {
 	return fmt.Sprintf("[POST /controller/bulletin][%d] createBulletinUnauthorized ", 401)
 }
 
@@ -137,14 +228,44 @@ func NewCreateBulletinForbidden() *CreateBulletinForbidden {
 	return &CreateBulletinForbidden{}
 }
 
-/* CreateBulletinForbidden describes a response with status code 403, with default header values.
+/*
+CreateBulletinForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type CreateBulletinForbidden struct {
 }
 
+// IsSuccess returns true when this create bulletin forbidden response has a 2xx status code
+func (o *CreateBulletinForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create bulletin forbidden response has a 3xx status code
+func (o *CreateBulletinForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create bulletin forbidden response has a 4xx status code
+func (o *CreateBulletinForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create bulletin forbidden response has a 5xx status code
+func (o *CreateBulletinForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create bulletin forbidden response a status code equal to that given
+func (o *CreateBulletinForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CreateBulletinForbidden) Error() string {
+	return fmt.Sprintf("[POST /controller/bulletin][%d] createBulletinForbidden ", 403)
+}
+
+func (o *CreateBulletinForbidden) String() string {
 	return fmt.Sprintf("[POST /controller/bulletin][%d] createBulletinForbidden ", 403)
 }
 
@@ -158,14 +279,44 @@ func NewCreateBulletinConflict() *CreateBulletinConflict {
 	return &CreateBulletinConflict{}
 }
 
-/* CreateBulletinConflict describes a response with status code 409, with default header values.
+/*
+CreateBulletinConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type CreateBulletinConflict struct {
 }
 
+// IsSuccess returns true when this create bulletin conflict response has a 2xx status code
+func (o *CreateBulletinConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create bulletin conflict response has a 3xx status code
+func (o *CreateBulletinConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create bulletin conflict response has a 4xx status code
+func (o *CreateBulletinConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create bulletin conflict response has a 5xx status code
+func (o *CreateBulletinConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create bulletin conflict response a status code equal to that given
+func (o *CreateBulletinConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *CreateBulletinConflict) Error() string {
+	return fmt.Sprintf("[POST /controller/bulletin][%d] createBulletinConflict ", 409)
+}
+
+func (o *CreateBulletinConflict) String() string {
 	return fmt.Sprintf("[POST /controller/bulletin][%d] createBulletinConflict ", 409)
 }
 

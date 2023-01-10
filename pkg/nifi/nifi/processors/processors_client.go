@@ -32,8 +32,6 @@ type ClientOption func(*runtime.ClientOperation)
 type ClientService interface {
 	DeleteProcessor(params *DeleteProcessorParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteProcessorOK, error)
 
-	DeleteVerificationRequest(params *DeleteVerificationRequestParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteVerificationRequestOK, error)
-
 	GetProcessor(params *GetProcessorParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetProcessorOK, error)
 
 	GetProcessorDiagnostics(params *GetProcessorDiagnosticsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetProcessorDiagnosticsOK, error)
@@ -50,7 +48,7 @@ type ClientService interface {
 }
 
 /*
-  DeleteProcessor deletes a processor
+DeleteProcessor deletes a processor
 */
 func (a *Client) DeleteProcessor(params *DeleteProcessorParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteProcessorOK, error) {
 	// TODO: Validate the params before sending
@@ -89,48 +87,7 @@ func (a *Client) DeleteProcessor(params *DeleteProcessorParams, authInfo runtime
 }
 
 /*
-  DeleteVerificationRequest deletes the verification request with the given ID
-
-  Deletes the Verification Request with the given ID. After a request is created, it is expected that the client will properly clean up the request by DELETE'ing it, once the Verification process has completed. If the request is deleted before the request completes, then the Verification request will finish the step that it is currently performing and then will cancel any subsequent steps.
-*/
-func (a *Client) DeleteVerificationRequest(params *DeleteVerificationRequestParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteVerificationRequestOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewDeleteVerificationRequestParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "deleteVerificationRequest",
-		Method:             "DELETE",
-		PathPattern:        "/processors/{id}/config/verification-requests/{requestId}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"*/*"},
-		Schemes:            []string{"http", "https"},
-		Params:             params,
-		Reader:             &DeleteVerificationRequestReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*DeleteVerificationRequestOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteVerificationRequest: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  GetProcessor gets a processor
+GetProcessor gets a processor
 */
 func (a *Client) GetProcessor(params *GetProcessorParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetProcessorOK, error) {
 	// TODO: Validate the params before sending
@@ -169,9 +126,9 @@ func (a *Client) GetProcessor(params *GetProcessorParams, authInfo runtime.Clien
 }
 
 /*
-  GetProcessorDiagnostics gets diagnostics information about a processor
+GetProcessorDiagnostics gets diagnostics information about a processor
 
-  Note: This endpoint is subject to change as NiFi and it's REST API evolve.
+Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 */
 func (a *Client) GetProcessorDiagnostics(params *GetProcessorDiagnosticsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetProcessorDiagnosticsOK, error) {
 	// TODO: Validate the params before sending
@@ -210,7 +167,7 @@ func (a *Client) GetProcessorDiagnostics(params *GetProcessorDiagnosticsParams, 
 }
 
 /*
-  GetProcessorRunStatusDetails submits a query to retrieve the run status details of all processors that are in the given list of processor i ds
+GetProcessorRunStatusDetails submits a query to retrieve the run status details of all processors that are in the given list of processor i ds
 */
 func (a *Client) GetProcessorRunStatusDetails(params *GetProcessorRunStatusDetailsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetProcessorRunStatusDetailsOK, error) {
 	// TODO: Validate the params before sending
@@ -249,9 +206,9 @@ func (a *Client) GetProcessorRunStatusDetails(params *GetProcessorRunStatusDetai
 }
 
 /*
-  SubmitProcessorVerificationRequest performs verification of the processor s configuration
+SubmitProcessorVerificationRequest performs verification of the processor s configuration
 
-  This will initiate the process of verifying a given Processor configuration. This may be a long-running task. As a result, this endpoint will immediately return a ProcessorConfigVerificationRequestEntity, and the process of performing the verification will occur asynchronously in the background. The client may then periodically poll the status of the request by issuing a GET request to /processors/{processorId}/verification-requests/{requestId}. Once the request is completed, the client is expected to issue a DELETE request to /processors/{processorId}/verification-requests/{requestId}.
+This will initiate the process of verifying a given Processor configuration. This may be a long-running task. As a result, this endpoint will immediately return a ProcessorConfigVerificationRequestEntity, and the process of performing the verification will occur asynchronously in the background. The client may then periodically poll the status of the request by issuing a GET request to /processors/{processorId}/verification-requests/{requestId}. Once the request is completed, the client is expected to issue a DELETE request to /processors/{processorId}/verification-requests/{requestId}.
 */
 func (a *Client) SubmitProcessorVerificationRequest(params *SubmitProcessorVerificationRequestParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SubmitProcessorVerificationRequestOK, error) {
 	// TODO: Validate the params before sending
@@ -290,7 +247,7 @@ func (a *Client) SubmitProcessorVerificationRequest(params *SubmitProcessorVerif
 }
 
 /*
-  TerminateProcessor terminates a processor essentially deleting its threads and any active tasks
+TerminateProcessor terminates a processor essentially deleting its threads and any active tasks
 */
 func (a *Client) TerminateProcessor(params *TerminateProcessorParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*TerminateProcessorOK, error) {
 	// TODO: Validate the params before sending
@@ -329,7 +286,7 @@ func (a *Client) TerminateProcessor(params *TerminateProcessorParams, authInfo r
 }
 
 /*
-  UpdateProcessor updates a processor
+UpdateProcessor updates a processor
 */
 func (a *Client) UpdateProcessor(params *UpdateProcessorParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateProcessorOK, error) {
 	// TODO: Validate the params before sending

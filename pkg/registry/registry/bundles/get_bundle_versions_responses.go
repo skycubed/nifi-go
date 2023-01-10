@@ -45,7 +45,8 @@ func NewGetBundleVersionsOK() *GetBundleVersionsOK {
 	return &GetBundleVersionsOK{}
 }
 
-/* GetBundleVersionsOK describes a response with status code 200, with default header values.
+/*
+GetBundleVersionsOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -53,9 +54,39 @@ type GetBundleVersionsOK struct {
 	Payload []*models.BundleVersionMetadata
 }
 
+// IsSuccess returns true when this get bundle versions o k response has a 2xx status code
+func (o *GetBundleVersionsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get bundle versions o k response has a 3xx status code
+func (o *GetBundleVersionsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get bundle versions o k response has a 4xx status code
+func (o *GetBundleVersionsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get bundle versions o k response has a 5xx status code
+func (o *GetBundleVersionsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get bundle versions o k response a status code equal to that given
+func (o *GetBundleVersionsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetBundleVersionsOK) Error() string {
 	return fmt.Sprintf("[GET /bundles/versions][%d] getBundleVersionsOK  %+v", 200, o.Payload)
 }
+
+func (o *GetBundleVersionsOK) String() string {
+	return fmt.Sprintf("[GET /bundles/versions][%d] getBundleVersionsOK  %+v", 200, o.Payload)
+}
+
 func (o *GetBundleVersionsOK) GetPayload() []*models.BundleVersionMetadata {
 	return o.Payload
 }
@@ -75,14 +106,44 @@ func NewGetBundleVersionsUnauthorized() *GetBundleVersionsUnauthorized {
 	return &GetBundleVersionsUnauthorized{}
 }
 
-/* GetBundleVersionsUnauthorized describes a response with status code 401, with default header values.
+/*
+GetBundleVersionsUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type GetBundleVersionsUnauthorized struct {
 }
 
+// IsSuccess returns true when this get bundle versions unauthorized response has a 2xx status code
+func (o *GetBundleVersionsUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get bundle versions unauthorized response has a 3xx status code
+func (o *GetBundleVersionsUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get bundle versions unauthorized response has a 4xx status code
+func (o *GetBundleVersionsUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get bundle versions unauthorized response has a 5xx status code
+func (o *GetBundleVersionsUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get bundle versions unauthorized response a status code equal to that given
+func (o *GetBundleVersionsUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GetBundleVersionsUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /bundles/versions][%d] getBundleVersionsUnauthorized ", 401)
+}
+
+func (o *GetBundleVersionsUnauthorized) String() string {
 	return fmt.Sprintf("[GET /bundles/versions][%d] getBundleVersionsUnauthorized ", 401)
 }
 

@@ -27,7 +27,7 @@ type ProcessorRunStatusEntity struct {
 	Revision *RevisionDTO `json:"revision,omitempty"`
 
 	// The run status of the Processor.
-	// Enum: [RUNNING STOPPED DISABLED]
+	// Enum: [RUNNING STOPPED DISABLED RUN_ONCE]
 	State string `json:"state,omitempty"`
 }
 
@@ -72,7 +72,7 @@ var processorRunStatusEntityTypeStatePropEnum []interface{}
 
 func init() {
 	var res []string
-	if err := json.Unmarshal([]byte(`["RUNNING","STOPPED","DISABLED"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["RUNNING","STOPPED","DISABLED","RUN_ONCE"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
@@ -90,6 +90,9 @@ const (
 
 	// ProcessorRunStatusEntityStateDISABLED captures enum value "DISABLED"
 	ProcessorRunStatusEntityStateDISABLED string = "DISABLED"
+
+	// ProcessorRunStatusEntityStateRUNONCE captures enum value "RUN_ONCE"
+	ProcessorRunStatusEntityStateRUNONCE string = "RUN_ONCE"
 )
 
 // prop value enum

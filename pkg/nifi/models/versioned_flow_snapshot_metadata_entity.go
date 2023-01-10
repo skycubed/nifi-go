@@ -21,8 +21,8 @@ type VersionedFlowSnapshotMetadataEntity struct {
 	// The ID of the Registry that this flow belongs to
 	RegistryID string `json:"registryId,omitempty"`
 
-	// The collection of versioned flow snapshot metadata
-	VersionedFlowSnapshotMetadata *VersionedFlowSnapshotMetadata `json:"versionedFlowSnapshotMetadata,omitempty"`
+	// The collection of registered flow snapshot metadata
+	VersionedFlowSnapshotMetadata *RegisteredFlowSnapshotMetadata `json:"versionedFlowSnapshotMetadata,omitempty"`
 }
 
 // Validate validates this versioned flow snapshot metadata entity

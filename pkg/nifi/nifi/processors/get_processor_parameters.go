@@ -52,10 +52,12 @@ func NewGetProcessorParamsWithHTTPClient(client *http.Client) *GetProcessorParam
 	}
 }
 
-/* GetProcessorParams contains all the parameters to send to the API endpoint
-   for the get processor operation.
+/*
+GetProcessorParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get processor operation.
+
+	Typically these are written to a http.Request.
 */
 type GetProcessorParams struct {
 

@@ -69,7 +69,8 @@ func NewGetControllerServiceOK() *GetControllerServiceOK {
 	return &GetControllerServiceOK{}
 }
 
-/* GetControllerServiceOK describes a response with status code 200, with default header values.
+/*
+GetControllerServiceOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,39 @@ type GetControllerServiceOK struct {
 	Payload *models.ControllerServiceEntity
 }
 
+// IsSuccess returns true when this get controller service o k response has a 2xx status code
+func (o *GetControllerServiceOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get controller service o k response has a 3xx status code
+func (o *GetControllerServiceOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get controller service o k response has a 4xx status code
+func (o *GetControllerServiceOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get controller service o k response has a 5xx status code
+func (o *GetControllerServiceOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get controller service o k response a status code equal to that given
+func (o *GetControllerServiceOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetControllerServiceOK) Error() string {
 	return fmt.Sprintf("[GET /controller-services/{id}][%d] getControllerServiceOK  %+v", 200, o.Payload)
 }
+
+func (o *GetControllerServiceOK) String() string {
+	return fmt.Sprintf("[GET /controller-services/{id}][%d] getControllerServiceOK  %+v", 200, o.Payload)
+}
+
 func (o *GetControllerServiceOK) GetPayload() *models.ControllerServiceEntity {
 	return o.Payload
 }
@@ -101,14 +132,44 @@ func NewGetControllerServiceBadRequest() *GetControllerServiceBadRequest {
 	return &GetControllerServiceBadRequest{}
 }
 
-/* GetControllerServiceBadRequest describes a response with status code 400, with default header values.
+/*
+GetControllerServiceBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type GetControllerServiceBadRequest struct {
 }
 
+// IsSuccess returns true when this get controller service bad request response has a 2xx status code
+func (o *GetControllerServiceBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get controller service bad request response has a 3xx status code
+func (o *GetControllerServiceBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get controller service bad request response has a 4xx status code
+func (o *GetControllerServiceBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get controller service bad request response has a 5xx status code
+func (o *GetControllerServiceBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get controller service bad request response a status code equal to that given
+func (o *GetControllerServiceBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *GetControllerServiceBadRequest) Error() string {
+	return fmt.Sprintf("[GET /controller-services/{id}][%d] getControllerServiceBadRequest ", 400)
+}
+
+func (o *GetControllerServiceBadRequest) String() string {
 	return fmt.Sprintf("[GET /controller-services/{id}][%d] getControllerServiceBadRequest ", 400)
 }
 
@@ -122,14 +183,44 @@ func NewGetControllerServiceUnauthorized() *GetControllerServiceUnauthorized {
 	return &GetControllerServiceUnauthorized{}
 }
 
-/* GetControllerServiceUnauthorized describes a response with status code 401, with default header values.
+/*
+GetControllerServiceUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type GetControllerServiceUnauthorized struct {
 }
 
+// IsSuccess returns true when this get controller service unauthorized response has a 2xx status code
+func (o *GetControllerServiceUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get controller service unauthorized response has a 3xx status code
+func (o *GetControllerServiceUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get controller service unauthorized response has a 4xx status code
+func (o *GetControllerServiceUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get controller service unauthorized response has a 5xx status code
+func (o *GetControllerServiceUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get controller service unauthorized response a status code equal to that given
+func (o *GetControllerServiceUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GetControllerServiceUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /controller-services/{id}][%d] getControllerServiceUnauthorized ", 401)
+}
+
+func (o *GetControllerServiceUnauthorized) String() string {
 	return fmt.Sprintf("[GET /controller-services/{id}][%d] getControllerServiceUnauthorized ", 401)
 }
 
@@ -143,14 +234,44 @@ func NewGetControllerServiceForbidden() *GetControllerServiceForbidden {
 	return &GetControllerServiceForbidden{}
 }
 
-/* GetControllerServiceForbidden describes a response with status code 403, with default header values.
+/*
+GetControllerServiceForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type GetControllerServiceForbidden struct {
 }
 
+// IsSuccess returns true when this get controller service forbidden response has a 2xx status code
+func (o *GetControllerServiceForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get controller service forbidden response has a 3xx status code
+func (o *GetControllerServiceForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get controller service forbidden response has a 4xx status code
+func (o *GetControllerServiceForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get controller service forbidden response has a 5xx status code
+func (o *GetControllerServiceForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get controller service forbidden response a status code equal to that given
+func (o *GetControllerServiceForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetControllerServiceForbidden) Error() string {
+	return fmt.Sprintf("[GET /controller-services/{id}][%d] getControllerServiceForbidden ", 403)
+}
+
+func (o *GetControllerServiceForbidden) String() string {
 	return fmt.Sprintf("[GET /controller-services/{id}][%d] getControllerServiceForbidden ", 403)
 }
 
@@ -164,14 +285,44 @@ func NewGetControllerServiceNotFound() *GetControllerServiceNotFound {
 	return &GetControllerServiceNotFound{}
 }
 
-/* GetControllerServiceNotFound describes a response with status code 404, with default header values.
+/*
+GetControllerServiceNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type GetControllerServiceNotFound struct {
 }
 
+// IsSuccess returns true when this get controller service not found response has a 2xx status code
+func (o *GetControllerServiceNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get controller service not found response has a 3xx status code
+func (o *GetControllerServiceNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get controller service not found response has a 4xx status code
+func (o *GetControllerServiceNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get controller service not found response has a 5xx status code
+func (o *GetControllerServiceNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get controller service not found response a status code equal to that given
+func (o *GetControllerServiceNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetControllerServiceNotFound) Error() string {
+	return fmt.Sprintf("[GET /controller-services/{id}][%d] getControllerServiceNotFound ", 404)
+}
+
+func (o *GetControllerServiceNotFound) String() string {
 	return fmt.Sprintf("[GET /controller-services/{id}][%d] getControllerServiceNotFound ", 404)
 }
 
@@ -185,14 +336,44 @@ func NewGetControllerServiceConflict() *GetControllerServiceConflict {
 	return &GetControllerServiceConflict{}
 }
 
-/* GetControllerServiceConflict describes a response with status code 409, with default header values.
+/*
+GetControllerServiceConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type GetControllerServiceConflict struct {
 }
 
+// IsSuccess returns true when this get controller service conflict response has a 2xx status code
+func (o *GetControllerServiceConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get controller service conflict response has a 3xx status code
+func (o *GetControllerServiceConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get controller service conflict response has a 4xx status code
+func (o *GetControllerServiceConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get controller service conflict response has a 5xx status code
+func (o *GetControllerServiceConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get controller service conflict response a status code equal to that given
+func (o *GetControllerServiceConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *GetControllerServiceConflict) Error() string {
+	return fmt.Sprintf("[GET /controller-services/{id}][%d] getControllerServiceConflict ", 409)
+}
+
+func (o *GetControllerServiceConflict) String() string {
 	return fmt.Sprintf("[GET /controller-services/{id}][%d] getControllerServiceConflict ", 409)
 }
 

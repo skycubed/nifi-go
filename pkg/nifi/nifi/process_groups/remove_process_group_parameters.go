@@ -53,10 +53,12 @@ func NewRemoveProcessGroupParamsWithHTTPClient(client *http.Client) *RemoveProce
 	}
 }
 
-/* RemoveProcessGroupParams contains all the parameters to send to the API endpoint
-   for the remove process group operation.
+/*
+RemoveProcessGroupParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the remove process group operation.
+
+	Typically these are written to a http.Request.
 */
 type RemoveProcessGroupParams struct {
 

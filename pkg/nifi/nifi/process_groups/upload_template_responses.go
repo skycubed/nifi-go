@@ -63,7 +63,8 @@ func NewUploadTemplateOK() *UploadTemplateOK {
 	return &UploadTemplateOK{}
 }
 
-/* UploadTemplateOK describes a response with status code 200, with default header values.
+/*
+UploadTemplateOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -71,9 +72,39 @@ type UploadTemplateOK struct {
 	Payload *models.TemplateEntity
 }
 
+// IsSuccess returns true when this upload template o k response has a 2xx status code
+func (o *UploadTemplateOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this upload template o k response has a 3xx status code
+func (o *UploadTemplateOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this upload template o k response has a 4xx status code
+func (o *UploadTemplateOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this upload template o k response has a 5xx status code
+func (o *UploadTemplateOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this upload template o k response a status code equal to that given
+func (o *UploadTemplateOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *UploadTemplateOK) Error() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/templates/upload][%d] uploadTemplateOK  %+v", 200, o.Payload)
 }
+
+func (o *UploadTemplateOK) String() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/templates/upload][%d] uploadTemplateOK  %+v", 200, o.Payload)
+}
+
 func (o *UploadTemplateOK) GetPayload() *models.TemplateEntity {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewUploadTemplateBadRequest() *UploadTemplateBadRequest {
 	return &UploadTemplateBadRequest{}
 }
 
-/* UploadTemplateBadRequest describes a response with status code 400, with default header values.
+/*
+UploadTemplateBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type UploadTemplateBadRequest struct {
 }
 
+// IsSuccess returns true when this upload template bad request response has a 2xx status code
+func (o *UploadTemplateBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this upload template bad request response has a 3xx status code
+func (o *UploadTemplateBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this upload template bad request response has a 4xx status code
+func (o *UploadTemplateBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this upload template bad request response has a 5xx status code
+func (o *UploadTemplateBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this upload template bad request response a status code equal to that given
+func (o *UploadTemplateBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *UploadTemplateBadRequest) Error() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/templates/upload][%d] uploadTemplateBadRequest ", 400)
+}
+
+func (o *UploadTemplateBadRequest) String() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/templates/upload][%d] uploadTemplateBadRequest ", 400)
 }
 
@@ -116,14 +177,44 @@ func NewUploadTemplateUnauthorized() *UploadTemplateUnauthorized {
 	return &UploadTemplateUnauthorized{}
 }
 
-/* UploadTemplateUnauthorized describes a response with status code 401, with default header values.
+/*
+UploadTemplateUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type UploadTemplateUnauthorized struct {
 }
 
+// IsSuccess returns true when this upload template unauthorized response has a 2xx status code
+func (o *UploadTemplateUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this upload template unauthorized response has a 3xx status code
+func (o *UploadTemplateUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this upload template unauthorized response has a 4xx status code
+func (o *UploadTemplateUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this upload template unauthorized response has a 5xx status code
+func (o *UploadTemplateUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this upload template unauthorized response a status code equal to that given
+func (o *UploadTemplateUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *UploadTemplateUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/templates/upload][%d] uploadTemplateUnauthorized ", 401)
+}
+
+func (o *UploadTemplateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/templates/upload][%d] uploadTemplateUnauthorized ", 401)
 }
 
@@ -137,14 +228,44 @@ func NewUploadTemplateForbidden() *UploadTemplateForbidden {
 	return &UploadTemplateForbidden{}
 }
 
-/* UploadTemplateForbidden describes a response with status code 403, with default header values.
+/*
+UploadTemplateForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type UploadTemplateForbidden struct {
 }
 
+// IsSuccess returns true when this upload template forbidden response has a 2xx status code
+func (o *UploadTemplateForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this upload template forbidden response has a 3xx status code
+func (o *UploadTemplateForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this upload template forbidden response has a 4xx status code
+func (o *UploadTemplateForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this upload template forbidden response has a 5xx status code
+func (o *UploadTemplateForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this upload template forbidden response a status code equal to that given
+func (o *UploadTemplateForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *UploadTemplateForbidden) Error() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/templates/upload][%d] uploadTemplateForbidden ", 403)
+}
+
+func (o *UploadTemplateForbidden) String() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/templates/upload][%d] uploadTemplateForbidden ", 403)
 }
 
@@ -158,14 +279,44 @@ func NewUploadTemplateConflict() *UploadTemplateConflict {
 	return &UploadTemplateConflict{}
 }
 
-/* UploadTemplateConflict describes a response with status code 409, with default header values.
+/*
+UploadTemplateConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type UploadTemplateConflict struct {
 }
 
+// IsSuccess returns true when this upload template conflict response has a 2xx status code
+func (o *UploadTemplateConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this upload template conflict response has a 3xx status code
+func (o *UploadTemplateConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this upload template conflict response has a 4xx status code
+func (o *UploadTemplateConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this upload template conflict response has a 5xx status code
+func (o *UploadTemplateConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this upload template conflict response a status code equal to that given
+func (o *UploadTemplateConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *UploadTemplateConflict) Error() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/templates/upload][%d] uploadTemplateConflict ", 409)
+}
+
+func (o *UploadTemplateConflict) String() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/templates/upload][%d] uploadTemplateConflict ", 409)
 }
 

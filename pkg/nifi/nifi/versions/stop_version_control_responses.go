@@ -69,7 +69,8 @@ func NewStopVersionControlOK() *StopVersionControlOK {
 	return &StopVersionControlOK{}
 }
 
-/* StopVersionControlOK describes a response with status code 200, with default header values.
+/*
+StopVersionControlOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,39 @@ type StopVersionControlOK struct {
 	Payload *models.VersionControlInformationEntity
 }
 
+// IsSuccess returns true when this stop version control o k response has a 2xx status code
+func (o *StopVersionControlOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this stop version control o k response has a 3xx status code
+func (o *StopVersionControlOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this stop version control o k response has a 4xx status code
+func (o *StopVersionControlOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this stop version control o k response has a 5xx status code
+func (o *StopVersionControlOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this stop version control o k response a status code equal to that given
+func (o *StopVersionControlOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *StopVersionControlOK) Error() string {
 	return fmt.Sprintf("[DELETE /versions/process-groups/{id}][%d] stopVersionControlOK  %+v", 200, o.Payload)
 }
+
+func (o *StopVersionControlOK) String() string {
+	return fmt.Sprintf("[DELETE /versions/process-groups/{id}][%d] stopVersionControlOK  %+v", 200, o.Payload)
+}
+
 func (o *StopVersionControlOK) GetPayload() *models.VersionControlInformationEntity {
 	return o.Payload
 }
@@ -101,14 +132,44 @@ func NewStopVersionControlBadRequest() *StopVersionControlBadRequest {
 	return &StopVersionControlBadRequest{}
 }
 
-/* StopVersionControlBadRequest describes a response with status code 400, with default header values.
+/*
+StopVersionControlBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type StopVersionControlBadRequest struct {
 }
 
+// IsSuccess returns true when this stop version control bad request response has a 2xx status code
+func (o *StopVersionControlBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this stop version control bad request response has a 3xx status code
+func (o *StopVersionControlBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this stop version control bad request response has a 4xx status code
+func (o *StopVersionControlBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this stop version control bad request response has a 5xx status code
+func (o *StopVersionControlBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this stop version control bad request response a status code equal to that given
+func (o *StopVersionControlBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *StopVersionControlBadRequest) Error() string {
+	return fmt.Sprintf("[DELETE /versions/process-groups/{id}][%d] stopVersionControlBadRequest ", 400)
+}
+
+func (o *StopVersionControlBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /versions/process-groups/{id}][%d] stopVersionControlBadRequest ", 400)
 }
 
@@ -122,14 +183,44 @@ func NewStopVersionControlUnauthorized() *StopVersionControlUnauthorized {
 	return &StopVersionControlUnauthorized{}
 }
 
-/* StopVersionControlUnauthorized describes a response with status code 401, with default header values.
+/*
+StopVersionControlUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type StopVersionControlUnauthorized struct {
 }
 
+// IsSuccess returns true when this stop version control unauthorized response has a 2xx status code
+func (o *StopVersionControlUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this stop version control unauthorized response has a 3xx status code
+func (o *StopVersionControlUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this stop version control unauthorized response has a 4xx status code
+func (o *StopVersionControlUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this stop version control unauthorized response has a 5xx status code
+func (o *StopVersionControlUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this stop version control unauthorized response a status code equal to that given
+func (o *StopVersionControlUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *StopVersionControlUnauthorized) Error() string {
+	return fmt.Sprintf("[DELETE /versions/process-groups/{id}][%d] stopVersionControlUnauthorized ", 401)
+}
+
+func (o *StopVersionControlUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /versions/process-groups/{id}][%d] stopVersionControlUnauthorized ", 401)
 }
 
@@ -143,14 +234,44 @@ func NewStopVersionControlForbidden() *StopVersionControlForbidden {
 	return &StopVersionControlForbidden{}
 }
 
-/* StopVersionControlForbidden describes a response with status code 403, with default header values.
+/*
+StopVersionControlForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type StopVersionControlForbidden struct {
 }
 
+// IsSuccess returns true when this stop version control forbidden response has a 2xx status code
+func (o *StopVersionControlForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this stop version control forbidden response has a 3xx status code
+func (o *StopVersionControlForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this stop version control forbidden response has a 4xx status code
+func (o *StopVersionControlForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this stop version control forbidden response has a 5xx status code
+func (o *StopVersionControlForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this stop version control forbidden response a status code equal to that given
+func (o *StopVersionControlForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *StopVersionControlForbidden) Error() string {
+	return fmt.Sprintf("[DELETE /versions/process-groups/{id}][%d] stopVersionControlForbidden ", 403)
+}
+
+func (o *StopVersionControlForbidden) String() string {
 	return fmt.Sprintf("[DELETE /versions/process-groups/{id}][%d] stopVersionControlForbidden ", 403)
 }
 
@@ -164,14 +285,44 @@ func NewStopVersionControlNotFound() *StopVersionControlNotFound {
 	return &StopVersionControlNotFound{}
 }
 
-/* StopVersionControlNotFound describes a response with status code 404, with default header values.
+/*
+StopVersionControlNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type StopVersionControlNotFound struct {
 }
 
+// IsSuccess returns true when this stop version control not found response has a 2xx status code
+func (o *StopVersionControlNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this stop version control not found response has a 3xx status code
+func (o *StopVersionControlNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this stop version control not found response has a 4xx status code
+func (o *StopVersionControlNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this stop version control not found response has a 5xx status code
+func (o *StopVersionControlNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this stop version control not found response a status code equal to that given
+func (o *StopVersionControlNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *StopVersionControlNotFound) Error() string {
+	return fmt.Sprintf("[DELETE /versions/process-groups/{id}][%d] stopVersionControlNotFound ", 404)
+}
+
+func (o *StopVersionControlNotFound) String() string {
 	return fmt.Sprintf("[DELETE /versions/process-groups/{id}][%d] stopVersionControlNotFound ", 404)
 }
 
@@ -185,14 +336,44 @@ func NewStopVersionControlConflict() *StopVersionControlConflict {
 	return &StopVersionControlConflict{}
 }
 
-/* StopVersionControlConflict describes a response with status code 409, with default header values.
+/*
+StopVersionControlConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type StopVersionControlConflict struct {
 }
 
+// IsSuccess returns true when this stop version control conflict response has a 2xx status code
+func (o *StopVersionControlConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this stop version control conflict response has a 3xx status code
+func (o *StopVersionControlConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this stop version control conflict response has a 4xx status code
+func (o *StopVersionControlConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this stop version control conflict response has a 5xx status code
+func (o *StopVersionControlConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this stop version control conflict response a status code equal to that given
+func (o *StopVersionControlConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *StopVersionControlConflict) Error() string {
+	return fmt.Sprintf("[DELETE /versions/process-groups/{id}][%d] stopVersionControlConflict ", 409)
+}
+
+func (o *StopVersionControlConflict) String() string {
 	return fmt.Sprintf("[DELETE /versions/process-groups/{id}][%d] stopVersionControlConflict ", 409)
 }
 

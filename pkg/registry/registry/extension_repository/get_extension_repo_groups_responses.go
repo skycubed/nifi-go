@@ -69,7 +69,8 @@ func NewGetExtensionRepoGroupsOK() *GetExtensionRepoGroupsOK {
 	return &GetExtensionRepoGroupsOK{}
 }
 
-/* GetExtensionRepoGroupsOK describes a response with status code 200, with default header values.
+/*
+GetExtensionRepoGroupsOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,39 @@ type GetExtensionRepoGroupsOK struct {
 	Payload []*models.ExtensionRepoGroup
 }
 
+// IsSuccess returns true when this get extension repo groups o k response has a 2xx status code
+func (o *GetExtensionRepoGroupsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get extension repo groups o k response has a 3xx status code
+func (o *GetExtensionRepoGroupsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get extension repo groups o k response has a 4xx status code
+func (o *GetExtensionRepoGroupsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get extension repo groups o k response has a 5xx status code
+func (o *GetExtensionRepoGroupsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get extension repo groups o k response a status code equal to that given
+func (o *GetExtensionRepoGroupsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetExtensionRepoGroupsOK) Error() string {
 	return fmt.Sprintf("[GET /extension-repository/{bucketName}][%d] getExtensionRepoGroupsOK  %+v", 200, o.Payload)
 }
+
+func (o *GetExtensionRepoGroupsOK) String() string {
+	return fmt.Sprintf("[GET /extension-repository/{bucketName}][%d] getExtensionRepoGroupsOK  %+v", 200, o.Payload)
+}
+
 func (o *GetExtensionRepoGroupsOK) GetPayload() []*models.ExtensionRepoGroup {
 	return o.Payload
 }
@@ -99,14 +130,44 @@ func NewGetExtensionRepoGroupsBadRequest() *GetExtensionRepoGroupsBadRequest {
 	return &GetExtensionRepoGroupsBadRequest{}
 }
 
-/* GetExtensionRepoGroupsBadRequest describes a response with status code 400, with default header values.
+/*
+GetExtensionRepoGroupsBadRequest describes a response with status code 400, with default header values.
 
 NiFi Registry was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type GetExtensionRepoGroupsBadRequest struct {
 }
 
+// IsSuccess returns true when this get extension repo groups bad request response has a 2xx status code
+func (o *GetExtensionRepoGroupsBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get extension repo groups bad request response has a 3xx status code
+func (o *GetExtensionRepoGroupsBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get extension repo groups bad request response has a 4xx status code
+func (o *GetExtensionRepoGroupsBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get extension repo groups bad request response has a 5xx status code
+func (o *GetExtensionRepoGroupsBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get extension repo groups bad request response a status code equal to that given
+func (o *GetExtensionRepoGroupsBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *GetExtensionRepoGroupsBadRequest) Error() string {
+	return fmt.Sprintf("[GET /extension-repository/{bucketName}][%d] getExtensionRepoGroupsBadRequest ", 400)
+}
+
+func (o *GetExtensionRepoGroupsBadRequest) String() string {
 	return fmt.Sprintf("[GET /extension-repository/{bucketName}][%d] getExtensionRepoGroupsBadRequest ", 400)
 }
 
@@ -120,14 +181,44 @@ func NewGetExtensionRepoGroupsUnauthorized() *GetExtensionRepoGroupsUnauthorized
 	return &GetExtensionRepoGroupsUnauthorized{}
 }
 
-/* GetExtensionRepoGroupsUnauthorized describes a response with status code 401, with default header values.
+/*
+GetExtensionRepoGroupsUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type GetExtensionRepoGroupsUnauthorized struct {
 }
 
+// IsSuccess returns true when this get extension repo groups unauthorized response has a 2xx status code
+func (o *GetExtensionRepoGroupsUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get extension repo groups unauthorized response has a 3xx status code
+func (o *GetExtensionRepoGroupsUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get extension repo groups unauthorized response has a 4xx status code
+func (o *GetExtensionRepoGroupsUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get extension repo groups unauthorized response has a 5xx status code
+func (o *GetExtensionRepoGroupsUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get extension repo groups unauthorized response a status code equal to that given
+func (o *GetExtensionRepoGroupsUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GetExtensionRepoGroupsUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /extension-repository/{bucketName}][%d] getExtensionRepoGroupsUnauthorized ", 401)
+}
+
+func (o *GetExtensionRepoGroupsUnauthorized) String() string {
 	return fmt.Sprintf("[GET /extension-repository/{bucketName}][%d] getExtensionRepoGroupsUnauthorized ", 401)
 }
 
@@ -141,14 +232,44 @@ func NewGetExtensionRepoGroupsForbidden() *GetExtensionRepoGroupsForbidden {
 	return &GetExtensionRepoGroupsForbidden{}
 }
 
-/* GetExtensionRepoGroupsForbidden describes a response with status code 403, with default header values.
+/*
+GetExtensionRepoGroupsForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type GetExtensionRepoGroupsForbidden struct {
 }
 
+// IsSuccess returns true when this get extension repo groups forbidden response has a 2xx status code
+func (o *GetExtensionRepoGroupsForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get extension repo groups forbidden response has a 3xx status code
+func (o *GetExtensionRepoGroupsForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get extension repo groups forbidden response has a 4xx status code
+func (o *GetExtensionRepoGroupsForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get extension repo groups forbidden response has a 5xx status code
+func (o *GetExtensionRepoGroupsForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get extension repo groups forbidden response a status code equal to that given
+func (o *GetExtensionRepoGroupsForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetExtensionRepoGroupsForbidden) Error() string {
+	return fmt.Sprintf("[GET /extension-repository/{bucketName}][%d] getExtensionRepoGroupsForbidden ", 403)
+}
+
+func (o *GetExtensionRepoGroupsForbidden) String() string {
 	return fmt.Sprintf("[GET /extension-repository/{bucketName}][%d] getExtensionRepoGroupsForbidden ", 403)
 }
 
@@ -162,14 +283,44 @@ func NewGetExtensionRepoGroupsNotFound() *GetExtensionRepoGroupsNotFound {
 	return &GetExtensionRepoGroupsNotFound{}
 }
 
-/* GetExtensionRepoGroupsNotFound describes a response with status code 404, with default header values.
+/*
+GetExtensionRepoGroupsNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type GetExtensionRepoGroupsNotFound struct {
 }
 
+// IsSuccess returns true when this get extension repo groups not found response has a 2xx status code
+func (o *GetExtensionRepoGroupsNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get extension repo groups not found response has a 3xx status code
+func (o *GetExtensionRepoGroupsNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get extension repo groups not found response has a 4xx status code
+func (o *GetExtensionRepoGroupsNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get extension repo groups not found response has a 5xx status code
+func (o *GetExtensionRepoGroupsNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get extension repo groups not found response a status code equal to that given
+func (o *GetExtensionRepoGroupsNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetExtensionRepoGroupsNotFound) Error() string {
+	return fmt.Sprintf("[GET /extension-repository/{bucketName}][%d] getExtensionRepoGroupsNotFound ", 404)
+}
+
+func (o *GetExtensionRepoGroupsNotFound) String() string {
 	return fmt.Sprintf("[GET /extension-repository/{bucketName}][%d] getExtensionRepoGroupsNotFound ", 404)
 }
 
@@ -183,14 +334,44 @@ func NewGetExtensionRepoGroupsConflict() *GetExtensionRepoGroupsConflict {
 	return &GetExtensionRepoGroupsConflict{}
 }
 
-/* GetExtensionRepoGroupsConflict describes a response with status code 409, with default header values.
+/*
+GetExtensionRepoGroupsConflict describes a response with status code 409, with default header values.
 
 NiFi Registry was unable to complete the request because it assumes a server state that is not valid.
 */
 type GetExtensionRepoGroupsConflict struct {
 }
 
+// IsSuccess returns true when this get extension repo groups conflict response has a 2xx status code
+func (o *GetExtensionRepoGroupsConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get extension repo groups conflict response has a 3xx status code
+func (o *GetExtensionRepoGroupsConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get extension repo groups conflict response has a 4xx status code
+func (o *GetExtensionRepoGroupsConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get extension repo groups conflict response has a 5xx status code
+func (o *GetExtensionRepoGroupsConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get extension repo groups conflict response a status code equal to that given
+func (o *GetExtensionRepoGroupsConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *GetExtensionRepoGroupsConflict) Error() string {
+	return fmt.Sprintf("[GET /extension-repository/{bucketName}][%d] getExtensionRepoGroupsConflict ", 409)
+}
+
+func (o *GetExtensionRepoGroupsConflict) String() string {
 	return fmt.Sprintf("[GET /extension-repository/{bucketName}][%d] getExtensionRepoGroupsConflict ", 409)
 }
 

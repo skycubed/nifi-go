@@ -60,14 +60,44 @@ func NewDeleteVersionControlRequestBadRequest() *DeleteVersionControlRequestBadR
 	return &DeleteVersionControlRequestBadRequest{}
 }
 
-/* DeleteVersionControlRequestBadRequest describes a response with status code 400, with default header values.
+/*
+DeleteVersionControlRequestBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type DeleteVersionControlRequestBadRequest struct {
 }
 
+// IsSuccess returns true when this delete version control request bad request response has a 2xx status code
+func (o *DeleteVersionControlRequestBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete version control request bad request response has a 3xx status code
+func (o *DeleteVersionControlRequestBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete version control request bad request response has a 4xx status code
+func (o *DeleteVersionControlRequestBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete version control request bad request response has a 5xx status code
+func (o *DeleteVersionControlRequestBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete version control request bad request response a status code equal to that given
+func (o *DeleteVersionControlRequestBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *DeleteVersionControlRequestBadRequest) Error() string {
+	return fmt.Sprintf("[DELETE /versions/active-requests/{id}][%d] deleteVersionControlRequestBadRequest ", 400)
+}
+
+func (o *DeleteVersionControlRequestBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /versions/active-requests/{id}][%d] deleteVersionControlRequestBadRequest ", 400)
 }
 
@@ -81,14 +111,44 @@ func NewDeleteVersionControlRequestUnauthorized() *DeleteVersionControlRequestUn
 	return &DeleteVersionControlRequestUnauthorized{}
 }
 
-/* DeleteVersionControlRequestUnauthorized describes a response with status code 401, with default header values.
+/*
+DeleteVersionControlRequestUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type DeleteVersionControlRequestUnauthorized struct {
 }
 
+// IsSuccess returns true when this delete version control request unauthorized response has a 2xx status code
+func (o *DeleteVersionControlRequestUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete version control request unauthorized response has a 3xx status code
+func (o *DeleteVersionControlRequestUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete version control request unauthorized response has a 4xx status code
+func (o *DeleteVersionControlRequestUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete version control request unauthorized response has a 5xx status code
+func (o *DeleteVersionControlRequestUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete version control request unauthorized response a status code equal to that given
+func (o *DeleteVersionControlRequestUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *DeleteVersionControlRequestUnauthorized) Error() string {
+	return fmt.Sprintf("[DELETE /versions/active-requests/{id}][%d] deleteVersionControlRequestUnauthorized ", 401)
+}
+
+func (o *DeleteVersionControlRequestUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /versions/active-requests/{id}][%d] deleteVersionControlRequestUnauthorized ", 401)
 }
 
@@ -102,14 +162,44 @@ func NewDeleteVersionControlRequestForbidden() *DeleteVersionControlRequestForbi
 	return &DeleteVersionControlRequestForbidden{}
 }
 
-/* DeleteVersionControlRequestForbidden describes a response with status code 403, with default header values.
+/*
+DeleteVersionControlRequestForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type DeleteVersionControlRequestForbidden struct {
 }
 
+// IsSuccess returns true when this delete version control request forbidden response has a 2xx status code
+func (o *DeleteVersionControlRequestForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete version control request forbidden response has a 3xx status code
+func (o *DeleteVersionControlRequestForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete version control request forbidden response has a 4xx status code
+func (o *DeleteVersionControlRequestForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete version control request forbidden response has a 5xx status code
+func (o *DeleteVersionControlRequestForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete version control request forbidden response a status code equal to that given
+func (o *DeleteVersionControlRequestForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *DeleteVersionControlRequestForbidden) Error() string {
+	return fmt.Sprintf("[DELETE /versions/active-requests/{id}][%d] deleteVersionControlRequestForbidden ", 403)
+}
+
+func (o *DeleteVersionControlRequestForbidden) String() string {
 	return fmt.Sprintf("[DELETE /versions/active-requests/{id}][%d] deleteVersionControlRequestForbidden ", 403)
 }
 
@@ -123,14 +213,44 @@ func NewDeleteVersionControlRequestNotFound() *DeleteVersionControlRequestNotFou
 	return &DeleteVersionControlRequestNotFound{}
 }
 
-/* DeleteVersionControlRequestNotFound describes a response with status code 404, with default header values.
+/*
+DeleteVersionControlRequestNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type DeleteVersionControlRequestNotFound struct {
 }
 
+// IsSuccess returns true when this delete version control request not found response has a 2xx status code
+func (o *DeleteVersionControlRequestNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete version control request not found response has a 3xx status code
+func (o *DeleteVersionControlRequestNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete version control request not found response has a 4xx status code
+func (o *DeleteVersionControlRequestNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete version control request not found response has a 5xx status code
+func (o *DeleteVersionControlRequestNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete version control request not found response a status code equal to that given
+func (o *DeleteVersionControlRequestNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *DeleteVersionControlRequestNotFound) Error() string {
+	return fmt.Sprintf("[DELETE /versions/active-requests/{id}][%d] deleteVersionControlRequestNotFound ", 404)
+}
+
+func (o *DeleteVersionControlRequestNotFound) String() string {
 	return fmt.Sprintf("[DELETE /versions/active-requests/{id}][%d] deleteVersionControlRequestNotFound ", 404)
 }
 
@@ -144,14 +264,44 @@ func NewDeleteVersionControlRequestConflict() *DeleteVersionControlRequestConfli
 	return &DeleteVersionControlRequestConflict{}
 }
 
-/* DeleteVersionControlRequestConflict describes a response with status code 409, with default header values.
+/*
+DeleteVersionControlRequestConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type DeleteVersionControlRequestConflict struct {
 }
 
+// IsSuccess returns true when this delete version control request conflict response has a 2xx status code
+func (o *DeleteVersionControlRequestConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete version control request conflict response has a 3xx status code
+func (o *DeleteVersionControlRequestConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete version control request conflict response has a 4xx status code
+func (o *DeleteVersionControlRequestConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete version control request conflict response has a 5xx status code
+func (o *DeleteVersionControlRequestConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete version control request conflict response a status code equal to that given
+func (o *DeleteVersionControlRequestConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *DeleteVersionControlRequestConflict) Error() string {
+	return fmt.Sprintf("[DELETE /versions/active-requests/{id}][%d] deleteVersionControlRequestConflict ", 409)
+}
+
+func (o *DeleteVersionControlRequestConflict) String() string {
 	return fmt.Sprintf("[DELETE /versions/active-requests/{id}][%d] deleteVersionControlRequestConflict ", 409)
 }
 

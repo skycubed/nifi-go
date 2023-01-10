@@ -14,6 +14,7 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+	"github.com/go-openapi/swag"
 )
 
 // NewGetFlowMetricsParams creates a new GetFlowMetricsParams object,
@@ -52,18 +53,44 @@ func NewGetFlowMetricsParamsWithHTTPClient(client *http.Client) *GetFlowMetricsP
 	}
 }
 
-/* GetFlowMetricsParams contains all the parameters to send to the API endpoint
-   for the get flow metrics operation.
+/*
+GetFlowMetricsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get flow metrics operation.
+
+	Typically these are written to a http.Request.
 */
 type GetFlowMetricsParams struct {
+
+	/* IncludedRegistries.
+
+	   Set of included metrics registries
+	*/
+	IncludedRegistries []string
 
 	/* Producer.
 
 	   The producer for flow file metrics. Each producer may have its own output format.
 	*/
 	Producer string
+
+	/* RootFieldName.
+
+	   Name of the first field of JSON object. Applicable for JSON producer only.
+	*/
+	RootFieldName *string
+
+	/* SampleLabelValue.
+
+	   Regular Expression Pattern to be applied against the sample label value field
+	*/
+	SampleLabelValue *string
+
+	/* SampleName.
+
+	   Regular Expression Pattern to be applied against the sample name field
+	*/
+	SampleName *string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -118,6 +145,17 @@ func (o *GetFlowMetricsParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithIncludedRegistries adds the includedRegistries to the get flow metrics params
+func (o *GetFlowMetricsParams) WithIncludedRegistries(includedRegistries []string) *GetFlowMetricsParams {
+	o.SetIncludedRegistries(includedRegistries)
+	return o
+}
+
+// SetIncludedRegistries adds the includedRegistries to the get flow metrics params
+func (o *GetFlowMetricsParams) SetIncludedRegistries(includedRegistries []string) {
+	o.IncludedRegistries = includedRegistries
+}
+
 // WithProducer adds the producer to the get flow metrics params
 func (o *GetFlowMetricsParams) WithProducer(producer string) *GetFlowMetricsParams {
 	o.SetProducer(producer)
@@ -129,6 +167,39 @@ func (o *GetFlowMetricsParams) SetProducer(producer string) {
 	o.Producer = producer
 }
 
+// WithRootFieldName adds the rootFieldName to the get flow metrics params
+func (o *GetFlowMetricsParams) WithRootFieldName(rootFieldName *string) *GetFlowMetricsParams {
+	o.SetRootFieldName(rootFieldName)
+	return o
+}
+
+// SetRootFieldName adds the rootFieldName to the get flow metrics params
+func (o *GetFlowMetricsParams) SetRootFieldName(rootFieldName *string) {
+	o.RootFieldName = rootFieldName
+}
+
+// WithSampleLabelValue adds the sampleLabelValue to the get flow metrics params
+func (o *GetFlowMetricsParams) WithSampleLabelValue(sampleLabelValue *string) *GetFlowMetricsParams {
+	o.SetSampleLabelValue(sampleLabelValue)
+	return o
+}
+
+// SetSampleLabelValue adds the sampleLabelValue to the get flow metrics params
+func (o *GetFlowMetricsParams) SetSampleLabelValue(sampleLabelValue *string) {
+	o.SampleLabelValue = sampleLabelValue
+}
+
+// WithSampleName adds the sampleName to the get flow metrics params
+func (o *GetFlowMetricsParams) WithSampleName(sampleName *string) *GetFlowMetricsParams {
+	o.SetSampleName(sampleName)
+	return o
+}
+
+// SetSampleName adds the sampleName to the get flow metrics params
+func (o *GetFlowMetricsParams) SetSampleName(sampleName *string) {
+	o.SampleName = sampleName
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *GetFlowMetricsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -137,13 +208,92 @@ func (o *GetFlowMetricsParams) WriteToRequest(r runtime.ClientRequest, reg strfm
 	}
 	var res []error
 
+	if o.IncludedRegistries != nil {
+
+		// binding items for includedRegistries
+		joinedIncludedRegistries := o.bindParamIncludedRegistries(reg)
+
+		// query array param includedRegistries
+		if err := r.SetQueryParam("includedRegistries", joinedIncludedRegistries...); err != nil {
+			return err
+		}
+	}
+
 	// path param producer
 	if err := r.SetPathParam("producer", o.Producer); err != nil {
 		return err
+	}
+
+	if o.RootFieldName != nil {
+
+		// query param rootFieldName
+		var qrRootFieldName string
+
+		if o.RootFieldName != nil {
+			qrRootFieldName = *o.RootFieldName
+		}
+		qRootFieldName := qrRootFieldName
+		if qRootFieldName != "" {
+
+			if err := r.SetQueryParam("rootFieldName", qRootFieldName); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.SampleLabelValue != nil {
+
+		// query param sampleLabelValue
+		var qrSampleLabelValue string
+
+		if o.SampleLabelValue != nil {
+			qrSampleLabelValue = *o.SampleLabelValue
+		}
+		qSampleLabelValue := qrSampleLabelValue
+		if qSampleLabelValue != "" {
+
+			if err := r.SetQueryParam("sampleLabelValue", qSampleLabelValue); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.SampleName != nil {
+
+		// query param sampleName
+		var qrSampleName string
+
+		if o.SampleName != nil {
+			qrSampleName = *o.SampleName
+		}
+		qSampleName := qrSampleName
+		if qSampleName != "" {
+
+			if err := r.SetQueryParam("sampleName", qSampleName); err != nil {
+				return err
+			}
+		}
 	}
 
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
 	return nil
+}
+
+// bindParamGetFlowMetrics binds the parameter includedRegistries
+func (o *GetFlowMetricsParams) bindParamIncludedRegistries(formats strfmt.Registry) []string {
+	includedRegistriesIR := o.IncludedRegistries
+
+	var includedRegistriesIC []string
+	for _, includedRegistriesIIR := range includedRegistriesIR { // explode []string
+
+		includedRegistriesIIV := includedRegistriesIIR // string as string
+		includedRegistriesIC = append(includedRegistriesIC, includedRegistriesIIV)
+	}
+
+	// items.CollectionFormat: "multi"
+	includedRegistriesIS := swag.JoinByFormat(includedRegistriesIC, "multi")
+
+	return includedRegistriesIS
 }

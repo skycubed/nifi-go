@@ -69,7 +69,8 @@ func NewCreateUserCreated() *CreateUserCreated {
 	return &CreateUserCreated{}
 }
 
-/* CreateUserCreated describes a response with status code 201, with default header values.
+/*
+CreateUserCreated describes a response with status code 201, with default header values.
 
 successful operation
 */
@@ -77,9 +78,39 @@ type CreateUserCreated struct {
 	Payload *models.UserEntity
 }
 
+// IsSuccess returns true when this create user created response has a 2xx status code
+func (o *CreateUserCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create user created response has a 3xx status code
+func (o *CreateUserCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create user created response has a 4xx status code
+func (o *CreateUserCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create user created response has a 5xx status code
+func (o *CreateUserCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create user created response a status code equal to that given
+func (o *CreateUserCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *CreateUserCreated) Error() string {
 	return fmt.Sprintf("[POST /tenants/users][%d] createUserCreated  %+v", 201, o.Payload)
 }
+
+func (o *CreateUserCreated) String() string {
+	return fmt.Sprintf("[POST /tenants/users][%d] createUserCreated  %+v", 201, o.Payload)
+}
+
 func (o *CreateUserCreated) GetPayload() *models.UserEntity {
 	return o.Payload
 }
@@ -101,14 +132,44 @@ func NewCreateUserBadRequest() *CreateUserBadRequest {
 	return &CreateUserBadRequest{}
 }
 
-/* CreateUserBadRequest describes a response with status code 400, with default header values.
+/*
+CreateUserBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type CreateUserBadRequest struct {
 }
 
+// IsSuccess returns true when this create user bad request response has a 2xx status code
+func (o *CreateUserBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create user bad request response has a 3xx status code
+func (o *CreateUserBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create user bad request response has a 4xx status code
+func (o *CreateUserBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create user bad request response has a 5xx status code
+func (o *CreateUserBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create user bad request response a status code equal to that given
+func (o *CreateUserBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CreateUserBadRequest) Error() string {
+	return fmt.Sprintf("[POST /tenants/users][%d] createUserBadRequest ", 400)
+}
+
+func (o *CreateUserBadRequest) String() string {
 	return fmt.Sprintf("[POST /tenants/users][%d] createUserBadRequest ", 400)
 }
 
@@ -122,14 +183,44 @@ func NewCreateUserUnauthorized() *CreateUserUnauthorized {
 	return &CreateUserUnauthorized{}
 }
 
-/* CreateUserUnauthorized describes a response with status code 401, with default header values.
+/*
+CreateUserUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type CreateUserUnauthorized struct {
 }
 
+// IsSuccess returns true when this create user unauthorized response has a 2xx status code
+func (o *CreateUserUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create user unauthorized response has a 3xx status code
+func (o *CreateUserUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create user unauthorized response has a 4xx status code
+func (o *CreateUserUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create user unauthorized response has a 5xx status code
+func (o *CreateUserUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create user unauthorized response a status code equal to that given
+func (o *CreateUserUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *CreateUserUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /tenants/users][%d] createUserUnauthorized ", 401)
+}
+
+func (o *CreateUserUnauthorized) String() string {
 	return fmt.Sprintf("[POST /tenants/users][%d] createUserUnauthorized ", 401)
 }
 
@@ -143,14 +234,44 @@ func NewCreateUserForbidden() *CreateUserForbidden {
 	return &CreateUserForbidden{}
 }
 
-/* CreateUserForbidden describes a response with status code 403, with default header values.
+/*
+CreateUserForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type CreateUserForbidden struct {
 }
 
+// IsSuccess returns true when this create user forbidden response has a 2xx status code
+func (o *CreateUserForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create user forbidden response has a 3xx status code
+func (o *CreateUserForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create user forbidden response has a 4xx status code
+func (o *CreateUserForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create user forbidden response has a 5xx status code
+func (o *CreateUserForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create user forbidden response a status code equal to that given
+func (o *CreateUserForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CreateUserForbidden) Error() string {
+	return fmt.Sprintf("[POST /tenants/users][%d] createUserForbidden ", 403)
+}
+
+func (o *CreateUserForbidden) String() string {
 	return fmt.Sprintf("[POST /tenants/users][%d] createUserForbidden ", 403)
 }
 
@@ -164,14 +285,44 @@ func NewCreateUserNotFound() *CreateUserNotFound {
 	return &CreateUserNotFound{}
 }
 
-/* CreateUserNotFound describes a response with status code 404, with default header values.
+/*
+CreateUserNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type CreateUserNotFound struct {
 }
 
+// IsSuccess returns true when this create user not found response has a 2xx status code
+func (o *CreateUserNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create user not found response has a 3xx status code
+func (o *CreateUserNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create user not found response has a 4xx status code
+func (o *CreateUserNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create user not found response has a 5xx status code
+func (o *CreateUserNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create user not found response a status code equal to that given
+func (o *CreateUserNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *CreateUserNotFound) Error() string {
+	return fmt.Sprintf("[POST /tenants/users][%d] createUserNotFound ", 404)
+}
+
+func (o *CreateUserNotFound) String() string {
 	return fmt.Sprintf("[POST /tenants/users][%d] createUserNotFound ", 404)
 }
 
@@ -185,14 +336,44 @@ func NewCreateUserConflict() *CreateUserConflict {
 	return &CreateUserConflict{}
 }
 
-/* CreateUserConflict describes a response with status code 409, with default header values.
+/*
+CreateUserConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type CreateUserConflict struct {
 }
 
+// IsSuccess returns true when this create user conflict response has a 2xx status code
+func (o *CreateUserConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create user conflict response has a 3xx status code
+func (o *CreateUserConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create user conflict response has a 4xx status code
+func (o *CreateUserConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create user conflict response has a 5xx status code
+func (o *CreateUserConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create user conflict response a status code equal to that given
+func (o *CreateUserConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *CreateUserConflict) Error() string {
+	return fmt.Sprintf("[POST /tenants/users][%d] createUserConflict ", 409)
+}
+
+func (o *CreateUserConflict) String() string {
 	return fmt.Sprintf("[POST /tenants/users][%d] createUserConflict ", 409)
 }
 

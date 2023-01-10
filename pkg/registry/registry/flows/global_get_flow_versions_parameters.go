@@ -52,10 +52,12 @@ func NewGlobalGetFlowVersionsParamsWithHTTPClient(client *http.Client) *GlobalGe
 	}
 }
 
-/* GlobalGetFlowVersionsParams contains all the parameters to send to the API endpoint
-   for the global get flow versions operation.
+/*
+GlobalGetFlowVersionsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the global get flow versions operation.
+
+	Typically these are written to a http.Request.
 */
 type GlobalGetFlowVersionsParams struct {
 

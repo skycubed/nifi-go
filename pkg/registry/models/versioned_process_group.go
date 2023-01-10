@@ -25,7 +25,7 @@ type VersionedProcessGroup struct {
 	Comments string `json:"comments,omitempty"`
 
 	// component type
-	// Enum: [CONNECTION PROCESSOR PROCESS_GROUP REMOTE_PROCESS_GROUP INPUT_PORT OUTPUT_PORT REMOTE_INPUT_PORT REMOTE_OUTPUT_PORT FUNNEL LABEL CONTROLLER_SERVICE]
+	// Enum: [CONNECTION PROCESSOR PROCESS_GROUP REMOTE_PROCESS_GROUP INPUT_PORT OUTPUT_PORT REMOTE_INPUT_PORT REMOTE_OUTPUT_PORT FUNNEL LABEL CONTROLLER_SERVICE REPORTING_TASK PARAMETER_CONTEXT PARAMETER_PROVIDER TEMPLATE FLOW_REGISTRY_CLIENT]
 	ComponentType string `json:"componentType,omitempty"`
 
 	// The Connections
@@ -64,6 +64,9 @@ type VersionedProcessGroup struct {
 	// The Input Ports
 	// Unique: true
 	InputPorts []*VersionedPort `json:"inputPorts"`
+
+	// The instance ID of an existing component that is described by this VersionedComponent, or null if this is not mapped to an instantiated component
+	InstanceIdentifier string `json:"instanceIdentifier,omitempty"`
 
 	// The Labels
 	// Unique: true
@@ -163,7 +166,7 @@ var versionedProcessGroupTypeComponentTypePropEnum []interface{}
 
 func init() {
 	var res []string
-	if err := json.Unmarshal([]byte(`["CONNECTION","PROCESSOR","PROCESS_GROUP","REMOTE_PROCESS_GROUP","INPUT_PORT","OUTPUT_PORT","REMOTE_INPUT_PORT","REMOTE_OUTPUT_PORT","FUNNEL","LABEL","CONTROLLER_SERVICE"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["CONNECTION","PROCESSOR","PROCESS_GROUP","REMOTE_PROCESS_GROUP","INPUT_PORT","OUTPUT_PORT","REMOTE_INPUT_PORT","REMOTE_OUTPUT_PORT","FUNNEL","LABEL","CONTROLLER_SERVICE","REPORTING_TASK","PARAMETER_CONTEXT","PARAMETER_PROVIDER","TEMPLATE","FLOW_REGISTRY_CLIENT"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
@@ -205,6 +208,21 @@ const (
 
 	// VersionedProcessGroupComponentTypeCONTROLLERSERVICE captures enum value "CONTROLLER_SERVICE"
 	VersionedProcessGroupComponentTypeCONTROLLERSERVICE string = "CONTROLLER_SERVICE"
+
+	// VersionedProcessGroupComponentTypeREPORTINGTASK captures enum value "REPORTING_TASK"
+	VersionedProcessGroupComponentTypeREPORTINGTASK string = "REPORTING_TASK"
+
+	// VersionedProcessGroupComponentTypePARAMETERCONTEXT captures enum value "PARAMETER_CONTEXT"
+	VersionedProcessGroupComponentTypePARAMETERCONTEXT string = "PARAMETER_CONTEXT"
+
+	// VersionedProcessGroupComponentTypePARAMETERPROVIDER captures enum value "PARAMETER_PROVIDER"
+	VersionedProcessGroupComponentTypePARAMETERPROVIDER string = "PARAMETER_PROVIDER"
+
+	// VersionedProcessGroupComponentTypeTEMPLATE captures enum value "TEMPLATE"
+	VersionedProcessGroupComponentTypeTEMPLATE string = "TEMPLATE"
+
+	// VersionedProcessGroupComponentTypeFLOWREGISTRYCLIENT captures enum value "FLOW_REGISTRY_CLIENT"
+	VersionedProcessGroupComponentTypeFLOWREGISTRYCLIENT string = "FLOW_REGISTRY_CLIENT"
 )
 
 // prop value enum

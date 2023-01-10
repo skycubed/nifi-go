@@ -69,7 +69,8 @@ func NewGetProcessorStatusHistoryOK() *GetProcessorStatusHistoryOK {
 	return &GetProcessorStatusHistoryOK{}
 }
 
-/* GetProcessorStatusHistoryOK describes a response with status code 200, with default header values.
+/*
+GetProcessorStatusHistoryOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,39 @@ type GetProcessorStatusHistoryOK struct {
 	Payload *models.StatusHistoryEntity
 }
 
+// IsSuccess returns true when this get processor status history o k response has a 2xx status code
+func (o *GetProcessorStatusHistoryOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get processor status history o k response has a 3xx status code
+func (o *GetProcessorStatusHistoryOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get processor status history o k response has a 4xx status code
+func (o *GetProcessorStatusHistoryOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get processor status history o k response has a 5xx status code
+func (o *GetProcessorStatusHistoryOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get processor status history o k response a status code equal to that given
+func (o *GetProcessorStatusHistoryOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetProcessorStatusHistoryOK) Error() string {
 	return fmt.Sprintf("[GET /flow/processors/{id}/status/history][%d] getProcessorStatusHistoryOK  %+v", 200, o.Payload)
 }
+
+func (o *GetProcessorStatusHistoryOK) String() string {
+	return fmt.Sprintf("[GET /flow/processors/{id}/status/history][%d] getProcessorStatusHistoryOK  %+v", 200, o.Payload)
+}
+
 func (o *GetProcessorStatusHistoryOK) GetPayload() *models.StatusHistoryEntity {
 	return o.Payload
 }
@@ -101,14 +132,44 @@ func NewGetProcessorStatusHistoryBadRequest() *GetProcessorStatusHistoryBadReque
 	return &GetProcessorStatusHistoryBadRequest{}
 }
 
-/* GetProcessorStatusHistoryBadRequest describes a response with status code 400, with default header values.
+/*
+GetProcessorStatusHistoryBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type GetProcessorStatusHistoryBadRequest struct {
 }
 
+// IsSuccess returns true when this get processor status history bad request response has a 2xx status code
+func (o *GetProcessorStatusHistoryBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get processor status history bad request response has a 3xx status code
+func (o *GetProcessorStatusHistoryBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get processor status history bad request response has a 4xx status code
+func (o *GetProcessorStatusHistoryBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get processor status history bad request response has a 5xx status code
+func (o *GetProcessorStatusHistoryBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get processor status history bad request response a status code equal to that given
+func (o *GetProcessorStatusHistoryBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *GetProcessorStatusHistoryBadRequest) Error() string {
+	return fmt.Sprintf("[GET /flow/processors/{id}/status/history][%d] getProcessorStatusHistoryBadRequest ", 400)
+}
+
+func (o *GetProcessorStatusHistoryBadRequest) String() string {
 	return fmt.Sprintf("[GET /flow/processors/{id}/status/history][%d] getProcessorStatusHistoryBadRequest ", 400)
 }
 
@@ -122,14 +183,44 @@ func NewGetProcessorStatusHistoryUnauthorized() *GetProcessorStatusHistoryUnauth
 	return &GetProcessorStatusHistoryUnauthorized{}
 }
 
-/* GetProcessorStatusHistoryUnauthorized describes a response with status code 401, with default header values.
+/*
+GetProcessorStatusHistoryUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type GetProcessorStatusHistoryUnauthorized struct {
 }
 
+// IsSuccess returns true when this get processor status history unauthorized response has a 2xx status code
+func (o *GetProcessorStatusHistoryUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get processor status history unauthorized response has a 3xx status code
+func (o *GetProcessorStatusHistoryUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get processor status history unauthorized response has a 4xx status code
+func (o *GetProcessorStatusHistoryUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get processor status history unauthorized response has a 5xx status code
+func (o *GetProcessorStatusHistoryUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get processor status history unauthorized response a status code equal to that given
+func (o *GetProcessorStatusHistoryUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GetProcessorStatusHistoryUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /flow/processors/{id}/status/history][%d] getProcessorStatusHistoryUnauthorized ", 401)
+}
+
+func (o *GetProcessorStatusHistoryUnauthorized) String() string {
 	return fmt.Sprintf("[GET /flow/processors/{id}/status/history][%d] getProcessorStatusHistoryUnauthorized ", 401)
 }
 
@@ -143,14 +234,44 @@ func NewGetProcessorStatusHistoryForbidden() *GetProcessorStatusHistoryForbidden
 	return &GetProcessorStatusHistoryForbidden{}
 }
 
-/* GetProcessorStatusHistoryForbidden describes a response with status code 403, with default header values.
+/*
+GetProcessorStatusHistoryForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type GetProcessorStatusHistoryForbidden struct {
 }
 
+// IsSuccess returns true when this get processor status history forbidden response has a 2xx status code
+func (o *GetProcessorStatusHistoryForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get processor status history forbidden response has a 3xx status code
+func (o *GetProcessorStatusHistoryForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get processor status history forbidden response has a 4xx status code
+func (o *GetProcessorStatusHistoryForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get processor status history forbidden response has a 5xx status code
+func (o *GetProcessorStatusHistoryForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get processor status history forbidden response a status code equal to that given
+func (o *GetProcessorStatusHistoryForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetProcessorStatusHistoryForbidden) Error() string {
+	return fmt.Sprintf("[GET /flow/processors/{id}/status/history][%d] getProcessorStatusHistoryForbidden ", 403)
+}
+
+func (o *GetProcessorStatusHistoryForbidden) String() string {
 	return fmt.Sprintf("[GET /flow/processors/{id}/status/history][%d] getProcessorStatusHistoryForbidden ", 403)
 }
 
@@ -164,14 +285,44 @@ func NewGetProcessorStatusHistoryNotFound() *GetProcessorStatusHistoryNotFound {
 	return &GetProcessorStatusHistoryNotFound{}
 }
 
-/* GetProcessorStatusHistoryNotFound describes a response with status code 404, with default header values.
+/*
+GetProcessorStatusHistoryNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type GetProcessorStatusHistoryNotFound struct {
 }
 
+// IsSuccess returns true when this get processor status history not found response has a 2xx status code
+func (o *GetProcessorStatusHistoryNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get processor status history not found response has a 3xx status code
+func (o *GetProcessorStatusHistoryNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get processor status history not found response has a 4xx status code
+func (o *GetProcessorStatusHistoryNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get processor status history not found response has a 5xx status code
+func (o *GetProcessorStatusHistoryNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get processor status history not found response a status code equal to that given
+func (o *GetProcessorStatusHistoryNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetProcessorStatusHistoryNotFound) Error() string {
+	return fmt.Sprintf("[GET /flow/processors/{id}/status/history][%d] getProcessorStatusHistoryNotFound ", 404)
+}
+
+func (o *GetProcessorStatusHistoryNotFound) String() string {
 	return fmt.Sprintf("[GET /flow/processors/{id}/status/history][%d] getProcessorStatusHistoryNotFound ", 404)
 }
 
@@ -185,14 +336,44 @@ func NewGetProcessorStatusHistoryConflict() *GetProcessorStatusHistoryConflict {
 	return &GetProcessorStatusHistoryConflict{}
 }
 
-/* GetProcessorStatusHistoryConflict describes a response with status code 409, with default header values.
+/*
+GetProcessorStatusHistoryConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type GetProcessorStatusHistoryConflict struct {
 }
 
+// IsSuccess returns true when this get processor status history conflict response has a 2xx status code
+func (o *GetProcessorStatusHistoryConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get processor status history conflict response has a 3xx status code
+func (o *GetProcessorStatusHistoryConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get processor status history conflict response has a 4xx status code
+func (o *GetProcessorStatusHistoryConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get processor status history conflict response has a 5xx status code
+func (o *GetProcessorStatusHistoryConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get processor status history conflict response a status code equal to that given
+func (o *GetProcessorStatusHistoryConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *GetProcessorStatusHistoryConflict) Error() string {
+	return fmt.Sprintf("[GET /flow/processors/{id}/status/history][%d] getProcessorStatusHistoryConflict ", 409)
+}
+
+func (o *GetProcessorStatusHistoryConflict) String() string {
 	return fmt.Sprintf("[GET /flow/processors/{id}/status/history][%d] getProcessorStatusHistoryConflict ", 409)
 }
 

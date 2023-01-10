@@ -51,6 +51,9 @@ type VersionControlInformationDTO struct {
 	// Explanation of why the group is in the specified state
 	StateExplanation string `json:"stateExplanation,omitempty"`
 
+	// The storage location
+	StorageLocation string `json:"storageLocation,omitempty"`
+
 	// The version of the flow
 	Version int32 `json:"version,omitempty"`
 }

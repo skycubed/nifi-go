@@ -69,7 +69,8 @@ func NewGetDropAllFlowfilesRequestOK() *GetDropAllFlowfilesRequestOK {
 	return &GetDropAllFlowfilesRequestOK{}
 }
 
-/* GetDropAllFlowfilesRequestOK describes a response with status code 200, with default header values.
+/*
+GetDropAllFlowfilesRequestOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,39 @@ type GetDropAllFlowfilesRequestOK struct {
 	Payload *models.DropRequestEntity
 }
 
+// IsSuccess returns true when this get drop all flowfiles request o k response has a 2xx status code
+func (o *GetDropAllFlowfilesRequestOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get drop all flowfiles request o k response has a 3xx status code
+func (o *GetDropAllFlowfilesRequestOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get drop all flowfiles request o k response has a 4xx status code
+func (o *GetDropAllFlowfilesRequestOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get drop all flowfiles request o k response has a 5xx status code
+func (o *GetDropAllFlowfilesRequestOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get drop all flowfiles request o k response a status code equal to that given
+func (o *GetDropAllFlowfilesRequestOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetDropAllFlowfilesRequestOK) Error() string {
 	return fmt.Sprintf("[GET /process-groups/{id}/empty-all-connections-requests/{drop-request-id}][%d] getDropAllFlowfilesRequestOK  %+v", 200, o.Payload)
 }
+
+func (o *GetDropAllFlowfilesRequestOK) String() string {
+	return fmt.Sprintf("[GET /process-groups/{id}/empty-all-connections-requests/{drop-request-id}][%d] getDropAllFlowfilesRequestOK  %+v", 200, o.Payload)
+}
+
 func (o *GetDropAllFlowfilesRequestOK) GetPayload() *models.DropRequestEntity {
 	return o.Payload
 }
@@ -101,14 +132,44 @@ func NewGetDropAllFlowfilesRequestBadRequest() *GetDropAllFlowfilesRequestBadReq
 	return &GetDropAllFlowfilesRequestBadRequest{}
 }
 
-/* GetDropAllFlowfilesRequestBadRequest describes a response with status code 400, with default header values.
+/*
+GetDropAllFlowfilesRequestBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type GetDropAllFlowfilesRequestBadRequest struct {
 }
 
+// IsSuccess returns true when this get drop all flowfiles request bad request response has a 2xx status code
+func (o *GetDropAllFlowfilesRequestBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get drop all flowfiles request bad request response has a 3xx status code
+func (o *GetDropAllFlowfilesRequestBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get drop all flowfiles request bad request response has a 4xx status code
+func (o *GetDropAllFlowfilesRequestBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get drop all flowfiles request bad request response has a 5xx status code
+func (o *GetDropAllFlowfilesRequestBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get drop all flowfiles request bad request response a status code equal to that given
+func (o *GetDropAllFlowfilesRequestBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *GetDropAllFlowfilesRequestBadRequest) Error() string {
+	return fmt.Sprintf("[GET /process-groups/{id}/empty-all-connections-requests/{drop-request-id}][%d] getDropAllFlowfilesRequestBadRequest ", 400)
+}
+
+func (o *GetDropAllFlowfilesRequestBadRequest) String() string {
 	return fmt.Sprintf("[GET /process-groups/{id}/empty-all-connections-requests/{drop-request-id}][%d] getDropAllFlowfilesRequestBadRequest ", 400)
 }
 
@@ -122,14 +183,44 @@ func NewGetDropAllFlowfilesRequestUnauthorized() *GetDropAllFlowfilesRequestUnau
 	return &GetDropAllFlowfilesRequestUnauthorized{}
 }
 
-/* GetDropAllFlowfilesRequestUnauthorized describes a response with status code 401, with default header values.
+/*
+GetDropAllFlowfilesRequestUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type GetDropAllFlowfilesRequestUnauthorized struct {
 }
 
+// IsSuccess returns true when this get drop all flowfiles request unauthorized response has a 2xx status code
+func (o *GetDropAllFlowfilesRequestUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get drop all flowfiles request unauthorized response has a 3xx status code
+func (o *GetDropAllFlowfilesRequestUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get drop all flowfiles request unauthorized response has a 4xx status code
+func (o *GetDropAllFlowfilesRequestUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get drop all flowfiles request unauthorized response has a 5xx status code
+func (o *GetDropAllFlowfilesRequestUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get drop all flowfiles request unauthorized response a status code equal to that given
+func (o *GetDropAllFlowfilesRequestUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GetDropAllFlowfilesRequestUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /process-groups/{id}/empty-all-connections-requests/{drop-request-id}][%d] getDropAllFlowfilesRequestUnauthorized ", 401)
+}
+
+func (o *GetDropAllFlowfilesRequestUnauthorized) String() string {
 	return fmt.Sprintf("[GET /process-groups/{id}/empty-all-connections-requests/{drop-request-id}][%d] getDropAllFlowfilesRequestUnauthorized ", 401)
 }
 
@@ -143,14 +234,44 @@ func NewGetDropAllFlowfilesRequestForbidden() *GetDropAllFlowfilesRequestForbidd
 	return &GetDropAllFlowfilesRequestForbidden{}
 }
 
-/* GetDropAllFlowfilesRequestForbidden describes a response with status code 403, with default header values.
+/*
+GetDropAllFlowfilesRequestForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type GetDropAllFlowfilesRequestForbidden struct {
 }
 
+// IsSuccess returns true when this get drop all flowfiles request forbidden response has a 2xx status code
+func (o *GetDropAllFlowfilesRequestForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get drop all flowfiles request forbidden response has a 3xx status code
+func (o *GetDropAllFlowfilesRequestForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get drop all flowfiles request forbidden response has a 4xx status code
+func (o *GetDropAllFlowfilesRequestForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get drop all flowfiles request forbidden response has a 5xx status code
+func (o *GetDropAllFlowfilesRequestForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get drop all flowfiles request forbidden response a status code equal to that given
+func (o *GetDropAllFlowfilesRequestForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetDropAllFlowfilesRequestForbidden) Error() string {
+	return fmt.Sprintf("[GET /process-groups/{id}/empty-all-connections-requests/{drop-request-id}][%d] getDropAllFlowfilesRequestForbidden ", 403)
+}
+
+func (o *GetDropAllFlowfilesRequestForbidden) String() string {
 	return fmt.Sprintf("[GET /process-groups/{id}/empty-all-connections-requests/{drop-request-id}][%d] getDropAllFlowfilesRequestForbidden ", 403)
 }
 
@@ -164,14 +285,44 @@ func NewGetDropAllFlowfilesRequestNotFound() *GetDropAllFlowfilesRequestNotFound
 	return &GetDropAllFlowfilesRequestNotFound{}
 }
 
-/* GetDropAllFlowfilesRequestNotFound describes a response with status code 404, with default header values.
+/*
+GetDropAllFlowfilesRequestNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type GetDropAllFlowfilesRequestNotFound struct {
 }
 
+// IsSuccess returns true when this get drop all flowfiles request not found response has a 2xx status code
+func (o *GetDropAllFlowfilesRequestNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get drop all flowfiles request not found response has a 3xx status code
+func (o *GetDropAllFlowfilesRequestNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get drop all flowfiles request not found response has a 4xx status code
+func (o *GetDropAllFlowfilesRequestNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get drop all flowfiles request not found response has a 5xx status code
+func (o *GetDropAllFlowfilesRequestNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get drop all flowfiles request not found response a status code equal to that given
+func (o *GetDropAllFlowfilesRequestNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetDropAllFlowfilesRequestNotFound) Error() string {
+	return fmt.Sprintf("[GET /process-groups/{id}/empty-all-connections-requests/{drop-request-id}][%d] getDropAllFlowfilesRequestNotFound ", 404)
+}
+
+func (o *GetDropAllFlowfilesRequestNotFound) String() string {
 	return fmt.Sprintf("[GET /process-groups/{id}/empty-all-connections-requests/{drop-request-id}][%d] getDropAllFlowfilesRequestNotFound ", 404)
 }
 
@@ -185,14 +336,44 @@ func NewGetDropAllFlowfilesRequestConflict() *GetDropAllFlowfilesRequestConflict
 	return &GetDropAllFlowfilesRequestConflict{}
 }
 
-/* GetDropAllFlowfilesRequestConflict describes a response with status code 409, with default header values.
+/*
+GetDropAllFlowfilesRequestConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type GetDropAllFlowfilesRequestConflict struct {
 }
 
+// IsSuccess returns true when this get drop all flowfiles request conflict response has a 2xx status code
+func (o *GetDropAllFlowfilesRequestConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get drop all flowfiles request conflict response has a 3xx status code
+func (o *GetDropAllFlowfilesRequestConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get drop all flowfiles request conflict response has a 4xx status code
+func (o *GetDropAllFlowfilesRequestConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get drop all flowfiles request conflict response has a 5xx status code
+func (o *GetDropAllFlowfilesRequestConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get drop all flowfiles request conflict response a status code equal to that given
+func (o *GetDropAllFlowfilesRequestConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *GetDropAllFlowfilesRequestConflict) Error() string {
+	return fmt.Sprintf("[GET /process-groups/{id}/empty-all-connections-requests/{drop-request-id}][%d] getDropAllFlowfilesRequestConflict ", 409)
+}
+
+func (o *GetDropAllFlowfilesRequestConflict) String() string {
 	return fmt.Sprintf("[GET /process-groups/{id}/empty-all-connections-requests/{drop-request-id}][%d] getDropAllFlowfilesRequestConflict ", 409)
 }
 

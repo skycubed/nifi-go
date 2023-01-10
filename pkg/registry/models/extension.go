@@ -21,6 +21,12 @@ import (
 // swagger:model Extension
 type Extension struct {
 
+	// The default schedule for a processor reporting task
+	DefaultSchedule *DefaultSchedule `json:"defaultSchedule,omitempty"`
+
+	// The default settings for a processor
+	DefaultSettings *DefaultSettings `json:"defaultSettings,omitempty"`
+
 	// The deprecation notice of the extension
 	DeprecationNotice *DeprecationNotice `json:"deprecationNotice,omitempty"`
 
@@ -33,12 +39,18 @@ type Extension struct {
 	// The dynamic relationships of the extension
 	DynamicRelationship *DynamicRelationship `json:"dynamicRelationship,omitempty"`
 
+	// Indicates that a processor supports event driven scheduling
+	EventDriven bool `json:"eventDriven,omitempty"`
+
 	// The input requirement of the extension
 	// Enum: [INPUT_REQUIRED INPUT_ALLOWED INPUT_FORBIDDEN]
 	InputRequirement string `json:"inputRequirement,omitempty"`
 
 	// The name of the extension
 	Name string `json:"name,omitempty"`
+
+	// Indicates that a processor should be scheduled only on the primary node
+	PrimaryNodeOnly bool `json:"primaryNodeOnly,omitempty"`
 
 	// The properties of the extension
 	Properties []*Property `json:"properties" xml:"properties"`
@@ -58,14 +70,29 @@ type Extension struct {
 	// The names of other extensions to see
 	SeeAlso []string `json:"seeAlso" xml:"seeAlso"`
 
+	// Indicates that a processor is side effect free
+	SideEffectFree bool `json:"sideEffectFree,omitempty"`
+
 	// The information about how the extension stores state
 	Stateful *Stateful `json:"stateful,omitempty"`
+
+	// Indicates that a processor supports batching
+	SupportsBatching bool `json:"supportsBatching,omitempty"`
 
 	// The resource considerations of the extension
 	SystemResourceConsiderations []*SystemResourceConsideration `json:"systemResourceConsiderations" xml:"systemResourceConsiderations"`
 
 	// The tags of the extension
 	Tags []string `json:"tags" xml:"tags"`
+
+	// Indicates that a processor should be triggered serially
+	TriggerSerially bool `json:"triggerSerially,omitempty"`
+
+	// Indicates that a processor should be triggered when any destinations have space for flow files
+	TriggerWhenAnyDestinationAvailable bool `json:"triggerWhenAnyDestinationAvailable,omitempty"`
+
+	// Indicates that a processor should be triggered when the incoming queues are empty
+	TriggerWhenEmpty bool `json:"triggerWhenEmpty,omitempty"`
 
 	// The type of the extension
 	// Enum: [PROCESSOR CONTROLLER_SERVICE REPORTING_TASK]
@@ -78,6 +105,14 @@ type Extension struct {
 // Validate validates this extension
 func (m *Extension) Validate(formats strfmt.Registry) error {
 	var res []error
+
+	if err := m.validateDefaultSchedule(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateDefaultSettings(formats); err != nil {
+		res = append(res, err)
+	}
 
 	if err := m.validateDeprecationNotice(formats); err != nil {
 		res = append(res, err)
@@ -134,6 +169,44 @@ func (m *Extension) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *Extension) validateDefaultSchedule(formats strfmt.Registry) error {
+	if swag.IsZero(m.DefaultSchedule) { // not required
+		return nil
+	}
+
+	if m.DefaultSchedule != nil {
+		if err := m.DefaultSchedule.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("defaultSchedule")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("defaultSchedule")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *Extension) validateDefaultSettings(formats strfmt.Registry) error {
+	if swag.IsZero(m.DefaultSettings) { // not required
+		return nil
+	}
+
+	if m.DefaultSettings != nil {
+		if err := m.DefaultSettings.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("defaultSettings")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("defaultSettings")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 
@@ -489,6 +562,14 @@ func (m *Extension) validateWritesAttributes(formats strfmt.Registry) error {
 func (m *Extension) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.contextValidateDefaultSchedule(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateDefaultSettings(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateDeprecationNotice(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -536,6 +617,38 @@ func (m *Extension) ContextValidate(ctx context.Context, formats strfmt.Registry
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *Extension) contextValidateDefaultSchedule(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.DefaultSchedule != nil {
+		if err := m.DefaultSchedule.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("defaultSchedule")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("defaultSchedule")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *Extension) contextValidateDefaultSettings(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.DefaultSettings != nil {
+		if err := m.DefaultSettings.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("defaultSettings")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("defaultSettings")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 

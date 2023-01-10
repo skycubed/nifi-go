@@ -25,7 +25,7 @@ type ProcessGroupImportEntity struct {
 	ProcessGroupRevision *RevisionDTO `json:"processGroupRevision,omitempty"`
 
 	// The Versioned Flow Snapshot to import
-	VersionedFlowSnapshot *VersionedFlowSnapshot `json:"versionedFlowSnapshot,omitempty"`
+	VersionedFlowSnapshot *RegisteredFlowSnapshot `json:"versionedFlowSnapshot,omitempty"`
 }
 
 // Validate validates this process group import entity

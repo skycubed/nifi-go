@@ -69,7 +69,8 @@ func NewInitiateRevertFlowVersionOK() *InitiateRevertFlowVersionOK {
 	return &InitiateRevertFlowVersionOK{}
 }
 
-/* InitiateRevertFlowVersionOK describes a response with status code 200, with default header values.
+/*
+InitiateRevertFlowVersionOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,39 @@ type InitiateRevertFlowVersionOK struct {
 	Payload *models.VersionedFlowUpdateRequestEntity
 }
 
+// IsSuccess returns true when this initiate revert flow version o k response has a 2xx status code
+func (o *InitiateRevertFlowVersionOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this initiate revert flow version o k response has a 3xx status code
+func (o *InitiateRevertFlowVersionOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this initiate revert flow version o k response has a 4xx status code
+func (o *InitiateRevertFlowVersionOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this initiate revert flow version o k response has a 5xx status code
+func (o *InitiateRevertFlowVersionOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this initiate revert flow version o k response a status code equal to that given
+func (o *InitiateRevertFlowVersionOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *InitiateRevertFlowVersionOK) Error() string {
 	return fmt.Sprintf("[POST /versions/revert-requests/process-groups/{id}][%d] initiateRevertFlowVersionOK  %+v", 200, o.Payload)
 }
+
+func (o *InitiateRevertFlowVersionOK) String() string {
+	return fmt.Sprintf("[POST /versions/revert-requests/process-groups/{id}][%d] initiateRevertFlowVersionOK  %+v", 200, o.Payload)
+}
+
 func (o *InitiateRevertFlowVersionOK) GetPayload() *models.VersionedFlowUpdateRequestEntity {
 	return o.Payload
 }
@@ -101,14 +132,44 @@ func NewInitiateRevertFlowVersionBadRequest() *InitiateRevertFlowVersionBadReque
 	return &InitiateRevertFlowVersionBadRequest{}
 }
 
-/* InitiateRevertFlowVersionBadRequest describes a response with status code 400, with default header values.
+/*
+InitiateRevertFlowVersionBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type InitiateRevertFlowVersionBadRequest struct {
 }
 
+// IsSuccess returns true when this initiate revert flow version bad request response has a 2xx status code
+func (o *InitiateRevertFlowVersionBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this initiate revert flow version bad request response has a 3xx status code
+func (o *InitiateRevertFlowVersionBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this initiate revert flow version bad request response has a 4xx status code
+func (o *InitiateRevertFlowVersionBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this initiate revert flow version bad request response has a 5xx status code
+func (o *InitiateRevertFlowVersionBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this initiate revert flow version bad request response a status code equal to that given
+func (o *InitiateRevertFlowVersionBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *InitiateRevertFlowVersionBadRequest) Error() string {
+	return fmt.Sprintf("[POST /versions/revert-requests/process-groups/{id}][%d] initiateRevertFlowVersionBadRequest ", 400)
+}
+
+func (o *InitiateRevertFlowVersionBadRequest) String() string {
 	return fmt.Sprintf("[POST /versions/revert-requests/process-groups/{id}][%d] initiateRevertFlowVersionBadRequest ", 400)
 }
 
@@ -122,14 +183,44 @@ func NewInitiateRevertFlowVersionUnauthorized() *InitiateRevertFlowVersionUnauth
 	return &InitiateRevertFlowVersionUnauthorized{}
 }
 
-/* InitiateRevertFlowVersionUnauthorized describes a response with status code 401, with default header values.
+/*
+InitiateRevertFlowVersionUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type InitiateRevertFlowVersionUnauthorized struct {
 }
 
+// IsSuccess returns true when this initiate revert flow version unauthorized response has a 2xx status code
+func (o *InitiateRevertFlowVersionUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this initiate revert flow version unauthorized response has a 3xx status code
+func (o *InitiateRevertFlowVersionUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this initiate revert flow version unauthorized response has a 4xx status code
+func (o *InitiateRevertFlowVersionUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this initiate revert flow version unauthorized response has a 5xx status code
+func (o *InitiateRevertFlowVersionUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this initiate revert flow version unauthorized response a status code equal to that given
+func (o *InitiateRevertFlowVersionUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *InitiateRevertFlowVersionUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /versions/revert-requests/process-groups/{id}][%d] initiateRevertFlowVersionUnauthorized ", 401)
+}
+
+func (o *InitiateRevertFlowVersionUnauthorized) String() string {
 	return fmt.Sprintf("[POST /versions/revert-requests/process-groups/{id}][%d] initiateRevertFlowVersionUnauthorized ", 401)
 }
 
@@ -143,14 +234,44 @@ func NewInitiateRevertFlowVersionForbidden() *InitiateRevertFlowVersionForbidden
 	return &InitiateRevertFlowVersionForbidden{}
 }
 
-/* InitiateRevertFlowVersionForbidden describes a response with status code 403, with default header values.
+/*
+InitiateRevertFlowVersionForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type InitiateRevertFlowVersionForbidden struct {
 }
 
+// IsSuccess returns true when this initiate revert flow version forbidden response has a 2xx status code
+func (o *InitiateRevertFlowVersionForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this initiate revert flow version forbidden response has a 3xx status code
+func (o *InitiateRevertFlowVersionForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this initiate revert flow version forbidden response has a 4xx status code
+func (o *InitiateRevertFlowVersionForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this initiate revert flow version forbidden response has a 5xx status code
+func (o *InitiateRevertFlowVersionForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this initiate revert flow version forbidden response a status code equal to that given
+func (o *InitiateRevertFlowVersionForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *InitiateRevertFlowVersionForbidden) Error() string {
+	return fmt.Sprintf("[POST /versions/revert-requests/process-groups/{id}][%d] initiateRevertFlowVersionForbidden ", 403)
+}
+
+func (o *InitiateRevertFlowVersionForbidden) String() string {
 	return fmt.Sprintf("[POST /versions/revert-requests/process-groups/{id}][%d] initiateRevertFlowVersionForbidden ", 403)
 }
 
@@ -164,14 +285,44 @@ func NewInitiateRevertFlowVersionNotFound() *InitiateRevertFlowVersionNotFound {
 	return &InitiateRevertFlowVersionNotFound{}
 }
 
-/* InitiateRevertFlowVersionNotFound describes a response with status code 404, with default header values.
+/*
+InitiateRevertFlowVersionNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type InitiateRevertFlowVersionNotFound struct {
 }
 
+// IsSuccess returns true when this initiate revert flow version not found response has a 2xx status code
+func (o *InitiateRevertFlowVersionNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this initiate revert flow version not found response has a 3xx status code
+func (o *InitiateRevertFlowVersionNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this initiate revert flow version not found response has a 4xx status code
+func (o *InitiateRevertFlowVersionNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this initiate revert flow version not found response has a 5xx status code
+func (o *InitiateRevertFlowVersionNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this initiate revert flow version not found response a status code equal to that given
+func (o *InitiateRevertFlowVersionNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *InitiateRevertFlowVersionNotFound) Error() string {
+	return fmt.Sprintf("[POST /versions/revert-requests/process-groups/{id}][%d] initiateRevertFlowVersionNotFound ", 404)
+}
+
+func (o *InitiateRevertFlowVersionNotFound) String() string {
 	return fmt.Sprintf("[POST /versions/revert-requests/process-groups/{id}][%d] initiateRevertFlowVersionNotFound ", 404)
 }
 
@@ -185,14 +336,44 @@ func NewInitiateRevertFlowVersionConflict() *InitiateRevertFlowVersionConflict {
 	return &InitiateRevertFlowVersionConflict{}
 }
 
-/* InitiateRevertFlowVersionConflict describes a response with status code 409, with default header values.
+/*
+InitiateRevertFlowVersionConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type InitiateRevertFlowVersionConflict struct {
 }
 
+// IsSuccess returns true when this initiate revert flow version conflict response has a 2xx status code
+func (o *InitiateRevertFlowVersionConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this initiate revert flow version conflict response has a 3xx status code
+func (o *InitiateRevertFlowVersionConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this initiate revert flow version conflict response has a 4xx status code
+func (o *InitiateRevertFlowVersionConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this initiate revert flow version conflict response has a 5xx status code
+func (o *InitiateRevertFlowVersionConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this initiate revert flow version conflict response a status code equal to that given
+func (o *InitiateRevertFlowVersionConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *InitiateRevertFlowVersionConflict) Error() string {
+	return fmt.Sprintf("[POST /versions/revert-requests/process-groups/{id}][%d] initiateRevertFlowVersionConflict ", 409)
+}
+
+func (o *InitiateRevertFlowVersionConflict) String() string {
 	return fmt.Sprintf("[POST /versions/revert-requests/process-groups/{id}][%d] initiateRevertFlowVersionConflict ", 409)
 }
 

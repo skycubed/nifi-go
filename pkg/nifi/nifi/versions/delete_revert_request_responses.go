@@ -69,7 +69,8 @@ func NewDeleteRevertRequestOK() *DeleteRevertRequestOK {
 	return &DeleteRevertRequestOK{}
 }
 
-/* DeleteRevertRequestOK describes a response with status code 200, with default header values.
+/*
+DeleteRevertRequestOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,39 @@ type DeleteRevertRequestOK struct {
 	Payload *models.VersionedFlowUpdateRequestEntity
 }
 
+// IsSuccess returns true when this delete revert request o k response has a 2xx status code
+func (o *DeleteRevertRequestOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete revert request o k response has a 3xx status code
+func (o *DeleteRevertRequestOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete revert request o k response has a 4xx status code
+func (o *DeleteRevertRequestOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete revert request o k response has a 5xx status code
+func (o *DeleteRevertRequestOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete revert request o k response a status code equal to that given
+func (o *DeleteRevertRequestOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *DeleteRevertRequestOK) Error() string {
 	return fmt.Sprintf("[DELETE /versions/revert-requests/{id}][%d] deleteRevertRequestOK  %+v", 200, o.Payload)
 }
+
+func (o *DeleteRevertRequestOK) String() string {
+	return fmt.Sprintf("[DELETE /versions/revert-requests/{id}][%d] deleteRevertRequestOK  %+v", 200, o.Payload)
+}
+
 func (o *DeleteRevertRequestOK) GetPayload() *models.VersionedFlowUpdateRequestEntity {
 	return o.Payload
 }
@@ -101,14 +132,44 @@ func NewDeleteRevertRequestBadRequest() *DeleteRevertRequestBadRequest {
 	return &DeleteRevertRequestBadRequest{}
 }
 
-/* DeleteRevertRequestBadRequest describes a response with status code 400, with default header values.
+/*
+DeleteRevertRequestBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type DeleteRevertRequestBadRequest struct {
 }
 
+// IsSuccess returns true when this delete revert request bad request response has a 2xx status code
+func (o *DeleteRevertRequestBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete revert request bad request response has a 3xx status code
+func (o *DeleteRevertRequestBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete revert request bad request response has a 4xx status code
+func (o *DeleteRevertRequestBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete revert request bad request response has a 5xx status code
+func (o *DeleteRevertRequestBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete revert request bad request response a status code equal to that given
+func (o *DeleteRevertRequestBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *DeleteRevertRequestBadRequest) Error() string {
+	return fmt.Sprintf("[DELETE /versions/revert-requests/{id}][%d] deleteRevertRequestBadRequest ", 400)
+}
+
+func (o *DeleteRevertRequestBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /versions/revert-requests/{id}][%d] deleteRevertRequestBadRequest ", 400)
 }
 
@@ -122,14 +183,44 @@ func NewDeleteRevertRequestUnauthorized() *DeleteRevertRequestUnauthorized {
 	return &DeleteRevertRequestUnauthorized{}
 }
 
-/* DeleteRevertRequestUnauthorized describes a response with status code 401, with default header values.
+/*
+DeleteRevertRequestUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type DeleteRevertRequestUnauthorized struct {
 }
 
+// IsSuccess returns true when this delete revert request unauthorized response has a 2xx status code
+func (o *DeleteRevertRequestUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete revert request unauthorized response has a 3xx status code
+func (o *DeleteRevertRequestUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete revert request unauthorized response has a 4xx status code
+func (o *DeleteRevertRequestUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete revert request unauthorized response has a 5xx status code
+func (o *DeleteRevertRequestUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete revert request unauthorized response a status code equal to that given
+func (o *DeleteRevertRequestUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *DeleteRevertRequestUnauthorized) Error() string {
+	return fmt.Sprintf("[DELETE /versions/revert-requests/{id}][%d] deleteRevertRequestUnauthorized ", 401)
+}
+
+func (o *DeleteRevertRequestUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /versions/revert-requests/{id}][%d] deleteRevertRequestUnauthorized ", 401)
 }
 
@@ -143,14 +234,44 @@ func NewDeleteRevertRequestForbidden() *DeleteRevertRequestForbidden {
 	return &DeleteRevertRequestForbidden{}
 }
 
-/* DeleteRevertRequestForbidden describes a response with status code 403, with default header values.
+/*
+DeleteRevertRequestForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type DeleteRevertRequestForbidden struct {
 }
 
+// IsSuccess returns true when this delete revert request forbidden response has a 2xx status code
+func (o *DeleteRevertRequestForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete revert request forbidden response has a 3xx status code
+func (o *DeleteRevertRequestForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete revert request forbidden response has a 4xx status code
+func (o *DeleteRevertRequestForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete revert request forbidden response has a 5xx status code
+func (o *DeleteRevertRequestForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete revert request forbidden response a status code equal to that given
+func (o *DeleteRevertRequestForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *DeleteRevertRequestForbidden) Error() string {
+	return fmt.Sprintf("[DELETE /versions/revert-requests/{id}][%d] deleteRevertRequestForbidden ", 403)
+}
+
+func (o *DeleteRevertRequestForbidden) String() string {
 	return fmt.Sprintf("[DELETE /versions/revert-requests/{id}][%d] deleteRevertRequestForbidden ", 403)
 }
 
@@ -164,14 +285,44 @@ func NewDeleteRevertRequestNotFound() *DeleteRevertRequestNotFound {
 	return &DeleteRevertRequestNotFound{}
 }
 
-/* DeleteRevertRequestNotFound describes a response with status code 404, with default header values.
+/*
+DeleteRevertRequestNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type DeleteRevertRequestNotFound struct {
 }
 
+// IsSuccess returns true when this delete revert request not found response has a 2xx status code
+func (o *DeleteRevertRequestNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete revert request not found response has a 3xx status code
+func (o *DeleteRevertRequestNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete revert request not found response has a 4xx status code
+func (o *DeleteRevertRequestNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete revert request not found response has a 5xx status code
+func (o *DeleteRevertRequestNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete revert request not found response a status code equal to that given
+func (o *DeleteRevertRequestNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *DeleteRevertRequestNotFound) Error() string {
+	return fmt.Sprintf("[DELETE /versions/revert-requests/{id}][%d] deleteRevertRequestNotFound ", 404)
+}
+
+func (o *DeleteRevertRequestNotFound) String() string {
 	return fmt.Sprintf("[DELETE /versions/revert-requests/{id}][%d] deleteRevertRequestNotFound ", 404)
 }
 
@@ -185,14 +336,44 @@ func NewDeleteRevertRequestConflict() *DeleteRevertRequestConflict {
 	return &DeleteRevertRequestConflict{}
 }
 
-/* DeleteRevertRequestConflict describes a response with status code 409, with default header values.
+/*
+DeleteRevertRequestConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type DeleteRevertRequestConflict struct {
 }
 
+// IsSuccess returns true when this delete revert request conflict response has a 2xx status code
+func (o *DeleteRevertRequestConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete revert request conflict response has a 3xx status code
+func (o *DeleteRevertRequestConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete revert request conflict response has a 4xx status code
+func (o *DeleteRevertRequestConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete revert request conflict response has a 5xx status code
+func (o *DeleteRevertRequestConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete revert request conflict response a status code equal to that given
+func (o *DeleteRevertRequestConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *DeleteRevertRequestConflict) Error() string {
+	return fmt.Sprintf("[DELETE /versions/revert-requests/{id}][%d] deleteRevertRequestConflict ", 409)
+}
+
+func (o *DeleteRevertRequestConflict) String() string {
 	return fmt.Sprintf("[DELETE /versions/revert-requests/{id}][%d] deleteRevertRequestConflict ", 409)
 }
 

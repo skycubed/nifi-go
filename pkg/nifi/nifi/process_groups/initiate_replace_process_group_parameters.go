@@ -54,10 +54,12 @@ func NewInitiateReplaceProcessGroupParamsWithHTTPClient(client *http.Client) *In
 	}
 }
 
-/* InitiateReplaceProcessGroupParams contains all the parameters to send to the API endpoint
-   for the initiate replace process group operation.
+/*
+InitiateReplaceProcessGroupParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the initiate replace process group operation.
+
+	Typically these are written to a http.Request.
 */
 type InitiateReplaceProcessGroupParams struct {
 

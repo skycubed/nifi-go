@@ -69,7 +69,8 @@ func NewGlobalDeleteExtensionBundleOK() *GlobalDeleteExtensionBundleOK {
 	return &GlobalDeleteExtensionBundleOK{}
 }
 
-/* GlobalDeleteExtensionBundleOK describes a response with status code 200, with default header values.
+/*
+GlobalDeleteExtensionBundleOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,39 @@ type GlobalDeleteExtensionBundleOK struct {
 	Payload *models.ExtensionBundle
 }
 
+// IsSuccess returns true when this global delete extension bundle o k response has a 2xx status code
+func (o *GlobalDeleteExtensionBundleOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this global delete extension bundle o k response has a 3xx status code
+func (o *GlobalDeleteExtensionBundleOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this global delete extension bundle o k response has a 4xx status code
+func (o *GlobalDeleteExtensionBundleOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this global delete extension bundle o k response has a 5xx status code
+func (o *GlobalDeleteExtensionBundleOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this global delete extension bundle o k response a status code equal to that given
+func (o *GlobalDeleteExtensionBundleOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GlobalDeleteExtensionBundleOK) Error() string {
 	return fmt.Sprintf("[DELETE /bundles/{bundleId}][%d] globalDeleteExtensionBundleOK  %+v", 200, o.Payload)
 }
+
+func (o *GlobalDeleteExtensionBundleOK) String() string {
+	return fmt.Sprintf("[DELETE /bundles/{bundleId}][%d] globalDeleteExtensionBundleOK  %+v", 200, o.Payload)
+}
+
 func (o *GlobalDeleteExtensionBundleOK) GetPayload() *models.ExtensionBundle {
 	return o.Payload
 }
@@ -101,14 +132,44 @@ func NewGlobalDeleteExtensionBundleBadRequest() *GlobalDeleteExtensionBundleBadR
 	return &GlobalDeleteExtensionBundleBadRequest{}
 }
 
-/* GlobalDeleteExtensionBundleBadRequest describes a response with status code 400, with default header values.
+/*
+GlobalDeleteExtensionBundleBadRequest describes a response with status code 400, with default header values.
 
 NiFi Registry was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type GlobalDeleteExtensionBundleBadRequest struct {
 }
 
+// IsSuccess returns true when this global delete extension bundle bad request response has a 2xx status code
+func (o *GlobalDeleteExtensionBundleBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this global delete extension bundle bad request response has a 3xx status code
+func (o *GlobalDeleteExtensionBundleBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this global delete extension bundle bad request response has a 4xx status code
+func (o *GlobalDeleteExtensionBundleBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this global delete extension bundle bad request response has a 5xx status code
+func (o *GlobalDeleteExtensionBundleBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this global delete extension bundle bad request response a status code equal to that given
+func (o *GlobalDeleteExtensionBundleBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *GlobalDeleteExtensionBundleBadRequest) Error() string {
+	return fmt.Sprintf("[DELETE /bundles/{bundleId}][%d] globalDeleteExtensionBundleBadRequest ", 400)
+}
+
+func (o *GlobalDeleteExtensionBundleBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /bundles/{bundleId}][%d] globalDeleteExtensionBundleBadRequest ", 400)
 }
 
@@ -122,14 +183,44 @@ func NewGlobalDeleteExtensionBundleUnauthorized() *GlobalDeleteExtensionBundleUn
 	return &GlobalDeleteExtensionBundleUnauthorized{}
 }
 
-/* GlobalDeleteExtensionBundleUnauthorized describes a response with status code 401, with default header values.
+/*
+GlobalDeleteExtensionBundleUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type GlobalDeleteExtensionBundleUnauthorized struct {
 }
 
+// IsSuccess returns true when this global delete extension bundle unauthorized response has a 2xx status code
+func (o *GlobalDeleteExtensionBundleUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this global delete extension bundle unauthorized response has a 3xx status code
+func (o *GlobalDeleteExtensionBundleUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this global delete extension bundle unauthorized response has a 4xx status code
+func (o *GlobalDeleteExtensionBundleUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this global delete extension bundle unauthorized response has a 5xx status code
+func (o *GlobalDeleteExtensionBundleUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this global delete extension bundle unauthorized response a status code equal to that given
+func (o *GlobalDeleteExtensionBundleUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GlobalDeleteExtensionBundleUnauthorized) Error() string {
+	return fmt.Sprintf("[DELETE /bundles/{bundleId}][%d] globalDeleteExtensionBundleUnauthorized ", 401)
+}
+
+func (o *GlobalDeleteExtensionBundleUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /bundles/{bundleId}][%d] globalDeleteExtensionBundleUnauthorized ", 401)
 }
 
@@ -143,14 +234,44 @@ func NewGlobalDeleteExtensionBundleForbidden() *GlobalDeleteExtensionBundleForbi
 	return &GlobalDeleteExtensionBundleForbidden{}
 }
 
-/* GlobalDeleteExtensionBundleForbidden describes a response with status code 403, with default header values.
+/*
+GlobalDeleteExtensionBundleForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type GlobalDeleteExtensionBundleForbidden struct {
 }
 
+// IsSuccess returns true when this global delete extension bundle forbidden response has a 2xx status code
+func (o *GlobalDeleteExtensionBundleForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this global delete extension bundle forbidden response has a 3xx status code
+func (o *GlobalDeleteExtensionBundleForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this global delete extension bundle forbidden response has a 4xx status code
+func (o *GlobalDeleteExtensionBundleForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this global delete extension bundle forbidden response has a 5xx status code
+func (o *GlobalDeleteExtensionBundleForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this global delete extension bundle forbidden response a status code equal to that given
+func (o *GlobalDeleteExtensionBundleForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GlobalDeleteExtensionBundleForbidden) Error() string {
+	return fmt.Sprintf("[DELETE /bundles/{bundleId}][%d] globalDeleteExtensionBundleForbidden ", 403)
+}
+
+func (o *GlobalDeleteExtensionBundleForbidden) String() string {
 	return fmt.Sprintf("[DELETE /bundles/{bundleId}][%d] globalDeleteExtensionBundleForbidden ", 403)
 }
 
@@ -164,14 +285,44 @@ func NewGlobalDeleteExtensionBundleNotFound() *GlobalDeleteExtensionBundleNotFou
 	return &GlobalDeleteExtensionBundleNotFound{}
 }
 
-/* GlobalDeleteExtensionBundleNotFound describes a response with status code 404, with default header values.
+/*
+GlobalDeleteExtensionBundleNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type GlobalDeleteExtensionBundleNotFound struct {
 }
 
+// IsSuccess returns true when this global delete extension bundle not found response has a 2xx status code
+func (o *GlobalDeleteExtensionBundleNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this global delete extension bundle not found response has a 3xx status code
+func (o *GlobalDeleteExtensionBundleNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this global delete extension bundle not found response has a 4xx status code
+func (o *GlobalDeleteExtensionBundleNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this global delete extension bundle not found response has a 5xx status code
+func (o *GlobalDeleteExtensionBundleNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this global delete extension bundle not found response a status code equal to that given
+func (o *GlobalDeleteExtensionBundleNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GlobalDeleteExtensionBundleNotFound) Error() string {
+	return fmt.Sprintf("[DELETE /bundles/{bundleId}][%d] globalDeleteExtensionBundleNotFound ", 404)
+}
+
+func (o *GlobalDeleteExtensionBundleNotFound) String() string {
 	return fmt.Sprintf("[DELETE /bundles/{bundleId}][%d] globalDeleteExtensionBundleNotFound ", 404)
 }
 
@@ -185,14 +336,44 @@ func NewGlobalDeleteExtensionBundleConflict() *GlobalDeleteExtensionBundleConfli
 	return &GlobalDeleteExtensionBundleConflict{}
 }
 
-/* GlobalDeleteExtensionBundleConflict describes a response with status code 409, with default header values.
+/*
+GlobalDeleteExtensionBundleConflict describes a response with status code 409, with default header values.
 
 NiFi Registry was unable to complete the request because it assumes a server state that is not valid.
 */
 type GlobalDeleteExtensionBundleConflict struct {
 }
 
+// IsSuccess returns true when this global delete extension bundle conflict response has a 2xx status code
+func (o *GlobalDeleteExtensionBundleConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this global delete extension bundle conflict response has a 3xx status code
+func (o *GlobalDeleteExtensionBundleConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this global delete extension bundle conflict response has a 4xx status code
+func (o *GlobalDeleteExtensionBundleConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this global delete extension bundle conflict response has a 5xx status code
+func (o *GlobalDeleteExtensionBundleConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this global delete extension bundle conflict response a status code equal to that given
+func (o *GlobalDeleteExtensionBundleConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *GlobalDeleteExtensionBundleConflict) Error() string {
+	return fmt.Sprintf("[DELETE /bundles/{bundleId}][%d] globalDeleteExtensionBundleConflict ", 409)
+}
+
+func (o *GlobalDeleteExtensionBundleConflict) String() string {
 	return fmt.Sprintf("[DELETE /bundles/{bundleId}][%d] globalDeleteExtensionBundleConflict ", 409)
 }
 

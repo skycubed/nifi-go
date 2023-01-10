@@ -24,7 +24,7 @@ type VersionedLabel struct {
 	Comments string `json:"comments,omitempty"`
 
 	// component type
-	// Enum: [CONNECTION PROCESSOR PROCESS_GROUP REMOTE_PROCESS_GROUP INPUT_PORT OUTPUT_PORT REMOTE_INPUT_PORT REMOTE_OUTPUT_PORT FUNNEL LABEL CONTROLLER_SERVICE]
+	// Enum: [CONNECTION PROCESSOR PROCESS_GROUP REMOTE_PROCESS_GROUP INPUT_PORT OUTPUT_PORT REMOTE_INPUT_PORT REMOTE_OUTPUT_PORT FUNNEL LABEL CONTROLLER_SERVICE REPORTING_TASK PARAMETER_CONTEXT PARAMETER_PROVIDER TEMPLATE FLOW_REGISTRY_CLIENT]
 	ComponentType string `json:"componentType,omitempty"`
 
 	// The ID of the Process Group that this component belongs to
@@ -35,6 +35,9 @@ type VersionedLabel struct {
 
 	// The component's unique identifier
 	Identifier string `json:"identifier,omitempty"`
+
+	// The instance ID of an existing component that is described by this VersionedComponent, or null if this is not mapped to an instantiated component
+	InstanceIdentifier string `json:"instanceIdentifier,omitempty"`
 
 	// The text that appears in the label.
 	Label string `json:"label,omitempty"`
@@ -50,6 +53,9 @@ type VersionedLabel struct {
 
 	// The width of the label in pixels when at a 1:1 scale.
 	Width float64 `json:"width,omitempty"`
+
+	// The z index of the connection.
+	ZIndex int64 `json:"zIndex,omitempty"`
 }
 
 // Validate validates this versioned label
@@ -74,7 +80,7 @@ var versionedLabelTypeComponentTypePropEnum []interface{}
 
 func init() {
 	var res []string
-	if err := json.Unmarshal([]byte(`["CONNECTION","PROCESSOR","PROCESS_GROUP","REMOTE_PROCESS_GROUP","INPUT_PORT","OUTPUT_PORT","REMOTE_INPUT_PORT","REMOTE_OUTPUT_PORT","FUNNEL","LABEL","CONTROLLER_SERVICE"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["CONNECTION","PROCESSOR","PROCESS_GROUP","REMOTE_PROCESS_GROUP","INPUT_PORT","OUTPUT_PORT","REMOTE_INPUT_PORT","REMOTE_OUTPUT_PORT","FUNNEL","LABEL","CONTROLLER_SERVICE","REPORTING_TASK","PARAMETER_CONTEXT","PARAMETER_PROVIDER","TEMPLATE","FLOW_REGISTRY_CLIENT"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
@@ -116,6 +122,21 @@ const (
 
 	// VersionedLabelComponentTypeCONTROLLERSERVICE captures enum value "CONTROLLER_SERVICE"
 	VersionedLabelComponentTypeCONTROLLERSERVICE string = "CONTROLLER_SERVICE"
+
+	// VersionedLabelComponentTypeREPORTINGTASK captures enum value "REPORTING_TASK"
+	VersionedLabelComponentTypeREPORTINGTASK string = "REPORTING_TASK"
+
+	// VersionedLabelComponentTypePARAMETERCONTEXT captures enum value "PARAMETER_CONTEXT"
+	VersionedLabelComponentTypePARAMETERCONTEXT string = "PARAMETER_CONTEXT"
+
+	// VersionedLabelComponentTypePARAMETERPROVIDER captures enum value "PARAMETER_PROVIDER"
+	VersionedLabelComponentTypePARAMETERPROVIDER string = "PARAMETER_PROVIDER"
+
+	// VersionedLabelComponentTypeTEMPLATE captures enum value "TEMPLATE"
+	VersionedLabelComponentTypeTEMPLATE string = "TEMPLATE"
+
+	// VersionedLabelComponentTypeFLOWREGISTRYCLIENT captures enum value "FLOW_REGISTRY_CLIENT"
+	VersionedLabelComponentTypeFLOWREGISTRYCLIENT string = "FLOW_REGISTRY_CLIENT"
 )
 
 // prop value enum

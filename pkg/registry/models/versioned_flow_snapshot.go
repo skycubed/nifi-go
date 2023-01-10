@@ -43,6 +43,9 @@ type VersionedFlowSnapshot struct {
 	// The parameter contexts referenced by process groups in the flow contents. The mapping is from the name of the context to the context instance, and it is expected that any context in this map is referenced by at least one process group in this flow.
 	ParameterContexts map[string]VersionedParameterContext `json:"parameterContexts,omitempty"`
 
+	// Contains basic information about parameter providers referenced in the versioned flow.
+	ParameterProviders map[string]ParameterProviderReference `json:"parameterProviders,omitempty"`
+
 	// The metadata for this snapshot
 	// Required: true
 	SnapshotMetadata *VersionedFlowSnapshotMetadata `json:"snapshotMetadata"`
@@ -69,6 +72,10 @@ func (m *VersionedFlowSnapshot) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateParameterContexts(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateParameterProviders(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -192,6 +199,32 @@ func (m *VersionedFlowSnapshot) validateParameterContexts(formats strfmt.Registr
 	return nil
 }
 
+func (m *VersionedFlowSnapshot) validateParameterProviders(formats strfmt.Registry) error {
+	if swag.IsZero(m.ParameterProviders) { // not required
+		return nil
+	}
+
+	for k := range m.ParameterProviders {
+
+		if err := validate.Required("parameterProviders"+"."+k, "body", m.ParameterProviders[k]); err != nil {
+			return err
+		}
+		if val, ok := m.ParameterProviders[k]; ok {
+			if err := val.Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("parameterProviders" + "." + k)
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("parameterProviders" + "." + k)
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
 func (m *VersionedFlowSnapshot) validateSnapshotMetadata(formats strfmt.Registry) error {
 
 	if err := validate.Required("snapshotMetadata", "body", m.SnapshotMetadata); err != nil {
@@ -233,6 +266,10 @@ func (m *VersionedFlowSnapshot) ContextValidate(ctx context.Context, formats str
 	}
 
 	if err := m.contextValidateParameterContexts(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateParameterProviders(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -314,6 +351,21 @@ func (m *VersionedFlowSnapshot) contextValidateParameterContexts(ctx context.Con
 	for k := range m.ParameterContexts {
 
 		if val, ok := m.ParameterContexts[k]; ok {
+			if err := val.ContextValidate(ctx, formats); err != nil {
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *VersionedFlowSnapshot) contextValidateParameterProviders(ctx context.Context, formats strfmt.Registry) error {
+
+	for k := range m.ParameterProviders {
+
+		if val, ok := m.ParameterProviders[k]; ok {
 			if err := val.ContextValidate(ctx, formats); err != nil {
 				return err
 			}

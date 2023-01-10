@@ -61,7 +61,8 @@ func NewCreateAccessTokenUsingBasicAuthCredentialsOK() *CreateAccessTokenUsingBa
 	return &CreateAccessTokenUsingBasicAuthCredentialsOK{}
 }
 
-/* CreateAccessTokenUsingBasicAuthCredentialsOK describes a response with status code 200, with default header values.
+/*
+CreateAccessTokenUsingBasicAuthCredentialsOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -69,9 +70,39 @@ type CreateAccessTokenUsingBasicAuthCredentialsOK struct {
 	Payload string
 }
 
+// IsSuccess returns true when this create access token using basic auth credentials o k response has a 2xx status code
+func (o *CreateAccessTokenUsingBasicAuthCredentialsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create access token using basic auth credentials o k response has a 3xx status code
+func (o *CreateAccessTokenUsingBasicAuthCredentialsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create access token using basic auth credentials o k response has a 4xx status code
+func (o *CreateAccessTokenUsingBasicAuthCredentialsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create access token using basic auth credentials o k response has a 5xx status code
+func (o *CreateAccessTokenUsingBasicAuthCredentialsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create access token using basic auth credentials o k response a status code equal to that given
+func (o *CreateAccessTokenUsingBasicAuthCredentialsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *CreateAccessTokenUsingBasicAuthCredentialsOK) Error() string {
 	return fmt.Sprintf("[POST /access/token/login][%d] createAccessTokenUsingBasicAuthCredentialsOK  %+v", 200, o.Payload)
 }
+
+func (o *CreateAccessTokenUsingBasicAuthCredentialsOK) String() string {
+	return fmt.Sprintf("[POST /access/token/login][%d] createAccessTokenUsingBasicAuthCredentialsOK  %+v", 200, o.Payload)
+}
+
 func (o *CreateAccessTokenUsingBasicAuthCredentialsOK) GetPayload() string {
 	return o.Payload
 }
@@ -91,14 +122,44 @@ func NewCreateAccessTokenUsingBasicAuthCredentialsBadRequest() *CreateAccessToke
 	return &CreateAccessTokenUsingBasicAuthCredentialsBadRequest{}
 }
 
-/* CreateAccessTokenUsingBasicAuthCredentialsBadRequest describes a response with status code 400, with default header values.
+/*
+CreateAccessTokenUsingBasicAuthCredentialsBadRequest describes a response with status code 400, with default header values.
 
 NiFi Registry was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type CreateAccessTokenUsingBasicAuthCredentialsBadRequest struct {
 }
 
+// IsSuccess returns true when this create access token using basic auth credentials bad request response has a 2xx status code
+func (o *CreateAccessTokenUsingBasicAuthCredentialsBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create access token using basic auth credentials bad request response has a 3xx status code
+func (o *CreateAccessTokenUsingBasicAuthCredentialsBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create access token using basic auth credentials bad request response has a 4xx status code
+func (o *CreateAccessTokenUsingBasicAuthCredentialsBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create access token using basic auth credentials bad request response has a 5xx status code
+func (o *CreateAccessTokenUsingBasicAuthCredentialsBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create access token using basic auth credentials bad request response a status code equal to that given
+func (o *CreateAccessTokenUsingBasicAuthCredentialsBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CreateAccessTokenUsingBasicAuthCredentialsBadRequest) Error() string {
+	return fmt.Sprintf("[POST /access/token/login][%d] createAccessTokenUsingBasicAuthCredentialsBadRequest ", 400)
+}
+
+func (o *CreateAccessTokenUsingBasicAuthCredentialsBadRequest) String() string {
 	return fmt.Sprintf("[POST /access/token/login][%d] createAccessTokenUsingBasicAuthCredentialsBadRequest ", 400)
 }
 
@@ -112,14 +173,44 @@ func NewCreateAccessTokenUsingBasicAuthCredentialsUnauthorized() *CreateAccessTo
 	return &CreateAccessTokenUsingBasicAuthCredentialsUnauthorized{}
 }
 
-/* CreateAccessTokenUsingBasicAuthCredentialsUnauthorized describes a response with status code 401, with default header values.
+/*
+CreateAccessTokenUsingBasicAuthCredentialsUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type CreateAccessTokenUsingBasicAuthCredentialsUnauthorized struct {
 }
 
+// IsSuccess returns true when this create access token using basic auth credentials unauthorized response has a 2xx status code
+func (o *CreateAccessTokenUsingBasicAuthCredentialsUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create access token using basic auth credentials unauthorized response has a 3xx status code
+func (o *CreateAccessTokenUsingBasicAuthCredentialsUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create access token using basic auth credentials unauthorized response has a 4xx status code
+func (o *CreateAccessTokenUsingBasicAuthCredentialsUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create access token using basic auth credentials unauthorized response has a 5xx status code
+func (o *CreateAccessTokenUsingBasicAuthCredentialsUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create access token using basic auth credentials unauthorized response a status code equal to that given
+func (o *CreateAccessTokenUsingBasicAuthCredentialsUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *CreateAccessTokenUsingBasicAuthCredentialsUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /access/token/login][%d] createAccessTokenUsingBasicAuthCredentialsUnauthorized ", 401)
+}
+
+func (o *CreateAccessTokenUsingBasicAuthCredentialsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /access/token/login][%d] createAccessTokenUsingBasicAuthCredentialsUnauthorized ", 401)
 }
 
@@ -133,14 +224,44 @@ func NewCreateAccessTokenUsingBasicAuthCredentialsConflict() *CreateAccessTokenU
 	return &CreateAccessTokenUsingBasicAuthCredentialsConflict{}
 }
 
-/* CreateAccessTokenUsingBasicAuthCredentialsConflict describes a response with status code 409, with default header values.
+/*
+CreateAccessTokenUsingBasicAuthCredentialsConflict describes a response with status code 409, with default header values.
 
 NiFi Registry was unable to complete the request because it assumes a server state that is not valid. The NiFi Registry may not be configured to support login with username/password.
 */
 type CreateAccessTokenUsingBasicAuthCredentialsConflict struct {
 }
 
+// IsSuccess returns true when this create access token using basic auth credentials conflict response has a 2xx status code
+func (o *CreateAccessTokenUsingBasicAuthCredentialsConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create access token using basic auth credentials conflict response has a 3xx status code
+func (o *CreateAccessTokenUsingBasicAuthCredentialsConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create access token using basic auth credentials conflict response has a 4xx status code
+func (o *CreateAccessTokenUsingBasicAuthCredentialsConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create access token using basic auth credentials conflict response has a 5xx status code
+func (o *CreateAccessTokenUsingBasicAuthCredentialsConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create access token using basic auth credentials conflict response a status code equal to that given
+func (o *CreateAccessTokenUsingBasicAuthCredentialsConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *CreateAccessTokenUsingBasicAuthCredentialsConflict) Error() string {
+	return fmt.Sprintf("[POST /access/token/login][%d] createAccessTokenUsingBasicAuthCredentialsConflict ", 409)
+}
+
+func (o *CreateAccessTokenUsingBasicAuthCredentialsConflict) String() string {
 	return fmt.Sprintf("[POST /access/token/login][%d] createAccessTokenUsingBasicAuthCredentialsConflict ", 409)
 }
 
@@ -154,14 +275,44 @@ func NewCreateAccessTokenUsingBasicAuthCredentialsInternalServerError() *CreateA
 	return &CreateAccessTokenUsingBasicAuthCredentialsInternalServerError{}
 }
 
-/* CreateAccessTokenUsingBasicAuthCredentialsInternalServerError describes a response with status code 500, with default header values.
+/*
+CreateAccessTokenUsingBasicAuthCredentialsInternalServerError describes a response with status code 500, with default header values.
 
 NiFi Registry was unable to complete the request because an unexpected error occurred.
 */
 type CreateAccessTokenUsingBasicAuthCredentialsInternalServerError struct {
 }
 
+// IsSuccess returns true when this create access token using basic auth credentials internal server error response has a 2xx status code
+func (o *CreateAccessTokenUsingBasicAuthCredentialsInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create access token using basic auth credentials internal server error response has a 3xx status code
+func (o *CreateAccessTokenUsingBasicAuthCredentialsInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create access token using basic auth credentials internal server error response has a 4xx status code
+func (o *CreateAccessTokenUsingBasicAuthCredentialsInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create access token using basic auth credentials internal server error response has a 5xx status code
+func (o *CreateAccessTokenUsingBasicAuthCredentialsInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this create access token using basic auth credentials internal server error response a status code equal to that given
+func (o *CreateAccessTokenUsingBasicAuthCredentialsInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *CreateAccessTokenUsingBasicAuthCredentialsInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /access/token/login][%d] createAccessTokenUsingBasicAuthCredentialsInternalServerError ", 500)
+}
+
+func (o *CreateAccessTokenUsingBasicAuthCredentialsInternalServerError) String() string {
 	return fmt.Sprintf("[POST /access/token/login][%d] createAccessTokenUsingBasicAuthCredentialsInternalServerError ", 500)
 }
 

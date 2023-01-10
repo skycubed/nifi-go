@@ -69,7 +69,8 @@ func NewGetOutputPortOK() *GetOutputPortOK {
 	return &GetOutputPortOK{}
 }
 
-/* GetOutputPortOK describes a response with status code 200, with default header values.
+/*
+GetOutputPortOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,39 @@ type GetOutputPortOK struct {
 	Payload *models.PortEntity
 }
 
+// IsSuccess returns true when this get output port o k response has a 2xx status code
+func (o *GetOutputPortOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get output port o k response has a 3xx status code
+func (o *GetOutputPortOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get output port o k response has a 4xx status code
+func (o *GetOutputPortOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get output port o k response has a 5xx status code
+func (o *GetOutputPortOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get output port o k response a status code equal to that given
+func (o *GetOutputPortOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetOutputPortOK) Error() string {
 	return fmt.Sprintf("[GET /output-ports/{id}][%d] getOutputPortOK  %+v", 200, o.Payload)
 }
+
+func (o *GetOutputPortOK) String() string {
+	return fmt.Sprintf("[GET /output-ports/{id}][%d] getOutputPortOK  %+v", 200, o.Payload)
+}
+
 func (o *GetOutputPortOK) GetPayload() *models.PortEntity {
 	return o.Payload
 }
@@ -101,14 +132,44 @@ func NewGetOutputPortBadRequest() *GetOutputPortBadRequest {
 	return &GetOutputPortBadRequest{}
 }
 
-/* GetOutputPortBadRequest describes a response with status code 400, with default header values.
+/*
+GetOutputPortBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type GetOutputPortBadRequest struct {
 }
 
+// IsSuccess returns true when this get output port bad request response has a 2xx status code
+func (o *GetOutputPortBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get output port bad request response has a 3xx status code
+func (o *GetOutputPortBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get output port bad request response has a 4xx status code
+func (o *GetOutputPortBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get output port bad request response has a 5xx status code
+func (o *GetOutputPortBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get output port bad request response a status code equal to that given
+func (o *GetOutputPortBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *GetOutputPortBadRequest) Error() string {
+	return fmt.Sprintf("[GET /output-ports/{id}][%d] getOutputPortBadRequest ", 400)
+}
+
+func (o *GetOutputPortBadRequest) String() string {
 	return fmt.Sprintf("[GET /output-ports/{id}][%d] getOutputPortBadRequest ", 400)
 }
 
@@ -122,14 +183,44 @@ func NewGetOutputPortUnauthorized() *GetOutputPortUnauthorized {
 	return &GetOutputPortUnauthorized{}
 }
 
-/* GetOutputPortUnauthorized describes a response with status code 401, with default header values.
+/*
+GetOutputPortUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type GetOutputPortUnauthorized struct {
 }
 
+// IsSuccess returns true when this get output port unauthorized response has a 2xx status code
+func (o *GetOutputPortUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get output port unauthorized response has a 3xx status code
+func (o *GetOutputPortUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get output port unauthorized response has a 4xx status code
+func (o *GetOutputPortUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get output port unauthorized response has a 5xx status code
+func (o *GetOutputPortUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get output port unauthorized response a status code equal to that given
+func (o *GetOutputPortUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GetOutputPortUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /output-ports/{id}][%d] getOutputPortUnauthorized ", 401)
+}
+
+func (o *GetOutputPortUnauthorized) String() string {
 	return fmt.Sprintf("[GET /output-ports/{id}][%d] getOutputPortUnauthorized ", 401)
 }
 
@@ -143,14 +234,44 @@ func NewGetOutputPortForbidden() *GetOutputPortForbidden {
 	return &GetOutputPortForbidden{}
 }
 
-/* GetOutputPortForbidden describes a response with status code 403, with default header values.
+/*
+GetOutputPortForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type GetOutputPortForbidden struct {
 }
 
+// IsSuccess returns true when this get output port forbidden response has a 2xx status code
+func (o *GetOutputPortForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get output port forbidden response has a 3xx status code
+func (o *GetOutputPortForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get output port forbidden response has a 4xx status code
+func (o *GetOutputPortForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get output port forbidden response has a 5xx status code
+func (o *GetOutputPortForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get output port forbidden response a status code equal to that given
+func (o *GetOutputPortForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetOutputPortForbidden) Error() string {
+	return fmt.Sprintf("[GET /output-ports/{id}][%d] getOutputPortForbidden ", 403)
+}
+
+func (o *GetOutputPortForbidden) String() string {
 	return fmt.Sprintf("[GET /output-ports/{id}][%d] getOutputPortForbidden ", 403)
 }
 
@@ -164,14 +285,44 @@ func NewGetOutputPortNotFound() *GetOutputPortNotFound {
 	return &GetOutputPortNotFound{}
 }
 
-/* GetOutputPortNotFound describes a response with status code 404, with default header values.
+/*
+GetOutputPortNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type GetOutputPortNotFound struct {
 }
 
+// IsSuccess returns true when this get output port not found response has a 2xx status code
+func (o *GetOutputPortNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get output port not found response has a 3xx status code
+func (o *GetOutputPortNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get output port not found response has a 4xx status code
+func (o *GetOutputPortNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get output port not found response has a 5xx status code
+func (o *GetOutputPortNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get output port not found response a status code equal to that given
+func (o *GetOutputPortNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetOutputPortNotFound) Error() string {
+	return fmt.Sprintf("[GET /output-ports/{id}][%d] getOutputPortNotFound ", 404)
+}
+
+func (o *GetOutputPortNotFound) String() string {
 	return fmt.Sprintf("[GET /output-ports/{id}][%d] getOutputPortNotFound ", 404)
 }
 
@@ -185,14 +336,44 @@ func NewGetOutputPortConflict() *GetOutputPortConflict {
 	return &GetOutputPortConflict{}
 }
 
-/* GetOutputPortConflict describes a response with status code 409, with default header values.
+/*
+GetOutputPortConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type GetOutputPortConflict struct {
 }
 
+// IsSuccess returns true when this get output port conflict response has a 2xx status code
+func (o *GetOutputPortConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get output port conflict response has a 3xx status code
+func (o *GetOutputPortConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get output port conflict response has a 4xx status code
+func (o *GetOutputPortConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get output port conflict response has a 5xx status code
+func (o *GetOutputPortConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get output port conflict response a status code equal to that given
+func (o *GetOutputPortConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *GetOutputPortConflict) Error() string {
+	return fmt.Sprintf("[GET /output-ports/{id}][%d] getOutputPortConflict ", 409)
+}
+
+func (o *GetOutputPortConflict) String() string {
 	return fmt.Sprintf("[GET /output-ports/{id}][%d] getOutputPortConflict ", 409)
 }
 

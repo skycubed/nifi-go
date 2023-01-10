@@ -69,7 +69,8 @@ func NewRemoveReportingTaskOK() *RemoveReportingTaskOK {
 	return &RemoveReportingTaskOK{}
 }
 
-/* RemoveReportingTaskOK describes a response with status code 200, with default header values.
+/*
+RemoveReportingTaskOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,39 @@ type RemoveReportingTaskOK struct {
 	Payload *models.ReportingTaskEntity
 }
 
+// IsSuccess returns true when this remove reporting task o k response has a 2xx status code
+func (o *RemoveReportingTaskOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this remove reporting task o k response has a 3xx status code
+func (o *RemoveReportingTaskOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this remove reporting task o k response has a 4xx status code
+func (o *RemoveReportingTaskOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this remove reporting task o k response has a 5xx status code
+func (o *RemoveReportingTaskOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this remove reporting task o k response a status code equal to that given
+func (o *RemoveReportingTaskOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *RemoveReportingTaskOK) Error() string {
 	return fmt.Sprintf("[DELETE /reporting-tasks/{id}][%d] removeReportingTaskOK  %+v", 200, o.Payload)
 }
+
+func (o *RemoveReportingTaskOK) String() string {
+	return fmt.Sprintf("[DELETE /reporting-tasks/{id}][%d] removeReportingTaskOK  %+v", 200, o.Payload)
+}
+
 func (o *RemoveReportingTaskOK) GetPayload() *models.ReportingTaskEntity {
 	return o.Payload
 }
@@ -101,14 +132,44 @@ func NewRemoveReportingTaskBadRequest() *RemoveReportingTaskBadRequest {
 	return &RemoveReportingTaskBadRequest{}
 }
 
-/* RemoveReportingTaskBadRequest describes a response with status code 400, with default header values.
+/*
+RemoveReportingTaskBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type RemoveReportingTaskBadRequest struct {
 }
 
+// IsSuccess returns true when this remove reporting task bad request response has a 2xx status code
+func (o *RemoveReportingTaskBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this remove reporting task bad request response has a 3xx status code
+func (o *RemoveReportingTaskBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this remove reporting task bad request response has a 4xx status code
+func (o *RemoveReportingTaskBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this remove reporting task bad request response has a 5xx status code
+func (o *RemoveReportingTaskBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this remove reporting task bad request response a status code equal to that given
+func (o *RemoveReportingTaskBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *RemoveReportingTaskBadRequest) Error() string {
+	return fmt.Sprintf("[DELETE /reporting-tasks/{id}][%d] removeReportingTaskBadRequest ", 400)
+}
+
+func (o *RemoveReportingTaskBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /reporting-tasks/{id}][%d] removeReportingTaskBadRequest ", 400)
 }
 
@@ -122,14 +183,44 @@ func NewRemoveReportingTaskUnauthorized() *RemoveReportingTaskUnauthorized {
 	return &RemoveReportingTaskUnauthorized{}
 }
 
-/* RemoveReportingTaskUnauthorized describes a response with status code 401, with default header values.
+/*
+RemoveReportingTaskUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type RemoveReportingTaskUnauthorized struct {
 }
 
+// IsSuccess returns true when this remove reporting task unauthorized response has a 2xx status code
+func (o *RemoveReportingTaskUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this remove reporting task unauthorized response has a 3xx status code
+func (o *RemoveReportingTaskUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this remove reporting task unauthorized response has a 4xx status code
+func (o *RemoveReportingTaskUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this remove reporting task unauthorized response has a 5xx status code
+func (o *RemoveReportingTaskUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this remove reporting task unauthorized response a status code equal to that given
+func (o *RemoveReportingTaskUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *RemoveReportingTaskUnauthorized) Error() string {
+	return fmt.Sprintf("[DELETE /reporting-tasks/{id}][%d] removeReportingTaskUnauthorized ", 401)
+}
+
+func (o *RemoveReportingTaskUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /reporting-tasks/{id}][%d] removeReportingTaskUnauthorized ", 401)
 }
 
@@ -143,14 +234,44 @@ func NewRemoveReportingTaskForbidden() *RemoveReportingTaskForbidden {
 	return &RemoveReportingTaskForbidden{}
 }
 
-/* RemoveReportingTaskForbidden describes a response with status code 403, with default header values.
+/*
+RemoveReportingTaskForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type RemoveReportingTaskForbidden struct {
 }
 
+// IsSuccess returns true when this remove reporting task forbidden response has a 2xx status code
+func (o *RemoveReportingTaskForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this remove reporting task forbidden response has a 3xx status code
+func (o *RemoveReportingTaskForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this remove reporting task forbidden response has a 4xx status code
+func (o *RemoveReportingTaskForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this remove reporting task forbidden response has a 5xx status code
+func (o *RemoveReportingTaskForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this remove reporting task forbidden response a status code equal to that given
+func (o *RemoveReportingTaskForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *RemoveReportingTaskForbidden) Error() string {
+	return fmt.Sprintf("[DELETE /reporting-tasks/{id}][%d] removeReportingTaskForbidden ", 403)
+}
+
+func (o *RemoveReportingTaskForbidden) String() string {
 	return fmt.Sprintf("[DELETE /reporting-tasks/{id}][%d] removeReportingTaskForbidden ", 403)
 }
 
@@ -164,14 +285,44 @@ func NewRemoveReportingTaskNotFound() *RemoveReportingTaskNotFound {
 	return &RemoveReportingTaskNotFound{}
 }
 
-/* RemoveReportingTaskNotFound describes a response with status code 404, with default header values.
+/*
+RemoveReportingTaskNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type RemoveReportingTaskNotFound struct {
 }
 
+// IsSuccess returns true when this remove reporting task not found response has a 2xx status code
+func (o *RemoveReportingTaskNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this remove reporting task not found response has a 3xx status code
+func (o *RemoveReportingTaskNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this remove reporting task not found response has a 4xx status code
+func (o *RemoveReportingTaskNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this remove reporting task not found response has a 5xx status code
+func (o *RemoveReportingTaskNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this remove reporting task not found response a status code equal to that given
+func (o *RemoveReportingTaskNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *RemoveReportingTaskNotFound) Error() string {
+	return fmt.Sprintf("[DELETE /reporting-tasks/{id}][%d] removeReportingTaskNotFound ", 404)
+}
+
+func (o *RemoveReportingTaskNotFound) String() string {
 	return fmt.Sprintf("[DELETE /reporting-tasks/{id}][%d] removeReportingTaskNotFound ", 404)
 }
 
@@ -185,14 +336,44 @@ func NewRemoveReportingTaskConflict() *RemoveReportingTaskConflict {
 	return &RemoveReportingTaskConflict{}
 }
 
-/* RemoveReportingTaskConflict describes a response with status code 409, with default header values.
+/*
+RemoveReportingTaskConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type RemoveReportingTaskConflict struct {
 }
 
+// IsSuccess returns true when this remove reporting task conflict response has a 2xx status code
+func (o *RemoveReportingTaskConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this remove reporting task conflict response has a 3xx status code
+func (o *RemoveReportingTaskConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this remove reporting task conflict response has a 4xx status code
+func (o *RemoveReportingTaskConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this remove reporting task conflict response has a 5xx status code
+func (o *RemoveReportingTaskConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this remove reporting task conflict response a status code equal to that given
+func (o *RemoveReportingTaskConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *RemoveReportingTaskConflict) Error() string {
+	return fmt.Sprintf("[DELETE /reporting-tasks/{id}][%d] removeReportingTaskConflict ", 409)
+}
+
+func (o *RemoveReportingTaskConflict) String() string {
 	return fmt.Sprintf("[DELETE /reporting-tasks/{id}][%d] removeReportingTaskConflict ", 409)
 }
 

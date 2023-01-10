@@ -69,7 +69,8 @@ func NewGetConnectionStatusHistoryOK() *GetConnectionStatusHistoryOK {
 	return &GetConnectionStatusHistoryOK{}
 }
 
-/* GetConnectionStatusHistoryOK describes a response with status code 200, with default header values.
+/*
+GetConnectionStatusHistoryOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,39 @@ type GetConnectionStatusHistoryOK struct {
 	Payload *models.StatusHistoryEntity
 }
 
+// IsSuccess returns true when this get connection status history o k response has a 2xx status code
+func (o *GetConnectionStatusHistoryOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get connection status history o k response has a 3xx status code
+func (o *GetConnectionStatusHistoryOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get connection status history o k response has a 4xx status code
+func (o *GetConnectionStatusHistoryOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get connection status history o k response has a 5xx status code
+func (o *GetConnectionStatusHistoryOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get connection status history o k response a status code equal to that given
+func (o *GetConnectionStatusHistoryOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetConnectionStatusHistoryOK) Error() string {
 	return fmt.Sprintf("[GET /flow/connections/{id}/status/history][%d] getConnectionStatusHistoryOK  %+v", 200, o.Payload)
 }
+
+func (o *GetConnectionStatusHistoryOK) String() string {
+	return fmt.Sprintf("[GET /flow/connections/{id}/status/history][%d] getConnectionStatusHistoryOK  %+v", 200, o.Payload)
+}
+
 func (o *GetConnectionStatusHistoryOK) GetPayload() *models.StatusHistoryEntity {
 	return o.Payload
 }
@@ -101,14 +132,44 @@ func NewGetConnectionStatusHistoryBadRequest() *GetConnectionStatusHistoryBadReq
 	return &GetConnectionStatusHistoryBadRequest{}
 }
 
-/* GetConnectionStatusHistoryBadRequest describes a response with status code 400, with default header values.
+/*
+GetConnectionStatusHistoryBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type GetConnectionStatusHistoryBadRequest struct {
 }
 
+// IsSuccess returns true when this get connection status history bad request response has a 2xx status code
+func (o *GetConnectionStatusHistoryBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get connection status history bad request response has a 3xx status code
+func (o *GetConnectionStatusHistoryBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get connection status history bad request response has a 4xx status code
+func (o *GetConnectionStatusHistoryBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get connection status history bad request response has a 5xx status code
+func (o *GetConnectionStatusHistoryBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get connection status history bad request response a status code equal to that given
+func (o *GetConnectionStatusHistoryBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *GetConnectionStatusHistoryBadRequest) Error() string {
+	return fmt.Sprintf("[GET /flow/connections/{id}/status/history][%d] getConnectionStatusHistoryBadRequest ", 400)
+}
+
+func (o *GetConnectionStatusHistoryBadRequest) String() string {
 	return fmt.Sprintf("[GET /flow/connections/{id}/status/history][%d] getConnectionStatusHistoryBadRequest ", 400)
 }
 
@@ -122,14 +183,44 @@ func NewGetConnectionStatusHistoryUnauthorized() *GetConnectionStatusHistoryUnau
 	return &GetConnectionStatusHistoryUnauthorized{}
 }
 
-/* GetConnectionStatusHistoryUnauthorized describes a response with status code 401, with default header values.
+/*
+GetConnectionStatusHistoryUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type GetConnectionStatusHistoryUnauthorized struct {
 }
 
+// IsSuccess returns true when this get connection status history unauthorized response has a 2xx status code
+func (o *GetConnectionStatusHistoryUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get connection status history unauthorized response has a 3xx status code
+func (o *GetConnectionStatusHistoryUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get connection status history unauthorized response has a 4xx status code
+func (o *GetConnectionStatusHistoryUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get connection status history unauthorized response has a 5xx status code
+func (o *GetConnectionStatusHistoryUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get connection status history unauthorized response a status code equal to that given
+func (o *GetConnectionStatusHistoryUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GetConnectionStatusHistoryUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /flow/connections/{id}/status/history][%d] getConnectionStatusHistoryUnauthorized ", 401)
+}
+
+func (o *GetConnectionStatusHistoryUnauthorized) String() string {
 	return fmt.Sprintf("[GET /flow/connections/{id}/status/history][%d] getConnectionStatusHistoryUnauthorized ", 401)
 }
 
@@ -143,14 +234,44 @@ func NewGetConnectionStatusHistoryForbidden() *GetConnectionStatusHistoryForbidd
 	return &GetConnectionStatusHistoryForbidden{}
 }
 
-/* GetConnectionStatusHistoryForbidden describes a response with status code 403, with default header values.
+/*
+GetConnectionStatusHistoryForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type GetConnectionStatusHistoryForbidden struct {
 }
 
+// IsSuccess returns true when this get connection status history forbidden response has a 2xx status code
+func (o *GetConnectionStatusHistoryForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get connection status history forbidden response has a 3xx status code
+func (o *GetConnectionStatusHistoryForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get connection status history forbidden response has a 4xx status code
+func (o *GetConnectionStatusHistoryForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get connection status history forbidden response has a 5xx status code
+func (o *GetConnectionStatusHistoryForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get connection status history forbidden response a status code equal to that given
+func (o *GetConnectionStatusHistoryForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetConnectionStatusHistoryForbidden) Error() string {
+	return fmt.Sprintf("[GET /flow/connections/{id}/status/history][%d] getConnectionStatusHistoryForbidden ", 403)
+}
+
+func (o *GetConnectionStatusHistoryForbidden) String() string {
 	return fmt.Sprintf("[GET /flow/connections/{id}/status/history][%d] getConnectionStatusHistoryForbidden ", 403)
 }
 
@@ -164,14 +285,44 @@ func NewGetConnectionStatusHistoryNotFound() *GetConnectionStatusHistoryNotFound
 	return &GetConnectionStatusHistoryNotFound{}
 }
 
-/* GetConnectionStatusHistoryNotFound describes a response with status code 404, with default header values.
+/*
+GetConnectionStatusHistoryNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type GetConnectionStatusHistoryNotFound struct {
 }
 
+// IsSuccess returns true when this get connection status history not found response has a 2xx status code
+func (o *GetConnectionStatusHistoryNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get connection status history not found response has a 3xx status code
+func (o *GetConnectionStatusHistoryNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get connection status history not found response has a 4xx status code
+func (o *GetConnectionStatusHistoryNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get connection status history not found response has a 5xx status code
+func (o *GetConnectionStatusHistoryNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get connection status history not found response a status code equal to that given
+func (o *GetConnectionStatusHistoryNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetConnectionStatusHistoryNotFound) Error() string {
+	return fmt.Sprintf("[GET /flow/connections/{id}/status/history][%d] getConnectionStatusHistoryNotFound ", 404)
+}
+
+func (o *GetConnectionStatusHistoryNotFound) String() string {
 	return fmt.Sprintf("[GET /flow/connections/{id}/status/history][%d] getConnectionStatusHistoryNotFound ", 404)
 }
 
@@ -185,14 +336,44 @@ func NewGetConnectionStatusHistoryConflict() *GetConnectionStatusHistoryConflict
 	return &GetConnectionStatusHistoryConflict{}
 }
 
-/* GetConnectionStatusHistoryConflict describes a response with status code 409, with default header values.
+/*
+GetConnectionStatusHistoryConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type GetConnectionStatusHistoryConflict struct {
 }
 
+// IsSuccess returns true when this get connection status history conflict response has a 2xx status code
+func (o *GetConnectionStatusHistoryConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get connection status history conflict response has a 3xx status code
+func (o *GetConnectionStatusHistoryConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get connection status history conflict response has a 4xx status code
+func (o *GetConnectionStatusHistoryConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get connection status history conflict response has a 5xx status code
+func (o *GetConnectionStatusHistoryConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get connection status history conflict response a status code equal to that given
+func (o *GetConnectionStatusHistoryConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *GetConnectionStatusHistoryConflict) Error() string {
+	return fmt.Sprintf("[GET /flow/connections/{id}/status/history][%d] getConnectionStatusHistoryConflict ", 409)
+}
+
+func (o *GetConnectionStatusHistoryConflict) String() string {
 	return fmt.Sprintf("[GET /flow/connections/{id}/status/history][%d] getConnectionStatusHistoryConflict ", 409)
 }
 

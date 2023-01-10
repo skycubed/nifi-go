@@ -63,7 +63,8 @@ func NewSearchFlowOK() *SearchFlowOK {
 	return &SearchFlowOK{}
 }
 
-/* SearchFlowOK describes a response with status code 200, with default header values.
+/*
+SearchFlowOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -71,9 +72,39 @@ type SearchFlowOK struct {
 	Payload *models.SearchResultsEntity
 }
 
+// IsSuccess returns true when this search flow o k response has a 2xx status code
+func (o *SearchFlowOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this search flow o k response has a 3xx status code
+func (o *SearchFlowOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this search flow o k response has a 4xx status code
+func (o *SearchFlowOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this search flow o k response has a 5xx status code
+func (o *SearchFlowOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this search flow o k response a status code equal to that given
+func (o *SearchFlowOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *SearchFlowOK) Error() string {
 	return fmt.Sprintf("[GET /flow/search-results][%d] searchFlowOK  %+v", 200, o.Payload)
 }
+
+func (o *SearchFlowOK) String() string {
+	return fmt.Sprintf("[GET /flow/search-results][%d] searchFlowOK  %+v", 200, o.Payload)
+}
+
 func (o *SearchFlowOK) GetPayload() *models.SearchResultsEntity {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewSearchFlowBadRequest() *SearchFlowBadRequest {
 	return &SearchFlowBadRequest{}
 }
 
-/* SearchFlowBadRequest describes a response with status code 400, with default header values.
+/*
+SearchFlowBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type SearchFlowBadRequest struct {
 }
 
+// IsSuccess returns true when this search flow bad request response has a 2xx status code
+func (o *SearchFlowBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this search flow bad request response has a 3xx status code
+func (o *SearchFlowBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this search flow bad request response has a 4xx status code
+func (o *SearchFlowBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this search flow bad request response has a 5xx status code
+func (o *SearchFlowBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this search flow bad request response a status code equal to that given
+func (o *SearchFlowBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *SearchFlowBadRequest) Error() string {
+	return fmt.Sprintf("[GET /flow/search-results][%d] searchFlowBadRequest ", 400)
+}
+
+func (o *SearchFlowBadRequest) String() string {
 	return fmt.Sprintf("[GET /flow/search-results][%d] searchFlowBadRequest ", 400)
 }
 
@@ -116,14 +177,44 @@ func NewSearchFlowUnauthorized() *SearchFlowUnauthorized {
 	return &SearchFlowUnauthorized{}
 }
 
-/* SearchFlowUnauthorized describes a response with status code 401, with default header values.
+/*
+SearchFlowUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type SearchFlowUnauthorized struct {
 }
 
+// IsSuccess returns true when this search flow unauthorized response has a 2xx status code
+func (o *SearchFlowUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this search flow unauthorized response has a 3xx status code
+func (o *SearchFlowUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this search flow unauthorized response has a 4xx status code
+func (o *SearchFlowUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this search flow unauthorized response has a 5xx status code
+func (o *SearchFlowUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this search flow unauthorized response a status code equal to that given
+func (o *SearchFlowUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *SearchFlowUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /flow/search-results][%d] searchFlowUnauthorized ", 401)
+}
+
+func (o *SearchFlowUnauthorized) String() string {
 	return fmt.Sprintf("[GET /flow/search-results][%d] searchFlowUnauthorized ", 401)
 }
 
@@ -137,14 +228,44 @@ func NewSearchFlowForbidden() *SearchFlowForbidden {
 	return &SearchFlowForbidden{}
 }
 
-/* SearchFlowForbidden describes a response with status code 403, with default header values.
+/*
+SearchFlowForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type SearchFlowForbidden struct {
 }
 
+// IsSuccess returns true when this search flow forbidden response has a 2xx status code
+func (o *SearchFlowForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this search flow forbidden response has a 3xx status code
+func (o *SearchFlowForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this search flow forbidden response has a 4xx status code
+func (o *SearchFlowForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this search flow forbidden response has a 5xx status code
+func (o *SearchFlowForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this search flow forbidden response a status code equal to that given
+func (o *SearchFlowForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *SearchFlowForbidden) Error() string {
+	return fmt.Sprintf("[GET /flow/search-results][%d] searchFlowForbidden ", 403)
+}
+
+func (o *SearchFlowForbidden) String() string {
 	return fmt.Sprintf("[GET /flow/search-results][%d] searchFlowForbidden ", 403)
 }
 
@@ -158,14 +279,44 @@ func NewSearchFlowConflict() *SearchFlowConflict {
 	return &SearchFlowConflict{}
 }
 
-/* SearchFlowConflict describes a response with status code 409, with default header values.
+/*
+SearchFlowConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type SearchFlowConflict struct {
 }
 
+// IsSuccess returns true when this search flow conflict response has a 2xx status code
+func (o *SearchFlowConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this search flow conflict response has a 3xx status code
+func (o *SearchFlowConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this search flow conflict response has a 4xx status code
+func (o *SearchFlowConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this search flow conflict response has a 5xx status code
+func (o *SearchFlowConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this search flow conflict response a status code equal to that given
+func (o *SearchFlowConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *SearchFlowConflict) Error() string {
+	return fmt.Sprintf("[GET /flow/search-results][%d] searchFlowConflict ", 409)
+}
+
+func (o *SearchFlowConflict) String() string {
 	return fmt.Sprintf("[GET /flow/search-results][%d] searchFlowConflict ", 409)
 }
 

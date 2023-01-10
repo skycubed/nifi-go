@@ -61,7 +61,8 @@ func NewTestIdentityProviderRecognizesCredentialsFormatOK() *TestIdentityProvide
 	return &TestIdentityProviderRecognizesCredentialsFormatOK{}
 }
 
-/* TestIdentityProviderRecognizesCredentialsFormatOK describes a response with status code 200, with default header values.
+/*
+TestIdentityProviderRecognizesCredentialsFormatOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -69,9 +70,39 @@ type TestIdentityProviderRecognizesCredentialsFormatOK struct {
 	Payload string
 }
 
+// IsSuccess returns true when this test identity provider recognizes credentials format o k response has a 2xx status code
+func (o *TestIdentityProviderRecognizesCredentialsFormatOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this test identity provider recognizes credentials format o k response has a 3xx status code
+func (o *TestIdentityProviderRecognizesCredentialsFormatOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this test identity provider recognizes credentials format o k response has a 4xx status code
+func (o *TestIdentityProviderRecognizesCredentialsFormatOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this test identity provider recognizes credentials format o k response has a 5xx status code
+func (o *TestIdentityProviderRecognizesCredentialsFormatOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this test identity provider recognizes credentials format o k response a status code equal to that given
+func (o *TestIdentityProviderRecognizesCredentialsFormatOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *TestIdentityProviderRecognizesCredentialsFormatOK) Error() string {
 	return fmt.Sprintf("[POST /access/token/identity-provider/test][%d] testIdentityProviderRecognizesCredentialsFormatOK  %+v", 200, o.Payload)
 }
+
+func (o *TestIdentityProviderRecognizesCredentialsFormatOK) String() string {
+	return fmt.Sprintf("[POST /access/token/identity-provider/test][%d] testIdentityProviderRecognizesCredentialsFormatOK  %+v", 200, o.Payload)
+}
+
 func (o *TestIdentityProviderRecognizesCredentialsFormatOK) GetPayload() string {
 	return o.Payload
 }
@@ -91,14 +122,44 @@ func NewTestIdentityProviderRecognizesCredentialsFormatBadRequest() *TestIdentit
 	return &TestIdentityProviderRecognizesCredentialsFormatBadRequest{}
 }
 
-/* TestIdentityProviderRecognizesCredentialsFormatBadRequest describes a response with status code 400, with default header values.
+/*
+TestIdentityProviderRecognizesCredentialsFormatBadRequest describes a response with status code 400, with default header values.
 
 NiFi Registry was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type TestIdentityProviderRecognizesCredentialsFormatBadRequest struct {
 }
 
+// IsSuccess returns true when this test identity provider recognizes credentials format bad request response has a 2xx status code
+func (o *TestIdentityProviderRecognizesCredentialsFormatBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this test identity provider recognizes credentials format bad request response has a 3xx status code
+func (o *TestIdentityProviderRecognizesCredentialsFormatBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this test identity provider recognizes credentials format bad request response has a 4xx status code
+func (o *TestIdentityProviderRecognizesCredentialsFormatBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this test identity provider recognizes credentials format bad request response has a 5xx status code
+func (o *TestIdentityProviderRecognizesCredentialsFormatBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this test identity provider recognizes credentials format bad request response a status code equal to that given
+func (o *TestIdentityProviderRecognizesCredentialsFormatBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *TestIdentityProviderRecognizesCredentialsFormatBadRequest) Error() string {
+	return fmt.Sprintf("[POST /access/token/identity-provider/test][%d] testIdentityProviderRecognizesCredentialsFormatBadRequest ", 400)
+}
+
+func (o *TestIdentityProviderRecognizesCredentialsFormatBadRequest) String() string {
 	return fmt.Sprintf("[POST /access/token/identity-provider/test][%d] testIdentityProviderRecognizesCredentialsFormatBadRequest ", 400)
 }
 
@@ -112,14 +173,44 @@ func NewTestIdentityProviderRecognizesCredentialsFormatUnauthorized() *TestIdent
 	return &TestIdentityProviderRecognizesCredentialsFormatUnauthorized{}
 }
 
-/* TestIdentityProviderRecognizesCredentialsFormatUnauthorized describes a response with status code 401, with default header values.
+/*
+TestIdentityProviderRecognizesCredentialsFormatUnauthorized describes a response with status code 401, with default header values.
 
 The format of the credentials were not recognized by the currently configured identity provider.
 */
 type TestIdentityProviderRecognizesCredentialsFormatUnauthorized struct {
 }
 
+// IsSuccess returns true when this test identity provider recognizes credentials format unauthorized response has a 2xx status code
+func (o *TestIdentityProviderRecognizesCredentialsFormatUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this test identity provider recognizes credentials format unauthorized response has a 3xx status code
+func (o *TestIdentityProviderRecognizesCredentialsFormatUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this test identity provider recognizes credentials format unauthorized response has a 4xx status code
+func (o *TestIdentityProviderRecognizesCredentialsFormatUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this test identity provider recognizes credentials format unauthorized response has a 5xx status code
+func (o *TestIdentityProviderRecognizesCredentialsFormatUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this test identity provider recognizes credentials format unauthorized response a status code equal to that given
+func (o *TestIdentityProviderRecognizesCredentialsFormatUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *TestIdentityProviderRecognizesCredentialsFormatUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /access/token/identity-provider/test][%d] testIdentityProviderRecognizesCredentialsFormatUnauthorized ", 401)
+}
+
+func (o *TestIdentityProviderRecognizesCredentialsFormatUnauthorized) String() string {
 	return fmt.Sprintf("[POST /access/token/identity-provider/test][%d] testIdentityProviderRecognizesCredentialsFormatUnauthorized ", 401)
 }
 
@@ -133,14 +224,44 @@ func NewTestIdentityProviderRecognizesCredentialsFormatConflict() *TestIdentityP
 	return &TestIdentityProviderRecognizesCredentialsFormatConflict{}
 }
 
-/* TestIdentityProviderRecognizesCredentialsFormatConflict describes a response with status code 409, with default header values.
+/*
+TestIdentityProviderRecognizesCredentialsFormatConflict describes a response with status code 409, with default header values.
 
 NiFi Registry was unable to complete the request because it assumes a server state that is not valid. The NiFi Registry may not be configured to support login with customized credentials.
 */
 type TestIdentityProviderRecognizesCredentialsFormatConflict struct {
 }
 
+// IsSuccess returns true when this test identity provider recognizes credentials format conflict response has a 2xx status code
+func (o *TestIdentityProviderRecognizesCredentialsFormatConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this test identity provider recognizes credentials format conflict response has a 3xx status code
+func (o *TestIdentityProviderRecognizesCredentialsFormatConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this test identity provider recognizes credentials format conflict response has a 4xx status code
+func (o *TestIdentityProviderRecognizesCredentialsFormatConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this test identity provider recognizes credentials format conflict response has a 5xx status code
+func (o *TestIdentityProviderRecognizesCredentialsFormatConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this test identity provider recognizes credentials format conflict response a status code equal to that given
+func (o *TestIdentityProviderRecognizesCredentialsFormatConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *TestIdentityProviderRecognizesCredentialsFormatConflict) Error() string {
+	return fmt.Sprintf("[POST /access/token/identity-provider/test][%d] testIdentityProviderRecognizesCredentialsFormatConflict ", 409)
+}
+
+func (o *TestIdentityProviderRecognizesCredentialsFormatConflict) String() string {
 	return fmt.Sprintf("[POST /access/token/identity-provider/test][%d] testIdentityProviderRecognizesCredentialsFormatConflict ", 409)
 }
 
@@ -154,14 +275,44 @@ func NewTestIdentityProviderRecognizesCredentialsFormatInternalServerError() *Te
 	return &TestIdentityProviderRecognizesCredentialsFormatInternalServerError{}
 }
 
-/* TestIdentityProviderRecognizesCredentialsFormatInternalServerError describes a response with status code 500, with default header values.
+/*
+TestIdentityProviderRecognizesCredentialsFormatInternalServerError describes a response with status code 500, with default header values.
 
 NiFi Registry was unable to complete the request because an unexpected error occurred.
 */
 type TestIdentityProviderRecognizesCredentialsFormatInternalServerError struct {
 }
 
+// IsSuccess returns true when this test identity provider recognizes credentials format internal server error response has a 2xx status code
+func (o *TestIdentityProviderRecognizesCredentialsFormatInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this test identity provider recognizes credentials format internal server error response has a 3xx status code
+func (o *TestIdentityProviderRecognizesCredentialsFormatInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this test identity provider recognizes credentials format internal server error response has a 4xx status code
+func (o *TestIdentityProviderRecognizesCredentialsFormatInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this test identity provider recognizes credentials format internal server error response has a 5xx status code
+func (o *TestIdentityProviderRecognizesCredentialsFormatInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this test identity provider recognizes credentials format internal server error response a status code equal to that given
+func (o *TestIdentityProviderRecognizesCredentialsFormatInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *TestIdentityProviderRecognizesCredentialsFormatInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /access/token/identity-provider/test][%d] testIdentityProviderRecognizesCredentialsFormatInternalServerError ", 500)
+}
+
+func (o *TestIdentityProviderRecognizesCredentialsFormatInternalServerError) String() string {
 	return fmt.Sprintf("[POST /access/token/identity-provider/test][%d] testIdentityProviderRecognizesCredentialsFormatInternalServerError ", 500)
 }
 

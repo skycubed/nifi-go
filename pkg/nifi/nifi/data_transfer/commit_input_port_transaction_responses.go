@@ -75,7 +75,8 @@ func NewCommitInputPortTransactionOK() *CommitInputPortTransactionOK {
 	return &CommitInputPortTransactionOK{}
 }
 
-/* CommitInputPortTransactionOK describes a response with status code 200, with default header values.
+/*
+CommitInputPortTransactionOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -83,9 +84,39 @@ type CommitInputPortTransactionOK struct {
 	Payload *models.TransactionResultEntity
 }
 
+// IsSuccess returns true when this commit input port transaction o k response has a 2xx status code
+func (o *CommitInputPortTransactionOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this commit input port transaction o k response has a 3xx status code
+func (o *CommitInputPortTransactionOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this commit input port transaction o k response has a 4xx status code
+func (o *CommitInputPortTransactionOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this commit input port transaction o k response has a 5xx status code
+func (o *CommitInputPortTransactionOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this commit input port transaction o k response a status code equal to that given
+func (o *CommitInputPortTransactionOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *CommitInputPortTransactionOK) Error() string {
 	return fmt.Sprintf("[DELETE /data-transfer/input-ports/{portId}/transactions/{transactionId}][%d] commitInputPortTransactionOK  %+v", 200, o.Payload)
 }
+
+func (o *CommitInputPortTransactionOK) String() string {
+	return fmt.Sprintf("[DELETE /data-transfer/input-ports/{portId}/transactions/{transactionId}][%d] commitInputPortTransactionOK  %+v", 200, o.Payload)
+}
+
 func (o *CommitInputPortTransactionOK) GetPayload() *models.TransactionResultEntity {
 	return o.Payload
 }
@@ -107,14 +138,44 @@ func NewCommitInputPortTransactionBadRequest() *CommitInputPortTransactionBadReq
 	return &CommitInputPortTransactionBadRequest{}
 }
 
-/* CommitInputPortTransactionBadRequest describes a response with status code 400, with default header values.
+/*
+CommitInputPortTransactionBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type CommitInputPortTransactionBadRequest struct {
 }
 
+// IsSuccess returns true when this commit input port transaction bad request response has a 2xx status code
+func (o *CommitInputPortTransactionBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this commit input port transaction bad request response has a 3xx status code
+func (o *CommitInputPortTransactionBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this commit input port transaction bad request response has a 4xx status code
+func (o *CommitInputPortTransactionBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this commit input port transaction bad request response has a 5xx status code
+func (o *CommitInputPortTransactionBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this commit input port transaction bad request response a status code equal to that given
+func (o *CommitInputPortTransactionBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CommitInputPortTransactionBadRequest) Error() string {
+	return fmt.Sprintf("[DELETE /data-transfer/input-ports/{portId}/transactions/{transactionId}][%d] commitInputPortTransactionBadRequest ", 400)
+}
+
+func (o *CommitInputPortTransactionBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /data-transfer/input-ports/{portId}/transactions/{transactionId}][%d] commitInputPortTransactionBadRequest ", 400)
 }
 
@@ -128,14 +189,44 @@ func NewCommitInputPortTransactionUnauthorized() *CommitInputPortTransactionUnau
 	return &CommitInputPortTransactionUnauthorized{}
 }
 
-/* CommitInputPortTransactionUnauthorized describes a response with status code 401, with default header values.
+/*
+CommitInputPortTransactionUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type CommitInputPortTransactionUnauthorized struct {
 }
 
+// IsSuccess returns true when this commit input port transaction unauthorized response has a 2xx status code
+func (o *CommitInputPortTransactionUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this commit input port transaction unauthorized response has a 3xx status code
+func (o *CommitInputPortTransactionUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this commit input port transaction unauthorized response has a 4xx status code
+func (o *CommitInputPortTransactionUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this commit input port transaction unauthorized response has a 5xx status code
+func (o *CommitInputPortTransactionUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this commit input port transaction unauthorized response a status code equal to that given
+func (o *CommitInputPortTransactionUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *CommitInputPortTransactionUnauthorized) Error() string {
+	return fmt.Sprintf("[DELETE /data-transfer/input-ports/{portId}/transactions/{transactionId}][%d] commitInputPortTransactionUnauthorized ", 401)
+}
+
+func (o *CommitInputPortTransactionUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /data-transfer/input-ports/{portId}/transactions/{transactionId}][%d] commitInputPortTransactionUnauthorized ", 401)
 }
 
@@ -149,14 +240,44 @@ func NewCommitInputPortTransactionForbidden() *CommitInputPortTransactionForbidd
 	return &CommitInputPortTransactionForbidden{}
 }
 
-/* CommitInputPortTransactionForbidden describes a response with status code 403, with default header values.
+/*
+CommitInputPortTransactionForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type CommitInputPortTransactionForbidden struct {
 }
 
+// IsSuccess returns true when this commit input port transaction forbidden response has a 2xx status code
+func (o *CommitInputPortTransactionForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this commit input port transaction forbidden response has a 3xx status code
+func (o *CommitInputPortTransactionForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this commit input port transaction forbidden response has a 4xx status code
+func (o *CommitInputPortTransactionForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this commit input port transaction forbidden response has a 5xx status code
+func (o *CommitInputPortTransactionForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this commit input port transaction forbidden response a status code equal to that given
+func (o *CommitInputPortTransactionForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CommitInputPortTransactionForbidden) Error() string {
+	return fmt.Sprintf("[DELETE /data-transfer/input-ports/{portId}/transactions/{transactionId}][%d] commitInputPortTransactionForbidden ", 403)
+}
+
+func (o *CommitInputPortTransactionForbidden) String() string {
 	return fmt.Sprintf("[DELETE /data-transfer/input-ports/{portId}/transactions/{transactionId}][%d] commitInputPortTransactionForbidden ", 403)
 }
 
@@ -170,14 +291,44 @@ func NewCommitInputPortTransactionNotFound() *CommitInputPortTransactionNotFound
 	return &CommitInputPortTransactionNotFound{}
 }
 
-/* CommitInputPortTransactionNotFound describes a response with status code 404, with default header values.
+/*
+CommitInputPortTransactionNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type CommitInputPortTransactionNotFound struct {
 }
 
+// IsSuccess returns true when this commit input port transaction not found response has a 2xx status code
+func (o *CommitInputPortTransactionNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this commit input port transaction not found response has a 3xx status code
+func (o *CommitInputPortTransactionNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this commit input port transaction not found response has a 4xx status code
+func (o *CommitInputPortTransactionNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this commit input port transaction not found response has a 5xx status code
+func (o *CommitInputPortTransactionNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this commit input port transaction not found response a status code equal to that given
+func (o *CommitInputPortTransactionNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *CommitInputPortTransactionNotFound) Error() string {
+	return fmt.Sprintf("[DELETE /data-transfer/input-ports/{portId}/transactions/{transactionId}][%d] commitInputPortTransactionNotFound ", 404)
+}
+
+func (o *CommitInputPortTransactionNotFound) String() string {
 	return fmt.Sprintf("[DELETE /data-transfer/input-ports/{portId}/transactions/{transactionId}][%d] commitInputPortTransactionNotFound ", 404)
 }
 
@@ -191,14 +342,44 @@ func NewCommitInputPortTransactionConflict() *CommitInputPortTransactionConflict
 	return &CommitInputPortTransactionConflict{}
 }
 
-/* CommitInputPortTransactionConflict describes a response with status code 409, with default header values.
+/*
+CommitInputPortTransactionConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type CommitInputPortTransactionConflict struct {
 }
 
+// IsSuccess returns true when this commit input port transaction conflict response has a 2xx status code
+func (o *CommitInputPortTransactionConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this commit input port transaction conflict response has a 3xx status code
+func (o *CommitInputPortTransactionConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this commit input port transaction conflict response has a 4xx status code
+func (o *CommitInputPortTransactionConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this commit input port transaction conflict response has a 5xx status code
+func (o *CommitInputPortTransactionConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this commit input port transaction conflict response a status code equal to that given
+func (o *CommitInputPortTransactionConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *CommitInputPortTransactionConflict) Error() string {
+	return fmt.Sprintf("[DELETE /data-transfer/input-ports/{portId}/transactions/{transactionId}][%d] commitInputPortTransactionConflict ", 409)
+}
+
+func (o *CommitInputPortTransactionConflict) String() string {
 	return fmt.Sprintf("[DELETE /data-transfer/input-ports/{portId}/transactions/{transactionId}][%d] commitInputPortTransactionConflict ", 409)
 }
 
@@ -212,14 +393,44 @@ func NewCommitInputPortTransactionServiceUnavailable() *CommitInputPortTransacti
 	return &CommitInputPortTransactionServiceUnavailable{}
 }
 
-/* CommitInputPortTransactionServiceUnavailable describes a response with status code 503, with default header values.
+/*
+CommitInputPortTransactionServiceUnavailable describes a response with status code 503, with default header values.
 
 NiFi instance is not ready for serving request, or temporarily overloaded. Retrying the same request later may be successful
 */
 type CommitInputPortTransactionServiceUnavailable struct {
 }
 
+// IsSuccess returns true when this commit input port transaction service unavailable response has a 2xx status code
+func (o *CommitInputPortTransactionServiceUnavailable) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this commit input port transaction service unavailable response has a 3xx status code
+func (o *CommitInputPortTransactionServiceUnavailable) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this commit input port transaction service unavailable response has a 4xx status code
+func (o *CommitInputPortTransactionServiceUnavailable) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this commit input port transaction service unavailable response has a 5xx status code
+func (o *CommitInputPortTransactionServiceUnavailable) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this commit input port transaction service unavailable response a status code equal to that given
+func (o *CommitInputPortTransactionServiceUnavailable) IsCode(code int) bool {
+	return code == 503
+}
+
 func (o *CommitInputPortTransactionServiceUnavailable) Error() string {
+	return fmt.Sprintf("[DELETE /data-transfer/input-ports/{portId}/transactions/{transactionId}][%d] commitInputPortTransactionServiceUnavailable ", 503)
+}
+
+func (o *CommitInputPortTransactionServiceUnavailable) String() string {
 	return fmt.Sprintf("[DELETE /data-transfer/input-ports/{portId}/transactions/{transactionId}][%d] commitInputPortTransactionServiceUnavailable ", 503)
 }
 

@@ -69,7 +69,8 @@ func NewReplaceProcessGroupOK() *ReplaceProcessGroupOK {
 	return &ReplaceProcessGroupOK{}
 }
 
-/* ReplaceProcessGroupOK describes a response with status code 200, with default header values.
+/*
+ReplaceProcessGroupOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,39 @@ type ReplaceProcessGroupOK struct {
 	Payload *models.ProcessGroupImportEntity
 }
 
+// IsSuccess returns true when this replace process group o k response has a 2xx status code
+func (o *ReplaceProcessGroupOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this replace process group o k response has a 3xx status code
+func (o *ReplaceProcessGroupOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace process group o k response has a 4xx status code
+func (o *ReplaceProcessGroupOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this replace process group o k response has a 5xx status code
+func (o *ReplaceProcessGroupOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace process group o k response a status code equal to that given
+func (o *ReplaceProcessGroupOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ReplaceProcessGroupOK) Error() string {
 	return fmt.Sprintf("[PUT /process-groups/{id}/flow-contents][%d] replaceProcessGroupOK  %+v", 200, o.Payload)
 }
+
+func (o *ReplaceProcessGroupOK) String() string {
+	return fmt.Sprintf("[PUT /process-groups/{id}/flow-contents][%d] replaceProcessGroupOK  %+v", 200, o.Payload)
+}
+
 func (o *ReplaceProcessGroupOK) GetPayload() *models.ProcessGroupImportEntity {
 	return o.Payload
 }
@@ -101,14 +132,44 @@ func NewReplaceProcessGroupBadRequest() *ReplaceProcessGroupBadRequest {
 	return &ReplaceProcessGroupBadRequest{}
 }
 
-/* ReplaceProcessGroupBadRequest describes a response with status code 400, with default header values.
+/*
+ReplaceProcessGroupBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type ReplaceProcessGroupBadRequest struct {
 }
 
+// IsSuccess returns true when this replace process group bad request response has a 2xx status code
+func (o *ReplaceProcessGroupBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this replace process group bad request response has a 3xx status code
+func (o *ReplaceProcessGroupBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace process group bad request response has a 4xx status code
+func (o *ReplaceProcessGroupBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this replace process group bad request response has a 5xx status code
+func (o *ReplaceProcessGroupBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace process group bad request response a status code equal to that given
+func (o *ReplaceProcessGroupBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ReplaceProcessGroupBadRequest) Error() string {
+	return fmt.Sprintf("[PUT /process-groups/{id}/flow-contents][%d] replaceProcessGroupBadRequest ", 400)
+}
+
+func (o *ReplaceProcessGroupBadRequest) String() string {
 	return fmt.Sprintf("[PUT /process-groups/{id}/flow-contents][%d] replaceProcessGroupBadRequest ", 400)
 }
 
@@ -122,14 +183,44 @@ func NewReplaceProcessGroupUnauthorized() *ReplaceProcessGroupUnauthorized {
 	return &ReplaceProcessGroupUnauthorized{}
 }
 
-/* ReplaceProcessGroupUnauthorized describes a response with status code 401, with default header values.
+/*
+ReplaceProcessGroupUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type ReplaceProcessGroupUnauthorized struct {
 }
 
+// IsSuccess returns true when this replace process group unauthorized response has a 2xx status code
+func (o *ReplaceProcessGroupUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this replace process group unauthorized response has a 3xx status code
+func (o *ReplaceProcessGroupUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace process group unauthorized response has a 4xx status code
+func (o *ReplaceProcessGroupUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this replace process group unauthorized response has a 5xx status code
+func (o *ReplaceProcessGroupUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace process group unauthorized response a status code equal to that given
+func (o *ReplaceProcessGroupUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *ReplaceProcessGroupUnauthorized) Error() string {
+	return fmt.Sprintf("[PUT /process-groups/{id}/flow-contents][%d] replaceProcessGroupUnauthorized ", 401)
+}
+
+func (o *ReplaceProcessGroupUnauthorized) String() string {
 	return fmt.Sprintf("[PUT /process-groups/{id}/flow-contents][%d] replaceProcessGroupUnauthorized ", 401)
 }
 
@@ -143,14 +234,44 @@ func NewReplaceProcessGroupForbidden() *ReplaceProcessGroupForbidden {
 	return &ReplaceProcessGroupForbidden{}
 }
 
-/* ReplaceProcessGroupForbidden describes a response with status code 403, with default header values.
+/*
+ReplaceProcessGroupForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type ReplaceProcessGroupForbidden struct {
 }
 
+// IsSuccess returns true when this replace process group forbidden response has a 2xx status code
+func (o *ReplaceProcessGroupForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this replace process group forbidden response has a 3xx status code
+func (o *ReplaceProcessGroupForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace process group forbidden response has a 4xx status code
+func (o *ReplaceProcessGroupForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this replace process group forbidden response has a 5xx status code
+func (o *ReplaceProcessGroupForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace process group forbidden response a status code equal to that given
+func (o *ReplaceProcessGroupForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *ReplaceProcessGroupForbidden) Error() string {
+	return fmt.Sprintf("[PUT /process-groups/{id}/flow-contents][%d] replaceProcessGroupForbidden ", 403)
+}
+
+func (o *ReplaceProcessGroupForbidden) String() string {
 	return fmt.Sprintf("[PUT /process-groups/{id}/flow-contents][%d] replaceProcessGroupForbidden ", 403)
 }
 
@@ -164,14 +285,44 @@ func NewReplaceProcessGroupNotFound() *ReplaceProcessGroupNotFound {
 	return &ReplaceProcessGroupNotFound{}
 }
 
-/* ReplaceProcessGroupNotFound describes a response with status code 404, with default header values.
+/*
+ReplaceProcessGroupNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type ReplaceProcessGroupNotFound struct {
 }
 
+// IsSuccess returns true when this replace process group not found response has a 2xx status code
+func (o *ReplaceProcessGroupNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this replace process group not found response has a 3xx status code
+func (o *ReplaceProcessGroupNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace process group not found response has a 4xx status code
+func (o *ReplaceProcessGroupNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this replace process group not found response has a 5xx status code
+func (o *ReplaceProcessGroupNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace process group not found response a status code equal to that given
+func (o *ReplaceProcessGroupNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ReplaceProcessGroupNotFound) Error() string {
+	return fmt.Sprintf("[PUT /process-groups/{id}/flow-contents][%d] replaceProcessGroupNotFound ", 404)
+}
+
+func (o *ReplaceProcessGroupNotFound) String() string {
 	return fmt.Sprintf("[PUT /process-groups/{id}/flow-contents][%d] replaceProcessGroupNotFound ", 404)
 }
 
@@ -185,14 +336,44 @@ func NewReplaceProcessGroupConflict() *ReplaceProcessGroupConflict {
 	return &ReplaceProcessGroupConflict{}
 }
 
-/* ReplaceProcessGroupConflict describes a response with status code 409, with default header values.
+/*
+ReplaceProcessGroupConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type ReplaceProcessGroupConflict struct {
 }
 
+// IsSuccess returns true when this replace process group conflict response has a 2xx status code
+func (o *ReplaceProcessGroupConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this replace process group conflict response has a 3xx status code
+func (o *ReplaceProcessGroupConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace process group conflict response has a 4xx status code
+func (o *ReplaceProcessGroupConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this replace process group conflict response has a 5xx status code
+func (o *ReplaceProcessGroupConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace process group conflict response a status code equal to that given
+func (o *ReplaceProcessGroupConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *ReplaceProcessGroupConflict) Error() string {
+	return fmt.Sprintf("[PUT /process-groups/{id}/flow-contents][%d] replaceProcessGroupConflict ", 409)
+}
+
+func (o *ReplaceProcessGroupConflict) String() string {
 	return fmt.Sprintf("[PUT /process-groups/{id}/flow-contents][%d] replaceProcessGroupConflict ", 409)
 }
 

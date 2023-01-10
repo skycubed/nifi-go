@@ -82,6 +82,9 @@ type ProcessorDTO struct {
 	// Whether the processor supports parallel processing.
 	SupportsParallelProcessing bool `json:"supportsParallelProcessing,omitempty"`
 
+	// Whether the processor supports sensitive dynamic properties.
+	SupportsSensitiveDynamicProperties bool `json:"supportsSensitiveDynamicProperties,omitempty"`
+
 	// The type of the processor.
 	Type string `json:"type,omitempty"`
 

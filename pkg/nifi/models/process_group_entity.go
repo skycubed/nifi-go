@@ -103,7 +103,7 @@ type ProcessGroupEntity struct {
 	URI string `json:"uri,omitempty"`
 
 	// Returns the Versioned Flow that describes the contents of the Versioned Flow to be imported
-	VersionedFlowSnapshot *VersionedFlowSnapshot `json:"versionedFlowSnapshot,omitempty"`
+	VersionedFlowSnapshot *RegisteredFlowSnapshot `json:"versionedFlowSnapshot,omitempty"`
 
 	// The current state of the Process Group, as it relates to the Versioned Flow
 	// Enum: [LOCALLY_MODIFIED STALE LOCALLY_MODIFIED_AND_STALE UP_TO_DATE SYNC_FAILURE]

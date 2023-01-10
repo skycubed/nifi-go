@@ -28,7 +28,7 @@ type VersionedRemoteProcessGroup struct {
 	CommunicationsTimeout string `json:"communicationsTimeout,omitempty"`
 
 	// component type
-	// Enum: [CONNECTION PROCESSOR PROCESS_GROUP REMOTE_PROCESS_GROUP INPUT_PORT OUTPUT_PORT REMOTE_INPUT_PORT REMOTE_OUTPUT_PORT FUNNEL LABEL CONTROLLER_SERVICE]
+	// Enum: [CONNECTION PROCESSOR PROCESS_GROUP REMOTE_PROCESS_GROUP INPUT_PORT OUTPUT_PORT REMOTE_INPUT_PORT REMOTE_OUTPUT_PORT FUNNEL LABEL CONTROLLER_SERVICE REPORTING_TASK PARAMETER_CONTEXT PARAMETER_PROVIDER TEMPLATE FLOW_REGISTRY_CLIENT]
 	ComponentType string `json:"componentType,omitempty"`
 
 	// The ID of the Process Group that this component belongs to
@@ -40,6 +40,9 @@ type VersionedRemoteProcessGroup struct {
 	// A Set of Input Ports that can be connected to, in order to send data to the remote NiFi instance
 	// Unique: true
 	InputPorts []*VersionedRemoteGroupPort `json:"inputPorts"`
+
+	// The instance ID of an existing component that is described by this VersionedComponent, or null if this is not mapped to an instantiated component
+	InstanceIdentifier string `json:"instanceIdentifier,omitempty"`
 
 	// The local network interface to send/receive data. If not specified, any local address is used. If clustered, all nodes must have an interface with this identifier.
 	LocalNetworkInterface string `json:"localNetworkInterface,omitempty"`
@@ -56,6 +59,9 @@ type VersionedRemoteProcessGroup struct {
 
 	// proxy host
 	ProxyHost string `json:"proxyHost,omitempty"`
+
+	// proxy password
+	ProxyPassword string `json:"proxyPassword,omitempty"`
 
 	// proxy port
 	ProxyPort int32 `json:"proxyPort,omitempty"`
@@ -111,7 +117,7 @@ var versionedRemoteProcessGroupTypeComponentTypePropEnum []interface{}
 
 func init() {
 	var res []string
-	if err := json.Unmarshal([]byte(`["CONNECTION","PROCESSOR","PROCESS_GROUP","REMOTE_PROCESS_GROUP","INPUT_PORT","OUTPUT_PORT","REMOTE_INPUT_PORT","REMOTE_OUTPUT_PORT","FUNNEL","LABEL","CONTROLLER_SERVICE"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["CONNECTION","PROCESSOR","PROCESS_GROUP","REMOTE_PROCESS_GROUP","INPUT_PORT","OUTPUT_PORT","REMOTE_INPUT_PORT","REMOTE_OUTPUT_PORT","FUNNEL","LABEL","CONTROLLER_SERVICE","REPORTING_TASK","PARAMETER_CONTEXT","PARAMETER_PROVIDER","TEMPLATE","FLOW_REGISTRY_CLIENT"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
@@ -153,6 +159,21 @@ const (
 
 	// VersionedRemoteProcessGroupComponentTypeCONTROLLERSERVICE captures enum value "CONTROLLER_SERVICE"
 	VersionedRemoteProcessGroupComponentTypeCONTROLLERSERVICE string = "CONTROLLER_SERVICE"
+
+	// VersionedRemoteProcessGroupComponentTypeREPORTINGTASK captures enum value "REPORTING_TASK"
+	VersionedRemoteProcessGroupComponentTypeREPORTINGTASK string = "REPORTING_TASK"
+
+	// VersionedRemoteProcessGroupComponentTypePARAMETERCONTEXT captures enum value "PARAMETER_CONTEXT"
+	VersionedRemoteProcessGroupComponentTypePARAMETERCONTEXT string = "PARAMETER_CONTEXT"
+
+	// VersionedRemoteProcessGroupComponentTypePARAMETERPROVIDER captures enum value "PARAMETER_PROVIDER"
+	VersionedRemoteProcessGroupComponentTypePARAMETERPROVIDER string = "PARAMETER_PROVIDER"
+
+	// VersionedRemoteProcessGroupComponentTypeTEMPLATE captures enum value "TEMPLATE"
+	VersionedRemoteProcessGroupComponentTypeTEMPLATE string = "TEMPLATE"
+
+	// VersionedRemoteProcessGroupComponentTypeFLOWREGISTRYCLIENT captures enum value "FLOW_REGISTRY_CLIENT"
+	VersionedRemoteProcessGroupComponentTypeFLOWREGISTRYCLIENT string = "FLOW_REGISTRY_CLIENT"
 )
 
 // prop value enum

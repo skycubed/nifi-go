@@ -12,7 +12,6 @@ import (
 
 	"github.com/skycubed/nifi-go/pkg/nifi/nifi/access"
 	"github.com/skycubed/nifi-go/pkg/nifi/nifi/accessoidc"
-	"github.com/skycubed/nifi-go/pkg/nifi/nifi/accesssaml"
 	"github.com/skycubed/nifi-go/pkg/nifi/nifi/connections"
 	"github.com/skycubed/nifi-go/pkg/nifi/nifi/controller"
 	"github.com/skycubed/nifi-go/pkg/nifi/nifi/controller_services"
@@ -25,6 +24,7 @@ import (
 	"github.com/skycubed/nifi-go/pkg/nifi/nifi/labels"
 	"github.com/skycubed/nifi-go/pkg/nifi/nifi/output_ports"
 	"github.com/skycubed/nifi-go/pkg/nifi/nifi/parameter_contexts"
+	"github.com/skycubed/nifi-go/pkg/nifi/nifi/parameter_providers"
 	"github.com/skycubed/nifi-go/pkg/nifi/nifi/policies"
 	"github.com/skycubed/nifi-go/pkg/nifi/nifi/process_groups"
 	"github.com/skycubed/nifi-go/pkg/nifi/nifi/processors"
@@ -85,7 +85,6 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Nifi {
 	cli.Transport = transport
 	cli.Access = access.New(transport, formats)
 	cli.Accessoidc = accessoidc.New(transport, formats)
-	cli.Accesssaml = accesssaml.New(transport, formats)
 	cli.Connections = connections.New(transport, formats)
 	cli.Controller = controller.New(transport, formats)
 	cli.ControllerServices = controller_services.New(transport, formats)
@@ -98,6 +97,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Nifi {
 	cli.Labels = labels.New(transport, formats)
 	cli.OutputPorts = output_ports.New(transport, formats)
 	cli.ParameterContexts = parameter_contexts.New(transport, formats)
+	cli.ParameterProviders = parameter_providers.New(transport, formats)
 	cli.Policies = policies.New(transport, formats)
 	cli.ProcessGroups = process_groups.New(transport, formats)
 	cli.Processors = processors.New(transport, formats)
@@ -160,8 +160,6 @@ type Nifi struct {
 
 	Accessoidc accessoidc.ClientService
 
-	Accesssaml accesssaml.ClientService
-
 	Connections connections.ClientService
 
 	Controller controller.ClientService
@@ -185,6 +183,8 @@ type Nifi struct {
 	OutputPorts output_ports.ClientService
 
 	ParameterContexts parameter_contexts.ClientService
+
+	ParameterProviders parameter_providers.ClientService
 
 	Policies policies.ClientService
 
@@ -222,7 +222,6 @@ func (c *Nifi) SetTransport(transport runtime.ClientTransport) {
 	c.Transport = transport
 	c.Access.SetTransport(transport)
 	c.Accessoidc.SetTransport(transport)
-	c.Accesssaml.SetTransport(transport)
 	c.Connections.SetTransport(transport)
 	c.Controller.SetTransport(transport)
 	c.ControllerServices.SetTransport(transport)
@@ -235,6 +234,7 @@ func (c *Nifi) SetTransport(transport runtime.ClientTransport) {
 	c.Labels.SetTransport(transport)
 	c.OutputPorts.SetTransport(transport)
 	c.ParameterContexts.SetTransport(transport)
+	c.ParameterProviders.SetTransport(transport)
 	c.Policies.SetTransport(transport)
 	c.ProcessGroups.SetTransport(transport)
 	c.Processors.SetTransport(transport)

@@ -75,7 +75,8 @@ func NewTransferFlowFilesOK() *TransferFlowFilesOK {
 	return &TransferFlowFilesOK{}
 }
 
-/* TransferFlowFilesOK describes a response with status code 200, with default header values.
+/*
+TransferFlowFilesOK describes a response with status code 200, with default header values.
 
 There is no flow file to return.
 */
@@ -83,9 +84,39 @@ type TransferFlowFilesOK struct {
 	Payload models.StreamingOutput
 }
 
+// IsSuccess returns true when this transfer flow files o k response has a 2xx status code
+func (o *TransferFlowFilesOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this transfer flow files o k response has a 3xx status code
+func (o *TransferFlowFilesOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this transfer flow files o k response has a 4xx status code
+func (o *TransferFlowFilesOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this transfer flow files o k response has a 5xx status code
+func (o *TransferFlowFilesOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this transfer flow files o k response a status code equal to that given
+func (o *TransferFlowFilesOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *TransferFlowFilesOK) Error() string {
 	return fmt.Sprintf("[GET /data-transfer/output-ports/{portId}/transactions/{transactionId}/flow-files][%d] transferFlowFilesOK  %+v", 200, o.Payload)
 }
+
+func (o *TransferFlowFilesOK) String() string {
+	return fmt.Sprintf("[GET /data-transfer/output-ports/{portId}/transactions/{transactionId}/flow-files][%d] transferFlowFilesOK  %+v", 200, o.Payload)
+}
+
 func (o *TransferFlowFilesOK) GetPayload() models.StreamingOutput {
 	return o.Payload
 }
@@ -105,14 +136,44 @@ func NewTransferFlowFilesBadRequest() *TransferFlowFilesBadRequest {
 	return &TransferFlowFilesBadRequest{}
 }
 
-/* TransferFlowFilesBadRequest describes a response with status code 400, with default header values.
+/*
+TransferFlowFilesBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type TransferFlowFilesBadRequest struct {
 }
 
+// IsSuccess returns true when this transfer flow files bad request response has a 2xx status code
+func (o *TransferFlowFilesBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this transfer flow files bad request response has a 3xx status code
+func (o *TransferFlowFilesBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this transfer flow files bad request response has a 4xx status code
+func (o *TransferFlowFilesBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this transfer flow files bad request response has a 5xx status code
+func (o *TransferFlowFilesBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this transfer flow files bad request response a status code equal to that given
+func (o *TransferFlowFilesBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *TransferFlowFilesBadRequest) Error() string {
+	return fmt.Sprintf("[GET /data-transfer/output-ports/{portId}/transactions/{transactionId}/flow-files][%d] transferFlowFilesBadRequest ", 400)
+}
+
+func (o *TransferFlowFilesBadRequest) String() string {
 	return fmt.Sprintf("[GET /data-transfer/output-ports/{portId}/transactions/{transactionId}/flow-files][%d] transferFlowFilesBadRequest ", 400)
 }
 
@@ -126,14 +187,44 @@ func NewTransferFlowFilesUnauthorized() *TransferFlowFilesUnauthorized {
 	return &TransferFlowFilesUnauthorized{}
 }
 
-/* TransferFlowFilesUnauthorized describes a response with status code 401, with default header values.
+/*
+TransferFlowFilesUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type TransferFlowFilesUnauthorized struct {
 }
 
+// IsSuccess returns true when this transfer flow files unauthorized response has a 2xx status code
+func (o *TransferFlowFilesUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this transfer flow files unauthorized response has a 3xx status code
+func (o *TransferFlowFilesUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this transfer flow files unauthorized response has a 4xx status code
+func (o *TransferFlowFilesUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this transfer flow files unauthorized response has a 5xx status code
+func (o *TransferFlowFilesUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this transfer flow files unauthorized response a status code equal to that given
+func (o *TransferFlowFilesUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *TransferFlowFilesUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /data-transfer/output-ports/{portId}/transactions/{transactionId}/flow-files][%d] transferFlowFilesUnauthorized ", 401)
+}
+
+func (o *TransferFlowFilesUnauthorized) String() string {
 	return fmt.Sprintf("[GET /data-transfer/output-ports/{portId}/transactions/{transactionId}/flow-files][%d] transferFlowFilesUnauthorized ", 401)
 }
 
@@ -147,14 +238,44 @@ func NewTransferFlowFilesForbidden() *TransferFlowFilesForbidden {
 	return &TransferFlowFilesForbidden{}
 }
 
-/* TransferFlowFilesForbidden describes a response with status code 403, with default header values.
+/*
+TransferFlowFilesForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type TransferFlowFilesForbidden struct {
 }
 
+// IsSuccess returns true when this transfer flow files forbidden response has a 2xx status code
+func (o *TransferFlowFilesForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this transfer flow files forbidden response has a 3xx status code
+func (o *TransferFlowFilesForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this transfer flow files forbidden response has a 4xx status code
+func (o *TransferFlowFilesForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this transfer flow files forbidden response has a 5xx status code
+func (o *TransferFlowFilesForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this transfer flow files forbidden response a status code equal to that given
+func (o *TransferFlowFilesForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *TransferFlowFilesForbidden) Error() string {
+	return fmt.Sprintf("[GET /data-transfer/output-ports/{portId}/transactions/{transactionId}/flow-files][%d] transferFlowFilesForbidden ", 403)
+}
+
+func (o *TransferFlowFilesForbidden) String() string {
 	return fmt.Sprintf("[GET /data-transfer/output-ports/{portId}/transactions/{transactionId}/flow-files][%d] transferFlowFilesForbidden ", 403)
 }
 
@@ -168,14 +289,44 @@ func NewTransferFlowFilesNotFound() *TransferFlowFilesNotFound {
 	return &TransferFlowFilesNotFound{}
 }
 
-/* TransferFlowFilesNotFound describes a response with status code 404, with default header values.
+/*
+TransferFlowFilesNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type TransferFlowFilesNotFound struct {
 }
 
+// IsSuccess returns true when this transfer flow files not found response has a 2xx status code
+func (o *TransferFlowFilesNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this transfer flow files not found response has a 3xx status code
+func (o *TransferFlowFilesNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this transfer flow files not found response has a 4xx status code
+func (o *TransferFlowFilesNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this transfer flow files not found response has a 5xx status code
+func (o *TransferFlowFilesNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this transfer flow files not found response a status code equal to that given
+func (o *TransferFlowFilesNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *TransferFlowFilesNotFound) Error() string {
+	return fmt.Sprintf("[GET /data-transfer/output-ports/{portId}/transactions/{transactionId}/flow-files][%d] transferFlowFilesNotFound ", 404)
+}
+
+func (o *TransferFlowFilesNotFound) String() string {
 	return fmt.Sprintf("[GET /data-transfer/output-ports/{portId}/transactions/{transactionId}/flow-files][%d] transferFlowFilesNotFound ", 404)
 }
 
@@ -189,14 +340,44 @@ func NewTransferFlowFilesConflict() *TransferFlowFilesConflict {
 	return &TransferFlowFilesConflict{}
 }
 
-/* TransferFlowFilesConflict describes a response with status code 409, with default header values.
+/*
+TransferFlowFilesConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type TransferFlowFilesConflict struct {
 }
 
+// IsSuccess returns true when this transfer flow files conflict response has a 2xx status code
+func (o *TransferFlowFilesConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this transfer flow files conflict response has a 3xx status code
+func (o *TransferFlowFilesConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this transfer flow files conflict response has a 4xx status code
+func (o *TransferFlowFilesConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this transfer flow files conflict response has a 5xx status code
+func (o *TransferFlowFilesConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this transfer flow files conflict response a status code equal to that given
+func (o *TransferFlowFilesConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *TransferFlowFilesConflict) Error() string {
+	return fmt.Sprintf("[GET /data-transfer/output-ports/{portId}/transactions/{transactionId}/flow-files][%d] transferFlowFilesConflict ", 409)
+}
+
+func (o *TransferFlowFilesConflict) String() string {
 	return fmt.Sprintf("[GET /data-transfer/output-ports/{portId}/transactions/{transactionId}/flow-files][%d] transferFlowFilesConflict ", 409)
 }
 
@@ -210,14 +391,44 @@ func NewTransferFlowFilesServiceUnavailable() *TransferFlowFilesServiceUnavailab
 	return &TransferFlowFilesServiceUnavailable{}
 }
 
-/* TransferFlowFilesServiceUnavailable describes a response with status code 503, with default header values.
+/*
+TransferFlowFilesServiceUnavailable describes a response with status code 503, with default header values.
 
 NiFi instance is not ready for serving request, or temporarily overloaded. Retrying the same request later may be successful
 */
 type TransferFlowFilesServiceUnavailable struct {
 }
 
+// IsSuccess returns true when this transfer flow files service unavailable response has a 2xx status code
+func (o *TransferFlowFilesServiceUnavailable) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this transfer flow files service unavailable response has a 3xx status code
+func (o *TransferFlowFilesServiceUnavailable) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this transfer flow files service unavailable response has a 4xx status code
+func (o *TransferFlowFilesServiceUnavailable) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this transfer flow files service unavailable response has a 5xx status code
+func (o *TransferFlowFilesServiceUnavailable) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this transfer flow files service unavailable response a status code equal to that given
+func (o *TransferFlowFilesServiceUnavailable) IsCode(code int) bool {
+	return code == 503
+}
+
 func (o *TransferFlowFilesServiceUnavailable) Error() string {
+	return fmt.Sprintf("[GET /data-transfer/output-ports/{portId}/transactions/{transactionId}/flow-files][%d] transferFlowFilesServiceUnavailable ", 503)
+}
+
+func (o *TransferFlowFilesServiceUnavailable) String() string {
 	return fmt.Sprintf("[GET /data-transfer/output-ports/{portId}/transactions/{transactionId}/flow-files][%d] transferFlowFilesServiceUnavailable ", 503)
 }
 

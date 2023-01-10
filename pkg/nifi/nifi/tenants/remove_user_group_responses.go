@@ -69,7 +69,8 @@ func NewRemoveUserGroupOK() *RemoveUserGroupOK {
 	return &RemoveUserGroupOK{}
 }
 
-/* RemoveUserGroupOK describes a response with status code 200, with default header values.
+/*
+RemoveUserGroupOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,39 @@ type RemoveUserGroupOK struct {
 	Payload *models.UserGroupEntity
 }
 
+// IsSuccess returns true when this remove user group o k response has a 2xx status code
+func (o *RemoveUserGroupOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this remove user group o k response has a 3xx status code
+func (o *RemoveUserGroupOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this remove user group o k response has a 4xx status code
+func (o *RemoveUserGroupOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this remove user group o k response has a 5xx status code
+func (o *RemoveUserGroupOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this remove user group o k response a status code equal to that given
+func (o *RemoveUserGroupOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *RemoveUserGroupOK) Error() string {
 	return fmt.Sprintf("[DELETE /tenants/user-groups/{id}][%d] removeUserGroupOK  %+v", 200, o.Payload)
 }
+
+func (o *RemoveUserGroupOK) String() string {
+	return fmt.Sprintf("[DELETE /tenants/user-groups/{id}][%d] removeUserGroupOK  %+v", 200, o.Payload)
+}
+
 func (o *RemoveUserGroupOK) GetPayload() *models.UserGroupEntity {
 	return o.Payload
 }
@@ -101,14 +132,44 @@ func NewRemoveUserGroupBadRequest() *RemoveUserGroupBadRequest {
 	return &RemoveUserGroupBadRequest{}
 }
 
-/* RemoveUserGroupBadRequest describes a response with status code 400, with default header values.
+/*
+RemoveUserGroupBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type RemoveUserGroupBadRequest struct {
 }
 
+// IsSuccess returns true when this remove user group bad request response has a 2xx status code
+func (o *RemoveUserGroupBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this remove user group bad request response has a 3xx status code
+func (o *RemoveUserGroupBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this remove user group bad request response has a 4xx status code
+func (o *RemoveUserGroupBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this remove user group bad request response has a 5xx status code
+func (o *RemoveUserGroupBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this remove user group bad request response a status code equal to that given
+func (o *RemoveUserGroupBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *RemoveUserGroupBadRequest) Error() string {
+	return fmt.Sprintf("[DELETE /tenants/user-groups/{id}][%d] removeUserGroupBadRequest ", 400)
+}
+
+func (o *RemoveUserGroupBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /tenants/user-groups/{id}][%d] removeUserGroupBadRequest ", 400)
 }
 
@@ -122,14 +183,44 @@ func NewRemoveUserGroupUnauthorized() *RemoveUserGroupUnauthorized {
 	return &RemoveUserGroupUnauthorized{}
 }
 
-/* RemoveUserGroupUnauthorized describes a response with status code 401, with default header values.
+/*
+RemoveUserGroupUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type RemoveUserGroupUnauthorized struct {
 }
 
+// IsSuccess returns true when this remove user group unauthorized response has a 2xx status code
+func (o *RemoveUserGroupUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this remove user group unauthorized response has a 3xx status code
+func (o *RemoveUserGroupUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this remove user group unauthorized response has a 4xx status code
+func (o *RemoveUserGroupUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this remove user group unauthorized response has a 5xx status code
+func (o *RemoveUserGroupUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this remove user group unauthorized response a status code equal to that given
+func (o *RemoveUserGroupUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *RemoveUserGroupUnauthorized) Error() string {
+	return fmt.Sprintf("[DELETE /tenants/user-groups/{id}][%d] removeUserGroupUnauthorized ", 401)
+}
+
+func (o *RemoveUserGroupUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /tenants/user-groups/{id}][%d] removeUserGroupUnauthorized ", 401)
 }
 
@@ -143,14 +234,44 @@ func NewRemoveUserGroupForbidden() *RemoveUserGroupForbidden {
 	return &RemoveUserGroupForbidden{}
 }
 
-/* RemoveUserGroupForbidden describes a response with status code 403, with default header values.
+/*
+RemoveUserGroupForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type RemoveUserGroupForbidden struct {
 }
 
+// IsSuccess returns true when this remove user group forbidden response has a 2xx status code
+func (o *RemoveUserGroupForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this remove user group forbidden response has a 3xx status code
+func (o *RemoveUserGroupForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this remove user group forbidden response has a 4xx status code
+func (o *RemoveUserGroupForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this remove user group forbidden response has a 5xx status code
+func (o *RemoveUserGroupForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this remove user group forbidden response a status code equal to that given
+func (o *RemoveUserGroupForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *RemoveUserGroupForbidden) Error() string {
+	return fmt.Sprintf("[DELETE /tenants/user-groups/{id}][%d] removeUserGroupForbidden ", 403)
+}
+
+func (o *RemoveUserGroupForbidden) String() string {
 	return fmt.Sprintf("[DELETE /tenants/user-groups/{id}][%d] removeUserGroupForbidden ", 403)
 }
 
@@ -164,14 +285,44 @@ func NewRemoveUserGroupNotFound() *RemoveUserGroupNotFound {
 	return &RemoveUserGroupNotFound{}
 }
 
-/* RemoveUserGroupNotFound describes a response with status code 404, with default header values.
+/*
+RemoveUserGroupNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type RemoveUserGroupNotFound struct {
 }
 
+// IsSuccess returns true when this remove user group not found response has a 2xx status code
+func (o *RemoveUserGroupNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this remove user group not found response has a 3xx status code
+func (o *RemoveUserGroupNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this remove user group not found response has a 4xx status code
+func (o *RemoveUserGroupNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this remove user group not found response has a 5xx status code
+func (o *RemoveUserGroupNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this remove user group not found response a status code equal to that given
+func (o *RemoveUserGroupNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *RemoveUserGroupNotFound) Error() string {
+	return fmt.Sprintf("[DELETE /tenants/user-groups/{id}][%d] removeUserGroupNotFound ", 404)
+}
+
+func (o *RemoveUserGroupNotFound) String() string {
 	return fmt.Sprintf("[DELETE /tenants/user-groups/{id}][%d] removeUserGroupNotFound ", 404)
 }
 
@@ -185,14 +336,44 @@ func NewRemoveUserGroupConflict() *RemoveUserGroupConflict {
 	return &RemoveUserGroupConflict{}
 }
 
-/* RemoveUserGroupConflict describes a response with status code 409, with default header values.
+/*
+RemoveUserGroupConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type RemoveUserGroupConflict struct {
 }
 
+// IsSuccess returns true when this remove user group conflict response has a 2xx status code
+func (o *RemoveUserGroupConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this remove user group conflict response has a 3xx status code
+func (o *RemoveUserGroupConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this remove user group conflict response has a 4xx status code
+func (o *RemoveUserGroupConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this remove user group conflict response has a 5xx status code
+func (o *RemoveUserGroupConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this remove user group conflict response a status code equal to that given
+func (o *RemoveUserGroupConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *RemoveUserGroupConflict) Error() string {
+	return fmt.Sprintf("[DELETE /tenants/user-groups/{id}][%d] removeUserGroupConflict ", 409)
+}
+
+func (o *RemoveUserGroupConflict) String() string {
 	return fmt.Sprintf("[DELETE /tenants/user-groups/{id}][%d] removeUserGroupConflict ", 409)
 }
 

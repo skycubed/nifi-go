@@ -31,6 +31,9 @@ type ConnectableComponent struct {
 	// Required: true
 	ID *string `json:"id"`
 
+	// The instance ID of an existing component that is described by this VersionedComponent, or null if this is not mapped to an instantiated component
+	InstanceIdentifier string `json:"instanceIdentifier,omitempty"`
+
 	// The name of the connectable component
 	Name string `json:"name,omitempty"`
 

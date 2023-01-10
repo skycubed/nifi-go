@@ -29,6 +29,9 @@ type ControllerServiceRunStatusEntity struct {
 	// The run status of the ControllerService.
 	// Enum: [ENABLED DISABLED]
 	State string `json:"state,omitempty"`
+
+	// Indicates whether or not responses should only include fields necessary for rendering the NiFi User Interface. As such, when this value is set to true, some fields may be returned as null values, and the selected fields may change at any time without notice. As a result, this value should not be set to true by any client other than the UI.
+	UIOnly bool `json:"uiOnly,omitempty"`
 }
 
 // Validate validates this controller service run status entity

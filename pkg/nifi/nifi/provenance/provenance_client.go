@@ -48,7 +48,7 @@ type ClientService interface {
 }
 
 /*
-  DeleteLineage deletes a lineage query
+DeleteLineage deletes a lineage query
 */
 func (a *Client) DeleteLineage(params *DeleteLineageParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteLineageOK, error) {
 	// TODO: Validate the params before sending
@@ -87,7 +87,7 @@ func (a *Client) DeleteLineage(params *DeleteLineageParams, authInfo runtime.Cli
 }
 
 /*
-  DeleteProvenance deletes a provenance query
+DeleteProvenance deletes a provenance query
 */
 func (a *Client) DeleteProvenance(params *DeleteProvenanceParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteProvenanceOK, error) {
 	// TODO: Validate the params before sending
@@ -126,7 +126,7 @@ func (a *Client) DeleteProvenance(params *DeleteProvenanceParams, authInfo runti
 }
 
 /*
-  GetLineage gets a lineage query
+GetLineage gets a lineage query
 */
 func (a *Client) GetLineage(params *GetLineageParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetLineageOK, error) {
 	// TODO: Validate the params before sending
@@ -165,7 +165,7 @@ func (a *Client) GetLineage(params *GetLineageParams, authInfo runtime.ClientAut
 }
 
 /*
-  GetProvenance gets a provenance query
+GetProvenance gets a provenance query
 */
 func (a *Client) GetProvenance(params *GetProvenanceParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetProvenanceOK, error) {
 	// TODO: Validate the params before sending
@@ -204,7 +204,7 @@ func (a *Client) GetProvenance(params *GetProvenanceParams, authInfo runtime.Cli
 }
 
 /*
-  GetSearchOptions gets the searchable attributes for provenance events
+GetSearchOptions gets the searchable attributes for provenance events
 */
 func (a *Client) GetSearchOptions(params *GetSearchOptionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSearchOptionsOK, error) {
 	// TODO: Validate the params before sending
@@ -243,9 +243,9 @@ func (a *Client) GetSearchOptions(params *GetSearchOptionsParams, authInfo runti
 }
 
 /*
-  SubmitLineageRequest submits a lineage query
+SubmitLineageRequest submits a lineage query
 
-  Lineage queries may be long running so this endpoint submits a request. The response will include the current state of the query. If the request is not completed the URI in the response can be used at a later time to get the updated state of the query. Once the query has completed the lineage request should be deleted by the client who originally submitted it.
+Lineage queries may be long running so this endpoint submits a request. The response will include the current state of the query. If the request is not completed the URI in the response can be used at a later time to get the updated state of the query. Once the query has completed the lineage request should be deleted by the client who originally submitted it.
 */
 func (a *Client) SubmitLineageRequest(params *SubmitLineageRequestParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SubmitLineageRequestCreated, error) {
 	// TODO: Validate the params before sending
@@ -284,9 +284,9 @@ func (a *Client) SubmitLineageRequest(params *SubmitLineageRequestParams, authIn
 }
 
 /*
-  SubmitProvenanceRequest submits a provenance query
+SubmitProvenanceRequest submits a provenance query
 
-  Provenance queries may be long running so this endpoint submits a request. The response will include the current state of the query. If the request is not completed the URI in the response can be used at a later time to get the updated state of the query. Once the query has completed the provenance request should be deleted by the client who originally submitted it.
+Provenance queries may be long running so this endpoint submits a request. The response will include the current state of the query. If the request is not completed the URI in the response can be used at a later time to get the updated state of the query. Once the query has completed the provenance request should be deleted by the client who originally submitted it.
 */
 func (a *Client) SubmitProvenanceRequest(params *SubmitProvenanceRequestParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SubmitProvenanceRequestCreated, error) {
 	// TODO: Validate the params before sending

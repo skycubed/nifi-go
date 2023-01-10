@@ -52,10 +52,12 @@ func NewGetSearchOptionsParamsWithHTTPClient(client *http.Client) *GetSearchOpti
 	}
 }
 
-/* GetSearchOptionsParams contains all the parameters to send to the API endpoint
-   for the get search options operation.
+/*
+GetSearchOptionsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get search options operation.
+
+	Typically these are written to a http.Request.
 */
 type GetSearchOptionsParams struct {
 	timeout    time.Duration

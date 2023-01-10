@@ -40,6 +40,9 @@ type SearchResultsDTO struct {
 	// The parameter contexts that matched the search.
 	ParameterContextResults []*ComponentSearchResultDTO `json:"parameterContextResults"`
 
+	// The parameter provider nodes that matched the search
+	ParameterProviderNodeResults []*ComponentSearchResultDTO `json:"parameterProviderNodeResults"`
+
 	// The parameters that matched the search.
 	ParameterResults []*ComponentSearchResultDTO `json:"parameterResults"`
 
@@ -82,6 +85,10 @@ func (m *SearchResultsDTO) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateParameterContextResults(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateParameterProviderNodeResults(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -289,6 +296,32 @@ func (m *SearchResultsDTO) validateParameterContextResults(formats strfmt.Regist
 	return nil
 }
 
+func (m *SearchResultsDTO) validateParameterProviderNodeResults(formats strfmt.Registry) error {
+	if swag.IsZero(m.ParameterProviderNodeResults) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.ParameterProviderNodeResults); i++ {
+		if swag.IsZero(m.ParameterProviderNodeResults[i]) { // not required
+			continue
+		}
+
+		if m.ParameterProviderNodeResults[i] != nil {
+			if err := m.ParameterProviderNodeResults[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("parameterProviderNodeResults" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("parameterProviderNodeResults" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
 func (m *SearchResultsDTO) validateParameterResults(formats strfmt.Registry) error {
 	if swag.IsZero(m.ParameterResults) { // not required
 		return nil
@@ -422,6 +455,10 @@ func (m *SearchResultsDTO) ContextValidate(ctx context.Context, formats strfmt.R
 	}
 
 	if err := m.contextValidateParameterContextResults(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateParameterProviderNodeResults(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -577,6 +614,26 @@ func (m *SearchResultsDTO) contextValidateParameterContextResults(ctx context.Co
 					return ve.ValidateName("parameterContextResults" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
 					return ce.ValidateName("parameterContextResults" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *SearchResultsDTO) contextValidateParameterProviderNodeResults(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.ParameterProviderNodeResults); i++ {
+
+		if m.ParameterProviderNodeResults[i] != nil {
+			if err := m.ParameterProviderNodeResults[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("parameterProviderNodeResults" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("parameterProviderNodeResults" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

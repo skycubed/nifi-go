@@ -69,7 +69,8 @@ func NewRemoveLabelOK() *RemoveLabelOK {
 	return &RemoveLabelOK{}
 }
 
-/* RemoveLabelOK describes a response with status code 200, with default header values.
+/*
+RemoveLabelOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,39 @@ type RemoveLabelOK struct {
 	Payload *models.LabelEntity
 }
 
+// IsSuccess returns true when this remove label o k response has a 2xx status code
+func (o *RemoveLabelOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this remove label o k response has a 3xx status code
+func (o *RemoveLabelOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this remove label o k response has a 4xx status code
+func (o *RemoveLabelOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this remove label o k response has a 5xx status code
+func (o *RemoveLabelOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this remove label o k response a status code equal to that given
+func (o *RemoveLabelOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *RemoveLabelOK) Error() string {
 	return fmt.Sprintf("[DELETE /labels/{id}][%d] removeLabelOK  %+v", 200, o.Payload)
 }
+
+func (o *RemoveLabelOK) String() string {
+	return fmt.Sprintf("[DELETE /labels/{id}][%d] removeLabelOK  %+v", 200, o.Payload)
+}
+
 func (o *RemoveLabelOK) GetPayload() *models.LabelEntity {
 	return o.Payload
 }
@@ -101,14 +132,44 @@ func NewRemoveLabelBadRequest() *RemoveLabelBadRequest {
 	return &RemoveLabelBadRequest{}
 }
 
-/* RemoveLabelBadRequest describes a response with status code 400, with default header values.
+/*
+RemoveLabelBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type RemoveLabelBadRequest struct {
 }
 
+// IsSuccess returns true when this remove label bad request response has a 2xx status code
+func (o *RemoveLabelBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this remove label bad request response has a 3xx status code
+func (o *RemoveLabelBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this remove label bad request response has a 4xx status code
+func (o *RemoveLabelBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this remove label bad request response has a 5xx status code
+func (o *RemoveLabelBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this remove label bad request response a status code equal to that given
+func (o *RemoveLabelBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *RemoveLabelBadRequest) Error() string {
+	return fmt.Sprintf("[DELETE /labels/{id}][%d] removeLabelBadRequest ", 400)
+}
+
+func (o *RemoveLabelBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /labels/{id}][%d] removeLabelBadRequest ", 400)
 }
 
@@ -122,14 +183,44 @@ func NewRemoveLabelUnauthorized() *RemoveLabelUnauthorized {
 	return &RemoveLabelUnauthorized{}
 }
 
-/* RemoveLabelUnauthorized describes a response with status code 401, with default header values.
+/*
+RemoveLabelUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type RemoveLabelUnauthorized struct {
 }
 
+// IsSuccess returns true when this remove label unauthorized response has a 2xx status code
+func (o *RemoveLabelUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this remove label unauthorized response has a 3xx status code
+func (o *RemoveLabelUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this remove label unauthorized response has a 4xx status code
+func (o *RemoveLabelUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this remove label unauthorized response has a 5xx status code
+func (o *RemoveLabelUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this remove label unauthorized response a status code equal to that given
+func (o *RemoveLabelUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *RemoveLabelUnauthorized) Error() string {
+	return fmt.Sprintf("[DELETE /labels/{id}][%d] removeLabelUnauthorized ", 401)
+}
+
+func (o *RemoveLabelUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /labels/{id}][%d] removeLabelUnauthorized ", 401)
 }
 
@@ -143,14 +234,44 @@ func NewRemoveLabelForbidden() *RemoveLabelForbidden {
 	return &RemoveLabelForbidden{}
 }
 
-/* RemoveLabelForbidden describes a response with status code 403, with default header values.
+/*
+RemoveLabelForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type RemoveLabelForbidden struct {
 }
 
+// IsSuccess returns true when this remove label forbidden response has a 2xx status code
+func (o *RemoveLabelForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this remove label forbidden response has a 3xx status code
+func (o *RemoveLabelForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this remove label forbidden response has a 4xx status code
+func (o *RemoveLabelForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this remove label forbidden response has a 5xx status code
+func (o *RemoveLabelForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this remove label forbidden response a status code equal to that given
+func (o *RemoveLabelForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *RemoveLabelForbidden) Error() string {
+	return fmt.Sprintf("[DELETE /labels/{id}][%d] removeLabelForbidden ", 403)
+}
+
+func (o *RemoveLabelForbidden) String() string {
 	return fmt.Sprintf("[DELETE /labels/{id}][%d] removeLabelForbidden ", 403)
 }
 
@@ -164,14 +285,44 @@ func NewRemoveLabelNotFound() *RemoveLabelNotFound {
 	return &RemoveLabelNotFound{}
 }
 
-/* RemoveLabelNotFound describes a response with status code 404, with default header values.
+/*
+RemoveLabelNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type RemoveLabelNotFound struct {
 }
 
+// IsSuccess returns true when this remove label not found response has a 2xx status code
+func (o *RemoveLabelNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this remove label not found response has a 3xx status code
+func (o *RemoveLabelNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this remove label not found response has a 4xx status code
+func (o *RemoveLabelNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this remove label not found response has a 5xx status code
+func (o *RemoveLabelNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this remove label not found response a status code equal to that given
+func (o *RemoveLabelNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *RemoveLabelNotFound) Error() string {
+	return fmt.Sprintf("[DELETE /labels/{id}][%d] removeLabelNotFound ", 404)
+}
+
+func (o *RemoveLabelNotFound) String() string {
 	return fmt.Sprintf("[DELETE /labels/{id}][%d] removeLabelNotFound ", 404)
 }
 
@@ -185,14 +336,44 @@ func NewRemoveLabelConflict() *RemoveLabelConflict {
 	return &RemoveLabelConflict{}
 }
 
-/* RemoveLabelConflict describes a response with status code 409, with default header values.
+/*
+RemoveLabelConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type RemoveLabelConflict struct {
 }
 
+// IsSuccess returns true when this remove label conflict response has a 2xx status code
+func (o *RemoveLabelConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this remove label conflict response has a 3xx status code
+func (o *RemoveLabelConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this remove label conflict response has a 4xx status code
+func (o *RemoveLabelConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this remove label conflict response has a 5xx status code
+func (o *RemoveLabelConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this remove label conflict response a status code equal to that given
+func (o *RemoveLabelConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *RemoveLabelConflict) Error() string {
+	return fmt.Sprintf("[DELETE /labels/{id}][%d] removeLabelConflict ", 409)
+}
+
+func (o *RemoveLabelConflict) String() string {
 	return fmt.Sprintf("[DELETE /labels/{id}][%d] removeLabelConflict ", 409)
 }
 

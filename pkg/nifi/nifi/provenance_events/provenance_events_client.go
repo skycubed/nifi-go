@@ -38,11 +38,13 @@ type ClientService interface {
 
 	SubmitReplay(params *SubmitReplayParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SubmitReplayCreated, error)
 
+	SubmitReplayLatestEvent(params *SubmitReplayLatestEventParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SubmitReplayLatestEventOK, error)
+
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-  GetInputContent gets the input content for a provenance event
+GetInputContent gets the input content for a provenance event
 */
 func (a *Client) GetInputContent(params *GetInputContentParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetInputContentOK, error) {
 	// TODO: Validate the params before sending
@@ -81,7 +83,7 @@ func (a *Client) GetInputContent(params *GetInputContentParams, authInfo runtime
 }
 
 /*
-  GetOutputContent gets the output content for a provenance event
+GetOutputContent gets the output content for a provenance event
 */
 func (a *Client) GetOutputContent(params *GetOutputContentParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetOutputContentOK, error) {
 	// TODO: Validate the params before sending
@@ -120,7 +122,7 @@ func (a *Client) GetOutputContent(params *GetOutputContentParams, authInfo runti
 }
 
 /*
-  GetProvenanceEvent gets a provenance event
+GetProvenanceEvent gets a provenance event
 */
 func (a *Client) GetProvenanceEvent(params *GetProvenanceEventParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetProvenanceEventOK, error) {
 	// TODO: Validate the params before sending
@@ -159,7 +161,7 @@ func (a *Client) GetProvenanceEvent(params *GetProvenanceEventParams, authInfo r
 }
 
 /*
-  SubmitReplay replays content from a provenance event
+SubmitReplay replays content from a provenance event
 */
 func (a *Client) SubmitReplay(params *SubmitReplayParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SubmitReplayCreated, error) {
 	// TODO: Validate the params before sending
@@ -194,6 +196,45 @@ func (a *Client) SubmitReplay(params *SubmitReplayParams, authInfo runtime.Clien
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for submitReplay: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+SubmitReplayLatestEvent replays content from a provenance event
+*/
+func (a *Client) SubmitReplayLatestEvent(params *SubmitReplayLatestEventParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SubmitReplayLatestEventOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewSubmitReplayLatestEventParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "submitReplayLatestEvent",
+		Method:             "POST",
+		PathPattern:        "/provenance-events/latest/replays",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http", "https"},
+		Params:             params,
+		Reader:             &SubmitReplayLatestEventReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*SubmitReplayLatestEventOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for submitReplayLatestEvent: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

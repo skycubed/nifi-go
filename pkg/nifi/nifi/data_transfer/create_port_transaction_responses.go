@@ -75,7 +75,8 @@ func NewCreatePortTransactionOK() *CreatePortTransactionOK {
 	return &CreatePortTransactionOK{}
 }
 
-/* CreatePortTransactionOK describes a response with status code 200, with default header values.
+/*
+CreatePortTransactionOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -83,9 +84,39 @@ type CreatePortTransactionOK struct {
 	Payload *models.TransactionResultEntity
 }
 
+// IsSuccess returns true when this create port transaction o k response has a 2xx status code
+func (o *CreatePortTransactionOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create port transaction o k response has a 3xx status code
+func (o *CreatePortTransactionOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create port transaction o k response has a 4xx status code
+func (o *CreatePortTransactionOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create port transaction o k response has a 5xx status code
+func (o *CreatePortTransactionOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create port transaction o k response a status code equal to that given
+func (o *CreatePortTransactionOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *CreatePortTransactionOK) Error() string {
 	return fmt.Sprintf("[POST /data-transfer/{portType}/{portId}/transactions][%d] createPortTransactionOK  %+v", 200, o.Payload)
 }
+
+func (o *CreatePortTransactionOK) String() string {
+	return fmt.Sprintf("[POST /data-transfer/{portType}/{portId}/transactions][%d] createPortTransactionOK  %+v", 200, o.Payload)
+}
+
 func (o *CreatePortTransactionOK) GetPayload() *models.TransactionResultEntity {
 	return o.Payload
 }
@@ -107,14 +138,44 @@ func NewCreatePortTransactionBadRequest() *CreatePortTransactionBadRequest {
 	return &CreatePortTransactionBadRequest{}
 }
 
-/* CreatePortTransactionBadRequest describes a response with status code 400, with default header values.
+/*
+CreatePortTransactionBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type CreatePortTransactionBadRequest struct {
 }
 
+// IsSuccess returns true when this create port transaction bad request response has a 2xx status code
+func (o *CreatePortTransactionBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create port transaction bad request response has a 3xx status code
+func (o *CreatePortTransactionBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create port transaction bad request response has a 4xx status code
+func (o *CreatePortTransactionBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create port transaction bad request response has a 5xx status code
+func (o *CreatePortTransactionBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create port transaction bad request response a status code equal to that given
+func (o *CreatePortTransactionBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CreatePortTransactionBadRequest) Error() string {
+	return fmt.Sprintf("[POST /data-transfer/{portType}/{portId}/transactions][%d] createPortTransactionBadRequest ", 400)
+}
+
+func (o *CreatePortTransactionBadRequest) String() string {
 	return fmt.Sprintf("[POST /data-transfer/{portType}/{portId}/transactions][%d] createPortTransactionBadRequest ", 400)
 }
 
@@ -128,14 +189,44 @@ func NewCreatePortTransactionUnauthorized() *CreatePortTransactionUnauthorized {
 	return &CreatePortTransactionUnauthorized{}
 }
 
-/* CreatePortTransactionUnauthorized describes a response with status code 401, with default header values.
+/*
+CreatePortTransactionUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type CreatePortTransactionUnauthorized struct {
 }
 
+// IsSuccess returns true when this create port transaction unauthorized response has a 2xx status code
+func (o *CreatePortTransactionUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create port transaction unauthorized response has a 3xx status code
+func (o *CreatePortTransactionUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create port transaction unauthorized response has a 4xx status code
+func (o *CreatePortTransactionUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create port transaction unauthorized response has a 5xx status code
+func (o *CreatePortTransactionUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create port transaction unauthorized response a status code equal to that given
+func (o *CreatePortTransactionUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *CreatePortTransactionUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /data-transfer/{portType}/{portId}/transactions][%d] createPortTransactionUnauthorized ", 401)
+}
+
+func (o *CreatePortTransactionUnauthorized) String() string {
 	return fmt.Sprintf("[POST /data-transfer/{portType}/{portId}/transactions][%d] createPortTransactionUnauthorized ", 401)
 }
 
@@ -149,14 +240,44 @@ func NewCreatePortTransactionForbidden() *CreatePortTransactionForbidden {
 	return &CreatePortTransactionForbidden{}
 }
 
-/* CreatePortTransactionForbidden describes a response with status code 403, with default header values.
+/*
+CreatePortTransactionForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type CreatePortTransactionForbidden struct {
 }
 
+// IsSuccess returns true when this create port transaction forbidden response has a 2xx status code
+func (o *CreatePortTransactionForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create port transaction forbidden response has a 3xx status code
+func (o *CreatePortTransactionForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create port transaction forbidden response has a 4xx status code
+func (o *CreatePortTransactionForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create port transaction forbidden response has a 5xx status code
+func (o *CreatePortTransactionForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create port transaction forbidden response a status code equal to that given
+func (o *CreatePortTransactionForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CreatePortTransactionForbidden) Error() string {
+	return fmt.Sprintf("[POST /data-transfer/{portType}/{portId}/transactions][%d] createPortTransactionForbidden ", 403)
+}
+
+func (o *CreatePortTransactionForbidden) String() string {
 	return fmt.Sprintf("[POST /data-transfer/{portType}/{portId}/transactions][%d] createPortTransactionForbidden ", 403)
 }
 
@@ -170,14 +291,44 @@ func NewCreatePortTransactionNotFound() *CreatePortTransactionNotFound {
 	return &CreatePortTransactionNotFound{}
 }
 
-/* CreatePortTransactionNotFound describes a response with status code 404, with default header values.
+/*
+CreatePortTransactionNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type CreatePortTransactionNotFound struct {
 }
 
+// IsSuccess returns true when this create port transaction not found response has a 2xx status code
+func (o *CreatePortTransactionNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create port transaction not found response has a 3xx status code
+func (o *CreatePortTransactionNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create port transaction not found response has a 4xx status code
+func (o *CreatePortTransactionNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create port transaction not found response has a 5xx status code
+func (o *CreatePortTransactionNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create port transaction not found response a status code equal to that given
+func (o *CreatePortTransactionNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *CreatePortTransactionNotFound) Error() string {
+	return fmt.Sprintf("[POST /data-transfer/{portType}/{portId}/transactions][%d] createPortTransactionNotFound ", 404)
+}
+
+func (o *CreatePortTransactionNotFound) String() string {
 	return fmt.Sprintf("[POST /data-transfer/{portType}/{portId}/transactions][%d] createPortTransactionNotFound ", 404)
 }
 
@@ -191,14 +342,44 @@ func NewCreatePortTransactionConflict() *CreatePortTransactionConflict {
 	return &CreatePortTransactionConflict{}
 }
 
-/* CreatePortTransactionConflict describes a response with status code 409, with default header values.
+/*
+CreatePortTransactionConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type CreatePortTransactionConflict struct {
 }
 
+// IsSuccess returns true when this create port transaction conflict response has a 2xx status code
+func (o *CreatePortTransactionConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create port transaction conflict response has a 3xx status code
+func (o *CreatePortTransactionConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create port transaction conflict response has a 4xx status code
+func (o *CreatePortTransactionConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create port transaction conflict response has a 5xx status code
+func (o *CreatePortTransactionConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create port transaction conflict response a status code equal to that given
+func (o *CreatePortTransactionConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *CreatePortTransactionConflict) Error() string {
+	return fmt.Sprintf("[POST /data-transfer/{portType}/{portId}/transactions][%d] createPortTransactionConflict ", 409)
+}
+
+func (o *CreatePortTransactionConflict) String() string {
 	return fmt.Sprintf("[POST /data-transfer/{portType}/{portId}/transactions][%d] createPortTransactionConflict ", 409)
 }
 
@@ -212,14 +393,44 @@ func NewCreatePortTransactionServiceUnavailable() *CreatePortTransactionServiceU
 	return &CreatePortTransactionServiceUnavailable{}
 }
 
-/* CreatePortTransactionServiceUnavailable describes a response with status code 503, with default header values.
+/*
+CreatePortTransactionServiceUnavailable describes a response with status code 503, with default header values.
 
 NiFi instance is not ready for serving request, or temporarily overloaded. Retrying the same request later may be successful
 */
 type CreatePortTransactionServiceUnavailable struct {
 }
 
+// IsSuccess returns true when this create port transaction service unavailable response has a 2xx status code
+func (o *CreatePortTransactionServiceUnavailable) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create port transaction service unavailable response has a 3xx status code
+func (o *CreatePortTransactionServiceUnavailable) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create port transaction service unavailable response has a 4xx status code
+func (o *CreatePortTransactionServiceUnavailable) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create port transaction service unavailable response has a 5xx status code
+func (o *CreatePortTransactionServiceUnavailable) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this create port transaction service unavailable response a status code equal to that given
+func (o *CreatePortTransactionServiceUnavailable) IsCode(code int) bool {
+	return code == 503
+}
+
 func (o *CreatePortTransactionServiceUnavailable) Error() string {
+	return fmt.Sprintf("[POST /data-transfer/{portType}/{portId}/transactions][%d] createPortTransactionServiceUnavailable ", 503)
+}
+
+func (o *CreatePortTransactionServiceUnavailable) String() string {
 	return fmt.Sprintf("[POST /data-transfer/{portType}/{portId}/transactions][%d] createPortTransactionServiceUnavailable ", 503)
 }
 

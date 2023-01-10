@@ -31,6 +31,9 @@ type LabelEntity struct {
 	// Acknowledges that this node is disconnected to allow for mutable requests to proceed.
 	DisconnectedNodeAcknowledged bool `json:"disconnectedNodeAcknowledged,omitempty"`
 
+	// The z index of the label.
+	GetzIndex int64 `json:"getzIndex,omitempty"`
+
 	// The id of the component.
 	ID string `json:"id,omitempty"`
 

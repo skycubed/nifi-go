@@ -69,7 +69,8 @@ func NewUpdateOutputPortOK() *UpdateOutputPortOK {
 	return &UpdateOutputPortOK{}
 }
 
-/* UpdateOutputPortOK describes a response with status code 200, with default header values.
+/*
+UpdateOutputPortOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,39 @@ type UpdateOutputPortOK struct {
 	Payload *models.PortEntity
 }
 
+// IsSuccess returns true when this update output port o k response has a 2xx status code
+func (o *UpdateOutputPortOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this update output port o k response has a 3xx status code
+func (o *UpdateOutputPortOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update output port o k response has a 4xx status code
+func (o *UpdateOutputPortOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this update output port o k response has a 5xx status code
+func (o *UpdateOutputPortOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update output port o k response a status code equal to that given
+func (o *UpdateOutputPortOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *UpdateOutputPortOK) Error() string {
 	return fmt.Sprintf("[PUT /output-ports/{id}][%d] updateOutputPortOK  %+v", 200, o.Payload)
 }
+
+func (o *UpdateOutputPortOK) String() string {
+	return fmt.Sprintf("[PUT /output-ports/{id}][%d] updateOutputPortOK  %+v", 200, o.Payload)
+}
+
 func (o *UpdateOutputPortOK) GetPayload() *models.PortEntity {
 	return o.Payload
 }
@@ -101,14 +132,44 @@ func NewUpdateOutputPortBadRequest() *UpdateOutputPortBadRequest {
 	return &UpdateOutputPortBadRequest{}
 }
 
-/* UpdateOutputPortBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateOutputPortBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type UpdateOutputPortBadRequest struct {
 }
 
+// IsSuccess returns true when this update output port bad request response has a 2xx status code
+func (o *UpdateOutputPortBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update output port bad request response has a 3xx status code
+func (o *UpdateOutputPortBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update output port bad request response has a 4xx status code
+func (o *UpdateOutputPortBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update output port bad request response has a 5xx status code
+func (o *UpdateOutputPortBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update output port bad request response a status code equal to that given
+func (o *UpdateOutputPortBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *UpdateOutputPortBadRequest) Error() string {
+	return fmt.Sprintf("[PUT /output-ports/{id}][%d] updateOutputPortBadRequest ", 400)
+}
+
+func (o *UpdateOutputPortBadRequest) String() string {
 	return fmt.Sprintf("[PUT /output-ports/{id}][%d] updateOutputPortBadRequest ", 400)
 }
 
@@ -122,14 +183,44 @@ func NewUpdateOutputPortUnauthorized() *UpdateOutputPortUnauthorized {
 	return &UpdateOutputPortUnauthorized{}
 }
 
-/* UpdateOutputPortUnauthorized describes a response with status code 401, with default header values.
+/*
+UpdateOutputPortUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type UpdateOutputPortUnauthorized struct {
 }
 
+// IsSuccess returns true when this update output port unauthorized response has a 2xx status code
+func (o *UpdateOutputPortUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update output port unauthorized response has a 3xx status code
+func (o *UpdateOutputPortUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update output port unauthorized response has a 4xx status code
+func (o *UpdateOutputPortUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update output port unauthorized response has a 5xx status code
+func (o *UpdateOutputPortUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update output port unauthorized response a status code equal to that given
+func (o *UpdateOutputPortUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *UpdateOutputPortUnauthorized) Error() string {
+	return fmt.Sprintf("[PUT /output-ports/{id}][%d] updateOutputPortUnauthorized ", 401)
+}
+
+func (o *UpdateOutputPortUnauthorized) String() string {
 	return fmt.Sprintf("[PUT /output-ports/{id}][%d] updateOutputPortUnauthorized ", 401)
 }
 
@@ -143,14 +234,44 @@ func NewUpdateOutputPortForbidden() *UpdateOutputPortForbidden {
 	return &UpdateOutputPortForbidden{}
 }
 
-/* UpdateOutputPortForbidden describes a response with status code 403, with default header values.
+/*
+UpdateOutputPortForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type UpdateOutputPortForbidden struct {
 }
 
+// IsSuccess returns true when this update output port forbidden response has a 2xx status code
+func (o *UpdateOutputPortForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update output port forbidden response has a 3xx status code
+func (o *UpdateOutputPortForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update output port forbidden response has a 4xx status code
+func (o *UpdateOutputPortForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update output port forbidden response has a 5xx status code
+func (o *UpdateOutputPortForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update output port forbidden response a status code equal to that given
+func (o *UpdateOutputPortForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *UpdateOutputPortForbidden) Error() string {
+	return fmt.Sprintf("[PUT /output-ports/{id}][%d] updateOutputPortForbidden ", 403)
+}
+
+func (o *UpdateOutputPortForbidden) String() string {
 	return fmt.Sprintf("[PUT /output-ports/{id}][%d] updateOutputPortForbidden ", 403)
 }
 
@@ -164,14 +285,44 @@ func NewUpdateOutputPortNotFound() *UpdateOutputPortNotFound {
 	return &UpdateOutputPortNotFound{}
 }
 
-/* UpdateOutputPortNotFound describes a response with status code 404, with default header values.
+/*
+UpdateOutputPortNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type UpdateOutputPortNotFound struct {
 }
 
+// IsSuccess returns true when this update output port not found response has a 2xx status code
+func (o *UpdateOutputPortNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update output port not found response has a 3xx status code
+func (o *UpdateOutputPortNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update output port not found response has a 4xx status code
+func (o *UpdateOutputPortNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update output port not found response has a 5xx status code
+func (o *UpdateOutputPortNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update output port not found response a status code equal to that given
+func (o *UpdateOutputPortNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *UpdateOutputPortNotFound) Error() string {
+	return fmt.Sprintf("[PUT /output-ports/{id}][%d] updateOutputPortNotFound ", 404)
+}
+
+func (o *UpdateOutputPortNotFound) String() string {
 	return fmt.Sprintf("[PUT /output-ports/{id}][%d] updateOutputPortNotFound ", 404)
 }
 
@@ -185,14 +336,44 @@ func NewUpdateOutputPortConflict() *UpdateOutputPortConflict {
 	return &UpdateOutputPortConflict{}
 }
 
-/* UpdateOutputPortConflict describes a response with status code 409, with default header values.
+/*
+UpdateOutputPortConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type UpdateOutputPortConflict struct {
 }
 
+// IsSuccess returns true when this update output port conflict response has a 2xx status code
+func (o *UpdateOutputPortConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update output port conflict response has a 3xx status code
+func (o *UpdateOutputPortConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update output port conflict response has a 4xx status code
+func (o *UpdateOutputPortConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update output port conflict response has a 5xx status code
+func (o *UpdateOutputPortConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update output port conflict response a status code equal to that given
+func (o *UpdateOutputPortConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *UpdateOutputPortConflict) Error() string {
+	return fmt.Sprintf("[PUT /output-ports/{id}][%d] updateOutputPortConflict ", 409)
+}
+
+func (o *UpdateOutputPortConflict) String() string {
 	return fmt.Sprintf("[PUT /output-ports/{id}][%d] updateOutputPortConflict ", 409)
 }
 

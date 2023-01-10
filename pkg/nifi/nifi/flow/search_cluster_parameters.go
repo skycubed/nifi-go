@@ -52,10 +52,12 @@ func NewSearchClusterParamsWithHTTPClient(client *http.Client) *SearchClusterPar
 	}
 }
 
-/* SearchClusterParams contains all the parameters to send to the API endpoint
-   for the search cluster operation.
+/*
+SearchClusterParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the search cluster operation.
+
+	Typically these are written to a http.Request.
 */
 type SearchClusterParams struct {
 

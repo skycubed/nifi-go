@@ -69,7 +69,8 @@ func NewGetComponentHistoryOK() *GetComponentHistoryOK {
 	return &GetComponentHistoryOK{}
 }
 
-/* GetComponentHistoryOK describes a response with status code 200, with default header values.
+/*
+GetComponentHistoryOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,39 @@ type GetComponentHistoryOK struct {
 	Payload *models.ComponentHistoryEntity
 }
 
+// IsSuccess returns true when this get component history o k response has a 2xx status code
+func (o *GetComponentHistoryOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get component history o k response has a 3xx status code
+func (o *GetComponentHistoryOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get component history o k response has a 4xx status code
+func (o *GetComponentHistoryOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get component history o k response has a 5xx status code
+func (o *GetComponentHistoryOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get component history o k response a status code equal to that given
+func (o *GetComponentHistoryOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetComponentHistoryOK) Error() string {
 	return fmt.Sprintf("[GET /flow/history/components/{componentId}][%d] getComponentHistoryOK  %+v", 200, o.Payload)
 }
+
+func (o *GetComponentHistoryOK) String() string {
+	return fmt.Sprintf("[GET /flow/history/components/{componentId}][%d] getComponentHistoryOK  %+v", 200, o.Payload)
+}
+
 func (o *GetComponentHistoryOK) GetPayload() *models.ComponentHistoryEntity {
 	return o.Payload
 }
@@ -101,14 +132,44 @@ func NewGetComponentHistoryBadRequest() *GetComponentHistoryBadRequest {
 	return &GetComponentHistoryBadRequest{}
 }
 
-/* GetComponentHistoryBadRequest describes a response with status code 400, with default header values.
+/*
+GetComponentHistoryBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type GetComponentHistoryBadRequest struct {
 }
 
+// IsSuccess returns true when this get component history bad request response has a 2xx status code
+func (o *GetComponentHistoryBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get component history bad request response has a 3xx status code
+func (o *GetComponentHistoryBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get component history bad request response has a 4xx status code
+func (o *GetComponentHistoryBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get component history bad request response has a 5xx status code
+func (o *GetComponentHistoryBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get component history bad request response a status code equal to that given
+func (o *GetComponentHistoryBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *GetComponentHistoryBadRequest) Error() string {
+	return fmt.Sprintf("[GET /flow/history/components/{componentId}][%d] getComponentHistoryBadRequest ", 400)
+}
+
+func (o *GetComponentHistoryBadRequest) String() string {
 	return fmt.Sprintf("[GET /flow/history/components/{componentId}][%d] getComponentHistoryBadRequest ", 400)
 }
 
@@ -122,14 +183,44 @@ func NewGetComponentHistoryUnauthorized() *GetComponentHistoryUnauthorized {
 	return &GetComponentHistoryUnauthorized{}
 }
 
-/* GetComponentHistoryUnauthorized describes a response with status code 401, with default header values.
+/*
+GetComponentHistoryUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type GetComponentHistoryUnauthorized struct {
 }
 
+// IsSuccess returns true when this get component history unauthorized response has a 2xx status code
+func (o *GetComponentHistoryUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get component history unauthorized response has a 3xx status code
+func (o *GetComponentHistoryUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get component history unauthorized response has a 4xx status code
+func (o *GetComponentHistoryUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get component history unauthorized response has a 5xx status code
+func (o *GetComponentHistoryUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get component history unauthorized response a status code equal to that given
+func (o *GetComponentHistoryUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GetComponentHistoryUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /flow/history/components/{componentId}][%d] getComponentHistoryUnauthorized ", 401)
+}
+
+func (o *GetComponentHistoryUnauthorized) String() string {
 	return fmt.Sprintf("[GET /flow/history/components/{componentId}][%d] getComponentHistoryUnauthorized ", 401)
 }
 
@@ -143,14 +234,44 @@ func NewGetComponentHistoryForbidden() *GetComponentHistoryForbidden {
 	return &GetComponentHistoryForbidden{}
 }
 
-/* GetComponentHistoryForbidden describes a response with status code 403, with default header values.
+/*
+GetComponentHistoryForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type GetComponentHistoryForbidden struct {
 }
 
+// IsSuccess returns true when this get component history forbidden response has a 2xx status code
+func (o *GetComponentHistoryForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get component history forbidden response has a 3xx status code
+func (o *GetComponentHistoryForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get component history forbidden response has a 4xx status code
+func (o *GetComponentHistoryForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get component history forbidden response has a 5xx status code
+func (o *GetComponentHistoryForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get component history forbidden response a status code equal to that given
+func (o *GetComponentHistoryForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetComponentHistoryForbidden) Error() string {
+	return fmt.Sprintf("[GET /flow/history/components/{componentId}][%d] getComponentHistoryForbidden ", 403)
+}
+
+func (o *GetComponentHistoryForbidden) String() string {
 	return fmt.Sprintf("[GET /flow/history/components/{componentId}][%d] getComponentHistoryForbidden ", 403)
 }
 
@@ -164,14 +285,44 @@ func NewGetComponentHistoryNotFound() *GetComponentHistoryNotFound {
 	return &GetComponentHistoryNotFound{}
 }
 
-/* GetComponentHistoryNotFound describes a response with status code 404, with default header values.
+/*
+GetComponentHistoryNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type GetComponentHistoryNotFound struct {
 }
 
+// IsSuccess returns true when this get component history not found response has a 2xx status code
+func (o *GetComponentHistoryNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get component history not found response has a 3xx status code
+func (o *GetComponentHistoryNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get component history not found response has a 4xx status code
+func (o *GetComponentHistoryNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get component history not found response has a 5xx status code
+func (o *GetComponentHistoryNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get component history not found response a status code equal to that given
+func (o *GetComponentHistoryNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetComponentHistoryNotFound) Error() string {
+	return fmt.Sprintf("[GET /flow/history/components/{componentId}][%d] getComponentHistoryNotFound ", 404)
+}
+
+func (o *GetComponentHistoryNotFound) String() string {
 	return fmt.Sprintf("[GET /flow/history/components/{componentId}][%d] getComponentHistoryNotFound ", 404)
 }
 
@@ -185,14 +336,44 @@ func NewGetComponentHistoryConflict() *GetComponentHistoryConflict {
 	return &GetComponentHistoryConflict{}
 }
 
-/* GetComponentHistoryConflict describes a response with status code 409, with default header values.
+/*
+GetComponentHistoryConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type GetComponentHistoryConflict struct {
 }
 
+// IsSuccess returns true when this get component history conflict response has a 2xx status code
+func (o *GetComponentHistoryConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get component history conflict response has a 3xx status code
+func (o *GetComponentHistoryConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get component history conflict response has a 4xx status code
+func (o *GetComponentHistoryConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get component history conflict response has a 5xx status code
+func (o *GetComponentHistoryConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get component history conflict response a status code equal to that given
+func (o *GetComponentHistoryConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *GetComponentHistoryConflict) Error() string {
+	return fmt.Sprintf("[GET /flow/history/components/{componentId}][%d] getComponentHistoryConflict ", 409)
+}
+
+func (o *GetComponentHistoryConflict) String() string {
 	return fmt.Sprintf("[GET /flow/history/components/{componentId}][%d] getComponentHistoryConflict ", 409)
 }
 

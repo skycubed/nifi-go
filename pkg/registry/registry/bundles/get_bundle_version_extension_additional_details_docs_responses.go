@@ -67,7 +67,8 @@ func NewGetBundleVersionExtensionAdditionalDetailsDocsOK() *GetBundleVersionExte
 	return &GetBundleVersionExtensionAdditionalDetailsDocsOK{}
 }
 
-/* GetBundleVersionExtensionAdditionalDetailsDocsOK describes a response with status code 200, with default header values.
+/*
+GetBundleVersionExtensionAdditionalDetailsDocsOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -75,9 +76,39 @@ type GetBundleVersionExtensionAdditionalDetailsDocsOK struct {
 	Payload string
 }
 
+// IsSuccess returns true when this get bundle version extension additional details docs o k response has a 2xx status code
+func (o *GetBundleVersionExtensionAdditionalDetailsDocsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get bundle version extension additional details docs o k response has a 3xx status code
+func (o *GetBundleVersionExtensionAdditionalDetailsDocsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get bundle version extension additional details docs o k response has a 4xx status code
+func (o *GetBundleVersionExtensionAdditionalDetailsDocsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get bundle version extension additional details docs o k response has a 5xx status code
+func (o *GetBundleVersionExtensionAdditionalDetailsDocsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get bundle version extension additional details docs o k response a status code equal to that given
+func (o *GetBundleVersionExtensionAdditionalDetailsDocsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetBundleVersionExtensionAdditionalDetailsDocsOK) Error() string {
 	return fmt.Sprintf("[GET /bundles/{bundleId}/versions/{version}/extensions/{name}/docs/additional-details][%d] getBundleVersionExtensionAdditionalDetailsDocsOK  %+v", 200, o.Payload)
 }
+
+func (o *GetBundleVersionExtensionAdditionalDetailsDocsOK) String() string {
+	return fmt.Sprintf("[GET /bundles/{bundleId}/versions/{version}/extensions/{name}/docs/additional-details][%d] getBundleVersionExtensionAdditionalDetailsDocsOK  %+v", 200, o.Payload)
+}
+
 func (o *GetBundleVersionExtensionAdditionalDetailsDocsOK) GetPayload() string {
 	return o.Payload
 }
@@ -97,14 +128,44 @@ func NewGetBundleVersionExtensionAdditionalDetailsDocsBadRequest() *GetBundleVer
 	return &GetBundleVersionExtensionAdditionalDetailsDocsBadRequest{}
 }
 
-/* GetBundleVersionExtensionAdditionalDetailsDocsBadRequest describes a response with status code 400, with default header values.
+/*
+GetBundleVersionExtensionAdditionalDetailsDocsBadRequest describes a response with status code 400, with default header values.
 
 NiFi Registry was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type GetBundleVersionExtensionAdditionalDetailsDocsBadRequest struct {
 }
 
+// IsSuccess returns true when this get bundle version extension additional details docs bad request response has a 2xx status code
+func (o *GetBundleVersionExtensionAdditionalDetailsDocsBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get bundle version extension additional details docs bad request response has a 3xx status code
+func (o *GetBundleVersionExtensionAdditionalDetailsDocsBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get bundle version extension additional details docs bad request response has a 4xx status code
+func (o *GetBundleVersionExtensionAdditionalDetailsDocsBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get bundle version extension additional details docs bad request response has a 5xx status code
+func (o *GetBundleVersionExtensionAdditionalDetailsDocsBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get bundle version extension additional details docs bad request response a status code equal to that given
+func (o *GetBundleVersionExtensionAdditionalDetailsDocsBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *GetBundleVersionExtensionAdditionalDetailsDocsBadRequest) Error() string {
+	return fmt.Sprintf("[GET /bundles/{bundleId}/versions/{version}/extensions/{name}/docs/additional-details][%d] getBundleVersionExtensionAdditionalDetailsDocsBadRequest ", 400)
+}
+
+func (o *GetBundleVersionExtensionAdditionalDetailsDocsBadRequest) String() string {
 	return fmt.Sprintf("[GET /bundles/{bundleId}/versions/{version}/extensions/{name}/docs/additional-details][%d] getBundleVersionExtensionAdditionalDetailsDocsBadRequest ", 400)
 }
 
@@ -118,14 +179,44 @@ func NewGetBundleVersionExtensionAdditionalDetailsDocsUnauthorized() *GetBundleV
 	return &GetBundleVersionExtensionAdditionalDetailsDocsUnauthorized{}
 }
 
-/* GetBundleVersionExtensionAdditionalDetailsDocsUnauthorized describes a response with status code 401, with default header values.
+/*
+GetBundleVersionExtensionAdditionalDetailsDocsUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type GetBundleVersionExtensionAdditionalDetailsDocsUnauthorized struct {
 }
 
+// IsSuccess returns true when this get bundle version extension additional details docs unauthorized response has a 2xx status code
+func (o *GetBundleVersionExtensionAdditionalDetailsDocsUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get bundle version extension additional details docs unauthorized response has a 3xx status code
+func (o *GetBundleVersionExtensionAdditionalDetailsDocsUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get bundle version extension additional details docs unauthorized response has a 4xx status code
+func (o *GetBundleVersionExtensionAdditionalDetailsDocsUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get bundle version extension additional details docs unauthorized response has a 5xx status code
+func (o *GetBundleVersionExtensionAdditionalDetailsDocsUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get bundle version extension additional details docs unauthorized response a status code equal to that given
+func (o *GetBundleVersionExtensionAdditionalDetailsDocsUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GetBundleVersionExtensionAdditionalDetailsDocsUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /bundles/{bundleId}/versions/{version}/extensions/{name}/docs/additional-details][%d] getBundleVersionExtensionAdditionalDetailsDocsUnauthorized ", 401)
+}
+
+func (o *GetBundleVersionExtensionAdditionalDetailsDocsUnauthorized) String() string {
 	return fmt.Sprintf("[GET /bundles/{bundleId}/versions/{version}/extensions/{name}/docs/additional-details][%d] getBundleVersionExtensionAdditionalDetailsDocsUnauthorized ", 401)
 }
 
@@ -139,14 +230,44 @@ func NewGetBundleVersionExtensionAdditionalDetailsDocsForbidden() *GetBundleVers
 	return &GetBundleVersionExtensionAdditionalDetailsDocsForbidden{}
 }
 
-/* GetBundleVersionExtensionAdditionalDetailsDocsForbidden describes a response with status code 403, with default header values.
+/*
+GetBundleVersionExtensionAdditionalDetailsDocsForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type GetBundleVersionExtensionAdditionalDetailsDocsForbidden struct {
 }
 
+// IsSuccess returns true when this get bundle version extension additional details docs forbidden response has a 2xx status code
+func (o *GetBundleVersionExtensionAdditionalDetailsDocsForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get bundle version extension additional details docs forbidden response has a 3xx status code
+func (o *GetBundleVersionExtensionAdditionalDetailsDocsForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get bundle version extension additional details docs forbidden response has a 4xx status code
+func (o *GetBundleVersionExtensionAdditionalDetailsDocsForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get bundle version extension additional details docs forbidden response has a 5xx status code
+func (o *GetBundleVersionExtensionAdditionalDetailsDocsForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get bundle version extension additional details docs forbidden response a status code equal to that given
+func (o *GetBundleVersionExtensionAdditionalDetailsDocsForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetBundleVersionExtensionAdditionalDetailsDocsForbidden) Error() string {
+	return fmt.Sprintf("[GET /bundles/{bundleId}/versions/{version}/extensions/{name}/docs/additional-details][%d] getBundleVersionExtensionAdditionalDetailsDocsForbidden ", 403)
+}
+
+func (o *GetBundleVersionExtensionAdditionalDetailsDocsForbidden) String() string {
 	return fmt.Sprintf("[GET /bundles/{bundleId}/versions/{version}/extensions/{name}/docs/additional-details][%d] getBundleVersionExtensionAdditionalDetailsDocsForbidden ", 403)
 }
 
@@ -160,14 +281,44 @@ func NewGetBundleVersionExtensionAdditionalDetailsDocsNotFound() *GetBundleVersi
 	return &GetBundleVersionExtensionAdditionalDetailsDocsNotFound{}
 }
 
-/* GetBundleVersionExtensionAdditionalDetailsDocsNotFound describes a response with status code 404, with default header values.
+/*
+GetBundleVersionExtensionAdditionalDetailsDocsNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type GetBundleVersionExtensionAdditionalDetailsDocsNotFound struct {
 }
 
+// IsSuccess returns true when this get bundle version extension additional details docs not found response has a 2xx status code
+func (o *GetBundleVersionExtensionAdditionalDetailsDocsNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get bundle version extension additional details docs not found response has a 3xx status code
+func (o *GetBundleVersionExtensionAdditionalDetailsDocsNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get bundle version extension additional details docs not found response has a 4xx status code
+func (o *GetBundleVersionExtensionAdditionalDetailsDocsNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get bundle version extension additional details docs not found response has a 5xx status code
+func (o *GetBundleVersionExtensionAdditionalDetailsDocsNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get bundle version extension additional details docs not found response a status code equal to that given
+func (o *GetBundleVersionExtensionAdditionalDetailsDocsNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetBundleVersionExtensionAdditionalDetailsDocsNotFound) Error() string {
+	return fmt.Sprintf("[GET /bundles/{bundleId}/versions/{version}/extensions/{name}/docs/additional-details][%d] getBundleVersionExtensionAdditionalDetailsDocsNotFound ", 404)
+}
+
+func (o *GetBundleVersionExtensionAdditionalDetailsDocsNotFound) String() string {
 	return fmt.Sprintf("[GET /bundles/{bundleId}/versions/{version}/extensions/{name}/docs/additional-details][%d] getBundleVersionExtensionAdditionalDetailsDocsNotFound ", 404)
 }
 
@@ -181,14 +332,44 @@ func NewGetBundleVersionExtensionAdditionalDetailsDocsConflict() *GetBundleVersi
 	return &GetBundleVersionExtensionAdditionalDetailsDocsConflict{}
 }
 
-/* GetBundleVersionExtensionAdditionalDetailsDocsConflict describes a response with status code 409, with default header values.
+/*
+GetBundleVersionExtensionAdditionalDetailsDocsConflict describes a response with status code 409, with default header values.
 
 NiFi Registry was unable to complete the request because it assumes a server state that is not valid.
 */
 type GetBundleVersionExtensionAdditionalDetailsDocsConflict struct {
 }
 
+// IsSuccess returns true when this get bundle version extension additional details docs conflict response has a 2xx status code
+func (o *GetBundleVersionExtensionAdditionalDetailsDocsConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get bundle version extension additional details docs conflict response has a 3xx status code
+func (o *GetBundleVersionExtensionAdditionalDetailsDocsConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get bundle version extension additional details docs conflict response has a 4xx status code
+func (o *GetBundleVersionExtensionAdditionalDetailsDocsConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get bundle version extension additional details docs conflict response has a 5xx status code
+func (o *GetBundleVersionExtensionAdditionalDetailsDocsConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get bundle version extension additional details docs conflict response a status code equal to that given
+func (o *GetBundleVersionExtensionAdditionalDetailsDocsConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *GetBundleVersionExtensionAdditionalDetailsDocsConflict) Error() string {
+	return fmt.Sprintf("[GET /bundles/{bundleId}/versions/{version}/extensions/{name}/docs/additional-details][%d] getBundleVersionExtensionAdditionalDetailsDocsConflict ", 409)
+}
+
+func (o *GetBundleVersionExtensionAdditionalDetailsDocsConflict) String() string {
 	return fmt.Sprintf("[GET /bundles/{bundleId}/versions/{version}/extensions/{name}/docs/additional-details][%d] getBundleVersionExtensionAdditionalDetailsDocsConflict ", 409)
 }
 

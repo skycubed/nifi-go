@@ -52,10 +52,12 @@ func NewGlobalGetFlowParamsWithHTTPClient(client *http.Client) *GlobalGetFlowPar
 	}
 }
 
-/* GlobalGetFlowParams contains all the parameters to send to the API endpoint
-   for the global get flow operation.
+/*
+GlobalGetFlowParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the global get flow operation.
+
+	Typically these are written to a http.Request.
 */
 type GlobalGetFlowParams struct {
 

@@ -69,7 +69,8 @@ func NewGetFlowMetricsOK() *GetFlowMetricsOK {
 	return &GetFlowMetricsOK{}
 }
 
-/* GetFlowMetricsOK describes a response with status code 200, with default header values.
+/*
+GetFlowMetricsOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,39 @@ type GetFlowMetricsOK struct {
 	Payload models.StreamingOutput
 }
 
+// IsSuccess returns true when this get flow metrics o k response has a 2xx status code
+func (o *GetFlowMetricsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get flow metrics o k response has a 3xx status code
+func (o *GetFlowMetricsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get flow metrics o k response has a 4xx status code
+func (o *GetFlowMetricsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get flow metrics o k response has a 5xx status code
+func (o *GetFlowMetricsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get flow metrics o k response a status code equal to that given
+func (o *GetFlowMetricsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetFlowMetricsOK) Error() string {
 	return fmt.Sprintf("[GET /flow/metrics/{producer}][%d] getFlowMetricsOK  %+v", 200, o.Payload)
 }
+
+func (o *GetFlowMetricsOK) String() string {
+	return fmt.Sprintf("[GET /flow/metrics/{producer}][%d] getFlowMetricsOK  %+v", 200, o.Payload)
+}
+
 func (o *GetFlowMetricsOK) GetPayload() models.StreamingOutput {
 	return o.Payload
 }
@@ -99,14 +130,44 @@ func NewGetFlowMetricsBadRequest() *GetFlowMetricsBadRequest {
 	return &GetFlowMetricsBadRequest{}
 }
 
-/* GetFlowMetricsBadRequest describes a response with status code 400, with default header values.
+/*
+GetFlowMetricsBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type GetFlowMetricsBadRequest struct {
 }
 
+// IsSuccess returns true when this get flow metrics bad request response has a 2xx status code
+func (o *GetFlowMetricsBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get flow metrics bad request response has a 3xx status code
+func (o *GetFlowMetricsBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get flow metrics bad request response has a 4xx status code
+func (o *GetFlowMetricsBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get flow metrics bad request response has a 5xx status code
+func (o *GetFlowMetricsBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get flow metrics bad request response a status code equal to that given
+func (o *GetFlowMetricsBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *GetFlowMetricsBadRequest) Error() string {
+	return fmt.Sprintf("[GET /flow/metrics/{producer}][%d] getFlowMetricsBadRequest ", 400)
+}
+
+func (o *GetFlowMetricsBadRequest) String() string {
 	return fmt.Sprintf("[GET /flow/metrics/{producer}][%d] getFlowMetricsBadRequest ", 400)
 }
 
@@ -120,14 +181,44 @@ func NewGetFlowMetricsUnauthorized() *GetFlowMetricsUnauthorized {
 	return &GetFlowMetricsUnauthorized{}
 }
 
-/* GetFlowMetricsUnauthorized describes a response with status code 401, with default header values.
+/*
+GetFlowMetricsUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type GetFlowMetricsUnauthorized struct {
 }
 
+// IsSuccess returns true when this get flow metrics unauthorized response has a 2xx status code
+func (o *GetFlowMetricsUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get flow metrics unauthorized response has a 3xx status code
+func (o *GetFlowMetricsUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get flow metrics unauthorized response has a 4xx status code
+func (o *GetFlowMetricsUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get flow metrics unauthorized response has a 5xx status code
+func (o *GetFlowMetricsUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get flow metrics unauthorized response a status code equal to that given
+func (o *GetFlowMetricsUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GetFlowMetricsUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /flow/metrics/{producer}][%d] getFlowMetricsUnauthorized ", 401)
+}
+
+func (o *GetFlowMetricsUnauthorized) String() string {
 	return fmt.Sprintf("[GET /flow/metrics/{producer}][%d] getFlowMetricsUnauthorized ", 401)
 }
 
@@ -141,14 +232,44 @@ func NewGetFlowMetricsForbidden() *GetFlowMetricsForbidden {
 	return &GetFlowMetricsForbidden{}
 }
 
-/* GetFlowMetricsForbidden describes a response with status code 403, with default header values.
+/*
+GetFlowMetricsForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type GetFlowMetricsForbidden struct {
 }
 
+// IsSuccess returns true when this get flow metrics forbidden response has a 2xx status code
+func (o *GetFlowMetricsForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get flow metrics forbidden response has a 3xx status code
+func (o *GetFlowMetricsForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get flow metrics forbidden response has a 4xx status code
+func (o *GetFlowMetricsForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get flow metrics forbidden response has a 5xx status code
+func (o *GetFlowMetricsForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get flow metrics forbidden response a status code equal to that given
+func (o *GetFlowMetricsForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetFlowMetricsForbidden) Error() string {
+	return fmt.Sprintf("[GET /flow/metrics/{producer}][%d] getFlowMetricsForbidden ", 403)
+}
+
+func (o *GetFlowMetricsForbidden) String() string {
 	return fmt.Sprintf("[GET /flow/metrics/{producer}][%d] getFlowMetricsForbidden ", 403)
 }
 
@@ -162,14 +283,44 @@ func NewGetFlowMetricsNotFound() *GetFlowMetricsNotFound {
 	return &GetFlowMetricsNotFound{}
 }
 
-/* GetFlowMetricsNotFound describes a response with status code 404, with default header values.
+/*
+GetFlowMetricsNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type GetFlowMetricsNotFound struct {
 }
 
+// IsSuccess returns true when this get flow metrics not found response has a 2xx status code
+func (o *GetFlowMetricsNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get flow metrics not found response has a 3xx status code
+func (o *GetFlowMetricsNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get flow metrics not found response has a 4xx status code
+func (o *GetFlowMetricsNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get flow metrics not found response has a 5xx status code
+func (o *GetFlowMetricsNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get flow metrics not found response a status code equal to that given
+func (o *GetFlowMetricsNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetFlowMetricsNotFound) Error() string {
+	return fmt.Sprintf("[GET /flow/metrics/{producer}][%d] getFlowMetricsNotFound ", 404)
+}
+
+func (o *GetFlowMetricsNotFound) String() string {
 	return fmt.Sprintf("[GET /flow/metrics/{producer}][%d] getFlowMetricsNotFound ", 404)
 }
 
@@ -183,14 +334,44 @@ func NewGetFlowMetricsConflict() *GetFlowMetricsConflict {
 	return &GetFlowMetricsConflict{}
 }
 
-/* GetFlowMetricsConflict describes a response with status code 409, with default header values.
+/*
+GetFlowMetricsConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type GetFlowMetricsConflict struct {
 }
 
+// IsSuccess returns true when this get flow metrics conflict response has a 2xx status code
+func (o *GetFlowMetricsConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get flow metrics conflict response has a 3xx status code
+func (o *GetFlowMetricsConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get flow metrics conflict response has a 4xx status code
+func (o *GetFlowMetricsConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get flow metrics conflict response has a 5xx status code
+func (o *GetFlowMetricsConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get flow metrics conflict response a status code equal to that given
+func (o *GetFlowMetricsConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *GetFlowMetricsConflict) Error() string {
+	return fmt.Sprintf("[GET /flow/metrics/{producer}][%d] getFlowMetricsConflict ", 409)
+}
+
+func (o *GetFlowMetricsConflict) String() string {
 	return fmt.Sprintf("[GET /flow/metrics/{producer}][%d] getFlowMetricsConflict ", 409)
 }
 

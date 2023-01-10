@@ -52,10 +52,12 @@ func NewGetConnectionStatusHistoryParamsWithHTTPClient(client *http.Client) *Get
 	}
 }
 
-/* GetConnectionStatusHistoryParams contains all the parameters to send to the API endpoint
-   for the get connection status history operation.
+/*
+GetConnectionStatusHistoryParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get connection status history operation.
+
+	Typically these are written to a http.Request.
 */
 type GetConnectionStatusHistoryParams struct {
 

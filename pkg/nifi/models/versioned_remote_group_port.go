@@ -27,7 +27,7 @@ type VersionedRemoteGroupPort struct {
 	Comments string `json:"comments,omitempty"`
 
 	// component type
-	// Enum: [CONNECTION PROCESSOR PROCESS_GROUP REMOTE_PROCESS_GROUP INPUT_PORT OUTPUT_PORT REMOTE_INPUT_PORT REMOTE_OUTPUT_PORT FUNNEL LABEL CONTROLLER_SERVICE]
+	// Enum: [CONNECTION PROCESSOR PROCESS_GROUP REMOTE_PROCESS_GROUP INPUT_PORT OUTPUT_PORT REMOTE_INPUT_PORT REMOTE_OUTPUT_PORT FUNNEL LABEL CONTROLLER_SERVICE REPORTING_TASK PARAMETER_CONTEXT PARAMETER_PROVIDER TEMPLATE FLOW_REGISTRY_CLIENT]
 	ComponentType string `json:"componentType,omitempty"`
 
 	// The number of task that may transmit flowfiles to the target port concurrently.
@@ -39,6 +39,9 @@ type VersionedRemoteGroupPort struct {
 	// The component's unique identifier
 	Identifier string `json:"identifier,omitempty"`
 
+	// The instance ID of an existing component that is described by this VersionedComponent, or null if this is not mapped to an instantiated component
+	InstanceIdentifier string `json:"instanceIdentifier,omitempty"`
+
 	// The component's name
 	Name string `json:"name,omitempty"`
 
@@ -49,7 +52,7 @@ type VersionedRemoteGroupPort struct {
 	RemoteGroupID string `json:"remoteGroupId,omitempty"`
 
 	// The scheduled state of the component
-	// Enum: [ENABLED DISABLED]
+	// Enum: [ENABLED DISABLED RUNNING]
 	ScheduledState string `json:"scheduledState,omitempty"`
 
 	// The ID of the port on the target NiFi instance
@@ -108,7 +111,7 @@ var versionedRemoteGroupPortTypeComponentTypePropEnum []interface{}
 
 func init() {
 	var res []string
-	if err := json.Unmarshal([]byte(`["CONNECTION","PROCESSOR","PROCESS_GROUP","REMOTE_PROCESS_GROUP","INPUT_PORT","OUTPUT_PORT","REMOTE_INPUT_PORT","REMOTE_OUTPUT_PORT","FUNNEL","LABEL","CONTROLLER_SERVICE"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["CONNECTION","PROCESSOR","PROCESS_GROUP","REMOTE_PROCESS_GROUP","INPUT_PORT","OUTPUT_PORT","REMOTE_INPUT_PORT","REMOTE_OUTPUT_PORT","FUNNEL","LABEL","CONTROLLER_SERVICE","REPORTING_TASK","PARAMETER_CONTEXT","PARAMETER_PROVIDER","TEMPLATE","FLOW_REGISTRY_CLIENT"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
@@ -150,6 +153,21 @@ const (
 
 	// VersionedRemoteGroupPortComponentTypeCONTROLLERSERVICE captures enum value "CONTROLLER_SERVICE"
 	VersionedRemoteGroupPortComponentTypeCONTROLLERSERVICE string = "CONTROLLER_SERVICE"
+
+	// VersionedRemoteGroupPortComponentTypeREPORTINGTASK captures enum value "REPORTING_TASK"
+	VersionedRemoteGroupPortComponentTypeREPORTINGTASK string = "REPORTING_TASK"
+
+	// VersionedRemoteGroupPortComponentTypePARAMETERCONTEXT captures enum value "PARAMETER_CONTEXT"
+	VersionedRemoteGroupPortComponentTypePARAMETERCONTEXT string = "PARAMETER_CONTEXT"
+
+	// VersionedRemoteGroupPortComponentTypePARAMETERPROVIDER captures enum value "PARAMETER_PROVIDER"
+	VersionedRemoteGroupPortComponentTypePARAMETERPROVIDER string = "PARAMETER_PROVIDER"
+
+	// VersionedRemoteGroupPortComponentTypeTEMPLATE captures enum value "TEMPLATE"
+	VersionedRemoteGroupPortComponentTypeTEMPLATE string = "TEMPLATE"
+
+	// VersionedRemoteGroupPortComponentTypeFLOWREGISTRYCLIENT captures enum value "FLOW_REGISTRY_CLIENT"
+	VersionedRemoteGroupPortComponentTypeFLOWREGISTRYCLIENT string = "FLOW_REGISTRY_CLIENT"
 )
 
 // prop value enum
@@ -196,7 +214,7 @@ var versionedRemoteGroupPortTypeScheduledStatePropEnum []interface{}
 
 func init() {
 	var res []string
-	if err := json.Unmarshal([]byte(`["ENABLED","DISABLED"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["ENABLED","DISABLED","RUNNING"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
@@ -211,6 +229,9 @@ const (
 
 	// VersionedRemoteGroupPortScheduledStateDISABLED captures enum value "DISABLED"
 	VersionedRemoteGroupPortScheduledStateDISABLED string = "DISABLED"
+
+	// VersionedRemoteGroupPortScheduledStateRUNNING captures enum value "RUNNING"
+	VersionedRemoteGroupPortScheduledStateRUNNING string = "RUNNING"
 )
 
 // prop value enum

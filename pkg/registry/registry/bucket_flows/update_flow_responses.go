@@ -69,7 +69,8 @@ func NewUpdateFlowOK() *UpdateFlowOK {
 	return &UpdateFlowOK{}
 }
 
-/* UpdateFlowOK describes a response with status code 200, with default header values.
+/*
+UpdateFlowOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,39 @@ type UpdateFlowOK struct {
 	Payload *models.VersionedFlow
 }
 
+// IsSuccess returns true when this update flow o k response has a 2xx status code
+func (o *UpdateFlowOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this update flow o k response has a 3xx status code
+func (o *UpdateFlowOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update flow o k response has a 4xx status code
+func (o *UpdateFlowOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this update flow o k response has a 5xx status code
+func (o *UpdateFlowOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update flow o k response a status code equal to that given
+func (o *UpdateFlowOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *UpdateFlowOK) Error() string {
 	return fmt.Sprintf("[PUT /buckets/{bucketId}/flows/{flowId}][%d] updateFlowOK  %+v", 200, o.Payload)
 }
+
+func (o *UpdateFlowOK) String() string {
+	return fmt.Sprintf("[PUT /buckets/{bucketId}/flows/{flowId}][%d] updateFlowOK  %+v", 200, o.Payload)
+}
+
 func (o *UpdateFlowOK) GetPayload() *models.VersionedFlow {
 	return o.Payload
 }
@@ -101,14 +132,44 @@ func NewUpdateFlowBadRequest() *UpdateFlowBadRequest {
 	return &UpdateFlowBadRequest{}
 }
 
-/* UpdateFlowBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateFlowBadRequest describes a response with status code 400, with default header values.
 
 NiFi Registry was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type UpdateFlowBadRequest struct {
 }
 
+// IsSuccess returns true when this update flow bad request response has a 2xx status code
+func (o *UpdateFlowBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update flow bad request response has a 3xx status code
+func (o *UpdateFlowBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update flow bad request response has a 4xx status code
+func (o *UpdateFlowBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update flow bad request response has a 5xx status code
+func (o *UpdateFlowBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update flow bad request response a status code equal to that given
+func (o *UpdateFlowBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *UpdateFlowBadRequest) Error() string {
+	return fmt.Sprintf("[PUT /buckets/{bucketId}/flows/{flowId}][%d] updateFlowBadRequest ", 400)
+}
+
+func (o *UpdateFlowBadRequest) String() string {
 	return fmt.Sprintf("[PUT /buckets/{bucketId}/flows/{flowId}][%d] updateFlowBadRequest ", 400)
 }
 
@@ -122,14 +183,44 @@ func NewUpdateFlowUnauthorized() *UpdateFlowUnauthorized {
 	return &UpdateFlowUnauthorized{}
 }
 
-/* UpdateFlowUnauthorized describes a response with status code 401, with default header values.
+/*
+UpdateFlowUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type UpdateFlowUnauthorized struct {
 }
 
+// IsSuccess returns true when this update flow unauthorized response has a 2xx status code
+func (o *UpdateFlowUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update flow unauthorized response has a 3xx status code
+func (o *UpdateFlowUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update flow unauthorized response has a 4xx status code
+func (o *UpdateFlowUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update flow unauthorized response has a 5xx status code
+func (o *UpdateFlowUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update flow unauthorized response a status code equal to that given
+func (o *UpdateFlowUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *UpdateFlowUnauthorized) Error() string {
+	return fmt.Sprintf("[PUT /buckets/{bucketId}/flows/{flowId}][%d] updateFlowUnauthorized ", 401)
+}
+
+func (o *UpdateFlowUnauthorized) String() string {
 	return fmt.Sprintf("[PUT /buckets/{bucketId}/flows/{flowId}][%d] updateFlowUnauthorized ", 401)
 }
 
@@ -143,14 +234,44 @@ func NewUpdateFlowForbidden() *UpdateFlowForbidden {
 	return &UpdateFlowForbidden{}
 }
 
-/* UpdateFlowForbidden describes a response with status code 403, with default header values.
+/*
+UpdateFlowForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type UpdateFlowForbidden struct {
 }
 
+// IsSuccess returns true when this update flow forbidden response has a 2xx status code
+func (o *UpdateFlowForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update flow forbidden response has a 3xx status code
+func (o *UpdateFlowForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update flow forbidden response has a 4xx status code
+func (o *UpdateFlowForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update flow forbidden response has a 5xx status code
+func (o *UpdateFlowForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update flow forbidden response a status code equal to that given
+func (o *UpdateFlowForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *UpdateFlowForbidden) Error() string {
+	return fmt.Sprintf("[PUT /buckets/{bucketId}/flows/{flowId}][%d] updateFlowForbidden ", 403)
+}
+
+func (o *UpdateFlowForbidden) String() string {
 	return fmt.Sprintf("[PUT /buckets/{bucketId}/flows/{flowId}][%d] updateFlowForbidden ", 403)
 }
 
@@ -164,14 +285,44 @@ func NewUpdateFlowNotFound() *UpdateFlowNotFound {
 	return &UpdateFlowNotFound{}
 }
 
-/* UpdateFlowNotFound describes a response with status code 404, with default header values.
+/*
+UpdateFlowNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type UpdateFlowNotFound struct {
 }
 
+// IsSuccess returns true when this update flow not found response has a 2xx status code
+func (o *UpdateFlowNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update flow not found response has a 3xx status code
+func (o *UpdateFlowNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update flow not found response has a 4xx status code
+func (o *UpdateFlowNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update flow not found response has a 5xx status code
+func (o *UpdateFlowNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update flow not found response a status code equal to that given
+func (o *UpdateFlowNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *UpdateFlowNotFound) Error() string {
+	return fmt.Sprintf("[PUT /buckets/{bucketId}/flows/{flowId}][%d] updateFlowNotFound ", 404)
+}
+
+func (o *UpdateFlowNotFound) String() string {
 	return fmt.Sprintf("[PUT /buckets/{bucketId}/flows/{flowId}][%d] updateFlowNotFound ", 404)
 }
 
@@ -185,14 +336,44 @@ func NewUpdateFlowConflict() *UpdateFlowConflict {
 	return &UpdateFlowConflict{}
 }
 
-/* UpdateFlowConflict describes a response with status code 409, with default header values.
+/*
+UpdateFlowConflict describes a response with status code 409, with default header values.
 
 NiFi Registry was unable to complete the request because it assumes a server state that is not valid.
 */
 type UpdateFlowConflict struct {
 }
 
+// IsSuccess returns true when this update flow conflict response has a 2xx status code
+func (o *UpdateFlowConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update flow conflict response has a 3xx status code
+func (o *UpdateFlowConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update flow conflict response has a 4xx status code
+func (o *UpdateFlowConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update flow conflict response has a 5xx status code
+func (o *UpdateFlowConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update flow conflict response a status code equal to that given
+func (o *UpdateFlowConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *UpdateFlowConflict) Error() string {
+	return fmt.Sprintf("[PUT /buckets/{bucketId}/flows/{flowId}][%d] updateFlowConflict ", 409)
+}
+
+func (o *UpdateFlowConflict) String() string {
 	return fmt.Sprintf("[PUT /buckets/{bucketId}/flows/{flowId}][%d] updateFlowConflict ", 409)
 }
 

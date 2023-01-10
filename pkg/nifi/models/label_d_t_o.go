@@ -18,6 +18,9 @@ import (
 // swagger:model LabelDTO
 type LabelDTO struct {
 
+	// The z index of the label.
+	GetzIndex int64 `json:"getzIndex,omitempty"`
+
 	// The height of the label in pixels when at a 1:1 scale.
 	Height float64 `json:"height,omitempty"`
 

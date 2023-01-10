@@ -53,10 +53,12 @@ func NewDeleteSnippetParamsWithHTTPClient(client *http.Client) *DeleteSnippetPar
 	}
 }
 
-/* DeleteSnippetParams contains all the parameters to send to the API endpoint
-   for the delete snippet operation.
+/*
+DeleteSnippetParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete snippet operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteSnippetParams struct {
 

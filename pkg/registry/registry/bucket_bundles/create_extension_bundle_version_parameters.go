@@ -52,10 +52,12 @@ func NewCreateExtensionBundleVersionParamsWithHTTPClient(client *http.Client) *C
 	}
 }
 
-/* CreateExtensionBundleVersionParams contains all the parameters to send to the API endpoint
-   for the create extension bundle version operation.
+/*
+CreateExtensionBundleVersionParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create extension bundle version operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateExtensionBundleVersionParams struct {
 

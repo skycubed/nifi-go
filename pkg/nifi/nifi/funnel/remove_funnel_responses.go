@@ -69,7 +69,8 @@ func NewRemoveFunnelOK() *RemoveFunnelOK {
 	return &RemoveFunnelOK{}
 }
 
-/* RemoveFunnelOK describes a response with status code 200, with default header values.
+/*
+RemoveFunnelOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,39 @@ type RemoveFunnelOK struct {
 	Payload *models.FunnelEntity
 }
 
+// IsSuccess returns true when this remove funnel o k response has a 2xx status code
+func (o *RemoveFunnelOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this remove funnel o k response has a 3xx status code
+func (o *RemoveFunnelOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this remove funnel o k response has a 4xx status code
+func (o *RemoveFunnelOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this remove funnel o k response has a 5xx status code
+func (o *RemoveFunnelOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this remove funnel o k response a status code equal to that given
+func (o *RemoveFunnelOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *RemoveFunnelOK) Error() string {
 	return fmt.Sprintf("[DELETE /funnels/{id}][%d] removeFunnelOK  %+v", 200, o.Payload)
 }
+
+func (o *RemoveFunnelOK) String() string {
+	return fmt.Sprintf("[DELETE /funnels/{id}][%d] removeFunnelOK  %+v", 200, o.Payload)
+}
+
 func (o *RemoveFunnelOK) GetPayload() *models.FunnelEntity {
 	return o.Payload
 }
@@ -101,14 +132,44 @@ func NewRemoveFunnelBadRequest() *RemoveFunnelBadRequest {
 	return &RemoveFunnelBadRequest{}
 }
 
-/* RemoveFunnelBadRequest describes a response with status code 400, with default header values.
+/*
+RemoveFunnelBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type RemoveFunnelBadRequest struct {
 }
 
+// IsSuccess returns true when this remove funnel bad request response has a 2xx status code
+func (o *RemoveFunnelBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this remove funnel bad request response has a 3xx status code
+func (o *RemoveFunnelBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this remove funnel bad request response has a 4xx status code
+func (o *RemoveFunnelBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this remove funnel bad request response has a 5xx status code
+func (o *RemoveFunnelBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this remove funnel bad request response a status code equal to that given
+func (o *RemoveFunnelBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *RemoveFunnelBadRequest) Error() string {
+	return fmt.Sprintf("[DELETE /funnels/{id}][%d] removeFunnelBadRequest ", 400)
+}
+
+func (o *RemoveFunnelBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /funnels/{id}][%d] removeFunnelBadRequest ", 400)
 }
 
@@ -122,14 +183,44 @@ func NewRemoveFunnelUnauthorized() *RemoveFunnelUnauthorized {
 	return &RemoveFunnelUnauthorized{}
 }
 
-/* RemoveFunnelUnauthorized describes a response with status code 401, with default header values.
+/*
+RemoveFunnelUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type RemoveFunnelUnauthorized struct {
 }
 
+// IsSuccess returns true when this remove funnel unauthorized response has a 2xx status code
+func (o *RemoveFunnelUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this remove funnel unauthorized response has a 3xx status code
+func (o *RemoveFunnelUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this remove funnel unauthorized response has a 4xx status code
+func (o *RemoveFunnelUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this remove funnel unauthorized response has a 5xx status code
+func (o *RemoveFunnelUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this remove funnel unauthorized response a status code equal to that given
+func (o *RemoveFunnelUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *RemoveFunnelUnauthorized) Error() string {
+	return fmt.Sprintf("[DELETE /funnels/{id}][%d] removeFunnelUnauthorized ", 401)
+}
+
+func (o *RemoveFunnelUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /funnels/{id}][%d] removeFunnelUnauthorized ", 401)
 }
 
@@ -143,14 +234,44 @@ func NewRemoveFunnelForbidden() *RemoveFunnelForbidden {
 	return &RemoveFunnelForbidden{}
 }
 
-/* RemoveFunnelForbidden describes a response with status code 403, with default header values.
+/*
+RemoveFunnelForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type RemoveFunnelForbidden struct {
 }
 
+// IsSuccess returns true when this remove funnel forbidden response has a 2xx status code
+func (o *RemoveFunnelForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this remove funnel forbidden response has a 3xx status code
+func (o *RemoveFunnelForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this remove funnel forbidden response has a 4xx status code
+func (o *RemoveFunnelForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this remove funnel forbidden response has a 5xx status code
+func (o *RemoveFunnelForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this remove funnel forbidden response a status code equal to that given
+func (o *RemoveFunnelForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *RemoveFunnelForbidden) Error() string {
+	return fmt.Sprintf("[DELETE /funnels/{id}][%d] removeFunnelForbidden ", 403)
+}
+
+func (o *RemoveFunnelForbidden) String() string {
 	return fmt.Sprintf("[DELETE /funnels/{id}][%d] removeFunnelForbidden ", 403)
 }
 
@@ -164,14 +285,44 @@ func NewRemoveFunnelNotFound() *RemoveFunnelNotFound {
 	return &RemoveFunnelNotFound{}
 }
 
-/* RemoveFunnelNotFound describes a response with status code 404, with default header values.
+/*
+RemoveFunnelNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type RemoveFunnelNotFound struct {
 }
 
+// IsSuccess returns true when this remove funnel not found response has a 2xx status code
+func (o *RemoveFunnelNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this remove funnel not found response has a 3xx status code
+func (o *RemoveFunnelNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this remove funnel not found response has a 4xx status code
+func (o *RemoveFunnelNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this remove funnel not found response has a 5xx status code
+func (o *RemoveFunnelNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this remove funnel not found response a status code equal to that given
+func (o *RemoveFunnelNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *RemoveFunnelNotFound) Error() string {
+	return fmt.Sprintf("[DELETE /funnels/{id}][%d] removeFunnelNotFound ", 404)
+}
+
+func (o *RemoveFunnelNotFound) String() string {
 	return fmt.Sprintf("[DELETE /funnels/{id}][%d] removeFunnelNotFound ", 404)
 }
 
@@ -185,14 +336,44 @@ func NewRemoveFunnelConflict() *RemoveFunnelConflict {
 	return &RemoveFunnelConflict{}
 }
 
-/* RemoveFunnelConflict describes a response with status code 409, with default header values.
+/*
+RemoveFunnelConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type RemoveFunnelConflict struct {
 }
 
+// IsSuccess returns true when this remove funnel conflict response has a 2xx status code
+func (o *RemoveFunnelConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this remove funnel conflict response has a 3xx status code
+func (o *RemoveFunnelConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this remove funnel conflict response has a 4xx status code
+func (o *RemoveFunnelConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this remove funnel conflict response has a 5xx status code
+func (o *RemoveFunnelConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this remove funnel conflict response a status code equal to that given
+func (o *RemoveFunnelConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *RemoveFunnelConflict) Error() string {
+	return fmt.Sprintf("[DELETE /funnels/{id}][%d] removeFunnelConflict ", 409)
+}
+
+func (o *RemoveFunnelConflict) String() string {
 	return fmt.Sprintf("[DELETE /funnels/{id}][%d] removeFunnelConflict ", 409)
 }
 

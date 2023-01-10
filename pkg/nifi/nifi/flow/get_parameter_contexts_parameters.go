@@ -52,10 +52,12 @@ func NewGetParameterContextsParamsWithHTTPClient(client *http.Client) *GetParame
 	}
 }
 
-/* GetParameterContextsParams contains all the parameters to send to the API endpoint
-   for the get parameter contexts operation.
+/*
+GetParameterContextsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get parameter contexts operation.
+
+	Typically these are written to a http.Request.
 */
 type GetParameterContextsParams struct {
 	timeout    time.Duration

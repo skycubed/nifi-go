@@ -69,7 +69,8 @@ func NewGetProcessGroupStatusHistoryOK() *GetProcessGroupStatusHistoryOK {
 	return &GetProcessGroupStatusHistoryOK{}
 }
 
-/* GetProcessGroupStatusHistoryOK describes a response with status code 200, with default header values.
+/*
+GetProcessGroupStatusHistoryOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,39 @@ type GetProcessGroupStatusHistoryOK struct {
 	Payload *models.StatusHistoryEntity
 }
 
+// IsSuccess returns true when this get process group status history o k response has a 2xx status code
+func (o *GetProcessGroupStatusHistoryOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get process group status history o k response has a 3xx status code
+func (o *GetProcessGroupStatusHistoryOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get process group status history o k response has a 4xx status code
+func (o *GetProcessGroupStatusHistoryOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get process group status history o k response has a 5xx status code
+func (o *GetProcessGroupStatusHistoryOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get process group status history o k response a status code equal to that given
+func (o *GetProcessGroupStatusHistoryOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetProcessGroupStatusHistoryOK) Error() string {
 	return fmt.Sprintf("[GET /flow/process-groups/{id}/status/history][%d] getProcessGroupStatusHistoryOK  %+v", 200, o.Payload)
 }
+
+func (o *GetProcessGroupStatusHistoryOK) String() string {
+	return fmt.Sprintf("[GET /flow/process-groups/{id}/status/history][%d] getProcessGroupStatusHistoryOK  %+v", 200, o.Payload)
+}
+
 func (o *GetProcessGroupStatusHistoryOK) GetPayload() *models.StatusHistoryEntity {
 	return o.Payload
 }
@@ -101,14 +132,44 @@ func NewGetProcessGroupStatusHistoryBadRequest() *GetProcessGroupStatusHistoryBa
 	return &GetProcessGroupStatusHistoryBadRequest{}
 }
 
-/* GetProcessGroupStatusHistoryBadRequest describes a response with status code 400, with default header values.
+/*
+GetProcessGroupStatusHistoryBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type GetProcessGroupStatusHistoryBadRequest struct {
 }
 
+// IsSuccess returns true when this get process group status history bad request response has a 2xx status code
+func (o *GetProcessGroupStatusHistoryBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get process group status history bad request response has a 3xx status code
+func (o *GetProcessGroupStatusHistoryBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get process group status history bad request response has a 4xx status code
+func (o *GetProcessGroupStatusHistoryBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get process group status history bad request response has a 5xx status code
+func (o *GetProcessGroupStatusHistoryBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get process group status history bad request response a status code equal to that given
+func (o *GetProcessGroupStatusHistoryBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *GetProcessGroupStatusHistoryBadRequest) Error() string {
+	return fmt.Sprintf("[GET /flow/process-groups/{id}/status/history][%d] getProcessGroupStatusHistoryBadRequest ", 400)
+}
+
+func (o *GetProcessGroupStatusHistoryBadRequest) String() string {
 	return fmt.Sprintf("[GET /flow/process-groups/{id}/status/history][%d] getProcessGroupStatusHistoryBadRequest ", 400)
 }
 
@@ -122,14 +183,44 @@ func NewGetProcessGroupStatusHistoryUnauthorized() *GetProcessGroupStatusHistory
 	return &GetProcessGroupStatusHistoryUnauthorized{}
 }
 
-/* GetProcessGroupStatusHistoryUnauthorized describes a response with status code 401, with default header values.
+/*
+GetProcessGroupStatusHistoryUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type GetProcessGroupStatusHistoryUnauthorized struct {
 }
 
+// IsSuccess returns true when this get process group status history unauthorized response has a 2xx status code
+func (o *GetProcessGroupStatusHistoryUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get process group status history unauthorized response has a 3xx status code
+func (o *GetProcessGroupStatusHistoryUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get process group status history unauthorized response has a 4xx status code
+func (o *GetProcessGroupStatusHistoryUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get process group status history unauthorized response has a 5xx status code
+func (o *GetProcessGroupStatusHistoryUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get process group status history unauthorized response a status code equal to that given
+func (o *GetProcessGroupStatusHistoryUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GetProcessGroupStatusHistoryUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /flow/process-groups/{id}/status/history][%d] getProcessGroupStatusHistoryUnauthorized ", 401)
+}
+
+func (o *GetProcessGroupStatusHistoryUnauthorized) String() string {
 	return fmt.Sprintf("[GET /flow/process-groups/{id}/status/history][%d] getProcessGroupStatusHistoryUnauthorized ", 401)
 }
 
@@ -143,14 +234,44 @@ func NewGetProcessGroupStatusHistoryForbidden() *GetProcessGroupStatusHistoryFor
 	return &GetProcessGroupStatusHistoryForbidden{}
 }
 
-/* GetProcessGroupStatusHistoryForbidden describes a response with status code 403, with default header values.
+/*
+GetProcessGroupStatusHistoryForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type GetProcessGroupStatusHistoryForbidden struct {
 }
 
+// IsSuccess returns true when this get process group status history forbidden response has a 2xx status code
+func (o *GetProcessGroupStatusHistoryForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get process group status history forbidden response has a 3xx status code
+func (o *GetProcessGroupStatusHistoryForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get process group status history forbidden response has a 4xx status code
+func (o *GetProcessGroupStatusHistoryForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get process group status history forbidden response has a 5xx status code
+func (o *GetProcessGroupStatusHistoryForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get process group status history forbidden response a status code equal to that given
+func (o *GetProcessGroupStatusHistoryForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetProcessGroupStatusHistoryForbidden) Error() string {
+	return fmt.Sprintf("[GET /flow/process-groups/{id}/status/history][%d] getProcessGroupStatusHistoryForbidden ", 403)
+}
+
+func (o *GetProcessGroupStatusHistoryForbidden) String() string {
 	return fmt.Sprintf("[GET /flow/process-groups/{id}/status/history][%d] getProcessGroupStatusHistoryForbidden ", 403)
 }
 
@@ -164,14 +285,44 @@ func NewGetProcessGroupStatusHistoryNotFound() *GetProcessGroupStatusHistoryNotF
 	return &GetProcessGroupStatusHistoryNotFound{}
 }
 
-/* GetProcessGroupStatusHistoryNotFound describes a response with status code 404, with default header values.
+/*
+GetProcessGroupStatusHistoryNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type GetProcessGroupStatusHistoryNotFound struct {
 }
 
+// IsSuccess returns true when this get process group status history not found response has a 2xx status code
+func (o *GetProcessGroupStatusHistoryNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get process group status history not found response has a 3xx status code
+func (o *GetProcessGroupStatusHistoryNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get process group status history not found response has a 4xx status code
+func (o *GetProcessGroupStatusHistoryNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get process group status history not found response has a 5xx status code
+func (o *GetProcessGroupStatusHistoryNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get process group status history not found response a status code equal to that given
+func (o *GetProcessGroupStatusHistoryNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetProcessGroupStatusHistoryNotFound) Error() string {
+	return fmt.Sprintf("[GET /flow/process-groups/{id}/status/history][%d] getProcessGroupStatusHistoryNotFound ", 404)
+}
+
+func (o *GetProcessGroupStatusHistoryNotFound) String() string {
 	return fmt.Sprintf("[GET /flow/process-groups/{id}/status/history][%d] getProcessGroupStatusHistoryNotFound ", 404)
 }
 
@@ -185,14 +336,44 @@ func NewGetProcessGroupStatusHistoryConflict() *GetProcessGroupStatusHistoryConf
 	return &GetProcessGroupStatusHistoryConflict{}
 }
 
-/* GetProcessGroupStatusHistoryConflict describes a response with status code 409, with default header values.
+/*
+GetProcessGroupStatusHistoryConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type GetProcessGroupStatusHistoryConflict struct {
 }
 
+// IsSuccess returns true when this get process group status history conflict response has a 2xx status code
+func (o *GetProcessGroupStatusHistoryConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get process group status history conflict response has a 3xx status code
+func (o *GetProcessGroupStatusHistoryConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get process group status history conflict response has a 4xx status code
+func (o *GetProcessGroupStatusHistoryConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get process group status history conflict response has a 5xx status code
+func (o *GetProcessGroupStatusHistoryConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get process group status history conflict response a status code equal to that given
+func (o *GetProcessGroupStatusHistoryConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *GetProcessGroupStatusHistoryConflict) Error() string {
+	return fmt.Sprintf("[GET /flow/process-groups/{id}/status/history][%d] getProcessGroupStatusHistoryConflict ", 409)
+}
+
+func (o *GetProcessGroupStatusHistoryConflict) String() string {
 	return fmt.Sprintf("[GET /flow/process-groups/{id}/status/history][%d] getProcessGroupStatusHistoryConflict ", 409)
 }
 

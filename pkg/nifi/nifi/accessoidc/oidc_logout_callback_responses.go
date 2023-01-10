@@ -36,7 +36,8 @@ func NewOidcLogoutCallbackDefault(code int) *OidcLogoutCallbackDefault {
 	}
 }
 
-/* OidcLogoutCallbackDefault describes a response with status code -1, with default header values.
+/*
+OidcLogoutCallbackDefault describes a response with status code -1, with default header values.
 
 successful operation
 */
@@ -49,7 +50,36 @@ func (o *OidcLogoutCallbackDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this oidc logout callback default response has a 2xx status code
+func (o *OidcLogoutCallbackDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this oidc logout callback default response has a 3xx status code
+func (o *OidcLogoutCallbackDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this oidc logout callback default response has a 4xx status code
+func (o *OidcLogoutCallbackDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this oidc logout callback default response has a 5xx status code
+func (o *OidcLogoutCallbackDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this oidc logout callback default response a status code equal to that given
+func (o *OidcLogoutCallbackDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *OidcLogoutCallbackDefault) Error() string {
+	return fmt.Sprintf("[GET /access/oidc/logoutCallback][%d] oidcLogoutCallback default ", o._statusCode)
+}
+
+func (o *OidcLogoutCallbackDefault) String() string {
 	return fmt.Sprintf("[GET /access/oidc/logoutCallback][%d] oidcLogoutCallback default ", o._statusCode)
 }
 

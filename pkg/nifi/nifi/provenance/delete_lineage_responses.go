@@ -69,7 +69,8 @@ func NewDeleteLineageOK() *DeleteLineageOK {
 	return &DeleteLineageOK{}
 }
 
-/* DeleteLineageOK describes a response with status code 200, with default header values.
+/*
+DeleteLineageOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,39 @@ type DeleteLineageOK struct {
 	Payload *models.LineageEntity
 }
 
+// IsSuccess returns true when this delete lineage o k response has a 2xx status code
+func (o *DeleteLineageOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete lineage o k response has a 3xx status code
+func (o *DeleteLineageOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete lineage o k response has a 4xx status code
+func (o *DeleteLineageOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete lineage o k response has a 5xx status code
+func (o *DeleteLineageOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete lineage o k response a status code equal to that given
+func (o *DeleteLineageOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *DeleteLineageOK) Error() string {
 	return fmt.Sprintf("[DELETE /provenance/lineage/{id}][%d] deleteLineageOK  %+v", 200, o.Payload)
 }
+
+func (o *DeleteLineageOK) String() string {
+	return fmt.Sprintf("[DELETE /provenance/lineage/{id}][%d] deleteLineageOK  %+v", 200, o.Payload)
+}
+
 func (o *DeleteLineageOK) GetPayload() *models.LineageEntity {
 	return o.Payload
 }
@@ -101,14 +132,44 @@ func NewDeleteLineageBadRequest() *DeleteLineageBadRequest {
 	return &DeleteLineageBadRequest{}
 }
 
-/* DeleteLineageBadRequest describes a response with status code 400, with default header values.
+/*
+DeleteLineageBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type DeleteLineageBadRequest struct {
 }
 
+// IsSuccess returns true when this delete lineage bad request response has a 2xx status code
+func (o *DeleteLineageBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete lineage bad request response has a 3xx status code
+func (o *DeleteLineageBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete lineage bad request response has a 4xx status code
+func (o *DeleteLineageBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete lineage bad request response has a 5xx status code
+func (o *DeleteLineageBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete lineage bad request response a status code equal to that given
+func (o *DeleteLineageBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *DeleteLineageBadRequest) Error() string {
+	return fmt.Sprintf("[DELETE /provenance/lineage/{id}][%d] deleteLineageBadRequest ", 400)
+}
+
+func (o *DeleteLineageBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /provenance/lineage/{id}][%d] deleteLineageBadRequest ", 400)
 }
 
@@ -122,14 +183,44 @@ func NewDeleteLineageUnauthorized() *DeleteLineageUnauthorized {
 	return &DeleteLineageUnauthorized{}
 }
 
-/* DeleteLineageUnauthorized describes a response with status code 401, with default header values.
+/*
+DeleteLineageUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type DeleteLineageUnauthorized struct {
 }
 
+// IsSuccess returns true when this delete lineage unauthorized response has a 2xx status code
+func (o *DeleteLineageUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete lineage unauthorized response has a 3xx status code
+func (o *DeleteLineageUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete lineage unauthorized response has a 4xx status code
+func (o *DeleteLineageUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete lineage unauthorized response has a 5xx status code
+func (o *DeleteLineageUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete lineage unauthorized response a status code equal to that given
+func (o *DeleteLineageUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *DeleteLineageUnauthorized) Error() string {
+	return fmt.Sprintf("[DELETE /provenance/lineage/{id}][%d] deleteLineageUnauthorized ", 401)
+}
+
+func (o *DeleteLineageUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /provenance/lineage/{id}][%d] deleteLineageUnauthorized ", 401)
 }
 
@@ -143,14 +234,44 @@ func NewDeleteLineageForbidden() *DeleteLineageForbidden {
 	return &DeleteLineageForbidden{}
 }
 
-/* DeleteLineageForbidden describes a response with status code 403, with default header values.
+/*
+DeleteLineageForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type DeleteLineageForbidden struct {
 }
 
+// IsSuccess returns true when this delete lineage forbidden response has a 2xx status code
+func (o *DeleteLineageForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete lineage forbidden response has a 3xx status code
+func (o *DeleteLineageForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete lineage forbidden response has a 4xx status code
+func (o *DeleteLineageForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete lineage forbidden response has a 5xx status code
+func (o *DeleteLineageForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete lineage forbidden response a status code equal to that given
+func (o *DeleteLineageForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *DeleteLineageForbidden) Error() string {
+	return fmt.Sprintf("[DELETE /provenance/lineage/{id}][%d] deleteLineageForbidden ", 403)
+}
+
+func (o *DeleteLineageForbidden) String() string {
 	return fmt.Sprintf("[DELETE /provenance/lineage/{id}][%d] deleteLineageForbidden ", 403)
 }
 
@@ -164,14 +285,44 @@ func NewDeleteLineageNotFound() *DeleteLineageNotFound {
 	return &DeleteLineageNotFound{}
 }
 
-/* DeleteLineageNotFound describes a response with status code 404, with default header values.
+/*
+DeleteLineageNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type DeleteLineageNotFound struct {
 }
 
+// IsSuccess returns true when this delete lineage not found response has a 2xx status code
+func (o *DeleteLineageNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete lineage not found response has a 3xx status code
+func (o *DeleteLineageNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete lineage not found response has a 4xx status code
+func (o *DeleteLineageNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete lineage not found response has a 5xx status code
+func (o *DeleteLineageNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete lineage not found response a status code equal to that given
+func (o *DeleteLineageNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *DeleteLineageNotFound) Error() string {
+	return fmt.Sprintf("[DELETE /provenance/lineage/{id}][%d] deleteLineageNotFound ", 404)
+}
+
+func (o *DeleteLineageNotFound) String() string {
 	return fmt.Sprintf("[DELETE /provenance/lineage/{id}][%d] deleteLineageNotFound ", 404)
 }
 
@@ -185,14 +336,44 @@ func NewDeleteLineageConflict() *DeleteLineageConflict {
 	return &DeleteLineageConflict{}
 }
 
-/* DeleteLineageConflict describes a response with status code 409, with default header values.
+/*
+DeleteLineageConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type DeleteLineageConflict struct {
 }
 
+// IsSuccess returns true when this delete lineage conflict response has a 2xx status code
+func (o *DeleteLineageConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete lineage conflict response has a 3xx status code
+func (o *DeleteLineageConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete lineage conflict response has a 4xx status code
+func (o *DeleteLineageConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete lineage conflict response has a 5xx status code
+func (o *DeleteLineageConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete lineage conflict response a status code equal to that given
+func (o *DeleteLineageConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *DeleteLineageConflict) Error() string {
+	return fmt.Sprintf("[DELETE /provenance/lineage/{id}][%d] deleteLineageConflict ", 409)
+}
+
+func (o *DeleteLineageConflict) String() string {
 	return fmt.Sprintf("[DELETE /provenance/lineage/{id}][%d] deleteLineageConflict ", 409)
 }
 

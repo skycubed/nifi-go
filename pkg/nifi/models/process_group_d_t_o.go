@@ -42,7 +42,7 @@ type ProcessGroupDTO struct {
 	DisabledCount int32 `json:"disabledCount,omitempty"`
 
 	// The FlowFile Concurrency for this Process Group.
-	// Enum: [UNBOUNDED SINGLE_FLOWFILE_PER_NODE]
+	// Enum: [UNBOUNDED SINGLE_FLOWFILE_PER_NODE SINGLE_BATCH_PER_NODE]
 	FlowfileConcurrency string `json:"flowfileConcurrency,omitempty"`
 
 	// The Outbound Policy that is used for determining how FlowFiles should be transferred out of the Process Group.
@@ -176,7 +176,7 @@ var processGroupDTOTypeFlowfileConcurrencyPropEnum []interface{}
 
 func init() {
 	var res []string
-	if err := json.Unmarshal([]byte(`["UNBOUNDED","SINGLE_FLOWFILE_PER_NODE"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["UNBOUNDED","SINGLE_FLOWFILE_PER_NODE","SINGLE_BATCH_PER_NODE"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
@@ -191,6 +191,9 @@ const (
 
 	// ProcessGroupDTOFlowfileConcurrencySINGLEFLOWFILEPERNODE captures enum value "SINGLE_FLOWFILE_PER_NODE"
 	ProcessGroupDTOFlowfileConcurrencySINGLEFLOWFILEPERNODE string = "SINGLE_FLOWFILE_PER_NODE"
+
+	// ProcessGroupDTOFlowfileConcurrencySINGLEBATCHPERNODE captures enum value "SINGLE_BATCH_PER_NODE"
+	ProcessGroupDTOFlowfileConcurrencySINGLEBATCHPERNODE string = "SINGLE_BATCH_PER_NODE"
 )
 
 // prop value enum

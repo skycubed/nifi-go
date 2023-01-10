@@ -61,7 +61,8 @@ func NewCreateAccessTokenFromTicketCreated() *CreateAccessTokenFromTicketCreated
 	return &CreateAccessTokenFromTicketCreated{}
 }
 
-/* CreateAccessTokenFromTicketCreated describes a response with status code 201, with default header values.
+/*
+CreateAccessTokenFromTicketCreated describes a response with status code 201, with default header values.
 
 successful operation
 */
@@ -69,9 +70,39 @@ type CreateAccessTokenFromTicketCreated struct {
 	Payload string
 }
 
+// IsSuccess returns true when this create access token from ticket created response has a 2xx status code
+func (o *CreateAccessTokenFromTicketCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create access token from ticket created response has a 3xx status code
+func (o *CreateAccessTokenFromTicketCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create access token from ticket created response has a 4xx status code
+func (o *CreateAccessTokenFromTicketCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create access token from ticket created response has a 5xx status code
+func (o *CreateAccessTokenFromTicketCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create access token from ticket created response a status code equal to that given
+func (o *CreateAccessTokenFromTicketCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *CreateAccessTokenFromTicketCreated) Error() string {
 	return fmt.Sprintf("[POST /access/kerberos][%d] createAccessTokenFromTicketCreated  %+v", 201, o.Payload)
 }
+
+func (o *CreateAccessTokenFromTicketCreated) String() string {
+	return fmt.Sprintf("[POST /access/kerberos][%d] createAccessTokenFromTicketCreated  %+v", 201, o.Payload)
+}
+
 func (o *CreateAccessTokenFromTicketCreated) GetPayload() string {
 	return o.Payload
 }
@@ -91,14 +122,44 @@ func NewCreateAccessTokenFromTicketBadRequest() *CreateAccessTokenFromTicketBadR
 	return &CreateAccessTokenFromTicketBadRequest{}
 }
 
-/* CreateAccessTokenFromTicketBadRequest describes a response with status code 400, with default header values.
+/*
+CreateAccessTokenFromTicketBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type CreateAccessTokenFromTicketBadRequest struct {
 }
 
+// IsSuccess returns true when this create access token from ticket bad request response has a 2xx status code
+func (o *CreateAccessTokenFromTicketBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create access token from ticket bad request response has a 3xx status code
+func (o *CreateAccessTokenFromTicketBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create access token from ticket bad request response has a 4xx status code
+func (o *CreateAccessTokenFromTicketBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create access token from ticket bad request response has a 5xx status code
+func (o *CreateAccessTokenFromTicketBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create access token from ticket bad request response a status code equal to that given
+func (o *CreateAccessTokenFromTicketBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CreateAccessTokenFromTicketBadRequest) Error() string {
+	return fmt.Sprintf("[POST /access/kerberos][%d] createAccessTokenFromTicketBadRequest ", 400)
+}
+
+func (o *CreateAccessTokenFromTicketBadRequest) String() string {
 	return fmt.Sprintf("[POST /access/kerberos][%d] createAccessTokenFromTicketBadRequest ", 400)
 }
 
@@ -112,14 +173,44 @@ func NewCreateAccessTokenFromTicketUnauthorized() *CreateAccessTokenFromTicketUn
 	return &CreateAccessTokenFromTicketUnauthorized{}
 }
 
-/* CreateAccessTokenFromTicketUnauthorized describes a response with status code 401, with default header values.
+/*
+CreateAccessTokenFromTicketUnauthorized describes a response with status code 401, with default header values.
 
 NiFi was unable to complete the request because it did not contain a valid Kerberos ticket in the Authorization header. Retry this request after initializing a ticket with kinit and ensuring your browser is configured to support SPNEGO.
 */
 type CreateAccessTokenFromTicketUnauthorized struct {
 }
 
+// IsSuccess returns true when this create access token from ticket unauthorized response has a 2xx status code
+func (o *CreateAccessTokenFromTicketUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create access token from ticket unauthorized response has a 3xx status code
+func (o *CreateAccessTokenFromTicketUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create access token from ticket unauthorized response has a 4xx status code
+func (o *CreateAccessTokenFromTicketUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create access token from ticket unauthorized response has a 5xx status code
+func (o *CreateAccessTokenFromTicketUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create access token from ticket unauthorized response a status code equal to that given
+func (o *CreateAccessTokenFromTicketUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *CreateAccessTokenFromTicketUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /access/kerberos][%d] createAccessTokenFromTicketUnauthorized ", 401)
+}
+
+func (o *CreateAccessTokenFromTicketUnauthorized) String() string {
 	return fmt.Sprintf("[POST /access/kerberos][%d] createAccessTokenFromTicketUnauthorized ", 401)
 }
 
@@ -133,14 +224,44 @@ func NewCreateAccessTokenFromTicketConflict() *CreateAccessTokenFromTicketConfli
 	return &CreateAccessTokenFromTicketConflict{}
 }
 
-/* CreateAccessTokenFromTicketConflict describes a response with status code 409, with default header values.
+/*
+CreateAccessTokenFromTicketConflict describes a response with status code 409, with default header values.
 
 Unable to create access token because NiFi is not in the appropriate state. (i.e. may not be configured to support Kerberos login.
 */
 type CreateAccessTokenFromTicketConflict struct {
 }
 
+// IsSuccess returns true when this create access token from ticket conflict response has a 2xx status code
+func (o *CreateAccessTokenFromTicketConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create access token from ticket conflict response has a 3xx status code
+func (o *CreateAccessTokenFromTicketConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create access token from ticket conflict response has a 4xx status code
+func (o *CreateAccessTokenFromTicketConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create access token from ticket conflict response has a 5xx status code
+func (o *CreateAccessTokenFromTicketConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create access token from ticket conflict response a status code equal to that given
+func (o *CreateAccessTokenFromTicketConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *CreateAccessTokenFromTicketConflict) Error() string {
+	return fmt.Sprintf("[POST /access/kerberos][%d] createAccessTokenFromTicketConflict ", 409)
+}
+
+func (o *CreateAccessTokenFromTicketConflict) String() string {
 	return fmt.Sprintf("[POST /access/kerberos][%d] createAccessTokenFromTicketConflict ", 409)
 }
 
@@ -154,14 +275,44 @@ func NewCreateAccessTokenFromTicketInternalServerError() *CreateAccessTokenFromT
 	return &CreateAccessTokenFromTicketInternalServerError{}
 }
 
-/* CreateAccessTokenFromTicketInternalServerError describes a response with status code 500, with default header values.
+/*
+CreateAccessTokenFromTicketInternalServerError describes a response with status code 500, with default header values.
 
 Unable to create access token because an unexpected error occurred.
 */
 type CreateAccessTokenFromTicketInternalServerError struct {
 }
 
+// IsSuccess returns true when this create access token from ticket internal server error response has a 2xx status code
+func (o *CreateAccessTokenFromTicketInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create access token from ticket internal server error response has a 3xx status code
+func (o *CreateAccessTokenFromTicketInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create access token from ticket internal server error response has a 4xx status code
+func (o *CreateAccessTokenFromTicketInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create access token from ticket internal server error response has a 5xx status code
+func (o *CreateAccessTokenFromTicketInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this create access token from ticket internal server error response a status code equal to that given
+func (o *CreateAccessTokenFromTicketInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *CreateAccessTokenFromTicketInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /access/kerberos][%d] createAccessTokenFromTicketInternalServerError ", 500)
+}
+
+func (o *CreateAccessTokenFromTicketInternalServerError) String() string {
 	return fmt.Sprintf("[POST /access/kerberos][%d] createAccessTokenFromTicketInternalServerError ", 500)
 }
 

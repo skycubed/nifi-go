@@ -52,10 +52,12 @@ func NewGetProcessorDiagnosticsParamsWithHTTPClient(client *http.Client) *GetPro
 	}
 }
 
-/* GetProcessorDiagnosticsParams contains all the parameters to send to the API endpoint
-   for the get processor diagnostics operation.
+/*
+GetProcessorDiagnosticsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get processor diagnostics operation.
+
+	Typically these are written to a http.Request.
 */
 type GetProcessorDiagnosticsParams struct {
 

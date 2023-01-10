@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "description": "The REST API provides an interface to a registry with operations for saving, versioning, reading NiFi flows and components.",
-    "version": "1.15.0",
+    "version": "1.19.1",
     "title": "Apache NiFi Registry REST API",
     "termsOfService": "As described in the license",
     "contact": {
@@ -17,6 +17,10 @@
   },
   "basePath": "/nifi-registry-api",
   "tags": [
+    {
+      "name": "about",
+      "description": "Retrieves the version information for this NiFi Registry."
+    },
     {
       "name": "access",
       "description": "Endpoints for obtaining an access token or checking access status."
@@ -71,6 +75,32 @@
     "https"
   ],
   "paths": {
+    "/about": {
+      "get": {
+        "tags": [
+          "about"
+        ],
+        "summary": "Get version",
+        "description": "Gets the NiFi Registry version.",
+        "operationId": "getVersion",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/RegistryAbout"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": []
+          }
+        ]
+      }
+    },
     "/access": {
       "get": {
         "tags": [
@@ -110,7 +140,34 @@
         ],
         "summary": "Performs a logout for other providers that have been issued a JWT.",
         "description": "\n\nNOTE: This endpoint is subject to change as NiFi Registry and its REST API evolve.",
-        "operationId": "logOut",
+        "operationId": "logout",
+        "consumes": [
+          "*/*"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "responses": {
+          "200": {
+            "description": "User was logged out successfully."
+          },
+          "401": {
+            "description": "Authentication token provided was empty or not in the correct JWT format."
+          },
+          "500": {
+            "description": "Client failed to log out."
+          }
+        }
+      }
+    },
+    "/access/logout/complete": {
+      "get": {
+        "tags": [
+          "access"
+        ],
+        "summary": "Completes the logout sequence.",
+        "description": "\n\nNOTE: This endpoint is subject to change as NiFi Registry and its REST API evolve.",
+        "operationId": "logoutComplete",
         "consumes": [
           "*/*"
         ],
@@ -176,13 +233,34 @@
       }
     },
     "/access/oidc/logout": {
-      "delete": {
+      "get": {
         "tags": [
           "access"
         ],
         "summary": "Performs a logout in the OpenId Provider.",
         "description": "\n\nNOTE: This endpoint is subject to change as NiFi Registry and its REST API evolve.",
         "operationId": "oidcLogout",
+        "consumes": [
+          "*/*"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/access/oidc/logout/callback": {
+      "get": {
+        "tags": [
+          "access"
+        ],
+        "summary": "Redirect/callback URI for processing the result of the OpenId Connect logout sequence.",
+        "description": "\n\nNOTE: This endpoint is subject to change as NiFi Registry and its REST API evolve.",
+        "operationId": "oidcLogoutCallback",
         "consumes": [
           "*/*"
         ],
@@ -5649,6 +5727,10 @@
         "comments": {
           "type": "string",
           "description": "The comments for the connectable component."
+        },
+        "instanceIdentifier": {
+          "type": "string",
+          "description": "The instance ID of an existing component that is described by this VersionedComponent, or null if this is not mapped to an instantiated component"
         }
       }
     },
@@ -5711,6 +5793,75 @@
         "oidcloginSupported": {
           "type": "boolean",
           "description": "Indicates if the NiFi Registry instance supports logging in with an OIDC provider"
+        }
+      }
+    },
+    "DefaultSchedule": {
+      "type": "object",
+      "properties": {
+        "strategy": {
+          "type": "string",
+          "description": "The default scheduling strategy"
+        },
+        "period": {
+          "type": "string",
+          "description": "The default scheduling period"
+        },
+        "concurrentTasks": {
+          "type": "string",
+          "description": "The default concurrent tasks"
+        }
+      }
+    },
+    "DefaultSettings": {
+      "type": "object",
+      "properties": {
+        "yieldDuration": {
+          "type": "string",
+          "description": "The default yield duration"
+        },
+        "penaltyDuration": {
+          "type": "string",
+          "description": "The default penalty duration"
+        },
+        "bulletinLevel": {
+          "type": "string",
+          "description": "The default bulletin level"
+        }
+      }
+    },
+    "Dependency": {
+      "type": "object",
+      "properties": {
+        "propertyName": {
+          "type": "string",
+          "description": "The name of the dependent property"
+        },
+        "propertyDisplayName": {
+          "type": "string",
+          "description": "The display name of the dependent property"
+        },
+        "dependentValues": {
+          "description": "The values of the dependent property that enable the depending property",
+          "$ref": "#/definitions/DependentValues"
+        }
+      }
+    },
+    "DependentValues": {
+      "type": "object",
+      "properties": {
+        "values": {
+          "type": "array",
+          "xml": {
+            "name": "dependentValue"
+          },
+          "description": "The dependent values",
+          "items": {
+            "type": "string",
+            "xml": {
+              "name": "dependentValue"
+            }
+          }
         }
       }
     },
@@ -5940,6 +6091,42 @@
             },
             "$ref": "#/definitions/ProvidedServiceAPI"
           }
+        },
+        "defaultSettings": {
+          "description": "The default settings for a processor",
+          "$ref": "#/definitions/DefaultSettings"
+        },
+        "defaultSchedule": {
+          "description": "The default schedule for a processor reporting task",
+          "$ref": "#/definitions/DefaultSchedule"
+        },
+        "triggerSerially": {
+          "type": "boolean",
+          "description": "Indicates that a processor should be triggered serially"
+        },
+        "triggerWhenEmpty": {
+          "type": "boolean",
+          "description": "Indicates that a processor should be triggered when the incoming queues are empty"
+        },
+        "triggerWhenAnyDestinationAvailable": {
+          "type": "boolean",
+          "description": "Indicates that a processor should be triggered when any destinations have space for flow files"
+        },
+        "supportsBatching": {
+          "type": "boolean",
+          "description": "Indicates that a processor supports batching"
+        },
+        "eventDriven": {
+          "type": "boolean",
+          "description": "Indicates that a processor supports event driven scheduling"
+        },
+        "primaryNodeOnly": {
+          "type": "boolean",
+          "description": "Indicates that a processor should be scheduled only on the primary node"
+        },
+        "sideEffectFree": {
+          "type": "boolean",
+          "description": "Indicates that a processor is side effect free"
         }
       }
     },
@@ -6308,6 +6495,27 @@
         }
       }
     },
+    "ParameterProviderReference": {
+      "type": "object",
+      "properties": {
+        "identifier": {
+          "type": "string",
+          "description": "The identifier of the parameter provider"
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the parameter provider"
+        },
+        "type": {
+          "type": "string",
+          "description": "The fully qualified name of the parameter provider class."
+        },
+        "bundle": {
+          "description": "The details of the artifact that bundled this parameter provider.",
+          "$ref": "#/definitions/Bundle"
+        }
+      }
+    },
     "Permissions": {
       "type": "object",
       "properties": {
@@ -6408,6 +6616,23 @@
         "dynamic": {
           "type": "boolean",
           "description": "Whether or not the processor is dynamic"
+        },
+        "dependencies": {
+          "type": "array",
+          "xml": {
+            "wrapped": true
+          },
+          "description": "The properties that this property depends on",
+          "items": {
+            "xml": {
+              "name": "dependency"
+            },
+            "$ref": "#/definitions/Dependency"
+          }
+        },
+        "resourceDefinition": {
+          "description": "The optional resource definition",
+          "$ref": "#/definitions/ResourceDefinition"
         }
       }
     },
@@ -6429,6 +6654,16 @@
         "version": {
           "type": "string",
           "description": "The version of the service API being provided"
+        }
+      }
+    },
+    "RegistryAbout": {
+      "type": "object",
+      "properties": {
+        "registryAboutVersion": {
+          "type": "string",
+          "description": "The version string for this Nifi Registry",
+          "readOnly": true
         }
       }
     },
@@ -6481,6 +6716,38 @@
           "type": "string",
           "description": "The name of the resource.",
           "readOnly": true
+        }
+      }
+    },
+    "ResourceDefinition": {
+      "type": "object",
+      "properties": {
+        "cardinality": {
+          "type": "string",
+          "description": "The cardinality of the resource definition",
+          "enum": [
+            "SINGLE",
+            "MULTIPLE"
+          ]
+        },
+        "resourceTypes": {
+          "type": "array",
+          "xml": {
+            "wrapped": true
+          },
+          "description": "The types of resources",
+          "items": {
+            "type": "string",
+            "xml": {
+              "name": "resourceType"
+            },
+            "enum": [
+              "FILE",
+              "DIRECTORY",
+              "TEXT",
+              "URL"
+            ]
+          }
         }
       }
     },
@@ -6769,6 +7036,10 @@
           "type": "string",
           "description": "The component's unique identifier"
         },
+        "instanceIdentifier": {
+          "type": "string",
+          "description": "The instance ID of an existing component that is described by this VersionedComponent, or null if this is not mapped to an instantiated component"
+        },
         "name": {
           "type": "string",
           "description": "The component's name"
@@ -6870,7 +7141,12 @@
             "REMOTE_OUTPUT_PORT",
             "FUNNEL",
             "LABEL",
-            "CONTROLLER_SERVICE"
+            "CONTROLLER_SERVICE",
+            "REPORTING_TASK",
+            "PARAMETER_CONTEXT",
+            "PARAMETER_PROVIDER",
+            "TEMPLATE",
+            "FLOW_REGISTRY_CLIENT"
           ]
         },
         "groupIdentifier": {
@@ -6886,6 +7162,10 @@
           "type": "string",
           "description": "The component's unique identifier"
         },
+        "instanceIdentifier": {
+          "type": "string",
+          "description": "The instance ID of an existing component that is described by this VersionedComponent, or null if this is not mapped to an instantiated component"
+        },
         "name": {
           "type": "string",
           "description": "The component's name"
@@ -6900,11 +7180,25 @@
         },
         "type": {
           "type": "string",
-          "description": "The type of the controller service."
+          "description": "The type of the extension component"
         },
         "bundle": {
-          "description": "The details of the artifact that bundled this processor type.",
+          "description": "Information about the bundle from which the component came",
           "$ref": "#/definitions/Bundle"
+        },
+        "properties": {
+          "type": "object",
+          "description": "The properties for the component. Properties whose value is not set will only contain the property name.",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "propertyDescriptors": {
+          "type": "object",
+          "description": "The property descriptors for the component.",
+          "additionalProperties": {
+            "$ref": "#/definitions/VersionedPropertyDescriptor"
+          }
         },
         "controllerServiceApis": {
           "type": "array",
@@ -6913,23 +7207,22 @@
             "$ref": "#/definitions/ControllerServiceAPI"
           }
         },
-        "properties": {
-          "type": "object",
-          "description": "The properties of the controller service.",
-          "additionalProperties": {
-            "type": "string"
-          }
-        },
-        "propertyDescriptors": {
-          "type": "object",
-          "description": "The property descriptors for the processor.",
-          "additionalProperties": {
-            "$ref": "#/definitions/VersionedPropertyDescriptor"
-          }
-        },
         "annotationData": {
           "type": "string",
           "description": "The annotation for the controller service. This is how the custom UI relays configuration to the controller service."
+        },
+        "scheduledState": {
+          "type": "string",
+          "description": "The ScheduledState denoting whether the Controller Service is ENABLED or DISABLED",
+          "enum": [
+            "ENABLED",
+            "DISABLED",
+            "RUNNING"
+          ]
+        },
+        "bulletinLevel": {
+          "type": "string",
+          "description": "The level at which the controller service will report bulletins."
         },
         "componentType": {
           "type": "string",
@@ -6944,7 +7237,12 @@
             "REMOTE_OUTPUT_PORT",
             "FUNNEL",
             "LABEL",
-            "CONTROLLER_SERVICE"
+            "CONTROLLER_SERVICE",
+            "REPORTING_TASK",
+            "PARAMETER_CONTEXT",
+            "PARAMETER_PROVIDER",
+            "TEMPLATE",
+            "FLOW_REGISTRY_CLIENT"
           ]
         },
         "groupIdentifier": {
@@ -7032,6 +7330,14 @@
     "VersionedFlowCoordinates": {
       "type": "object",
       "properties": {
+        "registryId": {
+          "type": "string",
+          "description": "The identifier of the Flow Registry that contains the flow"
+        },
+        "storageLocation": {
+          "type": "string",
+          "description": "The location of the Flow Registry that stores the flow"
+        },
         "registryUrl": {
           "type": "string",
           "description": "The URL of the Flow Registry that contains the flow"
@@ -7105,6 +7411,13 @@
           "description": "The information about controller services that exist outside this versioned flow, but are referenced by components within the versioned flow.",
           "additionalProperties": {
             "$ref": "#/definitions/ExternalControllerServiceReference"
+          }
+        },
+        "parameterProviders": {
+          "type": "object",
+          "description": "Contains basic information about parameter providers referenced in the versioned flow.",
+          "additionalProperties": {
+            "$ref": "#/definitions/ParameterProviderReference"
           }
         },
         "parameterContexts": {
@@ -7185,6 +7498,10 @@
           "type": "string",
           "description": "The component's unique identifier"
         },
+        "instanceIdentifier": {
+          "type": "string",
+          "description": "The instance ID of an existing component that is described by this VersionedComponent, or null if this is not mapped to an instantiated component"
+        },
         "name": {
           "type": "string",
           "description": "The component's name"
@@ -7210,7 +7527,12 @@
             "REMOTE_OUTPUT_PORT",
             "FUNNEL",
             "LABEL",
-            "CONTROLLER_SERVICE"
+            "CONTROLLER_SERVICE",
+            "REPORTING_TASK",
+            "PARAMETER_CONTEXT",
+            "PARAMETER_PROVIDER",
+            "TEMPLATE",
+            "FLOW_REGISTRY_CLIENT"
           ]
         },
         "groupIdentifier": {
@@ -7225,6 +7547,10 @@
         "identifier": {
           "type": "string",
           "description": "The component's unique identifier"
+        },
+        "instanceIdentifier": {
+          "type": "string",
+          "description": "The instance ID of an existing component that is described by this VersionedComponent, or null if this is not mapped to an instantiated component"
         },
         "name": {
           "type": "string",
@@ -7241,6 +7567,11 @@
         "label": {
           "type": "string",
           "description": "The text that appears in the label."
+        },
+        "zIndex": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The z index of the connection."
         },
         "width": {
           "type": "number",
@@ -7272,7 +7603,12 @@
             "REMOTE_OUTPUT_PORT",
             "FUNNEL",
             "LABEL",
-            "CONTROLLER_SERVICE"
+            "CONTROLLER_SERVICE",
+            "REPORTING_TASK",
+            "PARAMETER_CONTEXT",
+            "PARAMETER_PROVIDER",
+            "TEMPLATE",
+            "FLOW_REGISTRY_CLIENT"
           ]
         },
         "groupIdentifier": {
@@ -7296,6 +7632,10 @@
           "type": "boolean",
           "description": "Whether or not the parameter value is sensitive"
         },
+        "provided": {
+          "type": "boolean",
+          "description": "Whether or not the parameter value is provided by a ParameterProvider"
+        },
         "value": {
           "type": "string",
           "description": "The value of the parameter"
@@ -7305,13 +7645,25 @@
     "VersionedParameterContext": {
       "type": "object",
       "properties": {
+        "identifier": {
+          "type": "string",
+          "description": "The component's unique identifier"
+        },
+        "instanceIdentifier": {
+          "type": "string",
+          "description": "The instance ID of an existing component that is described by this VersionedComponent, or null if this is not mapped to an instantiated component"
+        },
         "name": {
           "type": "string",
-          "description": "The name of the context"
+          "description": "The component's name"
         },
-        "description": {
+        "comments": {
           "type": "string",
-          "description": "The description of the parameter context"
+          "description": "The user-supplied comments for the component"
+        },
+        "position": {
+          "description": "The component's position on the graph",
+          "$ref": "#/definitions/Position"
         },
         "parameters": {
           "type": "array",
@@ -7327,6 +7679,47 @@
           "items": {
             "type": "string"
           }
+        },
+        "description": {
+          "type": "string",
+          "description": "The description of the parameter context"
+        },
+        "parameterProvider": {
+          "type": "string",
+          "description": "The identifier of an optional parameter provider"
+        },
+        "parameterGroupName": {
+          "type": "string",
+          "description": "The corresponding parameter group name fetched from the parameter provider, if applicable"
+        },
+        "synchronized": {
+          "type": "boolean",
+          "description": "True if the parameter provider is set and the context should receive updates when its parameters are next fetched"
+        },
+        "componentType": {
+          "type": "string",
+          "enum": [
+            "CONNECTION",
+            "PROCESSOR",
+            "PROCESS_GROUP",
+            "REMOTE_PROCESS_GROUP",
+            "INPUT_PORT",
+            "OUTPUT_PORT",
+            "REMOTE_INPUT_PORT",
+            "REMOTE_OUTPUT_PORT",
+            "FUNNEL",
+            "LABEL",
+            "CONTROLLER_SERVICE",
+            "REPORTING_TASK",
+            "PARAMETER_CONTEXT",
+            "PARAMETER_PROVIDER",
+            "TEMPLATE",
+            "FLOW_REGISTRY_CLIENT"
+          ]
+        },
+        "groupIdentifier": {
+          "type": "string",
+          "description": "The ID of the Process Group that this component belongs to"
         }
       }
     },
@@ -7336,6 +7729,10 @@
         "identifier": {
           "type": "string",
           "description": "The component's unique identifier"
+        },
+        "instanceIdentifier": {
+          "type": "string",
+          "description": "The instance ID of an existing component that is described by this VersionedComponent, or null if this is not mapped to an instantiated component"
         },
         "name": {
           "type": "string",
@@ -7367,7 +7764,8 @@
           "description": "The scheduled state of the component",
           "enum": [
             "ENABLED",
-            "DISABLED"
+            "DISABLED",
+            "RUNNING"
           ]
         },
         "allowRemoteAccess": {
@@ -7387,7 +7785,12 @@
             "REMOTE_OUTPUT_PORT",
             "FUNNEL",
             "LABEL",
-            "CONTROLLER_SERVICE"
+            "CONTROLLER_SERVICE",
+            "REPORTING_TASK",
+            "PARAMETER_CONTEXT",
+            "PARAMETER_PROVIDER",
+            "TEMPLATE",
+            "FLOW_REGISTRY_CLIENT"
           ]
         },
         "groupIdentifier": {
@@ -7402,6 +7805,10 @@
         "identifier": {
           "type": "string",
           "description": "The component's unique identifier"
+        },
+        "instanceIdentifier": {
+          "type": "string",
+          "description": "The instance ID of an existing component that is described by this VersionedComponent, or null if this is not mapped to an instantiated component"
         },
         "name": {
           "type": "string",
@@ -7515,6 +7922,14 @@
           "type": "string",
           "description": "Default value used in this Process Group for the maximum data size of objects that can be queued before back pressure is applied."
         },
+        "flowFileConcurrency": {
+          "type": "string",
+          "description": "The configured FlowFile Concurrency for the Process Group"
+        },
+        "flowFileOutboundPolicy": {
+          "type": "string",
+          "description": "The FlowFile Outbound Policy for the Process Group"
+        },
         "componentType": {
           "type": "string",
           "enum": [
@@ -7528,16 +7943,13 @@
             "REMOTE_OUTPUT_PORT",
             "FUNNEL",
             "LABEL",
-            "CONTROLLER_SERVICE"
+            "CONTROLLER_SERVICE",
+            "REPORTING_TASK",
+            "PARAMETER_CONTEXT",
+            "PARAMETER_PROVIDER",
+            "TEMPLATE",
+            "FLOW_REGISTRY_CLIENT"
           ]
-        },
-        "flowFileConcurrency": {
-          "type": "string",
-          "description": "The configured FlowFile Concurrency for the Process Group"
-        },
-        "flowFileOutboundPolicy": {
-          "type": "string",
-          "description": "The FlowFile Outbound Policy for the Process Group"
         },
         "groupIdentifier": {
           "type": "string",
@@ -7552,6 +7964,10 @@
           "type": "string",
           "description": "The component's unique identifier"
         },
+        "instanceIdentifier": {
+          "type": "string",
+          "description": "The instance ID of an existing component that is described by this VersionedComponent, or null if this is not mapped to an instantiated component"
+        },
         "name": {
           "type": "string",
           "description": "The component's name"
@@ -7565,9 +7981,28 @@
           "description": "The component's position on the graph",
           "$ref": "#/definitions/Position"
         },
+        "type": {
+          "type": "string",
+          "description": "The type of the extension component"
+        },
         "bundle": {
           "description": "Information about the bundle from which the component came",
           "$ref": "#/definitions/Bundle"
+        },
+        "properties": {
+          "type": "object",
+          "description": "The properties for the component. Properties whose value is not set will only contain the property name.",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "x-omitempty": true
+        },
+        "propertyDescriptors": {
+          "type": "object",
+          "description": "The property descriptors for the component.",
+          "additionalProperties": {
+            "$ref": "#/definitions/VersionedPropertyDescriptor"
+          }
         },
         "style": {
           "type": "object",
@@ -7576,25 +8011,6 @@
             "type": "string"
           },
           "x-omitempty": false
-        },
-        "type": {
-          "type": "string",
-          "description": "The type of Processor"
-        },
-        "properties": {
-          "type": "object",
-          "description": "The properties for the processor. Properties whose value is not set will only contain the property name.",
-          "additionalProperties": {
-            "type": "string"
-          },
-          "x-omitempty": true
-        },
-        "propertyDescriptors": {
-          "type": "object",
-          "description": "The property descriptors for the processor.",
-          "additionalProperties": {
-            "$ref": "#/definitions/VersionedPropertyDescriptor"
-          }
         },
         "annotationData": {
           "type": "string",
@@ -7607,7 +8023,7 @@
         },
         "schedulingStrategy": {
           "type": "string",
-          "description": "Indcates whether the prcessor should be scheduled to run in event or timer driven mode."
+          "description": "Indicates whether the processor should be scheduled to run in event or timer driven mode."
         },
         "executionNode": {
           "type": "string",
@@ -7649,8 +8065,34 @@
           "description": "The scheduled state of the component",
           "enum": [
             "ENABLED",
-            "DISABLED"
+            "DISABLED",
+            "RUNNING"
           ]
+        },
+        "retryCount": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Overall number of retries."
+        },
+        "retriedRelationships": {
+          "type": "array",
+          "description": "All the relationships should be retried.",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "backoffMechanism": {
+          "type": "string",
+          "description": "Determines whether the FlowFile should be penalized or the processor should be yielded between retries.",
+          "enum": [
+            "PENALIZE_FLOWFILE",
+            "YIELD_PROCESSOR"
+          ]
+        },
+        "maxBackoffPeriod": {
+          "type": "string",
+          "description": "Maximum amount of time to be waited during a retry period."
         },
         "componentType": {
           "type": "string",
@@ -7665,7 +8107,12 @@
             "REMOTE_OUTPUT_PORT",
             "FUNNEL",
             "LABEL",
-            "CONTROLLER_SERVICE"
+            "CONTROLLER_SERVICE",
+            "REPORTING_TASK",
+            "PARAMETER_CONTEXT",
+            "PARAMETER_PROVIDER",
+            "TEMPLATE",
+            "FLOW_REGISTRY_CLIENT"
           ]
         },
         "groupIdentifier": {
@@ -7705,6 +8152,10 @@
         "identifier": {
           "type": "string",
           "description": "The component's unique identifier"
+        },
+        "instanceIdentifier": {
+          "type": "string",
+          "description": "The instance ID of an existing component that is described by this VersionedComponent, or null if this is not mapped to an instantiated component"
         },
         "name": {
           "type": "string",
@@ -7748,7 +8199,12 @@
             "REMOTE_OUTPUT_PORT",
             "FUNNEL",
             "LABEL",
-            "CONTROLLER_SERVICE"
+            "CONTROLLER_SERVICE",
+            "REPORTING_TASK",
+            "PARAMETER_CONTEXT",
+            "PARAMETER_PROVIDER",
+            "TEMPLATE",
+            "FLOW_REGISTRY_CLIENT"
           ]
         },
         "targetId": {
@@ -7760,7 +8216,8 @@
           "description": "The scheduled state of the component",
           "enum": [
             "ENABLED",
-            "DISABLED"
+            "DISABLED",
+            "RUNNING"
           ]
         },
         "groupIdentifier": {
@@ -7775,6 +8232,10 @@
         "identifier": {
           "type": "string",
           "description": "The component's unique identifier"
+        },
+        "instanceIdentifier": {
+          "type": "string",
+          "description": "The instance ID of an existing component that is described by this VersionedComponent, or null if this is not mapped to an instantiated component"
         },
         "name": {
           "type": "string",
@@ -7826,6 +8287,9 @@
         "proxyUser": {
           "type": "string"
         },
+        "proxyPassword": {
+          "type": "string"
+        },
         "inputPorts": {
           "type": "array",
           "description": "A Set of Input Ports that can be connected to, in order to send data to the remote NiFi instance",
@@ -7855,7 +8319,12 @@
             "REMOTE_OUTPUT_PORT",
             "FUNNEL",
             "LABEL",
-            "CONTROLLER_SERVICE"
+            "CONTROLLER_SERVICE",
+            "REPORTING_TASK",
+            "PARAMETER_CONTEXT",
+            "PARAMETER_PROVIDER",
+            "TEMPLATE",
+            "FLOW_REGISTRY_CLIENT"
           ]
         },
         "groupIdentifier": {

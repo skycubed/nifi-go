@@ -32,39 +32,43 @@ type ClientOption func(*runtime.ClientOperation)
 type ClientService interface {
 	CreateBulletin(params *CreateBulletinParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateBulletinOK, error)
 
-	CreateRegistryClient(params *CreateRegistryClientParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateRegistryClientCreated, error)
+	CreateFlowRegistryClient(params *CreateFlowRegistryClientParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateFlowRegistryClientCreated, error)
+
+	CreateParameterProvider(params *CreateParameterProviderParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateParameterProviderCreated, error)
 
 	CreateReportingTask(params *CreateReportingTaskParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateReportingTaskCreated, error)
+
+	DeleteFlowRegistryClient(params *DeleteFlowRegistryClientParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteFlowRegistryClientOK, error)
 
 	DeleteHistory(params *DeleteHistoryParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteHistoryOK, error)
 
 	DeleteNode(params *DeleteNodeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteNodeOK, error)
 
-	DeleteRegistryClient(params *DeleteRegistryClientParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteRegistryClientOK, error)
-
 	GetCluster(params *GetClusterParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetClusterOK, error)
 
 	GetControllerConfig(params *GetControllerConfigParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetControllerConfigOK, error)
+
+	GetFlowRegistryClient(params *GetFlowRegistryClientParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetFlowRegistryClientOK, error)
+
+	GetFlowRegistryClients(params *GetFlowRegistryClientsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetFlowRegistryClientsOK, error)
 
 	GetNode(params *GetNodeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetNodeOK, error)
 
 	GetNodeStatusHistory(params *GetNodeStatusHistoryParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetNodeStatusHistoryOK, error)
 
-	GetRegistryClient(params *GetRegistryClientParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetRegistryClientOK, error)
-
-	GetRegistryClients(params *GetRegistryClientsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetRegistryClientsOK, error)
+	GetRegistryClientTypes(params *GetRegistryClientTypesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetRegistryClientTypesOK, error)
 
 	UpdateControllerConfig(params *UpdateControllerConfigParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateControllerConfigOK, error)
 
-	UpdateNode(params *UpdateNodeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateNodeOK, error)
+	UpdateFlowRegistryClient(params *UpdateFlowRegistryClientParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateFlowRegistryClientOK, error)
 
-	UpdateRegistryClient(params *UpdateRegistryClientParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateRegistryClientOK, error)
+	UpdateNode(params *UpdateNodeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateNodeOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-  CreateBulletin creates a new bulletin
+CreateBulletin creates a new bulletin
 */
 func (a *Client) CreateBulletin(params *CreateBulletinParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateBulletinOK, error) {
 	// TODO: Validate the params before sending
@@ -103,22 +107,22 @@ func (a *Client) CreateBulletin(params *CreateBulletinParams, authInfo runtime.C
 }
 
 /*
-  CreateRegistryClient creates a new registry client
+CreateFlowRegistryClient creates a new flow registry client
 */
-func (a *Client) CreateRegistryClient(params *CreateRegistryClientParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateRegistryClientCreated, error) {
+func (a *Client) CreateFlowRegistryClient(params *CreateFlowRegistryClientParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateFlowRegistryClientCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewCreateRegistryClientParams()
+		params = NewCreateFlowRegistryClientParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "createRegistryClient",
+		ID:                 "createFlowRegistryClient",
 		Method:             "POST",
 		PathPattern:        "/controller/registry-clients",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http", "https"},
 		Params:             params,
-		Reader:             &CreateRegistryClientReader{formats: a.formats},
+		Reader:             &CreateFlowRegistryClientReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -131,18 +135,57 @@ func (a *Client) CreateRegistryClient(params *CreateRegistryClientParams, authIn
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*CreateRegistryClientCreated)
+	success, ok := result.(*CreateFlowRegistryClientCreated)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for createRegistryClient: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for createFlowRegistryClient: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  CreateReportingTask creates a new reporting task
+CreateParameterProvider creates a new parameter provider
+*/
+func (a *Client) CreateParameterProvider(params *CreateParameterProviderParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateParameterProviderCreated, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCreateParameterProviderParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "createParameterProvider",
+		Method:             "POST",
+		PathPattern:        "/controller/parameter-providers",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http", "https"},
+		Params:             params,
+		Reader:             &CreateParameterProviderReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CreateParameterProviderCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for createParameterProvider: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+CreateReportingTask creates a new reporting task
 */
 func (a *Client) CreateReportingTask(params *CreateReportingTaskParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateReportingTaskCreated, error) {
 	// TODO: Validate the params before sending
@@ -181,7 +224,46 @@ func (a *Client) CreateReportingTask(params *CreateReportingTaskParams, authInfo
 }
 
 /*
-  DeleteHistory purges history
+DeleteFlowRegistryClient deletes a flow registry client
+*/
+func (a *Client) DeleteFlowRegistryClient(params *DeleteFlowRegistryClientParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteFlowRegistryClientOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewDeleteFlowRegistryClientParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "deleteFlowRegistryClient",
+		Method:             "DELETE",
+		PathPattern:        "/controller/registry-clients/{id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"*/*"},
+		Schemes:            []string{"http", "https"},
+		Params:             params,
+		Reader:             &DeleteFlowRegistryClientReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*DeleteFlowRegistryClientOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for deleteFlowRegistryClient: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+DeleteHistory purges history
 */
 func (a *Client) DeleteHistory(params *DeleteHistoryParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteHistoryOK, error) {
 	// TODO: Validate the params before sending
@@ -220,7 +302,7 @@ func (a *Client) DeleteHistory(params *DeleteHistoryParams, authInfo runtime.Cli
 }
 
 /*
-  DeleteNode removes a node from the cluster
+DeleteNode removes a node from the cluster
 */
 func (a *Client) DeleteNode(params *DeleteNodeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteNodeOK, error) {
 	// TODO: Validate the params before sending
@@ -259,48 +341,9 @@ func (a *Client) DeleteNode(params *DeleteNodeParams, authInfo runtime.ClientAut
 }
 
 /*
-  DeleteRegistryClient deletes a registry client
-*/
-func (a *Client) DeleteRegistryClient(params *DeleteRegistryClientParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteRegistryClientOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewDeleteRegistryClientParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "deleteRegistryClient",
-		Method:             "DELETE",
-		PathPattern:        "/controller/registry-clients/{id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"*/*"},
-		Schemes:            []string{"http", "https"},
-		Params:             params,
-		Reader:             &DeleteRegistryClientReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
+GetCluster gets the contents of the cluster
 
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*DeleteRegistryClientOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteRegistryClient: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  GetCluster gets the contents of the cluster
-
-  Returns the contents of the cluster including all nodes and their status.
+Returns the contents of the cluster including all nodes and their status.
 */
 func (a *Client) GetCluster(params *GetClusterParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetClusterOK, error) {
 	// TODO: Validate the params before sending
@@ -339,7 +382,7 @@ func (a *Client) GetCluster(params *GetClusterParams, authInfo runtime.ClientAut
 }
 
 /*
-  GetControllerConfig retrieves the configuration for this ni fi controller
+GetControllerConfig retrieves the configuration for this ni fi controller
 */
 func (a *Client) GetControllerConfig(params *GetControllerConfigParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetControllerConfigOK, error) {
 	// TODO: Validate the params before sending
@@ -378,7 +421,85 @@ func (a *Client) GetControllerConfig(params *GetControllerConfigParams, authInfo
 }
 
 /*
-  GetNode gets a node in the cluster
+GetFlowRegistryClient gets a flow registry client
+*/
+func (a *Client) GetFlowRegistryClient(params *GetFlowRegistryClientParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetFlowRegistryClientOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetFlowRegistryClientParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getFlowRegistryClient",
+		Method:             "GET",
+		PathPattern:        "/controller/registry-clients/{id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"*/*"},
+		Schemes:            []string{"http", "https"},
+		Params:             params,
+		Reader:             &GetFlowRegistryClientReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetFlowRegistryClientOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getFlowRegistryClient: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetFlowRegistryClients gets the listing of available flow registry clients
+*/
+func (a *Client) GetFlowRegistryClients(params *GetFlowRegistryClientsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetFlowRegistryClientsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetFlowRegistryClientsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getFlowRegistryClients",
+		Method:             "GET",
+		PathPattern:        "/controller/registry-clients",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"*/*"},
+		Schemes:            []string{"http", "https"},
+		Params:             params,
+		Reader:             &GetFlowRegistryClientsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetFlowRegistryClientsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getFlowRegistryClients: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetNode gets a node in the cluster
 */
 func (a *Client) GetNode(params *GetNodeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetNodeOK, error) {
 	// TODO: Validate the params before sending
@@ -417,9 +538,9 @@ func (a *Client) GetNode(params *GetNodeParams, authInfo runtime.ClientAuthInfoW
 }
 
 /*
-  GetNodeStatusHistory gets status history for the node
+GetNodeStatusHistory gets status history for the node
 
-  Note: This endpoint is subject to change as NiFi and it's REST API evolve.
+Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 */
 func (a *Client) GetNodeStatusHistory(params *GetNodeStatusHistoryParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetNodeStatusHistoryOK, error) {
 	// TODO: Validate the params before sending
@@ -458,22 +579,24 @@ func (a *Client) GetNodeStatusHistory(params *GetNodeStatusHistoryParams, authIn
 }
 
 /*
-  GetRegistryClient gets a registry client
+GetRegistryClientTypes retrieves the types of flow that this ni fi supports
+
+Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 */
-func (a *Client) GetRegistryClient(params *GetRegistryClientParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetRegistryClientOK, error) {
+func (a *Client) GetRegistryClientTypes(params *GetRegistryClientTypesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetRegistryClientTypesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetRegistryClientParams()
+		params = NewGetRegistryClientTypesParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getRegistryClient",
+		ID:                 "getRegistryClientTypes",
 		Method:             "GET",
-		PathPattern:        "/controller/registry-clients/{id}",
+		PathPattern:        "/controller/registry-types",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"*/*"},
 		Schemes:            []string{"http", "https"},
 		Params:             params,
-		Reader:             &GetRegistryClientReader{formats: a.formats},
+		Reader:             &GetRegistryClientTypesReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -486,57 +609,18 @@ func (a *Client) GetRegistryClient(params *GetRegistryClientParams, authInfo run
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetRegistryClientOK)
+	success, ok := result.(*GetRegistryClientTypesOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getRegistryClient: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getRegistryClientTypes: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  GetRegistryClients gets the listing of available registry clients
-*/
-func (a *Client) GetRegistryClients(params *GetRegistryClientsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetRegistryClientsOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetRegistryClientsParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getRegistryClients",
-		Method:             "GET",
-		PathPattern:        "/controller/registry-clients",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"*/*"},
-		Schemes:            []string{"http", "https"},
-		Params:             params,
-		Reader:             &GetRegistryClientsReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetRegistryClientsOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getRegistryClients: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  UpdateControllerConfig retrieves the configuration for this ni fi
+UpdateControllerConfig retrieves the configuration for this ni fi
 */
 func (a *Client) UpdateControllerConfig(params *UpdateControllerConfigParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateControllerConfigOK, error) {
 	// TODO: Validate the params before sending
@@ -575,7 +659,46 @@ func (a *Client) UpdateControllerConfig(params *UpdateControllerConfigParams, au
 }
 
 /*
-  UpdateNode updates a node in the cluster
+UpdateFlowRegistryClient updates a flow registry client
+*/
+func (a *Client) UpdateFlowRegistryClient(params *UpdateFlowRegistryClientParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateFlowRegistryClientOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateFlowRegistryClientParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "updateFlowRegistryClient",
+		Method:             "PUT",
+		PathPattern:        "/controller/registry-clients/{id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http", "https"},
+		Params:             params,
+		Reader:             &UpdateFlowRegistryClientReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UpdateFlowRegistryClientOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for updateFlowRegistryClient: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+UpdateNode updates a node in the cluster
 */
 func (a *Client) UpdateNode(params *UpdateNodeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateNodeOK, error) {
 	// TODO: Validate the params before sending
@@ -610,45 +733,6 @@ func (a *Client) UpdateNode(params *UpdateNodeParams, authInfo runtime.ClientAut
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for updateNode: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  UpdateRegistryClient updates a registry client
-*/
-func (a *Client) UpdateRegistryClient(params *UpdateRegistryClientParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateRegistryClientOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewUpdateRegistryClientParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "updateRegistryClient",
-		Method:             "PUT",
-		PathPattern:        "/controller/registry-clients/{id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http", "https"},
-		Params:             params,
-		Reader:             &UpdateRegistryClientReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*UpdateRegistryClientOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for updateRegistryClient: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

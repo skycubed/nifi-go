@@ -27,7 +27,7 @@ type VersionedPort struct {
 	Comments string `json:"comments,omitempty"`
 
 	// component type
-	// Enum: [CONNECTION PROCESSOR PROCESS_GROUP REMOTE_PROCESS_GROUP INPUT_PORT OUTPUT_PORT REMOTE_INPUT_PORT REMOTE_OUTPUT_PORT FUNNEL LABEL CONTROLLER_SERVICE]
+	// Enum: [CONNECTION PROCESSOR PROCESS_GROUP REMOTE_PROCESS_GROUP INPUT_PORT OUTPUT_PORT REMOTE_INPUT_PORT REMOTE_OUTPUT_PORT FUNNEL LABEL CONTROLLER_SERVICE REPORTING_TASK PARAMETER_CONTEXT PARAMETER_PROVIDER TEMPLATE FLOW_REGISTRY_CLIENT]
 	ComponentType string `json:"componentType,omitempty"`
 
 	// The number of tasks that should be concurrently scheduled for the port.
@@ -39,6 +39,9 @@ type VersionedPort struct {
 	// The component's unique identifier
 	Identifier string `json:"identifier,omitempty"`
 
+	// The instance ID of an existing component that is described by this VersionedComponent, or null if this is not mapped to an instantiated component
+	InstanceIdentifier string `json:"instanceIdentifier,omitempty"`
+
 	// The component's name
 	Name string `json:"name,omitempty"`
 
@@ -46,7 +49,7 @@ type VersionedPort struct {
 	Position *Position `json:"position,omitempty"`
 
 	// The scheduled state of the component
-	// Enum: [ENABLED DISABLED]
+	// Enum: [ENABLED DISABLED RUNNING]
 	ScheduledState string `json:"scheduledState,omitempty"`
 
 	// The type of port.
@@ -84,7 +87,7 @@ var versionedPortTypeComponentTypePropEnum []interface{}
 
 func init() {
 	var res []string
-	if err := json.Unmarshal([]byte(`["CONNECTION","PROCESSOR","PROCESS_GROUP","REMOTE_PROCESS_GROUP","INPUT_PORT","OUTPUT_PORT","REMOTE_INPUT_PORT","REMOTE_OUTPUT_PORT","FUNNEL","LABEL","CONTROLLER_SERVICE"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["CONNECTION","PROCESSOR","PROCESS_GROUP","REMOTE_PROCESS_GROUP","INPUT_PORT","OUTPUT_PORT","REMOTE_INPUT_PORT","REMOTE_OUTPUT_PORT","FUNNEL","LABEL","CONTROLLER_SERVICE","REPORTING_TASK","PARAMETER_CONTEXT","PARAMETER_PROVIDER","TEMPLATE","FLOW_REGISTRY_CLIENT"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
@@ -126,6 +129,21 @@ const (
 
 	// VersionedPortComponentTypeCONTROLLERSERVICE captures enum value "CONTROLLER_SERVICE"
 	VersionedPortComponentTypeCONTROLLERSERVICE string = "CONTROLLER_SERVICE"
+
+	// VersionedPortComponentTypeREPORTINGTASK captures enum value "REPORTING_TASK"
+	VersionedPortComponentTypeREPORTINGTASK string = "REPORTING_TASK"
+
+	// VersionedPortComponentTypePARAMETERCONTEXT captures enum value "PARAMETER_CONTEXT"
+	VersionedPortComponentTypePARAMETERCONTEXT string = "PARAMETER_CONTEXT"
+
+	// VersionedPortComponentTypePARAMETERPROVIDER captures enum value "PARAMETER_PROVIDER"
+	VersionedPortComponentTypePARAMETERPROVIDER string = "PARAMETER_PROVIDER"
+
+	// VersionedPortComponentTypeTEMPLATE captures enum value "TEMPLATE"
+	VersionedPortComponentTypeTEMPLATE string = "TEMPLATE"
+
+	// VersionedPortComponentTypeFLOWREGISTRYCLIENT captures enum value "FLOW_REGISTRY_CLIENT"
+	VersionedPortComponentTypeFLOWREGISTRYCLIENT string = "FLOW_REGISTRY_CLIENT"
 )
 
 // prop value enum
@@ -172,7 +190,7 @@ var versionedPortTypeScheduledStatePropEnum []interface{}
 
 func init() {
 	var res []string
-	if err := json.Unmarshal([]byte(`["ENABLED","DISABLED"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["ENABLED","DISABLED","RUNNING"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
@@ -187,6 +205,9 @@ const (
 
 	// VersionedPortScheduledStateDISABLED captures enum value "DISABLED"
 	VersionedPortScheduledStateDISABLED string = "DISABLED"
+
+	// VersionedPortScheduledStateRUNNING captures enum value "RUNNING"
+	VersionedPortScheduledStateRUNNING string = "RUNNING"
 )
 
 // prop value enum

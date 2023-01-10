@@ -27,6 +27,10 @@ type VersionedProcessor struct {
 	// Unique: true
 	AutoTerminatedRelationships []string `json:"autoTerminatedRelationships"`
 
+	// Determines whether the FlowFile should be penalized or the processor should be yielded between retries.
+	// Enum: [PENALIZE_FLOWFILE YIELD_PROCESSOR]
+	BackoffMechanism string `json:"backoffMechanism,omitempty"`
+
 	// The level at which the processor will report bulletins.
 	BulletinLevel string `json:"bulletinLevel,omitempty"`
 
@@ -37,7 +41,7 @@ type VersionedProcessor struct {
 	Comments string `json:"comments"`
 
 	// component type
-	// Enum: [CONNECTION PROCESSOR PROCESS_GROUP REMOTE_PROCESS_GROUP INPUT_PORT OUTPUT_PORT REMOTE_INPUT_PORT REMOTE_OUTPUT_PORT FUNNEL LABEL CONTROLLER_SERVICE]
+	// Enum: [CONNECTION PROCESSOR PROCESS_GROUP REMOTE_PROCESS_GROUP INPUT_PORT OUTPUT_PORT REMOTE_INPUT_PORT REMOTE_OUTPUT_PORT FUNNEL LABEL CONTROLLER_SERVICE REPORTING_TASK PARAMETER_CONTEXT PARAMETER_PROVIDER TEMPLATE FLOW_REGISTRY_CLIENT]
 	ComponentType string `json:"componentType,omitempty"`
 
 	// The number of tasks that should be concurrently schedule for the processor. If the processor doesn't allow parallol processing then any positive input will be ignored.
@@ -52,6 +56,12 @@ type VersionedProcessor struct {
 	// The component's unique identifier
 	Identifier string `json:"identifier,omitempty"`
 
+	// The instance ID of an existing component that is described by this VersionedComponent, or null if this is not mapped to an instantiated component
+	InstanceIdentifier string `json:"instanceIdentifier,omitempty"`
+
+	// Maximum amount of time to be waited during a retry period.
+	MaxBackoffPeriod string `json:"maxBackoffPeriod,omitempty"`
+
 	// The component's name
 	Name string `json:"name,omitempty"`
 
@@ -61,29 +71,36 @@ type VersionedProcessor struct {
 	// The component's position on the graph
 	Position *Position `json:"position,omitempty"`
 
-	// The properties for the processor. Properties whose value is not set will only contain the property name.
+	// The properties for the component. Properties whose value is not set will only contain the property name.
 	Properties map[string]string `json:"properties,omitempty"`
 
-	// The property descriptors for the processor.
+	// The property descriptors for the component.
 	PropertyDescriptors map[string]VersionedPropertyDescriptor `json:"propertyDescriptors,omitempty"`
+
+	// All the relationships should be retried.
+	// Unique: true
+	RetriedRelationships []string `json:"retriedRelationships"`
+
+	// Overall number of retries.
+	RetryCount int32 `json:"retryCount,omitempty"`
 
 	// The run duration for the processor in milliseconds.
 	RunDurationMillis int64 `json:"runDurationMillis"`
 
 	// The scheduled state of the component
-	// Enum: [ENABLED DISABLED]
+	// Enum: [ENABLED DISABLED RUNNING]
 	ScheduledState string `json:"scheduledState,omitempty"`
 
 	// The frequency with which to schedule the processor. The format of the value will depend on th value of schedulingStrategy.
 	SchedulingPeriod string `json:"schedulingPeriod,omitempty"`
 
-	// Indcates whether the prcessor should be scheduled to run in event or timer driven mode.
+	// Indicates whether the processor should be scheduled to run in event or timer driven mode.
 	SchedulingStrategy string `json:"schedulingStrategy,omitempty"`
 
 	// Stylistic data for rendering in a UI
 	Style map[string]string `json:"style"`
 
-	// The type of Processor
+	// The type of the extension component
 	Type string `json:"type,omitempty"`
 
 	// The amount of time that must elapse before this processor is scheduled again after yielding.
@@ -95,6 +112,10 @@ func (m *VersionedProcessor) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateAutoTerminatedRelationships(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateBackoffMechanism(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -114,6 +135,10 @@ func (m *VersionedProcessor) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateRetriedRelationships(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateScheduledState(formats); err != nil {
 		res = append(res, err)
 	}
@@ -130,6 +155,48 @@ func (m *VersionedProcessor) validateAutoTerminatedRelationships(formats strfmt.
 	}
 
 	if err := validate.UniqueItems("autoTerminatedRelationships", "body", m.AutoTerminatedRelationships); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+var versionedProcessorTypeBackoffMechanismPropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["PENALIZE_FLOWFILE","YIELD_PROCESSOR"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		versionedProcessorTypeBackoffMechanismPropEnum = append(versionedProcessorTypeBackoffMechanismPropEnum, v)
+	}
+}
+
+const (
+
+	// VersionedProcessorBackoffMechanismPENALIZEFLOWFILE captures enum value "PENALIZE_FLOWFILE"
+	VersionedProcessorBackoffMechanismPENALIZEFLOWFILE string = "PENALIZE_FLOWFILE"
+
+	// VersionedProcessorBackoffMechanismYIELDPROCESSOR captures enum value "YIELD_PROCESSOR"
+	VersionedProcessorBackoffMechanismYIELDPROCESSOR string = "YIELD_PROCESSOR"
+)
+
+// prop value enum
+func (m *VersionedProcessor) validateBackoffMechanismEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, versionedProcessorTypeBackoffMechanismPropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *VersionedProcessor) validateBackoffMechanism(formats strfmt.Registry) error {
+	if swag.IsZero(m.BackoffMechanism) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateBackoffMechanismEnum("backoffMechanism", "body", m.BackoffMechanism); err != nil {
 		return err
 	}
 
@@ -159,7 +226,7 @@ var versionedProcessorTypeComponentTypePropEnum []interface{}
 
 func init() {
 	var res []string
-	if err := json.Unmarshal([]byte(`["CONNECTION","PROCESSOR","PROCESS_GROUP","REMOTE_PROCESS_GROUP","INPUT_PORT","OUTPUT_PORT","REMOTE_INPUT_PORT","REMOTE_OUTPUT_PORT","FUNNEL","LABEL","CONTROLLER_SERVICE"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["CONNECTION","PROCESSOR","PROCESS_GROUP","REMOTE_PROCESS_GROUP","INPUT_PORT","OUTPUT_PORT","REMOTE_INPUT_PORT","REMOTE_OUTPUT_PORT","FUNNEL","LABEL","CONTROLLER_SERVICE","REPORTING_TASK","PARAMETER_CONTEXT","PARAMETER_PROVIDER","TEMPLATE","FLOW_REGISTRY_CLIENT"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
@@ -201,6 +268,21 @@ const (
 
 	// VersionedProcessorComponentTypeCONTROLLERSERVICE captures enum value "CONTROLLER_SERVICE"
 	VersionedProcessorComponentTypeCONTROLLERSERVICE string = "CONTROLLER_SERVICE"
+
+	// VersionedProcessorComponentTypeREPORTINGTASK captures enum value "REPORTING_TASK"
+	VersionedProcessorComponentTypeREPORTINGTASK string = "REPORTING_TASK"
+
+	// VersionedProcessorComponentTypePARAMETERCONTEXT captures enum value "PARAMETER_CONTEXT"
+	VersionedProcessorComponentTypePARAMETERCONTEXT string = "PARAMETER_CONTEXT"
+
+	// VersionedProcessorComponentTypePARAMETERPROVIDER captures enum value "PARAMETER_PROVIDER"
+	VersionedProcessorComponentTypePARAMETERPROVIDER string = "PARAMETER_PROVIDER"
+
+	// VersionedProcessorComponentTypeTEMPLATE captures enum value "TEMPLATE"
+	VersionedProcessorComponentTypeTEMPLATE string = "TEMPLATE"
+
+	// VersionedProcessorComponentTypeFLOWREGISTRYCLIENT captures enum value "FLOW_REGISTRY_CLIENT"
+	VersionedProcessorComponentTypeFLOWREGISTRYCLIENT string = "FLOW_REGISTRY_CLIENT"
 )
 
 // prop value enum
@@ -269,11 +351,23 @@ func (m *VersionedProcessor) validatePropertyDescriptors(formats strfmt.Registry
 	return nil
 }
 
+func (m *VersionedProcessor) validateRetriedRelationships(formats strfmt.Registry) error {
+	if swag.IsZero(m.RetriedRelationships) { // not required
+		return nil
+	}
+
+	if err := validate.UniqueItems("retriedRelationships", "body", m.RetriedRelationships); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 var versionedProcessorTypeScheduledStatePropEnum []interface{}
 
 func init() {
 	var res []string
-	if err := json.Unmarshal([]byte(`["ENABLED","DISABLED"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["ENABLED","DISABLED","RUNNING"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
@@ -288,6 +382,9 @@ const (
 
 	// VersionedProcessorScheduledStateDISABLED captures enum value "DISABLED"
 	VersionedProcessorScheduledStateDISABLED string = "DISABLED"
+
+	// VersionedProcessorScheduledStateRUNNING captures enum value "RUNNING"
+	VersionedProcessorScheduledStateRUNNING string = "RUNNING"
 )
 
 // prop value enum

@@ -63,7 +63,8 @@ func NewGlobalGetLatestFlowVersionMetadataOK() *GlobalGetLatestFlowVersionMetada
 	return &GlobalGetLatestFlowVersionMetadataOK{}
 }
 
-/* GlobalGetLatestFlowVersionMetadataOK describes a response with status code 200, with default header values.
+/*
+GlobalGetLatestFlowVersionMetadataOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -71,9 +72,39 @@ type GlobalGetLatestFlowVersionMetadataOK struct {
 	Payload *models.VersionedFlowSnapshotMetadata
 }
 
+// IsSuccess returns true when this global get latest flow version metadata o k response has a 2xx status code
+func (o *GlobalGetLatestFlowVersionMetadataOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this global get latest flow version metadata o k response has a 3xx status code
+func (o *GlobalGetLatestFlowVersionMetadataOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this global get latest flow version metadata o k response has a 4xx status code
+func (o *GlobalGetLatestFlowVersionMetadataOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this global get latest flow version metadata o k response has a 5xx status code
+func (o *GlobalGetLatestFlowVersionMetadataOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this global get latest flow version metadata o k response a status code equal to that given
+func (o *GlobalGetLatestFlowVersionMetadataOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GlobalGetLatestFlowVersionMetadataOK) Error() string {
 	return fmt.Sprintf("[GET /flows/{flowId}/versions/latest/metadata][%d] globalGetLatestFlowVersionMetadataOK  %+v", 200, o.Payload)
 }
+
+func (o *GlobalGetLatestFlowVersionMetadataOK) String() string {
+	return fmt.Sprintf("[GET /flows/{flowId}/versions/latest/metadata][%d] globalGetLatestFlowVersionMetadataOK  %+v", 200, o.Payload)
+}
+
 func (o *GlobalGetLatestFlowVersionMetadataOK) GetPayload() *models.VersionedFlowSnapshotMetadata {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewGlobalGetLatestFlowVersionMetadataUnauthorized() *GlobalGetLatestFlowVer
 	return &GlobalGetLatestFlowVersionMetadataUnauthorized{}
 }
 
-/* GlobalGetLatestFlowVersionMetadataUnauthorized describes a response with status code 401, with default header values.
+/*
+GlobalGetLatestFlowVersionMetadataUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type GlobalGetLatestFlowVersionMetadataUnauthorized struct {
 }
 
+// IsSuccess returns true when this global get latest flow version metadata unauthorized response has a 2xx status code
+func (o *GlobalGetLatestFlowVersionMetadataUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this global get latest flow version metadata unauthorized response has a 3xx status code
+func (o *GlobalGetLatestFlowVersionMetadataUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this global get latest flow version metadata unauthorized response has a 4xx status code
+func (o *GlobalGetLatestFlowVersionMetadataUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this global get latest flow version metadata unauthorized response has a 5xx status code
+func (o *GlobalGetLatestFlowVersionMetadataUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this global get latest flow version metadata unauthorized response a status code equal to that given
+func (o *GlobalGetLatestFlowVersionMetadataUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GlobalGetLatestFlowVersionMetadataUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /flows/{flowId}/versions/latest/metadata][%d] globalGetLatestFlowVersionMetadataUnauthorized ", 401)
+}
+
+func (o *GlobalGetLatestFlowVersionMetadataUnauthorized) String() string {
 	return fmt.Sprintf("[GET /flows/{flowId}/versions/latest/metadata][%d] globalGetLatestFlowVersionMetadataUnauthorized ", 401)
 }
 
@@ -116,14 +177,44 @@ func NewGlobalGetLatestFlowVersionMetadataForbidden() *GlobalGetLatestFlowVersio
 	return &GlobalGetLatestFlowVersionMetadataForbidden{}
 }
 
-/* GlobalGetLatestFlowVersionMetadataForbidden describes a response with status code 403, with default header values.
+/*
+GlobalGetLatestFlowVersionMetadataForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type GlobalGetLatestFlowVersionMetadataForbidden struct {
 }
 
+// IsSuccess returns true when this global get latest flow version metadata forbidden response has a 2xx status code
+func (o *GlobalGetLatestFlowVersionMetadataForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this global get latest flow version metadata forbidden response has a 3xx status code
+func (o *GlobalGetLatestFlowVersionMetadataForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this global get latest flow version metadata forbidden response has a 4xx status code
+func (o *GlobalGetLatestFlowVersionMetadataForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this global get latest flow version metadata forbidden response has a 5xx status code
+func (o *GlobalGetLatestFlowVersionMetadataForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this global get latest flow version metadata forbidden response a status code equal to that given
+func (o *GlobalGetLatestFlowVersionMetadataForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GlobalGetLatestFlowVersionMetadataForbidden) Error() string {
+	return fmt.Sprintf("[GET /flows/{flowId}/versions/latest/metadata][%d] globalGetLatestFlowVersionMetadataForbidden ", 403)
+}
+
+func (o *GlobalGetLatestFlowVersionMetadataForbidden) String() string {
 	return fmt.Sprintf("[GET /flows/{flowId}/versions/latest/metadata][%d] globalGetLatestFlowVersionMetadataForbidden ", 403)
 }
 
@@ -137,14 +228,44 @@ func NewGlobalGetLatestFlowVersionMetadataNotFound() *GlobalGetLatestFlowVersion
 	return &GlobalGetLatestFlowVersionMetadataNotFound{}
 }
 
-/* GlobalGetLatestFlowVersionMetadataNotFound describes a response with status code 404, with default header values.
+/*
+GlobalGetLatestFlowVersionMetadataNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type GlobalGetLatestFlowVersionMetadataNotFound struct {
 }
 
+// IsSuccess returns true when this global get latest flow version metadata not found response has a 2xx status code
+func (o *GlobalGetLatestFlowVersionMetadataNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this global get latest flow version metadata not found response has a 3xx status code
+func (o *GlobalGetLatestFlowVersionMetadataNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this global get latest flow version metadata not found response has a 4xx status code
+func (o *GlobalGetLatestFlowVersionMetadataNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this global get latest flow version metadata not found response has a 5xx status code
+func (o *GlobalGetLatestFlowVersionMetadataNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this global get latest flow version metadata not found response a status code equal to that given
+func (o *GlobalGetLatestFlowVersionMetadataNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GlobalGetLatestFlowVersionMetadataNotFound) Error() string {
+	return fmt.Sprintf("[GET /flows/{flowId}/versions/latest/metadata][%d] globalGetLatestFlowVersionMetadataNotFound ", 404)
+}
+
+func (o *GlobalGetLatestFlowVersionMetadataNotFound) String() string {
 	return fmt.Sprintf("[GET /flows/{flowId}/versions/latest/metadata][%d] globalGetLatestFlowVersionMetadataNotFound ", 404)
 }
 
@@ -158,14 +279,44 @@ func NewGlobalGetLatestFlowVersionMetadataConflict() *GlobalGetLatestFlowVersion
 	return &GlobalGetLatestFlowVersionMetadataConflict{}
 }
 
-/* GlobalGetLatestFlowVersionMetadataConflict describes a response with status code 409, with default header values.
+/*
+GlobalGetLatestFlowVersionMetadataConflict describes a response with status code 409, with default header values.
 
 NiFi Registry was unable to complete the request because it assumes a server state that is not valid.
 */
 type GlobalGetLatestFlowVersionMetadataConflict struct {
 }
 
+// IsSuccess returns true when this global get latest flow version metadata conflict response has a 2xx status code
+func (o *GlobalGetLatestFlowVersionMetadataConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this global get latest flow version metadata conflict response has a 3xx status code
+func (o *GlobalGetLatestFlowVersionMetadataConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this global get latest flow version metadata conflict response has a 4xx status code
+func (o *GlobalGetLatestFlowVersionMetadataConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this global get latest flow version metadata conflict response has a 5xx status code
+func (o *GlobalGetLatestFlowVersionMetadataConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this global get latest flow version metadata conflict response a status code equal to that given
+func (o *GlobalGetLatestFlowVersionMetadataConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *GlobalGetLatestFlowVersionMetadataConflict) Error() string {
+	return fmt.Sprintf("[GET /flows/{flowId}/versions/latest/metadata][%d] globalGetLatestFlowVersionMetadataConflict ", 409)
+}
+
+func (o *GlobalGetLatestFlowVersionMetadataConflict) String() string {
 	return fmt.Sprintf("[GET /flows/{flowId}/versions/latest/metadata][%d] globalGetLatestFlowVersionMetadataConflict ", 409)
 }
 

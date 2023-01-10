@@ -69,7 +69,8 @@ func NewCopySnippetCreated() *CopySnippetCreated {
 	return &CopySnippetCreated{}
 }
 
-/* CopySnippetCreated describes a response with status code 201, with default header values.
+/*
+CopySnippetCreated describes a response with status code 201, with default header values.
 
 successful operation
 */
@@ -77,9 +78,39 @@ type CopySnippetCreated struct {
 	Payload *models.FlowEntity
 }
 
+// IsSuccess returns true when this copy snippet created response has a 2xx status code
+func (o *CopySnippetCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this copy snippet created response has a 3xx status code
+func (o *CopySnippetCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this copy snippet created response has a 4xx status code
+func (o *CopySnippetCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this copy snippet created response has a 5xx status code
+func (o *CopySnippetCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this copy snippet created response a status code equal to that given
+func (o *CopySnippetCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *CopySnippetCreated) Error() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/snippet-instance][%d] copySnippetCreated  %+v", 201, o.Payload)
 }
+
+func (o *CopySnippetCreated) String() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/snippet-instance][%d] copySnippetCreated  %+v", 201, o.Payload)
+}
+
 func (o *CopySnippetCreated) GetPayload() *models.FlowEntity {
 	return o.Payload
 }
@@ -101,14 +132,44 @@ func NewCopySnippetBadRequest() *CopySnippetBadRequest {
 	return &CopySnippetBadRequest{}
 }
 
-/* CopySnippetBadRequest describes a response with status code 400, with default header values.
+/*
+CopySnippetBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type CopySnippetBadRequest struct {
 }
 
+// IsSuccess returns true when this copy snippet bad request response has a 2xx status code
+func (o *CopySnippetBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this copy snippet bad request response has a 3xx status code
+func (o *CopySnippetBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this copy snippet bad request response has a 4xx status code
+func (o *CopySnippetBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this copy snippet bad request response has a 5xx status code
+func (o *CopySnippetBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this copy snippet bad request response a status code equal to that given
+func (o *CopySnippetBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CopySnippetBadRequest) Error() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/snippet-instance][%d] copySnippetBadRequest ", 400)
+}
+
+func (o *CopySnippetBadRequest) String() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/snippet-instance][%d] copySnippetBadRequest ", 400)
 }
 
@@ -122,14 +183,44 @@ func NewCopySnippetUnauthorized() *CopySnippetUnauthorized {
 	return &CopySnippetUnauthorized{}
 }
 
-/* CopySnippetUnauthorized describes a response with status code 401, with default header values.
+/*
+CopySnippetUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type CopySnippetUnauthorized struct {
 }
 
+// IsSuccess returns true when this copy snippet unauthorized response has a 2xx status code
+func (o *CopySnippetUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this copy snippet unauthorized response has a 3xx status code
+func (o *CopySnippetUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this copy snippet unauthorized response has a 4xx status code
+func (o *CopySnippetUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this copy snippet unauthorized response has a 5xx status code
+func (o *CopySnippetUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this copy snippet unauthorized response a status code equal to that given
+func (o *CopySnippetUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *CopySnippetUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/snippet-instance][%d] copySnippetUnauthorized ", 401)
+}
+
+func (o *CopySnippetUnauthorized) String() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/snippet-instance][%d] copySnippetUnauthorized ", 401)
 }
 
@@ -143,14 +234,44 @@ func NewCopySnippetForbidden() *CopySnippetForbidden {
 	return &CopySnippetForbidden{}
 }
 
-/* CopySnippetForbidden describes a response with status code 403, with default header values.
+/*
+CopySnippetForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type CopySnippetForbidden struct {
 }
 
+// IsSuccess returns true when this copy snippet forbidden response has a 2xx status code
+func (o *CopySnippetForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this copy snippet forbidden response has a 3xx status code
+func (o *CopySnippetForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this copy snippet forbidden response has a 4xx status code
+func (o *CopySnippetForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this copy snippet forbidden response has a 5xx status code
+func (o *CopySnippetForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this copy snippet forbidden response a status code equal to that given
+func (o *CopySnippetForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CopySnippetForbidden) Error() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/snippet-instance][%d] copySnippetForbidden ", 403)
+}
+
+func (o *CopySnippetForbidden) String() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/snippet-instance][%d] copySnippetForbidden ", 403)
 }
 
@@ -164,14 +285,44 @@ func NewCopySnippetNotFound() *CopySnippetNotFound {
 	return &CopySnippetNotFound{}
 }
 
-/* CopySnippetNotFound describes a response with status code 404, with default header values.
+/*
+CopySnippetNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type CopySnippetNotFound struct {
 }
 
+// IsSuccess returns true when this copy snippet not found response has a 2xx status code
+func (o *CopySnippetNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this copy snippet not found response has a 3xx status code
+func (o *CopySnippetNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this copy snippet not found response has a 4xx status code
+func (o *CopySnippetNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this copy snippet not found response has a 5xx status code
+func (o *CopySnippetNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this copy snippet not found response a status code equal to that given
+func (o *CopySnippetNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *CopySnippetNotFound) Error() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/snippet-instance][%d] copySnippetNotFound ", 404)
+}
+
+func (o *CopySnippetNotFound) String() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/snippet-instance][%d] copySnippetNotFound ", 404)
 }
 
@@ -185,14 +336,44 @@ func NewCopySnippetConflict() *CopySnippetConflict {
 	return &CopySnippetConflict{}
 }
 
-/* CopySnippetConflict describes a response with status code 409, with default header values.
+/*
+CopySnippetConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type CopySnippetConflict struct {
 }
 
+// IsSuccess returns true when this copy snippet conflict response has a 2xx status code
+func (o *CopySnippetConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this copy snippet conflict response has a 3xx status code
+func (o *CopySnippetConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this copy snippet conflict response has a 4xx status code
+func (o *CopySnippetConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this copy snippet conflict response has a 5xx status code
+func (o *CopySnippetConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this copy snippet conflict response a status code equal to that given
+func (o *CopySnippetConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *CopySnippetConflict) Error() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/snippet-instance][%d] copySnippetConflict ", 409)
+}
+
+func (o *CopySnippetConflict) String() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/snippet-instance][%d] copySnippetConflict ", 409)
 }
 

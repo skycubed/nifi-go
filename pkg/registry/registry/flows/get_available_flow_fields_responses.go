@@ -39,7 +39,8 @@ func NewGetAvailableFlowFieldsOK() *GetAvailableFlowFieldsOK {
 	return &GetAvailableFlowFieldsOK{}
 }
 
-/* GetAvailableFlowFieldsOK describes a response with status code 200, with default header values.
+/*
+GetAvailableFlowFieldsOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -47,9 +48,39 @@ type GetAvailableFlowFieldsOK struct {
 	Payload *models.Fields
 }
 
+// IsSuccess returns true when this get available flow fields o k response has a 2xx status code
+func (o *GetAvailableFlowFieldsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get available flow fields o k response has a 3xx status code
+func (o *GetAvailableFlowFieldsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get available flow fields o k response has a 4xx status code
+func (o *GetAvailableFlowFieldsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get available flow fields o k response has a 5xx status code
+func (o *GetAvailableFlowFieldsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get available flow fields o k response a status code equal to that given
+func (o *GetAvailableFlowFieldsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetAvailableFlowFieldsOK) Error() string {
 	return fmt.Sprintf("[GET /flows/fields][%d] getAvailableFlowFieldsOK  %+v", 200, o.Payload)
 }
+
+func (o *GetAvailableFlowFieldsOK) String() string {
+	return fmt.Sprintf("[GET /flows/fields][%d] getAvailableFlowFieldsOK  %+v", 200, o.Payload)
+}
+
 func (o *GetAvailableFlowFieldsOK) GetPayload() *models.Fields {
 	return o.Payload
 }

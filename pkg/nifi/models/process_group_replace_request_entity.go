@@ -25,7 +25,7 @@ type ProcessGroupReplaceRequestEntity struct {
 	Request *ProcessGroupReplaceRequestDTO `json:"request,omitempty"`
 
 	// Returns the Versioned Flow to replace with
-	VersionedFlowSnapshot *VersionedFlowSnapshot `json:"versionedFlowSnapshot,omitempty"`
+	VersionedFlowSnapshot *RegisteredFlowSnapshot `json:"versionedFlowSnapshot,omitempty"`
 }
 
 // Validate validates this process group replace request entity

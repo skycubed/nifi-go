@@ -63,7 +63,8 @@ func NewGlobalGetLatestFlowVersionOK() *GlobalGetLatestFlowVersionOK {
 	return &GlobalGetLatestFlowVersionOK{}
 }
 
-/* GlobalGetLatestFlowVersionOK describes a response with status code 200, with default header values.
+/*
+GlobalGetLatestFlowVersionOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -71,9 +72,39 @@ type GlobalGetLatestFlowVersionOK struct {
 	Payload *models.VersionedFlowSnapshot
 }
 
+// IsSuccess returns true when this global get latest flow version o k response has a 2xx status code
+func (o *GlobalGetLatestFlowVersionOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this global get latest flow version o k response has a 3xx status code
+func (o *GlobalGetLatestFlowVersionOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this global get latest flow version o k response has a 4xx status code
+func (o *GlobalGetLatestFlowVersionOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this global get latest flow version o k response has a 5xx status code
+func (o *GlobalGetLatestFlowVersionOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this global get latest flow version o k response a status code equal to that given
+func (o *GlobalGetLatestFlowVersionOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GlobalGetLatestFlowVersionOK) Error() string {
 	return fmt.Sprintf("[GET /flows/{flowId}/versions/latest][%d] globalGetLatestFlowVersionOK  %+v", 200, o.Payload)
 }
+
+func (o *GlobalGetLatestFlowVersionOK) String() string {
+	return fmt.Sprintf("[GET /flows/{flowId}/versions/latest][%d] globalGetLatestFlowVersionOK  %+v", 200, o.Payload)
+}
+
 func (o *GlobalGetLatestFlowVersionOK) GetPayload() *models.VersionedFlowSnapshot {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewGlobalGetLatestFlowVersionUnauthorized() *GlobalGetLatestFlowVersionUnau
 	return &GlobalGetLatestFlowVersionUnauthorized{}
 }
 
-/* GlobalGetLatestFlowVersionUnauthorized describes a response with status code 401, with default header values.
+/*
+GlobalGetLatestFlowVersionUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type GlobalGetLatestFlowVersionUnauthorized struct {
 }
 
+// IsSuccess returns true when this global get latest flow version unauthorized response has a 2xx status code
+func (o *GlobalGetLatestFlowVersionUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this global get latest flow version unauthorized response has a 3xx status code
+func (o *GlobalGetLatestFlowVersionUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this global get latest flow version unauthorized response has a 4xx status code
+func (o *GlobalGetLatestFlowVersionUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this global get latest flow version unauthorized response has a 5xx status code
+func (o *GlobalGetLatestFlowVersionUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this global get latest flow version unauthorized response a status code equal to that given
+func (o *GlobalGetLatestFlowVersionUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GlobalGetLatestFlowVersionUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /flows/{flowId}/versions/latest][%d] globalGetLatestFlowVersionUnauthorized ", 401)
+}
+
+func (o *GlobalGetLatestFlowVersionUnauthorized) String() string {
 	return fmt.Sprintf("[GET /flows/{flowId}/versions/latest][%d] globalGetLatestFlowVersionUnauthorized ", 401)
 }
 
@@ -116,14 +177,44 @@ func NewGlobalGetLatestFlowVersionForbidden() *GlobalGetLatestFlowVersionForbidd
 	return &GlobalGetLatestFlowVersionForbidden{}
 }
 
-/* GlobalGetLatestFlowVersionForbidden describes a response with status code 403, with default header values.
+/*
+GlobalGetLatestFlowVersionForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type GlobalGetLatestFlowVersionForbidden struct {
 }
 
+// IsSuccess returns true when this global get latest flow version forbidden response has a 2xx status code
+func (o *GlobalGetLatestFlowVersionForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this global get latest flow version forbidden response has a 3xx status code
+func (o *GlobalGetLatestFlowVersionForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this global get latest flow version forbidden response has a 4xx status code
+func (o *GlobalGetLatestFlowVersionForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this global get latest flow version forbidden response has a 5xx status code
+func (o *GlobalGetLatestFlowVersionForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this global get latest flow version forbidden response a status code equal to that given
+func (o *GlobalGetLatestFlowVersionForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GlobalGetLatestFlowVersionForbidden) Error() string {
+	return fmt.Sprintf("[GET /flows/{flowId}/versions/latest][%d] globalGetLatestFlowVersionForbidden ", 403)
+}
+
+func (o *GlobalGetLatestFlowVersionForbidden) String() string {
 	return fmt.Sprintf("[GET /flows/{flowId}/versions/latest][%d] globalGetLatestFlowVersionForbidden ", 403)
 }
 
@@ -137,14 +228,44 @@ func NewGlobalGetLatestFlowVersionNotFound() *GlobalGetLatestFlowVersionNotFound
 	return &GlobalGetLatestFlowVersionNotFound{}
 }
 
-/* GlobalGetLatestFlowVersionNotFound describes a response with status code 404, with default header values.
+/*
+GlobalGetLatestFlowVersionNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type GlobalGetLatestFlowVersionNotFound struct {
 }
 
+// IsSuccess returns true when this global get latest flow version not found response has a 2xx status code
+func (o *GlobalGetLatestFlowVersionNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this global get latest flow version not found response has a 3xx status code
+func (o *GlobalGetLatestFlowVersionNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this global get latest flow version not found response has a 4xx status code
+func (o *GlobalGetLatestFlowVersionNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this global get latest flow version not found response has a 5xx status code
+func (o *GlobalGetLatestFlowVersionNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this global get latest flow version not found response a status code equal to that given
+func (o *GlobalGetLatestFlowVersionNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GlobalGetLatestFlowVersionNotFound) Error() string {
+	return fmt.Sprintf("[GET /flows/{flowId}/versions/latest][%d] globalGetLatestFlowVersionNotFound ", 404)
+}
+
+func (o *GlobalGetLatestFlowVersionNotFound) String() string {
 	return fmt.Sprintf("[GET /flows/{flowId}/versions/latest][%d] globalGetLatestFlowVersionNotFound ", 404)
 }
 
@@ -158,14 +279,44 @@ func NewGlobalGetLatestFlowVersionConflict() *GlobalGetLatestFlowVersionConflict
 	return &GlobalGetLatestFlowVersionConflict{}
 }
 
-/* GlobalGetLatestFlowVersionConflict describes a response with status code 409, with default header values.
+/*
+GlobalGetLatestFlowVersionConflict describes a response with status code 409, with default header values.
 
 NiFi Registry was unable to complete the request because it assumes a server state that is not valid.
 */
 type GlobalGetLatestFlowVersionConflict struct {
 }
 
+// IsSuccess returns true when this global get latest flow version conflict response has a 2xx status code
+func (o *GlobalGetLatestFlowVersionConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this global get latest flow version conflict response has a 3xx status code
+func (o *GlobalGetLatestFlowVersionConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this global get latest flow version conflict response has a 4xx status code
+func (o *GlobalGetLatestFlowVersionConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this global get latest flow version conflict response has a 5xx status code
+func (o *GlobalGetLatestFlowVersionConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this global get latest flow version conflict response a status code equal to that given
+func (o *GlobalGetLatestFlowVersionConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *GlobalGetLatestFlowVersionConflict) Error() string {
+	return fmt.Sprintf("[GET /flows/{flowId}/versions/latest][%d] globalGetLatestFlowVersionConflict ", 409)
+}
+
+func (o *GlobalGetLatestFlowVersionConflict) String() string {
 	return fmt.Sprintf("[GET /flows/{flowId}/versions/latest][%d] globalGetLatestFlowVersionConflict ", 409)
 }
 

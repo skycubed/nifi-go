@@ -24,14 +24,17 @@ type VersionedControllerService struct {
 	// The annotation for the controller service. This is how the custom UI relays configuration to the controller service.
 	AnnotationData string `json:"annotationData,omitempty"`
 
-	// The details of the artifact that bundled this processor type.
+	// The level at which the controller service will report bulletins.
+	BulletinLevel string `json:"bulletinLevel,omitempty"`
+
+	// Information about the bundle from which the component came
 	Bundle *Bundle `json:"bundle,omitempty"`
 
 	// The user-supplied comments for the component
 	Comments string `json:"comments,omitempty"`
 
 	// component type
-	// Enum: [CONNECTION PROCESSOR PROCESS_GROUP REMOTE_PROCESS_GROUP INPUT_PORT OUTPUT_PORT REMOTE_INPUT_PORT REMOTE_OUTPUT_PORT FUNNEL LABEL CONTROLLER_SERVICE]
+	// Enum: [CONNECTION PROCESSOR PROCESS_GROUP REMOTE_PROCESS_GROUP INPUT_PORT OUTPUT_PORT REMOTE_INPUT_PORT REMOTE_OUTPUT_PORT FUNNEL LABEL CONTROLLER_SERVICE REPORTING_TASK PARAMETER_CONTEXT PARAMETER_PROVIDER TEMPLATE FLOW_REGISTRY_CLIENT]
 	ComponentType string `json:"componentType,omitempty"`
 
 	// Lists the APIs this Controller Service implements.
@@ -43,19 +46,26 @@ type VersionedControllerService struct {
 	// The component's unique identifier
 	Identifier string `json:"identifier,omitempty"`
 
+	// The instance ID of an existing component that is described by this VersionedComponent, or null if this is not mapped to an instantiated component
+	InstanceIdentifier string `json:"instanceIdentifier,omitempty"`
+
 	// The component's name
 	Name string `json:"name,omitempty"`
 
 	// The component's position on the graph
 	Position *Position `json:"position,omitempty"`
 
-	// The properties of the controller service.
+	// The properties for the component. Properties whose value is not set will only contain the property name.
 	Properties map[string]string `json:"properties,omitempty"`
 
-	// The property descriptors for the processor.
+	// The property descriptors for the component.
 	PropertyDescriptors map[string]VersionedPropertyDescriptor `json:"propertyDescriptors,omitempty"`
 
-	// The type of the controller service.
+	// The ScheduledState denoting whether the Controller Service is ENABLED or DISABLED
+	// Enum: [ENABLED DISABLED RUNNING]
+	ScheduledState string `json:"scheduledState,omitempty"`
+
+	// The type of the extension component
 	Type string `json:"type,omitempty"`
 }
 
@@ -80,6 +90,10 @@ func (m *VersionedControllerService) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validatePropertyDescriptors(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateScheduledState(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -112,7 +126,7 @@ var versionedControllerServiceTypeComponentTypePropEnum []interface{}
 
 func init() {
 	var res []string
-	if err := json.Unmarshal([]byte(`["CONNECTION","PROCESSOR","PROCESS_GROUP","REMOTE_PROCESS_GROUP","INPUT_PORT","OUTPUT_PORT","REMOTE_INPUT_PORT","REMOTE_OUTPUT_PORT","FUNNEL","LABEL","CONTROLLER_SERVICE"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["CONNECTION","PROCESSOR","PROCESS_GROUP","REMOTE_PROCESS_GROUP","INPUT_PORT","OUTPUT_PORT","REMOTE_INPUT_PORT","REMOTE_OUTPUT_PORT","FUNNEL","LABEL","CONTROLLER_SERVICE","REPORTING_TASK","PARAMETER_CONTEXT","PARAMETER_PROVIDER","TEMPLATE","FLOW_REGISTRY_CLIENT"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
@@ -154,6 +168,21 @@ const (
 
 	// VersionedControllerServiceComponentTypeCONTROLLERSERVICE captures enum value "CONTROLLER_SERVICE"
 	VersionedControllerServiceComponentTypeCONTROLLERSERVICE string = "CONTROLLER_SERVICE"
+
+	// VersionedControllerServiceComponentTypeREPORTINGTASK captures enum value "REPORTING_TASK"
+	VersionedControllerServiceComponentTypeREPORTINGTASK string = "REPORTING_TASK"
+
+	// VersionedControllerServiceComponentTypePARAMETERCONTEXT captures enum value "PARAMETER_CONTEXT"
+	VersionedControllerServiceComponentTypePARAMETERCONTEXT string = "PARAMETER_CONTEXT"
+
+	// VersionedControllerServiceComponentTypePARAMETERPROVIDER captures enum value "PARAMETER_PROVIDER"
+	VersionedControllerServiceComponentTypePARAMETERPROVIDER string = "PARAMETER_PROVIDER"
+
+	// VersionedControllerServiceComponentTypeTEMPLATE captures enum value "TEMPLATE"
+	VersionedControllerServiceComponentTypeTEMPLATE string = "TEMPLATE"
+
+	// VersionedControllerServiceComponentTypeFLOWREGISTRYCLIENT captures enum value "FLOW_REGISTRY_CLIENT"
+	VersionedControllerServiceComponentTypeFLOWREGISTRYCLIENT string = "FLOW_REGISTRY_CLIENT"
 )
 
 // prop value enum
@@ -243,6 +272,51 @@ func (m *VersionedControllerService) validatePropertyDescriptors(formats strfmt.
 			}
 		}
 
+	}
+
+	return nil
+}
+
+var versionedControllerServiceTypeScheduledStatePropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["ENABLED","DISABLED","RUNNING"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		versionedControllerServiceTypeScheduledStatePropEnum = append(versionedControllerServiceTypeScheduledStatePropEnum, v)
+	}
+}
+
+const (
+
+	// VersionedControllerServiceScheduledStateENABLED captures enum value "ENABLED"
+	VersionedControllerServiceScheduledStateENABLED string = "ENABLED"
+
+	// VersionedControllerServiceScheduledStateDISABLED captures enum value "DISABLED"
+	VersionedControllerServiceScheduledStateDISABLED string = "DISABLED"
+
+	// VersionedControllerServiceScheduledStateRUNNING captures enum value "RUNNING"
+	VersionedControllerServiceScheduledStateRUNNING string = "RUNNING"
+)
+
+// prop value enum
+func (m *VersionedControllerService) validateScheduledStateEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, versionedControllerServiceTypeScheduledStatePropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *VersionedControllerService) validateScheduledState(formats strfmt.Registry) error {
+	if swag.IsZero(m.ScheduledState) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateScheduledStateEnum("scheduledState", "body", m.ScheduledState); err != nil {
+		return err
 	}
 
 	return nil

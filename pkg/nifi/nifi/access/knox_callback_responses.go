@@ -36,7 +36,8 @@ func NewKnoxCallbackDefault(code int) *KnoxCallbackDefault {
 	}
 }
 
-/* KnoxCallbackDefault describes a response with status code -1, with default header values.
+/*
+KnoxCallbackDefault describes a response with status code -1, with default header values.
 
 successful operation
 */
@@ -49,7 +50,36 @@ func (o *KnoxCallbackDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this knox callback default response has a 2xx status code
+func (o *KnoxCallbackDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this knox callback default response has a 3xx status code
+func (o *KnoxCallbackDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this knox callback default response has a 4xx status code
+func (o *KnoxCallbackDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this knox callback default response has a 5xx status code
+func (o *KnoxCallbackDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this knox callback default response a status code equal to that given
+func (o *KnoxCallbackDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *KnoxCallbackDefault) Error() string {
+	return fmt.Sprintf("[GET /access/knox/callback][%d] knoxCallback default ", o._statusCode)
+}
+
+func (o *KnoxCallbackDefault) String() string {
 	return fmt.Sprintf("[GET /access/knox/callback][%d] knoxCallback default ", o._statusCode)
 }
 

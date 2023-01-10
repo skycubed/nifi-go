@@ -67,7 +67,8 @@ func NewExportProcessGroupOK() *ExportProcessGroupOK {
 	return &ExportProcessGroupOK{}
 }
 
-/* ExportProcessGroupOK describes a response with status code 200, with default header values.
+/*
+ExportProcessGroupOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -75,9 +76,39 @@ type ExportProcessGroupOK struct {
 	Payload string
 }
 
+// IsSuccess returns true when this export process group o k response has a 2xx status code
+func (o *ExportProcessGroupOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this export process group o k response has a 3xx status code
+func (o *ExportProcessGroupOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this export process group o k response has a 4xx status code
+func (o *ExportProcessGroupOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this export process group o k response has a 5xx status code
+func (o *ExportProcessGroupOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this export process group o k response a status code equal to that given
+func (o *ExportProcessGroupOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ExportProcessGroupOK) Error() string {
 	return fmt.Sprintf("[GET /process-groups/{id}/download][%d] exportProcessGroupOK  %+v", 200, o.Payload)
 }
+
+func (o *ExportProcessGroupOK) String() string {
+	return fmt.Sprintf("[GET /process-groups/{id}/download][%d] exportProcessGroupOK  %+v", 200, o.Payload)
+}
+
 func (o *ExportProcessGroupOK) GetPayload() string {
 	return o.Payload
 }
@@ -97,14 +128,44 @@ func NewExportProcessGroupBadRequest() *ExportProcessGroupBadRequest {
 	return &ExportProcessGroupBadRequest{}
 }
 
-/* ExportProcessGroupBadRequest describes a response with status code 400, with default header values.
+/*
+ExportProcessGroupBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type ExportProcessGroupBadRequest struct {
 }
 
+// IsSuccess returns true when this export process group bad request response has a 2xx status code
+func (o *ExportProcessGroupBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this export process group bad request response has a 3xx status code
+func (o *ExportProcessGroupBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this export process group bad request response has a 4xx status code
+func (o *ExportProcessGroupBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this export process group bad request response has a 5xx status code
+func (o *ExportProcessGroupBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this export process group bad request response a status code equal to that given
+func (o *ExportProcessGroupBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ExportProcessGroupBadRequest) Error() string {
+	return fmt.Sprintf("[GET /process-groups/{id}/download][%d] exportProcessGroupBadRequest ", 400)
+}
+
+func (o *ExportProcessGroupBadRequest) String() string {
 	return fmt.Sprintf("[GET /process-groups/{id}/download][%d] exportProcessGroupBadRequest ", 400)
 }
 
@@ -118,14 +179,44 @@ func NewExportProcessGroupUnauthorized() *ExportProcessGroupUnauthorized {
 	return &ExportProcessGroupUnauthorized{}
 }
 
-/* ExportProcessGroupUnauthorized describes a response with status code 401, with default header values.
+/*
+ExportProcessGroupUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type ExportProcessGroupUnauthorized struct {
 }
 
+// IsSuccess returns true when this export process group unauthorized response has a 2xx status code
+func (o *ExportProcessGroupUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this export process group unauthorized response has a 3xx status code
+func (o *ExportProcessGroupUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this export process group unauthorized response has a 4xx status code
+func (o *ExportProcessGroupUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this export process group unauthorized response has a 5xx status code
+func (o *ExportProcessGroupUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this export process group unauthorized response a status code equal to that given
+func (o *ExportProcessGroupUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *ExportProcessGroupUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /process-groups/{id}/download][%d] exportProcessGroupUnauthorized ", 401)
+}
+
+func (o *ExportProcessGroupUnauthorized) String() string {
 	return fmt.Sprintf("[GET /process-groups/{id}/download][%d] exportProcessGroupUnauthorized ", 401)
 }
 
@@ -139,14 +230,44 @@ func NewExportProcessGroupForbidden() *ExportProcessGroupForbidden {
 	return &ExportProcessGroupForbidden{}
 }
 
-/* ExportProcessGroupForbidden describes a response with status code 403, with default header values.
+/*
+ExportProcessGroupForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type ExportProcessGroupForbidden struct {
 }
 
+// IsSuccess returns true when this export process group forbidden response has a 2xx status code
+func (o *ExportProcessGroupForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this export process group forbidden response has a 3xx status code
+func (o *ExportProcessGroupForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this export process group forbidden response has a 4xx status code
+func (o *ExportProcessGroupForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this export process group forbidden response has a 5xx status code
+func (o *ExportProcessGroupForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this export process group forbidden response a status code equal to that given
+func (o *ExportProcessGroupForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *ExportProcessGroupForbidden) Error() string {
+	return fmt.Sprintf("[GET /process-groups/{id}/download][%d] exportProcessGroupForbidden ", 403)
+}
+
+func (o *ExportProcessGroupForbidden) String() string {
 	return fmt.Sprintf("[GET /process-groups/{id}/download][%d] exportProcessGroupForbidden ", 403)
 }
 
@@ -160,14 +281,44 @@ func NewExportProcessGroupNotFound() *ExportProcessGroupNotFound {
 	return &ExportProcessGroupNotFound{}
 }
 
-/* ExportProcessGroupNotFound describes a response with status code 404, with default header values.
+/*
+ExportProcessGroupNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type ExportProcessGroupNotFound struct {
 }
 
+// IsSuccess returns true when this export process group not found response has a 2xx status code
+func (o *ExportProcessGroupNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this export process group not found response has a 3xx status code
+func (o *ExportProcessGroupNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this export process group not found response has a 4xx status code
+func (o *ExportProcessGroupNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this export process group not found response has a 5xx status code
+func (o *ExportProcessGroupNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this export process group not found response a status code equal to that given
+func (o *ExportProcessGroupNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ExportProcessGroupNotFound) Error() string {
+	return fmt.Sprintf("[GET /process-groups/{id}/download][%d] exportProcessGroupNotFound ", 404)
+}
+
+func (o *ExportProcessGroupNotFound) String() string {
 	return fmt.Sprintf("[GET /process-groups/{id}/download][%d] exportProcessGroupNotFound ", 404)
 }
 
@@ -181,14 +332,44 @@ func NewExportProcessGroupConflict() *ExportProcessGroupConflict {
 	return &ExportProcessGroupConflict{}
 }
 
-/* ExportProcessGroupConflict describes a response with status code 409, with default header values.
+/*
+ExportProcessGroupConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type ExportProcessGroupConflict struct {
 }
 
+// IsSuccess returns true when this export process group conflict response has a 2xx status code
+func (o *ExportProcessGroupConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this export process group conflict response has a 3xx status code
+func (o *ExportProcessGroupConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this export process group conflict response has a 4xx status code
+func (o *ExportProcessGroupConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this export process group conflict response has a 5xx status code
+func (o *ExportProcessGroupConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this export process group conflict response a status code equal to that given
+func (o *ExportProcessGroupConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *ExportProcessGroupConflict) Error() string {
+	return fmt.Sprintf("[GET /process-groups/{id}/download][%d] exportProcessGroupConflict ", 409)
+}
+
+func (o *ExportProcessGroupConflict) String() string {
 	return fmt.Sprintf("[GET /process-groups/{id}/download][%d] exportProcessGroupConflict ", 409)
 }
 

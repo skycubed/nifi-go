@@ -61,7 +61,8 @@ func NewGenerateClientIDOK() *GenerateClientIDOK {
 	return &GenerateClientIDOK{}
 }
 
-/* GenerateClientIDOK describes a response with status code 200, with default header values.
+/*
+GenerateClientIDOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -69,9 +70,39 @@ type GenerateClientIDOK struct {
 	Payload string
 }
 
+// IsSuccess returns true when this generate client Id o k response has a 2xx status code
+func (o *GenerateClientIDOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this generate client Id o k response has a 3xx status code
+func (o *GenerateClientIDOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this generate client Id o k response has a 4xx status code
+func (o *GenerateClientIDOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this generate client Id o k response has a 5xx status code
+func (o *GenerateClientIDOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this generate client Id o k response a status code equal to that given
+func (o *GenerateClientIDOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GenerateClientIDOK) Error() string {
 	return fmt.Sprintf("[GET /flow/client-id][%d] generateClientIdOK  %+v", 200, o.Payload)
 }
+
+func (o *GenerateClientIDOK) String() string {
+	return fmt.Sprintf("[GET /flow/client-id][%d] generateClientIdOK  %+v", 200, o.Payload)
+}
+
 func (o *GenerateClientIDOK) GetPayload() string {
 	return o.Payload
 }
@@ -91,14 +122,44 @@ func NewGenerateClientIDBadRequest() *GenerateClientIDBadRequest {
 	return &GenerateClientIDBadRequest{}
 }
 
-/* GenerateClientIDBadRequest describes a response with status code 400, with default header values.
+/*
+GenerateClientIDBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type GenerateClientIDBadRequest struct {
 }
 
+// IsSuccess returns true when this generate client Id bad request response has a 2xx status code
+func (o *GenerateClientIDBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this generate client Id bad request response has a 3xx status code
+func (o *GenerateClientIDBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this generate client Id bad request response has a 4xx status code
+func (o *GenerateClientIDBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this generate client Id bad request response has a 5xx status code
+func (o *GenerateClientIDBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this generate client Id bad request response a status code equal to that given
+func (o *GenerateClientIDBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *GenerateClientIDBadRequest) Error() string {
+	return fmt.Sprintf("[GET /flow/client-id][%d] generateClientIdBadRequest ", 400)
+}
+
+func (o *GenerateClientIDBadRequest) String() string {
 	return fmt.Sprintf("[GET /flow/client-id][%d] generateClientIdBadRequest ", 400)
 }
 
@@ -112,14 +173,44 @@ func NewGenerateClientIDUnauthorized() *GenerateClientIDUnauthorized {
 	return &GenerateClientIDUnauthorized{}
 }
 
-/* GenerateClientIDUnauthorized describes a response with status code 401, with default header values.
+/*
+GenerateClientIDUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type GenerateClientIDUnauthorized struct {
 }
 
+// IsSuccess returns true when this generate client Id unauthorized response has a 2xx status code
+func (o *GenerateClientIDUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this generate client Id unauthorized response has a 3xx status code
+func (o *GenerateClientIDUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this generate client Id unauthorized response has a 4xx status code
+func (o *GenerateClientIDUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this generate client Id unauthorized response has a 5xx status code
+func (o *GenerateClientIDUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this generate client Id unauthorized response a status code equal to that given
+func (o *GenerateClientIDUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GenerateClientIDUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /flow/client-id][%d] generateClientIdUnauthorized ", 401)
+}
+
+func (o *GenerateClientIDUnauthorized) String() string {
 	return fmt.Sprintf("[GET /flow/client-id][%d] generateClientIdUnauthorized ", 401)
 }
 
@@ -133,14 +224,44 @@ func NewGenerateClientIDForbidden() *GenerateClientIDForbidden {
 	return &GenerateClientIDForbidden{}
 }
 
-/* GenerateClientIDForbidden describes a response with status code 403, with default header values.
+/*
+GenerateClientIDForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type GenerateClientIDForbidden struct {
 }
 
+// IsSuccess returns true when this generate client Id forbidden response has a 2xx status code
+func (o *GenerateClientIDForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this generate client Id forbidden response has a 3xx status code
+func (o *GenerateClientIDForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this generate client Id forbidden response has a 4xx status code
+func (o *GenerateClientIDForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this generate client Id forbidden response has a 5xx status code
+func (o *GenerateClientIDForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this generate client Id forbidden response a status code equal to that given
+func (o *GenerateClientIDForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GenerateClientIDForbidden) Error() string {
+	return fmt.Sprintf("[GET /flow/client-id][%d] generateClientIdForbidden ", 403)
+}
+
+func (o *GenerateClientIDForbidden) String() string {
 	return fmt.Sprintf("[GET /flow/client-id][%d] generateClientIdForbidden ", 403)
 }
 
@@ -154,14 +275,44 @@ func NewGenerateClientIDConflict() *GenerateClientIDConflict {
 	return &GenerateClientIDConflict{}
 }
 
-/* GenerateClientIDConflict describes a response with status code 409, with default header values.
+/*
+GenerateClientIDConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type GenerateClientIDConflict struct {
 }
 
+// IsSuccess returns true when this generate client Id conflict response has a 2xx status code
+func (o *GenerateClientIDConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this generate client Id conflict response has a 3xx status code
+func (o *GenerateClientIDConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this generate client Id conflict response has a 4xx status code
+func (o *GenerateClientIDConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this generate client Id conflict response has a 5xx status code
+func (o *GenerateClientIDConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this generate client Id conflict response a status code equal to that given
+func (o *GenerateClientIDConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *GenerateClientIDConflict) Error() string {
+	return fmt.Sprintf("[GET /flow/client-id][%d] generateClientIdConflict ", 409)
+}
+
+func (o *GenerateClientIDConflict) String() string {
 	return fmt.Sprintf("[GET /flow/client-id][%d] generateClientIdConflict ", 409)
 }
 

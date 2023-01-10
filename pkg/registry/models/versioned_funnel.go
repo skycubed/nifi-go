@@ -24,7 +24,7 @@ type VersionedFunnel struct {
 	Comments string `json:"comments,omitempty"`
 
 	// component type
-	// Enum: [CONNECTION PROCESSOR PROCESS_GROUP REMOTE_PROCESS_GROUP INPUT_PORT OUTPUT_PORT REMOTE_INPUT_PORT REMOTE_OUTPUT_PORT FUNNEL LABEL CONTROLLER_SERVICE]
+	// Enum: [CONNECTION PROCESSOR PROCESS_GROUP REMOTE_PROCESS_GROUP INPUT_PORT OUTPUT_PORT REMOTE_INPUT_PORT REMOTE_OUTPUT_PORT FUNNEL LABEL CONTROLLER_SERVICE REPORTING_TASK PARAMETER_CONTEXT PARAMETER_PROVIDER TEMPLATE FLOW_REGISTRY_CLIENT]
 	ComponentType string `json:"componentType,omitempty"`
 
 	// The ID of the Process Group that this component belongs to
@@ -32,6 +32,9 @@ type VersionedFunnel struct {
 
 	// The component's unique identifier
 	Identifier string `json:"identifier,omitempty"`
+
+	// The instance ID of an existing component that is described by this VersionedComponent, or null if this is not mapped to an instantiated component
+	InstanceIdentifier string `json:"instanceIdentifier,omitempty"`
 
 	// The component's name
 	Name string `json:"name,omitempty"`
@@ -62,7 +65,7 @@ var versionedFunnelTypeComponentTypePropEnum []interface{}
 
 func init() {
 	var res []string
-	if err := json.Unmarshal([]byte(`["CONNECTION","PROCESSOR","PROCESS_GROUP","REMOTE_PROCESS_GROUP","INPUT_PORT","OUTPUT_PORT","REMOTE_INPUT_PORT","REMOTE_OUTPUT_PORT","FUNNEL","LABEL","CONTROLLER_SERVICE"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["CONNECTION","PROCESSOR","PROCESS_GROUP","REMOTE_PROCESS_GROUP","INPUT_PORT","OUTPUT_PORT","REMOTE_INPUT_PORT","REMOTE_OUTPUT_PORT","FUNNEL","LABEL","CONTROLLER_SERVICE","REPORTING_TASK","PARAMETER_CONTEXT","PARAMETER_PROVIDER","TEMPLATE","FLOW_REGISTRY_CLIENT"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
@@ -104,6 +107,21 @@ const (
 
 	// VersionedFunnelComponentTypeCONTROLLERSERVICE captures enum value "CONTROLLER_SERVICE"
 	VersionedFunnelComponentTypeCONTROLLERSERVICE string = "CONTROLLER_SERVICE"
+
+	// VersionedFunnelComponentTypeREPORTINGTASK captures enum value "REPORTING_TASK"
+	VersionedFunnelComponentTypeREPORTINGTASK string = "REPORTING_TASK"
+
+	// VersionedFunnelComponentTypePARAMETERCONTEXT captures enum value "PARAMETER_CONTEXT"
+	VersionedFunnelComponentTypePARAMETERCONTEXT string = "PARAMETER_CONTEXT"
+
+	// VersionedFunnelComponentTypePARAMETERPROVIDER captures enum value "PARAMETER_PROVIDER"
+	VersionedFunnelComponentTypePARAMETERPROVIDER string = "PARAMETER_PROVIDER"
+
+	// VersionedFunnelComponentTypeTEMPLATE captures enum value "TEMPLATE"
+	VersionedFunnelComponentTypeTEMPLATE string = "TEMPLATE"
+
+	// VersionedFunnelComponentTypeFLOWREGISTRYCLIENT captures enum value "FLOW_REGISTRY_CLIENT"
+	VersionedFunnelComponentTypeFLOWREGISTRYCLIENT string = "FLOW_REGISTRY_CLIENT"
 )
 
 // prop value enum

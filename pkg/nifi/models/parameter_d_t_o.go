@@ -32,6 +32,9 @@ type ParameterDTO struct {
 	// A reference to the Parameter Context that contains this one
 	ParameterContext *ParameterContextReferenceEntity `json:"parameterContext,omitempty"`
 
+	// Whether or not the Parameter is provided by a ParameterProvider
+	Provided bool `json:"provided,omitempty"`
+
 	// The set of all components in the flow that are referencing this Parameter
 	// Unique: true
 	ReferencingComponents []*AffectedComponentEntity `json:"referencingComponents"`

@@ -25,6 +25,12 @@ type ControllerBulletinsEntity struct {
 	// Controller service bulletins to be reported to the user.
 	ControllerServiceBulletins []*BulletinEntity `json:"controllerServiceBulletins"`
 
+	// Flow registry client bulletins to be reported to the user.
+	FlowRegistryClientBulletins []*BulletinEntity `json:"flowRegistryClientBulletins"`
+
+	// Parameter provider bulletins to be reported to the user.
+	ParameterProviderBulletins []*BulletinEntity `json:"parameterProviderBulletins"`
+
 	// Reporting task bulletins to be reported to the user.
 	ReportingTaskBulletins []*BulletinEntity `json:"reportingTaskBulletins"`
 }
@@ -38,6 +44,14 @@ func (m *ControllerBulletinsEntity) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateControllerServiceBulletins(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateFlowRegistryClientBulletins(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateParameterProviderBulletins(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -103,6 +117,58 @@ func (m *ControllerBulletinsEntity) validateControllerServiceBulletins(formats s
 	return nil
 }
 
+func (m *ControllerBulletinsEntity) validateFlowRegistryClientBulletins(formats strfmt.Registry) error {
+	if swag.IsZero(m.FlowRegistryClientBulletins) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.FlowRegistryClientBulletins); i++ {
+		if swag.IsZero(m.FlowRegistryClientBulletins[i]) { // not required
+			continue
+		}
+
+		if m.FlowRegistryClientBulletins[i] != nil {
+			if err := m.FlowRegistryClientBulletins[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("flowRegistryClientBulletins" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("flowRegistryClientBulletins" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *ControllerBulletinsEntity) validateParameterProviderBulletins(formats strfmt.Registry) error {
+	if swag.IsZero(m.ParameterProviderBulletins) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.ParameterProviderBulletins); i++ {
+		if swag.IsZero(m.ParameterProviderBulletins[i]) { // not required
+			continue
+		}
+
+		if m.ParameterProviderBulletins[i] != nil {
+			if err := m.ParameterProviderBulletins[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("parameterProviderBulletins" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("parameterProviderBulletins" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
 func (m *ControllerBulletinsEntity) validateReportingTaskBulletins(formats strfmt.Registry) error {
 	if swag.IsZero(m.ReportingTaskBulletins) { // not required
 		return nil
@@ -138,6 +204,14 @@ func (m *ControllerBulletinsEntity) ContextValidate(ctx context.Context, formats
 	}
 
 	if err := m.contextValidateControllerServiceBulletins(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateFlowRegistryClientBulletins(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateParameterProviderBulletins(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -181,6 +255,46 @@ func (m *ControllerBulletinsEntity) contextValidateControllerServiceBulletins(ct
 					return ve.ValidateName("controllerServiceBulletins" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
 					return ce.ValidateName("controllerServiceBulletins" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *ControllerBulletinsEntity) contextValidateFlowRegistryClientBulletins(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.FlowRegistryClientBulletins); i++ {
+
+		if m.FlowRegistryClientBulletins[i] != nil {
+			if err := m.FlowRegistryClientBulletins[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("flowRegistryClientBulletins" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("flowRegistryClientBulletins" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *ControllerBulletinsEntity) contextValidateParameterProviderBulletins(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.ParameterProviderBulletins); i++ {
+
+		if m.ParameterProviderBulletins[i] != nil {
+			if err := m.ParameterProviderBulletins[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("parameterProviderBulletins" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("parameterProviderBulletins" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

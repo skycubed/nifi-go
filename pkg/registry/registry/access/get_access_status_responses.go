@@ -45,7 +45,8 @@ func NewGetAccessStatusOK() *GetAccessStatusOK {
 	return &GetAccessStatusOK{}
 }
 
-/* GetAccessStatusOK describes a response with status code 200, with default header values.
+/*
+GetAccessStatusOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -53,9 +54,39 @@ type GetAccessStatusOK struct {
 	Payload *models.CurrentUser
 }
 
+// IsSuccess returns true when this get access status o k response has a 2xx status code
+func (o *GetAccessStatusOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get access status o k response has a 3xx status code
+func (o *GetAccessStatusOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get access status o k response has a 4xx status code
+func (o *GetAccessStatusOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get access status o k response has a 5xx status code
+func (o *GetAccessStatusOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get access status o k response a status code equal to that given
+func (o *GetAccessStatusOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetAccessStatusOK) Error() string {
 	return fmt.Sprintf("[GET /access][%d] getAccessStatusOK  %+v", 200, o.Payload)
 }
+
+func (o *GetAccessStatusOK) String() string {
+	return fmt.Sprintf("[GET /access][%d] getAccessStatusOK  %+v", 200, o.Payload)
+}
+
 func (o *GetAccessStatusOK) GetPayload() *models.CurrentUser {
 	return o.Payload
 }
@@ -77,14 +108,44 @@ func NewGetAccessStatusConflict() *GetAccessStatusConflict {
 	return &GetAccessStatusConflict{}
 }
 
-/* GetAccessStatusConflict describes a response with status code 409, with default header values.
+/*
+GetAccessStatusConflict describes a response with status code 409, with default header values.
 
 NiFi Registry was unable to complete the request because it assumes a server state that is not valid. The NiFi Registry might be running unsecured.
 */
 type GetAccessStatusConflict struct {
 }
 
+// IsSuccess returns true when this get access status conflict response has a 2xx status code
+func (o *GetAccessStatusConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get access status conflict response has a 3xx status code
+func (o *GetAccessStatusConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get access status conflict response has a 4xx status code
+func (o *GetAccessStatusConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get access status conflict response has a 5xx status code
+func (o *GetAccessStatusConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get access status conflict response a status code equal to that given
+func (o *GetAccessStatusConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *GetAccessStatusConflict) Error() string {
+	return fmt.Sprintf("[GET /access][%d] getAccessStatusConflict ", 409)
+}
+
+func (o *GetAccessStatusConflict) String() string {
 	return fmt.Sprintf("[GET /access][%d] getAccessStatusConflict ", 409)
 }
 

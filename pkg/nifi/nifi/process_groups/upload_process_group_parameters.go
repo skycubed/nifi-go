@@ -52,10 +52,12 @@ func NewUploadProcessGroupParamsWithHTTPClient(client *http.Client) *UploadProce
 	}
 }
 
-/* UploadProcessGroupParams contains all the parameters to send to the API endpoint
-   for the upload process group operation.
+/*
+UploadProcessGroupParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the upload process group operation.
+
+	Typically these are written to a http.Request.
 */
 type UploadProcessGroupParams struct {
 

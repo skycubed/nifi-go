@@ -69,7 +69,8 @@ func NewGetProcessorOK() *GetProcessorOK {
 	return &GetProcessorOK{}
 }
 
-/* GetProcessorOK describes a response with status code 200, with default header values.
+/*
+GetProcessorOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,39 @@ type GetProcessorOK struct {
 	Payload *models.ProcessorEntity
 }
 
+// IsSuccess returns true when this get processor o k response has a 2xx status code
+func (o *GetProcessorOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get processor o k response has a 3xx status code
+func (o *GetProcessorOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get processor o k response has a 4xx status code
+func (o *GetProcessorOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get processor o k response has a 5xx status code
+func (o *GetProcessorOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get processor o k response a status code equal to that given
+func (o *GetProcessorOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetProcessorOK) Error() string {
 	return fmt.Sprintf("[GET /processors/{id}][%d] getProcessorOK  %+v", 200, o.Payload)
 }
+
+func (o *GetProcessorOK) String() string {
+	return fmt.Sprintf("[GET /processors/{id}][%d] getProcessorOK  %+v", 200, o.Payload)
+}
+
 func (o *GetProcessorOK) GetPayload() *models.ProcessorEntity {
 	return o.Payload
 }
@@ -101,14 +132,44 @@ func NewGetProcessorBadRequest() *GetProcessorBadRequest {
 	return &GetProcessorBadRequest{}
 }
 
-/* GetProcessorBadRequest describes a response with status code 400, with default header values.
+/*
+GetProcessorBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type GetProcessorBadRequest struct {
 }
 
+// IsSuccess returns true when this get processor bad request response has a 2xx status code
+func (o *GetProcessorBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get processor bad request response has a 3xx status code
+func (o *GetProcessorBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get processor bad request response has a 4xx status code
+func (o *GetProcessorBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get processor bad request response has a 5xx status code
+func (o *GetProcessorBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get processor bad request response a status code equal to that given
+func (o *GetProcessorBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *GetProcessorBadRequest) Error() string {
+	return fmt.Sprintf("[GET /processors/{id}][%d] getProcessorBadRequest ", 400)
+}
+
+func (o *GetProcessorBadRequest) String() string {
 	return fmt.Sprintf("[GET /processors/{id}][%d] getProcessorBadRequest ", 400)
 }
 
@@ -122,14 +183,44 @@ func NewGetProcessorUnauthorized() *GetProcessorUnauthorized {
 	return &GetProcessorUnauthorized{}
 }
 
-/* GetProcessorUnauthorized describes a response with status code 401, with default header values.
+/*
+GetProcessorUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type GetProcessorUnauthorized struct {
 }
 
+// IsSuccess returns true when this get processor unauthorized response has a 2xx status code
+func (o *GetProcessorUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get processor unauthorized response has a 3xx status code
+func (o *GetProcessorUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get processor unauthorized response has a 4xx status code
+func (o *GetProcessorUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get processor unauthorized response has a 5xx status code
+func (o *GetProcessorUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get processor unauthorized response a status code equal to that given
+func (o *GetProcessorUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GetProcessorUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /processors/{id}][%d] getProcessorUnauthorized ", 401)
+}
+
+func (o *GetProcessorUnauthorized) String() string {
 	return fmt.Sprintf("[GET /processors/{id}][%d] getProcessorUnauthorized ", 401)
 }
 
@@ -143,14 +234,44 @@ func NewGetProcessorForbidden() *GetProcessorForbidden {
 	return &GetProcessorForbidden{}
 }
 
-/* GetProcessorForbidden describes a response with status code 403, with default header values.
+/*
+GetProcessorForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type GetProcessorForbidden struct {
 }
 
+// IsSuccess returns true when this get processor forbidden response has a 2xx status code
+func (o *GetProcessorForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get processor forbidden response has a 3xx status code
+func (o *GetProcessorForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get processor forbidden response has a 4xx status code
+func (o *GetProcessorForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get processor forbidden response has a 5xx status code
+func (o *GetProcessorForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get processor forbidden response a status code equal to that given
+func (o *GetProcessorForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetProcessorForbidden) Error() string {
+	return fmt.Sprintf("[GET /processors/{id}][%d] getProcessorForbidden ", 403)
+}
+
+func (o *GetProcessorForbidden) String() string {
 	return fmt.Sprintf("[GET /processors/{id}][%d] getProcessorForbidden ", 403)
 }
 
@@ -164,14 +285,44 @@ func NewGetProcessorNotFound() *GetProcessorNotFound {
 	return &GetProcessorNotFound{}
 }
 
-/* GetProcessorNotFound describes a response with status code 404, with default header values.
+/*
+GetProcessorNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type GetProcessorNotFound struct {
 }
 
+// IsSuccess returns true when this get processor not found response has a 2xx status code
+func (o *GetProcessorNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get processor not found response has a 3xx status code
+func (o *GetProcessorNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get processor not found response has a 4xx status code
+func (o *GetProcessorNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get processor not found response has a 5xx status code
+func (o *GetProcessorNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get processor not found response a status code equal to that given
+func (o *GetProcessorNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetProcessorNotFound) Error() string {
+	return fmt.Sprintf("[GET /processors/{id}][%d] getProcessorNotFound ", 404)
+}
+
+func (o *GetProcessorNotFound) String() string {
 	return fmt.Sprintf("[GET /processors/{id}][%d] getProcessorNotFound ", 404)
 }
 
@@ -185,14 +336,44 @@ func NewGetProcessorConflict() *GetProcessorConflict {
 	return &GetProcessorConflict{}
 }
 
-/* GetProcessorConflict describes a response with status code 409, with default header values.
+/*
+GetProcessorConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type GetProcessorConflict struct {
 }
 
+// IsSuccess returns true when this get processor conflict response has a 2xx status code
+func (o *GetProcessorConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get processor conflict response has a 3xx status code
+func (o *GetProcessorConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get processor conflict response has a 4xx status code
+func (o *GetProcessorConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get processor conflict response has a 5xx status code
+func (o *GetProcessorConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get processor conflict response a status code equal to that given
+func (o *GetProcessorConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *GetProcessorConflict) Error() string {
+	return fmt.Sprintf("[GET /processors/{id}][%d] getProcessorConflict ", 409)
+}
+
+func (o *GetProcessorConflict) String() string {
 	return fmt.Sprintf("[GET /processors/{id}][%d] getProcessorConflict ", 409)
 }
 

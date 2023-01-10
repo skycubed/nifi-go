@@ -69,7 +69,8 @@ func NewUpdateVersionControlRequestOK() *UpdateVersionControlRequestOK {
 	return &UpdateVersionControlRequestOK{}
 }
 
-/* UpdateVersionControlRequestOK describes a response with status code 200, with default header values.
+/*
+UpdateVersionControlRequestOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,39 @@ type UpdateVersionControlRequestOK struct {
 	Payload *models.VersionControlInformationEntity
 }
 
+// IsSuccess returns true when this update version control request o k response has a 2xx status code
+func (o *UpdateVersionControlRequestOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this update version control request o k response has a 3xx status code
+func (o *UpdateVersionControlRequestOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update version control request o k response has a 4xx status code
+func (o *UpdateVersionControlRequestOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this update version control request o k response has a 5xx status code
+func (o *UpdateVersionControlRequestOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update version control request o k response a status code equal to that given
+func (o *UpdateVersionControlRequestOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *UpdateVersionControlRequestOK) Error() string {
 	return fmt.Sprintf("[PUT /versions/active-requests/{id}][%d] updateVersionControlRequestOK  %+v", 200, o.Payload)
 }
+
+func (o *UpdateVersionControlRequestOK) String() string {
+	return fmt.Sprintf("[PUT /versions/active-requests/{id}][%d] updateVersionControlRequestOK  %+v", 200, o.Payload)
+}
+
 func (o *UpdateVersionControlRequestOK) GetPayload() *models.VersionControlInformationEntity {
 	return o.Payload
 }
@@ -101,14 +132,44 @@ func NewUpdateVersionControlRequestBadRequest() *UpdateVersionControlRequestBadR
 	return &UpdateVersionControlRequestBadRequest{}
 }
 
-/* UpdateVersionControlRequestBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateVersionControlRequestBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type UpdateVersionControlRequestBadRequest struct {
 }
 
+// IsSuccess returns true when this update version control request bad request response has a 2xx status code
+func (o *UpdateVersionControlRequestBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update version control request bad request response has a 3xx status code
+func (o *UpdateVersionControlRequestBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update version control request bad request response has a 4xx status code
+func (o *UpdateVersionControlRequestBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update version control request bad request response has a 5xx status code
+func (o *UpdateVersionControlRequestBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update version control request bad request response a status code equal to that given
+func (o *UpdateVersionControlRequestBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *UpdateVersionControlRequestBadRequest) Error() string {
+	return fmt.Sprintf("[PUT /versions/active-requests/{id}][%d] updateVersionControlRequestBadRequest ", 400)
+}
+
+func (o *UpdateVersionControlRequestBadRequest) String() string {
 	return fmt.Sprintf("[PUT /versions/active-requests/{id}][%d] updateVersionControlRequestBadRequest ", 400)
 }
 
@@ -122,14 +183,44 @@ func NewUpdateVersionControlRequestUnauthorized() *UpdateVersionControlRequestUn
 	return &UpdateVersionControlRequestUnauthorized{}
 }
 
-/* UpdateVersionControlRequestUnauthorized describes a response with status code 401, with default header values.
+/*
+UpdateVersionControlRequestUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type UpdateVersionControlRequestUnauthorized struct {
 }
 
+// IsSuccess returns true when this update version control request unauthorized response has a 2xx status code
+func (o *UpdateVersionControlRequestUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update version control request unauthorized response has a 3xx status code
+func (o *UpdateVersionControlRequestUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update version control request unauthorized response has a 4xx status code
+func (o *UpdateVersionControlRequestUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update version control request unauthorized response has a 5xx status code
+func (o *UpdateVersionControlRequestUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update version control request unauthorized response a status code equal to that given
+func (o *UpdateVersionControlRequestUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *UpdateVersionControlRequestUnauthorized) Error() string {
+	return fmt.Sprintf("[PUT /versions/active-requests/{id}][%d] updateVersionControlRequestUnauthorized ", 401)
+}
+
+func (o *UpdateVersionControlRequestUnauthorized) String() string {
 	return fmt.Sprintf("[PUT /versions/active-requests/{id}][%d] updateVersionControlRequestUnauthorized ", 401)
 }
 
@@ -143,14 +234,44 @@ func NewUpdateVersionControlRequestForbidden() *UpdateVersionControlRequestForbi
 	return &UpdateVersionControlRequestForbidden{}
 }
 
-/* UpdateVersionControlRequestForbidden describes a response with status code 403, with default header values.
+/*
+UpdateVersionControlRequestForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type UpdateVersionControlRequestForbidden struct {
 }
 
+// IsSuccess returns true when this update version control request forbidden response has a 2xx status code
+func (o *UpdateVersionControlRequestForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update version control request forbidden response has a 3xx status code
+func (o *UpdateVersionControlRequestForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update version control request forbidden response has a 4xx status code
+func (o *UpdateVersionControlRequestForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update version control request forbidden response has a 5xx status code
+func (o *UpdateVersionControlRequestForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update version control request forbidden response a status code equal to that given
+func (o *UpdateVersionControlRequestForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *UpdateVersionControlRequestForbidden) Error() string {
+	return fmt.Sprintf("[PUT /versions/active-requests/{id}][%d] updateVersionControlRequestForbidden ", 403)
+}
+
+func (o *UpdateVersionControlRequestForbidden) String() string {
 	return fmt.Sprintf("[PUT /versions/active-requests/{id}][%d] updateVersionControlRequestForbidden ", 403)
 }
 
@@ -164,14 +285,44 @@ func NewUpdateVersionControlRequestNotFound() *UpdateVersionControlRequestNotFou
 	return &UpdateVersionControlRequestNotFound{}
 }
 
-/* UpdateVersionControlRequestNotFound describes a response with status code 404, with default header values.
+/*
+UpdateVersionControlRequestNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type UpdateVersionControlRequestNotFound struct {
 }
 
+// IsSuccess returns true when this update version control request not found response has a 2xx status code
+func (o *UpdateVersionControlRequestNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update version control request not found response has a 3xx status code
+func (o *UpdateVersionControlRequestNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update version control request not found response has a 4xx status code
+func (o *UpdateVersionControlRequestNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update version control request not found response has a 5xx status code
+func (o *UpdateVersionControlRequestNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update version control request not found response a status code equal to that given
+func (o *UpdateVersionControlRequestNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *UpdateVersionControlRequestNotFound) Error() string {
+	return fmt.Sprintf("[PUT /versions/active-requests/{id}][%d] updateVersionControlRequestNotFound ", 404)
+}
+
+func (o *UpdateVersionControlRequestNotFound) String() string {
 	return fmt.Sprintf("[PUT /versions/active-requests/{id}][%d] updateVersionControlRequestNotFound ", 404)
 }
 
@@ -185,14 +336,44 @@ func NewUpdateVersionControlRequestConflict() *UpdateVersionControlRequestConfli
 	return &UpdateVersionControlRequestConflict{}
 }
 
-/* UpdateVersionControlRequestConflict describes a response with status code 409, with default header values.
+/*
+UpdateVersionControlRequestConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type UpdateVersionControlRequestConflict struct {
 }
 
+// IsSuccess returns true when this update version control request conflict response has a 2xx status code
+func (o *UpdateVersionControlRequestConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update version control request conflict response has a 3xx status code
+func (o *UpdateVersionControlRequestConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update version control request conflict response has a 4xx status code
+func (o *UpdateVersionControlRequestConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update version control request conflict response has a 5xx status code
+func (o *UpdateVersionControlRequestConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update version control request conflict response a status code equal to that given
+func (o *UpdateVersionControlRequestConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *UpdateVersionControlRequestConflict) Error() string {
+	return fmt.Sprintf("[PUT /versions/active-requests/{id}][%d] updateVersionControlRequestConflict ", 409)
+}
+
+func (o *UpdateVersionControlRequestConflict) String() string {
 	return fmt.Sprintf("[PUT /versions/active-requests/{id}][%d] updateVersionControlRequestConflict ", 409)
 }
 

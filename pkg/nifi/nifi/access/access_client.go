@@ -36,6 +36,8 @@ type ClientService interface {
 
 	GetAccessStatus(params *GetAccessStatusParams, opts ...ClientOption) (*GetAccessStatusOK, error)
 
+	GetAccessTokenExpiration(params *GetAccessTokenExpirationParams, opts ...ClientOption) (*GetAccessTokenExpirationOK, error)
+
 	GetLoginConfig(params *GetLoginConfigParams, opts ...ClientOption) (*GetLoginConfigOK, error)
 
 	KnoxCallback(params *KnoxCallbackParams, opts ...ClientOption) error
@@ -52,9 +54,9 @@ type ClientService interface {
 }
 
 /*
-  CreateAccessToken creates a token for accessing the r e s t API via username password
+CreateAccessToken creates a token for accessing the r e s t API via username password
 
-  The token returned is formatted as a JSON Web Token (JWT). The token is base64 encoded and comprised of three parts. The header, the body, and the signature. The expiration of the token is a contained within the body. It is stored in the browser as a cookie, but also returned inthe response body to be stored/used by third party client scripts.
+The token returned is formatted as a JSON Web Token (JWT). The token is base64 encoded and comprised of three parts. The header, the body, and the signature. The expiration of the token is a contained within the body. It is stored in the browser as a cookie, but also returned inthe response body to be stored/used by third party client scripts.
 */
 func (a *Client) CreateAccessToken(params *CreateAccessTokenParams, opts ...ClientOption) (*CreateAccessTokenCreated, error) {
 	// TODO: Validate the params before sending
@@ -92,9 +94,9 @@ func (a *Client) CreateAccessToken(params *CreateAccessTokenParams, opts ...Clie
 }
 
 /*
-  CreateAccessTokenFromTicket creates a token for accessing the r e s t API via kerberos ticket exchange s p n e g o negotiation
+CreateAccessTokenFromTicket creates a token for accessing the r e s t API via kerberos ticket exchange s p n e g o negotiation
 
-  The token returned is formatted as a JSON Web Token (JWT). The token is base64 encoded and comprised of three parts. The header, the body, and the signature. The expiration of the token is a contained within the body. The token can be used in the Authorization header in the format 'Authorization: Bearer <token>'. It is also stored in the browser as a cookie.
+The token returned is formatted as a JSON Web Token (JWT). The token is base64 encoded and comprised of three parts. The header, the body, and the signature. The expiration of the token is a contained within the body. The token can be used in the Authorization header in the format 'Authorization: Bearer <token>'. It is also stored in the browser as a cookie.
 */
 func (a *Client) CreateAccessTokenFromTicket(params *CreateAccessTokenFromTicketParams, opts ...ClientOption) (*CreateAccessTokenFromTicketCreated, error) {
 	// TODO: Validate the params before sending
@@ -132,9 +134,9 @@ func (a *Client) CreateAccessTokenFromTicket(params *CreateAccessTokenFromTicket
 }
 
 /*
-  GetAccessStatus gets the status the client s access
+GetAccessStatus gets the status the client s access
 
-  Note: This endpoint is subject to change as NiFi and it's REST API evolve.
+Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 */
 func (a *Client) GetAccessStatus(params *GetAccessStatusParams, opts ...ClientOption) (*GetAccessStatusOK, error) {
 	// TODO: Validate the params before sending
@@ -172,7 +174,47 @@ func (a *Client) GetAccessStatus(params *GetAccessStatusParams, opts ...ClientOp
 }
 
 /*
-  GetLoginConfig retrieves the access configuration for this ni fi
+GetAccessTokenExpiration gets expiration for current access token
+
+Note: This endpoint is subject to change as NiFi and it's REST API evolve.
+*/
+func (a *Client) GetAccessTokenExpiration(params *GetAccessTokenExpirationParams, opts ...ClientOption) (*GetAccessTokenExpirationOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetAccessTokenExpirationParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getAccessTokenExpiration",
+		Method:             "GET",
+		PathPattern:        "/access/token/expiration",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http", "https"},
+		Params:             params,
+		Reader:             &GetAccessTokenExpirationReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetAccessTokenExpirationOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getAccessTokenExpiration: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetLoginConfig retrieves the access configuration for this ni fi
 */
 func (a *Client) GetLoginConfig(params *GetLoginConfigParams, opts ...ClientOption) (*GetLoginConfigOK, error) {
 	// TODO: Validate the params before sending
@@ -210,9 +252,9 @@ func (a *Client) GetLoginConfig(params *GetLoginConfigParams, opts ...ClientOpti
 }
 
 /*
-  KnoxCallback redirects callback URI for processing the result of the apache knox login sequence
+KnoxCallback redirects callback URI for processing the result of the apache knox login sequence
 
-  Note: This endpoint is subject to change as NiFi and it's REST API evolve.
+Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 */
 func (a *Client) KnoxCallback(params *KnoxCallbackParams, opts ...ClientOption) error {
 	// TODO: Validate the params before sending
@@ -243,9 +285,9 @@ func (a *Client) KnoxCallback(params *KnoxCallbackParams, opts ...ClientOption) 
 }
 
 /*
-  KnoxLogout performs a logout in the apache knox
+KnoxLogout performs a logout in the apache knox
 
-  Note: This endpoint is subject to change as NiFi and it's REST API evolve.
+Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 */
 func (a *Client) KnoxLogout(params *KnoxLogoutParams, opts ...ClientOption) error {
 	// TODO: Validate the params before sending
@@ -276,9 +318,9 @@ func (a *Client) KnoxLogout(params *KnoxLogoutParams, opts ...ClientOption) erro
 }
 
 /*
-  KnoxRequest initiates a request to authenticate through apache knox
+KnoxRequest initiates a request to authenticate through apache knox
 
-  Note: This endpoint is subject to change as NiFi and it's REST API evolve.
+Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 */
 func (a *Client) KnoxRequest(params *KnoxRequestParams, opts ...ClientOption) error {
 	// TODO: Validate the params before sending
@@ -309,9 +351,9 @@ func (a *Client) KnoxRequest(params *KnoxRequestParams, opts ...ClientOption) er
 }
 
 /*
-  LogOut performs a logout for other providers that have been issued a j w t
+LogOut performs a logout for other providers that have been issued a j w t
 
-  Note: This endpoint is subject to change as NiFi and it's REST API evolve.
+Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 */
 func (a *Client) LogOut(params *LogOutParams, opts ...ClientOption) (*LogOutOK, error) {
 	// TODO: Validate the params before sending
@@ -349,9 +391,9 @@ func (a *Client) LogOut(params *LogOutParams, opts ...ClientOption) (*LogOutOK, 
 }
 
 /*
-  LogOutComplete completes the logout sequence by removing the cached logout request and cookie if they existed and redirects to nifi login
+LogOutComplete completes the logout sequence by removing the cached logout request and cookie if they existed and redirects to nifi login
 
-  Note: This endpoint is subject to change as NiFi and it's REST API evolve.
+Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 */
 func (a *Client) LogOutComplete(params *LogOutCompleteParams, opts ...ClientOption) (*LogOutCompleteOK, error) {
 	// TODO: Validate the params before sending

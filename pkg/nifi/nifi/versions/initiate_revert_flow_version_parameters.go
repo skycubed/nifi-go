@@ -54,16 +54,18 @@ func NewInitiateRevertFlowVersionParamsWithHTTPClient(client *http.Client) *Init
 	}
 }
 
-/* InitiateRevertFlowVersionParams contains all the parameters to send to the API endpoint
-   for the initiate revert flow version operation.
+/*
+InitiateRevertFlowVersionParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the initiate revert flow version operation.
+
+	Typically these are written to a http.Request.
 */
 type InitiateRevertFlowVersionParams struct {
 
 	/* Body.
 
-	   The controller service configuration details.
+	   The Version Control Information to revert to.
 	*/
 	Body *models.VersionControlInformationEntity
 

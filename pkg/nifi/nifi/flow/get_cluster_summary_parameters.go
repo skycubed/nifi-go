@@ -52,10 +52,12 @@ func NewGetClusterSummaryParamsWithHTTPClient(client *http.Client) *GetClusterSu
 	}
 }
 
-/* GetClusterSummaryParams contains all the parameters to send to the API endpoint
-   for the get cluster summary operation.
+/*
+GetClusterSummaryParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get cluster summary operation.
+
+	Typically these are written to a http.Request.
 */
 type GetClusterSummaryParams struct {
 	timeout    time.Duration

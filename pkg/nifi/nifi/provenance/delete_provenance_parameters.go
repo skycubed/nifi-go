@@ -52,10 +52,12 @@ func NewDeleteProvenanceParamsWithHTTPClient(client *http.Client) *DeleteProvena
 	}
 }
 
-/* DeleteProvenanceParams contains all the parameters to send to the API endpoint
-   for the delete provenance operation.
+/*
+DeleteProvenanceParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete provenance operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteProvenanceParams struct {
 

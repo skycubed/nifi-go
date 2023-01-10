@@ -69,7 +69,8 @@ func NewGetBulletinsOK() *GetBulletinsOK {
 	return &GetBulletinsOK{}
 }
 
-/* GetBulletinsOK describes a response with status code 200, with default header values.
+/*
+GetBulletinsOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,39 @@ type GetBulletinsOK struct {
 	Payload *models.ControllerBulletinsEntity
 }
 
+// IsSuccess returns true when this get bulletins o k response has a 2xx status code
+func (o *GetBulletinsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get bulletins o k response has a 3xx status code
+func (o *GetBulletinsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get bulletins o k response has a 4xx status code
+func (o *GetBulletinsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get bulletins o k response has a 5xx status code
+func (o *GetBulletinsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get bulletins o k response a status code equal to that given
+func (o *GetBulletinsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetBulletinsOK) Error() string {
 	return fmt.Sprintf("[GET /flow/controller/bulletins][%d] getBulletinsOK  %+v", 200, o.Payload)
 }
+
+func (o *GetBulletinsOK) String() string {
+	return fmt.Sprintf("[GET /flow/controller/bulletins][%d] getBulletinsOK  %+v", 200, o.Payload)
+}
+
 func (o *GetBulletinsOK) GetPayload() *models.ControllerBulletinsEntity {
 	return o.Payload
 }
@@ -101,14 +132,44 @@ func NewGetBulletinsBadRequest() *GetBulletinsBadRequest {
 	return &GetBulletinsBadRequest{}
 }
 
-/* GetBulletinsBadRequest describes a response with status code 400, with default header values.
+/*
+GetBulletinsBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type GetBulletinsBadRequest struct {
 }
 
+// IsSuccess returns true when this get bulletins bad request response has a 2xx status code
+func (o *GetBulletinsBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get bulletins bad request response has a 3xx status code
+func (o *GetBulletinsBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get bulletins bad request response has a 4xx status code
+func (o *GetBulletinsBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get bulletins bad request response has a 5xx status code
+func (o *GetBulletinsBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get bulletins bad request response a status code equal to that given
+func (o *GetBulletinsBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *GetBulletinsBadRequest) Error() string {
+	return fmt.Sprintf("[GET /flow/controller/bulletins][%d] getBulletinsBadRequest ", 400)
+}
+
+func (o *GetBulletinsBadRequest) String() string {
 	return fmt.Sprintf("[GET /flow/controller/bulletins][%d] getBulletinsBadRequest ", 400)
 }
 
@@ -122,14 +183,44 @@ func NewGetBulletinsUnauthorized() *GetBulletinsUnauthorized {
 	return &GetBulletinsUnauthorized{}
 }
 
-/* GetBulletinsUnauthorized describes a response with status code 401, with default header values.
+/*
+GetBulletinsUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type GetBulletinsUnauthorized struct {
 }
 
+// IsSuccess returns true when this get bulletins unauthorized response has a 2xx status code
+func (o *GetBulletinsUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get bulletins unauthorized response has a 3xx status code
+func (o *GetBulletinsUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get bulletins unauthorized response has a 4xx status code
+func (o *GetBulletinsUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get bulletins unauthorized response has a 5xx status code
+func (o *GetBulletinsUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get bulletins unauthorized response a status code equal to that given
+func (o *GetBulletinsUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GetBulletinsUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /flow/controller/bulletins][%d] getBulletinsUnauthorized ", 401)
+}
+
+func (o *GetBulletinsUnauthorized) String() string {
 	return fmt.Sprintf("[GET /flow/controller/bulletins][%d] getBulletinsUnauthorized ", 401)
 }
 
@@ -143,14 +234,44 @@ func NewGetBulletinsForbidden() *GetBulletinsForbidden {
 	return &GetBulletinsForbidden{}
 }
 
-/* GetBulletinsForbidden describes a response with status code 403, with default header values.
+/*
+GetBulletinsForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type GetBulletinsForbidden struct {
 }
 
+// IsSuccess returns true when this get bulletins forbidden response has a 2xx status code
+func (o *GetBulletinsForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get bulletins forbidden response has a 3xx status code
+func (o *GetBulletinsForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get bulletins forbidden response has a 4xx status code
+func (o *GetBulletinsForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get bulletins forbidden response has a 5xx status code
+func (o *GetBulletinsForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get bulletins forbidden response a status code equal to that given
+func (o *GetBulletinsForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetBulletinsForbidden) Error() string {
+	return fmt.Sprintf("[GET /flow/controller/bulletins][%d] getBulletinsForbidden ", 403)
+}
+
+func (o *GetBulletinsForbidden) String() string {
 	return fmt.Sprintf("[GET /flow/controller/bulletins][%d] getBulletinsForbidden ", 403)
 }
 
@@ -164,14 +285,44 @@ func NewGetBulletinsNotFound() *GetBulletinsNotFound {
 	return &GetBulletinsNotFound{}
 }
 
-/* GetBulletinsNotFound describes a response with status code 404, with default header values.
+/*
+GetBulletinsNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type GetBulletinsNotFound struct {
 }
 
+// IsSuccess returns true when this get bulletins not found response has a 2xx status code
+func (o *GetBulletinsNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get bulletins not found response has a 3xx status code
+func (o *GetBulletinsNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get bulletins not found response has a 4xx status code
+func (o *GetBulletinsNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get bulletins not found response has a 5xx status code
+func (o *GetBulletinsNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get bulletins not found response a status code equal to that given
+func (o *GetBulletinsNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetBulletinsNotFound) Error() string {
+	return fmt.Sprintf("[GET /flow/controller/bulletins][%d] getBulletinsNotFound ", 404)
+}
+
+func (o *GetBulletinsNotFound) String() string {
 	return fmt.Sprintf("[GET /flow/controller/bulletins][%d] getBulletinsNotFound ", 404)
 }
 
@@ -185,14 +336,44 @@ func NewGetBulletinsConflict() *GetBulletinsConflict {
 	return &GetBulletinsConflict{}
 }
 
-/* GetBulletinsConflict describes a response with status code 409, with default header values.
+/*
+GetBulletinsConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type GetBulletinsConflict struct {
 }
 
+// IsSuccess returns true when this get bulletins conflict response has a 2xx status code
+func (o *GetBulletinsConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get bulletins conflict response has a 3xx status code
+func (o *GetBulletinsConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get bulletins conflict response has a 4xx status code
+func (o *GetBulletinsConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get bulletins conflict response has a 5xx status code
+func (o *GetBulletinsConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get bulletins conflict response a status code equal to that given
+func (o *GetBulletinsConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *GetBulletinsConflict) Error() string {
+	return fmt.Sprintf("[GET /flow/controller/bulletins][%d] getBulletinsConflict ", 409)
+}
+
+func (o *GetBulletinsConflict) String() string {
 	return fmt.Sprintf("[GET /flow/controller/bulletins][%d] getBulletinsConflict ", 409)
 }
 

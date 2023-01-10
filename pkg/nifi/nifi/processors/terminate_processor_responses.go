@@ -69,7 +69,8 @@ func NewTerminateProcessorOK() *TerminateProcessorOK {
 	return &TerminateProcessorOK{}
 }
 
-/* TerminateProcessorOK describes a response with status code 200, with default header values.
+/*
+TerminateProcessorOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,39 @@ type TerminateProcessorOK struct {
 	Payload *models.ProcessorEntity
 }
 
+// IsSuccess returns true when this terminate processor o k response has a 2xx status code
+func (o *TerminateProcessorOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this terminate processor o k response has a 3xx status code
+func (o *TerminateProcessorOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this terminate processor o k response has a 4xx status code
+func (o *TerminateProcessorOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this terminate processor o k response has a 5xx status code
+func (o *TerminateProcessorOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this terminate processor o k response a status code equal to that given
+func (o *TerminateProcessorOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *TerminateProcessorOK) Error() string {
 	return fmt.Sprintf("[DELETE /processors/{id}/threads][%d] terminateProcessorOK  %+v", 200, o.Payload)
 }
+
+func (o *TerminateProcessorOK) String() string {
+	return fmt.Sprintf("[DELETE /processors/{id}/threads][%d] terminateProcessorOK  %+v", 200, o.Payload)
+}
+
 func (o *TerminateProcessorOK) GetPayload() *models.ProcessorEntity {
 	return o.Payload
 }
@@ -101,14 +132,44 @@ func NewTerminateProcessorBadRequest() *TerminateProcessorBadRequest {
 	return &TerminateProcessorBadRequest{}
 }
 
-/* TerminateProcessorBadRequest describes a response with status code 400, with default header values.
+/*
+TerminateProcessorBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type TerminateProcessorBadRequest struct {
 }
 
+// IsSuccess returns true when this terminate processor bad request response has a 2xx status code
+func (o *TerminateProcessorBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this terminate processor bad request response has a 3xx status code
+func (o *TerminateProcessorBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this terminate processor bad request response has a 4xx status code
+func (o *TerminateProcessorBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this terminate processor bad request response has a 5xx status code
+func (o *TerminateProcessorBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this terminate processor bad request response a status code equal to that given
+func (o *TerminateProcessorBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *TerminateProcessorBadRequest) Error() string {
+	return fmt.Sprintf("[DELETE /processors/{id}/threads][%d] terminateProcessorBadRequest ", 400)
+}
+
+func (o *TerminateProcessorBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /processors/{id}/threads][%d] terminateProcessorBadRequest ", 400)
 }
 
@@ -122,14 +183,44 @@ func NewTerminateProcessorUnauthorized() *TerminateProcessorUnauthorized {
 	return &TerminateProcessorUnauthorized{}
 }
 
-/* TerminateProcessorUnauthorized describes a response with status code 401, with default header values.
+/*
+TerminateProcessorUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type TerminateProcessorUnauthorized struct {
 }
 
+// IsSuccess returns true when this terminate processor unauthorized response has a 2xx status code
+func (o *TerminateProcessorUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this terminate processor unauthorized response has a 3xx status code
+func (o *TerminateProcessorUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this terminate processor unauthorized response has a 4xx status code
+func (o *TerminateProcessorUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this terminate processor unauthorized response has a 5xx status code
+func (o *TerminateProcessorUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this terminate processor unauthorized response a status code equal to that given
+func (o *TerminateProcessorUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *TerminateProcessorUnauthorized) Error() string {
+	return fmt.Sprintf("[DELETE /processors/{id}/threads][%d] terminateProcessorUnauthorized ", 401)
+}
+
+func (o *TerminateProcessorUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /processors/{id}/threads][%d] terminateProcessorUnauthorized ", 401)
 }
 
@@ -143,14 +234,44 @@ func NewTerminateProcessorForbidden() *TerminateProcessorForbidden {
 	return &TerminateProcessorForbidden{}
 }
 
-/* TerminateProcessorForbidden describes a response with status code 403, with default header values.
+/*
+TerminateProcessorForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type TerminateProcessorForbidden struct {
 }
 
+// IsSuccess returns true when this terminate processor forbidden response has a 2xx status code
+func (o *TerminateProcessorForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this terminate processor forbidden response has a 3xx status code
+func (o *TerminateProcessorForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this terminate processor forbidden response has a 4xx status code
+func (o *TerminateProcessorForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this terminate processor forbidden response has a 5xx status code
+func (o *TerminateProcessorForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this terminate processor forbidden response a status code equal to that given
+func (o *TerminateProcessorForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *TerminateProcessorForbidden) Error() string {
+	return fmt.Sprintf("[DELETE /processors/{id}/threads][%d] terminateProcessorForbidden ", 403)
+}
+
+func (o *TerminateProcessorForbidden) String() string {
 	return fmt.Sprintf("[DELETE /processors/{id}/threads][%d] terminateProcessorForbidden ", 403)
 }
 
@@ -164,14 +285,44 @@ func NewTerminateProcessorNotFound() *TerminateProcessorNotFound {
 	return &TerminateProcessorNotFound{}
 }
 
-/* TerminateProcessorNotFound describes a response with status code 404, with default header values.
+/*
+TerminateProcessorNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type TerminateProcessorNotFound struct {
 }
 
+// IsSuccess returns true when this terminate processor not found response has a 2xx status code
+func (o *TerminateProcessorNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this terminate processor not found response has a 3xx status code
+func (o *TerminateProcessorNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this terminate processor not found response has a 4xx status code
+func (o *TerminateProcessorNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this terminate processor not found response has a 5xx status code
+func (o *TerminateProcessorNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this terminate processor not found response a status code equal to that given
+func (o *TerminateProcessorNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *TerminateProcessorNotFound) Error() string {
+	return fmt.Sprintf("[DELETE /processors/{id}/threads][%d] terminateProcessorNotFound ", 404)
+}
+
+func (o *TerminateProcessorNotFound) String() string {
 	return fmt.Sprintf("[DELETE /processors/{id}/threads][%d] terminateProcessorNotFound ", 404)
 }
 
@@ -185,14 +336,44 @@ func NewTerminateProcessorConflict() *TerminateProcessorConflict {
 	return &TerminateProcessorConflict{}
 }
 
-/* TerminateProcessorConflict describes a response with status code 409, with default header values.
+/*
+TerminateProcessorConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type TerminateProcessorConflict struct {
 }
 
+// IsSuccess returns true when this terminate processor conflict response has a 2xx status code
+func (o *TerminateProcessorConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this terminate processor conflict response has a 3xx status code
+func (o *TerminateProcessorConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this terminate processor conflict response has a 4xx status code
+func (o *TerminateProcessorConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this terminate processor conflict response has a 5xx status code
+func (o *TerminateProcessorConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this terminate processor conflict response a status code equal to that given
+func (o *TerminateProcessorConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *TerminateProcessorConflict) Error() string {
+	return fmt.Sprintf("[DELETE /processors/{id}/threads][%d] terminateProcessorConflict ", 409)
+}
+
+func (o *TerminateProcessorConflict) String() string {
 	return fmt.Sprintf("[DELETE /processors/{id}/threads][%d] terminateProcessorConflict ", 409)
 }
 

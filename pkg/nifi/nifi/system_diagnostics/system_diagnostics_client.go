@@ -36,7 +36,7 @@ type ClientService interface {
 }
 
 /*
-  GetSystemDiagnostics gets the diagnostics for the system ni fi is running on
+GetSystemDiagnostics gets the diagnostics for the system ni fi is running on
 */
 func (a *Client) GetSystemDiagnostics(params *GetSystemDiagnosticsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSystemDiagnosticsOK, error) {
 	// TODO: Validate the params before sending

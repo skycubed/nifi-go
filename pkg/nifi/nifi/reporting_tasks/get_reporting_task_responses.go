@@ -69,7 +69,8 @@ func NewGetReportingTaskOK() *GetReportingTaskOK {
 	return &GetReportingTaskOK{}
 }
 
-/* GetReportingTaskOK describes a response with status code 200, with default header values.
+/*
+GetReportingTaskOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,39 @@ type GetReportingTaskOK struct {
 	Payload *models.ReportingTaskEntity
 }
 
+// IsSuccess returns true when this get reporting task o k response has a 2xx status code
+func (o *GetReportingTaskOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get reporting task o k response has a 3xx status code
+func (o *GetReportingTaskOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get reporting task o k response has a 4xx status code
+func (o *GetReportingTaskOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get reporting task o k response has a 5xx status code
+func (o *GetReportingTaskOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get reporting task o k response a status code equal to that given
+func (o *GetReportingTaskOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetReportingTaskOK) Error() string {
 	return fmt.Sprintf("[GET /reporting-tasks/{id}][%d] getReportingTaskOK  %+v", 200, o.Payload)
 }
+
+func (o *GetReportingTaskOK) String() string {
+	return fmt.Sprintf("[GET /reporting-tasks/{id}][%d] getReportingTaskOK  %+v", 200, o.Payload)
+}
+
 func (o *GetReportingTaskOK) GetPayload() *models.ReportingTaskEntity {
 	return o.Payload
 }
@@ -101,14 +132,44 @@ func NewGetReportingTaskBadRequest() *GetReportingTaskBadRequest {
 	return &GetReportingTaskBadRequest{}
 }
 
-/* GetReportingTaskBadRequest describes a response with status code 400, with default header values.
+/*
+GetReportingTaskBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type GetReportingTaskBadRequest struct {
 }
 
+// IsSuccess returns true when this get reporting task bad request response has a 2xx status code
+func (o *GetReportingTaskBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get reporting task bad request response has a 3xx status code
+func (o *GetReportingTaskBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get reporting task bad request response has a 4xx status code
+func (o *GetReportingTaskBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get reporting task bad request response has a 5xx status code
+func (o *GetReportingTaskBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get reporting task bad request response a status code equal to that given
+func (o *GetReportingTaskBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *GetReportingTaskBadRequest) Error() string {
+	return fmt.Sprintf("[GET /reporting-tasks/{id}][%d] getReportingTaskBadRequest ", 400)
+}
+
+func (o *GetReportingTaskBadRequest) String() string {
 	return fmt.Sprintf("[GET /reporting-tasks/{id}][%d] getReportingTaskBadRequest ", 400)
 }
 
@@ -122,14 +183,44 @@ func NewGetReportingTaskUnauthorized() *GetReportingTaskUnauthorized {
 	return &GetReportingTaskUnauthorized{}
 }
 
-/* GetReportingTaskUnauthorized describes a response with status code 401, with default header values.
+/*
+GetReportingTaskUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type GetReportingTaskUnauthorized struct {
 }
 
+// IsSuccess returns true when this get reporting task unauthorized response has a 2xx status code
+func (o *GetReportingTaskUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get reporting task unauthorized response has a 3xx status code
+func (o *GetReportingTaskUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get reporting task unauthorized response has a 4xx status code
+func (o *GetReportingTaskUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get reporting task unauthorized response has a 5xx status code
+func (o *GetReportingTaskUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get reporting task unauthorized response a status code equal to that given
+func (o *GetReportingTaskUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GetReportingTaskUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /reporting-tasks/{id}][%d] getReportingTaskUnauthorized ", 401)
+}
+
+func (o *GetReportingTaskUnauthorized) String() string {
 	return fmt.Sprintf("[GET /reporting-tasks/{id}][%d] getReportingTaskUnauthorized ", 401)
 }
 
@@ -143,14 +234,44 @@ func NewGetReportingTaskForbidden() *GetReportingTaskForbidden {
 	return &GetReportingTaskForbidden{}
 }
 
-/* GetReportingTaskForbidden describes a response with status code 403, with default header values.
+/*
+GetReportingTaskForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type GetReportingTaskForbidden struct {
 }
 
+// IsSuccess returns true when this get reporting task forbidden response has a 2xx status code
+func (o *GetReportingTaskForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get reporting task forbidden response has a 3xx status code
+func (o *GetReportingTaskForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get reporting task forbidden response has a 4xx status code
+func (o *GetReportingTaskForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get reporting task forbidden response has a 5xx status code
+func (o *GetReportingTaskForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get reporting task forbidden response a status code equal to that given
+func (o *GetReportingTaskForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetReportingTaskForbidden) Error() string {
+	return fmt.Sprintf("[GET /reporting-tasks/{id}][%d] getReportingTaskForbidden ", 403)
+}
+
+func (o *GetReportingTaskForbidden) String() string {
 	return fmt.Sprintf("[GET /reporting-tasks/{id}][%d] getReportingTaskForbidden ", 403)
 }
 
@@ -164,14 +285,44 @@ func NewGetReportingTaskNotFound() *GetReportingTaskNotFound {
 	return &GetReportingTaskNotFound{}
 }
 
-/* GetReportingTaskNotFound describes a response with status code 404, with default header values.
+/*
+GetReportingTaskNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type GetReportingTaskNotFound struct {
 }
 
+// IsSuccess returns true when this get reporting task not found response has a 2xx status code
+func (o *GetReportingTaskNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get reporting task not found response has a 3xx status code
+func (o *GetReportingTaskNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get reporting task not found response has a 4xx status code
+func (o *GetReportingTaskNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get reporting task not found response has a 5xx status code
+func (o *GetReportingTaskNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get reporting task not found response a status code equal to that given
+func (o *GetReportingTaskNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetReportingTaskNotFound) Error() string {
+	return fmt.Sprintf("[GET /reporting-tasks/{id}][%d] getReportingTaskNotFound ", 404)
+}
+
+func (o *GetReportingTaskNotFound) String() string {
 	return fmt.Sprintf("[GET /reporting-tasks/{id}][%d] getReportingTaskNotFound ", 404)
 }
 
@@ -185,14 +336,44 @@ func NewGetReportingTaskConflict() *GetReportingTaskConflict {
 	return &GetReportingTaskConflict{}
 }
 
-/* GetReportingTaskConflict describes a response with status code 409, with default header values.
+/*
+GetReportingTaskConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type GetReportingTaskConflict struct {
 }
 
+// IsSuccess returns true when this get reporting task conflict response has a 2xx status code
+func (o *GetReportingTaskConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get reporting task conflict response has a 3xx status code
+func (o *GetReportingTaskConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get reporting task conflict response has a 4xx status code
+func (o *GetReportingTaskConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get reporting task conflict response has a 5xx status code
+func (o *GetReportingTaskConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get reporting task conflict response a status code equal to that given
+func (o *GetReportingTaskConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *GetReportingTaskConflict) Error() string {
+	return fmt.Sprintf("[GET /reporting-tasks/{id}][%d] getReportingTaskConflict ", 409)
+}
+
+func (o *GetReportingTaskConflict) String() string {
 	return fmt.Sprintf("[GET /reporting-tasks/{id}][%d] getReportingTaskConflict ", 409)
 }
 

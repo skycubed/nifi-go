@@ -63,7 +63,8 @@ func NewSubmitProvenanceRequestCreated() *SubmitProvenanceRequestCreated {
 	return &SubmitProvenanceRequestCreated{}
 }
 
-/* SubmitProvenanceRequestCreated describes a response with status code 201, with default header values.
+/*
+SubmitProvenanceRequestCreated describes a response with status code 201, with default header values.
 
 successful operation
 */
@@ -71,9 +72,39 @@ type SubmitProvenanceRequestCreated struct {
 	Payload *models.ProvenanceEntity
 }
 
+// IsSuccess returns true when this submit provenance request created response has a 2xx status code
+func (o *SubmitProvenanceRequestCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this submit provenance request created response has a 3xx status code
+func (o *SubmitProvenanceRequestCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this submit provenance request created response has a 4xx status code
+func (o *SubmitProvenanceRequestCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this submit provenance request created response has a 5xx status code
+func (o *SubmitProvenanceRequestCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this submit provenance request created response a status code equal to that given
+func (o *SubmitProvenanceRequestCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *SubmitProvenanceRequestCreated) Error() string {
 	return fmt.Sprintf("[POST /provenance][%d] submitProvenanceRequestCreated  %+v", 201, o.Payload)
 }
+
+func (o *SubmitProvenanceRequestCreated) String() string {
+	return fmt.Sprintf("[POST /provenance][%d] submitProvenanceRequestCreated  %+v", 201, o.Payload)
+}
+
 func (o *SubmitProvenanceRequestCreated) GetPayload() *models.ProvenanceEntity {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewSubmitProvenanceRequestBadRequest() *SubmitProvenanceRequestBadRequest {
 	return &SubmitProvenanceRequestBadRequest{}
 }
 
-/* SubmitProvenanceRequestBadRequest describes a response with status code 400, with default header values.
+/*
+SubmitProvenanceRequestBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type SubmitProvenanceRequestBadRequest struct {
 }
 
+// IsSuccess returns true when this submit provenance request bad request response has a 2xx status code
+func (o *SubmitProvenanceRequestBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this submit provenance request bad request response has a 3xx status code
+func (o *SubmitProvenanceRequestBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this submit provenance request bad request response has a 4xx status code
+func (o *SubmitProvenanceRequestBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this submit provenance request bad request response has a 5xx status code
+func (o *SubmitProvenanceRequestBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this submit provenance request bad request response a status code equal to that given
+func (o *SubmitProvenanceRequestBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *SubmitProvenanceRequestBadRequest) Error() string {
+	return fmt.Sprintf("[POST /provenance][%d] submitProvenanceRequestBadRequest ", 400)
+}
+
+func (o *SubmitProvenanceRequestBadRequest) String() string {
 	return fmt.Sprintf("[POST /provenance][%d] submitProvenanceRequestBadRequest ", 400)
 }
 
@@ -116,14 +177,44 @@ func NewSubmitProvenanceRequestUnauthorized() *SubmitProvenanceRequestUnauthoriz
 	return &SubmitProvenanceRequestUnauthorized{}
 }
 
-/* SubmitProvenanceRequestUnauthorized describes a response with status code 401, with default header values.
+/*
+SubmitProvenanceRequestUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type SubmitProvenanceRequestUnauthorized struct {
 }
 
+// IsSuccess returns true when this submit provenance request unauthorized response has a 2xx status code
+func (o *SubmitProvenanceRequestUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this submit provenance request unauthorized response has a 3xx status code
+func (o *SubmitProvenanceRequestUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this submit provenance request unauthorized response has a 4xx status code
+func (o *SubmitProvenanceRequestUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this submit provenance request unauthorized response has a 5xx status code
+func (o *SubmitProvenanceRequestUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this submit provenance request unauthorized response a status code equal to that given
+func (o *SubmitProvenanceRequestUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *SubmitProvenanceRequestUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /provenance][%d] submitProvenanceRequestUnauthorized ", 401)
+}
+
+func (o *SubmitProvenanceRequestUnauthorized) String() string {
 	return fmt.Sprintf("[POST /provenance][%d] submitProvenanceRequestUnauthorized ", 401)
 }
 
@@ -137,14 +228,44 @@ func NewSubmitProvenanceRequestForbidden() *SubmitProvenanceRequestForbidden {
 	return &SubmitProvenanceRequestForbidden{}
 }
 
-/* SubmitProvenanceRequestForbidden describes a response with status code 403, with default header values.
+/*
+SubmitProvenanceRequestForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type SubmitProvenanceRequestForbidden struct {
 }
 
+// IsSuccess returns true when this submit provenance request forbidden response has a 2xx status code
+func (o *SubmitProvenanceRequestForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this submit provenance request forbidden response has a 3xx status code
+func (o *SubmitProvenanceRequestForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this submit provenance request forbidden response has a 4xx status code
+func (o *SubmitProvenanceRequestForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this submit provenance request forbidden response has a 5xx status code
+func (o *SubmitProvenanceRequestForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this submit provenance request forbidden response a status code equal to that given
+func (o *SubmitProvenanceRequestForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *SubmitProvenanceRequestForbidden) Error() string {
+	return fmt.Sprintf("[POST /provenance][%d] submitProvenanceRequestForbidden ", 403)
+}
+
+func (o *SubmitProvenanceRequestForbidden) String() string {
 	return fmt.Sprintf("[POST /provenance][%d] submitProvenanceRequestForbidden ", 403)
 }
 
@@ -158,14 +279,44 @@ func NewSubmitProvenanceRequestConflict() *SubmitProvenanceRequestConflict {
 	return &SubmitProvenanceRequestConflict{}
 }
 
-/* SubmitProvenanceRequestConflict describes a response with status code 409, with default header values.
+/*
+SubmitProvenanceRequestConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type SubmitProvenanceRequestConflict struct {
 }
 
+// IsSuccess returns true when this submit provenance request conflict response has a 2xx status code
+func (o *SubmitProvenanceRequestConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this submit provenance request conflict response has a 3xx status code
+func (o *SubmitProvenanceRequestConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this submit provenance request conflict response has a 4xx status code
+func (o *SubmitProvenanceRequestConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this submit provenance request conflict response has a 5xx status code
+func (o *SubmitProvenanceRequestConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this submit provenance request conflict response a status code equal to that given
+func (o *SubmitProvenanceRequestConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *SubmitProvenanceRequestConflict) Error() string {
+	return fmt.Sprintf("[POST /provenance][%d] submitProvenanceRequestConflict ", 409)
+}
+
+func (o *SubmitProvenanceRequestConflict) String() string {
 	return fmt.Sprintf("[POST /provenance][%d] submitProvenanceRequestConflict ", 409)
 }
 

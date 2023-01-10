@@ -69,7 +69,8 @@ func NewGetRemoteProcessGroupOK() *GetRemoteProcessGroupOK {
 	return &GetRemoteProcessGroupOK{}
 }
 
-/* GetRemoteProcessGroupOK describes a response with status code 200, with default header values.
+/*
+GetRemoteProcessGroupOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,39 @@ type GetRemoteProcessGroupOK struct {
 	Payload *models.RemoteProcessGroupEntity
 }
 
+// IsSuccess returns true when this get remote process group o k response has a 2xx status code
+func (o *GetRemoteProcessGroupOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get remote process group o k response has a 3xx status code
+func (o *GetRemoteProcessGroupOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get remote process group o k response has a 4xx status code
+func (o *GetRemoteProcessGroupOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get remote process group o k response has a 5xx status code
+func (o *GetRemoteProcessGroupOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get remote process group o k response a status code equal to that given
+func (o *GetRemoteProcessGroupOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetRemoteProcessGroupOK) Error() string {
 	return fmt.Sprintf("[GET /remote-process-groups/{id}][%d] getRemoteProcessGroupOK  %+v", 200, o.Payload)
 }
+
+func (o *GetRemoteProcessGroupOK) String() string {
+	return fmt.Sprintf("[GET /remote-process-groups/{id}][%d] getRemoteProcessGroupOK  %+v", 200, o.Payload)
+}
+
 func (o *GetRemoteProcessGroupOK) GetPayload() *models.RemoteProcessGroupEntity {
 	return o.Payload
 }
@@ -101,14 +132,44 @@ func NewGetRemoteProcessGroupBadRequest() *GetRemoteProcessGroupBadRequest {
 	return &GetRemoteProcessGroupBadRequest{}
 }
 
-/* GetRemoteProcessGroupBadRequest describes a response with status code 400, with default header values.
+/*
+GetRemoteProcessGroupBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type GetRemoteProcessGroupBadRequest struct {
 }
 
+// IsSuccess returns true when this get remote process group bad request response has a 2xx status code
+func (o *GetRemoteProcessGroupBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get remote process group bad request response has a 3xx status code
+func (o *GetRemoteProcessGroupBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get remote process group bad request response has a 4xx status code
+func (o *GetRemoteProcessGroupBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get remote process group bad request response has a 5xx status code
+func (o *GetRemoteProcessGroupBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get remote process group bad request response a status code equal to that given
+func (o *GetRemoteProcessGroupBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *GetRemoteProcessGroupBadRequest) Error() string {
+	return fmt.Sprintf("[GET /remote-process-groups/{id}][%d] getRemoteProcessGroupBadRequest ", 400)
+}
+
+func (o *GetRemoteProcessGroupBadRequest) String() string {
 	return fmt.Sprintf("[GET /remote-process-groups/{id}][%d] getRemoteProcessGroupBadRequest ", 400)
 }
 
@@ -122,14 +183,44 @@ func NewGetRemoteProcessGroupUnauthorized() *GetRemoteProcessGroupUnauthorized {
 	return &GetRemoteProcessGroupUnauthorized{}
 }
 
-/* GetRemoteProcessGroupUnauthorized describes a response with status code 401, with default header values.
+/*
+GetRemoteProcessGroupUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type GetRemoteProcessGroupUnauthorized struct {
 }
 
+// IsSuccess returns true when this get remote process group unauthorized response has a 2xx status code
+func (o *GetRemoteProcessGroupUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get remote process group unauthorized response has a 3xx status code
+func (o *GetRemoteProcessGroupUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get remote process group unauthorized response has a 4xx status code
+func (o *GetRemoteProcessGroupUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get remote process group unauthorized response has a 5xx status code
+func (o *GetRemoteProcessGroupUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get remote process group unauthorized response a status code equal to that given
+func (o *GetRemoteProcessGroupUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GetRemoteProcessGroupUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /remote-process-groups/{id}][%d] getRemoteProcessGroupUnauthorized ", 401)
+}
+
+func (o *GetRemoteProcessGroupUnauthorized) String() string {
 	return fmt.Sprintf("[GET /remote-process-groups/{id}][%d] getRemoteProcessGroupUnauthorized ", 401)
 }
 
@@ -143,14 +234,44 @@ func NewGetRemoteProcessGroupForbidden() *GetRemoteProcessGroupForbidden {
 	return &GetRemoteProcessGroupForbidden{}
 }
 
-/* GetRemoteProcessGroupForbidden describes a response with status code 403, with default header values.
+/*
+GetRemoteProcessGroupForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type GetRemoteProcessGroupForbidden struct {
 }
 
+// IsSuccess returns true when this get remote process group forbidden response has a 2xx status code
+func (o *GetRemoteProcessGroupForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get remote process group forbidden response has a 3xx status code
+func (o *GetRemoteProcessGroupForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get remote process group forbidden response has a 4xx status code
+func (o *GetRemoteProcessGroupForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get remote process group forbidden response has a 5xx status code
+func (o *GetRemoteProcessGroupForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get remote process group forbidden response a status code equal to that given
+func (o *GetRemoteProcessGroupForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetRemoteProcessGroupForbidden) Error() string {
+	return fmt.Sprintf("[GET /remote-process-groups/{id}][%d] getRemoteProcessGroupForbidden ", 403)
+}
+
+func (o *GetRemoteProcessGroupForbidden) String() string {
 	return fmt.Sprintf("[GET /remote-process-groups/{id}][%d] getRemoteProcessGroupForbidden ", 403)
 }
 
@@ -164,14 +285,44 @@ func NewGetRemoteProcessGroupNotFound() *GetRemoteProcessGroupNotFound {
 	return &GetRemoteProcessGroupNotFound{}
 }
 
-/* GetRemoteProcessGroupNotFound describes a response with status code 404, with default header values.
+/*
+GetRemoteProcessGroupNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type GetRemoteProcessGroupNotFound struct {
 }
 
+// IsSuccess returns true when this get remote process group not found response has a 2xx status code
+func (o *GetRemoteProcessGroupNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get remote process group not found response has a 3xx status code
+func (o *GetRemoteProcessGroupNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get remote process group not found response has a 4xx status code
+func (o *GetRemoteProcessGroupNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get remote process group not found response has a 5xx status code
+func (o *GetRemoteProcessGroupNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get remote process group not found response a status code equal to that given
+func (o *GetRemoteProcessGroupNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetRemoteProcessGroupNotFound) Error() string {
+	return fmt.Sprintf("[GET /remote-process-groups/{id}][%d] getRemoteProcessGroupNotFound ", 404)
+}
+
+func (o *GetRemoteProcessGroupNotFound) String() string {
 	return fmt.Sprintf("[GET /remote-process-groups/{id}][%d] getRemoteProcessGroupNotFound ", 404)
 }
 
@@ -185,14 +336,44 @@ func NewGetRemoteProcessGroupConflict() *GetRemoteProcessGroupConflict {
 	return &GetRemoteProcessGroupConflict{}
 }
 
-/* GetRemoteProcessGroupConflict describes a response with status code 409, with default header values.
+/*
+GetRemoteProcessGroupConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type GetRemoteProcessGroupConflict struct {
 }
 
+// IsSuccess returns true when this get remote process group conflict response has a 2xx status code
+func (o *GetRemoteProcessGroupConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get remote process group conflict response has a 3xx status code
+func (o *GetRemoteProcessGroupConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get remote process group conflict response has a 4xx status code
+func (o *GetRemoteProcessGroupConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get remote process group conflict response has a 5xx status code
+func (o *GetRemoteProcessGroupConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get remote process group conflict response a status code equal to that given
+func (o *GetRemoteProcessGroupConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *GetRemoteProcessGroupConflict) Error() string {
+	return fmt.Sprintf("[GET /remote-process-groups/{id}][%d] getRemoteProcessGroupConflict ", 409)
+}
+
+func (o *GetRemoteProcessGroupConflict) String() string {
 	return fmt.Sprintf("[GET /remote-process-groups/{id}][%d] getRemoteProcessGroupConflict ", 409)
 }
 

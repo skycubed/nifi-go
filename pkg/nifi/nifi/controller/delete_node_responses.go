@@ -69,7 +69,8 @@ func NewDeleteNodeOK() *DeleteNodeOK {
 	return &DeleteNodeOK{}
 }
 
-/* DeleteNodeOK describes a response with status code 200, with default header values.
+/*
+DeleteNodeOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,39 @@ type DeleteNodeOK struct {
 	Payload *models.NodeEntity
 }
 
+// IsSuccess returns true when this delete node o k response has a 2xx status code
+func (o *DeleteNodeOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete node o k response has a 3xx status code
+func (o *DeleteNodeOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete node o k response has a 4xx status code
+func (o *DeleteNodeOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete node o k response has a 5xx status code
+func (o *DeleteNodeOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete node o k response a status code equal to that given
+func (o *DeleteNodeOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *DeleteNodeOK) Error() string {
 	return fmt.Sprintf("[DELETE /controller/cluster/nodes/{id}][%d] deleteNodeOK  %+v", 200, o.Payload)
 }
+
+func (o *DeleteNodeOK) String() string {
+	return fmt.Sprintf("[DELETE /controller/cluster/nodes/{id}][%d] deleteNodeOK  %+v", 200, o.Payload)
+}
+
 func (o *DeleteNodeOK) GetPayload() *models.NodeEntity {
 	return o.Payload
 }
@@ -101,14 +132,44 @@ func NewDeleteNodeBadRequest() *DeleteNodeBadRequest {
 	return &DeleteNodeBadRequest{}
 }
 
-/* DeleteNodeBadRequest describes a response with status code 400, with default header values.
+/*
+DeleteNodeBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type DeleteNodeBadRequest struct {
 }
 
+// IsSuccess returns true when this delete node bad request response has a 2xx status code
+func (o *DeleteNodeBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete node bad request response has a 3xx status code
+func (o *DeleteNodeBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete node bad request response has a 4xx status code
+func (o *DeleteNodeBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete node bad request response has a 5xx status code
+func (o *DeleteNodeBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete node bad request response a status code equal to that given
+func (o *DeleteNodeBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *DeleteNodeBadRequest) Error() string {
+	return fmt.Sprintf("[DELETE /controller/cluster/nodes/{id}][%d] deleteNodeBadRequest ", 400)
+}
+
+func (o *DeleteNodeBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /controller/cluster/nodes/{id}][%d] deleteNodeBadRequest ", 400)
 }
 
@@ -122,14 +183,44 @@ func NewDeleteNodeUnauthorized() *DeleteNodeUnauthorized {
 	return &DeleteNodeUnauthorized{}
 }
 
-/* DeleteNodeUnauthorized describes a response with status code 401, with default header values.
+/*
+DeleteNodeUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type DeleteNodeUnauthorized struct {
 }
 
+// IsSuccess returns true when this delete node unauthorized response has a 2xx status code
+func (o *DeleteNodeUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete node unauthorized response has a 3xx status code
+func (o *DeleteNodeUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete node unauthorized response has a 4xx status code
+func (o *DeleteNodeUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete node unauthorized response has a 5xx status code
+func (o *DeleteNodeUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete node unauthorized response a status code equal to that given
+func (o *DeleteNodeUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *DeleteNodeUnauthorized) Error() string {
+	return fmt.Sprintf("[DELETE /controller/cluster/nodes/{id}][%d] deleteNodeUnauthorized ", 401)
+}
+
+func (o *DeleteNodeUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /controller/cluster/nodes/{id}][%d] deleteNodeUnauthorized ", 401)
 }
 
@@ -143,14 +234,44 @@ func NewDeleteNodeForbidden() *DeleteNodeForbidden {
 	return &DeleteNodeForbidden{}
 }
 
-/* DeleteNodeForbidden describes a response with status code 403, with default header values.
+/*
+DeleteNodeForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type DeleteNodeForbidden struct {
 }
 
+// IsSuccess returns true when this delete node forbidden response has a 2xx status code
+func (o *DeleteNodeForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete node forbidden response has a 3xx status code
+func (o *DeleteNodeForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete node forbidden response has a 4xx status code
+func (o *DeleteNodeForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete node forbidden response has a 5xx status code
+func (o *DeleteNodeForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete node forbidden response a status code equal to that given
+func (o *DeleteNodeForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *DeleteNodeForbidden) Error() string {
+	return fmt.Sprintf("[DELETE /controller/cluster/nodes/{id}][%d] deleteNodeForbidden ", 403)
+}
+
+func (o *DeleteNodeForbidden) String() string {
 	return fmt.Sprintf("[DELETE /controller/cluster/nodes/{id}][%d] deleteNodeForbidden ", 403)
 }
 
@@ -164,14 +285,44 @@ func NewDeleteNodeNotFound() *DeleteNodeNotFound {
 	return &DeleteNodeNotFound{}
 }
 
-/* DeleteNodeNotFound describes a response with status code 404, with default header values.
+/*
+DeleteNodeNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type DeleteNodeNotFound struct {
 }
 
+// IsSuccess returns true when this delete node not found response has a 2xx status code
+func (o *DeleteNodeNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete node not found response has a 3xx status code
+func (o *DeleteNodeNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete node not found response has a 4xx status code
+func (o *DeleteNodeNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete node not found response has a 5xx status code
+func (o *DeleteNodeNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete node not found response a status code equal to that given
+func (o *DeleteNodeNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *DeleteNodeNotFound) Error() string {
+	return fmt.Sprintf("[DELETE /controller/cluster/nodes/{id}][%d] deleteNodeNotFound ", 404)
+}
+
+func (o *DeleteNodeNotFound) String() string {
 	return fmt.Sprintf("[DELETE /controller/cluster/nodes/{id}][%d] deleteNodeNotFound ", 404)
 }
 
@@ -185,14 +336,44 @@ func NewDeleteNodeConflict() *DeleteNodeConflict {
 	return &DeleteNodeConflict{}
 }
 
-/* DeleteNodeConflict describes a response with status code 409, with default header values.
+/*
+DeleteNodeConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type DeleteNodeConflict struct {
 }
 
+// IsSuccess returns true when this delete node conflict response has a 2xx status code
+func (o *DeleteNodeConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete node conflict response has a 3xx status code
+func (o *DeleteNodeConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete node conflict response has a 4xx status code
+func (o *DeleteNodeConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete node conflict response has a 5xx status code
+func (o *DeleteNodeConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete node conflict response a status code equal to that given
+func (o *DeleteNodeConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *DeleteNodeConflict) Error() string {
+	return fmt.Sprintf("[DELETE /controller/cluster/nodes/{id}][%d] deleteNodeConflict ", 409)
+}
+
+func (o *DeleteNodeConflict) String() string {
 	return fmt.Sprintf("[DELETE /controller/cluster/nodes/{id}][%d] deleteNodeConflict ", 409)
 }
 

@@ -30,6 +30,9 @@ type Property struct {
 	// The default value
 	DefaultValue string `json:"defaultValue,omitempty"`
 
+	// The properties that this property depends on
+	Dependencies []*Dependency `json:"dependencies" xml:"dependencies"`
+
 	// The description
 	Description string `json:"description,omitempty"`
 
@@ -55,6 +58,9 @@ type Property struct {
 	// Whether or not the property is required
 	Required bool `json:"required,omitempty"`
 
+	// The optional resource definition
+	ResourceDefinition *ResourceDefinition `json:"resourceDefinition,omitempty"`
+
 	// Whether or not the property is sensitive
 	Sensitive bool `json:"sensitive,omitempty"`
 }
@@ -71,7 +77,15 @@ func (m *Property) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateDependencies(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateExpressionLanguageScope(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateResourceDefinition(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -126,6 +140,32 @@ func (m *Property) validateControllerServiceDefinition(formats strfmt.Registry) 
 	return nil
 }
 
+func (m *Property) validateDependencies(formats strfmt.Registry) error {
+	if swag.IsZero(m.Dependencies) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Dependencies); i++ {
+		if swag.IsZero(m.Dependencies[i]) { // not required
+			continue
+		}
+
+		if m.Dependencies[i] != nil {
+			if err := m.Dependencies[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("dependencies" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("dependencies" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
 var propertyTypeExpressionLanguageScopePropEnum []interface{}
 
 func init() {
@@ -171,6 +211,25 @@ func (m *Property) validateExpressionLanguageScope(formats strfmt.Registry) erro
 	return nil
 }
 
+func (m *Property) validateResourceDefinition(formats strfmt.Registry) error {
+	if swag.IsZero(m.ResourceDefinition) { // not required
+		return nil
+	}
+
+	if m.ResourceDefinition != nil {
+		if err := m.ResourceDefinition.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("resourceDefinition")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("resourceDefinition")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 // ContextValidate validate this property based on the context it is used
 func (m *Property) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
@@ -180,6 +239,14 @@ func (m *Property) ContextValidate(ctx context.Context, formats strfmt.Registry)
 	}
 
 	if err := m.contextValidateControllerServiceDefinition(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateDependencies(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateResourceDefinition(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -217,6 +284,42 @@ func (m *Property) contextValidateControllerServiceDefinition(ctx context.Contex
 				return ve.ValidateName("controllerServiceDefinition")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("controllerServiceDefinition")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *Property) contextValidateDependencies(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Dependencies); i++ {
+
+		if m.Dependencies[i] != nil {
+			if err := m.Dependencies[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("dependencies" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("dependencies" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *Property) contextValidateResourceDefinition(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ResourceDefinition != nil {
+		if err := m.ResourceDefinition.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("resourceDefinition")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("resourceDefinition")
 			}
 			return err
 		}

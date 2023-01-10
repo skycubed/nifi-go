@@ -53,10 +53,12 @@ func NewStopVersionControlParamsWithHTTPClient(client *http.Client) *StopVersion
 	}
 }
 
-/* StopVersionControlParams contains all the parameters to send to the API endpoint
-   for the stop version control operation.
+/*
+StopVersionControlParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the stop version control operation.
+
+	Typically these are written to a http.Request.
 */
 type StopVersionControlParams struct {
 

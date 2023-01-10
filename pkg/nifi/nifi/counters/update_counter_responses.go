@@ -69,7 +69,8 @@ func NewUpdateCounterOK() *UpdateCounterOK {
 	return &UpdateCounterOK{}
 }
 
-/* UpdateCounterOK describes a response with status code 200, with default header values.
+/*
+UpdateCounterOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,39 @@ type UpdateCounterOK struct {
 	Payload *models.CounterEntity
 }
 
+// IsSuccess returns true when this update counter o k response has a 2xx status code
+func (o *UpdateCounterOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this update counter o k response has a 3xx status code
+func (o *UpdateCounterOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update counter o k response has a 4xx status code
+func (o *UpdateCounterOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this update counter o k response has a 5xx status code
+func (o *UpdateCounterOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update counter o k response a status code equal to that given
+func (o *UpdateCounterOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *UpdateCounterOK) Error() string {
 	return fmt.Sprintf("[PUT /counters/{id}][%d] updateCounterOK  %+v", 200, o.Payload)
 }
+
+func (o *UpdateCounterOK) String() string {
+	return fmt.Sprintf("[PUT /counters/{id}][%d] updateCounterOK  %+v", 200, o.Payload)
+}
+
 func (o *UpdateCounterOK) GetPayload() *models.CounterEntity {
 	return o.Payload
 }
@@ -101,14 +132,44 @@ func NewUpdateCounterBadRequest() *UpdateCounterBadRequest {
 	return &UpdateCounterBadRequest{}
 }
 
-/* UpdateCounterBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateCounterBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type UpdateCounterBadRequest struct {
 }
 
+// IsSuccess returns true when this update counter bad request response has a 2xx status code
+func (o *UpdateCounterBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update counter bad request response has a 3xx status code
+func (o *UpdateCounterBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update counter bad request response has a 4xx status code
+func (o *UpdateCounterBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update counter bad request response has a 5xx status code
+func (o *UpdateCounterBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update counter bad request response a status code equal to that given
+func (o *UpdateCounterBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *UpdateCounterBadRequest) Error() string {
+	return fmt.Sprintf("[PUT /counters/{id}][%d] updateCounterBadRequest ", 400)
+}
+
+func (o *UpdateCounterBadRequest) String() string {
 	return fmt.Sprintf("[PUT /counters/{id}][%d] updateCounterBadRequest ", 400)
 }
 
@@ -122,14 +183,44 @@ func NewUpdateCounterUnauthorized() *UpdateCounterUnauthorized {
 	return &UpdateCounterUnauthorized{}
 }
 
-/* UpdateCounterUnauthorized describes a response with status code 401, with default header values.
+/*
+UpdateCounterUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type UpdateCounterUnauthorized struct {
 }
 
+// IsSuccess returns true when this update counter unauthorized response has a 2xx status code
+func (o *UpdateCounterUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update counter unauthorized response has a 3xx status code
+func (o *UpdateCounterUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update counter unauthorized response has a 4xx status code
+func (o *UpdateCounterUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update counter unauthorized response has a 5xx status code
+func (o *UpdateCounterUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update counter unauthorized response a status code equal to that given
+func (o *UpdateCounterUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *UpdateCounterUnauthorized) Error() string {
+	return fmt.Sprintf("[PUT /counters/{id}][%d] updateCounterUnauthorized ", 401)
+}
+
+func (o *UpdateCounterUnauthorized) String() string {
 	return fmt.Sprintf("[PUT /counters/{id}][%d] updateCounterUnauthorized ", 401)
 }
 
@@ -143,14 +234,44 @@ func NewUpdateCounterForbidden() *UpdateCounterForbidden {
 	return &UpdateCounterForbidden{}
 }
 
-/* UpdateCounterForbidden describes a response with status code 403, with default header values.
+/*
+UpdateCounterForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type UpdateCounterForbidden struct {
 }
 
+// IsSuccess returns true when this update counter forbidden response has a 2xx status code
+func (o *UpdateCounterForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update counter forbidden response has a 3xx status code
+func (o *UpdateCounterForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update counter forbidden response has a 4xx status code
+func (o *UpdateCounterForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update counter forbidden response has a 5xx status code
+func (o *UpdateCounterForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update counter forbidden response a status code equal to that given
+func (o *UpdateCounterForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *UpdateCounterForbidden) Error() string {
+	return fmt.Sprintf("[PUT /counters/{id}][%d] updateCounterForbidden ", 403)
+}
+
+func (o *UpdateCounterForbidden) String() string {
 	return fmt.Sprintf("[PUT /counters/{id}][%d] updateCounterForbidden ", 403)
 }
 
@@ -164,14 +285,44 @@ func NewUpdateCounterNotFound() *UpdateCounterNotFound {
 	return &UpdateCounterNotFound{}
 }
 
-/* UpdateCounterNotFound describes a response with status code 404, with default header values.
+/*
+UpdateCounterNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type UpdateCounterNotFound struct {
 }
 
+// IsSuccess returns true when this update counter not found response has a 2xx status code
+func (o *UpdateCounterNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update counter not found response has a 3xx status code
+func (o *UpdateCounterNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update counter not found response has a 4xx status code
+func (o *UpdateCounterNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update counter not found response has a 5xx status code
+func (o *UpdateCounterNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update counter not found response a status code equal to that given
+func (o *UpdateCounterNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *UpdateCounterNotFound) Error() string {
+	return fmt.Sprintf("[PUT /counters/{id}][%d] updateCounterNotFound ", 404)
+}
+
+func (o *UpdateCounterNotFound) String() string {
 	return fmt.Sprintf("[PUT /counters/{id}][%d] updateCounterNotFound ", 404)
 }
 
@@ -185,14 +336,44 @@ func NewUpdateCounterConflict() *UpdateCounterConflict {
 	return &UpdateCounterConflict{}
 }
 
-/* UpdateCounterConflict describes a response with status code 409, with default header values.
+/*
+UpdateCounterConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type UpdateCounterConflict struct {
 }
 
+// IsSuccess returns true when this update counter conflict response has a 2xx status code
+func (o *UpdateCounterConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update counter conflict response has a 3xx status code
+func (o *UpdateCounterConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update counter conflict response has a 4xx status code
+func (o *UpdateCounterConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update counter conflict response has a 5xx status code
+func (o *UpdateCounterConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update counter conflict response a status code equal to that given
+func (o *UpdateCounterConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *UpdateCounterConflict) Error() string {
+	return fmt.Sprintf("[PUT /counters/{id}][%d] updateCounterConflict ", 409)
+}
+
+func (o *UpdateCounterConflict) String() string {
 	return fmt.Sprintf("[PUT /counters/{id}][%d] updateCounterConflict ", 409)
 }
 

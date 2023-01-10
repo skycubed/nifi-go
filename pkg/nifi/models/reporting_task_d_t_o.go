@@ -26,7 +26,7 @@ type ReportingTaskDTO struct {
 	// The annotation data for the repoting task. This is how the custom UI relays configuration to the reporting task.
 	AnnotationData string `json:"annotationData,omitempty"`
 
-	// The details of the artifact that bundled this processor type.
+	// The details of the artifact that bundled this reporting task type.
 	Bundle *BundleDTO `json:"bundle,omitempty"`
 
 	// The comments of the reporting task.
@@ -71,15 +71,22 @@ type ReportingTaskDTO struct {
 	// Whether the reporting task requires elevated privileges.
 	Restricted bool `json:"restricted,omitempty"`
 
-	// The frequency with which to schedule the reporting task. The format of the value willd epend on the valud of the schedulingStrategy.
+	// The frequency with which to schedule the reporting task. The format of the value will depend on the value of the schedulingStrategy.
 	SchedulingPeriod string `json:"schedulingPeriod,omitempty"`
 
 	// The scheduling strategy that determines how the schedulingPeriod value should be interpreted.
 	SchedulingStrategy string `json:"schedulingStrategy,omitempty"`
 
+	// Set of sensitive dynamic property names
+	// Unique: true
+	SensitiveDynamicPropertyNames []string `json:"sensitiveDynamicPropertyNames"`
+
 	// The state of the reporting task.
 	// Enum: [RUNNING STOPPED DISABLED]
 	State string `json:"state,omitempty"`
+
+	// Whether the reporting task supports sensitive dynamic properties.
+	SupportsSensitiveDynamicProperties bool `json:"supportsSensitiveDynamicProperties,omitempty"`
 
 	// The fully qualified type of the reporting task.
 	Type string `json:"type,omitempty"`
@@ -87,7 +94,7 @@ type ReportingTaskDTO struct {
 	// Gets the validation errors from the reporting task. These validation errors represent the problems with the reporting task that must be resolved before it can be scheduled to run.
 	ValidationErrors []string `json:"validationErrors"`
 
-	// Indicates whether the Processor is valid, invalid, or still in the process of validating (i.e., it is unknown whether or not the Processor is valid)
+	// Indicates whether the Reporting Task is valid, invalid, or still in the process of validating (i.e., it is unknown whether or not the Reporting Task is valid)
 	// Enum: [VALID INVALID VALIDATING]
 	ValidationStatus string `json:"validationStatus,omitempty"`
 
@@ -108,6 +115,10 @@ func (m *ReportingTaskDTO) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validatePosition(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateSensitiveDynamicPropertyNames(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -184,6 +195,18 @@ func (m *ReportingTaskDTO) validatePosition(formats strfmt.Registry) error {
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *ReportingTaskDTO) validateSensitiveDynamicPropertyNames(formats strfmt.Registry) error {
+	if swag.IsZero(m.SensitiveDynamicPropertyNames) { // not required
+		return nil
+	}
+
+	if err := validate.UniqueItems("sensitiveDynamicPropertyNames", "body", m.SensitiveDynamicPropertyNames); err != nil {
+		return err
 	}
 
 	return nil

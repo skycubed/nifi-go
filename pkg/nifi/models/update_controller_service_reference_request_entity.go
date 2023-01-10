@@ -32,6 +32,9 @@ type UpdateControllerServiceReferenceRequestEntity struct {
 	// The new state of the references for the controller service.
 	// Enum: [ENABLED DISABLED RUNNING STOPPED]
 	State string `json:"state,omitempty"`
+
+	// Indicates whether or not the response should only include fields necessary for rendering the NiFi User Interface. As such, when this value is set to true, some fields may be returned as null values, and the selected fields may change at any time without notice. As a result, this value should not be set to true by any client other than the UI.
+	UIOnly bool `json:"uiOnly,omitempty"`
 }
 
 // Validate validates this update controller service reference request entity

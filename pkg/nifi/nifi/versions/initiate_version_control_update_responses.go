@@ -69,7 +69,8 @@ func NewInitiateVersionControlUpdateOK() *InitiateVersionControlUpdateOK {
 	return &InitiateVersionControlUpdateOK{}
 }
 
-/* InitiateVersionControlUpdateOK describes a response with status code 200, with default header values.
+/*
+InitiateVersionControlUpdateOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,39 @@ type InitiateVersionControlUpdateOK struct {
 	Payload *models.VersionedFlowUpdateRequestEntity
 }
 
+// IsSuccess returns true when this initiate version control update o k response has a 2xx status code
+func (o *InitiateVersionControlUpdateOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this initiate version control update o k response has a 3xx status code
+func (o *InitiateVersionControlUpdateOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this initiate version control update o k response has a 4xx status code
+func (o *InitiateVersionControlUpdateOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this initiate version control update o k response has a 5xx status code
+func (o *InitiateVersionControlUpdateOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this initiate version control update o k response a status code equal to that given
+func (o *InitiateVersionControlUpdateOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *InitiateVersionControlUpdateOK) Error() string {
 	return fmt.Sprintf("[POST /versions/update-requests/process-groups/{id}][%d] initiateVersionControlUpdateOK  %+v", 200, o.Payload)
 }
+
+func (o *InitiateVersionControlUpdateOK) String() string {
+	return fmt.Sprintf("[POST /versions/update-requests/process-groups/{id}][%d] initiateVersionControlUpdateOK  %+v", 200, o.Payload)
+}
+
 func (o *InitiateVersionControlUpdateOK) GetPayload() *models.VersionedFlowUpdateRequestEntity {
 	return o.Payload
 }
@@ -101,14 +132,44 @@ func NewInitiateVersionControlUpdateBadRequest() *InitiateVersionControlUpdateBa
 	return &InitiateVersionControlUpdateBadRequest{}
 }
 
-/* InitiateVersionControlUpdateBadRequest describes a response with status code 400, with default header values.
+/*
+InitiateVersionControlUpdateBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type InitiateVersionControlUpdateBadRequest struct {
 }
 
+// IsSuccess returns true when this initiate version control update bad request response has a 2xx status code
+func (o *InitiateVersionControlUpdateBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this initiate version control update bad request response has a 3xx status code
+func (o *InitiateVersionControlUpdateBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this initiate version control update bad request response has a 4xx status code
+func (o *InitiateVersionControlUpdateBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this initiate version control update bad request response has a 5xx status code
+func (o *InitiateVersionControlUpdateBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this initiate version control update bad request response a status code equal to that given
+func (o *InitiateVersionControlUpdateBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *InitiateVersionControlUpdateBadRequest) Error() string {
+	return fmt.Sprintf("[POST /versions/update-requests/process-groups/{id}][%d] initiateVersionControlUpdateBadRequest ", 400)
+}
+
+func (o *InitiateVersionControlUpdateBadRequest) String() string {
 	return fmt.Sprintf("[POST /versions/update-requests/process-groups/{id}][%d] initiateVersionControlUpdateBadRequest ", 400)
 }
 
@@ -122,14 +183,44 @@ func NewInitiateVersionControlUpdateUnauthorized() *InitiateVersionControlUpdate
 	return &InitiateVersionControlUpdateUnauthorized{}
 }
 
-/* InitiateVersionControlUpdateUnauthorized describes a response with status code 401, with default header values.
+/*
+InitiateVersionControlUpdateUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type InitiateVersionControlUpdateUnauthorized struct {
 }
 
+// IsSuccess returns true when this initiate version control update unauthorized response has a 2xx status code
+func (o *InitiateVersionControlUpdateUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this initiate version control update unauthorized response has a 3xx status code
+func (o *InitiateVersionControlUpdateUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this initiate version control update unauthorized response has a 4xx status code
+func (o *InitiateVersionControlUpdateUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this initiate version control update unauthorized response has a 5xx status code
+func (o *InitiateVersionControlUpdateUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this initiate version control update unauthorized response a status code equal to that given
+func (o *InitiateVersionControlUpdateUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *InitiateVersionControlUpdateUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /versions/update-requests/process-groups/{id}][%d] initiateVersionControlUpdateUnauthorized ", 401)
+}
+
+func (o *InitiateVersionControlUpdateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /versions/update-requests/process-groups/{id}][%d] initiateVersionControlUpdateUnauthorized ", 401)
 }
 
@@ -143,14 +234,44 @@ func NewInitiateVersionControlUpdateForbidden() *InitiateVersionControlUpdateFor
 	return &InitiateVersionControlUpdateForbidden{}
 }
 
-/* InitiateVersionControlUpdateForbidden describes a response with status code 403, with default header values.
+/*
+InitiateVersionControlUpdateForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type InitiateVersionControlUpdateForbidden struct {
 }
 
+// IsSuccess returns true when this initiate version control update forbidden response has a 2xx status code
+func (o *InitiateVersionControlUpdateForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this initiate version control update forbidden response has a 3xx status code
+func (o *InitiateVersionControlUpdateForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this initiate version control update forbidden response has a 4xx status code
+func (o *InitiateVersionControlUpdateForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this initiate version control update forbidden response has a 5xx status code
+func (o *InitiateVersionControlUpdateForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this initiate version control update forbidden response a status code equal to that given
+func (o *InitiateVersionControlUpdateForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *InitiateVersionControlUpdateForbidden) Error() string {
+	return fmt.Sprintf("[POST /versions/update-requests/process-groups/{id}][%d] initiateVersionControlUpdateForbidden ", 403)
+}
+
+func (o *InitiateVersionControlUpdateForbidden) String() string {
 	return fmt.Sprintf("[POST /versions/update-requests/process-groups/{id}][%d] initiateVersionControlUpdateForbidden ", 403)
 }
 
@@ -164,14 +285,44 @@ func NewInitiateVersionControlUpdateNotFound() *InitiateVersionControlUpdateNotF
 	return &InitiateVersionControlUpdateNotFound{}
 }
 
-/* InitiateVersionControlUpdateNotFound describes a response with status code 404, with default header values.
+/*
+InitiateVersionControlUpdateNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type InitiateVersionControlUpdateNotFound struct {
 }
 
+// IsSuccess returns true when this initiate version control update not found response has a 2xx status code
+func (o *InitiateVersionControlUpdateNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this initiate version control update not found response has a 3xx status code
+func (o *InitiateVersionControlUpdateNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this initiate version control update not found response has a 4xx status code
+func (o *InitiateVersionControlUpdateNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this initiate version control update not found response has a 5xx status code
+func (o *InitiateVersionControlUpdateNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this initiate version control update not found response a status code equal to that given
+func (o *InitiateVersionControlUpdateNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *InitiateVersionControlUpdateNotFound) Error() string {
+	return fmt.Sprintf("[POST /versions/update-requests/process-groups/{id}][%d] initiateVersionControlUpdateNotFound ", 404)
+}
+
+func (o *InitiateVersionControlUpdateNotFound) String() string {
 	return fmt.Sprintf("[POST /versions/update-requests/process-groups/{id}][%d] initiateVersionControlUpdateNotFound ", 404)
 }
 
@@ -185,14 +336,44 @@ func NewInitiateVersionControlUpdateConflict() *InitiateVersionControlUpdateConf
 	return &InitiateVersionControlUpdateConflict{}
 }
 
-/* InitiateVersionControlUpdateConflict describes a response with status code 409, with default header values.
+/*
+InitiateVersionControlUpdateConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type InitiateVersionControlUpdateConflict struct {
 }
 
+// IsSuccess returns true when this initiate version control update conflict response has a 2xx status code
+func (o *InitiateVersionControlUpdateConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this initiate version control update conflict response has a 3xx status code
+func (o *InitiateVersionControlUpdateConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this initiate version control update conflict response has a 4xx status code
+func (o *InitiateVersionControlUpdateConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this initiate version control update conflict response has a 5xx status code
+func (o *InitiateVersionControlUpdateConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this initiate version control update conflict response a status code equal to that given
+func (o *InitiateVersionControlUpdateConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *InitiateVersionControlUpdateConflict) Error() string {
+	return fmt.Sprintf("[POST /versions/update-requests/process-groups/{id}][%d] initiateVersionControlUpdateConflict ", 409)
+}
+
+func (o *InitiateVersionControlUpdateConflict) String() string {
 	return fmt.Sprintf("[POST /versions/update-requests/process-groups/{id}][%d] initiateVersionControlUpdateConflict ", 409)
 }
 

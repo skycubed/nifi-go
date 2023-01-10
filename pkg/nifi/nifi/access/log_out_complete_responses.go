@@ -48,14 +48,44 @@ func NewLogOutCompleteOK() *LogOutCompleteOK {
 	return &LogOutCompleteOK{}
 }
 
-/* LogOutCompleteOK describes a response with status code 200, with default header values.
+/*
+LogOutCompleteOK describes a response with status code 200, with default header values.
 
 User was logged out successfully.
 */
 type LogOutCompleteOK struct {
 }
 
+// IsSuccess returns true when this log out complete o k response has a 2xx status code
+func (o *LogOutCompleteOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this log out complete o k response has a 3xx status code
+func (o *LogOutCompleteOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this log out complete o k response has a 4xx status code
+func (o *LogOutCompleteOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this log out complete o k response has a 5xx status code
+func (o *LogOutCompleteOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this log out complete o k response a status code equal to that given
+func (o *LogOutCompleteOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *LogOutCompleteOK) Error() string {
+	return fmt.Sprintf("[GET /access/logout/complete][%d] logOutCompleteOK ", 200)
+}
+
+func (o *LogOutCompleteOK) String() string {
 	return fmt.Sprintf("[GET /access/logout/complete][%d] logOutCompleteOK ", 200)
 }
 
@@ -69,14 +99,44 @@ func NewLogOutCompleteUnauthorized() *LogOutCompleteUnauthorized {
 	return &LogOutCompleteUnauthorized{}
 }
 
-/* LogOutCompleteUnauthorized describes a response with status code 401, with default header values.
+/*
+LogOutCompleteUnauthorized describes a response with status code 401, with default header values.
 
 Authentication token provided was empty or not in the correct JWT format.
 */
 type LogOutCompleteUnauthorized struct {
 }
 
+// IsSuccess returns true when this log out complete unauthorized response has a 2xx status code
+func (o *LogOutCompleteUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this log out complete unauthorized response has a 3xx status code
+func (o *LogOutCompleteUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this log out complete unauthorized response has a 4xx status code
+func (o *LogOutCompleteUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this log out complete unauthorized response has a 5xx status code
+func (o *LogOutCompleteUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this log out complete unauthorized response a status code equal to that given
+func (o *LogOutCompleteUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *LogOutCompleteUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /access/logout/complete][%d] logOutCompleteUnauthorized ", 401)
+}
+
+func (o *LogOutCompleteUnauthorized) String() string {
 	return fmt.Sprintf("[GET /access/logout/complete][%d] logOutCompleteUnauthorized ", 401)
 }
 
@@ -90,14 +150,44 @@ func NewLogOutCompleteInternalServerError() *LogOutCompleteInternalServerError {
 	return &LogOutCompleteInternalServerError{}
 }
 
-/* LogOutCompleteInternalServerError describes a response with status code 500, with default header values.
+/*
+LogOutCompleteInternalServerError describes a response with status code 500, with default header values.
 
 Client failed to log out.
 */
 type LogOutCompleteInternalServerError struct {
 }
 
+// IsSuccess returns true when this log out complete internal server error response has a 2xx status code
+func (o *LogOutCompleteInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this log out complete internal server error response has a 3xx status code
+func (o *LogOutCompleteInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this log out complete internal server error response has a 4xx status code
+func (o *LogOutCompleteInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this log out complete internal server error response has a 5xx status code
+func (o *LogOutCompleteInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this log out complete internal server error response a status code equal to that given
+func (o *LogOutCompleteInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *LogOutCompleteInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /access/logout/complete][%d] logOutCompleteInternalServerError ", 500)
+}
+
+func (o *LogOutCompleteInternalServerError) String() string {
 	return fmt.Sprintf("[GET /access/logout/complete][%d] logOutCompleteInternalServerError ", 500)
 }
 

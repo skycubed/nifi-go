@@ -69,7 +69,8 @@ func NewCreateFlowOK() *CreateFlowOK {
 	return &CreateFlowOK{}
 }
 
-/* CreateFlowOK describes a response with status code 200, with default header values.
+/*
+CreateFlowOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,39 @@ type CreateFlowOK struct {
 	Payload *models.VersionedFlow
 }
 
+// IsSuccess returns true when this create flow o k response has a 2xx status code
+func (o *CreateFlowOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create flow o k response has a 3xx status code
+func (o *CreateFlowOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create flow o k response has a 4xx status code
+func (o *CreateFlowOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create flow o k response has a 5xx status code
+func (o *CreateFlowOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create flow o k response a status code equal to that given
+func (o *CreateFlowOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *CreateFlowOK) Error() string {
 	return fmt.Sprintf("[POST /buckets/{bucketId}/flows][%d] createFlowOK  %+v", 200, o.Payload)
 }
+
+func (o *CreateFlowOK) String() string {
+	return fmt.Sprintf("[POST /buckets/{bucketId}/flows][%d] createFlowOK  %+v", 200, o.Payload)
+}
+
 func (o *CreateFlowOK) GetPayload() *models.VersionedFlow {
 	return o.Payload
 }
@@ -101,14 +132,44 @@ func NewCreateFlowBadRequest() *CreateFlowBadRequest {
 	return &CreateFlowBadRequest{}
 }
 
-/* CreateFlowBadRequest describes a response with status code 400, with default header values.
+/*
+CreateFlowBadRequest describes a response with status code 400, with default header values.
 
 NiFi Registry was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type CreateFlowBadRequest struct {
 }
 
+// IsSuccess returns true when this create flow bad request response has a 2xx status code
+func (o *CreateFlowBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create flow bad request response has a 3xx status code
+func (o *CreateFlowBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create flow bad request response has a 4xx status code
+func (o *CreateFlowBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create flow bad request response has a 5xx status code
+func (o *CreateFlowBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create flow bad request response a status code equal to that given
+func (o *CreateFlowBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CreateFlowBadRequest) Error() string {
+	return fmt.Sprintf("[POST /buckets/{bucketId}/flows][%d] createFlowBadRequest ", 400)
+}
+
+func (o *CreateFlowBadRequest) String() string {
 	return fmt.Sprintf("[POST /buckets/{bucketId}/flows][%d] createFlowBadRequest ", 400)
 }
 
@@ -122,14 +183,44 @@ func NewCreateFlowUnauthorized() *CreateFlowUnauthorized {
 	return &CreateFlowUnauthorized{}
 }
 
-/* CreateFlowUnauthorized describes a response with status code 401, with default header values.
+/*
+CreateFlowUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type CreateFlowUnauthorized struct {
 }
 
+// IsSuccess returns true when this create flow unauthorized response has a 2xx status code
+func (o *CreateFlowUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create flow unauthorized response has a 3xx status code
+func (o *CreateFlowUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create flow unauthorized response has a 4xx status code
+func (o *CreateFlowUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create flow unauthorized response has a 5xx status code
+func (o *CreateFlowUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create flow unauthorized response a status code equal to that given
+func (o *CreateFlowUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *CreateFlowUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /buckets/{bucketId}/flows][%d] createFlowUnauthorized ", 401)
+}
+
+func (o *CreateFlowUnauthorized) String() string {
 	return fmt.Sprintf("[POST /buckets/{bucketId}/flows][%d] createFlowUnauthorized ", 401)
 }
 
@@ -143,14 +234,44 @@ func NewCreateFlowForbidden() *CreateFlowForbidden {
 	return &CreateFlowForbidden{}
 }
 
-/* CreateFlowForbidden describes a response with status code 403, with default header values.
+/*
+CreateFlowForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type CreateFlowForbidden struct {
 }
 
+// IsSuccess returns true when this create flow forbidden response has a 2xx status code
+func (o *CreateFlowForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create flow forbidden response has a 3xx status code
+func (o *CreateFlowForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create flow forbidden response has a 4xx status code
+func (o *CreateFlowForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create flow forbidden response has a 5xx status code
+func (o *CreateFlowForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create flow forbidden response a status code equal to that given
+func (o *CreateFlowForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CreateFlowForbidden) Error() string {
+	return fmt.Sprintf("[POST /buckets/{bucketId}/flows][%d] createFlowForbidden ", 403)
+}
+
+func (o *CreateFlowForbidden) String() string {
 	return fmt.Sprintf("[POST /buckets/{bucketId}/flows][%d] createFlowForbidden ", 403)
 }
 
@@ -164,14 +285,44 @@ func NewCreateFlowNotFound() *CreateFlowNotFound {
 	return &CreateFlowNotFound{}
 }
 
-/* CreateFlowNotFound describes a response with status code 404, with default header values.
+/*
+CreateFlowNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type CreateFlowNotFound struct {
 }
 
+// IsSuccess returns true when this create flow not found response has a 2xx status code
+func (o *CreateFlowNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create flow not found response has a 3xx status code
+func (o *CreateFlowNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create flow not found response has a 4xx status code
+func (o *CreateFlowNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create flow not found response has a 5xx status code
+func (o *CreateFlowNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create flow not found response a status code equal to that given
+func (o *CreateFlowNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *CreateFlowNotFound) Error() string {
+	return fmt.Sprintf("[POST /buckets/{bucketId}/flows][%d] createFlowNotFound ", 404)
+}
+
+func (o *CreateFlowNotFound) String() string {
 	return fmt.Sprintf("[POST /buckets/{bucketId}/flows][%d] createFlowNotFound ", 404)
 }
 
@@ -185,14 +336,44 @@ func NewCreateFlowConflict() *CreateFlowConflict {
 	return &CreateFlowConflict{}
 }
 
-/* CreateFlowConflict describes a response with status code 409, with default header values.
+/*
+CreateFlowConflict describes a response with status code 409, with default header values.
 
 NiFi Registry was unable to complete the request because it assumes a server state that is not valid.
 */
 type CreateFlowConflict struct {
 }
 
+// IsSuccess returns true when this create flow conflict response has a 2xx status code
+func (o *CreateFlowConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create flow conflict response has a 3xx status code
+func (o *CreateFlowConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create flow conflict response has a 4xx status code
+func (o *CreateFlowConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create flow conflict response has a 5xx status code
+func (o *CreateFlowConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create flow conflict response a status code equal to that given
+func (o *CreateFlowConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *CreateFlowConflict) Error() string {
+	return fmt.Sprintf("[POST /buckets/{bucketId}/flows][%d] createFlowConflict ", 409)
+}
+
+func (o *CreateFlowConflict) String() string {
 	return fmt.Sprintf("[POST /buckets/{bucketId}/flows][%d] createFlowConflict ", 409)
 }
 

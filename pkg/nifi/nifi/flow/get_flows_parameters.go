@@ -52,10 +52,12 @@ func NewGetFlowsParamsWithHTTPClient(client *http.Client) *GetFlowsParams {
 	}
 }
 
-/* GetFlowsParams contains all the parameters to send to the API endpoint
-   for the get flows operation.
+/*
+GetFlowsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get flows operation.
+
+	Typically these are written to a http.Request.
 */
 type GetFlowsParams struct {
 
@@ -67,7 +69,7 @@ type GetFlowsParams struct {
 
 	/* RegistryID.
 
-	   The registry id.
+	   The registry client id.
 	*/
 	RegistryID string
 

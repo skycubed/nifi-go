@@ -52,10 +52,12 @@ func NewKnoxLogoutParamsWithHTTPClient(client *http.Client) *KnoxLogoutParams {
 	}
 }
 
-/* KnoxLogoutParams contains all the parameters to send to the API endpoint
-   for the knox logout operation.
+/*
+KnoxLogoutParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the knox logout operation.
+
+	Typically these are written to a http.Request.
 */
 type KnoxLogoutParams struct {
 	timeout    time.Duration

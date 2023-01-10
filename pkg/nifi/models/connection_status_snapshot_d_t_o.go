@@ -33,6 +33,9 @@ type ConnectionStatusSnapshotDTO struct {
 	// The name of the destination of the connection.
 	DestinationName string `json:"destinationName,omitempty"`
 
+	// The availability of FlowFiles in this connection
+	FlowFileAvailability string `json:"flowFileAvailability,omitempty"`
+
 	// The number of FlowFiles that have come into the connection in the last 5 minutes.
 	FlowFilesIn int32 `json:"flowFilesIn,omitempty"`
 

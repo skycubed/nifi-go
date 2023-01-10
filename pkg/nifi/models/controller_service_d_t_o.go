@@ -24,6 +24,9 @@ type ControllerServiceDTO struct {
 	// The annotation for the controller service. This is how the custom UI relays configuration to the controller service.
 	AnnotationData string `json:"annotationData,omitempty"`
 
+	// The level at which the controller service will report bulletins.
+	BulletinLevel string `json:"bulletinLevel,omitempty"`
+
 	// The details of the artifact that bundled this processor type.
 	Bundle *BundleDTO `json:"bundle,omitempty"`
 
@@ -73,9 +76,16 @@ type ControllerServiceDTO struct {
 	// Whether the controller service requires elevated privileges.
 	Restricted bool `json:"restricted,omitempty"`
 
+	// Set of sensitive dynamic property names
+	// Unique: true
+	SensitiveDynamicPropertyNames []string `json:"sensitiveDynamicPropertyNames"`
+
 	// The state of the controller service.
 	// Enum: [ENABLED ENABLING DISABLED DISABLING]
 	State string `json:"state,omitempty"`
+
+	// Whether the controller service supports sensitive dynamic properties.
+	SupportsSensitiveDynamicProperties bool `json:"supportsSensitiveDynamicProperties,omitempty"`
 
 	// The type of the controller service.
 	Type string `json:"type,omitempty"`
@@ -112,6 +122,10 @@ func (m *ControllerServiceDTO) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateReferencingComponents(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateSensitiveDynamicPropertyNames(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -244,6 +258,18 @@ func (m *ControllerServiceDTO) validateReferencingComponents(formats strfmt.Regi
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *ControllerServiceDTO) validateSensitiveDynamicPropertyNames(formats strfmt.Registry) error {
+	if swag.IsZero(m.SensitiveDynamicPropertyNames) { // not required
+		return nil
+	}
+
+	if err := validate.UniqueItems("sensitiveDynamicPropertyNames", "body", m.SensitiveDynamicPropertyNames); err != nil {
+		return err
 	}
 
 	return nil

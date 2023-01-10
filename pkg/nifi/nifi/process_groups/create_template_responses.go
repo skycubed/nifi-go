@@ -69,7 +69,8 @@ func NewCreateTemplateCreated() *CreateTemplateCreated {
 	return &CreateTemplateCreated{}
 }
 
-/* CreateTemplateCreated describes a response with status code 201, with default header values.
+/*
+CreateTemplateCreated describes a response with status code 201, with default header values.
 
 successful operation
 */
@@ -77,9 +78,39 @@ type CreateTemplateCreated struct {
 	Payload *models.TemplateEntity
 }
 
+// IsSuccess returns true when this create template created response has a 2xx status code
+func (o *CreateTemplateCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create template created response has a 3xx status code
+func (o *CreateTemplateCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create template created response has a 4xx status code
+func (o *CreateTemplateCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create template created response has a 5xx status code
+func (o *CreateTemplateCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create template created response a status code equal to that given
+func (o *CreateTemplateCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *CreateTemplateCreated) Error() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/templates][%d] createTemplateCreated  %+v", 201, o.Payload)
 }
+
+func (o *CreateTemplateCreated) String() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/templates][%d] createTemplateCreated  %+v", 201, o.Payload)
+}
+
 func (o *CreateTemplateCreated) GetPayload() *models.TemplateEntity {
 	return o.Payload
 }
@@ -101,14 +132,44 @@ func NewCreateTemplateBadRequest() *CreateTemplateBadRequest {
 	return &CreateTemplateBadRequest{}
 }
 
-/* CreateTemplateBadRequest describes a response with status code 400, with default header values.
+/*
+CreateTemplateBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type CreateTemplateBadRequest struct {
 }
 
+// IsSuccess returns true when this create template bad request response has a 2xx status code
+func (o *CreateTemplateBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create template bad request response has a 3xx status code
+func (o *CreateTemplateBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create template bad request response has a 4xx status code
+func (o *CreateTemplateBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create template bad request response has a 5xx status code
+func (o *CreateTemplateBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create template bad request response a status code equal to that given
+func (o *CreateTemplateBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CreateTemplateBadRequest) Error() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/templates][%d] createTemplateBadRequest ", 400)
+}
+
+func (o *CreateTemplateBadRequest) String() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/templates][%d] createTemplateBadRequest ", 400)
 }
 
@@ -122,14 +183,44 @@ func NewCreateTemplateUnauthorized() *CreateTemplateUnauthorized {
 	return &CreateTemplateUnauthorized{}
 }
 
-/* CreateTemplateUnauthorized describes a response with status code 401, with default header values.
+/*
+CreateTemplateUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type CreateTemplateUnauthorized struct {
 }
 
+// IsSuccess returns true when this create template unauthorized response has a 2xx status code
+func (o *CreateTemplateUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create template unauthorized response has a 3xx status code
+func (o *CreateTemplateUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create template unauthorized response has a 4xx status code
+func (o *CreateTemplateUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create template unauthorized response has a 5xx status code
+func (o *CreateTemplateUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create template unauthorized response a status code equal to that given
+func (o *CreateTemplateUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *CreateTemplateUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/templates][%d] createTemplateUnauthorized ", 401)
+}
+
+func (o *CreateTemplateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/templates][%d] createTemplateUnauthorized ", 401)
 }
 
@@ -143,14 +234,44 @@ func NewCreateTemplateForbidden() *CreateTemplateForbidden {
 	return &CreateTemplateForbidden{}
 }
 
-/* CreateTemplateForbidden describes a response with status code 403, with default header values.
+/*
+CreateTemplateForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type CreateTemplateForbidden struct {
 }
 
+// IsSuccess returns true when this create template forbidden response has a 2xx status code
+func (o *CreateTemplateForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create template forbidden response has a 3xx status code
+func (o *CreateTemplateForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create template forbidden response has a 4xx status code
+func (o *CreateTemplateForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create template forbidden response has a 5xx status code
+func (o *CreateTemplateForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create template forbidden response a status code equal to that given
+func (o *CreateTemplateForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CreateTemplateForbidden) Error() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/templates][%d] createTemplateForbidden ", 403)
+}
+
+func (o *CreateTemplateForbidden) String() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/templates][%d] createTemplateForbidden ", 403)
 }
 
@@ -164,14 +285,44 @@ func NewCreateTemplateNotFound() *CreateTemplateNotFound {
 	return &CreateTemplateNotFound{}
 }
 
-/* CreateTemplateNotFound describes a response with status code 404, with default header values.
+/*
+CreateTemplateNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type CreateTemplateNotFound struct {
 }
 
+// IsSuccess returns true when this create template not found response has a 2xx status code
+func (o *CreateTemplateNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create template not found response has a 3xx status code
+func (o *CreateTemplateNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create template not found response has a 4xx status code
+func (o *CreateTemplateNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create template not found response has a 5xx status code
+func (o *CreateTemplateNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create template not found response a status code equal to that given
+func (o *CreateTemplateNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *CreateTemplateNotFound) Error() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/templates][%d] createTemplateNotFound ", 404)
+}
+
+func (o *CreateTemplateNotFound) String() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/templates][%d] createTemplateNotFound ", 404)
 }
 
@@ -185,14 +336,44 @@ func NewCreateTemplateConflict() *CreateTemplateConflict {
 	return &CreateTemplateConflict{}
 }
 
-/* CreateTemplateConflict describes a response with status code 409, with default header values.
+/*
+CreateTemplateConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type CreateTemplateConflict struct {
 }
 
+// IsSuccess returns true when this create template conflict response has a 2xx status code
+func (o *CreateTemplateConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create template conflict response has a 3xx status code
+func (o *CreateTemplateConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create template conflict response has a 4xx status code
+func (o *CreateTemplateConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create template conflict response has a 5xx status code
+func (o *CreateTemplateConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create template conflict response a status code equal to that given
+func (o *CreateTemplateConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *CreateTemplateConflict) Error() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/templates][%d] createTemplateConflict ", 409)
+}
+
+func (o *CreateTemplateConflict) String() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/templates][%d] createTemplateConflict ", 409)
 }
 

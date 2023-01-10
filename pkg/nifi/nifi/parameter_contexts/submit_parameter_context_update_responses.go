@@ -69,7 +69,8 @@ func NewSubmitParameterContextUpdateOK() *SubmitParameterContextUpdateOK {
 	return &SubmitParameterContextUpdateOK{}
 }
 
-/* SubmitParameterContextUpdateOK describes a response with status code 200, with default header values.
+/*
+SubmitParameterContextUpdateOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,39 @@ type SubmitParameterContextUpdateOK struct {
 	Payload *models.ParameterContextUpdateRequestEntity
 }
 
+// IsSuccess returns true when this submit parameter context update o k response has a 2xx status code
+func (o *SubmitParameterContextUpdateOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this submit parameter context update o k response has a 3xx status code
+func (o *SubmitParameterContextUpdateOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this submit parameter context update o k response has a 4xx status code
+func (o *SubmitParameterContextUpdateOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this submit parameter context update o k response has a 5xx status code
+func (o *SubmitParameterContextUpdateOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this submit parameter context update o k response a status code equal to that given
+func (o *SubmitParameterContextUpdateOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *SubmitParameterContextUpdateOK) Error() string {
 	return fmt.Sprintf("[POST /parameter-contexts/{contextId}/update-requests][%d] submitParameterContextUpdateOK  %+v", 200, o.Payload)
 }
+
+func (o *SubmitParameterContextUpdateOK) String() string {
+	return fmt.Sprintf("[POST /parameter-contexts/{contextId}/update-requests][%d] submitParameterContextUpdateOK  %+v", 200, o.Payload)
+}
+
 func (o *SubmitParameterContextUpdateOK) GetPayload() *models.ParameterContextUpdateRequestEntity {
 	return o.Payload
 }
@@ -101,14 +132,44 @@ func NewSubmitParameterContextUpdateBadRequest() *SubmitParameterContextUpdateBa
 	return &SubmitParameterContextUpdateBadRequest{}
 }
 
-/* SubmitParameterContextUpdateBadRequest describes a response with status code 400, with default header values.
+/*
+SubmitParameterContextUpdateBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type SubmitParameterContextUpdateBadRequest struct {
 }
 
+// IsSuccess returns true when this submit parameter context update bad request response has a 2xx status code
+func (o *SubmitParameterContextUpdateBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this submit parameter context update bad request response has a 3xx status code
+func (o *SubmitParameterContextUpdateBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this submit parameter context update bad request response has a 4xx status code
+func (o *SubmitParameterContextUpdateBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this submit parameter context update bad request response has a 5xx status code
+func (o *SubmitParameterContextUpdateBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this submit parameter context update bad request response a status code equal to that given
+func (o *SubmitParameterContextUpdateBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *SubmitParameterContextUpdateBadRequest) Error() string {
+	return fmt.Sprintf("[POST /parameter-contexts/{contextId}/update-requests][%d] submitParameterContextUpdateBadRequest ", 400)
+}
+
+func (o *SubmitParameterContextUpdateBadRequest) String() string {
 	return fmt.Sprintf("[POST /parameter-contexts/{contextId}/update-requests][%d] submitParameterContextUpdateBadRequest ", 400)
 }
 
@@ -122,14 +183,44 @@ func NewSubmitParameterContextUpdateUnauthorized() *SubmitParameterContextUpdate
 	return &SubmitParameterContextUpdateUnauthorized{}
 }
 
-/* SubmitParameterContextUpdateUnauthorized describes a response with status code 401, with default header values.
+/*
+SubmitParameterContextUpdateUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type SubmitParameterContextUpdateUnauthorized struct {
 }
 
+// IsSuccess returns true when this submit parameter context update unauthorized response has a 2xx status code
+func (o *SubmitParameterContextUpdateUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this submit parameter context update unauthorized response has a 3xx status code
+func (o *SubmitParameterContextUpdateUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this submit parameter context update unauthorized response has a 4xx status code
+func (o *SubmitParameterContextUpdateUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this submit parameter context update unauthorized response has a 5xx status code
+func (o *SubmitParameterContextUpdateUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this submit parameter context update unauthorized response a status code equal to that given
+func (o *SubmitParameterContextUpdateUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *SubmitParameterContextUpdateUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /parameter-contexts/{contextId}/update-requests][%d] submitParameterContextUpdateUnauthorized ", 401)
+}
+
+func (o *SubmitParameterContextUpdateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /parameter-contexts/{contextId}/update-requests][%d] submitParameterContextUpdateUnauthorized ", 401)
 }
 
@@ -143,14 +234,44 @@ func NewSubmitParameterContextUpdateForbidden() *SubmitParameterContextUpdateFor
 	return &SubmitParameterContextUpdateForbidden{}
 }
 
-/* SubmitParameterContextUpdateForbidden describes a response with status code 403, with default header values.
+/*
+SubmitParameterContextUpdateForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type SubmitParameterContextUpdateForbidden struct {
 }
 
+// IsSuccess returns true when this submit parameter context update forbidden response has a 2xx status code
+func (o *SubmitParameterContextUpdateForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this submit parameter context update forbidden response has a 3xx status code
+func (o *SubmitParameterContextUpdateForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this submit parameter context update forbidden response has a 4xx status code
+func (o *SubmitParameterContextUpdateForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this submit parameter context update forbidden response has a 5xx status code
+func (o *SubmitParameterContextUpdateForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this submit parameter context update forbidden response a status code equal to that given
+func (o *SubmitParameterContextUpdateForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *SubmitParameterContextUpdateForbidden) Error() string {
+	return fmt.Sprintf("[POST /parameter-contexts/{contextId}/update-requests][%d] submitParameterContextUpdateForbidden ", 403)
+}
+
+func (o *SubmitParameterContextUpdateForbidden) String() string {
 	return fmt.Sprintf("[POST /parameter-contexts/{contextId}/update-requests][%d] submitParameterContextUpdateForbidden ", 403)
 }
 
@@ -164,14 +285,44 @@ func NewSubmitParameterContextUpdateNotFound() *SubmitParameterContextUpdateNotF
 	return &SubmitParameterContextUpdateNotFound{}
 }
 
-/* SubmitParameterContextUpdateNotFound describes a response with status code 404, with default header values.
+/*
+SubmitParameterContextUpdateNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type SubmitParameterContextUpdateNotFound struct {
 }
 
+// IsSuccess returns true when this submit parameter context update not found response has a 2xx status code
+func (o *SubmitParameterContextUpdateNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this submit parameter context update not found response has a 3xx status code
+func (o *SubmitParameterContextUpdateNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this submit parameter context update not found response has a 4xx status code
+func (o *SubmitParameterContextUpdateNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this submit parameter context update not found response has a 5xx status code
+func (o *SubmitParameterContextUpdateNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this submit parameter context update not found response a status code equal to that given
+func (o *SubmitParameterContextUpdateNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *SubmitParameterContextUpdateNotFound) Error() string {
+	return fmt.Sprintf("[POST /parameter-contexts/{contextId}/update-requests][%d] submitParameterContextUpdateNotFound ", 404)
+}
+
+func (o *SubmitParameterContextUpdateNotFound) String() string {
 	return fmt.Sprintf("[POST /parameter-contexts/{contextId}/update-requests][%d] submitParameterContextUpdateNotFound ", 404)
 }
 
@@ -185,14 +336,44 @@ func NewSubmitParameterContextUpdateConflict() *SubmitParameterContextUpdateConf
 	return &SubmitParameterContextUpdateConflict{}
 }
 
-/* SubmitParameterContextUpdateConflict describes a response with status code 409, with default header values.
+/*
+SubmitParameterContextUpdateConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type SubmitParameterContextUpdateConflict struct {
 }
 
+// IsSuccess returns true when this submit parameter context update conflict response has a 2xx status code
+func (o *SubmitParameterContextUpdateConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this submit parameter context update conflict response has a 3xx status code
+func (o *SubmitParameterContextUpdateConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this submit parameter context update conflict response has a 4xx status code
+func (o *SubmitParameterContextUpdateConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this submit parameter context update conflict response has a 5xx status code
+func (o *SubmitParameterContextUpdateConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this submit parameter context update conflict response a status code equal to that given
+func (o *SubmitParameterContextUpdateConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *SubmitParameterContextUpdateConflict) Error() string {
+	return fmt.Sprintf("[POST /parameter-contexts/{contextId}/update-requests][%d] submitParameterContextUpdateConflict ", 409)
+}
+
+func (o *SubmitParameterContextUpdateConflict) String() string {
 	return fmt.Sprintf("[POST /parameter-contexts/{contextId}/update-requests][%d] submitParameterContextUpdateConflict ", 409)
 }
 

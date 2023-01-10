@@ -69,7 +69,8 @@ func NewDeleteProvenanceOK() *DeleteProvenanceOK {
 	return &DeleteProvenanceOK{}
 }
 
-/* DeleteProvenanceOK describes a response with status code 200, with default header values.
+/*
+DeleteProvenanceOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,39 @@ type DeleteProvenanceOK struct {
 	Payload *models.ProvenanceEntity
 }
 
+// IsSuccess returns true when this delete provenance o k response has a 2xx status code
+func (o *DeleteProvenanceOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete provenance o k response has a 3xx status code
+func (o *DeleteProvenanceOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete provenance o k response has a 4xx status code
+func (o *DeleteProvenanceOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete provenance o k response has a 5xx status code
+func (o *DeleteProvenanceOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete provenance o k response a status code equal to that given
+func (o *DeleteProvenanceOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *DeleteProvenanceOK) Error() string {
 	return fmt.Sprintf("[DELETE /provenance/{id}][%d] deleteProvenanceOK  %+v", 200, o.Payload)
 }
+
+func (o *DeleteProvenanceOK) String() string {
+	return fmt.Sprintf("[DELETE /provenance/{id}][%d] deleteProvenanceOK  %+v", 200, o.Payload)
+}
+
 func (o *DeleteProvenanceOK) GetPayload() *models.ProvenanceEntity {
 	return o.Payload
 }
@@ -101,14 +132,44 @@ func NewDeleteProvenanceBadRequest() *DeleteProvenanceBadRequest {
 	return &DeleteProvenanceBadRequest{}
 }
 
-/* DeleteProvenanceBadRequest describes a response with status code 400, with default header values.
+/*
+DeleteProvenanceBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type DeleteProvenanceBadRequest struct {
 }
 
+// IsSuccess returns true when this delete provenance bad request response has a 2xx status code
+func (o *DeleteProvenanceBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete provenance bad request response has a 3xx status code
+func (o *DeleteProvenanceBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete provenance bad request response has a 4xx status code
+func (o *DeleteProvenanceBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete provenance bad request response has a 5xx status code
+func (o *DeleteProvenanceBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete provenance bad request response a status code equal to that given
+func (o *DeleteProvenanceBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *DeleteProvenanceBadRequest) Error() string {
+	return fmt.Sprintf("[DELETE /provenance/{id}][%d] deleteProvenanceBadRequest ", 400)
+}
+
+func (o *DeleteProvenanceBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /provenance/{id}][%d] deleteProvenanceBadRequest ", 400)
 }
 
@@ -122,14 +183,44 @@ func NewDeleteProvenanceUnauthorized() *DeleteProvenanceUnauthorized {
 	return &DeleteProvenanceUnauthorized{}
 }
 
-/* DeleteProvenanceUnauthorized describes a response with status code 401, with default header values.
+/*
+DeleteProvenanceUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type DeleteProvenanceUnauthorized struct {
 }
 
+// IsSuccess returns true when this delete provenance unauthorized response has a 2xx status code
+func (o *DeleteProvenanceUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete provenance unauthorized response has a 3xx status code
+func (o *DeleteProvenanceUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete provenance unauthorized response has a 4xx status code
+func (o *DeleteProvenanceUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete provenance unauthorized response has a 5xx status code
+func (o *DeleteProvenanceUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete provenance unauthorized response a status code equal to that given
+func (o *DeleteProvenanceUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *DeleteProvenanceUnauthorized) Error() string {
+	return fmt.Sprintf("[DELETE /provenance/{id}][%d] deleteProvenanceUnauthorized ", 401)
+}
+
+func (o *DeleteProvenanceUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /provenance/{id}][%d] deleteProvenanceUnauthorized ", 401)
 }
 
@@ -143,14 +234,44 @@ func NewDeleteProvenanceForbidden() *DeleteProvenanceForbidden {
 	return &DeleteProvenanceForbidden{}
 }
 
-/* DeleteProvenanceForbidden describes a response with status code 403, with default header values.
+/*
+DeleteProvenanceForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type DeleteProvenanceForbidden struct {
 }
 
+// IsSuccess returns true when this delete provenance forbidden response has a 2xx status code
+func (o *DeleteProvenanceForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete provenance forbidden response has a 3xx status code
+func (o *DeleteProvenanceForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete provenance forbidden response has a 4xx status code
+func (o *DeleteProvenanceForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete provenance forbidden response has a 5xx status code
+func (o *DeleteProvenanceForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete provenance forbidden response a status code equal to that given
+func (o *DeleteProvenanceForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *DeleteProvenanceForbidden) Error() string {
+	return fmt.Sprintf("[DELETE /provenance/{id}][%d] deleteProvenanceForbidden ", 403)
+}
+
+func (o *DeleteProvenanceForbidden) String() string {
 	return fmt.Sprintf("[DELETE /provenance/{id}][%d] deleteProvenanceForbidden ", 403)
 }
 
@@ -164,14 +285,44 @@ func NewDeleteProvenanceNotFound() *DeleteProvenanceNotFound {
 	return &DeleteProvenanceNotFound{}
 }
 
-/* DeleteProvenanceNotFound describes a response with status code 404, with default header values.
+/*
+DeleteProvenanceNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type DeleteProvenanceNotFound struct {
 }
 
+// IsSuccess returns true when this delete provenance not found response has a 2xx status code
+func (o *DeleteProvenanceNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete provenance not found response has a 3xx status code
+func (o *DeleteProvenanceNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete provenance not found response has a 4xx status code
+func (o *DeleteProvenanceNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete provenance not found response has a 5xx status code
+func (o *DeleteProvenanceNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete provenance not found response a status code equal to that given
+func (o *DeleteProvenanceNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *DeleteProvenanceNotFound) Error() string {
+	return fmt.Sprintf("[DELETE /provenance/{id}][%d] deleteProvenanceNotFound ", 404)
+}
+
+func (o *DeleteProvenanceNotFound) String() string {
 	return fmt.Sprintf("[DELETE /provenance/{id}][%d] deleteProvenanceNotFound ", 404)
 }
 
@@ -185,14 +336,44 @@ func NewDeleteProvenanceConflict() *DeleteProvenanceConflict {
 	return &DeleteProvenanceConflict{}
 }
 
-/* DeleteProvenanceConflict describes a response with status code 409, with default header values.
+/*
+DeleteProvenanceConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type DeleteProvenanceConflict struct {
 }
 
+// IsSuccess returns true when this delete provenance conflict response has a 2xx status code
+func (o *DeleteProvenanceConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete provenance conflict response has a 3xx status code
+func (o *DeleteProvenanceConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete provenance conflict response has a 4xx status code
+func (o *DeleteProvenanceConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete provenance conflict response has a 5xx status code
+func (o *DeleteProvenanceConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete provenance conflict response a status code equal to that given
+func (o *DeleteProvenanceConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *DeleteProvenanceConflict) Error() string {
+	return fmt.Sprintf("[DELETE /provenance/{id}][%d] deleteProvenanceConflict ", 409)
+}
+
+func (o *DeleteProvenanceConflict) String() string {
 	return fmt.Sprintf("[DELETE /provenance/{id}][%d] deleteProvenanceConflict ", 409)
 }
 

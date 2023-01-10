@@ -69,7 +69,8 @@ func NewGetVerificationRequestOK() *GetVerificationRequestOK {
 	return &GetVerificationRequestOK{}
 }
 
-/* GetVerificationRequestOK describes a response with status code 200, with default header values.
+/*
+GetVerificationRequestOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,39 @@ type GetVerificationRequestOK struct {
 	Payload *models.VerifyConfigRequestEntity
 }
 
+// IsSuccess returns true when this get verification request o k response has a 2xx status code
+func (o *GetVerificationRequestOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get verification request o k response has a 3xx status code
+func (o *GetVerificationRequestOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get verification request o k response has a 4xx status code
+func (o *GetVerificationRequestOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get verification request o k response has a 5xx status code
+func (o *GetVerificationRequestOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get verification request o k response a status code equal to that given
+func (o *GetVerificationRequestOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetVerificationRequestOK) Error() string {
 	return fmt.Sprintf("[GET /reporting-tasks/{id}/config/verification-requests/{requestId}][%d] getVerificationRequestOK  %+v", 200, o.Payload)
 }
+
+func (o *GetVerificationRequestOK) String() string {
+	return fmt.Sprintf("[GET /reporting-tasks/{id}/config/verification-requests/{requestId}][%d] getVerificationRequestOK  %+v", 200, o.Payload)
+}
+
 func (o *GetVerificationRequestOK) GetPayload() *models.VerifyConfigRequestEntity {
 	return o.Payload
 }
@@ -101,14 +132,44 @@ func NewGetVerificationRequestBadRequest() *GetVerificationRequestBadRequest {
 	return &GetVerificationRequestBadRequest{}
 }
 
-/* GetVerificationRequestBadRequest describes a response with status code 400, with default header values.
+/*
+GetVerificationRequestBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type GetVerificationRequestBadRequest struct {
 }
 
+// IsSuccess returns true when this get verification request bad request response has a 2xx status code
+func (o *GetVerificationRequestBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get verification request bad request response has a 3xx status code
+func (o *GetVerificationRequestBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get verification request bad request response has a 4xx status code
+func (o *GetVerificationRequestBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get verification request bad request response has a 5xx status code
+func (o *GetVerificationRequestBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get verification request bad request response a status code equal to that given
+func (o *GetVerificationRequestBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *GetVerificationRequestBadRequest) Error() string {
+	return fmt.Sprintf("[GET /reporting-tasks/{id}/config/verification-requests/{requestId}][%d] getVerificationRequestBadRequest ", 400)
+}
+
+func (o *GetVerificationRequestBadRequest) String() string {
 	return fmt.Sprintf("[GET /reporting-tasks/{id}/config/verification-requests/{requestId}][%d] getVerificationRequestBadRequest ", 400)
 }
 
@@ -122,14 +183,44 @@ func NewGetVerificationRequestUnauthorized() *GetVerificationRequestUnauthorized
 	return &GetVerificationRequestUnauthorized{}
 }
 
-/* GetVerificationRequestUnauthorized describes a response with status code 401, with default header values.
+/*
+GetVerificationRequestUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type GetVerificationRequestUnauthorized struct {
 }
 
+// IsSuccess returns true when this get verification request unauthorized response has a 2xx status code
+func (o *GetVerificationRequestUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get verification request unauthorized response has a 3xx status code
+func (o *GetVerificationRequestUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get verification request unauthorized response has a 4xx status code
+func (o *GetVerificationRequestUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get verification request unauthorized response has a 5xx status code
+func (o *GetVerificationRequestUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get verification request unauthorized response a status code equal to that given
+func (o *GetVerificationRequestUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GetVerificationRequestUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /reporting-tasks/{id}/config/verification-requests/{requestId}][%d] getVerificationRequestUnauthorized ", 401)
+}
+
+func (o *GetVerificationRequestUnauthorized) String() string {
 	return fmt.Sprintf("[GET /reporting-tasks/{id}/config/verification-requests/{requestId}][%d] getVerificationRequestUnauthorized ", 401)
 }
 
@@ -143,14 +234,44 @@ func NewGetVerificationRequestForbidden() *GetVerificationRequestForbidden {
 	return &GetVerificationRequestForbidden{}
 }
 
-/* GetVerificationRequestForbidden describes a response with status code 403, with default header values.
+/*
+GetVerificationRequestForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type GetVerificationRequestForbidden struct {
 }
 
+// IsSuccess returns true when this get verification request forbidden response has a 2xx status code
+func (o *GetVerificationRequestForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get verification request forbidden response has a 3xx status code
+func (o *GetVerificationRequestForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get verification request forbidden response has a 4xx status code
+func (o *GetVerificationRequestForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get verification request forbidden response has a 5xx status code
+func (o *GetVerificationRequestForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get verification request forbidden response a status code equal to that given
+func (o *GetVerificationRequestForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetVerificationRequestForbidden) Error() string {
+	return fmt.Sprintf("[GET /reporting-tasks/{id}/config/verification-requests/{requestId}][%d] getVerificationRequestForbidden ", 403)
+}
+
+func (o *GetVerificationRequestForbidden) String() string {
 	return fmt.Sprintf("[GET /reporting-tasks/{id}/config/verification-requests/{requestId}][%d] getVerificationRequestForbidden ", 403)
 }
 
@@ -164,14 +285,44 @@ func NewGetVerificationRequestNotFound() *GetVerificationRequestNotFound {
 	return &GetVerificationRequestNotFound{}
 }
 
-/* GetVerificationRequestNotFound describes a response with status code 404, with default header values.
+/*
+GetVerificationRequestNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type GetVerificationRequestNotFound struct {
 }
 
+// IsSuccess returns true when this get verification request not found response has a 2xx status code
+func (o *GetVerificationRequestNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get verification request not found response has a 3xx status code
+func (o *GetVerificationRequestNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get verification request not found response has a 4xx status code
+func (o *GetVerificationRequestNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get verification request not found response has a 5xx status code
+func (o *GetVerificationRequestNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get verification request not found response a status code equal to that given
+func (o *GetVerificationRequestNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetVerificationRequestNotFound) Error() string {
+	return fmt.Sprintf("[GET /reporting-tasks/{id}/config/verification-requests/{requestId}][%d] getVerificationRequestNotFound ", 404)
+}
+
+func (o *GetVerificationRequestNotFound) String() string {
 	return fmt.Sprintf("[GET /reporting-tasks/{id}/config/verification-requests/{requestId}][%d] getVerificationRequestNotFound ", 404)
 }
 
@@ -185,14 +336,44 @@ func NewGetVerificationRequestConflict() *GetVerificationRequestConflict {
 	return &GetVerificationRequestConflict{}
 }
 
-/* GetVerificationRequestConflict describes a response with status code 409, with default header values.
+/*
+GetVerificationRequestConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type GetVerificationRequestConflict struct {
 }
 
+// IsSuccess returns true when this get verification request conflict response has a 2xx status code
+func (o *GetVerificationRequestConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get verification request conflict response has a 3xx status code
+func (o *GetVerificationRequestConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get verification request conflict response has a 4xx status code
+func (o *GetVerificationRequestConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get verification request conflict response has a 5xx status code
+func (o *GetVerificationRequestConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get verification request conflict response a status code equal to that given
+func (o *GetVerificationRequestConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *GetVerificationRequestConflict) Error() string {
+	return fmt.Sprintf("[GET /reporting-tasks/{id}/config/verification-requests/{requestId}][%d] getVerificationRequestConflict ", 409)
+}
+
+func (o *GetVerificationRequestConflict) String() string {
 	return fmt.Sprintf("[GET /reporting-tasks/{id}/config/verification-requests/{requestId}][%d] getVerificationRequestConflict ", 409)
 }
 

@@ -69,7 +69,8 @@ func NewDeleteUpdateRequestOK() *DeleteUpdateRequestOK {
 	return &DeleteUpdateRequestOK{}
 }
 
-/* DeleteUpdateRequestOK describes a response with status code 200, with default header values.
+/*
+DeleteUpdateRequestOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,39 @@ type DeleteUpdateRequestOK struct {
 	Payload *models.VersionedFlowUpdateRequestEntity
 }
 
+// IsSuccess returns true when this delete update request o k response has a 2xx status code
+func (o *DeleteUpdateRequestOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete update request o k response has a 3xx status code
+func (o *DeleteUpdateRequestOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete update request o k response has a 4xx status code
+func (o *DeleteUpdateRequestOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete update request o k response has a 5xx status code
+func (o *DeleteUpdateRequestOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete update request o k response a status code equal to that given
+func (o *DeleteUpdateRequestOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *DeleteUpdateRequestOK) Error() string {
 	return fmt.Sprintf("[DELETE /versions/update-requests/{id}][%d] deleteUpdateRequestOK  %+v", 200, o.Payload)
 }
+
+func (o *DeleteUpdateRequestOK) String() string {
+	return fmt.Sprintf("[DELETE /versions/update-requests/{id}][%d] deleteUpdateRequestOK  %+v", 200, o.Payload)
+}
+
 func (o *DeleteUpdateRequestOK) GetPayload() *models.VersionedFlowUpdateRequestEntity {
 	return o.Payload
 }
@@ -101,14 +132,44 @@ func NewDeleteUpdateRequestBadRequest() *DeleteUpdateRequestBadRequest {
 	return &DeleteUpdateRequestBadRequest{}
 }
 
-/* DeleteUpdateRequestBadRequest describes a response with status code 400, with default header values.
+/*
+DeleteUpdateRequestBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type DeleteUpdateRequestBadRequest struct {
 }
 
+// IsSuccess returns true when this delete update request bad request response has a 2xx status code
+func (o *DeleteUpdateRequestBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete update request bad request response has a 3xx status code
+func (o *DeleteUpdateRequestBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete update request bad request response has a 4xx status code
+func (o *DeleteUpdateRequestBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete update request bad request response has a 5xx status code
+func (o *DeleteUpdateRequestBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete update request bad request response a status code equal to that given
+func (o *DeleteUpdateRequestBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *DeleteUpdateRequestBadRequest) Error() string {
+	return fmt.Sprintf("[DELETE /versions/update-requests/{id}][%d] deleteUpdateRequestBadRequest ", 400)
+}
+
+func (o *DeleteUpdateRequestBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /versions/update-requests/{id}][%d] deleteUpdateRequestBadRequest ", 400)
 }
 
@@ -122,14 +183,44 @@ func NewDeleteUpdateRequestUnauthorized() *DeleteUpdateRequestUnauthorized {
 	return &DeleteUpdateRequestUnauthorized{}
 }
 
-/* DeleteUpdateRequestUnauthorized describes a response with status code 401, with default header values.
+/*
+DeleteUpdateRequestUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type DeleteUpdateRequestUnauthorized struct {
 }
 
+// IsSuccess returns true when this delete update request unauthorized response has a 2xx status code
+func (o *DeleteUpdateRequestUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete update request unauthorized response has a 3xx status code
+func (o *DeleteUpdateRequestUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete update request unauthorized response has a 4xx status code
+func (o *DeleteUpdateRequestUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete update request unauthorized response has a 5xx status code
+func (o *DeleteUpdateRequestUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete update request unauthorized response a status code equal to that given
+func (o *DeleteUpdateRequestUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *DeleteUpdateRequestUnauthorized) Error() string {
+	return fmt.Sprintf("[DELETE /versions/update-requests/{id}][%d] deleteUpdateRequestUnauthorized ", 401)
+}
+
+func (o *DeleteUpdateRequestUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /versions/update-requests/{id}][%d] deleteUpdateRequestUnauthorized ", 401)
 }
 
@@ -143,14 +234,44 @@ func NewDeleteUpdateRequestForbidden() *DeleteUpdateRequestForbidden {
 	return &DeleteUpdateRequestForbidden{}
 }
 
-/* DeleteUpdateRequestForbidden describes a response with status code 403, with default header values.
+/*
+DeleteUpdateRequestForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type DeleteUpdateRequestForbidden struct {
 }
 
+// IsSuccess returns true when this delete update request forbidden response has a 2xx status code
+func (o *DeleteUpdateRequestForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete update request forbidden response has a 3xx status code
+func (o *DeleteUpdateRequestForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete update request forbidden response has a 4xx status code
+func (o *DeleteUpdateRequestForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete update request forbidden response has a 5xx status code
+func (o *DeleteUpdateRequestForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete update request forbidden response a status code equal to that given
+func (o *DeleteUpdateRequestForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *DeleteUpdateRequestForbidden) Error() string {
+	return fmt.Sprintf("[DELETE /versions/update-requests/{id}][%d] deleteUpdateRequestForbidden ", 403)
+}
+
+func (o *DeleteUpdateRequestForbidden) String() string {
 	return fmt.Sprintf("[DELETE /versions/update-requests/{id}][%d] deleteUpdateRequestForbidden ", 403)
 }
 
@@ -164,14 +285,44 @@ func NewDeleteUpdateRequestNotFound() *DeleteUpdateRequestNotFound {
 	return &DeleteUpdateRequestNotFound{}
 }
 
-/* DeleteUpdateRequestNotFound describes a response with status code 404, with default header values.
+/*
+DeleteUpdateRequestNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type DeleteUpdateRequestNotFound struct {
 }
 
+// IsSuccess returns true when this delete update request not found response has a 2xx status code
+func (o *DeleteUpdateRequestNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete update request not found response has a 3xx status code
+func (o *DeleteUpdateRequestNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete update request not found response has a 4xx status code
+func (o *DeleteUpdateRequestNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete update request not found response has a 5xx status code
+func (o *DeleteUpdateRequestNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete update request not found response a status code equal to that given
+func (o *DeleteUpdateRequestNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *DeleteUpdateRequestNotFound) Error() string {
+	return fmt.Sprintf("[DELETE /versions/update-requests/{id}][%d] deleteUpdateRequestNotFound ", 404)
+}
+
+func (o *DeleteUpdateRequestNotFound) String() string {
 	return fmt.Sprintf("[DELETE /versions/update-requests/{id}][%d] deleteUpdateRequestNotFound ", 404)
 }
 
@@ -185,14 +336,44 @@ func NewDeleteUpdateRequestConflict() *DeleteUpdateRequestConflict {
 	return &DeleteUpdateRequestConflict{}
 }
 
-/* DeleteUpdateRequestConflict describes a response with status code 409, with default header values.
+/*
+DeleteUpdateRequestConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type DeleteUpdateRequestConflict struct {
 }
 
+// IsSuccess returns true when this delete update request conflict response has a 2xx status code
+func (o *DeleteUpdateRequestConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete update request conflict response has a 3xx status code
+func (o *DeleteUpdateRequestConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete update request conflict response has a 4xx status code
+func (o *DeleteUpdateRequestConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete update request conflict response has a 5xx status code
+func (o *DeleteUpdateRequestConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete update request conflict response a status code equal to that given
+func (o *DeleteUpdateRequestConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *DeleteUpdateRequestConflict) Error() string {
+	return fmt.Sprintf("[DELETE /versions/update-requests/{id}][%d] deleteUpdateRequestConflict ", 409)
+}
+
+func (o *DeleteUpdateRequestConflict) String() string {
 	return fmt.Sprintf("[DELETE /versions/update-requests/{id}][%d] deleteUpdateRequestConflict ", 409)
 }
 

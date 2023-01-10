@@ -23,6 +23,9 @@ type VersionedParameter struct {
 	// The name of the parameter
 	Name string `json:"name,omitempty"`
 
+	// Whether or not the parameter value is provided by a ParameterProvider
+	Provided bool `json:"provided,omitempty"`
+
 	// Whether or not the parameter value is sensitive
 	Sensitive bool `json:"sensitive,omitempty"`
 

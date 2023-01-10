@@ -69,7 +69,8 @@ func NewCreateProcessGroupCreated() *CreateProcessGroupCreated {
 	return &CreateProcessGroupCreated{}
 }
 
-/* CreateProcessGroupCreated describes a response with status code 201, with default header values.
+/*
+CreateProcessGroupCreated describes a response with status code 201, with default header values.
 
 successful operation
 */
@@ -77,9 +78,39 @@ type CreateProcessGroupCreated struct {
 	Payload *models.ProcessGroupEntity
 }
 
+// IsSuccess returns true when this create process group created response has a 2xx status code
+func (o *CreateProcessGroupCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create process group created response has a 3xx status code
+func (o *CreateProcessGroupCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create process group created response has a 4xx status code
+func (o *CreateProcessGroupCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create process group created response has a 5xx status code
+func (o *CreateProcessGroupCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create process group created response a status code equal to that given
+func (o *CreateProcessGroupCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *CreateProcessGroupCreated) Error() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/process-groups][%d] createProcessGroupCreated  %+v", 201, o.Payload)
 }
+
+func (o *CreateProcessGroupCreated) String() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/process-groups][%d] createProcessGroupCreated  %+v", 201, o.Payload)
+}
+
 func (o *CreateProcessGroupCreated) GetPayload() *models.ProcessGroupEntity {
 	return o.Payload
 }
@@ -101,14 +132,44 @@ func NewCreateProcessGroupBadRequest() *CreateProcessGroupBadRequest {
 	return &CreateProcessGroupBadRequest{}
 }
 
-/* CreateProcessGroupBadRequest describes a response with status code 400, with default header values.
+/*
+CreateProcessGroupBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type CreateProcessGroupBadRequest struct {
 }
 
+// IsSuccess returns true when this create process group bad request response has a 2xx status code
+func (o *CreateProcessGroupBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create process group bad request response has a 3xx status code
+func (o *CreateProcessGroupBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create process group bad request response has a 4xx status code
+func (o *CreateProcessGroupBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create process group bad request response has a 5xx status code
+func (o *CreateProcessGroupBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create process group bad request response a status code equal to that given
+func (o *CreateProcessGroupBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CreateProcessGroupBadRequest) Error() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/process-groups][%d] createProcessGroupBadRequest ", 400)
+}
+
+func (o *CreateProcessGroupBadRequest) String() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/process-groups][%d] createProcessGroupBadRequest ", 400)
 }
 
@@ -122,14 +183,44 @@ func NewCreateProcessGroupUnauthorized() *CreateProcessGroupUnauthorized {
 	return &CreateProcessGroupUnauthorized{}
 }
 
-/* CreateProcessGroupUnauthorized describes a response with status code 401, with default header values.
+/*
+CreateProcessGroupUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type CreateProcessGroupUnauthorized struct {
 }
 
+// IsSuccess returns true when this create process group unauthorized response has a 2xx status code
+func (o *CreateProcessGroupUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create process group unauthorized response has a 3xx status code
+func (o *CreateProcessGroupUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create process group unauthorized response has a 4xx status code
+func (o *CreateProcessGroupUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create process group unauthorized response has a 5xx status code
+func (o *CreateProcessGroupUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create process group unauthorized response a status code equal to that given
+func (o *CreateProcessGroupUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *CreateProcessGroupUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/process-groups][%d] createProcessGroupUnauthorized ", 401)
+}
+
+func (o *CreateProcessGroupUnauthorized) String() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/process-groups][%d] createProcessGroupUnauthorized ", 401)
 }
 
@@ -143,14 +234,44 @@ func NewCreateProcessGroupForbidden() *CreateProcessGroupForbidden {
 	return &CreateProcessGroupForbidden{}
 }
 
-/* CreateProcessGroupForbidden describes a response with status code 403, with default header values.
+/*
+CreateProcessGroupForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type CreateProcessGroupForbidden struct {
 }
 
+// IsSuccess returns true when this create process group forbidden response has a 2xx status code
+func (o *CreateProcessGroupForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create process group forbidden response has a 3xx status code
+func (o *CreateProcessGroupForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create process group forbidden response has a 4xx status code
+func (o *CreateProcessGroupForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create process group forbidden response has a 5xx status code
+func (o *CreateProcessGroupForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create process group forbidden response a status code equal to that given
+func (o *CreateProcessGroupForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CreateProcessGroupForbidden) Error() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/process-groups][%d] createProcessGroupForbidden ", 403)
+}
+
+func (o *CreateProcessGroupForbidden) String() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/process-groups][%d] createProcessGroupForbidden ", 403)
 }
 
@@ -164,14 +285,44 @@ func NewCreateProcessGroupNotFound() *CreateProcessGroupNotFound {
 	return &CreateProcessGroupNotFound{}
 }
 
-/* CreateProcessGroupNotFound describes a response with status code 404, with default header values.
+/*
+CreateProcessGroupNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type CreateProcessGroupNotFound struct {
 }
 
+// IsSuccess returns true when this create process group not found response has a 2xx status code
+func (o *CreateProcessGroupNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create process group not found response has a 3xx status code
+func (o *CreateProcessGroupNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create process group not found response has a 4xx status code
+func (o *CreateProcessGroupNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create process group not found response has a 5xx status code
+func (o *CreateProcessGroupNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create process group not found response a status code equal to that given
+func (o *CreateProcessGroupNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *CreateProcessGroupNotFound) Error() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/process-groups][%d] createProcessGroupNotFound ", 404)
+}
+
+func (o *CreateProcessGroupNotFound) String() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/process-groups][%d] createProcessGroupNotFound ", 404)
 }
 
@@ -185,14 +336,44 @@ func NewCreateProcessGroupConflict() *CreateProcessGroupConflict {
 	return &CreateProcessGroupConflict{}
 }
 
-/* CreateProcessGroupConflict describes a response with status code 409, with default header values.
+/*
+CreateProcessGroupConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type CreateProcessGroupConflict struct {
 }
 
+// IsSuccess returns true when this create process group conflict response has a 2xx status code
+func (o *CreateProcessGroupConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create process group conflict response has a 3xx status code
+func (o *CreateProcessGroupConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create process group conflict response has a 4xx status code
+func (o *CreateProcessGroupConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create process group conflict response has a 5xx status code
+func (o *CreateProcessGroupConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create process group conflict response a status code equal to that given
+func (o *CreateProcessGroupConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *CreateProcessGroupConflict) Error() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/process-groups][%d] createProcessGroupConflict ", 409)
+}
+
+func (o *CreateProcessGroupConflict) String() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/process-groups][%d] createProcessGroupConflict ", 409)
 }
 

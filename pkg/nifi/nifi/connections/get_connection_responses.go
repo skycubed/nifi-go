@@ -69,7 +69,8 @@ func NewGetConnectionOK() *GetConnectionOK {
 	return &GetConnectionOK{}
 }
 
-/* GetConnectionOK describes a response with status code 200, with default header values.
+/*
+GetConnectionOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,39 @@ type GetConnectionOK struct {
 	Payload *models.ConnectionEntity
 }
 
+// IsSuccess returns true when this get connection o k response has a 2xx status code
+func (o *GetConnectionOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get connection o k response has a 3xx status code
+func (o *GetConnectionOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get connection o k response has a 4xx status code
+func (o *GetConnectionOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get connection o k response has a 5xx status code
+func (o *GetConnectionOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get connection o k response a status code equal to that given
+func (o *GetConnectionOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetConnectionOK) Error() string {
 	return fmt.Sprintf("[GET /connections/{id}][%d] getConnectionOK  %+v", 200, o.Payload)
 }
+
+func (o *GetConnectionOK) String() string {
+	return fmt.Sprintf("[GET /connections/{id}][%d] getConnectionOK  %+v", 200, o.Payload)
+}
+
 func (o *GetConnectionOK) GetPayload() *models.ConnectionEntity {
 	return o.Payload
 }
@@ -101,14 +132,44 @@ func NewGetConnectionBadRequest() *GetConnectionBadRequest {
 	return &GetConnectionBadRequest{}
 }
 
-/* GetConnectionBadRequest describes a response with status code 400, with default header values.
+/*
+GetConnectionBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type GetConnectionBadRequest struct {
 }
 
+// IsSuccess returns true when this get connection bad request response has a 2xx status code
+func (o *GetConnectionBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get connection bad request response has a 3xx status code
+func (o *GetConnectionBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get connection bad request response has a 4xx status code
+func (o *GetConnectionBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get connection bad request response has a 5xx status code
+func (o *GetConnectionBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get connection bad request response a status code equal to that given
+func (o *GetConnectionBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *GetConnectionBadRequest) Error() string {
+	return fmt.Sprintf("[GET /connections/{id}][%d] getConnectionBadRequest ", 400)
+}
+
+func (o *GetConnectionBadRequest) String() string {
 	return fmt.Sprintf("[GET /connections/{id}][%d] getConnectionBadRequest ", 400)
 }
 
@@ -122,14 +183,44 @@ func NewGetConnectionUnauthorized() *GetConnectionUnauthorized {
 	return &GetConnectionUnauthorized{}
 }
 
-/* GetConnectionUnauthorized describes a response with status code 401, with default header values.
+/*
+GetConnectionUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type GetConnectionUnauthorized struct {
 }
 
+// IsSuccess returns true when this get connection unauthorized response has a 2xx status code
+func (o *GetConnectionUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get connection unauthorized response has a 3xx status code
+func (o *GetConnectionUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get connection unauthorized response has a 4xx status code
+func (o *GetConnectionUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get connection unauthorized response has a 5xx status code
+func (o *GetConnectionUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get connection unauthorized response a status code equal to that given
+func (o *GetConnectionUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GetConnectionUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /connections/{id}][%d] getConnectionUnauthorized ", 401)
+}
+
+func (o *GetConnectionUnauthorized) String() string {
 	return fmt.Sprintf("[GET /connections/{id}][%d] getConnectionUnauthorized ", 401)
 }
 
@@ -143,14 +234,44 @@ func NewGetConnectionForbidden() *GetConnectionForbidden {
 	return &GetConnectionForbidden{}
 }
 
-/* GetConnectionForbidden describes a response with status code 403, with default header values.
+/*
+GetConnectionForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type GetConnectionForbidden struct {
 }
 
+// IsSuccess returns true when this get connection forbidden response has a 2xx status code
+func (o *GetConnectionForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get connection forbidden response has a 3xx status code
+func (o *GetConnectionForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get connection forbidden response has a 4xx status code
+func (o *GetConnectionForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get connection forbidden response has a 5xx status code
+func (o *GetConnectionForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get connection forbidden response a status code equal to that given
+func (o *GetConnectionForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetConnectionForbidden) Error() string {
+	return fmt.Sprintf("[GET /connections/{id}][%d] getConnectionForbidden ", 403)
+}
+
+func (o *GetConnectionForbidden) String() string {
 	return fmt.Sprintf("[GET /connections/{id}][%d] getConnectionForbidden ", 403)
 }
 
@@ -164,14 +285,44 @@ func NewGetConnectionNotFound() *GetConnectionNotFound {
 	return &GetConnectionNotFound{}
 }
 
-/* GetConnectionNotFound describes a response with status code 404, with default header values.
+/*
+GetConnectionNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type GetConnectionNotFound struct {
 }
 
+// IsSuccess returns true when this get connection not found response has a 2xx status code
+func (o *GetConnectionNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get connection not found response has a 3xx status code
+func (o *GetConnectionNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get connection not found response has a 4xx status code
+func (o *GetConnectionNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get connection not found response has a 5xx status code
+func (o *GetConnectionNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get connection not found response a status code equal to that given
+func (o *GetConnectionNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetConnectionNotFound) Error() string {
+	return fmt.Sprintf("[GET /connections/{id}][%d] getConnectionNotFound ", 404)
+}
+
+func (o *GetConnectionNotFound) String() string {
 	return fmt.Sprintf("[GET /connections/{id}][%d] getConnectionNotFound ", 404)
 }
 
@@ -185,14 +336,44 @@ func NewGetConnectionConflict() *GetConnectionConflict {
 	return &GetConnectionConflict{}
 }
 
-/* GetConnectionConflict describes a response with status code 409, with default header values.
+/*
+GetConnectionConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type GetConnectionConflict struct {
 }
 
+// IsSuccess returns true when this get connection conflict response has a 2xx status code
+func (o *GetConnectionConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get connection conflict response has a 3xx status code
+func (o *GetConnectionConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get connection conflict response has a 4xx status code
+func (o *GetConnectionConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get connection conflict response has a 5xx status code
+func (o *GetConnectionConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get connection conflict response a status code equal to that given
+func (o *GetConnectionConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *GetConnectionConflict) Error() string {
+	return fmt.Sprintf("[GET /connections/{id}][%d] getConnectionConflict ", 409)
+}
+
+func (o *GetConnectionConflict) String() string {
 	return fmt.Sprintf("[GET /connections/{id}][%d] getConnectionConflict ", 409)
 }
 

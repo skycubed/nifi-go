@@ -52,10 +52,12 @@ func NewCreateEmptyAllConnectionsRequestParamsWithHTTPClient(client *http.Client
 	}
 }
 
-/* CreateEmptyAllConnectionsRequestParams contains all the parameters to send to the API endpoint
-   for the create empty all connections request operation.
+/*
+CreateEmptyAllConnectionsRequestParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create empty all connections request operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateEmptyAllConnectionsRequestParams struct {
 

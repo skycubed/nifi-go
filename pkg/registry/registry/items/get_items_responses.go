@@ -45,7 +45,8 @@ func NewGetItemsOK() *GetItemsOK {
 	return &GetItemsOK{}
 }
 
-/* GetItemsOK describes a response with status code 200, with default header values.
+/*
+GetItemsOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -53,9 +54,39 @@ type GetItemsOK struct {
 	Payload []*models.BucketItem
 }
 
+// IsSuccess returns true when this get items o k response has a 2xx status code
+func (o *GetItemsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get items o k response has a 3xx status code
+func (o *GetItemsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get items o k response has a 4xx status code
+func (o *GetItemsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get items o k response has a 5xx status code
+func (o *GetItemsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get items o k response a status code equal to that given
+func (o *GetItemsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetItemsOK) Error() string {
 	return fmt.Sprintf("[GET /items][%d] getItemsOK  %+v", 200, o.Payload)
 }
+
+func (o *GetItemsOK) String() string {
+	return fmt.Sprintf("[GET /items][%d] getItemsOK  %+v", 200, o.Payload)
+}
+
 func (o *GetItemsOK) GetPayload() []*models.BucketItem {
 	return o.Payload
 }
@@ -75,14 +106,44 @@ func NewGetItemsUnauthorized() *GetItemsUnauthorized {
 	return &GetItemsUnauthorized{}
 }
 
-/* GetItemsUnauthorized describes a response with status code 401, with default header values.
+/*
+GetItemsUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type GetItemsUnauthorized struct {
 }
 
+// IsSuccess returns true when this get items unauthorized response has a 2xx status code
+func (o *GetItemsUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get items unauthorized response has a 3xx status code
+func (o *GetItemsUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get items unauthorized response has a 4xx status code
+func (o *GetItemsUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get items unauthorized response has a 5xx status code
+func (o *GetItemsUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get items unauthorized response a status code equal to that given
+func (o *GetItemsUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GetItemsUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /items][%d] getItemsUnauthorized ", 401)
+}
+
+func (o *GetItemsUnauthorized) String() string {
 	return fmt.Sprintf("[GET /items][%d] getItemsUnauthorized ", 401)
 }
 

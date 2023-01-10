@@ -69,7 +69,8 @@ func NewUpdateNodeOK() *UpdateNodeOK {
 	return &UpdateNodeOK{}
 }
 
-/* UpdateNodeOK describes a response with status code 200, with default header values.
+/*
+UpdateNodeOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,39 @@ type UpdateNodeOK struct {
 	Payload *models.NodeEntity
 }
 
+// IsSuccess returns true when this update node o k response has a 2xx status code
+func (o *UpdateNodeOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this update node o k response has a 3xx status code
+func (o *UpdateNodeOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update node o k response has a 4xx status code
+func (o *UpdateNodeOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this update node o k response has a 5xx status code
+func (o *UpdateNodeOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update node o k response a status code equal to that given
+func (o *UpdateNodeOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *UpdateNodeOK) Error() string {
 	return fmt.Sprintf("[PUT /controller/cluster/nodes/{id}][%d] updateNodeOK  %+v", 200, o.Payload)
 }
+
+func (o *UpdateNodeOK) String() string {
+	return fmt.Sprintf("[PUT /controller/cluster/nodes/{id}][%d] updateNodeOK  %+v", 200, o.Payload)
+}
+
 func (o *UpdateNodeOK) GetPayload() *models.NodeEntity {
 	return o.Payload
 }
@@ -101,14 +132,44 @@ func NewUpdateNodeBadRequest() *UpdateNodeBadRequest {
 	return &UpdateNodeBadRequest{}
 }
 
-/* UpdateNodeBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateNodeBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type UpdateNodeBadRequest struct {
 }
 
+// IsSuccess returns true when this update node bad request response has a 2xx status code
+func (o *UpdateNodeBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update node bad request response has a 3xx status code
+func (o *UpdateNodeBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update node bad request response has a 4xx status code
+func (o *UpdateNodeBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update node bad request response has a 5xx status code
+func (o *UpdateNodeBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update node bad request response a status code equal to that given
+func (o *UpdateNodeBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *UpdateNodeBadRequest) Error() string {
+	return fmt.Sprintf("[PUT /controller/cluster/nodes/{id}][%d] updateNodeBadRequest ", 400)
+}
+
+func (o *UpdateNodeBadRequest) String() string {
 	return fmt.Sprintf("[PUT /controller/cluster/nodes/{id}][%d] updateNodeBadRequest ", 400)
 }
 
@@ -122,14 +183,44 @@ func NewUpdateNodeUnauthorized() *UpdateNodeUnauthorized {
 	return &UpdateNodeUnauthorized{}
 }
 
-/* UpdateNodeUnauthorized describes a response with status code 401, with default header values.
+/*
+UpdateNodeUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type UpdateNodeUnauthorized struct {
 }
 
+// IsSuccess returns true when this update node unauthorized response has a 2xx status code
+func (o *UpdateNodeUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update node unauthorized response has a 3xx status code
+func (o *UpdateNodeUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update node unauthorized response has a 4xx status code
+func (o *UpdateNodeUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update node unauthorized response has a 5xx status code
+func (o *UpdateNodeUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update node unauthorized response a status code equal to that given
+func (o *UpdateNodeUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *UpdateNodeUnauthorized) Error() string {
+	return fmt.Sprintf("[PUT /controller/cluster/nodes/{id}][%d] updateNodeUnauthorized ", 401)
+}
+
+func (o *UpdateNodeUnauthorized) String() string {
 	return fmt.Sprintf("[PUT /controller/cluster/nodes/{id}][%d] updateNodeUnauthorized ", 401)
 }
 
@@ -143,14 +234,44 @@ func NewUpdateNodeForbidden() *UpdateNodeForbidden {
 	return &UpdateNodeForbidden{}
 }
 
-/* UpdateNodeForbidden describes a response with status code 403, with default header values.
+/*
+UpdateNodeForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type UpdateNodeForbidden struct {
 }
 
+// IsSuccess returns true when this update node forbidden response has a 2xx status code
+func (o *UpdateNodeForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update node forbidden response has a 3xx status code
+func (o *UpdateNodeForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update node forbidden response has a 4xx status code
+func (o *UpdateNodeForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update node forbidden response has a 5xx status code
+func (o *UpdateNodeForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update node forbidden response a status code equal to that given
+func (o *UpdateNodeForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *UpdateNodeForbidden) Error() string {
+	return fmt.Sprintf("[PUT /controller/cluster/nodes/{id}][%d] updateNodeForbidden ", 403)
+}
+
+func (o *UpdateNodeForbidden) String() string {
 	return fmt.Sprintf("[PUT /controller/cluster/nodes/{id}][%d] updateNodeForbidden ", 403)
 }
 
@@ -164,14 +285,44 @@ func NewUpdateNodeNotFound() *UpdateNodeNotFound {
 	return &UpdateNodeNotFound{}
 }
 
-/* UpdateNodeNotFound describes a response with status code 404, with default header values.
+/*
+UpdateNodeNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type UpdateNodeNotFound struct {
 }
 
+// IsSuccess returns true when this update node not found response has a 2xx status code
+func (o *UpdateNodeNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update node not found response has a 3xx status code
+func (o *UpdateNodeNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update node not found response has a 4xx status code
+func (o *UpdateNodeNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update node not found response has a 5xx status code
+func (o *UpdateNodeNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update node not found response a status code equal to that given
+func (o *UpdateNodeNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *UpdateNodeNotFound) Error() string {
+	return fmt.Sprintf("[PUT /controller/cluster/nodes/{id}][%d] updateNodeNotFound ", 404)
+}
+
+func (o *UpdateNodeNotFound) String() string {
 	return fmt.Sprintf("[PUT /controller/cluster/nodes/{id}][%d] updateNodeNotFound ", 404)
 }
 
@@ -185,14 +336,44 @@ func NewUpdateNodeConflict() *UpdateNodeConflict {
 	return &UpdateNodeConflict{}
 }
 
-/* UpdateNodeConflict describes a response with status code 409, with default header values.
+/*
+UpdateNodeConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type UpdateNodeConflict struct {
 }
 
+// IsSuccess returns true when this update node conflict response has a 2xx status code
+func (o *UpdateNodeConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update node conflict response has a 3xx status code
+func (o *UpdateNodeConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update node conflict response has a 4xx status code
+func (o *UpdateNodeConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update node conflict response has a 5xx status code
+func (o *UpdateNodeConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update node conflict response a status code equal to that given
+func (o *UpdateNodeConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *UpdateNodeConflict) Error() string {
+	return fmt.Sprintf("[PUT /controller/cluster/nodes/{id}][%d] updateNodeConflict ", 409)
+}
+
+func (o *UpdateNodeConflict) String() string {
 	return fmt.Sprintf("[PUT /controller/cluster/nodes/{id}][%d] updateNodeConflict ", 409)
 }
 

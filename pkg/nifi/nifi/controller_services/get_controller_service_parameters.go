@@ -14,6 +14,7 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+	"github.com/go-openapi/swag"
 )
 
 // NewGetControllerServiceParams creates a new GetControllerServiceParams object,
@@ -52,10 +53,12 @@ func NewGetControllerServiceParamsWithHTTPClient(client *http.Client) *GetContro
 	}
 }
 
-/* GetControllerServiceParams contains all the parameters to send to the API endpoint
-   for the get controller service operation.
+/*
+GetControllerServiceParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get controller service operation.
+
+	Typically these are written to a http.Request.
 */
 type GetControllerServiceParams struct {
 
@@ -64,6 +67,9 @@ type GetControllerServiceParams struct {
 	   The controller service id.
 	*/
 	ID string
+
+	// UIOnly.
+	UIOnly *bool
 
 	timeout    time.Duration
 	Context    context.Context
@@ -82,7 +88,18 @@ func (o *GetControllerServiceParams) WithDefaults() *GetControllerServiceParams 
 //
 // All values with no default are reset to their zero value.
 func (o *GetControllerServiceParams) SetDefaults() {
-	// no default values defined for this parameter
+	var (
+		uIOnlyDefault = bool(false)
+	)
+
+	val := GetControllerServiceParams{
+		UIOnly: &uIOnlyDefault,
+	}
+
+	val.timeout = o.timeout
+	val.Context = o.Context
+	val.HTTPClient = o.HTTPClient
+	*o = val
 }
 
 // WithTimeout adds the timeout to the get controller service params
@@ -129,6 +146,17 @@ func (o *GetControllerServiceParams) SetID(id string) {
 	o.ID = id
 }
 
+// WithUIOnly adds the uIOnly to the get controller service params
+func (o *GetControllerServiceParams) WithUIOnly(uIOnly *bool) *GetControllerServiceParams {
+	o.SetUIOnly(uIOnly)
+	return o
+}
+
+// SetUIOnly adds the uiOnly to the get controller service params
+func (o *GetControllerServiceParams) SetUIOnly(uIOnly *bool) {
+	o.UIOnly = uIOnly
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *GetControllerServiceParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -140,6 +168,23 @@ func (o *GetControllerServiceParams) WriteToRequest(r runtime.ClientRequest, reg
 	// path param id
 	if err := r.SetPathParam("id", o.ID); err != nil {
 		return err
+	}
+
+	if o.UIOnly != nil {
+
+		// query param uiOnly
+		var qrUIOnly bool
+
+		if o.UIOnly != nil {
+			qrUIOnly = *o.UIOnly
+		}
+		qUIOnly := swag.FormatBool(qrUIOnly)
+		if qUIOnly != "" {
+
+			if err := r.SetQueryParam("uiOnly", qUIOnly); err != nil {
+				return err
+			}
+		}
 	}
 
 	if len(res) > 0 {

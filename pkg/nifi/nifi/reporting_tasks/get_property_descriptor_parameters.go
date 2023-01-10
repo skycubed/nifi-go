@@ -14,6 +14,7 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+	"github.com/go-openapi/swag"
 )
 
 // NewGetPropertyDescriptorParams creates a new GetPropertyDescriptorParams object,
@@ -52,10 +53,12 @@ func NewGetPropertyDescriptorParamsWithHTTPClient(client *http.Client) *GetPrope
 	}
 }
 
-/* GetPropertyDescriptorParams contains all the parameters to send to the API endpoint
-   for the get property descriptor operation.
+/*
+GetPropertyDescriptorParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get property descriptor operation.
+
+	Typically these are written to a http.Request.
 */
 type GetPropertyDescriptorParams struct {
 
@@ -70,6 +73,12 @@ type GetPropertyDescriptorParams struct {
 	   The property name.
 	*/
 	PropertyName string
+
+	/* Sensitive.
+
+	   Property Descriptor requested sensitive status
+	*/
+	Sensitive *bool
 
 	timeout    time.Duration
 	Context    context.Context
@@ -88,7 +97,18 @@ func (o *GetPropertyDescriptorParams) WithDefaults() *GetPropertyDescriptorParam
 //
 // All values with no default are reset to their zero value.
 func (o *GetPropertyDescriptorParams) SetDefaults() {
-	// no default values defined for this parameter
+	var (
+		sensitiveDefault = bool(false)
+	)
+
+	val := GetPropertyDescriptorParams{
+		Sensitive: &sensitiveDefault,
+	}
+
+	val.timeout = o.timeout
+	val.Context = o.Context
+	val.HTTPClient = o.HTTPClient
+	*o = val
 }
 
 // WithTimeout adds the timeout to the get property descriptor params
@@ -146,6 +166,17 @@ func (o *GetPropertyDescriptorParams) SetPropertyName(propertyName string) {
 	o.PropertyName = propertyName
 }
 
+// WithSensitive adds the sensitive to the get property descriptor params
+func (o *GetPropertyDescriptorParams) WithSensitive(sensitive *bool) *GetPropertyDescriptorParams {
+	o.SetSensitive(sensitive)
+	return o
+}
+
+// SetSensitive adds the sensitive to the get property descriptor params
+func (o *GetPropertyDescriptorParams) SetSensitive(sensitive *bool) {
+	o.Sensitive = sensitive
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *GetPropertyDescriptorParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -166,6 +197,23 @@ func (o *GetPropertyDescriptorParams) WriteToRequest(r runtime.ClientRequest, re
 
 		if err := r.SetQueryParam("propertyName", qPropertyName); err != nil {
 			return err
+		}
+	}
+
+	if o.Sensitive != nil {
+
+		// query param sensitive
+		var qrSensitive bool
+
+		if o.Sensitive != nil {
+			qrSensitive = *o.Sensitive
+		}
+		qSensitive := swag.FormatBool(qrSensitive)
+		if qSensitive != "" {
+
+			if err := r.SetQueryParam("sensitive", qSensitive); err != nil {
+				return err
+			}
 		}
 	}
 

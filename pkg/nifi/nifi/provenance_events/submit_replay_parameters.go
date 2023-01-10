@@ -54,10 +54,12 @@ func NewSubmitReplayParamsWithHTTPClient(client *http.Client) *SubmitReplayParam
 	}
 }
 
-/* SubmitReplayParams contains all the parameters to send to the API endpoint
-   for the submit replay operation.
+/*
+SubmitReplayParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the submit replay operation.
+
+	Typically these are written to a http.Request.
 */
 type SubmitReplayParams struct {
 

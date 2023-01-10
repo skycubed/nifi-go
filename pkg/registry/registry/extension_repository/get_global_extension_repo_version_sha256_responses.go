@@ -67,7 +67,8 @@ func NewGetGlobalExtensionRepoVersionSha256OK() *GetGlobalExtensionRepoVersionSh
 	return &GetGlobalExtensionRepoVersionSha256OK{}
 }
 
-/* GetGlobalExtensionRepoVersionSha256OK describes a response with status code 200, with default header values.
+/*
+GetGlobalExtensionRepoVersionSha256OK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -75,9 +76,39 @@ type GetGlobalExtensionRepoVersionSha256OK struct {
 	Payload string
 }
 
+// IsSuccess returns true when this get global extension repo version sha256 o k response has a 2xx status code
+func (o *GetGlobalExtensionRepoVersionSha256OK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get global extension repo version sha256 o k response has a 3xx status code
+func (o *GetGlobalExtensionRepoVersionSha256OK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get global extension repo version sha256 o k response has a 4xx status code
+func (o *GetGlobalExtensionRepoVersionSha256OK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get global extension repo version sha256 o k response has a 5xx status code
+func (o *GetGlobalExtensionRepoVersionSha256OK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get global extension repo version sha256 o k response a status code equal to that given
+func (o *GetGlobalExtensionRepoVersionSha256OK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetGlobalExtensionRepoVersionSha256OK) Error() string {
 	return fmt.Sprintf("[GET /extension-repository/{groupId}/{artifactId}/{version}/sha256][%d] getGlobalExtensionRepoVersionSha256OK  %+v", 200, o.Payload)
 }
+
+func (o *GetGlobalExtensionRepoVersionSha256OK) String() string {
+	return fmt.Sprintf("[GET /extension-repository/{groupId}/{artifactId}/{version}/sha256][%d] getGlobalExtensionRepoVersionSha256OK  %+v", 200, o.Payload)
+}
+
 func (o *GetGlobalExtensionRepoVersionSha256OK) GetPayload() string {
 	return o.Payload
 }
@@ -97,14 +128,44 @@ func NewGetGlobalExtensionRepoVersionSha256BadRequest() *GetGlobalExtensionRepoV
 	return &GetGlobalExtensionRepoVersionSha256BadRequest{}
 }
 
-/* GetGlobalExtensionRepoVersionSha256BadRequest describes a response with status code 400, with default header values.
+/*
+GetGlobalExtensionRepoVersionSha256BadRequest describes a response with status code 400, with default header values.
 
 NiFi Registry was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type GetGlobalExtensionRepoVersionSha256BadRequest struct {
 }
 
+// IsSuccess returns true when this get global extension repo version sha256 bad request response has a 2xx status code
+func (o *GetGlobalExtensionRepoVersionSha256BadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get global extension repo version sha256 bad request response has a 3xx status code
+func (o *GetGlobalExtensionRepoVersionSha256BadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get global extension repo version sha256 bad request response has a 4xx status code
+func (o *GetGlobalExtensionRepoVersionSha256BadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get global extension repo version sha256 bad request response has a 5xx status code
+func (o *GetGlobalExtensionRepoVersionSha256BadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get global extension repo version sha256 bad request response a status code equal to that given
+func (o *GetGlobalExtensionRepoVersionSha256BadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *GetGlobalExtensionRepoVersionSha256BadRequest) Error() string {
+	return fmt.Sprintf("[GET /extension-repository/{groupId}/{artifactId}/{version}/sha256][%d] getGlobalExtensionRepoVersionSha256BadRequest ", 400)
+}
+
+func (o *GetGlobalExtensionRepoVersionSha256BadRequest) String() string {
 	return fmt.Sprintf("[GET /extension-repository/{groupId}/{artifactId}/{version}/sha256][%d] getGlobalExtensionRepoVersionSha256BadRequest ", 400)
 }
 
@@ -118,14 +179,44 @@ func NewGetGlobalExtensionRepoVersionSha256Unauthorized() *GetGlobalExtensionRep
 	return &GetGlobalExtensionRepoVersionSha256Unauthorized{}
 }
 
-/* GetGlobalExtensionRepoVersionSha256Unauthorized describes a response with status code 401, with default header values.
+/*
+GetGlobalExtensionRepoVersionSha256Unauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type GetGlobalExtensionRepoVersionSha256Unauthorized struct {
 }
 
+// IsSuccess returns true when this get global extension repo version sha256 unauthorized response has a 2xx status code
+func (o *GetGlobalExtensionRepoVersionSha256Unauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get global extension repo version sha256 unauthorized response has a 3xx status code
+func (o *GetGlobalExtensionRepoVersionSha256Unauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get global extension repo version sha256 unauthorized response has a 4xx status code
+func (o *GetGlobalExtensionRepoVersionSha256Unauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get global extension repo version sha256 unauthorized response has a 5xx status code
+func (o *GetGlobalExtensionRepoVersionSha256Unauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get global extension repo version sha256 unauthorized response a status code equal to that given
+func (o *GetGlobalExtensionRepoVersionSha256Unauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GetGlobalExtensionRepoVersionSha256Unauthorized) Error() string {
+	return fmt.Sprintf("[GET /extension-repository/{groupId}/{artifactId}/{version}/sha256][%d] getGlobalExtensionRepoVersionSha256Unauthorized ", 401)
+}
+
+func (o *GetGlobalExtensionRepoVersionSha256Unauthorized) String() string {
 	return fmt.Sprintf("[GET /extension-repository/{groupId}/{artifactId}/{version}/sha256][%d] getGlobalExtensionRepoVersionSha256Unauthorized ", 401)
 }
 
@@ -139,14 +230,44 @@ func NewGetGlobalExtensionRepoVersionSha256Forbidden() *GetGlobalExtensionRepoVe
 	return &GetGlobalExtensionRepoVersionSha256Forbidden{}
 }
 
-/* GetGlobalExtensionRepoVersionSha256Forbidden describes a response with status code 403, with default header values.
+/*
+GetGlobalExtensionRepoVersionSha256Forbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type GetGlobalExtensionRepoVersionSha256Forbidden struct {
 }
 
+// IsSuccess returns true when this get global extension repo version sha256 forbidden response has a 2xx status code
+func (o *GetGlobalExtensionRepoVersionSha256Forbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get global extension repo version sha256 forbidden response has a 3xx status code
+func (o *GetGlobalExtensionRepoVersionSha256Forbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get global extension repo version sha256 forbidden response has a 4xx status code
+func (o *GetGlobalExtensionRepoVersionSha256Forbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get global extension repo version sha256 forbidden response has a 5xx status code
+func (o *GetGlobalExtensionRepoVersionSha256Forbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get global extension repo version sha256 forbidden response a status code equal to that given
+func (o *GetGlobalExtensionRepoVersionSha256Forbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetGlobalExtensionRepoVersionSha256Forbidden) Error() string {
+	return fmt.Sprintf("[GET /extension-repository/{groupId}/{artifactId}/{version}/sha256][%d] getGlobalExtensionRepoVersionSha256Forbidden ", 403)
+}
+
+func (o *GetGlobalExtensionRepoVersionSha256Forbidden) String() string {
 	return fmt.Sprintf("[GET /extension-repository/{groupId}/{artifactId}/{version}/sha256][%d] getGlobalExtensionRepoVersionSha256Forbidden ", 403)
 }
 
@@ -160,14 +281,44 @@ func NewGetGlobalExtensionRepoVersionSha256NotFound() *GetGlobalExtensionRepoVer
 	return &GetGlobalExtensionRepoVersionSha256NotFound{}
 }
 
-/* GetGlobalExtensionRepoVersionSha256NotFound describes a response with status code 404, with default header values.
+/*
+GetGlobalExtensionRepoVersionSha256NotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type GetGlobalExtensionRepoVersionSha256NotFound struct {
 }
 
+// IsSuccess returns true when this get global extension repo version sha256 not found response has a 2xx status code
+func (o *GetGlobalExtensionRepoVersionSha256NotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get global extension repo version sha256 not found response has a 3xx status code
+func (o *GetGlobalExtensionRepoVersionSha256NotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get global extension repo version sha256 not found response has a 4xx status code
+func (o *GetGlobalExtensionRepoVersionSha256NotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get global extension repo version sha256 not found response has a 5xx status code
+func (o *GetGlobalExtensionRepoVersionSha256NotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get global extension repo version sha256 not found response a status code equal to that given
+func (o *GetGlobalExtensionRepoVersionSha256NotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetGlobalExtensionRepoVersionSha256NotFound) Error() string {
+	return fmt.Sprintf("[GET /extension-repository/{groupId}/{artifactId}/{version}/sha256][%d] getGlobalExtensionRepoVersionSha256NotFound ", 404)
+}
+
+func (o *GetGlobalExtensionRepoVersionSha256NotFound) String() string {
 	return fmt.Sprintf("[GET /extension-repository/{groupId}/{artifactId}/{version}/sha256][%d] getGlobalExtensionRepoVersionSha256NotFound ", 404)
 }
 
@@ -181,14 +332,44 @@ func NewGetGlobalExtensionRepoVersionSha256Conflict() *GetGlobalExtensionRepoVer
 	return &GetGlobalExtensionRepoVersionSha256Conflict{}
 }
 
-/* GetGlobalExtensionRepoVersionSha256Conflict describes a response with status code 409, with default header values.
+/*
+GetGlobalExtensionRepoVersionSha256Conflict describes a response with status code 409, with default header values.
 
 NiFi Registry was unable to complete the request because it assumes a server state that is not valid.
 */
 type GetGlobalExtensionRepoVersionSha256Conflict struct {
 }
 
+// IsSuccess returns true when this get global extension repo version sha256 conflict response has a 2xx status code
+func (o *GetGlobalExtensionRepoVersionSha256Conflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get global extension repo version sha256 conflict response has a 3xx status code
+func (o *GetGlobalExtensionRepoVersionSha256Conflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get global extension repo version sha256 conflict response has a 4xx status code
+func (o *GetGlobalExtensionRepoVersionSha256Conflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get global extension repo version sha256 conflict response has a 5xx status code
+func (o *GetGlobalExtensionRepoVersionSha256Conflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get global extension repo version sha256 conflict response a status code equal to that given
+func (o *GetGlobalExtensionRepoVersionSha256Conflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *GetGlobalExtensionRepoVersionSha256Conflict) Error() string {
+	return fmt.Sprintf("[GET /extension-repository/{groupId}/{artifactId}/{version}/sha256][%d] getGlobalExtensionRepoVersionSha256Conflict ", 409)
+}
+
+func (o *GetGlobalExtensionRepoVersionSha256Conflict) String() string {
 	return fmt.Sprintf("[GET /extension-repository/{groupId}/{artifactId}/{version}/sha256][%d] getGlobalExtensionRepoVersionSha256Conflict ", 409)
 }
 

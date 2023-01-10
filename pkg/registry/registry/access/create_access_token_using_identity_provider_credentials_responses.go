@@ -61,7 +61,8 @@ func NewCreateAccessTokenUsingIdentityProviderCredentialsOK() *CreateAccessToken
 	return &CreateAccessTokenUsingIdentityProviderCredentialsOK{}
 }
 
-/* CreateAccessTokenUsingIdentityProviderCredentialsOK describes a response with status code 200, with default header values.
+/*
+CreateAccessTokenUsingIdentityProviderCredentialsOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -69,9 +70,39 @@ type CreateAccessTokenUsingIdentityProviderCredentialsOK struct {
 	Payload string
 }
 
+// IsSuccess returns true when this create access token using identity provider credentials o k response has a 2xx status code
+func (o *CreateAccessTokenUsingIdentityProviderCredentialsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create access token using identity provider credentials o k response has a 3xx status code
+func (o *CreateAccessTokenUsingIdentityProviderCredentialsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create access token using identity provider credentials o k response has a 4xx status code
+func (o *CreateAccessTokenUsingIdentityProviderCredentialsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create access token using identity provider credentials o k response has a 5xx status code
+func (o *CreateAccessTokenUsingIdentityProviderCredentialsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create access token using identity provider credentials o k response a status code equal to that given
+func (o *CreateAccessTokenUsingIdentityProviderCredentialsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *CreateAccessTokenUsingIdentityProviderCredentialsOK) Error() string {
 	return fmt.Sprintf("[POST /access/token/identity-provider][%d] createAccessTokenUsingIdentityProviderCredentialsOK  %+v", 200, o.Payload)
 }
+
+func (o *CreateAccessTokenUsingIdentityProviderCredentialsOK) String() string {
+	return fmt.Sprintf("[POST /access/token/identity-provider][%d] createAccessTokenUsingIdentityProviderCredentialsOK  %+v", 200, o.Payload)
+}
+
 func (o *CreateAccessTokenUsingIdentityProviderCredentialsOK) GetPayload() string {
 	return o.Payload
 }
@@ -91,14 +122,44 @@ func NewCreateAccessTokenUsingIdentityProviderCredentialsBadRequest() *CreateAcc
 	return &CreateAccessTokenUsingIdentityProviderCredentialsBadRequest{}
 }
 
-/* CreateAccessTokenUsingIdentityProviderCredentialsBadRequest describes a response with status code 400, with default header values.
+/*
+CreateAccessTokenUsingIdentityProviderCredentialsBadRequest describes a response with status code 400, with default header values.
 
 NiFi Registry was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type CreateAccessTokenUsingIdentityProviderCredentialsBadRequest struct {
 }
 
+// IsSuccess returns true when this create access token using identity provider credentials bad request response has a 2xx status code
+func (o *CreateAccessTokenUsingIdentityProviderCredentialsBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create access token using identity provider credentials bad request response has a 3xx status code
+func (o *CreateAccessTokenUsingIdentityProviderCredentialsBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create access token using identity provider credentials bad request response has a 4xx status code
+func (o *CreateAccessTokenUsingIdentityProviderCredentialsBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create access token using identity provider credentials bad request response has a 5xx status code
+func (o *CreateAccessTokenUsingIdentityProviderCredentialsBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create access token using identity provider credentials bad request response a status code equal to that given
+func (o *CreateAccessTokenUsingIdentityProviderCredentialsBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CreateAccessTokenUsingIdentityProviderCredentialsBadRequest) Error() string {
+	return fmt.Sprintf("[POST /access/token/identity-provider][%d] createAccessTokenUsingIdentityProviderCredentialsBadRequest ", 400)
+}
+
+func (o *CreateAccessTokenUsingIdentityProviderCredentialsBadRequest) String() string {
 	return fmt.Sprintf("[POST /access/token/identity-provider][%d] createAccessTokenUsingIdentityProviderCredentialsBadRequest ", 400)
 }
 
@@ -112,14 +173,44 @@ func NewCreateAccessTokenUsingIdentityProviderCredentialsUnauthorized() *CreateA
 	return &CreateAccessTokenUsingIdentityProviderCredentialsUnauthorized{}
 }
 
-/* CreateAccessTokenUsingIdentityProviderCredentialsUnauthorized describes a response with status code 401, with default header values.
+/*
+CreateAccessTokenUsingIdentityProviderCredentialsUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type CreateAccessTokenUsingIdentityProviderCredentialsUnauthorized struct {
 }
 
+// IsSuccess returns true when this create access token using identity provider credentials unauthorized response has a 2xx status code
+func (o *CreateAccessTokenUsingIdentityProviderCredentialsUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create access token using identity provider credentials unauthorized response has a 3xx status code
+func (o *CreateAccessTokenUsingIdentityProviderCredentialsUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create access token using identity provider credentials unauthorized response has a 4xx status code
+func (o *CreateAccessTokenUsingIdentityProviderCredentialsUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create access token using identity provider credentials unauthorized response has a 5xx status code
+func (o *CreateAccessTokenUsingIdentityProviderCredentialsUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create access token using identity provider credentials unauthorized response a status code equal to that given
+func (o *CreateAccessTokenUsingIdentityProviderCredentialsUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *CreateAccessTokenUsingIdentityProviderCredentialsUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /access/token/identity-provider][%d] createAccessTokenUsingIdentityProviderCredentialsUnauthorized ", 401)
+}
+
+func (o *CreateAccessTokenUsingIdentityProviderCredentialsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /access/token/identity-provider][%d] createAccessTokenUsingIdentityProviderCredentialsUnauthorized ", 401)
 }
 
@@ -133,14 +224,44 @@ func NewCreateAccessTokenUsingIdentityProviderCredentialsConflict() *CreateAcces
 	return &CreateAccessTokenUsingIdentityProviderCredentialsConflict{}
 }
 
-/* CreateAccessTokenUsingIdentityProviderCredentialsConflict describes a response with status code 409, with default header values.
+/*
+CreateAccessTokenUsingIdentityProviderCredentialsConflict describes a response with status code 409, with default header values.
 
 NiFi Registry was unable to complete the request because it assumes a server state that is not valid. The NiFi Registry may not be configured to support login with customized credentials.
 */
 type CreateAccessTokenUsingIdentityProviderCredentialsConflict struct {
 }
 
+// IsSuccess returns true when this create access token using identity provider credentials conflict response has a 2xx status code
+func (o *CreateAccessTokenUsingIdentityProviderCredentialsConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create access token using identity provider credentials conflict response has a 3xx status code
+func (o *CreateAccessTokenUsingIdentityProviderCredentialsConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create access token using identity provider credentials conflict response has a 4xx status code
+func (o *CreateAccessTokenUsingIdentityProviderCredentialsConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create access token using identity provider credentials conflict response has a 5xx status code
+func (o *CreateAccessTokenUsingIdentityProviderCredentialsConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create access token using identity provider credentials conflict response a status code equal to that given
+func (o *CreateAccessTokenUsingIdentityProviderCredentialsConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *CreateAccessTokenUsingIdentityProviderCredentialsConflict) Error() string {
+	return fmt.Sprintf("[POST /access/token/identity-provider][%d] createAccessTokenUsingIdentityProviderCredentialsConflict ", 409)
+}
+
+func (o *CreateAccessTokenUsingIdentityProviderCredentialsConflict) String() string {
 	return fmt.Sprintf("[POST /access/token/identity-provider][%d] createAccessTokenUsingIdentityProviderCredentialsConflict ", 409)
 }
 
@@ -154,14 +275,44 @@ func NewCreateAccessTokenUsingIdentityProviderCredentialsInternalServerError() *
 	return &CreateAccessTokenUsingIdentityProviderCredentialsInternalServerError{}
 }
 
-/* CreateAccessTokenUsingIdentityProviderCredentialsInternalServerError describes a response with status code 500, with default header values.
+/*
+CreateAccessTokenUsingIdentityProviderCredentialsInternalServerError describes a response with status code 500, with default header values.
 
 NiFi Registry was unable to complete the request because an unexpected error occurred.
 */
 type CreateAccessTokenUsingIdentityProviderCredentialsInternalServerError struct {
 }
 
+// IsSuccess returns true when this create access token using identity provider credentials internal server error response has a 2xx status code
+func (o *CreateAccessTokenUsingIdentityProviderCredentialsInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create access token using identity provider credentials internal server error response has a 3xx status code
+func (o *CreateAccessTokenUsingIdentityProviderCredentialsInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create access token using identity provider credentials internal server error response has a 4xx status code
+func (o *CreateAccessTokenUsingIdentityProviderCredentialsInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create access token using identity provider credentials internal server error response has a 5xx status code
+func (o *CreateAccessTokenUsingIdentityProviderCredentialsInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this create access token using identity provider credentials internal server error response a status code equal to that given
+func (o *CreateAccessTokenUsingIdentityProviderCredentialsInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *CreateAccessTokenUsingIdentityProviderCredentialsInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /access/token/identity-provider][%d] createAccessTokenUsingIdentityProviderCredentialsInternalServerError ", 500)
+}
+
+func (o *CreateAccessTokenUsingIdentityProviderCredentialsInternalServerError) String() string {
 	return fmt.Sprintf("[POST /access/token/identity-provider][%d] createAccessTokenUsingIdentityProviderCredentialsInternalServerError ", 500)
 }
 

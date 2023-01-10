@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "description": "The Rest API provides programmatic access to command and control a NiFi instance in real time. Start and\n                                            stop processors, monitor queues, query provenance data, and more. Each endpoint below includes a description,\n                                            definitions of the expected input and output, potential response codes, and the authorizations required\n                                            to invoke each service.",
-    "version": "1.15.0",
+    "version": "1.19.1",
     "title": "NiFi Rest API",
     "contact": {
       "url": "https://nifi.apache.org",
@@ -22,10 +22,6 @@
     {
       "name": "accessoidc",
       "description": "Endpoints for obtaining an access token or checking access status."
-    },
-    {
-      "name": "accesssaml",
-      "description": "Endpoints for authenticating, obtaining an access token or logging out of a configured SAML authentication provider."
     },
     {
       "name": "connections",
@@ -74,6 +70,10 @@
     {
       "name": "parameter-contexts",
       "description": "Endpoint for managing version control for a flow"
+    },
+    {
+      "name": "parameter-providers",
+      "description": "Endpoint for managing a Parameter Provider."
     },
     {
       "name": "policies",
@@ -461,194 +461,6 @@
         }
       }
     },
-    "/access/saml/local-logout": {
-      "get": {
-        "tags": [
-          "accesssaml"
-        ],
-        "summary": "Local logout when SAML is enabled, does not communicate with the IDP.",
-        "description": "Note: This endpoint is subject to change as NiFi and it's REST API evolve.",
-        "operationId": "samlLocalLogout",
-        "consumes": [
-          "*/*"
-        ],
-        "produces": [
-          "*/*"
-        ],
-        "responses": {
-          "default": {
-            "description": "successful operation"
-          }
-        }
-      }
-    },
-    "/access/saml/login/consumer": {
-      "get": {
-        "tags": [
-          "accesssaml"
-        ],
-        "summary": "Processes the SSO response from the SAML identity provider for HTTP-REDIRECT binding.",
-        "description": "Note: This endpoint is subject to change as NiFi and it's REST API evolve.",
-        "operationId": "samlLoginHttpRedirectConsumer",
-        "consumes": [
-          "*/*"
-        ],
-        "produces": [
-          "*/*"
-        ],
-        "responses": {
-          "default": {
-            "description": "successful operation"
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "accesssaml"
-        ],
-        "summary": "Processes the SSO response from the SAML identity provider for HTTP-POST binding.",
-        "description": "Note: This endpoint is subject to change as NiFi and it's REST API evolve.",
-        "operationId": "samlLoginHttpPostConsumer",
-        "consumes": [
-          "application/x-www-form-urlencoded"
-        ],
-        "produces": [
-          "*/*"
-        ],
-        "responses": {
-          "default": {
-            "description": "successful operation"
-          }
-        }
-      }
-    },
-    "/access/saml/login/exchange": {
-      "post": {
-        "tags": [
-          "accesssaml"
-        ],
-        "summary": "Retrieves a JWT following a successful login sequence using the configured SAML identity provider.",
-        "description": "Note: This endpoint is subject to change as NiFi and it's REST API evolve.",
-        "operationId": "samlLoginExchange",
-        "consumes": [
-          "*/*"
-        ],
-        "produces": [
-          "text/plain"
-        ],
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "schema": {
-              "type": "string"
-            }
-          }
-        }
-      }
-    },
-    "/access/saml/login/request": {
-      "get": {
-        "tags": [
-          "accesssaml"
-        ],
-        "summary": "Initiates an SSO request to the configured SAML identity provider.",
-        "description": "Note: This endpoint is subject to change as NiFi and it's REST API evolve.",
-        "operationId": "samlLoginRequest",
-        "consumes": [
-          "*/*"
-        ],
-        "produces": [
-          "*/*"
-        ],
-        "responses": {
-          "default": {
-            "description": "successful operation"
-          }
-        }
-      }
-    },
-    "/access/saml/metadata": {
-      "get": {
-        "tags": [
-          "accesssaml"
-        ],
-        "summary": "Retrieves the service provider metadata.",
-        "description": "Note: This endpoint is subject to change as NiFi and it's REST API evolve.",
-        "operationId": "samlMetadata",
-        "consumes": [
-          "*/*"
-        ],
-        "produces": [
-          "application/samlmetadata+xml"
-        ],
-        "responses": {
-          "default": {
-            "description": "successful operation"
-          }
-        }
-      }
-    },
-    "/access/saml/single-logout/consumer": {
-      "get": {
-        "tags": [
-          "accesssaml"
-        ],
-        "summary": "Processes a SingleLogout message from the configured SAML identity provider using the HTTP-REDIRECT binding.",
-        "description": "Note: This endpoint is subject to change as NiFi and it's REST API evolve.",
-        "operationId": "samlSingleLogoutHttpRedirectConsumer",
-        "consumes": [
-          "*/*"
-        ],
-        "produces": [
-          "*/*"
-        ],
-        "responses": {
-          "default": {
-            "description": "successful operation"
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "accesssaml"
-        ],
-        "summary": "Processes a SingleLogout message from the configured SAML identity provider using the HTTP-POST binding.",
-        "description": "Note: This endpoint is subject to change as NiFi and it's REST API evolve.",
-        "operationId": "samlSingleLogoutHttpPostConsumer",
-        "consumes": [
-          "*/*"
-        ],
-        "produces": [
-          "*/*"
-        ],
-        "responses": {
-          "default": {
-            "description": "successful operation"
-          }
-        }
-      }
-    },
-    "/access/saml/single-logout/request": {
-      "get": {
-        "tags": [
-          "accesssaml"
-        ],
-        "summary": "Initiates a logout request using the SingleLogout service of the configured SAML identity provider.",
-        "description": "Note: This endpoint is subject to change as NiFi and it's REST API evolve.",
-        "operationId": "samlSingleLogoutRequest",
-        "consumes": [
-          "*/*"
-        ],
-        "produces": [
-          "*/*"
-        ],
-        "responses": {
-          "default": {
-            "description": "successful operation"
-          }
-        }
-      }
-    },
     "/access/token": {
       "post": {
         "tags": [
@@ -695,6 +507,33 @@
             "schema": {
               "type": "string"
             }
+          }
+        }
+      }
+    },
+    "/access/token/expiration": {
+      "get": {
+        "tags": [
+          "access"
+        ],
+        "summary": "Get expiration for current Access Token",
+        "description": "Note: This endpoint is subject to change as NiFi and it's REST API evolve.",
+        "operationId": "getAccessTokenExpiration",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Access Token Expiration found",
+            "schema": {
+              "$ref": "#/definitions/AccessTokenExpirationEntity"
+            }
+          },
+          "401": {
+            "description": "Access Token not authorized"
+          },
+          "409": {
+            "description": "Access Token not resolved"
           }
         }
       }
@@ -909,7 +748,7 @@
           "controller-services"
         ],
         "summary": "Gets a controller service",
-        "description": "",
+        "description": "If the uiOnly query parameter is provided with a value of true, the returned entity may only contain fields that are necessary for rendering the NiFi User Interface. As such, the selected fields may change at any time, even during incremental releases, without warning. As a result, this parameter should not be provided by any client other than the UI.",
         "operationId": "getControllerService",
         "consumes": [
           "*/*"
@@ -924,6 +763,13 @@
             "description": "The controller service id.",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "uiOnly",
+            "in": "query",
+            "required": false,
+            "type": "boolean",
+            "default": false
           }
         ],
         "responses": {
@@ -1290,7 +1136,7 @@
         ],
         "summary": "Deletes the Verification Request with the given ID",
         "description": "Deletes the Verification Request with the given ID. After a request is created, it is expected that the client will properly clean up the request by DELETE'ing it, once the Verification process has completed. If the request is deleted before the request completes, then the Verification request will finish the step that it is currently performing and then will cancel any subsequent steps.",
-        "operationId": "deleteValidationRequest",
+        "operationId": "deleteVerificationRequest",
         "consumes": [
           "*/*"
         ],
@@ -1371,6 +1217,14 @@
             "description": "The property name to return the descriptor for.",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "sensitive",
+            "in": "query",
+            "description": "Property Descriptor requested sensitive status",
+            "required": false,
+            "type": "boolean",
+            "default": false
           }
         ],
         "responses": {
@@ -2140,14 +1994,72 @@
         ]
       }
     },
+    "/controller/parameter-providers": {
+      "post": {
+        "tags": [
+          "controller"
+        ],
+        "summary": "Creates a new parameter provider",
+        "description": "",
+        "operationId": "createParameterProvider",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "The parameter provider configuration details.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ParameterProviderEntity"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "NiFi was unable to complete the request because it was invalid. The request should not be retried without modification."
+          },
+          "401": {
+            "description": "Client could not be authenticated."
+          },
+          "403": {
+            "description": "Client is not authorized to make this request."
+          },
+          "409": {
+            "description": "The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful."
+          },
+          "201": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ParameterProviderEntity"
+            }
+          }
+        },
+        "security": [
+          {
+            "Write - /controller": []
+          },
+          {
+            "Read - any referenced Controller Services - /controller-services/{uuid}": []
+          },
+          {
+            "Write - if the Parameter Provider is restricted - /restricted-components": []
+          }
+        ]
+      }
+    },
     "/controller/registry-clients": {
       "get": {
         "tags": [
           "controller"
         ],
-        "summary": "Gets the listing of available registry clients",
+        "summary": "Gets the listing of available flow registry clients",
         "description": "",
-        "operationId": "getRegistryClients",
+        "operationId": "getFlowRegistryClients",
         "consumes": [
           "*/*"
         ],
@@ -2158,7 +2070,7 @@
           "200": {
             "description": "successful operation",
             "schema": {
-              "$ref": "#/definitions/RegistryClientsEntity"
+              "$ref": "#/definitions/FlowRegistryClientsEntity"
             }
           },
           "400": {
@@ -2187,9 +2099,9 @@
         "tags": [
           "controller"
         ],
-        "summary": "Creates a new registry client",
+        "summary": "Creates a new flow registry client",
         "description": "",
-        "operationId": "createRegistryClient",
+        "operationId": "createFlowRegistryClient",
         "consumes": [
           "application/json"
         ],
@@ -2200,10 +2112,10 @@
           {
             "in": "body",
             "name": "body",
-            "description": "The registry configuration details.",
+            "description": "The flow registry client configuration details.",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/RegistryClientEntity"
+              "$ref": "#/definitions/FlowRegistryClientEntity"
             }
           }
         ],
@@ -2223,7 +2135,7 @@
           "201": {
             "description": "successful operation",
             "schema": {
-              "$ref": "#/definitions/RegistryClientEntity"
+              "$ref": "#/definitions/FlowRegistryClientEntity"
             }
           }
         },
@@ -2239,9 +2151,9 @@
         "tags": [
           "controller"
         ],
-        "summary": "Gets a registry client",
+        "summary": "Gets a flow registry client",
         "description": "",
-        "operationId": "getRegistryClient",
+        "operationId": "getFlowRegistryClient",
         "consumes": [
           "*/*"
         ],
@@ -2252,7 +2164,7 @@
           {
             "name": "id",
             "in": "path",
-            "description": "The registry id.",
+            "description": "The flow registry client id.",
             "required": true,
             "type": "string"
           }
@@ -2261,7 +2173,7 @@
           "200": {
             "description": "successful operation",
             "schema": {
-              "$ref": "#/definitions/RegistryClientEntity"
+              "$ref": "#/definitions/FlowRegistryClientEntity"
             }
           },
           "400": {
@@ -2290,9 +2202,9 @@
         "tags": [
           "controller"
         ],
-        "summary": "Updates a registry client",
+        "summary": "Updates a flow registry client",
         "description": "",
-        "operationId": "updateRegistryClient",
+        "operationId": "updateFlowRegistryClient",
         "consumes": [
           "application/json"
         ],
@@ -2303,17 +2215,17 @@
           {
             "name": "id",
             "in": "path",
-            "description": "The registry id.",
+            "description": "The flow registry client id.",
             "required": true,
             "type": "string"
           },
           {
             "in": "body",
             "name": "body",
-            "description": "The registry configuration details.",
+            "description": "The flow registry client configuration details.",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/RegistryClientEntity"
+              "$ref": "#/definitions/FlowRegistryClientEntity"
             }
           }
         ],
@@ -2321,7 +2233,7 @@
           "200": {
             "description": "successful operation",
             "schema": {
-              "$ref": "#/definitions/RegistryClientEntity"
+              "$ref": "#/definitions/FlowRegistryClientEntity"
             }
           },
           "400": {
@@ -2350,9 +2262,9 @@
         "tags": [
           "controller"
         ],
-        "summary": "Deletes a registry client",
+        "summary": "Deletes a flow registry client",
         "description": "",
-        "operationId": "deleteRegistryClient",
+        "operationId": "deleteFlowRegistryClient",
         "consumes": [
           "*/*"
         ],
@@ -2385,7 +2297,7 @@
           {
             "name": "id",
             "in": "path",
-            "description": "The registry id.",
+            "description": "The flow registry client id.",
             "required": true,
             "type": "string"
           }
@@ -2394,7 +2306,7 @@
           "200": {
             "description": "successful operation",
             "schema": {
-              "$ref": "#/definitions/RegistryClientEntity"
+              "$ref": "#/definitions/FlowRegistryClientEntity"
             }
           },
           "400": {
@@ -2416,6 +2328,115 @@
         "security": [
           {
             "Write - /controller": []
+          }
+        ]
+      }
+    },
+    "/controller/registry-clients/{id}/descriptors": {
+      "get": {
+        "tags": [
+          "controller"
+        ],
+        "summary": "Gets a flow registry client property descriptor",
+        "description": "",
+        "operationId": "getPropertyDescriptor",
+        "consumes": [
+          "*/*"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The flow registry client id.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "propertyName",
+            "in": "query",
+            "description": "The property name.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "sensitive",
+            "in": "query",
+            "description": "Property Descriptor requested sensitive status",
+            "required": false,
+            "type": "boolean",
+            "default": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/PropertyDescriptorEntity"
+            }
+          },
+          "400": {
+            "description": "NiFi was unable to complete the request because it was invalid. The request should not be retried without modification."
+          },
+          "401": {
+            "description": "Client could not be authenticated."
+          },
+          "403": {
+            "description": "Client is not authorized to make this request."
+          },
+          "404": {
+            "description": "The specified resource could not be found."
+          },
+          "409": {
+            "description": "The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful."
+          }
+        },
+        "security": [
+          {
+            "Read - /controller/registry-clients/{uuid}": []
+          }
+        ]
+      }
+    },
+    "/controller/registry-types": {
+      "get": {
+        "tags": [
+          "controller"
+        ],
+        "summary": "Retrieves the types of flow  that this NiFi supports",
+        "description": "Note: This endpoint is subject to change as NiFi and it's REST API evolve.",
+        "operationId": "getRegistryClientTypes",
+        "consumes": [
+          "*/*"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/FlowRegistryClientTypesEntity"
+            }
+          },
+          "400": {
+            "description": "NiFi was unable to complete the request because it was invalid. The request should not be retried without modification."
+          },
+          "401": {
+            "description": "Client could not be authenticated."
+          },
+          "403": {
+            "description": "Client is not authorized to make this request."
+          },
+          "409": {
+            "description": "The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful."
+          }
+        },
+        "security": [
+          {
+            "Read - /flow": []
           }
         ]
       }
@@ -3770,13 +3791,22 @@
           "flow"
         ],
         "summary": "Gets controller services for reporting tasks",
-        "description": "",
+        "description": "If the uiOnly query parameter is provided with a value of true, the returned entity may only contain fields that are necessary for rendering the NiFi User Interface. As such, the selected fields may change at any time, even during incremental releases, without warning. As a result, this parameter should not be provided by any client other than the UI.",
         "operationId": "getControllerServicesFromController",
         "consumes": [
           "*/*"
         ],
         "produces": [
           "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "uiOnly",
+            "in": "query",
+            "required": false,
+            "type": "boolean",
+            "default": false
+          }
         ],
         "responses": {
           "200": {
@@ -4130,6 +4160,47 @@
             "in": "path",
             "description": "The producer for flow file metrics. Each producer may have its own output format.",
             "required": true,
+            "type": "string",
+            "enum": [
+              "prometheus"
+            ]
+          },
+          {
+            "name": "includedRegistries",
+            "in": "query",
+            "description": "Set of included metrics registries",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "NIFI",
+                "JVM",
+                "BULLETIN",
+                "CONNECTION"
+              ]
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "sampleName",
+            "in": "query",
+            "description": "Regular Expression Pattern to be applied against the sample name field",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "sampleLabelValue",
+            "in": "query",
+            "description": "Regular Expression Pattern to be applied against the sample label value field",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "rootFieldName",
+            "in": "query",
+            "description": "Name of the first field of JSON object. Applicable for JSON producer only.",
+            "required": false,
             "type": "string"
           }
         ],
@@ -4268,6 +4339,111 @@
         "security": [
           {
             "Read - /parameter-contexts/{id} for each Parameter Context": []
+          }
+        ]
+      }
+    },
+    "/flow/parameter-provider-types": {
+      "get": {
+        "tags": [
+          "flow"
+        ],
+        "summary": "Retrieves the types of parameter providers that this NiFi supports",
+        "description": "Note: This endpoint is subject to change as NiFi and it's REST API evolve.",
+        "operationId": "getParameterProviderTypes",
+        "consumes": [
+          "*/*"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "bundleGroupFilter",
+            "in": "query",
+            "description": "If specified, will only return types that are a member of this bundle group.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "bundleArtifactFilter",
+            "in": "query",
+            "description": "If specified, will only return types that are a member of this bundle artifact.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "description": "If specified, will only return types whose fully qualified classname matches.",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ParameterProviderTypesEntity"
+            }
+          },
+          "400": {
+            "description": "NiFi was unable to complete the request because it was invalid. The request should not be retried without modification."
+          },
+          "401": {
+            "description": "Client could not be authenticated."
+          },
+          "403": {
+            "description": "Client is not authorized to make this request."
+          },
+          "409": {
+            "description": "The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful."
+          }
+        },
+        "security": [
+          {
+            "Read - /flow": []
+          }
+        ]
+      }
+    },
+    "/flow/parameter-providers": {
+      "get": {
+        "tags": [
+          "flow"
+        ],
+        "summary": "Gets all parameter providers",
+        "description": "",
+        "operationId": "getParameterProviders",
+        "consumes": [
+          "*/*"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ParameterProvidersEntity"
+            }
+          },
+          "400": {
+            "description": "NiFi was unable to complete the request because it was invalid. The request should not be retried without modification."
+          },
+          "401": {
+            "description": "Client could not be authenticated."
+          },
+          "403": {
+            "description": "Client is not authorized to make this request."
+          },
+          "409": {
+            "description": "The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful."
+          }
+        },
+        "security": [
+          {
+            "Read - /flow": []
           }
         ]
       }
@@ -4442,7 +4618,7 @@
           "flow"
         ],
         "summary": "Gets all controller services",
-        "description": "",
+        "description": "If the uiOnly query parameter is provided with a value of true, the returned entity may only contain fields that are necessary for rendering the NiFi User Interface. As such, the selected fields may change at any time, even during incremental releases, without warning. As a result, this parameter should not be provided by any client other than the UI.",
         "operationId": "getControllerServicesFromGroup",
         "consumes": [
           "*/*"
@@ -4470,6 +4646,13 @@
             "name": "includeDescendantGroups",
             "in": "query",
             "description": "Whether or not to include descendant process groups",
+            "required": false,
+            "type": "boolean",
+            "default": false
+          },
+          {
+            "name": "uiOnly",
+            "in": "query",
             "required": false,
             "type": "boolean",
             "default": false
@@ -4884,9 +5067,9 @@
         "tags": [
           "flow"
         ],
-        "summary": "Gets the listing of available registries",
+        "summary": "Gets the listing of available flow registry clients",
         "description": "",
-        "operationId": "getRegistries",
+        "operationId": "getRegistryClients",
         "consumes": [
           "*/*"
         ],
@@ -4897,7 +5080,7 @@
           "200": {
             "description": "successful operation",
             "schema": {
-              "$ref": "#/definitions/RegistryClientsEntity"
+              "$ref": "#/definitions/FlowRegistryClientsEntity"
             }
           },
           "400": {
@@ -4950,7 +5133,7 @@
           "200": {
             "description": "successful operation",
             "schema": {
-              "$ref": "#/definitions/BucketsEntity"
+              "$ref": "#/definitions/FlowRegistryBucketsEntity"
             }
           },
           "400": {
@@ -4994,7 +5177,7 @@
           {
             "name": "registry-id",
             "in": "path",
-            "description": "The registry id.",
+            "description": "The registry client id.",
             "required": true,
             "type": "string"
           },
@@ -5011,6 +5194,73 @@
             "description": "successful operation",
             "schema": {
               "$ref": "#/definitions/VersionedFlowsEntity"
+            }
+          },
+          "400": {
+            "description": "NiFi was unable to complete the request because it was invalid. The request should not be retried without modification."
+          },
+          "401": {
+            "description": "Client could not be authenticated."
+          },
+          "403": {
+            "description": "Client is not authorized to make this request."
+          },
+          "404": {
+            "description": "The specified resource could not be found."
+          },
+          "409": {
+            "description": "The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful."
+          }
+        },
+        "security": [
+          {
+            "Read - /flow": []
+          }
+        ]
+      }
+    },
+    "/flow/registries/{registry-id}/buckets/{bucket-id}/flows/{flow-id}/details": {
+      "get": {
+        "tags": [
+          "flow"
+        ],
+        "summary": "Gets the details of a flow from the specified registry and bucket for the specified flow for the current user",
+        "description": "",
+        "operationId": "getDetails",
+        "consumes": [
+          "*/*"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "registry-id",
+            "in": "path",
+            "description": "The registry client id.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "bucket-id",
+            "in": "path",
+            "description": "The bucket id.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "flow-id",
+            "in": "path",
+            "description": "The flow id.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/VersionedFlowEntity"
             }
           },
           "400": {
@@ -5054,7 +5304,7 @@
           {
             "name": "registry-id",
             "in": "path",
-            "description": "The registry id.",
+            "description": "The registry client id.",
             "required": true,
             "type": "string"
           },
@@ -5307,6 +5557,47 @@
             "description": "successful operation",
             "schema": {
               "$ref": "#/definitions/ReportingTasksEntity"
+            }
+          },
+          "400": {
+            "description": "NiFi was unable to complete the request because it was invalid. The request should not be retried without modification."
+          },
+          "401": {
+            "description": "Client could not be authenticated."
+          },
+          "403": {
+            "description": "Client is not authorized to make this request."
+          },
+          "409": {
+            "description": "The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful."
+          }
+        },
+        "security": [
+          {
+            "Read - /flow": []
+          }
+        ]
+      }
+    },
+    "/flow/runtime-manifest": {
+      "get": {
+        "tags": [
+          "flow"
+        ],
+        "summary": "Retrieves the runtime manifest for this NiFi instance.",
+        "description": "Note: This endpoint is subject to change as NiFi and it's REST API evolve.",
+        "operationId": "getRuntimeManifest",
+        "consumes": [
+          "*/*"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/RuntimeManifestEntity"
             }
           },
           "400": {
@@ -7487,6 +7778,920 @@
         ]
       }
     },
+    "/parameter-providers/{id}": {
+      "get": {
+        "tags": [
+          "parameter-providers"
+        ],
+        "summary": "Gets a parameter provider",
+        "description": "",
+        "operationId": "getParameterProvider",
+        "consumes": [
+          "*/*"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The parameter provider id.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ParameterProviderEntity"
+            }
+          },
+          "400": {
+            "description": "NiFi was unable to complete the request because it was invalid. The request should not be retried without modification."
+          },
+          "401": {
+            "description": "Client could not be authenticated."
+          },
+          "403": {
+            "description": "Client is not authorized to make this request."
+          },
+          "404": {
+            "description": "The specified resource could not be found."
+          },
+          "409": {
+            "description": "The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful."
+          }
+        },
+        "security": [
+          {
+            "Read - /parameter-providers/{uuid}": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "parameter-providers"
+        ],
+        "summary": "Updates a parameter provider",
+        "description": "",
+        "operationId": "updateParameterProvider",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The parameter provider id.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "The parameter provider configuration details.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ParameterProviderEntity"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ParameterProviderEntity"
+            }
+          },
+          "400": {
+            "description": "NiFi was unable to complete the request because it was invalid. The request should not be retried without modification."
+          },
+          "401": {
+            "description": "Client could not be authenticated."
+          },
+          "403": {
+            "description": "Client is not authorized to make this request."
+          },
+          "404": {
+            "description": "The specified resource could not be found."
+          },
+          "409": {
+            "description": "The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful."
+          }
+        },
+        "security": [
+          {
+            "Write - /parameter-providers/{uuid}": []
+          },
+          {
+            "Read - any referenced Controller Services if this request changes the reference - /controller-services/{uuid}": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "parameter-providers"
+        ],
+        "summary": "Deletes a parameter provider",
+        "description": "",
+        "operationId": "removeParameterProvider",
+        "consumes": [
+          "*/*"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "version",
+            "in": "query",
+            "description": "The revision is used to verify the client is working with the latest version of the flow.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "clientId",
+            "in": "query",
+            "description": "If the client id is not specified, new one will be generated. This value (whether specified or generated) is included in the response.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "disconnectedNodeAcknowledged",
+            "in": "query",
+            "description": "Acknowledges that this node is disconnected to allow for mutable requests to proceed.",
+            "required": false,
+            "type": "boolean",
+            "default": false
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The parameter provider id.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ParameterProviderEntity"
+            }
+          },
+          "400": {
+            "description": "NiFi was unable to complete the request because it was invalid. The request should not be retried without modification."
+          },
+          "401": {
+            "description": "Client could not be authenticated."
+          },
+          "403": {
+            "description": "Client is not authorized to make this request."
+          },
+          "404": {
+            "description": "The specified resource could not be found."
+          },
+          "409": {
+            "description": "The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful."
+          }
+        },
+        "security": [
+          {
+            "Write - /parameter-providers/{uuid}": []
+          },
+          {
+            "Write - /controller": []
+          },
+          {
+            "Read - any referenced Controller Services - /controller-services/{uuid}": []
+          }
+        ]
+      }
+    },
+    "/parameter-providers/{id}/config/analysis": {
+      "post": {
+        "tags": [
+          "parameter-providers"
+        ],
+        "summary": "Performs analysis of the component's configuration, providing information about which attributes are referenced.",
+        "description": "",
+        "operationId": "analyzeConfiguration",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The parameter provider id.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "The configuration analysis request.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ConfigurationAnalysisEntity"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ConfigurationAnalysisEntity"
+            }
+          },
+          "400": {
+            "description": "NiFi was unable to complete the request because it was invalid. The request should not be retried without modification."
+          },
+          "401": {
+            "description": "Client could not be authenticated."
+          },
+          "403": {
+            "description": "Client is not authorized to make this request."
+          },
+          "404": {
+            "description": "The specified resource could not be found."
+          },
+          "409": {
+            "description": "The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful."
+          }
+        },
+        "security": [
+          {
+            "Read - /parameter-providers/{uuid}": []
+          }
+        ]
+      }
+    },
+    "/parameter-providers/{id}/config/verification-requests": {
+      "post": {
+        "tags": [
+          "parameter-providers"
+        ],
+        "summary": "Performs verification of the Parameter Provider's configuration",
+        "description": "This will initiate the process of verifying a given Parameter Provider configuration. This may be a long-running task. As a result, this endpoint will immediately return a ParameterProviderConfigVerificationRequestEntity, and the process of performing the verification will occur asynchronously in the background. The client may then periodically poll the status of the request by issuing a GET request to /parameter-providers/{serviceId}/verification-requests/{requestId}. Once the request is completed, the client is expected to issue a DELETE request to /parameter-providers/{providerId}/verification-requests/{requestId}.",
+        "operationId": "submitConfigVerificationRequest",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The parameter provider id.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "The parameter provider configuration verification request.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/VerifyConfigRequestEntity"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/VerifyConfigRequestEntity"
+            }
+          },
+          "400": {
+            "description": "NiFi was unable to complete the request because it was invalid. The request should not be retried without modification."
+          },
+          "401": {
+            "description": "Client could not be authenticated."
+          },
+          "403": {
+            "description": "Client is not authorized to make this request."
+          },
+          "404": {
+            "description": "The specified resource could not be found."
+          },
+          "409": {
+            "description": "The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful."
+          }
+        },
+        "security": [
+          {
+            "Read - /parameter-providers/{uuid}": []
+          }
+        ]
+      }
+    },
+    "/parameter-providers/{id}/config/verification-requests/{requestId}": {
+      "get": {
+        "tags": [
+          "parameter-providers"
+        ],
+        "summary": "Returns the Verification Request with the given ID",
+        "description": "Returns the Verification Request with the given ID. Once an Verification Request has been created, that request can subsequently be retrieved via this endpoint, and the request that is fetched will contain the updated state, such as percent complete, the current state of the request, and any failures. ",
+        "operationId": "getVerificationRequest",
+        "consumes": [
+          "*/*"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID of the Parameter Provider",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "requestId",
+            "in": "path",
+            "description": "The ID of the Verification Request",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/VerifyConfigRequestEntity"
+            }
+          },
+          "400": {
+            "description": "NiFi was unable to complete the request because it was invalid. The request should not be retried without modification."
+          },
+          "401": {
+            "description": "Client could not be authenticated."
+          },
+          "403": {
+            "description": "Client is not authorized to make this request."
+          },
+          "404": {
+            "description": "The specified resource could not be found."
+          },
+          "409": {
+            "description": "The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful."
+          }
+        },
+        "security": [
+          {
+            "Only the user that submitted the request can get it": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "parameter-providers"
+        ],
+        "summary": "Deletes the Verification Request with the given ID",
+        "description": "Deletes the Verification Request with the given ID. After a request is created, it is expected that the client will properly clean up the request by DELETE'ing it, once the Verification process has completed. If the request is deleted before the request completes, then the Verification request will finish the step that it is currently performing and then will cancel any subsequent steps.",
+        "operationId": "deleteVerificationRequest",
+        "consumes": [
+          "*/*"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID of the Parameter Provider",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "requestId",
+            "in": "path",
+            "description": "The ID of the Verification Request",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/VerifyConfigRequestEntity"
+            }
+          },
+          "400": {
+            "description": "NiFi was unable to complete the request because it was invalid. The request should not be retried without modification."
+          },
+          "401": {
+            "description": "Client could not be authenticated."
+          },
+          "403": {
+            "description": "Client is not authorized to make this request."
+          },
+          "404": {
+            "description": "The specified resource could not be found."
+          },
+          "409": {
+            "description": "The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful."
+          }
+        },
+        "security": [
+          {
+            "Only the user that submitted the request can remove it": []
+          }
+        ]
+      }
+    },
+    "/parameter-providers/{id}/descriptors": {
+      "get": {
+        "tags": [
+          "parameter-providers"
+        ],
+        "summary": "Gets a parameter provider property descriptor",
+        "description": "",
+        "operationId": "getPropertyDescriptor",
+        "consumes": [
+          "*/*"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The parameter provider id.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "propertyName",
+            "in": "query",
+            "description": "The property name.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/PropertyDescriptorEntity"
+            }
+          },
+          "400": {
+            "description": "NiFi was unable to complete the request because it was invalid. The request should not be retried without modification."
+          },
+          "401": {
+            "description": "Client could not be authenticated."
+          },
+          "403": {
+            "description": "Client is not authorized to make this request."
+          },
+          "404": {
+            "description": "The specified resource could not be found."
+          },
+          "409": {
+            "description": "The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful."
+          }
+        },
+        "security": [
+          {
+            "Read - /parameter-providers/{uuid}": []
+          }
+        ]
+      }
+    },
+    "/parameter-providers/{id}/parameters/fetch-requests": {
+      "post": {
+        "tags": [
+          "parameter-providers"
+        ],
+        "summary": "Fetches and temporarily caches the parameters for a provider",
+        "description": "",
+        "operationId": "fetchParameters",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The parameter provider id.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "The parameter fetch request.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ParameterProviderParameterFetchEntity"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ParameterProviderEntity"
+            }
+          },
+          "400": {
+            "description": "NiFi was unable to complete the request because it was invalid. The request should not be retried without modification."
+          },
+          "401": {
+            "description": "Client could not be authenticated."
+          },
+          "403": {
+            "description": "Client is not authorized to make this request."
+          },
+          "404": {
+            "description": "The specified resource could not be found."
+          },
+          "409": {
+            "description": "The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful."
+          }
+        },
+        "security": [
+          {
+            "Write - /parameter-providers/{uuid} or  or /operation/parameter-providers/{uuid}": []
+          }
+        ]
+      }
+    },
+    "/parameter-providers/{id}/references": {
+      "get": {
+        "tags": [
+          "parameter-providers"
+        ],
+        "summary": "Gets all references to a parameter provider",
+        "description": "",
+        "operationId": "getParameterProviderReferences",
+        "consumes": [
+          "*/*"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The parameter provider id.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ParameterProviderReferencingComponentsEntity"
+            }
+          },
+          "400": {
+            "description": "NiFi was unable to complete the request because it was invalid. The request should not be retried without modification."
+          },
+          "401": {
+            "description": "Client could not be authenticated."
+          },
+          "403": {
+            "description": "Client is not authorized to make this request."
+          },
+          "404": {
+            "description": "The specified resource could not be found."
+          },
+          "409": {
+            "description": "The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful."
+          }
+        },
+        "security": [
+          {
+            "Read - /parameter-providers/{uuid}": []
+          }
+        ]
+      }
+    },
+    "/parameter-providers/{id}/state": {
+      "get": {
+        "tags": [
+          "parameter-providers"
+        ],
+        "summary": "Gets the state for a parameter provider",
+        "description": "",
+        "operationId": "getState",
+        "consumes": [
+          "*/*"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The parameter provider id.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ComponentStateEntity"
+            }
+          },
+          "400": {
+            "description": "NiFi was unable to complete the request because it was invalid. The request should not be retried without modification."
+          },
+          "401": {
+            "description": "Client could not be authenticated."
+          },
+          "403": {
+            "description": "Client is not authorized to make this request."
+          },
+          "404": {
+            "description": "The specified resource could not be found."
+          },
+          "409": {
+            "description": "The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful."
+          }
+        },
+        "security": [
+          {
+            "Write - /parameter-providers/{uuid}": []
+          }
+        ]
+      }
+    },
+    "/parameter-providers/{id}/state/clear-requests": {
+      "post": {
+        "tags": [
+          "parameter-providers"
+        ],
+        "summary": "Clears the state for a parameter provider",
+        "description": "",
+        "operationId": "clearState",
+        "consumes": [
+          "*/*"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The parameter provider id.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ComponentStateEntity"
+            }
+          },
+          "400": {
+            "description": "NiFi was unable to complete the request because it was invalid. The request should not be retried without modification."
+          },
+          "401": {
+            "description": "Client could not be authenticated."
+          },
+          "403": {
+            "description": "Client is not authorized to make this request."
+          },
+          "404": {
+            "description": "The specified resource could not be found."
+          },
+          "409": {
+            "description": "The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful."
+          }
+        },
+        "security": [
+          {
+            "Write - /parameter-providers/{uuid}": []
+          }
+        ]
+      }
+    },
+    "/parameter-providers/{providerId}/apply-parameters-requests": {
+      "post": {
+        "tags": [
+          "parameter-providers"
+        ],
+        "summary": "Initiate a request to apply the fetched parameters of a Parameter Provider",
+        "description": "This will initiate the process of applying fetched parameters to all referencing Parameter Contexts. Changing the value of a Parameter may require that one or more components be stopped and restarted, so this action may take significantly more time than many other REST API actions. As a result, this endpoint will immediately return a ParameterProviderApplyParametersRequestEntity, and the process of updating the necessary components will occur asynchronously in the background. The client may then periodically poll the status of the request by issuing a GET request to /parameter-providers/apply-parameters-requests/{requestId}. Once the request is completed, the client is expected to issue a DELETE request to /parameter-providers/apply-parameters-requests/{requestId}.",
+        "operationId": "submitApplyParameters",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "providerId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "The apply parameters request.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ParameterProviderParameterApplicationEntity"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ParameterProviderApplyParametersRequestEntity"
+            }
+          },
+          "400": {
+            "description": "NiFi was unable to complete the request because it was invalid. The request should not be retried without modification."
+          },
+          "401": {
+            "description": "Client could not be authenticated."
+          },
+          "403": {
+            "description": "Client is not authorized to make this request."
+          },
+          "404": {
+            "description": "The specified resource could not be found."
+          },
+          "409": {
+            "description": "The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful."
+          }
+        },
+        "security": [
+          {
+            "Read - /parameter-providers/{parameterProviderId}": []
+          },
+          {
+            "Write - /parameter-providers/{parameterProviderId}": []
+          },
+          {
+            "Read - for every component that is affected by the update": []
+          },
+          {
+            "Write - for every component that is affected by the update": []
+          }
+        ]
+      }
+    },
+    "/parameter-providers/{providerId}/apply-parameters-requests/{requestId}": {
+      "get": {
+        "tags": [
+          "parameter-providers"
+        ],
+        "summary": "Returns the Apply Parameters Request with the given ID",
+        "description": "Returns the Apply Parameters Request with the given ID. Once an Apply Parameters Request has been created by performing a POST to /nifi-api/parameter-providers, that request can subsequently be retrieved via this endpoint, and the request that is fetched will contain the state, such as percent complete, the current state of the request, and any failures. ",
+        "operationId": "getParameterProviderApplyParametersRequest",
+        "consumes": [
+          "*/*"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "providerId",
+            "in": "path",
+            "description": "The ID of the Parameter Provider",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "requestId",
+            "in": "path",
+            "description": "The ID of the Apply Parameters Request",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ParameterProviderApplyParametersRequestEntity"
+            }
+          },
+          "400": {
+            "description": "NiFi was unable to complete the request because it was invalid. The request should not be retried without modification."
+          },
+          "401": {
+            "description": "Client could not be authenticated."
+          },
+          "403": {
+            "description": "Client is not authorized to make this request."
+          },
+          "404": {
+            "description": "The specified resource could not be found."
+          },
+          "409": {
+            "description": "The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful."
+          }
+        },
+        "security": [
+          {
+            "Only the user that submitted the request can get it": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "parameter-providers"
+        ],
+        "summary": "Deletes the Apply Parameters Request with the given ID",
+        "description": "Deletes the Apply Parameters Request with the given ID. After a request is created via a POST to /nifi-api/parameter-providers/apply-parameters-requests, it is expected that the client will properly clean up the request by DELETE'ing it, once the Apply process has completed. If the request is deleted before the request completes, then the Apply Parameters Request will finish the step that it is currently performing and then will cancel any subsequent steps.",
+        "operationId": "deleteApplyParametersRequest",
+        "consumes": [
+          "*/*"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "disconnectedNodeAcknowledged",
+            "in": "query",
+            "description": "Acknowledges that this node is disconnected to allow for mutable requests to proceed.",
+            "required": false,
+            "type": "boolean",
+            "default": false
+          },
+          {
+            "name": "providerId",
+            "in": "path",
+            "description": "The ID of the Parameter Provider",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "requestId",
+            "in": "path",
+            "description": "The ID of the Apply Parameters Request",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ParameterProviderApplyParametersRequestEntity"
+            }
+          },
+          "400": {
+            "description": "NiFi was unable to complete the request because it was invalid. The request should not be retried without modification."
+          },
+          "401": {
+            "description": "Client could not be authenticated."
+          },
+          "403": {
+            "description": "Client is not authorized to make this request."
+          },
+          "404": {
+            "description": "The specified resource could not be found."
+          },
+          "409": {
+            "description": "The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful."
+          }
+        },
+        "security": [
+          {
+            "Only the user that submitted the request can remove it": []
+          }
+        ]
+      }
+    },
     "/policies": {
       "post": {
         "tags": [
@@ -8434,6 +9639,14 @@
             "description": "The process group id.",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "includeReferencedServices",
+            "in": "query",
+            "description": "If referenced services from outside the target group should be included",
+            "required": false,
+            "type": "boolean",
+            "default": false
           }
         ],
         "responses": {
@@ -8493,7 +9706,7 @@
           "200": {
             "description": "successful operation",
             "schema": {
-              "$ref": "#/definitions/ProcessGroupEntity"
+              "$ref": "#/definitions/DropRequestEntity"
             }
           },
           "202": {
@@ -10829,6 +12042,14 @@
             "description": "The property name.",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "sensitive",
+            "in": "query",
+            "description": "Property Descriptor requested sensitive status",
+            "required": false,
+            "type": "boolean",
+            "default": false
           }
         ],
         "responses": {
@@ -11186,6 +12407,67 @@
           },
           {
             "Read - /data/{component-type}/{uuid}": []
+          }
+        ]
+      }
+    },
+    "/provenance-events/latest/replays": {
+      "post": {
+        "tags": [
+          "provenance-events"
+        ],
+        "summary": "Replays content from a provenance event",
+        "description": "",
+        "operationId": "submitReplayLatestEvent",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "The replay request.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ReplayLastEventRequestEntity"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ReplayLastEventResponseEntity"
+            }
+          },
+          "400": {
+            "description": "NiFi was unable to complete the request because it was invalid. The request should not be retried without modification."
+          },
+          "401": {
+            "description": "Client could not be authenticated."
+          },
+          "403": {
+            "description": "Client is not authorized to make this request."
+          },
+          "404": {
+            "description": "The specified resource could not be found."
+          },
+          "409": {
+            "description": "The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful."
+          }
+        },
+        "security": [
+          {
+            "Read Component Provenance Data - /provenance-data/{component-type}/{uuid}": []
+          },
+          {
+            "Read Component Data - /data/{component-type}/{uuid}": []
+          },
+          {
+            "Write Component Data - /data/{component-type}/{uuid}": []
           }
         ]
       }
@@ -12699,7 +13981,7 @@
           "reporting-tasks"
         ],
         "summary": "Performs verification of the Reporting Task's configuration",
-        "description": "This will initiate the process of verifying a given Reporting Task configuration. This may be a long-running task. As a result, this endpoint will immediately return a ReportingTaskConfigVerificationRequestEntity, and the process of performing the verification will occur asynchronously in the background. The client may then periodically poll the status of the request by issuing a GET request to /reporting-tasks/{serviceId}/verification-requests/{requestId}. Once the request is completed, the client is expected to issue a DELETE request to /reporting-tasks/{serviceId}/verification-requests/{requestId}.",
+        "description": "This will initiate the process of verifying a given Reporting Task configuration. This may be a long-running task. As a result, this endpoint will immediately return a ReportingTaskConfigVerificationRequestEntity, and the process of performing the verification will occur asynchronously in the background. The client may then periodically poll the status of the request by issuing a GET request to /reporting-tasks/{taskId}/verification-requests/{requestId}. Once the request is completed, the client is expected to issue a DELETE request to /reporting-tasks/{serviceId}/verification-requests/{requestId}.",
         "operationId": "submitConfigVerificationRequest",
         "consumes": [
           "application/json"
@@ -12820,7 +14102,7 @@
         ],
         "summary": "Deletes the Verification Request with the given ID",
         "description": "Deletes the Verification Request with the given ID. After a request is created, it is expected that the client will properly clean up the request by DELETE'ing it, once the Verification process has completed. If the request is deleted before the request completes, then the Verification request will finish the step that it is currently performing and then will cancel any subsequent steps.",
-        "operationId": "deleteValidationRequest",
+        "operationId": "deleteVerificationRequest",
         "consumes": [
           "*/*"
         ],
@@ -12901,6 +14183,14 @@
             "description": "The property name.",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "sensitive",
+            "in": "query",
+            "description": "Property Descriptor requested sensitive status",
+            "required": false,
+            "type": "boolean",
+            "default": false
           }
         ],
         "responses": {
@@ -14698,7 +15988,7 @@
           {
             "in": "body",
             "name": "body",
-            "description": "The controller service configuration details.",
+            "description": "The Version Control Information to revert to.",
             "required": true,
             "schema": {
               "$ref": "#/definitions/VersionControlInformationEntity"
@@ -15342,6 +16632,29 @@
         "name": "accessStatusEntity"
       }
     },
+    "AccessTokenExpirationDTO": {
+      "type": "object",
+      "properties": {
+        "expiration": {
+          "type": "string",
+          "description": "Token Expiration"
+        }
+      },
+      "xml": {
+        "name": "accessTokenExpiration"
+      }
+    },
+    "AccessTokenExpirationEntity": {
+      "type": "object",
+      "properties": {
+        "accessTokenExpiration": {
+          "$ref": "#/definitions/AccessTokenExpirationDTO"
+        }
+      },
+      "xml": {
+        "name": "accessTokenExpirationEntity"
+      }
+    },
     "ActionDTO": {
       "type": "object",
       "properties": {
@@ -15656,109 +16969,34 @@
         }
       }
     },
-    "Bucket": {
+    "BuildInfo": {
       "type": "object",
-      "required": [
-        "name"
-      ],
       "properties": {
-        "link": {
-          "description": "An WebLink to this entity.",
-          "readOnly": true,
-          "$ref": "#/definitions/JaxbLink"
-        },
-        "identifier": {
+        "version": {
           "type": "string",
-          "description": "An ID to uniquely identify this object.",
-          "readOnly": true
-        },
-        "name": {
-          "type": "string",
-          "description": "The name of the bucket."
-        },
-        "createdTimestamp": {
-          "type": "integer",
-          "format": "int64",
-          "description": "The timestamp of when the bucket was first created. This is set by the server at creation time.",
-          "readOnly": true,
-          "minimum": 1
-        },
-        "description": {
-          "type": "string",
-          "description": "A description of the bucket."
-        },
-        "allowBundleRedeploy": {
-          "type": "boolean",
-          "description": "Indicates if this bucket allows the same version of an extension bundle to be redeployed and thus overwrite the existing artifact. By default this is false."
-        },
-        "allowPublicRead": {
-          "type": "boolean",
-          "description": "Indicates if this bucket allows read access to unauthenticated anonymous users"
-        },
-        "permissions": {
-          "description": "The access that the current user has to this bucket.",
-          "readOnly": true,
-          "$ref": "#/definitions/Permissions"
+          "description": "The version number of the built component."
         },
         "revision": {
-          "description": "The revision of this entity used for optimistic-locking during updates.",
-          "readOnly": true,
-          "$ref": "#/definitions/RevisionInfo"
-        }
-      }
-    },
-    "BucketDTO": {
-      "type": "object",
-      "properties": {
-        "id": {
           "type": "string",
-          "description": "The bucket identifier"
+          "description": "The SCM revision id of the source code used for this build."
         },
-        "name": {
-          "type": "string",
-          "description": "The bucket name"
-        },
-        "description": {
-          "type": "string",
-          "description": "The bucket description"
-        },
-        "created": {
+        "timestamp": {
           "type": "integer",
           "format": "int64",
-          "description": "The created timestamp of this bucket"
-        }
-      }
-    },
-    "BucketEntity": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string"
+          "description": "The timestamp (milliseconds since Epoch) of the build."
         },
-        "bucket": {
-          "$ref": "#/definitions/BucketDTO"
+        "targetArch": {
+          "type": "string",
+          "description": "The target architecture of the built component."
         },
-        "permissions": {
-          "$ref": "#/definitions/PermissionsDTO"
+        "compiler": {
+          "type": "string",
+          "description": "The compiler used for the build"
+        },
+        "compilerFlags": {
+          "type": "string",
+          "description": "The compiler flags used for the build."
         }
-      },
-      "xml": {
-        "name": "bucketEntity"
-      }
-    },
-    "BucketsEntity": {
-      "type": "object",
-      "properties": {
-        "buckets": {
-          "type": "array",
-          "uniqueItems": true,
-          "items": {
-            "$ref": "#/definitions/BucketEntity"
-          }
-        }
-      },
-      "xml": {
-        "name": "bucketsEntity"
       }
     },
     "BulletinBoardDTO": {
@@ -15978,13 +17216,13 @@
           "format": "int32",
           "description": "The number of nodes in the cluster, regardless of whether or not they are connected"
         },
-        "clustered": {
-          "type": "boolean",
-          "description": "Whether this NiFi instance is clustered."
-        },
         "connectedToCluster": {
           "type": "boolean",
           "description": "Whether this NiFi instance is connected to a cluster."
+        },
+        "clustered": {
+          "type": "boolean",
+          "description": "Whether this NiFi instance is clustered."
         }
       }
     },
@@ -16044,6 +17282,42 @@
       },
       "xml": {
         "name": "componentHistoryEntity"
+      }
+    },
+    "ComponentLifecycle": {
+      "type": "object"
+    },
+    "ComponentManifest": {
+      "type": "object",
+      "properties": {
+        "apis": {
+          "type": "array",
+          "description": "Public interfaces defined in this bundle",
+          "items": {
+            "$ref": "#/definitions/DefinedType"
+          }
+        },
+        "controllerServices": {
+          "type": "array",
+          "description": "Controller Services provided in this bundle",
+          "items": {
+            "$ref": "#/definitions/ControllerServiceDefinition"
+          }
+        },
+        "processors": {
+          "type": "array",
+          "description": "Processors provided in this bundle",
+          "items": {
+            "$ref": "#/definitions/ProcessorDefinition"
+          }
+        },
+        "reportingTasks": {
+          "type": "array",
+          "description": "Reporting Tasks provided in this bundle",
+          "items": {
+            "$ref": "#/definitions/ReportingTaskDefinition"
+          }
+        }
       }
     },
     "ComponentReferenceDTO": {
@@ -16408,6 +17682,10 @@
         "comments": {
           "type": "string",
           "description": "The comments for the connectable component."
+        },
+        "instanceIdentifier": {
+          "type": "string",
+          "description": "The instance ID of an existing component that is described by this VersionedComponent, or null if this is not mapped to an instantiated component"
         }
       }
     },
@@ -17019,6 +18297,10 @@
           "type": "integer",
           "format": "int32",
           "description": "Connection percent use regarding queued flow files size and backpressure threshold if configured."
+        },
+        "flowFileAvailability": {
+          "type": "string",
+          "description": "The availability of FlowFiles in this connection"
         }
       }
     },
@@ -17076,6 +18358,20 @@
         "reportingTaskBulletins": {
           "type": "array",
           "description": "Reporting task bulletins to be reported to the user.",
+          "items": {
+            "$ref": "#/definitions/BulletinEntity"
+          }
+        },
+        "parameterProviderBulletins": {
+          "type": "array",
+          "description": "Parameter provider bulletins to be reported to the user.",
+          "items": {
+            "$ref": "#/definitions/BulletinEntity"
+          }
+        },
+        "flowRegistryClientBulletins": {
+          "type": "array",
+          "description": "Flow registry client bulletins to be reported to the user.",
           "items": {
             "$ref": "#/definitions/BulletinEntity"
           }
@@ -17320,6 +18616,10 @@
           "type": "boolean",
           "description": "Whether the controller service has multiple versions available."
         },
+        "supportsSensitiveDynamicProperties": {
+          "type": "boolean",
+          "description": "Whether the controller service supports sensitive dynamic properties."
+        },
         "properties": {
           "type": "object",
           "description": "The properties of the controller service.",
@@ -17332,6 +18632,14 @@
           "description": "The descriptors for the controller service properties.",
           "additionalProperties": {
             "$ref": "#/definitions/PropertyDescriptorDTO"
+          }
+        },
+        "sensitiveDynamicPropertyNames": {
+          "type": "array",
+          "description": "Set of sensitive dynamic property names",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
           }
         },
         "customUiUrl": {
@@ -17366,9 +18674,98 @@
             "VALIDATING"
           ]
         },
+        "bulletinLevel": {
+          "type": "string",
+          "description": "The level at which the controller service will report bulletins."
+        },
         "extensionMissing": {
           "type": "boolean",
           "description": "Whether the underlying extension is missing."
+        }
+      }
+    },
+    "ControllerServiceDefinition": {
+      "type": "object",
+      "required": [
+        "type"
+      ],
+      "properties": {
+        "group": {
+          "type": "string",
+          "description": "The group name of the bundle that provides the referenced type."
+        },
+        "artifact": {
+          "type": "string",
+          "description": "The artifact name of the bundle that provides the referenced type."
+        },
+        "version": {
+          "type": "string",
+          "description": "The version of the bundle that provides the referenced type."
+        },
+        "type": {
+          "type": "string",
+          "description": "The fully-qualified class type"
+        },
+        "typeDescription": {
+          "type": "string",
+          "description": "The description of the type."
+        },
+        "buildInfo": {
+          "description": "The build metadata for this component",
+          "$ref": "#/definitions/BuildInfo"
+        },
+        "providedApiImplementations": {
+          "type": "array",
+          "description": "If this type represents a provider for an interface, this lists the APIs it implements",
+          "items": {
+            "$ref": "#/definitions/DefinedType"
+          }
+        },
+        "tags": {
+          "type": "array",
+          "description": "The tags associated with this type",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "deprecated": {
+          "type": "boolean",
+          "description": "Whether or not the component has been deprecated"
+        },
+        "deprecationReason": {
+          "type": "string",
+          "description": "If this component has been deprecated, this optional field can be used to provide an explanation"
+        },
+        "restricted": {
+          "type": "boolean",
+          "description": "Whether or not the component has a general restriction"
+        },
+        "restrictedExplanation": {
+          "type": "string",
+          "description": "An optional description of the general restriction"
+        },
+        "explicitRestrictions": {
+          "type": "array",
+          "description": "Explicit restrictions that indicate a require permission to use the component",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/Restriction"
+          }
+        },
+        "stateful": {
+          "$ref": "#/definitions/Stateful"
+        },
+        "propertyDescriptors": {
+          "type": "object",
+          "description": "Descriptions of configuration properties applicable to this component.",
+          "additionalProperties": {
+            "$ref": "#/definitions/PropertyDescriptor"
+          }
+        },
+        "supportsDynamicProperties": {
+          "type": "boolean",
+          "description": "Whether or not this component makes use of dynamic (user-set) properties."
         }
       }
     },
@@ -17590,6 +18987,10 @@
         "disconnectedNodeAcknowledged": {
           "type": "boolean",
           "description": "Acknowledges that this node is disconnected to allow for mutable requests to proceed."
+        },
+        "uiOnly": {
+          "type": "boolean",
+          "description": "Indicates whether or not responses should only include fields necessary for rendering the NiFi User Interface. As such, when this value is set to true, some fields may be returned as null values, and the selected fields may change at any time without notice. As a result, this value should not be set to true by any client other than the UI."
         }
       },
       "xml": {
@@ -17960,6 +19361,34 @@
         "name": "currentEntity"
       }
     },
+    "DefinedType": {
+      "type": "object",
+      "required": [
+        "type"
+      ],
+      "properties": {
+        "group": {
+          "type": "string",
+          "description": "The group name of the bundle that provides the referenced type."
+        },
+        "artifact": {
+          "type": "string",
+          "description": "The artifact name of the bundle that provides the referenced type."
+        },
+        "version": {
+          "type": "string",
+          "description": "The version of the bundle that provides the referenced type."
+        },
+        "type": {
+          "type": "string",
+          "description": "The fully-qualified class type"
+        },
+        "typeDescription": {
+          "type": "string",
+          "description": "The description of the type."
+        }
+      }
+    },
     "DifferenceDTO": {
       "type": "object",
       "properties": {
@@ -18129,6 +19558,15 @@
       },
       "xml": {
         "name": "dropRequestEntity"
+      }
+    },
+    "DtoFactory": {
+      "type": "object"
+    },
+    "Entity": {
+      "type": "object",
+      "xml": {
+        "name": "entity"
       }
     },
     "ExplicitRestrictionDTO": {
@@ -18509,6 +19947,263 @@
         }
       }
     },
+    "FlowRegistryBucket": {
+      "type": "object",
+      "properties": {
+        "identifier": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "createdTimestamp": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "permissions": {
+          "$ref": "#/definitions/FlowRegistryPermissions"
+        }
+      }
+    },
+    "FlowRegistryBucketDTO": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The bucket identifier"
+        },
+        "name": {
+          "type": "string",
+          "description": "The bucket name"
+        },
+        "description": {
+          "type": "string",
+          "description": "The bucket description"
+        },
+        "created": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The created timestamp of this bucket"
+        }
+      }
+    },
+    "FlowRegistryBucketEntity": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "bucket": {
+          "$ref": "#/definitions/FlowRegistryBucketDTO"
+        },
+        "permissions": {
+          "$ref": "#/definitions/PermissionsDTO"
+        }
+      },
+      "xml": {
+        "name": "bucketEntity"
+      }
+    },
+    "FlowRegistryBucketsEntity": {
+      "type": "object",
+      "properties": {
+        "buckets": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/FlowRegistryBucketEntity"
+          }
+        }
+      },
+      "xml": {
+        "name": "bucketsEntity"
+      }
+    },
+    "FlowRegistryClientDTO": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The registry identifier"
+        },
+        "name": {
+          "type": "string",
+          "description": "The registry name"
+        },
+        "description": {
+          "type": "string",
+          "description": "The registry description"
+        },
+        "uri": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "description": "The type of the controller service."
+        },
+        "bundle": {
+          "description": "The details of the artifact that bundled this processor type.",
+          "$ref": "#/definitions/BundleDTO"
+        },
+        "properties": {
+          "type": "object",
+          "description": "The properties of the controller service.",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "descriptors": {
+          "type": "object",
+          "description": "The descriptors for the controller service properties.",
+          "additionalProperties": {
+            "$ref": "#/definitions/PropertyDescriptorDTO"
+          }
+        },
+        "sensitiveDynamicPropertyNames": {
+          "type": "array",
+          "description": "Set of sensitive dynamic property names",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "supportsSensitiveDynamicProperties": {
+          "type": "boolean",
+          "description": "Whether the reporting task supports sensitive dynamic properties."
+        },
+        "restricted": {
+          "type": "boolean",
+          "description": "Whether the reporting task requires elevated privileges."
+        },
+        "deprecated": {
+          "type": "boolean",
+          "description": "Whether the reporting task has been deprecated."
+        },
+        "validationErrors": {
+          "type": "array",
+          "description": "Gets the validation errors from the reporting task. These validation errors represent the problems with the reporting task that must be resolved before it can be scheduled to run.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "validationStatus": {
+          "type": "string",
+          "description": "Indicates whether the Processor is valid, invalid, or still in the process of validating (i.e., it is unknown whether or not the Processor is valid)",
+          "enum": [
+            "VALID",
+            "INVALID",
+            "VALIDATING"
+          ]
+        },
+        "annotationData": {
+          "type": "string",
+          "description": "The annotation data for the repoting task. This is how the custom UI relays configuration to the reporting task."
+        },
+        "multipleVersionsAvailable": {
+          "type": "boolean",
+          "description": "Whether the flow registry client has multiple versions available."
+        },
+        "extensionMissing": {
+          "type": "boolean",
+          "description": "Whether the underlying extension is missing."
+        }
+      }
+    },
+    "FlowRegistryClientEntity": {
+      "type": "object",
+      "properties": {
+        "revision": {
+          "description": "The revision for this request/response. The revision is required for any mutable flow requests and is included in all responses.",
+          "$ref": "#/definitions/RevisionDTO"
+        },
+        "id": {
+          "type": "string",
+          "description": "The id of the component."
+        },
+        "uri": {
+          "type": "string",
+          "description": "The URI for futures requests to the component."
+        },
+        "position": {
+          "description": "The position of this component in the UI if applicable.",
+          "$ref": "#/definitions/PositionDTO"
+        },
+        "permissions": {
+          "description": "The permissions for this component.",
+          "$ref": "#/definitions/PermissionsDTO"
+        },
+        "bulletins": {
+          "type": "array",
+          "description": "The bulletins for this component.",
+          "items": {
+            "$ref": "#/definitions/BulletinEntity"
+          }
+        },
+        "disconnectedNodeAcknowledged": {
+          "type": "boolean",
+          "description": "Acknowledges that this node is disconnected to allow for mutable requests to proceed."
+        },
+        "registry": {
+          "$ref": "#/definitions/FlowRegistryClientDTO"
+        },
+        "operatePermissions": {
+          "$ref": "#/definitions/PermissionsDTO"
+        },
+        "component": {
+          "$ref": "#/definitions/FlowRegistryClientDTO"
+        }
+      },
+      "xml": {
+        "name": "registryClientEntity"
+      }
+    },
+    "FlowRegistryClientTypesEntity": {
+      "type": "object",
+      "properties": {
+        "flowRegistryClientTypes": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/DocumentedTypeDTO"
+          }
+        }
+      },
+      "xml": {
+        "name": "flowRegistryClientTypesEntity"
+      }
+    },
+    "FlowRegistryClientsEntity": {
+      "type": "object",
+      "properties": {
+        "registries": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/FlowRegistryClientEntity"
+          }
+        }
+      },
+      "xml": {
+        "name": "registryClientsEntity"
+      }
+    },
+    "FlowRegistryPermissions": {
+      "type": "object",
+      "properties": {
+        "canRead": {
+          "type": "boolean"
+        },
+        "canWrite": {
+          "type": "boolean"
+        },
+        "canDelete": {
+          "type": "boolean"
+        }
+      }
+    },
     "FlowSnippetDTO": {
       "type": "object",
       "properties": {
@@ -18770,6 +20465,9 @@
         "name": "inputPortsEntity"
       }
     },
+    "InputStream": {
+      "type": "object"
+    },
     "InstantiateTemplateRequestEntity": {
       "type": "object",
       "properties": {
@@ -18969,26 +20667,6 @@
         }
       }
     },
-    "JaxbLink": {
-      "type": "object",
-      "properties": {
-        "href": {
-          "type": "string",
-          "format": "uri",
-          "xml": {
-            "attribute": true
-          },
-          "description": "The href for the link"
-        },
-        "params": {
-          "type": "object",
-          "description": "The params for the link",
-          "additionalProperties": {
-            "type": "string"
-          }
-        }
-      }
-    },
     "LabelDTO": {
       "type": "object",
       "properties": {
@@ -19021,6 +20699,11 @@
           "type": "number",
           "format": "double",
           "description": "The height of the label in pixels when at a 1:1 scale."
+        },
+        "getzIndex": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The z index of the label."
         },
         "style": {
           "type": "object",
@@ -19067,6 +20750,11 @@
         },
         "dimensions": {
           "$ref": "#/definitions/DimensionsDTO"
+        },
+        "getzIndex": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The z index of the label."
         },
         "component": {
           "$ref": "#/definitions/LabelDTO"
@@ -19477,6 +21165,59 @@
         }
       }
     },
+    "NodeIdentifier": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "apiAddress": {
+          "type": "string"
+        },
+        "apiPort": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "socketAddress": {
+          "type": "string"
+        },
+        "socketPort": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "loadBalanceAddress": {
+          "type": "string"
+        },
+        "loadBalancePort": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "siteToSiteAddress": {
+          "type": "string"
+        },
+        "siteToSitePort": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "siteToSiteHttpApiPort": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "siteToSiteSecure": {
+          "type": "boolean"
+        },
+        "nodeIdentities": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "fullDescription": {
+          "type": "string"
+        }
+      }
+    },
     "NodeJVMDiagnosticsSnapshotDTO": {
       "type": "object",
       "properties": {
@@ -19584,6 +21325,74 @@
         "statusSnapshot": {
           "description": "The remote process group status snapshot from the node.",
           "$ref": "#/definitions/RemoteProcessGroupStatusSnapshotDTO"
+        }
+      }
+    },
+    "NodeReplayLastEventSnapshotDTO": {
+      "type": "object",
+      "properties": {
+        "nodeId": {
+          "type": "string",
+          "description": "The unique ID that identifies the node"
+        },
+        "address": {
+          "type": "string",
+          "description": "The API address of the node"
+        },
+        "apiPort": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The API port used to communicate with the node"
+        },
+        "snapshot": {
+          "description": "The snapshot from the node",
+          "$ref": "#/definitions/ReplayLastEventSnapshotDTO"
+        }
+      },
+      "xml": {
+        "name": "nodeReplayLastEventSnapshot"
+      }
+    },
+    "NodeResponse": {
+      "type": "object",
+      "properties": {
+        "httpMethod": {
+          "type": "string"
+        },
+        "requestUri": {
+          "type": "string",
+          "format": "uri"
+        },
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "nodeId": {
+          "$ref": "#/definitions/NodeIdentifier"
+        },
+        "throwable": {
+          "$ref": "#/definitions/Throwable"
+        },
+        "updatedEntity": {
+          "$ref": "#/definitions/Entity"
+        },
+        "requestId": {
+          "type": "string"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "clientResponse": {
+          "$ref": "#/definitions/Response"
+        },
+        "is2xx": {
+          "type": "boolean"
+        },
+        "is5xx": {
+          "type": "boolean"
+        },
+        "inputStream": {
+          "$ref": "#/definitions/InputStream"
         }
       }
     },
@@ -19696,6 +21505,10 @@
             "$ref": "#/definitions/ParameterContextReferenceEntity"
           }
         },
+        "parameterProviderConfiguration": {
+          "description": "Optional configuration for a Parameter Provider",
+          "$ref": "#/definitions/ParameterProviderConfigurationEntity"
+        },
         "id": {
           "type": "string",
           "description": "The ID the Parameter Context."
@@ -19775,6 +21588,30 @@
       },
       "xml": {
         "name": "parameterContextReferenceEntity"
+      }
+    },
+    "ParameterContextUpdateEntity": {
+      "type": "object",
+      "properties": {
+        "parameterContextRevision": {
+          "description": "The Revision of the Parameter Context",
+          "$ref": "#/definitions/RevisionDTO"
+        },
+        "parameterContext": {
+          "description": "The Parameter Context that is being operated on. This may not be populated until the request has successfully completed.",
+          "$ref": "#/definitions/ParameterContextDTO"
+        },
+        "referencingComponents": {
+          "type": "array",
+          "description": "The components that are referenced by the update.",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/AffectedComponentEntity"
+          }
+        }
+      },
+      "xml": {
+        "name": "parameterContextUpdateEntity"
       }
     },
     "ParameterContextUpdateRequestDTO": {
@@ -20000,6 +21837,10 @@
           "type": "boolean",
           "description": "Whether or not the value of the Parameter was removed. When a request is made to change a parameter, the value may be null. The absence of the value may be used either to indicate that the value is not to be changed, or that the value is to be set to null (i.e., removed). This denotes which of the two scenarios is being encountered."
         },
+        "provided": {
+          "type": "boolean",
+          "description": "Whether or not the Parameter is provided by a ParameterProvider"
+        },
         "referencingComponents": {
           "type": "array",
           "description": "The set of all components in the flow that are referencing this Parameter",
@@ -20032,6 +21873,528 @@
       },
       "xml": {
         "name": "parameterEntity"
+      }
+    },
+    "ParameterGroupConfigurationEntity": {
+      "type": "object",
+      "properties": {
+        "groupName": {
+          "type": "string",
+          "description": "The name of the external parameter group to which the provided parameter names apply."
+        },
+        "parameterContextName": {
+          "type": "string",
+          "description": "The name of the ParameterContext that receives the parameters in this group"
+        },
+        "parameterSensitivities": {
+          "type": "object",
+          "description": "All fetched parameter names that should be applied.",
+          "additionalProperties": {
+            "type": "string",
+            "enum": [
+              "SENSITIVE",
+              "NON_SENSITIVE"
+            ]
+          }
+        },
+        "synchronized": {
+          "type": "boolean",
+          "description": "True if this group should be synchronized to a ParameterContext, including creating one if it does not exist."
+        }
+      },
+      "xml": {
+        "name": "entity"
+      }
+    },
+    "ParameterProviderApplyParametersRequestDTO": {
+      "type": "object",
+      "properties": {
+        "requestId": {
+          "type": "string",
+          "description": "The ID of the request"
+        },
+        "uri": {
+          "type": "string",
+          "description": "The URI for the request"
+        },
+        "submissionTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The timestamp of when the request was submitted"
+        },
+        "lastUpdated": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The timestamp of when the request was last updated"
+        },
+        "complete": {
+          "type": "boolean",
+          "description": "Whether or not the request is completed"
+        },
+        "failureReason": {
+          "type": "string",
+          "description": "The reason for the request failing, or null if the request has not failed"
+        },
+        "percentCompleted": {
+          "type": "integer",
+          "format": "int32",
+          "description": "A value between 0 and 100 (inclusive) indicating how close the request is to completion"
+        },
+        "state": {
+          "type": "string",
+          "description": "A description of the current state of the request"
+        },
+        "updateSteps": {
+          "type": "array",
+          "description": "The steps that are required in order to complete the request, along with the status of each",
+          "items": {
+            "$ref": "#/definitions/ParameterProviderApplyParametersUpdateStepDTO"
+          }
+        },
+        "parameterProvider": {
+          "description": "The Parameter Provider that is being operated on. This may not be populated until the request has successfully completed.",
+          "$ref": "#/definitions/ParameterProviderDTO"
+        },
+        "parameterContextUpdates": {
+          "type": "array",
+          "description": "The Parameter Contexts updated by this Parameter Provider. This may not be populated until the request has successfully completed.",
+          "items": {
+            "$ref": "#/definitions/ParameterContextUpdateEntity"
+          }
+        },
+        "referencingComponents": {
+          "type": "array",
+          "description": "The components that are referenced by the update.",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/AffectedComponentEntity"
+          }
+        }
+      }
+    },
+    "ParameterProviderApplyParametersRequestEntity": {
+      "type": "object",
+      "properties": {
+        "request": {
+          "description": "The Apply Parameters Request",
+          "$ref": "#/definitions/ParameterProviderApplyParametersRequestDTO"
+        }
+      },
+      "xml": {
+        "name": "parameterProviderApplyParametersRequestEntity"
+      }
+    },
+    "ParameterProviderApplyParametersUpdateStepDTO": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string",
+          "description": "Explanation of what happens in this step"
+        },
+        "complete": {
+          "type": "boolean",
+          "description": "Whether or not this step has completed"
+        },
+        "failureReason": {
+          "type": "string",
+          "description": "An explanation of why this step failed, or null if this step did not fail"
+        }
+      }
+    },
+    "ParameterProviderConfigurationDTO": {
+      "type": "object",
+      "properties": {
+        "parameterProviderId": {
+          "type": "string",
+          "description": "The ID of the Parameter Provider"
+        },
+        "parameterProviderName": {
+          "type": "string",
+          "description": "The name of the Parameter Provider"
+        },
+        "parameterGroupName": {
+          "type": "string",
+          "description": "The Parameter Group name that maps to the Parameter Context"
+        },
+        "synchronized": {
+          "type": "boolean",
+          "description": "True if the Parameter Context should receive the parameters from the mapped Parameter Group"
+        }
+      }
+    },
+    "ParameterProviderConfigurationEntity": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The id of the component."
+        },
+        "permissions": {
+          "description": "The permissions for this component.",
+          "$ref": "#/definitions/PermissionsDTO"
+        },
+        "component": {
+          "$ref": "#/definitions/ParameterProviderConfigurationDTO"
+        }
+      },
+      "xml": {
+        "name": "parameterProviderConfigurationEntity"
+      }
+    },
+    "ParameterProviderDTO": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The id of the component."
+        },
+        "versionedComponentId": {
+          "type": "string",
+          "description": "The ID of the corresponding component that is under version control"
+        },
+        "parentGroupId": {
+          "type": "string",
+          "description": "The id of parent process group of this component if applicable."
+        },
+        "position": {
+          "description": "The position of this component in the UI if applicable.",
+          "$ref": "#/definitions/PositionDTO"
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the parameter provider."
+        },
+        "type": {
+          "type": "string",
+          "description": "The fully qualified type of the parameter provider."
+        },
+        "bundle": {
+          "description": "The details of the artifact that bundled this parameter provider type.",
+          "$ref": "#/definitions/BundleDTO"
+        },
+        "comments": {
+          "type": "string",
+          "description": "The comments of the parameter provider."
+        },
+        "persistsState": {
+          "type": "boolean",
+          "description": "Whether the parameter provider persists state."
+        },
+        "restricted": {
+          "type": "boolean",
+          "description": "Whether the parameter provider requires elevated privileges."
+        },
+        "deprecated": {
+          "type": "boolean",
+          "description": "Whether the parameter provider has been deprecated."
+        },
+        "multipleVersionsAvailable": {
+          "type": "boolean",
+          "description": "Whether the parameter provider has multiple versions available."
+        },
+        "properties": {
+          "type": "object",
+          "description": "The properties of the parameter provider.",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "descriptors": {
+          "type": "object",
+          "description": "The descriptors for the parameter providers properties.",
+          "additionalProperties": {
+            "$ref": "#/definitions/PropertyDescriptorDTO"
+          }
+        },
+        "parameterGroupConfigurations": {
+          "type": "array",
+          "description": "Configuration for any fetched parameter groups.",
+          "items": {
+            "$ref": "#/definitions/ParameterGroupConfigurationEntity"
+          }
+        },
+        "affectedComponents": {
+          "type": "array",
+          "description": "The set of all components in the flow that are referencing Parameters provided by this provider",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/AffectedComponentEntity"
+          }
+        },
+        "parameterStatus": {
+          "type": "array",
+          "description": "The status of all provided parameters for this parameter provider",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/ParameterStatusDTO"
+          }
+        },
+        "referencingParameterContexts": {
+          "type": "array",
+          "description": "The Parameter Contexts that reference this Parameter Provider",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/ParameterProviderReferencingComponentEntity"
+          }
+        },
+        "customUiUrl": {
+          "type": "string",
+          "description": "The URL for the custom configuration UI for the parameter provider."
+        },
+        "annotationData": {
+          "type": "string",
+          "description": "The annotation data for the parameter provider. This is how the custom UI relays configuration to the parameter provider."
+        },
+        "validationErrors": {
+          "type": "array",
+          "description": "Gets the validation errors from the parameter provider. These validation errors represent the problems with the parameter provider that must be resolved before it can be scheduled to run.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "validationStatus": {
+          "type": "string",
+          "description": "Indicates whether the Parameter Provider is valid, invalid, or still in the process of validating (i.e., it is unknown whether or not the Parameter Provider is valid)",
+          "enum": [
+            "VALID",
+            "INVALID",
+            "VALIDATING"
+          ]
+        },
+        "extensionMissing": {
+          "type": "boolean",
+          "description": "Whether the underlying extension is missing."
+        }
+      }
+    },
+    "ParameterProviderEntity": {
+      "type": "object",
+      "properties": {
+        "revision": {
+          "description": "The revision for this request/response. The revision is required for any mutable flow requests and is included in all responses.",
+          "$ref": "#/definitions/RevisionDTO"
+        },
+        "id": {
+          "type": "string",
+          "description": "The id of the component."
+        },
+        "uri": {
+          "type": "string",
+          "description": "The URI for futures requests to the component."
+        },
+        "position": {
+          "description": "The position of this component in the UI if applicable.",
+          "$ref": "#/definitions/PositionDTO"
+        },
+        "permissions": {
+          "description": "The permissions for this component.",
+          "$ref": "#/definitions/PermissionsDTO"
+        },
+        "bulletins": {
+          "type": "array",
+          "description": "The bulletins for this component.",
+          "items": {
+            "$ref": "#/definitions/BulletinEntity"
+          }
+        },
+        "disconnectedNodeAcknowledged": {
+          "type": "boolean",
+          "description": "Acknowledges that this node is disconnected to allow for mutable requests to proceed."
+        },
+        "component": {
+          "$ref": "#/definitions/ParameterProviderDTO"
+        }
+      },
+      "xml": {
+        "name": "parameterProviderEntity"
+      }
+    },
+    "ParameterProviderParameterApplicationEntity": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The id of the parameter provider."
+        },
+        "revision": {
+          "description": "The revision for this request/response. The revision is required for any mutable flow requests and is included in all responses.",
+          "$ref": "#/definitions/RevisionDTO"
+        },
+        "disconnectedNodeAcknowledged": {
+          "type": "boolean",
+          "description": "Acknowledges that this node is disconnected to allow for mutable requests to proceed."
+        },
+        "parameterGroupConfigurations": {
+          "type": "array",
+          "description": "Configuration for the fetched Parameter Groups",
+          "items": {
+            "$ref": "#/definitions/ParameterGroupConfigurationEntity"
+          }
+        }
+      },
+      "xml": {
+        "name": "entity"
+      }
+    },
+    "ParameterProviderParameterFetchEntity": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The id of the parameter provider."
+        },
+        "revision": {
+          "description": "The revision for this request/response. The revision is required for any mutable flow requests and is included in all responses.",
+          "$ref": "#/definitions/RevisionDTO"
+        },
+        "disconnectedNodeAcknowledged": {
+          "type": "boolean",
+          "description": "Acknowledges that this node is disconnected to allow for mutable requests to proceed."
+        }
+      },
+      "xml": {
+        "name": "entity"
+      }
+    },
+    "ParameterProviderReference": {
+      "type": "object",
+      "properties": {
+        "identifier": {
+          "type": "string",
+          "description": "The identifier of the parameter provider"
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the parameter provider"
+        },
+        "type": {
+          "type": "string",
+          "description": "The fully qualified name of the parameter provider class."
+        },
+        "bundle": {
+          "description": "The details of the artifact that bundled this parameter provider.",
+          "$ref": "#/definitions/Bundle"
+        }
+      }
+    },
+    "ParameterProviderReferencingComponentDTO": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The id of the component referencing a parameter provider."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the component referencing a parameter provider."
+        }
+      }
+    },
+    "ParameterProviderReferencingComponentEntity": {
+      "type": "object",
+      "properties": {
+        "revision": {
+          "description": "The revision for this request/response. The revision is required for any mutable flow requests and is included in all responses.",
+          "$ref": "#/definitions/RevisionDTO"
+        },
+        "id": {
+          "type": "string",
+          "description": "The id of the component."
+        },
+        "uri": {
+          "type": "string",
+          "description": "The URI for futures requests to the component."
+        },
+        "position": {
+          "description": "The position of this component in the UI if applicable.",
+          "$ref": "#/definitions/PositionDTO"
+        },
+        "permissions": {
+          "description": "The permissions for this component.",
+          "$ref": "#/definitions/PermissionsDTO"
+        },
+        "bulletins": {
+          "type": "array",
+          "description": "The bulletins for this component.",
+          "items": {
+            "$ref": "#/definitions/BulletinEntity"
+          }
+        },
+        "disconnectedNodeAcknowledged": {
+          "type": "boolean",
+          "description": "Acknowledges that this node is disconnected to allow for mutable requests to proceed."
+        },
+        "component": {
+          "$ref": "#/definitions/ParameterProviderReferencingComponentDTO"
+        }
+      },
+      "xml": {
+        "name": "parameterProviderReferencingComponentEntity"
+      }
+    },
+    "ParameterProviderReferencingComponentsEntity": {
+      "type": "object",
+      "properties": {
+        "parameterProviderReferencingComponents": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/ParameterProviderReferencingComponentEntity"
+          }
+        }
+      },
+      "xml": {
+        "name": "parameterProviderReferencingComponentsEntity"
+      }
+    },
+    "ParameterProviderTypesEntity": {
+      "type": "object",
+      "properties": {
+        "parameterProviderTypes": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/DocumentedTypeDTO"
+          }
+        }
+      },
+      "xml": {
+        "name": "parameterProviderTypesEntity"
+      }
+    },
+    "ParameterProvidersEntity": {
+      "type": "object",
+      "properties": {
+        "parameterProviders": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/ParameterProviderEntity"
+          }
+        }
+      },
+      "xml": {
+        "name": "parameterProvidersEntity"
+      }
+    },
+    "ParameterStatusDTO": {
+      "type": "object",
+      "properties": {
+        "parameter": {
+          "description": "The name of the Parameter",
+          "$ref": "#/definitions/ParameterEntity"
+        },
+        "status": {
+          "type": "string",
+          "description": "Indicates the status of the parameter, compared to the existing parameter context",
+          "enum": [
+            "NEW",
+            "CHANGED",
+            "REMOVED",
+            "MISSING_BUT_REFERENCED",
+            "UNCHANGED"
+          ]
+        }
       }
     },
     "PeerDTO": {
@@ -20069,26 +22432,6 @@
       },
       "xml": {
         "name": "peersEntity"
-      }
-    },
-    "Permissions": {
-      "type": "object",
-      "properties": {
-        "canRead": {
-          "type": "boolean",
-          "description": "Indicates whether the user can read a given resource.",
-          "readOnly": true
-        },
-        "canWrite": {
-          "type": "boolean",
-          "description": "Indicates whether the user can write a given resource.",
-          "readOnly": true
-        },
-        "canDelete": {
-          "type": "boolean",
-          "description": "Indicates whether the user can delete a given resource.",
-          "readOnly": true
-        }
       }
     },
     "PermissionsDTO": {
@@ -20524,7 +22867,8 @@
           "description": "The FlowFile Concurrency for this Process Group.",
           "enum": [
             "UNBOUNDED",
-            "SINGLE_FLOWFILE_PER_NODE"
+            "SINGLE_FLOWFILE_PER_NODE",
+            "SINGLE_BATCH_PER_NODE"
           ]
         },
         "flowfileOutboundPolicy": {
@@ -20682,7 +23026,7 @@
         },
         "versionedFlowSnapshot": {
           "description": "Returns the Versioned Flow that describes the contents of the Versioned Flow to be imported",
-          "$ref": "#/definitions/VersionedFlowSnapshot"
+          "$ref": "#/definitions/RegisteredFlowSnapshot"
         },
         "runningCount": {
           "type": "integer",
@@ -20850,7 +23194,7 @@
         },
         "versionedFlowSnapshot": {
           "description": "The Versioned Flow Snapshot to import",
-          "$ref": "#/definitions/VersionedFlowSnapshot"
+          "$ref": "#/definitions/RegisteredFlowSnapshot"
         }
       },
       "xml": {
@@ -20921,7 +23265,7 @@
         },
         "versionedFlowSnapshot": {
           "description": "Returns the Versioned Flow to replace with",
-          "$ref": "#/definitions/VersionedFlowSnapshot"
+          "$ref": "#/definitions/RegisteredFlowSnapshot"
         }
       },
       "xml": {
@@ -21208,6 +23552,14 @@
             "$ref": "#/definitions/PropertyDescriptorDTO"
           }
         },
+        "sensitiveDynamicPropertyNames": {
+          "type": "array",
+          "description": "Set of sensitive dynamic property names",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        },
         "schedulingPeriod": {
           "type": "string",
           "description": "The frequency with which to schedule the processor. The format of the value will depend on th value of schedulingStrategy."
@@ -21279,6 +23631,31 @@
           "additionalProperties": {
             "type": "string"
           }
+        },
+        "retryCount": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Overall number of retries."
+        },
+        "retriedRelationships": {
+          "type": "array",
+          "description": "All the relationships should be retried.",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "backoffMechanism": {
+          "type": "string",
+          "description": "Determines whether the FlowFile should be penalized or the processor should be yielded between retries.",
+          "enum": [
+            "PENALIZE_FLOWFILE",
+            "YIELD_PROCESSOR"
+          ]
+        },
+        "maxBackoffPeriod": {
+          "type": "string",
+          "description": "Maximum amount of time to be waited during a retry period."
         }
       }
     },
@@ -21352,6 +23729,10 @@
           "type": "boolean",
           "description": "Whether the processor supports batching. This makes the run duration settings available."
         },
+        "supportsSensitiveDynamicProperties": {
+          "type": "boolean",
+          "description": "Whether the processor supports sensitive dynamic properties."
+        },
         "persistsState": {
           "type": "boolean",
           "description": "Whether the processor persists state."
@@ -21399,6 +23780,177 @@
         "extensionMissing": {
           "type": "boolean",
           "description": "Whether the underlying extension is missing."
+        }
+      }
+    },
+    "ProcessorDefinition": {
+      "type": "object",
+      "required": [
+        "type"
+      ],
+      "properties": {
+        "group": {
+          "type": "string",
+          "description": "The group name of the bundle that provides the referenced type."
+        },
+        "artifact": {
+          "type": "string",
+          "description": "The artifact name of the bundle that provides the referenced type."
+        },
+        "version": {
+          "type": "string",
+          "description": "The version of the bundle that provides the referenced type."
+        },
+        "type": {
+          "type": "string",
+          "description": "The fully-qualified class type"
+        },
+        "typeDescription": {
+          "type": "string",
+          "description": "The description of the type."
+        },
+        "buildInfo": {
+          "description": "The build metadata for this component",
+          "$ref": "#/definitions/BuildInfo"
+        },
+        "providedApiImplementations": {
+          "type": "array",
+          "description": "If this type represents a provider for an interface, this lists the APIs it implements",
+          "items": {
+            "$ref": "#/definitions/DefinedType"
+          }
+        },
+        "tags": {
+          "type": "array",
+          "description": "The tags associated with this type",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "deprecated": {
+          "type": "boolean",
+          "description": "Whether or not the component has been deprecated"
+        },
+        "deprecationReason": {
+          "type": "string",
+          "description": "If this component has been deprecated, this optional field can be used to provide an explanation"
+        },
+        "restricted": {
+          "type": "boolean",
+          "description": "Whether or not the component has a general restriction"
+        },
+        "restrictedExplanation": {
+          "type": "string",
+          "description": "An optional description of the general restriction"
+        },
+        "explicitRestrictions": {
+          "type": "array",
+          "description": "Explicit restrictions that indicate a require permission to use the component",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/Restriction"
+          }
+        },
+        "stateful": {
+          "$ref": "#/definitions/Stateful"
+        },
+        "propertyDescriptors": {
+          "type": "object",
+          "description": "Descriptions of configuration properties applicable to this component.",
+          "additionalProperties": {
+            "$ref": "#/definitions/PropertyDescriptor"
+          }
+        },
+        "supportsDynamicProperties": {
+          "type": "boolean",
+          "description": "Whether or not this component makes use of dynamic (user-set) properties."
+        },
+        "inputRequirement": {
+          "type": "string",
+          "description": "Any input requirements this processor has.",
+          "enum": [
+            "INPUT_REQUIRED",
+            "INPUT_ALLOWED",
+            "INPUT_FORBIDDEN"
+          ]
+        },
+        "supportedRelationships": {
+          "type": "array",
+          "description": "The supported relationships for this processor.",
+          "items": {
+            "$ref": "#/definitions/Relationship"
+          }
+        },
+        "supportsDynamicRelationships": {
+          "type": "boolean",
+          "description": "Whether or not this processor supports dynamic relationships."
+        },
+        "triggerSerially": {
+          "type": "boolean",
+          "description": "Whether or not this processor should be triggered serially (i.e. no concurrent execution)."
+        },
+        "triggerWhenEmpty": {
+          "type": "boolean",
+          "description": "Whether or not this processor should be triggered when incoming queues are empty."
+        },
+        "triggerWhenAnyDestinationAvailable": {
+          "type": "boolean",
+          "description": "Whether or not this processor should be triggered when any destination queue has room."
+        },
+        "supportsBatching": {
+          "type": "boolean",
+          "description": "Whether or not this processor supports batching. If a Processor uses this annotation, it allows the Framework to batch calls to session commits, as well as allowing the Framework to return the same session multiple times."
+        },
+        "supportsEventDriven": {
+          "type": "boolean",
+          "description": "Whether or not this processor supports event driven scheduling. Indicates to the framework that the Processor is eligible to be scheduled to run based on the occurrence of an \"Event\" (e.g., when a FlowFile is enqueued in an incoming Connection), rather than being triggered periodically."
+        },
+        "primaryNodeOnly": {
+          "type": "boolean",
+          "description": "Whether or not this processor should be scheduled only on the primary node in a cluster."
+        },
+        "sideEffectFree": {
+          "type": "boolean",
+          "description": "Whether or not this processor is considered side-effect free. Side-effect free indicate that the processor's operations on FlowFiles can be safely repeated across process sessions."
+        },
+        "supportedSchedulingStrategies": {
+          "type": "array",
+          "description": "The supported scheduling strategies, such as TIME_DRIVER, CRON, or EVENT_DRIVEN.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "defaultSchedulingStrategy": {
+          "type": "string",
+          "description": "The default scheduling strategy for the processor."
+        },
+        "defaultConcurrentTasksBySchedulingStrategy": {
+          "type": "object",
+          "description": "The default concurrent tasks for each scheduling strategy.",
+          "additionalProperties": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "defaultSchedulingPeriodBySchedulingStrategy": {
+          "type": "object",
+          "description": "The default scheduling period for each scheduling strategy. The scheduling period is expected to be a time period, such as \"30 sec\".",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "defaultPenaltyDuration": {
+          "type": "string",
+          "description": "The default penalty duration as a time period, such as \"30 sec\"."
+        },
+        "defaultYieldDuration": {
+          "type": "string",
+          "description": "The default yield duration as a time period, such as \"1 sec\"."
+        },
+        "defaultBulletinLevel": {
+          "type": "string",
+          "description": "The default bulletin level, such as WARN, INFO, DEBUG, etc."
         }
       }
     },
@@ -21620,7 +24172,8 @@
           "enum": [
             "RUNNING",
             "STOPPED",
-            "DISABLED"
+            "DISABLED",
+            "RUN_ONCE"
           ]
         },
         "disconnectedNodeAcknowledged": {
@@ -21871,6 +24424,46 @@
         "name": "processorsRunStatusDetails"
       }
     },
+    "PropertyAllowableValue": {
+      "type": "object",
+      "required": [
+        "value"
+      ],
+      "properties": {
+        "value": {
+          "type": "string",
+          "description": "The internal value"
+        },
+        "displayName": {
+          "type": "string",
+          "description": "The display name of the value, if different from the internal value"
+        },
+        "description": {
+          "type": "string",
+          "description": "The description of the value, e.g., the behavior it produces."
+        }
+      }
+    },
+    "PropertyDependency": {
+      "type": "object",
+      "properties": {
+        "propertyName": {
+          "type": "string",
+          "description": "The name of the property that is depended upon"
+        },
+        "propertyDisplayName": {
+          "type": "string",
+          "description": "The name of the property that is depended upon"
+        },
+        "dependentValues": {
+          "type": "array",
+          "description": "The values that satisfy the dependency",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
     "PropertyDependencyDTO": {
       "type": "object",
       "properties": {
@@ -21884,6 +24477,86 @@
           "uniqueItems": true,
           "items": {
             "type": "string"
+          }
+        }
+      }
+    },
+    "PropertyDescriptor": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the property key"
+        },
+        "displayName": {
+          "type": "string",
+          "description": "The display name of the property key, if different from the name"
+        },
+        "description": {
+          "type": "string",
+          "description": "The description of what the property does"
+        },
+        "allowableValues": {
+          "type": "array",
+          "description": "A list of the allowable values for the property",
+          "items": {
+            "$ref": "#/definitions/PropertyAllowableValue"
+          }
+        },
+        "defaultValue": {
+          "type": "string",
+          "description": "The default value if a user-set value is not specified"
+        },
+        "required": {
+          "type": "boolean",
+          "description": "Whether or not  the property is required for the component"
+        },
+        "sensitive": {
+          "type": "boolean",
+          "description": "Whether or not  the value of the property is considered sensitive (e.g., passwords and keys)"
+        },
+        "expressionLanguageScope": {
+          "type": "string",
+          "description": "The scope of expression language supported by this property",
+          "enum": [
+            "NONE",
+            "VARIABLE_REGISTRY",
+            "FLOWFILE_ATTRIBUTES"
+          ]
+        },
+        "expressionLanguageScopeDescription": {
+          "type": "string",
+          "description": "The description of the expression language scope supported by this property",
+          "readOnly": true
+        },
+        "typeProvidedByValue": {
+          "description": "Indicates that this property is for selecting a controller service of the specified type",
+          "$ref": "#/definitions/DefinedType"
+        },
+        "validRegex": {
+          "type": "string",
+          "description": "A regular expression that can be used to validate the value of this property"
+        },
+        "validator": {
+          "type": "string",
+          "description": "Name of the validator used for this property descriptor"
+        },
+        "dynamic": {
+          "type": "boolean",
+          "description": "Whether or not the descriptor is for a dynamically added property"
+        },
+        "resourceDefinition": {
+          "description": "Indicates that this property references external resources",
+          "$ref": "#/definitions/PropertyResourceDefinition"
+        },
+        "dependencies": {
+          "type": "array",
+          "description": "The dependencies that this property has on other properties",
+          "items": {
+            "$ref": "#/definitions/PropertyDependency"
           }
         }
       }
@@ -21970,6 +24643,33 @@
           "description": "Previous values for a given property.",
           "items": {
             "$ref": "#/definitions/PreviousValueDTO"
+          }
+        }
+      }
+    },
+    "PropertyResourceDefinition": {
+      "type": "object",
+      "properties": {
+        "cardinality": {
+          "type": "string",
+          "description": "The cardinality of the resource definition (i.e. single or multiple)",
+          "enum": [
+            "SINGLE",
+            "MULTIPLE"
+          ]
+        },
+        "resourceTypes": {
+          "type": "array",
+          "description": "The types of resources that can be referenced",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "enum": [
+              "FILE",
+              "DIRECTORY",
+              "TEXT",
+              "URL"
+            ]
           }
         }
       }
@@ -22457,81 +25157,129 @@
         }
       }
     },
-    "RegistryClientEntity": {
+    "RegisteredFlow": {
       "type": "object",
       "properties": {
-        "revision": {
-          "description": "The revision for this request/response. The revision is required for any mutable flow requests and is included in all responses.",
-          "$ref": "#/definitions/RevisionDTO"
-        },
-        "id": {
-          "type": "string",
-          "description": "The id of the component."
-        },
-        "uri": {
-          "type": "string",
-          "description": "The URI for futures requests to the component."
-        },
-        "position": {
-          "description": "The position of this component in the UI if applicable.",
-          "$ref": "#/definitions/PositionDTO"
-        },
-        "permissions": {
-          "description": "The permissions for this component.",
-          "$ref": "#/definitions/PermissionsDTO"
-        },
-        "bulletins": {
-          "type": "array",
-          "description": "The bulletins for this component.",
-          "items": {
-            "$ref": "#/definitions/BulletinEntity"
-          }
-        },
-        "disconnectedNodeAcknowledged": {
-          "type": "boolean",
-          "description": "Acknowledges that this node is disconnected to allow for mutable requests to proceed."
-        },
-        "component": {
-          "$ref": "#/definitions/RegistryDTO"
-        }
-      },
-      "xml": {
-        "name": "registryClientEntity"
-      }
-    },
-    "RegistryClientsEntity": {
-      "type": "object",
-      "properties": {
-        "registries": {
-          "type": "array",
-          "uniqueItems": true,
-          "items": {
-            "$ref": "#/definitions/RegistryClientEntity"
-          }
-        }
-      },
-      "xml": {
-        "name": "registryClientsEntity"
-      }
-    },
-    "RegistryDTO": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string",
-          "description": "The registry identifier"
+        "identifier": {
+          "type": "string"
         },
         "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "bucketIdentifier": {
+          "type": "string"
+        },
+        "bucketName": {
+          "type": "string"
+        },
+        "createdTimestamp": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "lastModifiedTimestamp": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "permissions": {
+          "$ref": "#/definitions/FlowRegistryPermissions"
+        },
+        "versionCount": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "versionInfo": {
+          "$ref": "#/definitions/RegisteredFlowVersionInfo"
+        }
+      }
+    },
+    "RegisteredFlowSnapshot": {
+      "type": "object",
+      "properties": {
+        "snapshotMetadata": {
+          "$ref": "#/definitions/RegisteredFlowSnapshotMetadata"
+        },
+        "flow": {
+          "$ref": "#/definitions/RegisteredFlow"
+        },
+        "bucket": {
+          "$ref": "#/definitions/FlowRegistryBucket"
+        },
+        "flowContents": {
+          "$ref": "#/definitions/VersionedProcessGroup"
+        },
+        "externalControllerServices": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/ExternalControllerServiceReference"
+          }
+        },
+        "parameterContexts": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/VersionedParameterContext"
+          }
+        },
+        "flowEncodingVersion": {
+          "type": "string"
+        },
+        "parameterProviders": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/ParameterProviderReference"
+          }
+        },
+        "latest": {
+          "type": "boolean"
+        }
+      }
+    },
+    "RegisteredFlowSnapshotMetadata": {
+      "type": "object",
+      "properties": {
+        "bucketIdentifier": {
+          "type": "string"
+        },
+        "flowIdentifier": {
+          "type": "string"
+        },
+        "version": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "timestamp": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "author": {
+          "type": "string"
+        },
+        "comments": {
+          "type": "string"
+        }
+      }
+    },
+    "RegisteredFlowVersionInfo": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "Relationship": {
+      "type": "object",
+      "properties": {
+        "name": {
           "type": "string",
-          "description": "The registry name"
+          "description": "The name of the relationship"
         },
         "description": {
           "type": "string",
-          "description": "The registry description"
-        },
-        "uri": {
-          "type": "string",
-          "description": "The registry URI"
+          "description": "The description of the relationship"
         }
       }
     },
@@ -22549,6 +25297,10 @@
         "autoTerminate": {
           "type": "boolean",
           "description": "Whether or not flowfiles sent to this relationship should auto terminate."
+        },
+        "retry": {
+          "type": "boolean",
+          "description": "Whether or not flowfiles sent to this relationship should retry."
         }
       }
     },
@@ -23096,6 +25848,81 @@
         }
       }
     },
+    "ReplayLastEventRequestEntity": {
+      "type": "object",
+      "properties": {
+        "componentId": {
+          "type": "string",
+          "description": "The UUID of the component whose last event should be replayed."
+        },
+        "nodes": {
+          "type": "string",
+          "description": "Which nodes are to replay their last provenance event.",
+          "enum": [
+            "ALL",
+            "PRIMARY"
+          ]
+        }
+      },
+      "xml": {
+        "name": "replayLastEventRequestEntity"
+      }
+    },
+    "ReplayLastEventResponseEntity": {
+      "type": "object",
+      "properties": {
+        "componentId": {
+          "type": "string",
+          "description": "The UUID of the component whose last event should be replayed."
+        },
+        "nodes": {
+          "type": "string",
+          "description": "Which nodes were requested to replay their last provenance event.",
+          "enum": [
+            "ALL",
+            "PRIMARY"
+          ]
+        },
+        "aggregateSnapshot": {
+          "description": "The aggregate result of all nodes' responses",
+          "$ref": "#/definitions/ReplayLastEventSnapshotDTO"
+        },
+        "nodeSnapshots": {
+          "type": "array",
+          "description": "The node-wise results",
+          "items": {
+            "$ref": "#/definitions/NodeReplayLastEventSnapshotDTO"
+          }
+        }
+      },
+      "xml": {
+        "name": "replayLastEventResponseEntity"
+      }
+    },
+    "ReplayLastEventSnapshotDTO": {
+      "type": "object",
+      "properties": {
+        "eventsReplayed": {
+          "type": "array",
+          "description": "The IDs of the events that were successfully replayed",
+          "items": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "failureExplanation": {
+          "type": "string",
+          "description": "If unable to replay an event, specifies why the event could not be replayed"
+        },
+        "eventAvailable": {
+          "type": "boolean",
+          "description": "Whether or not an event was available. This may not be populated if there was a failure."
+        }
+      },
+      "xml": {
+        "name": "replayLastEventSnapshot"
+      }
+    },
     "ReportingTaskDTO": {
       "type": "object",
       "properties": {
@@ -23124,7 +25951,7 @@
           "description": "The fully qualified type of the reporting task."
         },
         "bundle": {
-          "description": "The details of the artifact that bundled this processor type.",
+          "description": "The details of the artifact that bundled this reporting task type.",
           "$ref": "#/definitions/BundleDTO"
         },
         "state": {
@@ -23156,9 +25983,13 @@
           "type": "boolean",
           "description": "Whether the reporting task has multiple versions available."
         },
+        "supportsSensitiveDynamicProperties": {
+          "type": "boolean",
+          "description": "Whether the reporting task supports sensitive dynamic properties."
+        },
         "schedulingPeriod": {
           "type": "string",
-          "description": "The frequency with which to schedule the reporting task. The format of the value willd epend on the valud of the schedulingStrategy."
+          "description": "The frequency with which to schedule the reporting task. The format of the value will depend on the value of the schedulingStrategy."
         },
         "schedulingStrategy": {
           "type": "string",
@@ -23185,6 +26016,14 @@
             "$ref": "#/definitions/PropertyDescriptorDTO"
           }
         },
+        "sensitiveDynamicPropertyNames": {
+          "type": "array",
+          "description": "Set of sensitive dynamic property names",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        },
         "customUiUrl": {
           "type": "string",
           "description": "The URL for the custom configuration UI for the reporting task."
@@ -23202,7 +26041,7 @@
         },
         "validationStatus": {
           "type": "string",
-          "description": "Indicates whether the Processor is valid, invalid, or still in the process of validating (i.e., it is unknown whether or not the Processor is valid)",
+          "description": "Indicates whether the Reporting Task is valid, invalid, or still in the process of validating (i.e., it is unknown whether or not the Reporting Task is valid)",
           "enum": [
             "VALID",
             "INVALID",
@@ -23217,6 +26056,109 @@
         "extensionMissing": {
           "type": "boolean",
           "description": "Whether the underlying extension is missing."
+        }
+      }
+    },
+    "ReportingTaskDefinition": {
+      "type": "object",
+      "required": [
+        "type"
+      ],
+      "properties": {
+        "group": {
+          "type": "string",
+          "description": "The group name of the bundle that provides the referenced type."
+        },
+        "artifact": {
+          "type": "string",
+          "description": "The artifact name of the bundle that provides the referenced type."
+        },
+        "version": {
+          "type": "string",
+          "description": "The version of the bundle that provides the referenced type."
+        },
+        "type": {
+          "type": "string",
+          "description": "The fully-qualified class type"
+        },
+        "typeDescription": {
+          "type": "string",
+          "description": "The description of the type."
+        },
+        "buildInfo": {
+          "description": "The build metadata for this component",
+          "$ref": "#/definitions/BuildInfo"
+        },
+        "providedApiImplementations": {
+          "type": "array",
+          "description": "If this type represents a provider for an interface, this lists the APIs it implements",
+          "items": {
+            "$ref": "#/definitions/DefinedType"
+          }
+        },
+        "tags": {
+          "type": "array",
+          "description": "The tags associated with this type",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "deprecated": {
+          "type": "boolean",
+          "description": "Whether or not the component has been deprecated"
+        },
+        "deprecationReason": {
+          "type": "string",
+          "description": "If this component has been deprecated, this optional field can be used to provide an explanation"
+        },
+        "restricted": {
+          "type": "boolean",
+          "description": "Whether or not the component has a general restriction"
+        },
+        "restrictedExplanation": {
+          "type": "string",
+          "description": "An optional description of the general restriction"
+        },
+        "explicitRestrictions": {
+          "type": "array",
+          "description": "Explicit restrictions that indicate a require permission to use the component",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/Restriction"
+          }
+        },
+        "stateful": {
+          "$ref": "#/definitions/Stateful"
+        },
+        "propertyDescriptors": {
+          "type": "object",
+          "description": "Descriptions of configuration properties applicable to this component.",
+          "additionalProperties": {
+            "$ref": "#/definitions/PropertyDescriptor"
+          }
+        },
+        "supportsDynamicProperties": {
+          "type": "boolean",
+          "description": "Whether or not this component makes use of dynamic (user-set) properties."
+        },
+        "supportedSchedulingStrategies": {
+          "type": "array",
+          "description": "The supported scheduling strategies, such as TIME_DRIVER or CRON.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "defaultSchedulingStrategy": {
+          "type": "string",
+          "description": "The default scheduling strategy for the reporting task."
+        },
+        "defaultSchedulingPeriodBySchedulingStrategy": {
+          "type": "object",
+          "description": "The default scheduling period for each scheduling strategy. The scheduling period is expected to be a time period, such as \"30 sec\".",
+          "additionalProperties": {
+            "type": "string"
+          }
         }
       }
     },
@@ -23427,6 +26369,40 @@
         "name": "resourcesEntity"
       }
     },
+    "Response": {
+      "type": "object",
+      "properties": {
+        "metadata": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          }
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "entity": {
+          "type": "object"
+        }
+      }
+    },
+    "Restriction": {
+      "type": "object",
+      "properties": {
+        "requiredPermission": {
+          "type": "string",
+          "description": "The permission required for this restriction"
+        },
+        "explanation": {
+          "type": "string",
+          "description": "The explanation of this restriction"
+        }
+      }
+    },
     "RevisionDTO": {
       "type": "object",
       "properties": {
@@ -23446,26 +26422,6 @@
         }
       }
     },
-    "RevisionInfo": {
-      "type": "object",
-      "properties": {
-        "clientId": {
-          "type": "string",
-          "description": "A client identifier used to make a request. By including a client identifier, the API can allow multiple requests without needing the current revision. Due to the asynchronous nature of requests/responses this was implemented to allow the client to make numerous requests without having to wait for the previous response to come back."
-        },
-        "version": {
-          "type": "integer",
-          "format": "int64",
-          "description": "NiFi Registry employs an optimistic locking strategy where the client must include a revision in their request when performing an update. In a response to a mutable flow request, this field represents the updated base version."
-        },
-        "lastModifier": {
-          "type": "string",
-          "description": "The user that last modified the entity.",
-          "readOnly": true
-        }
-      },
-      "description": "The revision information for an entity managed through the REST API."
-    },
     "RunStatusDetailsRequestEntity": {
       "type": "object",
       "properties": {
@@ -23480,6 +26436,49 @@
       },
       "xml": {
         "name": "runStatusDetailsRequest"
+      }
+    },
+    "RuntimeManifest": {
+      "type": "object",
+      "properties": {
+        "identifier": {
+          "type": "string",
+          "description": "A unique identifier for the manifest"
+        },
+        "agentType": {
+          "type": "string",
+          "description": "The type of the runtime binary, e.g., 'minifi-java' or 'minifi-cpp'"
+        },
+        "version": {
+          "type": "string",
+          "description": "The version of the runtime binary, e.g., '1.0.1'"
+        },
+        "buildInfo": {
+          "description": "Build summary for this runtime binary",
+          "$ref": "#/definitions/BuildInfo"
+        },
+        "bundles": {
+          "type": "array",
+          "description": "All extension bundles included with this runtime",
+          "items": {
+            "$ref": "#/definitions/Bundle"
+          }
+        },
+        "schedulingDefaults": {
+          "description": "Scheduling defaults for components defined in this manifest",
+          "$ref": "#/definitions/SchedulingDefaults"
+        }
+      }
+    },
+    "RuntimeManifestEntity": {
+      "type": "object",
+      "properties": {
+        "runtimeManifest": {
+          "$ref": "#/definitions/RuntimeManifest"
+        }
+      },
+      "xml": {
+        "name": "runtimeManifestEntity"
       }
     },
     "ScheduleComponentsEntity": {
@@ -23513,6 +26512,60 @@
       },
       "xml": {
         "name": "scheduleComponentEntity"
+      }
+    },
+    "SchedulingDefaults": {
+      "type": "object",
+      "properties": {
+        "defaultSchedulingStrategy": {
+          "type": "string",
+          "description": "The name of the default scheduling strategy",
+          "enum": [
+            "EVENT_DRIVEN",
+            "TIMER_DRIVEN",
+            "PRIMARY_NODE_ONLY",
+            "CRON_DRIVEN"
+          ]
+        },
+        "defaultSchedulingPeriodMillis": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The default scheduling period in milliseconds"
+        },
+        "penalizationPeriodMillis": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The default penalization period in milliseconds"
+        },
+        "yieldDurationMillis": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The default yield duration in milliseconds"
+        },
+        "defaultRunDurationNanos": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The default run duration in nano-seconds"
+        },
+        "defaultMaxConcurrentTasks": {
+          "type": "string",
+          "description": "The default concurrent tasks"
+        },
+        "defaultConcurrentTasksBySchedulingStrategy": {
+          "type": "object",
+          "description": "The default concurrent tasks for each scheduling strategy",
+          "additionalProperties": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "defaultSchedulingPeriodsBySchedulingStrategy": {
+          "type": "object",
+          "description": "The default scheduling period for each scheduling strategy",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
       }
     },
     "SearchResultGroupDTO": {
@@ -23600,6 +26653,13 @@
         "parameterContextResults": {
           "type": "array",
           "description": "The parameter contexts that matched the search.",
+          "items": {
+            "$ref": "#/definitions/ComponentSearchResultDTO"
+          }
+        },
+        "parameterProviderNodeResults": {
+          "type": "array",
+          "description": "The parameter provider nodes that matched the search",
           "items": {
             "$ref": "#/definitions/ComponentSearchResultDTO"
           }
@@ -23713,6 +26773,27 @@
         "name": "snippetEntity"
       }
     },
+    "StackTraceElement": {
+      "type": "object",
+      "properties": {
+        "methodName": {
+          "type": "string"
+        },
+        "fileName": {
+          "type": "string"
+        },
+        "lineNumber": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "className": {
+          "type": "string"
+        },
+        "nativeMethod": {
+          "type": "boolean"
+        }
+      }
+    },
     "StartVersionControlRequestEntity": {
       "type": "object",
       "properties": {
@@ -23771,6 +26852,27 @@
           "description": "The state.",
           "items": {
             "$ref": "#/definitions/StateEntryDTO"
+          }
+        }
+      }
+    },
+    "Stateful": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string",
+          "description": "Description of what information is being stored in the StateManager"
+        },
+        "scopes": {
+          "type": "array",
+          "description": "Indicates the Scope(s) associated with the State that is stored and retrieved",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "enum": [
+              "CLUSTER",
+              "LOCAL"
+            ]
           }
         }
       }
@@ -24329,6 +27431,32 @@
         }
       }
     },
+    "Throwable": {
+      "type": "object",
+      "properties": {
+        "cause": {
+          "$ref": "#/definitions/Throwable"
+        },
+        "stackTrace": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/StackTraceElement"
+          }
+        },
+        "message": {
+          "type": "string"
+        },
+        "localizedMessage": {
+          "type": "string"
+        },
+        "suppressed": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Throwable"
+          }
+        }
+      }
+    },
     "TransactionResultEntity": {
       "type": "object",
       "properties": {
@@ -24375,6 +27503,10 @@
         "disconnectedNodeAcknowledged": {
           "type": "boolean",
           "description": "Acknowledges that this node is disconnected to allow for mutable requests to proceed."
+        },
+        "uiOnly": {
+          "type": "boolean",
+          "description": "Indicates whether or not the response should only include fields necessary for rendering the NiFi User Interface. As such, when this value is set to true, some fields may be returned as null values, and the selected fields may change at any time without notice. As a result, this value should not be set to true by any client other than the UI."
         }
       },
       "xml": {
@@ -24925,6 +28057,10 @@
           "format": "int32",
           "description": "The version of the flow"
         },
+        "storageLocation": {
+          "type": "string",
+          "description": "The storage location"
+        },
         "state": {
           "type": "string",
           "description": "The current state of the Process Group, as it relates to the Versioned Flow",
@@ -25014,6 +28150,10 @@
         "identifier": {
           "type": "string",
           "description": "The component's unique identifier"
+        },
+        "instanceIdentifier": {
+          "type": "string",
+          "description": "The instance ID of an existing component that is described by this VersionedComponent, or null if this is not mapped to an instantiated component"
         },
         "name": {
           "type": "string",
@@ -25116,7 +28256,12 @@
             "REMOTE_OUTPUT_PORT",
             "FUNNEL",
             "LABEL",
-            "CONTROLLER_SERVICE"
+            "CONTROLLER_SERVICE",
+            "REPORTING_TASK",
+            "PARAMETER_CONTEXT",
+            "PARAMETER_PROVIDER",
+            "TEMPLATE",
+            "FLOW_REGISTRY_CLIENT"
           ]
         },
         "groupIdentifier": {
@@ -25132,6 +28277,10 @@
           "type": "string",
           "description": "The component's unique identifier"
         },
+        "instanceIdentifier": {
+          "type": "string",
+          "description": "The instance ID of an existing component that is described by this VersionedComponent, or null if this is not mapped to an instantiated component"
+        },
         "name": {
           "type": "string",
           "description": "The component's name"
@@ -25146,11 +28295,25 @@
         },
         "type": {
           "type": "string",
-          "description": "The type of the controller service."
+          "description": "The type of the extension component"
         },
         "bundle": {
-          "description": "The details of the artifact that bundled this processor type.",
+          "description": "Information about the bundle from which the component came",
           "$ref": "#/definitions/Bundle"
+        },
+        "properties": {
+          "type": "object",
+          "description": "The properties for the component. Properties whose value is not set will only contain the property name.",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "propertyDescriptors": {
+          "type": "object",
+          "description": "The property descriptors for the component.",
+          "additionalProperties": {
+            "$ref": "#/definitions/VersionedPropertyDescriptor"
+          }
         },
         "controllerServiceApis": {
           "type": "array",
@@ -25159,23 +28322,22 @@
             "$ref": "#/definitions/ControllerServiceAPI"
           }
         },
-        "properties": {
-          "type": "object",
-          "description": "The properties of the controller service.",
-          "additionalProperties": {
-            "type": "string"
-          }
-        },
-        "propertyDescriptors": {
-          "type": "object",
-          "description": "The property descriptors for the processor.",
-          "additionalProperties": {
-            "$ref": "#/definitions/VersionedPropertyDescriptor"
-          }
-        },
         "annotationData": {
           "type": "string",
           "description": "The annotation for the controller service. This is how the custom UI relays configuration to the controller service."
+        },
+        "scheduledState": {
+          "type": "string",
+          "description": "The ScheduledState denoting whether the Controller Service is ENABLED or DISABLED",
+          "enum": [
+            "ENABLED",
+            "DISABLED",
+            "RUNNING"
+          ]
+        },
+        "bulletinLevel": {
+          "type": "string",
+          "description": "The level at which the controller service will report bulletins."
         },
         "componentType": {
           "type": "string",
@@ -25190,7 +28352,12 @@
             "REMOTE_OUTPUT_PORT",
             "FUNNEL",
             "LABEL",
-            "CONTROLLER_SERVICE"
+            "CONTROLLER_SERVICE",
+            "REPORTING_TASK",
+            "PARAMETER_CONTEXT",
+            "PARAMETER_PROVIDER",
+            "TEMPLATE",
+            "FLOW_REGISTRY_CLIENT"
           ]
         },
         "groupIdentifier": {
@@ -25199,85 +28366,17 @@
         }
       }
     },
-    "VersionedFlow": {
-      "type": "object",
-      "required": [
-        "bucketIdentifier",
-        "name",
-        "type"
-      ],
-      "properties": {
-        "link": {
-          "description": "An WebLink to this entity.",
-          "readOnly": true,
-          "$ref": "#/definitions/JaxbLink"
-        },
-        "identifier": {
-          "type": "string",
-          "description": "An ID to uniquely identify this object.",
-          "readOnly": true
-        },
-        "name": {
-          "type": "string",
-          "description": "The name of the item."
-        },
-        "description": {
-          "type": "string",
-          "description": "A description of the item."
-        },
-        "bucketIdentifier": {
-          "type": "string",
-          "description": "The identifier of the bucket this items belongs to. This cannot be changed after the item is created."
-        },
-        "bucketName": {
-          "type": "string",
-          "description": "The name of the bucket this items belongs to.",
-          "readOnly": true
-        },
-        "createdTimestamp": {
-          "type": "integer",
-          "format": "int64",
-          "description": "The timestamp of when the item was created, as milliseconds since epoch.",
-          "readOnly": true,
-          "minimum": 1
-        },
-        "modifiedTimestamp": {
-          "type": "integer",
-          "format": "int64",
-          "description": "The timestamp of when the item was last modified, as milliseconds since epoch.",
-          "readOnly": true,
-          "minimum": 1
-        },
-        "type": {
-          "type": "string",
-          "description": "The type of item.",
-          "enum": [
-            "Flow",
-            "Bundle"
-          ]
-        },
-        "permissions": {
-          "description": "The access that the current user has to the bucket containing this item.",
-          "readOnly": true,
-          "$ref": "#/definitions/Permissions"
-        },
-        "versionCount": {
-          "type": "integer",
-          "format": "int64",
-          "description": "The number of versions of this flow.",
-          "readOnly": true,
-          "minimum": 0
-        },
-        "revision": {
-          "description": "The revision of this entity used for optimistic-locking during updates.",
-          "readOnly": true,
-          "$ref": "#/definitions/RevisionInfo"
-        }
-      }
-    },
     "VersionedFlowCoordinates": {
       "type": "object",
       "properties": {
+        "registryId": {
+          "type": "string",
+          "description": "The identifier of the Flow Registry that contains the flow"
+        },
+        "storageLocation": {
+          "type": "string",
+          "description": "The location of the Flow Registry that stores the flow"
+        },
         "registryUrl": {
           "type": "string",
           "description": "The URL of the Flow Registry that contains the flow"
@@ -25350,60 +28449,12 @@
         "name": "versionedFlowEntity"
       }
     },
-    "VersionedFlowSnapshot": {
-      "type": "object",
-      "required": [
-        "flowContents",
-        "snapshotMetadata"
-      ],
-      "properties": {
-        "snapshotMetadata": {
-          "description": "The metadata for this snapshot",
-          "$ref": "#/definitions/VersionedFlowSnapshotMetadata"
-        },
-        "flowContents": {
-          "description": "The contents of the versioned flow",
-          "$ref": "#/definitions/VersionedProcessGroup"
-        },
-        "externalControllerServices": {
-          "type": "object",
-          "description": "The information about controller services that exist outside this versioned flow, but are referenced by components within the versioned flow.",
-          "additionalProperties": {
-            "$ref": "#/definitions/ExternalControllerServiceReference"
-          }
-        },
-        "parameterContexts": {
-          "type": "object",
-          "description": "The parameter contexts referenced by process groups in the flow contents. The mapping is from the name of the context to the context instance, and it is expected that any context in this map is referenced by at least one process group in this flow.",
-          "additionalProperties": {
-            "$ref": "#/definitions/VersionedParameterContext"
-          }
-        },
-        "flowEncodingVersion": {
-          "type": "string",
-          "description": "The optional encoding version of the flow contents."
-        },
-        "flow": {
-          "description": "The flow this snapshot is for",
-          "readOnly": true,
-          "$ref": "#/definitions/VersionedFlow"
-        },
-        "bucket": {
-          "description": "The bucket where the flow is located",
-          "readOnly": true,
-          "$ref": "#/definitions/Bucket"
-        },
-        "latest": {
-          "type": "boolean"
-        }
-      }
-    },
     "VersionedFlowSnapshotEntity": {
       "type": "object",
       "properties": {
         "versionedFlowSnapshot": {
           "description": "The versioned flow snapshot",
-          "$ref": "#/definitions/VersionedFlowSnapshot"
+          "$ref": "#/definitions/RegisteredFlowSnapshot"
         },
         "processGroupRevision": {
           "description": "The Revision of the Process Group under Version Control",
@@ -25426,57 +28477,12 @@
         "name": "versionedFlowSnapshotEntity"
       }
     },
-    "VersionedFlowSnapshotMetadata": {
-      "type": "object",
-      "required": [
-        "bucketIdentifier",
-        "flowIdentifier",
-        "version"
-      ],
-      "properties": {
-        "link": {
-          "description": "An WebLink to this entity.",
-          "readOnly": true,
-          "$ref": "#/definitions/JaxbLink"
-        },
-        "bucketIdentifier": {
-          "type": "string",
-          "description": "The identifier of the bucket this snapshot belongs to."
-        },
-        "flowIdentifier": {
-          "type": "string",
-          "description": "The identifier of the flow this snapshot belongs to."
-        },
-        "version": {
-          "type": "integer",
-          "format": "int32",
-          "description": "The version of this snapshot of the flow.",
-          "minimum": -1
-        },
-        "timestamp": {
-          "type": "integer",
-          "format": "int64",
-          "description": "The timestamp when the flow was saved, as milliseconds since epoch.",
-          "readOnly": true,
-          "minimum": 1
-        },
-        "author": {
-          "type": "string",
-          "description": "The user that created this snapshot of the flow.",
-          "readOnly": true
-        },
-        "comments": {
-          "type": "string",
-          "description": "The comments provided by the user when creating the snapshot."
-        }
-      }
-    },
     "VersionedFlowSnapshotMetadataEntity": {
       "type": "object",
       "properties": {
         "versionedFlowSnapshotMetadata": {
-          "description": "The collection of versioned flow snapshot metadata",
-          "$ref": "#/definitions/VersionedFlowSnapshotMetadata"
+          "description": "The collection of registered flow snapshot metadata",
+          "$ref": "#/definitions/RegisteredFlowSnapshotMetadata"
         },
         "registryId": {
           "type": "string",
@@ -25557,7 +28563,7 @@
         }
       },
       "xml": {
-        "name": "versionedFlowUpdateRequestEntity"
+        "name": "registeredFlowUpdateRequestEntity"
       }
     },
     "VersionedFlowsEntity": {
@@ -25581,6 +28587,10 @@
         "identifier": {
           "type": "string",
           "description": "The component's unique identifier"
+        },
+        "instanceIdentifier": {
+          "type": "string",
+          "description": "The instance ID of an existing component that is described by this VersionedComponent, or null if this is not mapped to an instantiated component"
         },
         "name": {
           "type": "string",
@@ -25607,7 +28617,12 @@
             "REMOTE_OUTPUT_PORT",
             "FUNNEL",
             "LABEL",
-            "CONTROLLER_SERVICE"
+            "CONTROLLER_SERVICE",
+            "REPORTING_TASK",
+            "PARAMETER_CONTEXT",
+            "PARAMETER_PROVIDER",
+            "TEMPLATE",
+            "FLOW_REGISTRY_CLIENT"
           ]
         },
         "groupIdentifier": {
@@ -25622,6 +28637,10 @@
         "identifier": {
           "type": "string",
           "description": "The component's unique identifier"
+        },
+        "instanceIdentifier": {
+          "type": "string",
+          "description": "The instance ID of an existing component that is described by this VersionedComponent, or null if this is not mapped to an instantiated component"
         },
         "name": {
           "type": "string",
@@ -25638,6 +28657,11 @@
         "label": {
           "type": "string",
           "description": "The text that appears in the label."
+        },
+        "zIndex": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The z index of the connection."
         },
         "width": {
           "type": "number",
@@ -25669,7 +28693,12 @@
             "REMOTE_OUTPUT_PORT",
             "FUNNEL",
             "LABEL",
-            "CONTROLLER_SERVICE"
+            "CONTROLLER_SERVICE",
+            "REPORTING_TASK",
+            "PARAMETER_CONTEXT",
+            "PARAMETER_PROVIDER",
+            "TEMPLATE",
+            "FLOW_REGISTRY_CLIENT"
           ]
         },
         "groupIdentifier": {
@@ -25693,6 +28722,10 @@
           "type": "boolean",
           "description": "Whether or not the parameter value is sensitive"
         },
+        "provided": {
+          "type": "boolean",
+          "description": "Whether or not the parameter value is provided by a ParameterProvider"
+        },
         "value": {
           "type": "string",
           "description": "The value of the parameter"
@@ -25702,13 +28735,25 @@
     "VersionedParameterContext": {
       "type": "object",
       "properties": {
+        "identifier": {
+          "type": "string",
+          "description": "The component's unique identifier"
+        },
+        "instanceIdentifier": {
+          "type": "string",
+          "description": "The instance ID of an existing component that is described by this VersionedComponent, or null if this is not mapped to an instantiated component"
+        },
         "name": {
           "type": "string",
-          "description": "The name of the context"
+          "description": "The component's name"
         },
-        "description": {
+        "comments": {
           "type": "string",
-          "description": "The description of the parameter context"
+          "description": "The user-supplied comments for the component"
+        },
+        "position": {
+          "description": "The component's position on the graph",
+          "$ref": "#/definitions/Position"
         },
         "parameters": {
           "type": "array",
@@ -25724,6 +28769,47 @@
           "items": {
             "type": "string"
           }
+        },
+        "description": {
+          "type": "string",
+          "description": "The description of the parameter context"
+        },
+        "parameterProvider": {
+          "type": "string",
+          "description": "The identifier of an optional parameter provider"
+        },
+        "parameterGroupName": {
+          "type": "string",
+          "description": "The corresponding parameter group name fetched from the parameter provider, if applicable"
+        },
+        "synchronized": {
+          "type": "boolean",
+          "description": "True if the parameter provider is set and the context should receive updates when its parameters are next fetched"
+        },
+        "componentType": {
+          "type": "string",
+          "enum": [
+            "CONNECTION",
+            "PROCESSOR",
+            "PROCESS_GROUP",
+            "REMOTE_PROCESS_GROUP",
+            "INPUT_PORT",
+            "OUTPUT_PORT",
+            "REMOTE_INPUT_PORT",
+            "REMOTE_OUTPUT_PORT",
+            "FUNNEL",
+            "LABEL",
+            "CONTROLLER_SERVICE",
+            "REPORTING_TASK",
+            "PARAMETER_CONTEXT",
+            "PARAMETER_PROVIDER",
+            "TEMPLATE",
+            "FLOW_REGISTRY_CLIENT"
+          ]
+        },
+        "groupIdentifier": {
+          "type": "string",
+          "description": "The ID of the Process Group that this component belongs to"
         }
       }
     },
@@ -25733,6 +28819,10 @@
         "identifier": {
           "type": "string",
           "description": "The component's unique identifier"
+        },
+        "instanceIdentifier": {
+          "type": "string",
+          "description": "The instance ID of an existing component that is described by this VersionedComponent, or null if this is not mapped to an instantiated component"
         },
         "name": {
           "type": "string",
@@ -25764,7 +28854,8 @@
           "description": "The scheduled state of the component",
           "enum": [
             "ENABLED",
-            "DISABLED"
+            "DISABLED",
+            "RUNNING"
           ]
         },
         "allowRemoteAccess": {
@@ -25784,7 +28875,12 @@
             "REMOTE_OUTPUT_PORT",
             "FUNNEL",
             "LABEL",
-            "CONTROLLER_SERVICE"
+            "CONTROLLER_SERVICE",
+            "REPORTING_TASK",
+            "PARAMETER_CONTEXT",
+            "PARAMETER_PROVIDER",
+            "TEMPLATE",
+            "FLOW_REGISTRY_CLIENT"
           ]
         },
         "groupIdentifier": {
@@ -25799,6 +28895,10 @@
         "identifier": {
           "type": "string",
           "description": "The component's unique identifier"
+        },
+        "instanceIdentifier": {
+          "type": "string",
+          "description": "The instance ID of an existing component that is described by this VersionedComponent, or null if this is not mapped to an instantiated component"
         },
         "name": {
           "type": "string",
@@ -25933,7 +29033,12 @@
             "REMOTE_OUTPUT_PORT",
             "FUNNEL",
             "LABEL",
-            "CONTROLLER_SERVICE"
+            "CONTROLLER_SERVICE",
+            "REPORTING_TASK",
+            "PARAMETER_CONTEXT",
+            "PARAMETER_PROVIDER",
+            "TEMPLATE",
+            "FLOW_REGISTRY_CLIENT"
           ]
         },
         "groupIdentifier": {
@@ -25949,6 +29054,10 @@
           "type": "string",
           "description": "The component's unique identifier"
         },
+        "instanceIdentifier": {
+          "type": "string",
+          "description": "The instance ID of an existing component that is described by this VersionedComponent, or null if this is not mapped to an instantiated component"
+        },
         "name": {
           "type": "string",
           "description": "The component's name"
@@ -25962,9 +29071,28 @@
           "description": "The component's position on the graph",
           "$ref": "#/definitions/Position"
         },
+        "type": {
+          "type": "string",
+          "description": "The type of the extension component"
+        },
         "bundle": {
           "description": "Information about the bundle from which the component came",
           "$ref": "#/definitions/Bundle"
+        },
+        "properties": {
+          "type": "object",
+          "description": "The properties for the component. Properties whose value is not set will only contain the property name.",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "x-omitempty": true
+        },
+        "propertyDescriptors": {
+          "type": "object",
+          "description": "The property descriptors for the component.",
+          "additionalProperties": {
+            "$ref": "#/definitions/VersionedPropertyDescriptor"
+          }
         },
         "style": {
           "type": "object",
@@ -25973,25 +29101,6 @@
             "type": "string"
           },
           "x-omitempty": false
-        },
-        "type": {
-          "type": "string",
-          "description": "The type of Processor"
-        },
-        "properties": {
-          "type": "object",
-          "description": "The properties for the processor. Properties whose value is not set will only contain the property name.",
-          "additionalProperties": {
-            "type": "string"
-          },
-          "x-omitempty": true
-        },
-        "propertyDescriptors": {
-          "type": "object",
-          "description": "The property descriptors for the processor.",
-          "additionalProperties": {
-            "$ref": "#/definitions/VersionedPropertyDescriptor"
-          }
         },
         "annotationData": {
           "type": "string",
@@ -26004,7 +29113,7 @@
         },
         "schedulingStrategy": {
           "type": "string",
-          "description": "Indcates whether the prcessor should be scheduled to run in event or timer driven mode."
+          "description": "Indicates whether the processor should be scheduled to run in event or timer driven mode."
         },
         "executionNode": {
           "type": "string",
@@ -26046,8 +29155,34 @@
           "description": "The scheduled state of the component",
           "enum": [
             "ENABLED",
-            "DISABLED"
+            "DISABLED",
+            "RUNNING"
           ]
+        },
+        "retryCount": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Overall number of retries."
+        },
+        "retriedRelationships": {
+          "type": "array",
+          "description": "All the relationships should be retried.",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "backoffMechanism": {
+          "type": "string",
+          "description": "Determines whether the FlowFile should be penalized or the processor should be yielded between retries.",
+          "enum": [
+            "PENALIZE_FLOWFILE",
+            "YIELD_PROCESSOR"
+          ]
+        },
+        "maxBackoffPeriod": {
+          "type": "string",
+          "description": "Maximum amount of time to be waited during a retry period."
         },
         "componentType": {
           "type": "string",
@@ -26062,7 +29197,12 @@
             "REMOTE_OUTPUT_PORT",
             "FUNNEL",
             "LABEL",
-            "CONTROLLER_SERVICE"
+            "CONTROLLER_SERVICE",
+            "REPORTING_TASK",
+            "PARAMETER_CONTEXT",
+            "PARAMETER_PROVIDER",
+            "TEMPLATE",
+            "FLOW_REGISTRY_CLIENT"
           ]
         },
         "groupIdentifier": {
@@ -26102,6 +29242,10 @@
         "identifier": {
           "type": "string",
           "description": "The component's unique identifier"
+        },
+        "instanceIdentifier": {
+          "type": "string",
+          "description": "The instance ID of an existing component that is described by this VersionedComponent, or null if this is not mapped to an instantiated component"
         },
         "name": {
           "type": "string",
@@ -26145,7 +29289,12 @@
             "REMOTE_OUTPUT_PORT",
             "FUNNEL",
             "LABEL",
-            "CONTROLLER_SERVICE"
+            "CONTROLLER_SERVICE",
+            "REPORTING_TASK",
+            "PARAMETER_CONTEXT",
+            "PARAMETER_PROVIDER",
+            "TEMPLATE",
+            "FLOW_REGISTRY_CLIENT"
           ]
         },
         "targetId": {
@@ -26157,7 +29306,8 @@
           "description": "The scheduled state of the component",
           "enum": [
             "ENABLED",
-            "DISABLED"
+            "DISABLED",
+            "RUNNING"
           ]
         },
         "groupIdentifier": {
@@ -26172,6 +29322,10 @@
         "identifier": {
           "type": "string",
           "description": "The component's unique identifier"
+        },
+        "instanceIdentifier": {
+          "type": "string",
+          "description": "The instance ID of an existing component that is described by this VersionedComponent, or null if this is not mapped to an instantiated component"
         },
         "name": {
           "type": "string",
@@ -26223,6 +29377,9 @@
         "proxyUser": {
           "type": "string"
         },
+        "proxyPassword": {
+          "type": "string"
+        },
         "inputPorts": {
           "type": "array",
           "description": "A Set of Input Ports that can be connected to, in order to send data to the remote NiFi instance",
@@ -26252,7 +29409,12 @@
             "REMOTE_OUTPUT_PORT",
             "FUNNEL",
             "LABEL",
-            "CONTROLLER_SERVICE"
+            "CONTROLLER_SERVICE",
+            "REPORTING_TASK",
+            "PARAMETER_CONTEXT",
+            "PARAMETER_PROVIDER",
+            "TEMPLATE",
+            "FLOW_REGISTRY_CLIENT"
           ]
         },
         "groupIdentifier": {

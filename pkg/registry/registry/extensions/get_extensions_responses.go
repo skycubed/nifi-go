@@ -69,7 +69,8 @@ func NewGetExtensionsOK() *GetExtensionsOK {
 	return &GetExtensionsOK{}
 }
 
-/* GetExtensionsOK describes a response with status code 200, with default header values.
+/*
+GetExtensionsOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,39 @@ type GetExtensionsOK struct {
 	Payload *models.ExtensionMetadataContainer
 }
 
+// IsSuccess returns true when this get extensions o k response has a 2xx status code
+func (o *GetExtensionsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get extensions o k response has a 3xx status code
+func (o *GetExtensionsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get extensions o k response has a 4xx status code
+func (o *GetExtensionsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get extensions o k response has a 5xx status code
+func (o *GetExtensionsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get extensions o k response a status code equal to that given
+func (o *GetExtensionsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetExtensionsOK) Error() string {
 	return fmt.Sprintf("[GET /extensions][%d] getExtensionsOK  %+v", 200, o.Payload)
 }
+
+func (o *GetExtensionsOK) String() string {
+	return fmt.Sprintf("[GET /extensions][%d] getExtensionsOK  %+v", 200, o.Payload)
+}
+
 func (o *GetExtensionsOK) GetPayload() *models.ExtensionMetadataContainer {
 	return o.Payload
 }
@@ -101,14 +132,44 @@ func NewGetExtensionsBadRequest() *GetExtensionsBadRequest {
 	return &GetExtensionsBadRequest{}
 }
 
-/* GetExtensionsBadRequest describes a response with status code 400, with default header values.
+/*
+GetExtensionsBadRequest describes a response with status code 400, with default header values.
 
 NiFi Registry was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type GetExtensionsBadRequest struct {
 }
 
+// IsSuccess returns true when this get extensions bad request response has a 2xx status code
+func (o *GetExtensionsBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get extensions bad request response has a 3xx status code
+func (o *GetExtensionsBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get extensions bad request response has a 4xx status code
+func (o *GetExtensionsBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get extensions bad request response has a 5xx status code
+func (o *GetExtensionsBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get extensions bad request response a status code equal to that given
+func (o *GetExtensionsBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *GetExtensionsBadRequest) Error() string {
+	return fmt.Sprintf("[GET /extensions][%d] getExtensionsBadRequest ", 400)
+}
+
+func (o *GetExtensionsBadRequest) String() string {
 	return fmt.Sprintf("[GET /extensions][%d] getExtensionsBadRequest ", 400)
 }
 
@@ -122,14 +183,44 @@ func NewGetExtensionsUnauthorized() *GetExtensionsUnauthorized {
 	return &GetExtensionsUnauthorized{}
 }
 
-/* GetExtensionsUnauthorized describes a response with status code 401, with default header values.
+/*
+GetExtensionsUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type GetExtensionsUnauthorized struct {
 }
 
+// IsSuccess returns true when this get extensions unauthorized response has a 2xx status code
+func (o *GetExtensionsUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get extensions unauthorized response has a 3xx status code
+func (o *GetExtensionsUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get extensions unauthorized response has a 4xx status code
+func (o *GetExtensionsUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get extensions unauthorized response has a 5xx status code
+func (o *GetExtensionsUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get extensions unauthorized response a status code equal to that given
+func (o *GetExtensionsUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GetExtensionsUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /extensions][%d] getExtensionsUnauthorized ", 401)
+}
+
+func (o *GetExtensionsUnauthorized) String() string {
 	return fmt.Sprintf("[GET /extensions][%d] getExtensionsUnauthorized ", 401)
 }
 
@@ -143,14 +234,44 @@ func NewGetExtensionsForbidden() *GetExtensionsForbidden {
 	return &GetExtensionsForbidden{}
 }
 
-/* GetExtensionsForbidden describes a response with status code 403, with default header values.
+/*
+GetExtensionsForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type GetExtensionsForbidden struct {
 }
 
+// IsSuccess returns true when this get extensions forbidden response has a 2xx status code
+func (o *GetExtensionsForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get extensions forbidden response has a 3xx status code
+func (o *GetExtensionsForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get extensions forbidden response has a 4xx status code
+func (o *GetExtensionsForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get extensions forbidden response has a 5xx status code
+func (o *GetExtensionsForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get extensions forbidden response a status code equal to that given
+func (o *GetExtensionsForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetExtensionsForbidden) Error() string {
+	return fmt.Sprintf("[GET /extensions][%d] getExtensionsForbidden ", 403)
+}
+
+func (o *GetExtensionsForbidden) String() string {
 	return fmt.Sprintf("[GET /extensions][%d] getExtensionsForbidden ", 403)
 }
 
@@ -164,14 +285,44 @@ func NewGetExtensionsNotFound() *GetExtensionsNotFound {
 	return &GetExtensionsNotFound{}
 }
 
-/* GetExtensionsNotFound describes a response with status code 404, with default header values.
+/*
+GetExtensionsNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type GetExtensionsNotFound struct {
 }
 
+// IsSuccess returns true when this get extensions not found response has a 2xx status code
+func (o *GetExtensionsNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get extensions not found response has a 3xx status code
+func (o *GetExtensionsNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get extensions not found response has a 4xx status code
+func (o *GetExtensionsNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get extensions not found response has a 5xx status code
+func (o *GetExtensionsNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get extensions not found response a status code equal to that given
+func (o *GetExtensionsNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetExtensionsNotFound) Error() string {
+	return fmt.Sprintf("[GET /extensions][%d] getExtensionsNotFound ", 404)
+}
+
+func (o *GetExtensionsNotFound) String() string {
 	return fmt.Sprintf("[GET /extensions][%d] getExtensionsNotFound ", 404)
 }
 
@@ -185,14 +336,44 @@ func NewGetExtensionsConflict() *GetExtensionsConflict {
 	return &GetExtensionsConflict{}
 }
 
-/* GetExtensionsConflict describes a response with status code 409, with default header values.
+/*
+GetExtensionsConflict describes a response with status code 409, with default header values.
 
 NiFi Registry was unable to complete the request because it assumes a server state that is not valid.
 */
 type GetExtensionsConflict struct {
 }
 
+// IsSuccess returns true when this get extensions conflict response has a 2xx status code
+func (o *GetExtensionsConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get extensions conflict response has a 3xx status code
+func (o *GetExtensionsConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get extensions conflict response has a 4xx status code
+func (o *GetExtensionsConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get extensions conflict response has a 5xx status code
+func (o *GetExtensionsConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get extensions conflict response a status code equal to that given
+func (o *GetExtensionsConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *GetExtensionsConflict) Error() string {
+	return fmt.Sprintf("[GET /extensions][%d] getExtensionsConflict ", 409)
+}
+
+func (o *GetExtensionsConflict) String() string {
 	return fmt.Sprintf("[GET /extensions][%d] getExtensionsConflict ", 409)
 }
 

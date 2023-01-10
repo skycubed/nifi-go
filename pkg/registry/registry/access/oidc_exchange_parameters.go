@@ -52,10 +52,12 @@ func NewOidcExchangeParamsWithHTTPClient(client *http.Client) *OidcExchangeParam
 	}
 }
 
-/* OidcExchangeParams contains all the parameters to send to the API endpoint
-   for the oidc exchange operation.
+/*
+OidcExchangeParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the oidc exchange operation.
+
+	Typically these are written to a http.Request.
 */
 type OidcExchangeParams struct {
 	timeout    time.Duration

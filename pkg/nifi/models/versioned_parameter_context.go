@@ -7,6 +7,7 @@ package models
 
 import (
 	"context"
+	"encoding/json"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -20,31 +21,151 @@ import (
 // swagger:model VersionedParameterContext
 type VersionedParameterContext struct {
 
+	// The user-supplied comments for the component
+	Comments string `json:"comments,omitempty"`
+
+	// component type
+	// Enum: [CONNECTION PROCESSOR PROCESS_GROUP REMOTE_PROCESS_GROUP INPUT_PORT OUTPUT_PORT REMOTE_INPUT_PORT REMOTE_OUTPUT_PORT FUNNEL LABEL CONTROLLER_SERVICE REPORTING_TASK PARAMETER_CONTEXT PARAMETER_PROVIDER TEMPLATE FLOW_REGISTRY_CLIENT]
+	ComponentType string `json:"componentType,omitempty"`
+
 	// The description of the parameter context
 	Description string `json:"description,omitempty"`
+
+	// The ID of the Process Group that this component belongs to
+	GroupIdentifier string `json:"groupIdentifier,omitempty"`
+
+	// The component's unique identifier
+	Identifier string `json:"identifier,omitempty"`
 
 	// The names of additional parameter contexts from which to inherit parameters
 	InheritedParameterContexts []string `json:"inheritedParameterContexts"`
 
-	// The name of the context
+	// The instance ID of an existing component that is described by this VersionedComponent, or null if this is not mapped to an instantiated component
+	InstanceIdentifier string `json:"instanceIdentifier,omitempty"`
+
+	// The component's name
 	Name string `json:"name,omitempty"`
+
+	// The corresponding parameter group name fetched from the parameter provider, if applicable
+	ParameterGroupName string `json:"parameterGroupName,omitempty"`
+
+	// The identifier of an optional parameter provider
+	ParameterProvider string `json:"parameterProvider,omitempty"`
 
 	// The parameters in the context
 	// Unique: true
 	Parameters []*VersionedParameter `json:"parameters"`
+
+	// The component's position on the graph
+	Position *Position `json:"position,omitempty"`
+
+	// True if the parameter provider is set and the context should receive updates when its parameters are next fetched
+	Synchronized bool `json:"synchronized,omitempty"`
 }
 
 // Validate validates this versioned parameter context
 func (m *VersionedParameterContext) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateComponentType(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateParameters(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validatePosition(formats); err != nil {
 		res = append(res, err)
 	}
 
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+var versionedParameterContextTypeComponentTypePropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["CONNECTION","PROCESSOR","PROCESS_GROUP","REMOTE_PROCESS_GROUP","INPUT_PORT","OUTPUT_PORT","REMOTE_INPUT_PORT","REMOTE_OUTPUT_PORT","FUNNEL","LABEL","CONTROLLER_SERVICE","REPORTING_TASK","PARAMETER_CONTEXT","PARAMETER_PROVIDER","TEMPLATE","FLOW_REGISTRY_CLIENT"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		versionedParameterContextTypeComponentTypePropEnum = append(versionedParameterContextTypeComponentTypePropEnum, v)
+	}
+}
+
+const (
+
+	// VersionedParameterContextComponentTypeCONNECTION captures enum value "CONNECTION"
+	VersionedParameterContextComponentTypeCONNECTION string = "CONNECTION"
+
+	// VersionedParameterContextComponentTypePROCESSOR captures enum value "PROCESSOR"
+	VersionedParameterContextComponentTypePROCESSOR string = "PROCESSOR"
+
+	// VersionedParameterContextComponentTypePROCESSGROUP captures enum value "PROCESS_GROUP"
+	VersionedParameterContextComponentTypePROCESSGROUP string = "PROCESS_GROUP"
+
+	// VersionedParameterContextComponentTypeREMOTEPROCESSGROUP captures enum value "REMOTE_PROCESS_GROUP"
+	VersionedParameterContextComponentTypeREMOTEPROCESSGROUP string = "REMOTE_PROCESS_GROUP"
+
+	// VersionedParameterContextComponentTypeINPUTPORT captures enum value "INPUT_PORT"
+	VersionedParameterContextComponentTypeINPUTPORT string = "INPUT_PORT"
+
+	// VersionedParameterContextComponentTypeOUTPUTPORT captures enum value "OUTPUT_PORT"
+	VersionedParameterContextComponentTypeOUTPUTPORT string = "OUTPUT_PORT"
+
+	// VersionedParameterContextComponentTypeREMOTEINPUTPORT captures enum value "REMOTE_INPUT_PORT"
+	VersionedParameterContextComponentTypeREMOTEINPUTPORT string = "REMOTE_INPUT_PORT"
+
+	// VersionedParameterContextComponentTypeREMOTEOUTPUTPORT captures enum value "REMOTE_OUTPUT_PORT"
+	VersionedParameterContextComponentTypeREMOTEOUTPUTPORT string = "REMOTE_OUTPUT_PORT"
+
+	// VersionedParameterContextComponentTypeFUNNEL captures enum value "FUNNEL"
+	VersionedParameterContextComponentTypeFUNNEL string = "FUNNEL"
+
+	// VersionedParameterContextComponentTypeLABEL captures enum value "LABEL"
+	VersionedParameterContextComponentTypeLABEL string = "LABEL"
+
+	// VersionedParameterContextComponentTypeCONTROLLERSERVICE captures enum value "CONTROLLER_SERVICE"
+	VersionedParameterContextComponentTypeCONTROLLERSERVICE string = "CONTROLLER_SERVICE"
+
+	// VersionedParameterContextComponentTypeREPORTINGTASK captures enum value "REPORTING_TASK"
+	VersionedParameterContextComponentTypeREPORTINGTASK string = "REPORTING_TASK"
+
+	// VersionedParameterContextComponentTypePARAMETERCONTEXT captures enum value "PARAMETER_CONTEXT"
+	VersionedParameterContextComponentTypePARAMETERCONTEXT string = "PARAMETER_CONTEXT"
+
+	// VersionedParameterContextComponentTypePARAMETERPROVIDER captures enum value "PARAMETER_PROVIDER"
+	VersionedParameterContextComponentTypePARAMETERPROVIDER string = "PARAMETER_PROVIDER"
+
+	// VersionedParameterContextComponentTypeTEMPLATE captures enum value "TEMPLATE"
+	VersionedParameterContextComponentTypeTEMPLATE string = "TEMPLATE"
+
+	// VersionedParameterContextComponentTypeFLOWREGISTRYCLIENT captures enum value "FLOW_REGISTRY_CLIENT"
+	VersionedParameterContextComponentTypeFLOWREGISTRYCLIENT string = "FLOW_REGISTRY_CLIENT"
+)
+
+// prop value enum
+func (m *VersionedParameterContext) validateComponentTypeEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, versionedParameterContextTypeComponentTypePropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *VersionedParameterContext) validateComponentType(formats strfmt.Registry) error {
+	if swag.IsZero(m.ComponentType) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateComponentTypeEnum("componentType", "body", m.ComponentType); err != nil {
+		return err
+	}
+
 	return nil
 }
 
@@ -78,11 +199,34 @@ func (m *VersionedParameterContext) validateParameters(formats strfmt.Registry) 
 	return nil
 }
 
+func (m *VersionedParameterContext) validatePosition(formats strfmt.Registry) error {
+	if swag.IsZero(m.Position) { // not required
+		return nil
+	}
+
+	if m.Position != nil {
+		if err := m.Position.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("position")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("position")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 // ContextValidate validate this versioned parameter context based on the context it is used
 func (m *VersionedParameterContext) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.contextValidateParameters(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidatePosition(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -107,6 +251,22 @@ func (m *VersionedParameterContext) contextValidateParameters(ctx context.Contex
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *VersionedParameterContext) contextValidatePosition(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Position != nil {
+		if err := m.Position.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("position")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("position")
+			}
+			return err
+		}
 	}
 
 	return nil

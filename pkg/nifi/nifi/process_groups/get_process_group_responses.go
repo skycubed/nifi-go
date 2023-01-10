@@ -69,7 +69,8 @@ func NewGetProcessGroupOK() *GetProcessGroupOK {
 	return &GetProcessGroupOK{}
 }
 
-/* GetProcessGroupOK describes a response with status code 200, with default header values.
+/*
+GetProcessGroupOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,39 @@ type GetProcessGroupOK struct {
 	Payload *models.ProcessGroupEntity
 }
 
+// IsSuccess returns true when this get process group o k response has a 2xx status code
+func (o *GetProcessGroupOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get process group o k response has a 3xx status code
+func (o *GetProcessGroupOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get process group o k response has a 4xx status code
+func (o *GetProcessGroupOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get process group o k response has a 5xx status code
+func (o *GetProcessGroupOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get process group o k response a status code equal to that given
+func (o *GetProcessGroupOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetProcessGroupOK) Error() string {
 	return fmt.Sprintf("[GET /process-groups/{id}][%d] getProcessGroupOK  %+v", 200, o.Payload)
 }
+
+func (o *GetProcessGroupOK) String() string {
+	return fmt.Sprintf("[GET /process-groups/{id}][%d] getProcessGroupOK  %+v", 200, o.Payload)
+}
+
 func (o *GetProcessGroupOK) GetPayload() *models.ProcessGroupEntity {
 	return o.Payload
 }
@@ -101,14 +132,44 @@ func NewGetProcessGroupBadRequest() *GetProcessGroupBadRequest {
 	return &GetProcessGroupBadRequest{}
 }
 
-/* GetProcessGroupBadRequest describes a response with status code 400, with default header values.
+/*
+GetProcessGroupBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type GetProcessGroupBadRequest struct {
 }
 
+// IsSuccess returns true when this get process group bad request response has a 2xx status code
+func (o *GetProcessGroupBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get process group bad request response has a 3xx status code
+func (o *GetProcessGroupBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get process group bad request response has a 4xx status code
+func (o *GetProcessGroupBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get process group bad request response has a 5xx status code
+func (o *GetProcessGroupBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get process group bad request response a status code equal to that given
+func (o *GetProcessGroupBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *GetProcessGroupBadRequest) Error() string {
+	return fmt.Sprintf("[GET /process-groups/{id}][%d] getProcessGroupBadRequest ", 400)
+}
+
+func (o *GetProcessGroupBadRequest) String() string {
 	return fmt.Sprintf("[GET /process-groups/{id}][%d] getProcessGroupBadRequest ", 400)
 }
 
@@ -122,14 +183,44 @@ func NewGetProcessGroupUnauthorized() *GetProcessGroupUnauthorized {
 	return &GetProcessGroupUnauthorized{}
 }
 
-/* GetProcessGroupUnauthorized describes a response with status code 401, with default header values.
+/*
+GetProcessGroupUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type GetProcessGroupUnauthorized struct {
 }
 
+// IsSuccess returns true when this get process group unauthorized response has a 2xx status code
+func (o *GetProcessGroupUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get process group unauthorized response has a 3xx status code
+func (o *GetProcessGroupUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get process group unauthorized response has a 4xx status code
+func (o *GetProcessGroupUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get process group unauthorized response has a 5xx status code
+func (o *GetProcessGroupUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get process group unauthorized response a status code equal to that given
+func (o *GetProcessGroupUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GetProcessGroupUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /process-groups/{id}][%d] getProcessGroupUnauthorized ", 401)
+}
+
+func (o *GetProcessGroupUnauthorized) String() string {
 	return fmt.Sprintf("[GET /process-groups/{id}][%d] getProcessGroupUnauthorized ", 401)
 }
 
@@ -143,14 +234,44 @@ func NewGetProcessGroupForbidden() *GetProcessGroupForbidden {
 	return &GetProcessGroupForbidden{}
 }
 
-/* GetProcessGroupForbidden describes a response with status code 403, with default header values.
+/*
+GetProcessGroupForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type GetProcessGroupForbidden struct {
 }
 
+// IsSuccess returns true when this get process group forbidden response has a 2xx status code
+func (o *GetProcessGroupForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get process group forbidden response has a 3xx status code
+func (o *GetProcessGroupForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get process group forbidden response has a 4xx status code
+func (o *GetProcessGroupForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get process group forbidden response has a 5xx status code
+func (o *GetProcessGroupForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get process group forbidden response a status code equal to that given
+func (o *GetProcessGroupForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetProcessGroupForbidden) Error() string {
+	return fmt.Sprintf("[GET /process-groups/{id}][%d] getProcessGroupForbidden ", 403)
+}
+
+func (o *GetProcessGroupForbidden) String() string {
 	return fmt.Sprintf("[GET /process-groups/{id}][%d] getProcessGroupForbidden ", 403)
 }
 
@@ -164,14 +285,44 @@ func NewGetProcessGroupNotFound() *GetProcessGroupNotFound {
 	return &GetProcessGroupNotFound{}
 }
 
-/* GetProcessGroupNotFound describes a response with status code 404, with default header values.
+/*
+GetProcessGroupNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type GetProcessGroupNotFound struct {
 }
 
+// IsSuccess returns true when this get process group not found response has a 2xx status code
+func (o *GetProcessGroupNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get process group not found response has a 3xx status code
+func (o *GetProcessGroupNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get process group not found response has a 4xx status code
+func (o *GetProcessGroupNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get process group not found response has a 5xx status code
+func (o *GetProcessGroupNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get process group not found response a status code equal to that given
+func (o *GetProcessGroupNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetProcessGroupNotFound) Error() string {
+	return fmt.Sprintf("[GET /process-groups/{id}][%d] getProcessGroupNotFound ", 404)
+}
+
+func (o *GetProcessGroupNotFound) String() string {
 	return fmt.Sprintf("[GET /process-groups/{id}][%d] getProcessGroupNotFound ", 404)
 }
 
@@ -185,14 +336,44 @@ func NewGetProcessGroupConflict() *GetProcessGroupConflict {
 	return &GetProcessGroupConflict{}
 }
 
-/* GetProcessGroupConflict describes a response with status code 409, with default header values.
+/*
+GetProcessGroupConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type GetProcessGroupConflict struct {
 }
 
+// IsSuccess returns true when this get process group conflict response has a 2xx status code
+func (o *GetProcessGroupConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get process group conflict response has a 3xx status code
+func (o *GetProcessGroupConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get process group conflict response has a 4xx status code
+func (o *GetProcessGroupConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get process group conflict response has a 5xx status code
+func (o *GetProcessGroupConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get process group conflict response a status code equal to that given
+func (o *GetProcessGroupConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *GetProcessGroupConflict) Error() string {
+	return fmt.Sprintf("[GET /process-groups/{id}][%d] getProcessGroupConflict ", 409)
+}
+
+func (o *GetProcessGroupConflict) String() string {
 	return fmt.Sprintf("[GET /process-groups/{id}][%d] getProcessGroupConflict ", 409)
 }
 

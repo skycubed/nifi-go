@@ -69,7 +69,8 @@ func NewCreateInputPortCreated() *CreateInputPortCreated {
 	return &CreateInputPortCreated{}
 }
 
-/* CreateInputPortCreated describes a response with status code 201, with default header values.
+/*
+CreateInputPortCreated describes a response with status code 201, with default header values.
 
 successful operation
 */
@@ -77,9 +78,39 @@ type CreateInputPortCreated struct {
 	Payload *models.PortEntity
 }
 
+// IsSuccess returns true when this create input port created response has a 2xx status code
+func (o *CreateInputPortCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create input port created response has a 3xx status code
+func (o *CreateInputPortCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create input port created response has a 4xx status code
+func (o *CreateInputPortCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create input port created response has a 5xx status code
+func (o *CreateInputPortCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create input port created response a status code equal to that given
+func (o *CreateInputPortCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *CreateInputPortCreated) Error() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/input-ports][%d] createInputPortCreated  %+v", 201, o.Payload)
 }
+
+func (o *CreateInputPortCreated) String() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/input-ports][%d] createInputPortCreated  %+v", 201, o.Payload)
+}
+
 func (o *CreateInputPortCreated) GetPayload() *models.PortEntity {
 	return o.Payload
 }
@@ -101,14 +132,44 @@ func NewCreateInputPortBadRequest() *CreateInputPortBadRequest {
 	return &CreateInputPortBadRequest{}
 }
 
-/* CreateInputPortBadRequest describes a response with status code 400, with default header values.
+/*
+CreateInputPortBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type CreateInputPortBadRequest struct {
 }
 
+// IsSuccess returns true when this create input port bad request response has a 2xx status code
+func (o *CreateInputPortBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create input port bad request response has a 3xx status code
+func (o *CreateInputPortBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create input port bad request response has a 4xx status code
+func (o *CreateInputPortBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create input port bad request response has a 5xx status code
+func (o *CreateInputPortBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create input port bad request response a status code equal to that given
+func (o *CreateInputPortBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CreateInputPortBadRequest) Error() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/input-ports][%d] createInputPortBadRequest ", 400)
+}
+
+func (o *CreateInputPortBadRequest) String() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/input-ports][%d] createInputPortBadRequest ", 400)
 }
 
@@ -122,14 +183,44 @@ func NewCreateInputPortUnauthorized() *CreateInputPortUnauthorized {
 	return &CreateInputPortUnauthorized{}
 }
 
-/* CreateInputPortUnauthorized describes a response with status code 401, with default header values.
+/*
+CreateInputPortUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type CreateInputPortUnauthorized struct {
 }
 
+// IsSuccess returns true when this create input port unauthorized response has a 2xx status code
+func (o *CreateInputPortUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create input port unauthorized response has a 3xx status code
+func (o *CreateInputPortUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create input port unauthorized response has a 4xx status code
+func (o *CreateInputPortUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create input port unauthorized response has a 5xx status code
+func (o *CreateInputPortUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create input port unauthorized response a status code equal to that given
+func (o *CreateInputPortUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *CreateInputPortUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/input-ports][%d] createInputPortUnauthorized ", 401)
+}
+
+func (o *CreateInputPortUnauthorized) String() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/input-ports][%d] createInputPortUnauthorized ", 401)
 }
 
@@ -143,14 +234,44 @@ func NewCreateInputPortForbidden() *CreateInputPortForbidden {
 	return &CreateInputPortForbidden{}
 }
 
-/* CreateInputPortForbidden describes a response with status code 403, with default header values.
+/*
+CreateInputPortForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type CreateInputPortForbidden struct {
 }
 
+// IsSuccess returns true when this create input port forbidden response has a 2xx status code
+func (o *CreateInputPortForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create input port forbidden response has a 3xx status code
+func (o *CreateInputPortForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create input port forbidden response has a 4xx status code
+func (o *CreateInputPortForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create input port forbidden response has a 5xx status code
+func (o *CreateInputPortForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create input port forbidden response a status code equal to that given
+func (o *CreateInputPortForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CreateInputPortForbidden) Error() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/input-ports][%d] createInputPortForbidden ", 403)
+}
+
+func (o *CreateInputPortForbidden) String() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/input-ports][%d] createInputPortForbidden ", 403)
 }
 
@@ -164,14 +285,44 @@ func NewCreateInputPortNotFound() *CreateInputPortNotFound {
 	return &CreateInputPortNotFound{}
 }
 
-/* CreateInputPortNotFound describes a response with status code 404, with default header values.
+/*
+CreateInputPortNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type CreateInputPortNotFound struct {
 }
 
+// IsSuccess returns true when this create input port not found response has a 2xx status code
+func (o *CreateInputPortNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create input port not found response has a 3xx status code
+func (o *CreateInputPortNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create input port not found response has a 4xx status code
+func (o *CreateInputPortNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create input port not found response has a 5xx status code
+func (o *CreateInputPortNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create input port not found response a status code equal to that given
+func (o *CreateInputPortNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *CreateInputPortNotFound) Error() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/input-ports][%d] createInputPortNotFound ", 404)
+}
+
+func (o *CreateInputPortNotFound) String() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/input-ports][%d] createInputPortNotFound ", 404)
 }
 
@@ -185,14 +336,44 @@ func NewCreateInputPortConflict() *CreateInputPortConflict {
 	return &CreateInputPortConflict{}
 }
 
-/* CreateInputPortConflict describes a response with status code 409, with default header values.
+/*
+CreateInputPortConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type CreateInputPortConflict struct {
 }
 
+// IsSuccess returns true when this create input port conflict response has a 2xx status code
+func (o *CreateInputPortConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create input port conflict response has a 3xx status code
+func (o *CreateInputPortConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create input port conflict response has a 4xx status code
+func (o *CreateInputPortConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create input port conflict response has a 5xx status code
+func (o *CreateInputPortConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create input port conflict response a status code equal to that given
+func (o *CreateInputPortConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *CreateInputPortConflict) Error() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/input-ports][%d] createInputPortConflict ", 409)
+}
+
+func (o *CreateInputPortConflict) String() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/input-ports][%d] createInputPortConflict ", 409)
 }
 

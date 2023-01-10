@@ -61,7 +61,8 @@ func NewCreateAccessTokenByTryingAllProvidersOK() *CreateAccessTokenByTryingAllP
 	return &CreateAccessTokenByTryingAllProvidersOK{}
 }
 
-/* CreateAccessTokenByTryingAllProvidersOK describes a response with status code 200, with default header values.
+/*
+CreateAccessTokenByTryingAllProvidersOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -69,9 +70,39 @@ type CreateAccessTokenByTryingAllProvidersOK struct {
 	Payload string
 }
 
+// IsSuccess returns true when this create access token by trying all providers o k response has a 2xx status code
+func (o *CreateAccessTokenByTryingAllProvidersOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create access token by trying all providers o k response has a 3xx status code
+func (o *CreateAccessTokenByTryingAllProvidersOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create access token by trying all providers o k response has a 4xx status code
+func (o *CreateAccessTokenByTryingAllProvidersOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create access token by trying all providers o k response has a 5xx status code
+func (o *CreateAccessTokenByTryingAllProvidersOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create access token by trying all providers o k response a status code equal to that given
+func (o *CreateAccessTokenByTryingAllProvidersOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *CreateAccessTokenByTryingAllProvidersOK) Error() string {
 	return fmt.Sprintf("[POST /access/token][%d] createAccessTokenByTryingAllProvidersOK  %+v", 200, o.Payload)
 }
+
+func (o *CreateAccessTokenByTryingAllProvidersOK) String() string {
+	return fmt.Sprintf("[POST /access/token][%d] createAccessTokenByTryingAllProvidersOK  %+v", 200, o.Payload)
+}
+
 func (o *CreateAccessTokenByTryingAllProvidersOK) GetPayload() string {
 	return o.Payload
 }
@@ -91,14 +122,44 @@ func NewCreateAccessTokenByTryingAllProvidersBadRequest() *CreateAccessTokenByTr
 	return &CreateAccessTokenByTryingAllProvidersBadRequest{}
 }
 
-/* CreateAccessTokenByTryingAllProvidersBadRequest describes a response with status code 400, with default header values.
+/*
+CreateAccessTokenByTryingAllProvidersBadRequest describes a response with status code 400, with default header values.
 
 NiFi Registry was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type CreateAccessTokenByTryingAllProvidersBadRequest struct {
 }
 
+// IsSuccess returns true when this create access token by trying all providers bad request response has a 2xx status code
+func (o *CreateAccessTokenByTryingAllProvidersBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create access token by trying all providers bad request response has a 3xx status code
+func (o *CreateAccessTokenByTryingAllProvidersBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create access token by trying all providers bad request response has a 4xx status code
+func (o *CreateAccessTokenByTryingAllProvidersBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create access token by trying all providers bad request response has a 5xx status code
+func (o *CreateAccessTokenByTryingAllProvidersBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create access token by trying all providers bad request response a status code equal to that given
+func (o *CreateAccessTokenByTryingAllProvidersBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CreateAccessTokenByTryingAllProvidersBadRequest) Error() string {
+	return fmt.Sprintf("[POST /access/token][%d] createAccessTokenByTryingAllProvidersBadRequest ", 400)
+}
+
+func (o *CreateAccessTokenByTryingAllProvidersBadRequest) String() string {
 	return fmt.Sprintf("[POST /access/token][%d] createAccessTokenByTryingAllProvidersBadRequest ", 400)
 }
 
@@ -112,14 +173,44 @@ func NewCreateAccessTokenByTryingAllProvidersUnauthorized() *CreateAccessTokenBy
 	return &CreateAccessTokenByTryingAllProvidersUnauthorized{}
 }
 
-/* CreateAccessTokenByTryingAllProvidersUnauthorized describes a response with status code 401, with default header values.
+/*
+CreateAccessTokenByTryingAllProvidersUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type CreateAccessTokenByTryingAllProvidersUnauthorized struct {
 }
 
+// IsSuccess returns true when this create access token by trying all providers unauthorized response has a 2xx status code
+func (o *CreateAccessTokenByTryingAllProvidersUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create access token by trying all providers unauthorized response has a 3xx status code
+func (o *CreateAccessTokenByTryingAllProvidersUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create access token by trying all providers unauthorized response has a 4xx status code
+func (o *CreateAccessTokenByTryingAllProvidersUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create access token by trying all providers unauthorized response has a 5xx status code
+func (o *CreateAccessTokenByTryingAllProvidersUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create access token by trying all providers unauthorized response a status code equal to that given
+func (o *CreateAccessTokenByTryingAllProvidersUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *CreateAccessTokenByTryingAllProvidersUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /access/token][%d] createAccessTokenByTryingAllProvidersUnauthorized ", 401)
+}
+
+func (o *CreateAccessTokenByTryingAllProvidersUnauthorized) String() string {
 	return fmt.Sprintf("[POST /access/token][%d] createAccessTokenByTryingAllProvidersUnauthorized ", 401)
 }
 
@@ -133,14 +224,44 @@ func NewCreateAccessTokenByTryingAllProvidersConflict() *CreateAccessTokenByTryi
 	return &CreateAccessTokenByTryingAllProvidersConflict{}
 }
 
-/* CreateAccessTokenByTryingAllProvidersConflict describes a response with status code 409, with default header values.
+/*
+CreateAccessTokenByTryingAllProvidersConflict describes a response with status code 409, with default header values.
 
 NiFi Registry was unable to complete the request because it assumes a server state that is not valid. The NiFi Registry may not be configured to support login with username/password.
 */
 type CreateAccessTokenByTryingAllProvidersConflict struct {
 }
 
+// IsSuccess returns true when this create access token by trying all providers conflict response has a 2xx status code
+func (o *CreateAccessTokenByTryingAllProvidersConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create access token by trying all providers conflict response has a 3xx status code
+func (o *CreateAccessTokenByTryingAllProvidersConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create access token by trying all providers conflict response has a 4xx status code
+func (o *CreateAccessTokenByTryingAllProvidersConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create access token by trying all providers conflict response has a 5xx status code
+func (o *CreateAccessTokenByTryingAllProvidersConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create access token by trying all providers conflict response a status code equal to that given
+func (o *CreateAccessTokenByTryingAllProvidersConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *CreateAccessTokenByTryingAllProvidersConflict) Error() string {
+	return fmt.Sprintf("[POST /access/token][%d] createAccessTokenByTryingAllProvidersConflict ", 409)
+}
+
+func (o *CreateAccessTokenByTryingAllProvidersConflict) String() string {
 	return fmt.Sprintf("[POST /access/token][%d] createAccessTokenByTryingAllProvidersConflict ", 409)
 }
 
@@ -154,14 +275,44 @@ func NewCreateAccessTokenByTryingAllProvidersInternalServerError() *CreateAccess
 	return &CreateAccessTokenByTryingAllProvidersInternalServerError{}
 }
 
-/* CreateAccessTokenByTryingAllProvidersInternalServerError describes a response with status code 500, with default header values.
+/*
+CreateAccessTokenByTryingAllProvidersInternalServerError describes a response with status code 500, with default header values.
 
 NiFi Registry was unable to complete the request because an unexpected error occurred.
 */
 type CreateAccessTokenByTryingAllProvidersInternalServerError struct {
 }
 
+// IsSuccess returns true when this create access token by trying all providers internal server error response has a 2xx status code
+func (o *CreateAccessTokenByTryingAllProvidersInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create access token by trying all providers internal server error response has a 3xx status code
+func (o *CreateAccessTokenByTryingAllProvidersInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create access token by trying all providers internal server error response has a 4xx status code
+func (o *CreateAccessTokenByTryingAllProvidersInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create access token by trying all providers internal server error response has a 5xx status code
+func (o *CreateAccessTokenByTryingAllProvidersInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this create access token by trying all providers internal server error response a status code equal to that given
+func (o *CreateAccessTokenByTryingAllProvidersInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *CreateAccessTokenByTryingAllProvidersInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /access/token][%d] createAccessTokenByTryingAllProvidersInternalServerError ", 500)
+}
+
+func (o *CreateAccessTokenByTryingAllProvidersInternalServerError) String() string {
 	return fmt.Sprintf("[POST /access/token][%d] createAccessTokenByTryingAllProvidersInternalServerError ", 500)
 }
 

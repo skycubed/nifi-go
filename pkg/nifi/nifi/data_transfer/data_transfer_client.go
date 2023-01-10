@@ -48,7 +48,7 @@ type ClientService interface {
 }
 
 /*
-  CommitInputPortTransaction commits or cancel the specified transaction
+CommitInputPortTransaction commits or cancel the specified transaction
 */
 func (a *Client) CommitInputPortTransaction(params *CommitInputPortTransactionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CommitInputPortTransactionOK, error) {
 	// TODO: Validate the params before sending
@@ -87,7 +87,7 @@ func (a *Client) CommitInputPortTransaction(params *CommitInputPortTransactionPa
 }
 
 /*
-  CommitOutputPortTransaction commits or cancel the specified transaction
+CommitOutputPortTransaction commits or cancel the specified transaction
 */
 func (a *Client) CommitOutputPortTransaction(params *CommitOutputPortTransactionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CommitOutputPortTransactionOK, error) {
 	// TODO: Validate the params before sending
@@ -126,7 +126,7 @@ func (a *Client) CommitOutputPortTransaction(params *CommitOutputPortTransaction
 }
 
 /*
-  CreatePortTransaction creates a transaction to the specified output port or input port
+CreatePortTransaction creates a transaction to the specified output port or input port
 */
 func (a *Client) CreatePortTransaction(params *CreatePortTransactionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreatePortTransactionOK, error) {
 	// TODO: Validate the params before sending
@@ -165,7 +165,7 @@ func (a *Client) CreatePortTransaction(params *CreatePortTransactionParams, auth
 }
 
 /*
-  ExtendInputPortTransactionTTL extends transaction TTL
+ExtendInputPortTransactionTTL extends transaction TTL
 */
 func (a *Client) ExtendInputPortTransactionTTL(params *ExtendInputPortTransactionTTLParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ExtendInputPortTransactionTTLOK, error) {
 	// TODO: Validate the params before sending
@@ -204,7 +204,7 @@ func (a *Client) ExtendInputPortTransactionTTL(params *ExtendInputPortTransactio
 }
 
 /*
-  ExtendOutputPortTransactionTTL extends transaction TTL
+ExtendOutputPortTransactionTTL extends transaction TTL
 */
 func (a *Client) ExtendOutputPortTransactionTTL(params *ExtendOutputPortTransactionTTLParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ExtendOutputPortTransactionTTLOK, error) {
 	// TODO: Validate the params before sending
@@ -243,7 +243,7 @@ func (a *Client) ExtendOutputPortTransactionTTL(params *ExtendOutputPortTransact
 }
 
 /*
-  ReceiveFlowFiles transfers flow files to the input port
+ReceiveFlowFiles transfers flow files to the input port
 */
 func (a *Client) ReceiveFlowFiles(params *ReceiveFlowFilesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReceiveFlowFilesOK, error) {
 	// TODO: Validate the params before sending
@@ -282,7 +282,7 @@ func (a *Client) ReceiveFlowFiles(params *ReceiveFlowFilesParams, authInfo runti
 }
 
 /*
-  TransferFlowFiles transfers flow files from the output port
+TransferFlowFiles transfers flow files from the output port
 */
 func (a *Client) TransferFlowFiles(params *TransferFlowFilesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*TransferFlowFilesOK, error) {
 	// TODO: Validate the params before sending

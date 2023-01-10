@@ -57,7 +57,8 @@ func NewCreateBucketOK() *CreateBucketOK {
 	return &CreateBucketOK{}
 }
 
-/* CreateBucketOK describes a response with status code 200, with default header values.
+/*
+CreateBucketOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -65,9 +66,39 @@ type CreateBucketOK struct {
 	Payload *models.Bucket
 }
 
+// IsSuccess returns true when this create bucket o k response has a 2xx status code
+func (o *CreateBucketOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create bucket o k response has a 3xx status code
+func (o *CreateBucketOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create bucket o k response has a 4xx status code
+func (o *CreateBucketOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create bucket o k response has a 5xx status code
+func (o *CreateBucketOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create bucket o k response a status code equal to that given
+func (o *CreateBucketOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *CreateBucketOK) Error() string {
 	return fmt.Sprintf("[POST /buckets][%d] createBucketOK  %+v", 200, o.Payload)
 }
+
+func (o *CreateBucketOK) String() string {
+	return fmt.Sprintf("[POST /buckets][%d] createBucketOK  %+v", 200, o.Payload)
+}
+
 func (o *CreateBucketOK) GetPayload() *models.Bucket {
 	return o.Payload
 }
@@ -89,14 +120,44 @@ func NewCreateBucketBadRequest() *CreateBucketBadRequest {
 	return &CreateBucketBadRequest{}
 }
 
-/* CreateBucketBadRequest describes a response with status code 400, with default header values.
+/*
+CreateBucketBadRequest describes a response with status code 400, with default header values.
 
 NiFi Registry was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type CreateBucketBadRequest struct {
 }
 
+// IsSuccess returns true when this create bucket bad request response has a 2xx status code
+func (o *CreateBucketBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create bucket bad request response has a 3xx status code
+func (o *CreateBucketBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create bucket bad request response has a 4xx status code
+func (o *CreateBucketBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create bucket bad request response has a 5xx status code
+func (o *CreateBucketBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create bucket bad request response a status code equal to that given
+func (o *CreateBucketBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CreateBucketBadRequest) Error() string {
+	return fmt.Sprintf("[POST /buckets][%d] createBucketBadRequest ", 400)
+}
+
+func (o *CreateBucketBadRequest) String() string {
 	return fmt.Sprintf("[POST /buckets][%d] createBucketBadRequest ", 400)
 }
 
@@ -110,14 +171,44 @@ func NewCreateBucketUnauthorized() *CreateBucketUnauthorized {
 	return &CreateBucketUnauthorized{}
 }
 
-/* CreateBucketUnauthorized describes a response with status code 401, with default header values.
+/*
+CreateBucketUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type CreateBucketUnauthorized struct {
 }
 
+// IsSuccess returns true when this create bucket unauthorized response has a 2xx status code
+func (o *CreateBucketUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create bucket unauthorized response has a 3xx status code
+func (o *CreateBucketUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create bucket unauthorized response has a 4xx status code
+func (o *CreateBucketUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create bucket unauthorized response has a 5xx status code
+func (o *CreateBucketUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create bucket unauthorized response a status code equal to that given
+func (o *CreateBucketUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *CreateBucketUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /buckets][%d] createBucketUnauthorized ", 401)
+}
+
+func (o *CreateBucketUnauthorized) String() string {
 	return fmt.Sprintf("[POST /buckets][%d] createBucketUnauthorized ", 401)
 }
 
@@ -131,14 +222,44 @@ func NewCreateBucketForbidden() *CreateBucketForbidden {
 	return &CreateBucketForbidden{}
 }
 
-/* CreateBucketForbidden describes a response with status code 403, with default header values.
+/*
+CreateBucketForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type CreateBucketForbidden struct {
 }
 
+// IsSuccess returns true when this create bucket forbidden response has a 2xx status code
+func (o *CreateBucketForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create bucket forbidden response has a 3xx status code
+func (o *CreateBucketForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create bucket forbidden response has a 4xx status code
+func (o *CreateBucketForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create bucket forbidden response has a 5xx status code
+func (o *CreateBucketForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create bucket forbidden response a status code equal to that given
+func (o *CreateBucketForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CreateBucketForbidden) Error() string {
+	return fmt.Sprintf("[POST /buckets][%d] createBucketForbidden ", 403)
+}
+
+func (o *CreateBucketForbidden) String() string {
 	return fmt.Sprintf("[POST /buckets][%d] createBucketForbidden ", 403)
 }
 

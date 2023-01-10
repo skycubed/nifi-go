@@ -25,6 +25,9 @@ type RelationshipDTO struct {
 
 	// The relationship name.
 	Name string `json:"name,omitempty"`
+
+	// Whether or not flowfiles sent to this relationship should retry.
+	Retry bool `json:"retry,omitempty"`
 }
 
 // Validate validates this relationship d t o

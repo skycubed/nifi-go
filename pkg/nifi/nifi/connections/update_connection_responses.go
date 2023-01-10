@@ -69,7 +69,8 @@ func NewUpdateConnectionOK() *UpdateConnectionOK {
 	return &UpdateConnectionOK{}
 }
 
-/* UpdateConnectionOK describes a response with status code 200, with default header values.
+/*
+UpdateConnectionOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,39 @@ type UpdateConnectionOK struct {
 	Payload *models.ConnectionEntity
 }
 
+// IsSuccess returns true when this update connection o k response has a 2xx status code
+func (o *UpdateConnectionOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this update connection o k response has a 3xx status code
+func (o *UpdateConnectionOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update connection o k response has a 4xx status code
+func (o *UpdateConnectionOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this update connection o k response has a 5xx status code
+func (o *UpdateConnectionOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update connection o k response a status code equal to that given
+func (o *UpdateConnectionOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *UpdateConnectionOK) Error() string {
 	return fmt.Sprintf("[PUT /connections/{id}][%d] updateConnectionOK  %+v", 200, o.Payload)
 }
+
+func (o *UpdateConnectionOK) String() string {
+	return fmt.Sprintf("[PUT /connections/{id}][%d] updateConnectionOK  %+v", 200, o.Payload)
+}
+
 func (o *UpdateConnectionOK) GetPayload() *models.ConnectionEntity {
 	return o.Payload
 }
@@ -101,14 +132,44 @@ func NewUpdateConnectionBadRequest() *UpdateConnectionBadRequest {
 	return &UpdateConnectionBadRequest{}
 }
 
-/* UpdateConnectionBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateConnectionBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type UpdateConnectionBadRequest struct {
 }
 
+// IsSuccess returns true when this update connection bad request response has a 2xx status code
+func (o *UpdateConnectionBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update connection bad request response has a 3xx status code
+func (o *UpdateConnectionBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update connection bad request response has a 4xx status code
+func (o *UpdateConnectionBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update connection bad request response has a 5xx status code
+func (o *UpdateConnectionBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update connection bad request response a status code equal to that given
+func (o *UpdateConnectionBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *UpdateConnectionBadRequest) Error() string {
+	return fmt.Sprintf("[PUT /connections/{id}][%d] updateConnectionBadRequest ", 400)
+}
+
+func (o *UpdateConnectionBadRequest) String() string {
 	return fmt.Sprintf("[PUT /connections/{id}][%d] updateConnectionBadRequest ", 400)
 }
 
@@ -122,14 +183,44 @@ func NewUpdateConnectionUnauthorized() *UpdateConnectionUnauthorized {
 	return &UpdateConnectionUnauthorized{}
 }
 
-/* UpdateConnectionUnauthorized describes a response with status code 401, with default header values.
+/*
+UpdateConnectionUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type UpdateConnectionUnauthorized struct {
 }
 
+// IsSuccess returns true when this update connection unauthorized response has a 2xx status code
+func (o *UpdateConnectionUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update connection unauthorized response has a 3xx status code
+func (o *UpdateConnectionUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update connection unauthorized response has a 4xx status code
+func (o *UpdateConnectionUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update connection unauthorized response has a 5xx status code
+func (o *UpdateConnectionUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update connection unauthorized response a status code equal to that given
+func (o *UpdateConnectionUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *UpdateConnectionUnauthorized) Error() string {
+	return fmt.Sprintf("[PUT /connections/{id}][%d] updateConnectionUnauthorized ", 401)
+}
+
+func (o *UpdateConnectionUnauthorized) String() string {
 	return fmt.Sprintf("[PUT /connections/{id}][%d] updateConnectionUnauthorized ", 401)
 }
 
@@ -143,14 +234,44 @@ func NewUpdateConnectionForbidden() *UpdateConnectionForbidden {
 	return &UpdateConnectionForbidden{}
 }
 
-/* UpdateConnectionForbidden describes a response with status code 403, with default header values.
+/*
+UpdateConnectionForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type UpdateConnectionForbidden struct {
 }
 
+// IsSuccess returns true when this update connection forbidden response has a 2xx status code
+func (o *UpdateConnectionForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update connection forbidden response has a 3xx status code
+func (o *UpdateConnectionForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update connection forbidden response has a 4xx status code
+func (o *UpdateConnectionForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update connection forbidden response has a 5xx status code
+func (o *UpdateConnectionForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update connection forbidden response a status code equal to that given
+func (o *UpdateConnectionForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *UpdateConnectionForbidden) Error() string {
+	return fmt.Sprintf("[PUT /connections/{id}][%d] updateConnectionForbidden ", 403)
+}
+
+func (o *UpdateConnectionForbidden) String() string {
 	return fmt.Sprintf("[PUT /connections/{id}][%d] updateConnectionForbidden ", 403)
 }
 
@@ -164,14 +285,44 @@ func NewUpdateConnectionNotFound() *UpdateConnectionNotFound {
 	return &UpdateConnectionNotFound{}
 }
 
-/* UpdateConnectionNotFound describes a response with status code 404, with default header values.
+/*
+UpdateConnectionNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type UpdateConnectionNotFound struct {
 }
 
+// IsSuccess returns true when this update connection not found response has a 2xx status code
+func (o *UpdateConnectionNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update connection not found response has a 3xx status code
+func (o *UpdateConnectionNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update connection not found response has a 4xx status code
+func (o *UpdateConnectionNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update connection not found response has a 5xx status code
+func (o *UpdateConnectionNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update connection not found response a status code equal to that given
+func (o *UpdateConnectionNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *UpdateConnectionNotFound) Error() string {
+	return fmt.Sprintf("[PUT /connections/{id}][%d] updateConnectionNotFound ", 404)
+}
+
+func (o *UpdateConnectionNotFound) String() string {
 	return fmt.Sprintf("[PUT /connections/{id}][%d] updateConnectionNotFound ", 404)
 }
 
@@ -185,14 +336,44 @@ func NewUpdateConnectionConflict() *UpdateConnectionConflict {
 	return &UpdateConnectionConflict{}
 }
 
-/* UpdateConnectionConflict describes a response with status code 409, with default header values.
+/*
+UpdateConnectionConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type UpdateConnectionConflict struct {
 }
 
+// IsSuccess returns true when this update connection conflict response has a 2xx status code
+func (o *UpdateConnectionConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update connection conflict response has a 3xx status code
+func (o *UpdateConnectionConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update connection conflict response has a 4xx status code
+func (o *UpdateConnectionConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update connection conflict response has a 5xx status code
+func (o *UpdateConnectionConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update connection conflict response a status code equal to that given
+func (o *UpdateConnectionConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *UpdateConnectionConflict) Error() string {
+	return fmt.Sprintf("[PUT /connections/{id}][%d] updateConnectionConflict ", 409)
+}
+
+func (o *UpdateConnectionConflict) String() string {
 	return fmt.Sprintf("[PUT /connections/{id}][%d] updateConnectionConflict ", 409)
 }
 

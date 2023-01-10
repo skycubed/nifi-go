@@ -69,7 +69,8 @@ func NewUpdateRemoteProcessGroupInputPortOK() *UpdateRemoteProcessGroupInputPort
 	return &UpdateRemoteProcessGroupInputPortOK{}
 }
 
-/* UpdateRemoteProcessGroupInputPortOK describes a response with status code 200, with default header values.
+/*
+UpdateRemoteProcessGroupInputPortOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,39 @@ type UpdateRemoteProcessGroupInputPortOK struct {
 	Payload *models.RemoteProcessGroupPortEntity
 }
 
+// IsSuccess returns true when this update remote process group input port o k response has a 2xx status code
+func (o *UpdateRemoteProcessGroupInputPortOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this update remote process group input port o k response has a 3xx status code
+func (o *UpdateRemoteProcessGroupInputPortOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update remote process group input port o k response has a 4xx status code
+func (o *UpdateRemoteProcessGroupInputPortOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this update remote process group input port o k response has a 5xx status code
+func (o *UpdateRemoteProcessGroupInputPortOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update remote process group input port o k response a status code equal to that given
+func (o *UpdateRemoteProcessGroupInputPortOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *UpdateRemoteProcessGroupInputPortOK) Error() string {
 	return fmt.Sprintf("[PUT /remote-process-groups/{id}/input-ports/{port-id}][%d] updateRemoteProcessGroupInputPortOK  %+v", 200, o.Payload)
 }
+
+func (o *UpdateRemoteProcessGroupInputPortOK) String() string {
+	return fmt.Sprintf("[PUT /remote-process-groups/{id}/input-ports/{port-id}][%d] updateRemoteProcessGroupInputPortOK  %+v", 200, o.Payload)
+}
+
 func (o *UpdateRemoteProcessGroupInputPortOK) GetPayload() *models.RemoteProcessGroupPortEntity {
 	return o.Payload
 }
@@ -101,14 +132,44 @@ func NewUpdateRemoteProcessGroupInputPortBadRequest() *UpdateRemoteProcessGroupI
 	return &UpdateRemoteProcessGroupInputPortBadRequest{}
 }
 
-/* UpdateRemoteProcessGroupInputPortBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateRemoteProcessGroupInputPortBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type UpdateRemoteProcessGroupInputPortBadRequest struct {
 }
 
+// IsSuccess returns true when this update remote process group input port bad request response has a 2xx status code
+func (o *UpdateRemoteProcessGroupInputPortBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update remote process group input port bad request response has a 3xx status code
+func (o *UpdateRemoteProcessGroupInputPortBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update remote process group input port bad request response has a 4xx status code
+func (o *UpdateRemoteProcessGroupInputPortBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update remote process group input port bad request response has a 5xx status code
+func (o *UpdateRemoteProcessGroupInputPortBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update remote process group input port bad request response a status code equal to that given
+func (o *UpdateRemoteProcessGroupInputPortBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *UpdateRemoteProcessGroupInputPortBadRequest) Error() string {
+	return fmt.Sprintf("[PUT /remote-process-groups/{id}/input-ports/{port-id}][%d] updateRemoteProcessGroupInputPortBadRequest ", 400)
+}
+
+func (o *UpdateRemoteProcessGroupInputPortBadRequest) String() string {
 	return fmt.Sprintf("[PUT /remote-process-groups/{id}/input-ports/{port-id}][%d] updateRemoteProcessGroupInputPortBadRequest ", 400)
 }
 
@@ -122,14 +183,44 @@ func NewUpdateRemoteProcessGroupInputPortUnauthorized() *UpdateRemoteProcessGrou
 	return &UpdateRemoteProcessGroupInputPortUnauthorized{}
 }
 
-/* UpdateRemoteProcessGroupInputPortUnauthorized describes a response with status code 401, with default header values.
+/*
+UpdateRemoteProcessGroupInputPortUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type UpdateRemoteProcessGroupInputPortUnauthorized struct {
 }
 
+// IsSuccess returns true when this update remote process group input port unauthorized response has a 2xx status code
+func (o *UpdateRemoteProcessGroupInputPortUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update remote process group input port unauthorized response has a 3xx status code
+func (o *UpdateRemoteProcessGroupInputPortUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update remote process group input port unauthorized response has a 4xx status code
+func (o *UpdateRemoteProcessGroupInputPortUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update remote process group input port unauthorized response has a 5xx status code
+func (o *UpdateRemoteProcessGroupInputPortUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update remote process group input port unauthorized response a status code equal to that given
+func (o *UpdateRemoteProcessGroupInputPortUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *UpdateRemoteProcessGroupInputPortUnauthorized) Error() string {
+	return fmt.Sprintf("[PUT /remote-process-groups/{id}/input-ports/{port-id}][%d] updateRemoteProcessGroupInputPortUnauthorized ", 401)
+}
+
+func (o *UpdateRemoteProcessGroupInputPortUnauthorized) String() string {
 	return fmt.Sprintf("[PUT /remote-process-groups/{id}/input-ports/{port-id}][%d] updateRemoteProcessGroupInputPortUnauthorized ", 401)
 }
 
@@ -143,14 +234,44 @@ func NewUpdateRemoteProcessGroupInputPortForbidden() *UpdateRemoteProcessGroupIn
 	return &UpdateRemoteProcessGroupInputPortForbidden{}
 }
 
-/* UpdateRemoteProcessGroupInputPortForbidden describes a response with status code 403, with default header values.
+/*
+UpdateRemoteProcessGroupInputPortForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type UpdateRemoteProcessGroupInputPortForbidden struct {
 }
 
+// IsSuccess returns true when this update remote process group input port forbidden response has a 2xx status code
+func (o *UpdateRemoteProcessGroupInputPortForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update remote process group input port forbidden response has a 3xx status code
+func (o *UpdateRemoteProcessGroupInputPortForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update remote process group input port forbidden response has a 4xx status code
+func (o *UpdateRemoteProcessGroupInputPortForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update remote process group input port forbidden response has a 5xx status code
+func (o *UpdateRemoteProcessGroupInputPortForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update remote process group input port forbidden response a status code equal to that given
+func (o *UpdateRemoteProcessGroupInputPortForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *UpdateRemoteProcessGroupInputPortForbidden) Error() string {
+	return fmt.Sprintf("[PUT /remote-process-groups/{id}/input-ports/{port-id}][%d] updateRemoteProcessGroupInputPortForbidden ", 403)
+}
+
+func (o *UpdateRemoteProcessGroupInputPortForbidden) String() string {
 	return fmt.Sprintf("[PUT /remote-process-groups/{id}/input-ports/{port-id}][%d] updateRemoteProcessGroupInputPortForbidden ", 403)
 }
 
@@ -164,14 +285,44 @@ func NewUpdateRemoteProcessGroupInputPortNotFound() *UpdateRemoteProcessGroupInp
 	return &UpdateRemoteProcessGroupInputPortNotFound{}
 }
 
-/* UpdateRemoteProcessGroupInputPortNotFound describes a response with status code 404, with default header values.
+/*
+UpdateRemoteProcessGroupInputPortNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type UpdateRemoteProcessGroupInputPortNotFound struct {
 }
 
+// IsSuccess returns true when this update remote process group input port not found response has a 2xx status code
+func (o *UpdateRemoteProcessGroupInputPortNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update remote process group input port not found response has a 3xx status code
+func (o *UpdateRemoteProcessGroupInputPortNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update remote process group input port not found response has a 4xx status code
+func (o *UpdateRemoteProcessGroupInputPortNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update remote process group input port not found response has a 5xx status code
+func (o *UpdateRemoteProcessGroupInputPortNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update remote process group input port not found response a status code equal to that given
+func (o *UpdateRemoteProcessGroupInputPortNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *UpdateRemoteProcessGroupInputPortNotFound) Error() string {
+	return fmt.Sprintf("[PUT /remote-process-groups/{id}/input-ports/{port-id}][%d] updateRemoteProcessGroupInputPortNotFound ", 404)
+}
+
+func (o *UpdateRemoteProcessGroupInputPortNotFound) String() string {
 	return fmt.Sprintf("[PUT /remote-process-groups/{id}/input-ports/{port-id}][%d] updateRemoteProcessGroupInputPortNotFound ", 404)
 }
 
@@ -185,14 +336,44 @@ func NewUpdateRemoteProcessGroupInputPortConflict() *UpdateRemoteProcessGroupInp
 	return &UpdateRemoteProcessGroupInputPortConflict{}
 }
 
-/* UpdateRemoteProcessGroupInputPortConflict describes a response with status code 409, with default header values.
+/*
+UpdateRemoteProcessGroupInputPortConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type UpdateRemoteProcessGroupInputPortConflict struct {
 }
 
+// IsSuccess returns true when this update remote process group input port conflict response has a 2xx status code
+func (o *UpdateRemoteProcessGroupInputPortConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update remote process group input port conflict response has a 3xx status code
+func (o *UpdateRemoteProcessGroupInputPortConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update remote process group input port conflict response has a 4xx status code
+func (o *UpdateRemoteProcessGroupInputPortConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update remote process group input port conflict response has a 5xx status code
+func (o *UpdateRemoteProcessGroupInputPortConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update remote process group input port conflict response a status code equal to that given
+func (o *UpdateRemoteProcessGroupInputPortConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *UpdateRemoteProcessGroupInputPortConflict) Error() string {
+	return fmt.Sprintf("[PUT /remote-process-groups/{id}/input-ports/{port-id}][%d] updateRemoteProcessGroupInputPortConflict ", 409)
+}
+
+func (o *UpdateRemoteProcessGroupInputPortConflict) String() string {
 	return fmt.Sprintf("[PUT /remote-process-groups/{id}/input-ports/{port-id}][%d] updateRemoteProcessGroupInputPortConflict ", 409)
 }
 

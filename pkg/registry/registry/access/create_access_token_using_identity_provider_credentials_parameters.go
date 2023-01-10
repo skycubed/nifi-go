@@ -52,10 +52,12 @@ func NewCreateAccessTokenUsingIdentityProviderCredentialsParamsWithHTTPClient(cl
 	}
 }
 
-/* CreateAccessTokenUsingIdentityProviderCredentialsParams contains all the parameters to send to the API endpoint
-   for the create access token using identity provider credentials operation.
+/*
+CreateAccessTokenUsingIdentityProviderCredentialsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create access token using identity provider credentials operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateAccessTokenUsingIdentityProviderCredentialsParams struct {
 	timeout    time.Duration

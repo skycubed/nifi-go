@@ -67,7 +67,8 @@ func NewCreateVersionControlRequestOK() *CreateVersionControlRequestOK {
 	return &CreateVersionControlRequestOK{}
 }
 
-/* CreateVersionControlRequestOK describes a response with status code 200, with default header values.
+/*
+CreateVersionControlRequestOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -75,9 +76,39 @@ type CreateVersionControlRequestOK struct {
 	Payload string
 }
 
+// IsSuccess returns true when this create version control request o k response has a 2xx status code
+func (o *CreateVersionControlRequestOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create version control request o k response has a 3xx status code
+func (o *CreateVersionControlRequestOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create version control request o k response has a 4xx status code
+func (o *CreateVersionControlRequestOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create version control request o k response has a 5xx status code
+func (o *CreateVersionControlRequestOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create version control request o k response a status code equal to that given
+func (o *CreateVersionControlRequestOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *CreateVersionControlRequestOK) Error() string {
 	return fmt.Sprintf("[POST /versions/active-requests][%d] createVersionControlRequestOK  %+v", 200, o.Payload)
 }
+
+func (o *CreateVersionControlRequestOK) String() string {
+	return fmt.Sprintf("[POST /versions/active-requests][%d] createVersionControlRequestOK  %+v", 200, o.Payload)
+}
+
 func (o *CreateVersionControlRequestOK) GetPayload() string {
 	return o.Payload
 }
@@ -97,14 +128,44 @@ func NewCreateVersionControlRequestBadRequest() *CreateVersionControlRequestBadR
 	return &CreateVersionControlRequestBadRequest{}
 }
 
-/* CreateVersionControlRequestBadRequest describes a response with status code 400, with default header values.
+/*
+CreateVersionControlRequestBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type CreateVersionControlRequestBadRequest struct {
 }
 
+// IsSuccess returns true when this create version control request bad request response has a 2xx status code
+func (o *CreateVersionControlRequestBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create version control request bad request response has a 3xx status code
+func (o *CreateVersionControlRequestBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create version control request bad request response has a 4xx status code
+func (o *CreateVersionControlRequestBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create version control request bad request response has a 5xx status code
+func (o *CreateVersionControlRequestBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create version control request bad request response a status code equal to that given
+func (o *CreateVersionControlRequestBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CreateVersionControlRequestBadRequest) Error() string {
+	return fmt.Sprintf("[POST /versions/active-requests][%d] createVersionControlRequestBadRequest ", 400)
+}
+
+func (o *CreateVersionControlRequestBadRequest) String() string {
 	return fmt.Sprintf("[POST /versions/active-requests][%d] createVersionControlRequestBadRequest ", 400)
 }
 
@@ -118,14 +179,44 @@ func NewCreateVersionControlRequestUnauthorized() *CreateVersionControlRequestUn
 	return &CreateVersionControlRequestUnauthorized{}
 }
 
-/* CreateVersionControlRequestUnauthorized describes a response with status code 401, with default header values.
+/*
+CreateVersionControlRequestUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type CreateVersionControlRequestUnauthorized struct {
 }
 
+// IsSuccess returns true when this create version control request unauthorized response has a 2xx status code
+func (o *CreateVersionControlRequestUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create version control request unauthorized response has a 3xx status code
+func (o *CreateVersionControlRequestUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create version control request unauthorized response has a 4xx status code
+func (o *CreateVersionControlRequestUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create version control request unauthorized response has a 5xx status code
+func (o *CreateVersionControlRequestUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create version control request unauthorized response a status code equal to that given
+func (o *CreateVersionControlRequestUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *CreateVersionControlRequestUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /versions/active-requests][%d] createVersionControlRequestUnauthorized ", 401)
+}
+
+func (o *CreateVersionControlRequestUnauthorized) String() string {
 	return fmt.Sprintf("[POST /versions/active-requests][%d] createVersionControlRequestUnauthorized ", 401)
 }
 
@@ -139,14 +230,44 @@ func NewCreateVersionControlRequestForbidden() *CreateVersionControlRequestForbi
 	return &CreateVersionControlRequestForbidden{}
 }
 
-/* CreateVersionControlRequestForbidden describes a response with status code 403, with default header values.
+/*
+CreateVersionControlRequestForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type CreateVersionControlRequestForbidden struct {
 }
 
+// IsSuccess returns true when this create version control request forbidden response has a 2xx status code
+func (o *CreateVersionControlRequestForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create version control request forbidden response has a 3xx status code
+func (o *CreateVersionControlRequestForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create version control request forbidden response has a 4xx status code
+func (o *CreateVersionControlRequestForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create version control request forbidden response has a 5xx status code
+func (o *CreateVersionControlRequestForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create version control request forbidden response a status code equal to that given
+func (o *CreateVersionControlRequestForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CreateVersionControlRequestForbidden) Error() string {
+	return fmt.Sprintf("[POST /versions/active-requests][%d] createVersionControlRequestForbidden ", 403)
+}
+
+func (o *CreateVersionControlRequestForbidden) String() string {
 	return fmt.Sprintf("[POST /versions/active-requests][%d] createVersionControlRequestForbidden ", 403)
 }
 
@@ -160,14 +281,44 @@ func NewCreateVersionControlRequestNotFound() *CreateVersionControlRequestNotFou
 	return &CreateVersionControlRequestNotFound{}
 }
 
-/* CreateVersionControlRequestNotFound describes a response with status code 404, with default header values.
+/*
+CreateVersionControlRequestNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type CreateVersionControlRequestNotFound struct {
 }
 
+// IsSuccess returns true when this create version control request not found response has a 2xx status code
+func (o *CreateVersionControlRequestNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create version control request not found response has a 3xx status code
+func (o *CreateVersionControlRequestNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create version control request not found response has a 4xx status code
+func (o *CreateVersionControlRequestNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create version control request not found response has a 5xx status code
+func (o *CreateVersionControlRequestNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create version control request not found response a status code equal to that given
+func (o *CreateVersionControlRequestNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *CreateVersionControlRequestNotFound) Error() string {
+	return fmt.Sprintf("[POST /versions/active-requests][%d] createVersionControlRequestNotFound ", 404)
+}
+
+func (o *CreateVersionControlRequestNotFound) String() string {
 	return fmt.Sprintf("[POST /versions/active-requests][%d] createVersionControlRequestNotFound ", 404)
 }
 
@@ -181,14 +332,44 @@ func NewCreateVersionControlRequestConflict() *CreateVersionControlRequestConfli
 	return &CreateVersionControlRequestConflict{}
 }
 
-/* CreateVersionControlRequestConflict describes a response with status code 409, with default header values.
+/*
+CreateVersionControlRequestConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type CreateVersionControlRequestConflict struct {
 }
 
+// IsSuccess returns true when this create version control request conflict response has a 2xx status code
+func (o *CreateVersionControlRequestConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create version control request conflict response has a 3xx status code
+func (o *CreateVersionControlRequestConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create version control request conflict response has a 4xx status code
+func (o *CreateVersionControlRequestConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create version control request conflict response has a 5xx status code
+func (o *CreateVersionControlRequestConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create version control request conflict response a status code equal to that given
+func (o *CreateVersionControlRequestConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *CreateVersionControlRequestConflict) Error() string {
+	return fmt.Sprintf("[POST /versions/active-requests][%d] createVersionControlRequestConflict ", 409)
+}
+
+func (o *CreateVersionControlRequestConflict) String() string {
 	return fmt.Sprintf("[POST /versions/active-requests][%d] createVersionControlRequestConflict ", 409)
 }
 

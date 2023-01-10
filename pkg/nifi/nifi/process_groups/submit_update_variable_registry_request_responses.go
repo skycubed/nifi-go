@@ -69,7 +69,8 @@ func NewSubmitUpdateVariableRegistryRequestOK() *SubmitUpdateVariableRegistryReq
 	return &SubmitUpdateVariableRegistryRequestOK{}
 }
 
-/* SubmitUpdateVariableRegistryRequestOK describes a response with status code 200, with default header values.
+/*
+SubmitUpdateVariableRegistryRequestOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,39 @@ type SubmitUpdateVariableRegistryRequestOK struct {
 	Payload *models.VariableRegistryUpdateRequestEntity
 }
 
+// IsSuccess returns true when this submit update variable registry request o k response has a 2xx status code
+func (o *SubmitUpdateVariableRegistryRequestOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this submit update variable registry request o k response has a 3xx status code
+func (o *SubmitUpdateVariableRegistryRequestOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this submit update variable registry request o k response has a 4xx status code
+func (o *SubmitUpdateVariableRegistryRequestOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this submit update variable registry request o k response has a 5xx status code
+func (o *SubmitUpdateVariableRegistryRequestOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this submit update variable registry request o k response a status code equal to that given
+func (o *SubmitUpdateVariableRegistryRequestOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *SubmitUpdateVariableRegistryRequestOK) Error() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/variable-registry/update-requests][%d] submitUpdateVariableRegistryRequestOK  %+v", 200, o.Payload)
 }
+
+func (o *SubmitUpdateVariableRegistryRequestOK) String() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/variable-registry/update-requests][%d] submitUpdateVariableRegistryRequestOK  %+v", 200, o.Payload)
+}
+
 func (o *SubmitUpdateVariableRegistryRequestOK) GetPayload() *models.VariableRegistryUpdateRequestEntity {
 	return o.Payload
 }
@@ -101,14 +132,44 @@ func NewSubmitUpdateVariableRegistryRequestBadRequest() *SubmitUpdateVariableReg
 	return &SubmitUpdateVariableRegistryRequestBadRequest{}
 }
 
-/* SubmitUpdateVariableRegistryRequestBadRequest describes a response with status code 400, with default header values.
+/*
+SubmitUpdateVariableRegistryRequestBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type SubmitUpdateVariableRegistryRequestBadRequest struct {
 }
 
+// IsSuccess returns true when this submit update variable registry request bad request response has a 2xx status code
+func (o *SubmitUpdateVariableRegistryRequestBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this submit update variable registry request bad request response has a 3xx status code
+func (o *SubmitUpdateVariableRegistryRequestBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this submit update variable registry request bad request response has a 4xx status code
+func (o *SubmitUpdateVariableRegistryRequestBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this submit update variable registry request bad request response has a 5xx status code
+func (o *SubmitUpdateVariableRegistryRequestBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this submit update variable registry request bad request response a status code equal to that given
+func (o *SubmitUpdateVariableRegistryRequestBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *SubmitUpdateVariableRegistryRequestBadRequest) Error() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/variable-registry/update-requests][%d] submitUpdateVariableRegistryRequestBadRequest ", 400)
+}
+
+func (o *SubmitUpdateVariableRegistryRequestBadRequest) String() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/variable-registry/update-requests][%d] submitUpdateVariableRegistryRequestBadRequest ", 400)
 }
 
@@ -122,14 +183,44 @@ func NewSubmitUpdateVariableRegistryRequestUnauthorized() *SubmitUpdateVariableR
 	return &SubmitUpdateVariableRegistryRequestUnauthorized{}
 }
 
-/* SubmitUpdateVariableRegistryRequestUnauthorized describes a response with status code 401, with default header values.
+/*
+SubmitUpdateVariableRegistryRequestUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type SubmitUpdateVariableRegistryRequestUnauthorized struct {
 }
 
+// IsSuccess returns true when this submit update variable registry request unauthorized response has a 2xx status code
+func (o *SubmitUpdateVariableRegistryRequestUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this submit update variable registry request unauthorized response has a 3xx status code
+func (o *SubmitUpdateVariableRegistryRequestUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this submit update variable registry request unauthorized response has a 4xx status code
+func (o *SubmitUpdateVariableRegistryRequestUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this submit update variable registry request unauthorized response has a 5xx status code
+func (o *SubmitUpdateVariableRegistryRequestUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this submit update variable registry request unauthorized response a status code equal to that given
+func (o *SubmitUpdateVariableRegistryRequestUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *SubmitUpdateVariableRegistryRequestUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/variable-registry/update-requests][%d] submitUpdateVariableRegistryRequestUnauthorized ", 401)
+}
+
+func (o *SubmitUpdateVariableRegistryRequestUnauthorized) String() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/variable-registry/update-requests][%d] submitUpdateVariableRegistryRequestUnauthorized ", 401)
 }
 
@@ -143,14 +234,44 @@ func NewSubmitUpdateVariableRegistryRequestForbidden() *SubmitUpdateVariableRegi
 	return &SubmitUpdateVariableRegistryRequestForbidden{}
 }
 
-/* SubmitUpdateVariableRegistryRequestForbidden describes a response with status code 403, with default header values.
+/*
+SubmitUpdateVariableRegistryRequestForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type SubmitUpdateVariableRegistryRequestForbidden struct {
 }
 
+// IsSuccess returns true when this submit update variable registry request forbidden response has a 2xx status code
+func (o *SubmitUpdateVariableRegistryRequestForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this submit update variable registry request forbidden response has a 3xx status code
+func (o *SubmitUpdateVariableRegistryRequestForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this submit update variable registry request forbidden response has a 4xx status code
+func (o *SubmitUpdateVariableRegistryRequestForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this submit update variable registry request forbidden response has a 5xx status code
+func (o *SubmitUpdateVariableRegistryRequestForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this submit update variable registry request forbidden response a status code equal to that given
+func (o *SubmitUpdateVariableRegistryRequestForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *SubmitUpdateVariableRegistryRequestForbidden) Error() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/variable-registry/update-requests][%d] submitUpdateVariableRegistryRequestForbidden ", 403)
+}
+
+func (o *SubmitUpdateVariableRegistryRequestForbidden) String() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/variable-registry/update-requests][%d] submitUpdateVariableRegistryRequestForbidden ", 403)
 }
 
@@ -164,14 +285,44 @@ func NewSubmitUpdateVariableRegistryRequestNotFound() *SubmitUpdateVariableRegis
 	return &SubmitUpdateVariableRegistryRequestNotFound{}
 }
 
-/* SubmitUpdateVariableRegistryRequestNotFound describes a response with status code 404, with default header values.
+/*
+SubmitUpdateVariableRegistryRequestNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type SubmitUpdateVariableRegistryRequestNotFound struct {
 }
 
+// IsSuccess returns true when this submit update variable registry request not found response has a 2xx status code
+func (o *SubmitUpdateVariableRegistryRequestNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this submit update variable registry request not found response has a 3xx status code
+func (o *SubmitUpdateVariableRegistryRequestNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this submit update variable registry request not found response has a 4xx status code
+func (o *SubmitUpdateVariableRegistryRequestNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this submit update variable registry request not found response has a 5xx status code
+func (o *SubmitUpdateVariableRegistryRequestNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this submit update variable registry request not found response a status code equal to that given
+func (o *SubmitUpdateVariableRegistryRequestNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *SubmitUpdateVariableRegistryRequestNotFound) Error() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/variable-registry/update-requests][%d] submitUpdateVariableRegistryRequestNotFound ", 404)
+}
+
+func (o *SubmitUpdateVariableRegistryRequestNotFound) String() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/variable-registry/update-requests][%d] submitUpdateVariableRegistryRequestNotFound ", 404)
 }
 
@@ -185,14 +336,44 @@ func NewSubmitUpdateVariableRegistryRequestConflict() *SubmitUpdateVariableRegis
 	return &SubmitUpdateVariableRegistryRequestConflict{}
 }
 
-/* SubmitUpdateVariableRegistryRequestConflict describes a response with status code 409, with default header values.
+/*
+SubmitUpdateVariableRegistryRequestConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type SubmitUpdateVariableRegistryRequestConflict struct {
 }
 
+// IsSuccess returns true when this submit update variable registry request conflict response has a 2xx status code
+func (o *SubmitUpdateVariableRegistryRequestConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this submit update variable registry request conflict response has a 3xx status code
+func (o *SubmitUpdateVariableRegistryRequestConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this submit update variable registry request conflict response has a 4xx status code
+func (o *SubmitUpdateVariableRegistryRequestConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this submit update variable registry request conflict response has a 5xx status code
+func (o *SubmitUpdateVariableRegistryRequestConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this submit update variable registry request conflict response a status code equal to that given
+func (o *SubmitUpdateVariableRegistryRequestConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *SubmitUpdateVariableRegistryRequestConflict) Error() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/variable-registry/update-requests][%d] submitUpdateVariableRegistryRequestConflict ", 409)
+}
+
+func (o *SubmitUpdateVariableRegistryRequestConflict) String() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/variable-registry/update-requests][%d] submitUpdateVariableRegistryRequestConflict ", 409)
 }
 

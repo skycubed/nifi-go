@@ -37,7 +37,8 @@ func NewOidcExchangeOK() *OidcExchangeOK {
 	return &OidcExchangeOK{}
 }
 
-/* OidcExchangeOK describes a response with status code 200, with default header values.
+/*
+OidcExchangeOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -45,9 +46,39 @@ type OidcExchangeOK struct {
 	Payload string
 }
 
+// IsSuccess returns true when this oidc exchange o k response has a 2xx status code
+func (o *OidcExchangeOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this oidc exchange o k response has a 3xx status code
+func (o *OidcExchangeOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this oidc exchange o k response has a 4xx status code
+func (o *OidcExchangeOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this oidc exchange o k response has a 5xx status code
+func (o *OidcExchangeOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this oidc exchange o k response a status code equal to that given
+func (o *OidcExchangeOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *OidcExchangeOK) Error() string {
 	return fmt.Sprintf("[POST /access/oidc/exchange][%d] oidcExchangeOK  %+v", 200, o.Payload)
 }
+
+func (o *OidcExchangeOK) String() string {
+	return fmt.Sprintf("[POST /access/oidc/exchange][%d] oidcExchangeOK  %+v", 200, o.Payload)
+}
+
 func (o *OidcExchangeOK) GetPayload() string {
 	return o.Payload
 }

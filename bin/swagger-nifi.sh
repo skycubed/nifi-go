@@ -5,6 +5,7 @@ set -euo pipefail
 paths201=(
   "/access/kerberos"
   "/access/token"
+  "/controller/parameter-providers"
   "/controller/controller-services"
   "/controller/registry-clients"
   "/controller/reporting-tasks"

@@ -69,7 +69,8 @@ func NewDeleteSnippetOK() *DeleteSnippetOK {
 	return &DeleteSnippetOK{}
 }
 
-/* DeleteSnippetOK describes a response with status code 200, with default header values.
+/*
+DeleteSnippetOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,39 @@ type DeleteSnippetOK struct {
 	Payload *models.SnippetEntity
 }
 
+// IsSuccess returns true when this delete snippet o k response has a 2xx status code
+func (o *DeleteSnippetOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete snippet o k response has a 3xx status code
+func (o *DeleteSnippetOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete snippet o k response has a 4xx status code
+func (o *DeleteSnippetOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete snippet o k response has a 5xx status code
+func (o *DeleteSnippetOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete snippet o k response a status code equal to that given
+func (o *DeleteSnippetOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *DeleteSnippetOK) Error() string {
 	return fmt.Sprintf("[DELETE /snippets/{id}][%d] deleteSnippetOK  %+v", 200, o.Payload)
 }
+
+func (o *DeleteSnippetOK) String() string {
+	return fmt.Sprintf("[DELETE /snippets/{id}][%d] deleteSnippetOK  %+v", 200, o.Payload)
+}
+
 func (o *DeleteSnippetOK) GetPayload() *models.SnippetEntity {
 	return o.Payload
 }
@@ -101,14 +132,44 @@ func NewDeleteSnippetBadRequest() *DeleteSnippetBadRequest {
 	return &DeleteSnippetBadRequest{}
 }
 
-/* DeleteSnippetBadRequest describes a response with status code 400, with default header values.
+/*
+DeleteSnippetBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type DeleteSnippetBadRequest struct {
 }
 
+// IsSuccess returns true when this delete snippet bad request response has a 2xx status code
+func (o *DeleteSnippetBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete snippet bad request response has a 3xx status code
+func (o *DeleteSnippetBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete snippet bad request response has a 4xx status code
+func (o *DeleteSnippetBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete snippet bad request response has a 5xx status code
+func (o *DeleteSnippetBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete snippet bad request response a status code equal to that given
+func (o *DeleteSnippetBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *DeleteSnippetBadRequest) Error() string {
+	return fmt.Sprintf("[DELETE /snippets/{id}][%d] deleteSnippetBadRequest ", 400)
+}
+
+func (o *DeleteSnippetBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /snippets/{id}][%d] deleteSnippetBadRequest ", 400)
 }
 
@@ -122,14 +183,44 @@ func NewDeleteSnippetUnauthorized() *DeleteSnippetUnauthorized {
 	return &DeleteSnippetUnauthorized{}
 }
 
-/* DeleteSnippetUnauthorized describes a response with status code 401, with default header values.
+/*
+DeleteSnippetUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type DeleteSnippetUnauthorized struct {
 }
 
+// IsSuccess returns true when this delete snippet unauthorized response has a 2xx status code
+func (o *DeleteSnippetUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete snippet unauthorized response has a 3xx status code
+func (o *DeleteSnippetUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete snippet unauthorized response has a 4xx status code
+func (o *DeleteSnippetUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete snippet unauthorized response has a 5xx status code
+func (o *DeleteSnippetUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete snippet unauthorized response a status code equal to that given
+func (o *DeleteSnippetUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *DeleteSnippetUnauthorized) Error() string {
+	return fmt.Sprintf("[DELETE /snippets/{id}][%d] deleteSnippetUnauthorized ", 401)
+}
+
+func (o *DeleteSnippetUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /snippets/{id}][%d] deleteSnippetUnauthorized ", 401)
 }
 
@@ -143,14 +234,44 @@ func NewDeleteSnippetForbidden() *DeleteSnippetForbidden {
 	return &DeleteSnippetForbidden{}
 }
 
-/* DeleteSnippetForbidden describes a response with status code 403, with default header values.
+/*
+DeleteSnippetForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type DeleteSnippetForbidden struct {
 }
 
+// IsSuccess returns true when this delete snippet forbidden response has a 2xx status code
+func (o *DeleteSnippetForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete snippet forbidden response has a 3xx status code
+func (o *DeleteSnippetForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete snippet forbidden response has a 4xx status code
+func (o *DeleteSnippetForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete snippet forbidden response has a 5xx status code
+func (o *DeleteSnippetForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete snippet forbidden response a status code equal to that given
+func (o *DeleteSnippetForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *DeleteSnippetForbidden) Error() string {
+	return fmt.Sprintf("[DELETE /snippets/{id}][%d] deleteSnippetForbidden ", 403)
+}
+
+func (o *DeleteSnippetForbidden) String() string {
 	return fmt.Sprintf("[DELETE /snippets/{id}][%d] deleteSnippetForbidden ", 403)
 }
 
@@ -164,14 +285,44 @@ func NewDeleteSnippetNotFound() *DeleteSnippetNotFound {
 	return &DeleteSnippetNotFound{}
 }
 
-/* DeleteSnippetNotFound describes a response with status code 404, with default header values.
+/*
+DeleteSnippetNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type DeleteSnippetNotFound struct {
 }
 
+// IsSuccess returns true when this delete snippet not found response has a 2xx status code
+func (o *DeleteSnippetNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete snippet not found response has a 3xx status code
+func (o *DeleteSnippetNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete snippet not found response has a 4xx status code
+func (o *DeleteSnippetNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete snippet not found response has a 5xx status code
+func (o *DeleteSnippetNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete snippet not found response a status code equal to that given
+func (o *DeleteSnippetNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *DeleteSnippetNotFound) Error() string {
+	return fmt.Sprintf("[DELETE /snippets/{id}][%d] deleteSnippetNotFound ", 404)
+}
+
+func (o *DeleteSnippetNotFound) String() string {
 	return fmt.Sprintf("[DELETE /snippets/{id}][%d] deleteSnippetNotFound ", 404)
 }
 
@@ -185,14 +336,44 @@ func NewDeleteSnippetConflict() *DeleteSnippetConflict {
 	return &DeleteSnippetConflict{}
 }
 
-/* DeleteSnippetConflict describes a response with status code 409, with default header values.
+/*
+DeleteSnippetConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type DeleteSnippetConflict struct {
 }
 
+// IsSuccess returns true when this delete snippet conflict response has a 2xx status code
+func (o *DeleteSnippetConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete snippet conflict response has a 3xx status code
+func (o *DeleteSnippetConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete snippet conflict response has a 4xx status code
+func (o *DeleteSnippetConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete snippet conflict response has a 5xx status code
+func (o *DeleteSnippetConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete snippet conflict response a status code equal to that given
+func (o *DeleteSnippetConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *DeleteSnippetConflict) Error() string {
+	return fmt.Sprintf("[DELETE /snippets/{id}][%d] deleteSnippetConflict ", 409)
+}
+
+func (o *DeleteSnippetConflict) String() string {
 	return fmt.Sprintf("[DELETE /snippets/{id}][%d] deleteSnippetConflict ", 409)
 }
 

@@ -52,10 +52,12 @@ func NewKnoxRequestParamsWithHTTPClient(client *http.Client) *KnoxRequestParams 
 	}
 }
 
-/* KnoxRequestParams contains all the parameters to send to the API endpoint
-   for the knox request operation.
+/*
+KnoxRequestParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the knox request operation.
+
+	Typically these are written to a http.Request.
 */
 type KnoxRequestParams struct {
 	timeout    time.Duration

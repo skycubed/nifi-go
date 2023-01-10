@@ -26,8 +26,14 @@ type VersionedFlowCoordinates struct {
 	// Whether or not these coordinates point to the latest version of the flow
 	Latest bool `json:"latest,omitempty"`
 
+	// The identifier of the Flow Registry that contains the flow
+	RegistryID string `json:"registryId,omitempty"`
+
 	// The URL of the Flow Registry that contains the flow
 	RegistryURL string `json:"registryUrl,omitempty"`
+
+	// The location of the Flow Registry that stores the flow
+	StorageLocation string `json:"storageLocation,omitempty"`
 
 	// The version of the flow
 	Version int32 `json:"version,omitempty"`

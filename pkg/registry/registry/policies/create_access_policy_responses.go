@@ -63,7 +63,8 @@ func NewCreateAccessPolicyOK() *CreateAccessPolicyOK {
 	return &CreateAccessPolicyOK{}
 }
 
-/* CreateAccessPolicyOK describes a response with status code 200, with default header values.
+/*
+CreateAccessPolicyOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -71,9 +72,39 @@ type CreateAccessPolicyOK struct {
 	Payload *models.AccessPolicy
 }
 
+// IsSuccess returns true when this create access policy o k response has a 2xx status code
+func (o *CreateAccessPolicyOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create access policy o k response has a 3xx status code
+func (o *CreateAccessPolicyOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create access policy o k response has a 4xx status code
+func (o *CreateAccessPolicyOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create access policy o k response has a 5xx status code
+func (o *CreateAccessPolicyOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create access policy o k response a status code equal to that given
+func (o *CreateAccessPolicyOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *CreateAccessPolicyOK) Error() string {
 	return fmt.Sprintf("[POST /policies][%d] createAccessPolicyOK  %+v", 200, o.Payload)
 }
+
+func (o *CreateAccessPolicyOK) String() string {
+	return fmt.Sprintf("[POST /policies][%d] createAccessPolicyOK  %+v", 200, o.Payload)
+}
+
 func (o *CreateAccessPolicyOK) GetPayload() *models.AccessPolicy {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewCreateAccessPolicyBadRequest() *CreateAccessPolicyBadRequest {
 	return &CreateAccessPolicyBadRequest{}
 }
 
-/* CreateAccessPolicyBadRequest describes a response with status code 400, with default header values.
+/*
+CreateAccessPolicyBadRequest describes a response with status code 400, with default header values.
 
 NiFi Registry was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type CreateAccessPolicyBadRequest struct {
 }
 
+// IsSuccess returns true when this create access policy bad request response has a 2xx status code
+func (o *CreateAccessPolicyBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create access policy bad request response has a 3xx status code
+func (o *CreateAccessPolicyBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create access policy bad request response has a 4xx status code
+func (o *CreateAccessPolicyBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create access policy bad request response has a 5xx status code
+func (o *CreateAccessPolicyBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create access policy bad request response a status code equal to that given
+func (o *CreateAccessPolicyBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CreateAccessPolicyBadRequest) Error() string {
+	return fmt.Sprintf("[POST /policies][%d] createAccessPolicyBadRequest ", 400)
+}
+
+func (o *CreateAccessPolicyBadRequest) String() string {
 	return fmt.Sprintf("[POST /policies][%d] createAccessPolicyBadRequest ", 400)
 }
 
@@ -116,14 +177,44 @@ func NewCreateAccessPolicyUnauthorized() *CreateAccessPolicyUnauthorized {
 	return &CreateAccessPolicyUnauthorized{}
 }
 
-/* CreateAccessPolicyUnauthorized describes a response with status code 401, with default header values.
+/*
+CreateAccessPolicyUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type CreateAccessPolicyUnauthorized struct {
 }
 
+// IsSuccess returns true when this create access policy unauthorized response has a 2xx status code
+func (o *CreateAccessPolicyUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create access policy unauthorized response has a 3xx status code
+func (o *CreateAccessPolicyUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create access policy unauthorized response has a 4xx status code
+func (o *CreateAccessPolicyUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create access policy unauthorized response has a 5xx status code
+func (o *CreateAccessPolicyUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create access policy unauthorized response a status code equal to that given
+func (o *CreateAccessPolicyUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *CreateAccessPolicyUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /policies][%d] createAccessPolicyUnauthorized ", 401)
+}
+
+func (o *CreateAccessPolicyUnauthorized) String() string {
 	return fmt.Sprintf("[POST /policies][%d] createAccessPolicyUnauthorized ", 401)
 }
 
@@ -137,14 +228,44 @@ func NewCreateAccessPolicyForbidden() *CreateAccessPolicyForbidden {
 	return &CreateAccessPolicyForbidden{}
 }
 
-/* CreateAccessPolicyForbidden describes a response with status code 403, with default header values.
+/*
+CreateAccessPolicyForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type CreateAccessPolicyForbidden struct {
 }
 
+// IsSuccess returns true when this create access policy forbidden response has a 2xx status code
+func (o *CreateAccessPolicyForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create access policy forbidden response has a 3xx status code
+func (o *CreateAccessPolicyForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create access policy forbidden response has a 4xx status code
+func (o *CreateAccessPolicyForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create access policy forbidden response has a 5xx status code
+func (o *CreateAccessPolicyForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create access policy forbidden response a status code equal to that given
+func (o *CreateAccessPolicyForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CreateAccessPolicyForbidden) Error() string {
+	return fmt.Sprintf("[POST /policies][%d] createAccessPolicyForbidden ", 403)
+}
+
+func (o *CreateAccessPolicyForbidden) String() string {
 	return fmt.Sprintf("[POST /policies][%d] createAccessPolicyForbidden ", 403)
 }
 
@@ -158,14 +279,44 @@ func NewCreateAccessPolicyConflict() *CreateAccessPolicyConflict {
 	return &CreateAccessPolicyConflict{}
 }
 
-/* CreateAccessPolicyConflict describes a response with status code 409, with default header values.
+/*
+CreateAccessPolicyConflict describes a response with status code 409, with default header values.
 
 NiFi Registry was unable to complete the request because it assumes a server state that is not valid. The NiFi Registry might not be configured to use a ConfigurableAccessPolicyProvider.
 */
 type CreateAccessPolicyConflict struct {
 }
 
+// IsSuccess returns true when this create access policy conflict response has a 2xx status code
+func (o *CreateAccessPolicyConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create access policy conflict response has a 3xx status code
+func (o *CreateAccessPolicyConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create access policy conflict response has a 4xx status code
+func (o *CreateAccessPolicyConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create access policy conflict response has a 5xx status code
+func (o *CreateAccessPolicyConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create access policy conflict response a status code equal to that given
+func (o *CreateAccessPolicyConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *CreateAccessPolicyConflict) Error() string {
+	return fmt.Sprintf("[POST /policies][%d] createAccessPolicyConflict ", 409)
+}
+
+func (o *CreateAccessPolicyConflict) String() string {
 	return fmt.Sprintf("[POST /policies][%d] createAccessPolicyConflict ", 409)
 }
 

@@ -31,7 +31,7 @@ type VersionedFlowSnapshotEntity struct {
 	UpdateDescendantVersionedFlows bool `json:"updateDescendantVersionedFlows,omitempty"`
 
 	// The versioned flow snapshot
-	VersionedFlowSnapshot *VersionedFlowSnapshot `json:"versionedFlowSnapshot,omitempty"`
+	VersionedFlowSnapshot *RegisteredFlowSnapshot `json:"versionedFlowSnapshot,omitempty"`
 }
 
 // Validate validates this versioned flow snapshot entity

@@ -67,7 +67,8 @@ func NewExportFlowVersionOK() *ExportFlowVersionOK {
 	return &ExportFlowVersionOK{}
 }
 
-/* ExportFlowVersionOK describes a response with status code 200, with default header values.
+/*
+ExportFlowVersionOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -75,9 +76,39 @@ type ExportFlowVersionOK struct {
 	Payload string
 }
 
+// IsSuccess returns true when this export flow version o k response has a 2xx status code
+func (o *ExportFlowVersionOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this export flow version o k response has a 3xx status code
+func (o *ExportFlowVersionOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this export flow version o k response has a 4xx status code
+func (o *ExportFlowVersionOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this export flow version o k response has a 5xx status code
+func (o *ExportFlowVersionOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this export flow version o k response a status code equal to that given
+func (o *ExportFlowVersionOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ExportFlowVersionOK) Error() string {
 	return fmt.Sprintf("[GET /versions/process-groups/{id}/download][%d] exportFlowVersionOK  %+v", 200, o.Payload)
 }
+
+func (o *ExportFlowVersionOK) String() string {
+	return fmt.Sprintf("[GET /versions/process-groups/{id}/download][%d] exportFlowVersionOK  %+v", 200, o.Payload)
+}
+
 func (o *ExportFlowVersionOK) GetPayload() string {
 	return o.Payload
 }
@@ -97,14 +128,44 @@ func NewExportFlowVersionBadRequest() *ExportFlowVersionBadRequest {
 	return &ExportFlowVersionBadRequest{}
 }
 
-/* ExportFlowVersionBadRequest describes a response with status code 400, with default header values.
+/*
+ExportFlowVersionBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type ExportFlowVersionBadRequest struct {
 }
 
+// IsSuccess returns true when this export flow version bad request response has a 2xx status code
+func (o *ExportFlowVersionBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this export flow version bad request response has a 3xx status code
+func (o *ExportFlowVersionBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this export flow version bad request response has a 4xx status code
+func (o *ExportFlowVersionBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this export flow version bad request response has a 5xx status code
+func (o *ExportFlowVersionBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this export flow version bad request response a status code equal to that given
+func (o *ExportFlowVersionBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ExportFlowVersionBadRequest) Error() string {
+	return fmt.Sprintf("[GET /versions/process-groups/{id}/download][%d] exportFlowVersionBadRequest ", 400)
+}
+
+func (o *ExportFlowVersionBadRequest) String() string {
 	return fmt.Sprintf("[GET /versions/process-groups/{id}/download][%d] exportFlowVersionBadRequest ", 400)
 }
 
@@ -118,14 +179,44 @@ func NewExportFlowVersionUnauthorized() *ExportFlowVersionUnauthorized {
 	return &ExportFlowVersionUnauthorized{}
 }
 
-/* ExportFlowVersionUnauthorized describes a response with status code 401, with default header values.
+/*
+ExportFlowVersionUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type ExportFlowVersionUnauthorized struct {
 }
 
+// IsSuccess returns true when this export flow version unauthorized response has a 2xx status code
+func (o *ExportFlowVersionUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this export flow version unauthorized response has a 3xx status code
+func (o *ExportFlowVersionUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this export flow version unauthorized response has a 4xx status code
+func (o *ExportFlowVersionUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this export flow version unauthorized response has a 5xx status code
+func (o *ExportFlowVersionUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this export flow version unauthorized response a status code equal to that given
+func (o *ExportFlowVersionUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *ExportFlowVersionUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /versions/process-groups/{id}/download][%d] exportFlowVersionUnauthorized ", 401)
+}
+
+func (o *ExportFlowVersionUnauthorized) String() string {
 	return fmt.Sprintf("[GET /versions/process-groups/{id}/download][%d] exportFlowVersionUnauthorized ", 401)
 }
 
@@ -139,14 +230,44 @@ func NewExportFlowVersionForbidden() *ExportFlowVersionForbidden {
 	return &ExportFlowVersionForbidden{}
 }
 
-/* ExportFlowVersionForbidden describes a response with status code 403, with default header values.
+/*
+ExportFlowVersionForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type ExportFlowVersionForbidden struct {
 }
 
+// IsSuccess returns true when this export flow version forbidden response has a 2xx status code
+func (o *ExportFlowVersionForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this export flow version forbidden response has a 3xx status code
+func (o *ExportFlowVersionForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this export flow version forbidden response has a 4xx status code
+func (o *ExportFlowVersionForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this export flow version forbidden response has a 5xx status code
+func (o *ExportFlowVersionForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this export flow version forbidden response a status code equal to that given
+func (o *ExportFlowVersionForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *ExportFlowVersionForbidden) Error() string {
+	return fmt.Sprintf("[GET /versions/process-groups/{id}/download][%d] exportFlowVersionForbidden ", 403)
+}
+
+func (o *ExportFlowVersionForbidden) String() string {
 	return fmt.Sprintf("[GET /versions/process-groups/{id}/download][%d] exportFlowVersionForbidden ", 403)
 }
 
@@ -160,14 +281,44 @@ func NewExportFlowVersionNotFound() *ExportFlowVersionNotFound {
 	return &ExportFlowVersionNotFound{}
 }
 
-/* ExportFlowVersionNotFound describes a response with status code 404, with default header values.
+/*
+ExportFlowVersionNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type ExportFlowVersionNotFound struct {
 }
 
+// IsSuccess returns true when this export flow version not found response has a 2xx status code
+func (o *ExportFlowVersionNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this export flow version not found response has a 3xx status code
+func (o *ExportFlowVersionNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this export flow version not found response has a 4xx status code
+func (o *ExportFlowVersionNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this export flow version not found response has a 5xx status code
+func (o *ExportFlowVersionNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this export flow version not found response a status code equal to that given
+func (o *ExportFlowVersionNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ExportFlowVersionNotFound) Error() string {
+	return fmt.Sprintf("[GET /versions/process-groups/{id}/download][%d] exportFlowVersionNotFound ", 404)
+}
+
+func (o *ExportFlowVersionNotFound) String() string {
 	return fmt.Sprintf("[GET /versions/process-groups/{id}/download][%d] exportFlowVersionNotFound ", 404)
 }
 
@@ -181,14 +332,44 @@ func NewExportFlowVersionConflict() *ExportFlowVersionConflict {
 	return &ExportFlowVersionConflict{}
 }
 
-/* ExportFlowVersionConflict describes a response with status code 409, with default header values.
+/*
+ExportFlowVersionConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type ExportFlowVersionConflict struct {
 }
 
+// IsSuccess returns true when this export flow version conflict response has a 2xx status code
+func (o *ExportFlowVersionConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this export flow version conflict response has a 3xx status code
+func (o *ExportFlowVersionConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this export flow version conflict response has a 4xx status code
+func (o *ExportFlowVersionConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this export flow version conflict response has a 5xx status code
+func (o *ExportFlowVersionConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this export flow version conflict response a status code equal to that given
+func (o *ExportFlowVersionConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *ExportFlowVersionConflict) Error() string {
+	return fmt.Sprintf("[GET /versions/process-groups/{id}/download][%d] exportFlowVersionConflict ", 409)
+}
+
+func (o *ExportFlowVersionConflict) String() string {
 	return fmt.Sprintf("[GET /versions/process-groups/{id}/download][%d] exportFlowVersionConflict ", 409)
 }
 

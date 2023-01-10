@@ -36,7 +36,8 @@ func NewOidcCallbackDefault(code int) *OidcCallbackDefault {
 	}
 }
 
-/* OidcCallbackDefault describes a response with status code -1, with default header values.
+/*
+OidcCallbackDefault describes a response with status code -1, with default header values.
 
 successful operation
 */
@@ -49,7 +50,36 @@ func (o *OidcCallbackDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this oidc callback default response has a 2xx status code
+func (o *OidcCallbackDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this oidc callback default response has a 3xx status code
+func (o *OidcCallbackDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this oidc callback default response has a 4xx status code
+func (o *OidcCallbackDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this oidc callback default response has a 5xx status code
+func (o *OidcCallbackDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this oidc callback default response a status code equal to that given
+func (o *OidcCallbackDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *OidcCallbackDefault) Error() string {
+	return fmt.Sprintf("[GET /access/oidc/callback][%d] oidcCallback default ", o._statusCode)
+}
+
+func (o *OidcCallbackDefault) String() string {
 	return fmt.Sprintf("[GET /access/oidc/callback][%d] oidcCallback default ", o._statusCode)
 }
 

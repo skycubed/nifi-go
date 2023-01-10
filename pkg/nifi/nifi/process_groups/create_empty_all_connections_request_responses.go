@@ -75,24 +75,55 @@ func NewCreateEmptyAllConnectionsRequestOK() *CreateEmptyAllConnectionsRequestOK
 	return &CreateEmptyAllConnectionsRequestOK{}
 }
 
-/* CreateEmptyAllConnectionsRequestOK describes a response with status code 200, with default header values.
+/*
+CreateEmptyAllConnectionsRequestOK describes a response with status code 200, with default header values.
 
 successful operation
 */
 type CreateEmptyAllConnectionsRequestOK struct {
-	Payload *models.ProcessGroupEntity
+	Payload *models.DropRequestEntity
+}
+
+// IsSuccess returns true when this create empty all connections request o k response has a 2xx status code
+func (o *CreateEmptyAllConnectionsRequestOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create empty all connections request o k response has a 3xx status code
+func (o *CreateEmptyAllConnectionsRequestOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create empty all connections request o k response has a 4xx status code
+func (o *CreateEmptyAllConnectionsRequestOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create empty all connections request o k response has a 5xx status code
+func (o *CreateEmptyAllConnectionsRequestOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create empty all connections request o k response a status code equal to that given
+func (o *CreateEmptyAllConnectionsRequestOK) IsCode(code int) bool {
+	return code == 200
 }
 
 func (o *CreateEmptyAllConnectionsRequestOK) Error() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/empty-all-connections-requests][%d] createEmptyAllConnectionsRequestOK  %+v", 200, o.Payload)
 }
-func (o *CreateEmptyAllConnectionsRequestOK) GetPayload() *models.ProcessGroupEntity {
+
+func (o *CreateEmptyAllConnectionsRequestOK) String() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/empty-all-connections-requests][%d] createEmptyAllConnectionsRequestOK  %+v", 200, o.Payload)
+}
+
+func (o *CreateEmptyAllConnectionsRequestOK) GetPayload() *models.DropRequestEntity {
 	return o.Payload
 }
 
 func (o *CreateEmptyAllConnectionsRequestOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProcessGroupEntity)
+	o.Payload = new(models.DropRequestEntity)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -107,14 +138,44 @@ func NewCreateEmptyAllConnectionsRequestAccepted() *CreateEmptyAllConnectionsReq
 	return &CreateEmptyAllConnectionsRequestAccepted{}
 }
 
-/* CreateEmptyAllConnectionsRequestAccepted describes a response with status code 202, with default header values.
+/*
+CreateEmptyAllConnectionsRequestAccepted describes a response with status code 202, with default header values.
 
 The request has been accepted. An HTTP response header will contain the URI where the status can be polled.
 */
 type CreateEmptyAllConnectionsRequestAccepted struct {
 }
 
+// IsSuccess returns true when this create empty all connections request accepted response has a 2xx status code
+func (o *CreateEmptyAllConnectionsRequestAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create empty all connections request accepted response has a 3xx status code
+func (o *CreateEmptyAllConnectionsRequestAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create empty all connections request accepted response has a 4xx status code
+func (o *CreateEmptyAllConnectionsRequestAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create empty all connections request accepted response has a 5xx status code
+func (o *CreateEmptyAllConnectionsRequestAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create empty all connections request accepted response a status code equal to that given
+func (o *CreateEmptyAllConnectionsRequestAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *CreateEmptyAllConnectionsRequestAccepted) Error() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/empty-all-connections-requests][%d] createEmptyAllConnectionsRequestAccepted ", 202)
+}
+
+func (o *CreateEmptyAllConnectionsRequestAccepted) String() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/empty-all-connections-requests][%d] createEmptyAllConnectionsRequestAccepted ", 202)
 }
 
@@ -128,14 +189,44 @@ func NewCreateEmptyAllConnectionsRequestBadRequest() *CreateEmptyAllConnectionsR
 	return &CreateEmptyAllConnectionsRequestBadRequest{}
 }
 
-/* CreateEmptyAllConnectionsRequestBadRequest describes a response with status code 400, with default header values.
+/*
+CreateEmptyAllConnectionsRequestBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type CreateEmptyAllConnectionsRequestBadRequest struct {
 }
 
+// IsSuccess returns true when this create empty all connections request bad request response has a 2xx status code
+func (o *CreateEmptyAllConnectionsRequestBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create empty all connections request bad request response has a 3xx status code
+func (o *CreateEmptyAllConnectionsRequestBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create empty all connections request bad request response has a 4xx status code
+func (o *CreateEmptyAllConnectionsRequestBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create empty all connections request bad request response has a 5xx status code
+func (o *CreateEmptyAllConnectionsRequestBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create empty all connections request bad request response a status code equal to that given
+func (o *CreateEmptyAllConnectionsRequestBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CreateEmptyAllConnectionsRequestBadRequest) Error() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/empty-all-connections-requests][%d] createEmptyAllConnectionsRequestBadRequest ", 400)
+}
+
+func (o *CreateEmptyAllConnectionsRequestBadRequest) String() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/empty-all-connections-requests][%d] createEmptyAllConnectionsRequestBadRequest ", 400)
 }
 
@@ -149,14 +240,44 @@ func NewCreateEmptyAllConnectionsRequestUnauthorized() *CreateEmptyAllConnection
 	return &CreateEmptyAllConnectionsRequestUnauthorized{}
 }
 
-/* CreateEmptyAllConnectionsRequestUnauthorized describes a response with status code 401, with default header values.
+/*
+CreateEmptyAllConnectionsRequestUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type CreateEmptyAllConnectionsRequestUnauthorized struct {
 }
 
+// IsSuccess returns true when this create empty all connections request unauthorized response has a 2xx status code
+func (o *CreateEmptyAllConnectionsRequestUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create empty all connections request unauthorized response has a 3xx status code
+func (o *CreateEmptyAllConnectionsRequestUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create empty all connections request unauthorized response has a 4xx status code
+func (o *CreateEmptyAllConnectionsRequestUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create empty all connections request unauthorized response has a 5xx status code
+func (o *CreateEmptyAllConnectionsRequestUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create empty all connections request unauthorized response a status code equal to that given
+func (o *CreateEmptyAllConnectionsRequestUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *CreateEmptyAllConnectionsRequestUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/empty-all-connections-requests][%d] createEmptyAllConnectionsRequestUnauthorized ", 401)
+}
+
+func (o *CreateEmptyAllConnectionsRequestUnauthorized) String() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/empty-all-connections-requests][%d] createEmptyAllConnectionsRequestUnauthorized ", 401)
 }
 
@@ -170,14 +291,44 @@ func NewCreateEmptyAllConnectionsRequestForbidden() *CreateEmptyAllConnectionsRe
 	return &CreateEmptyAllConnectionsRequestForbidden{}
 }
 
-/* CreateEmptyAllConnectionsRequestForbidden describes a response with status code 403, with default header values.
+/*
+CreateEmptyAllConnectionsRequestForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type CreateEmptyAllConnectionsRequestForbidden struct {
 }
 
+// IsSuccess returns true when this create empty all connections request forbidden response has a 2xx status code
+func (o *CreateEmptyAllConnectionsRequestForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create empty all connections request forbidden response has a 3xx status code
+func (o *CreateEmptyAllConnectionsRequestForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create empty all connections request forbidden response has a 4xx status code
+func (o *CreateEmptyAllConnectionsRequestForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create empty all connections request forbidden response has a 5xx status code
+func (o *CreateEmptyAllConnectionsRequestForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create empty all connections request forbidden response a status code equal to that given
+func (o *CreateEmptyAllConnectionsRequestForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CreateEmptyAllConnectionsRequestForbidden) Error() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/empty-all-connections-requests][%d] createEmptyAllConnectionsRequestForbidden ", 403)
+}
+
+func (o *CreateEmptyAllConnectionsRequestForbidden) String() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/empty-all-connections-requests][%d] createEmptyAllConnectionsRequestForbidden ", 403)
 }
 
@@ -191,14 +342,44 @@ func NewCreateEmptyAllConnectionsRequestNotFound() *CreateEmptyAllConnectionsReq
 	return &CreateEmptyAllConnectionsRequestNotFound{}
 }
 
-/* CreateEmptyAllConnectionsRequestNotFound describes a response with status code 404, with default header values.
+/*
+CreateEmptyAllConnectionsRequestNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type CreateEmptyAllConnectionsRequestNotFound struct {
 }
 
+// IsSuccess returns true when this create empty all connections request not found response has a 2xx status code
+func (o *CreateEmptyAllConnectionsRequestNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create empty all connections request not found response has a 3xx status code
+func (o *CreateEmptyAllConnectionsRequestNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create empty all connections request not found response has a 4xx status code
+func (o *CreateEmptyAllConnectionsRequestNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create empty all connections request not found response has a 5xx status code
+func (o *CreateEmptyAllConnectionsRequestNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create empty all connections request not found response a status code equal to that given
+func (o *CreateEmptyAllConnectionsRequestNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *CreateEmptyAllConnectionsRequestNotFound) Error() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/empty-all-connections-requests][%d] createEmptyAllConnectionsRequestNotFound ", 404)
+}
+
+func (o *CreateEmptyAllConnectionsRequestNotFound) String() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/empty-all-connections-requests][%d] createEmptyAllConnectionsRequestNotFound ", 404)
 }
 
@@ -212,14 +393,44 @@ func NewCreateEmptyAllConnectionsRequestConflict() *CreateEmptyAllConnectionsReq
 	return &CreateEmptyAllConnectionsRequestConflict{}
 }
 
-/* CreateEmptyAllConnectionsRequestConflict describes a response with status code 409, with default header values.
+/*
+CreateEmptyAllConnectionsRequestConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type CreateEmptyAllConnectionsRequestConflict struct {
 }
 
+// IsSuccess returns true when this create empty all connections request conflict response has a 2xx status code
+func (o *CreateEmptyAllConnectionsRequestConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create empty all connections request conflict response has a 3xx status code
+func (o *CreateEmptyAllConnectionsRequestConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create empty all connections request conflict response has a 4xx status code
+func (o *CreateEmptyAllConnectionsRequestConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create empty all connections request conflict response has a 5xx status code
+func (o *CreateEmptyAllConnectionsRequestConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create empty all connections request conflict response a status code equal to that given
+func (o *CreateEmptyAllConnectionsRequestConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *CreateEmptyAllConnectionsRequestConflict) Error() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/empty-all-connections-requests][%d] createEmptyAllConnectionsRequestConflict ", 409)
+}
+
+func (o *CreateEmptyAllConnectionsRequestConflict) String() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/empty-all-connections-requests][%d] createEmptyAllConnectionsRequestConflict ", 409)
 }
 

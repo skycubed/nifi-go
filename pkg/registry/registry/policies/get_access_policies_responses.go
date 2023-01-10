@@ -57,7 +57,8 @@ func NewGetAccessPoliciesOK() *GetAccessPoliciesOK {
 	return &GetAccessPoliciesOK{}
 }
 
-/* GetAccessPoliciesOK describes a response with status code 200, with default header values.
+/*
+GetAccessPoliciesOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -65,9 +66,39 @@ type GetAccessPoliciesOK struct {
 	Payload []*models.AccessPolicy
 }
 
+// IsSuccess returns true when this get access policies o k response has a 2xx status code
+func (o *GetAccessPoliciesOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get access policies o k response has a 3xx status code
+func (o *GetAccessPoliciesOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get access policies o k response has a 4xx status code
+func (o *GetAccessPoliciesOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get access policies o k response has a 5xx status code
+func (o *GetAccessPoliciesOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get access policies o k response a status code equal to that given
+func (o *GetAccessPoliciesOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetAccessPoliciesOK) Error() string {
 	return fmt.Sprintf("[GET /policies][%d] getAccessPoliciesOK  %+v", 200, o.Payload)
 }
+
+func (o *GetAccessPoliciesOK) String() string {
+	return fmt.Sprintf("[GET /policies][%d] getAccessPoliciesOK  %+v", 200, o.Payload)
+}
+
 func (o *GetAccessPoliciesOK) GetPayload() []*models.AccessPolicy {
 	return o.Payload
 }
@@ -87,14 +118,44 @@ func NewGetAccessPoliciesUnauthorized() *GetAccessPoliciesUnauthorized {
 	return &GetAccessPoliciesUnauthorized{}
 }
 
-/* GetAccessPoliciesUnauthorized describes a response with status code 401, with default header values.
+/*
+GetAccessPoliciesUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type GetAccessPoliciesUnauthorized struct {
 }
 
+// IsSuccess returns true when this get access policies unauthorized response has a 2xx status code
+func (o *GetAccessPoliciesUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get access policies unauthorized response has a 3xx status code
+func (o *GetAccessPoliciesUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get access policies unauthorized response has a 4xx status code
+func (o *GetAccessPoliciesUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get access policies unauthorized response has a 5xx status code
+func (o *GetAccessPoliciesUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get access policies unauthorized response a status code equal to that given
+func (o *GetAccessPoliciesUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GetAccessPoliciesUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /policies][%d] getAccessPoliciesUnauthorized ", 401)
+}
+
+func (o *GetAccessPoliciesUnauthorized) String() string {
 	return fmt.Sprintf("[GET /policies][%d] getAccessPoliciesUnauthorized ", 401)
 }
 
@@ -108,14 +169,44 @@ func NewGetAccessPoliciesForbidden() *GetAccessPoliciesForbidden {
 	return &GetAccessPoliciesForbidden{}
 }
 
-/* GetAccessPoliciesForbidden describes a response with status code 403, with default header values.
+/*
+GetAccessPoliciesForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type GetAccessPoliciesForbidden struct {
 }
 
+// IsSuccess returns true when this get access policies forbidden response has a 2xx status code
+func (o *GetAccessPoliciesForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get access policies forbidden response has a 3xx status code
+func (o *GetAccessPoliciesForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get access policies forbidden response has a 4xx status code
+func (o *GetAccessPoliciesForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get access policies forbidden response has a 5xx status code
+func (o *GetAccessPoliciesForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get access policies forbidden response a status code equal to that given
+func (o *GetAccessPoliciesForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetAccessPoliciesForbidden) Error() string {
+	return fmt.Sprintf("[GET /policies][%d] getAccessPoliciesForbidden ", 403)
+}
+
+func (o *GetAccessPoliciesForbidden) String() string {
 	return fmt.Sprintf("[GET /policies][%d] getAccessPoliciesForbidden ", 403)
 }
 
@@ -129,14 +220,44 @@ func NewGetAccessPoliciesConflict() *GetAccessPoliciesConflict {
 	return &GetAccessPoliciesConflict{}
 }
 
-/* GetAccessPoliciesConflict describes a response with status code 409, with default header values.
+/*
+GetAccessPoliciesConflict describes a response with status code 409, with default header values.
 
 NiFi Registry was unable to complete the request because it assumes a server state that is not valid.
 */
 type GetAccessPoliciesConflict struct {
 }
 
+// IsSuccess returns true when this get access policies conflict response has a 2xx status code
+func (o *GetAccessPoliciesConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get access policies conflict response has a 3xx status code
+func (o *GetAccessPoliciesConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get access policies conflict response has a 4xx status code
+func (o *GetAccessPoliciesConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get access policies conflict response has a 5xx status code
+func (o *GetAccessPoliciesConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get access policies conflict response a status code equal to that given
+func (o *GetAccessPoliciesConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *GetAccessPoliciesConflict) Error() string {
+	return fmt.Sprintf("[GET /policies][%d] getAccessPoliciesConflict ", 409)
+}
+
+func (o *GetAccessPoliciesConflict) String() string {
 	return fmt.Sprintf("[GET /policies][%d] getAccessPoliciesConflict ", 409)
 }
 

@@ -52,10 +52,12 @@ func NewGetFlowFileParamsWithHTTPClient(client *http.Client) *GetFlowFileParams 
 	}
 }
 
-/* GetFlowFileParams contains all the parameters to send to the API endpoint
-   for the get flow file operation.
+/*
+GetFlowFileParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get flow file operation.
+
+	Typically these are written to a http.Request.
 */
 type GetFlowFileParams struct {
 

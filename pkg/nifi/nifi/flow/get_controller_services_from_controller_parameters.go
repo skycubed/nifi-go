@@ -14,6 +14,7 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+	"github.com/go-openapi/swag"
 )
 
 // NewGetControllerServicesFromControllerParams creates a new GetControllerServicesFromControllerParams object,
@@ -52,12 +53,18 @@ func NewGetControllerServicesFromControllerParamsWithHTTPClient(client *http.Cli
 	}
 }
 
-/* GetControllerServicesFromControllerParams contains all the parameters to send to the API endpoint
-   for the get controller services from controller operation.
+/*
+GetControllerServicesFromControllerParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get controller services from controller operation.
+
+	Typically these are written to a http.Request.
 */
 type GetControllerServicesFromControllerParams struct {
+
+	// UIOnly.
+	UIOnly *bool
+
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
@@ -75,7 +82,18 @@ func (o *GetControllerServicesFromControllerParams) WithDefaults() *GetControlle
 //
 // All values with no default are reset to their zero value.
 func (o *GetControllerServicesFromControllerParams) SetDefaults() {
-	// no default values defined for this parameter
+	var (
+		uIOnlyDefault = bool(false)
+	)
+
+	val := GetControllerServicesFromControllerParams{
+		UIOnly: &uIOnlyDefault,
+	}
+
+	val.timeout = o.timeout
+	val.Context = o.Context
+	val.HTTPClient = o.HTTPClient
+	*o = val
 }
 
 // WithTimeout adds the timeout to the get controller services from controller params
@@ -111,6 +129,17 @@ func (o *GetControllerServicesFromControllerParams) SetHTTPClient(client *http.C
 	o.HTTPClient = client
 }
 
+// WithUIOnly adds the uIOnly to the get controller services from controller params
+func (o *GetControllerServicesFromControllerParams) WithUIOnly(uIOnly *bool) *GetControllerServicesFromControllerParams {
+	o.SetUIOnly(uIOnly)
+	return o
+}
+
+// SetUIOnly adds the uiOnly to the get controller services from controller params
+func (o *GetControllerServicesFromControllerParams) SetUIOnly(uIOnly *bool) {
+	o.UIOnly = uIOnly
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *GetControllerServicesFromControllerParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -118,6 +147,23 @@ func (o *GetControllerServicesFromControllerParams) WriteToRequest(r runtime.Cli
 		return err
 	}
 	var res []error
+
+	if o.UIOnly != nil {
+
+		// query param uiOnly
+		var qrUIOnly bool
+
+		if o.UIOnly != nil {
+			qrUIOnly = *o.UIOnly
+		}
+		qUIOnly := swag.FormatBool(qrUIOnly)
+		if qUIOnly != "" {
+
+			if err := r.SetQueryParam("uiOnly", qUIOnly); err != nil {
+				return err
+			}
+		}
+	}
 
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)

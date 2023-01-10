@@ -52,10 +52,12 @@ func NewCreateDropRequestParamsWithHTTPClient(client *http.Client) *CreateDropRe
 	}
 }
 
-/* CreateDropRequestParams contains all the parameters to send to the API endpoint
-   for the create drop request operation.
+/*
+CreateDropRequestParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create drop request operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateDropRequestParams struct {
 

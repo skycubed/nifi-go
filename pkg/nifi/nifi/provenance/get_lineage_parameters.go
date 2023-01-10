@@ -52,10 +52,12 @@ func NewGetLineageParamsWithHTTPClient(client *http.Client) *GetLineageParams {
 	}
 }
 
-/* GetLineageParams contains all the parameters to send to the API endpoint
-   for the get lineage operation.
+/*
+GetLineageParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get lineage operation.
+
+	Typically these are written to a http.Request.
 */
 type GetLineageParams struct {
 

@@ -69,7 +69,8 @@ func NewCreateProcessorCreated() *CreateProcessorCreated {
 	return &CreateProcessorCreated{}
 }
 
-/* CreateProcessorCreated describes a response with status code 201, with default header values.
+/*
+CreateProcessorCreated describes a response with status code 201, with default header values.
 
 successful operation
 */
@@ -77,9 +78,39 @@ type CreateProcessorCreated struct {
 	Payload *models.ProcessorEntity
 }
 
+// IsSuccess returns true when this create processor created response has a 2xx status code
+func (o *CreateProcessorCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create processor created response has a 3xx status code
+func (o *CreateProcessorCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create processor created response has a 4xx status code
+func (o *CreateProcessorCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create processor created response has a 5xx status code
+func (o *CreateProcessorCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create processor created response a status code equal to that given
+func (o *CreateProcessorCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *CreateProcessorCreated) Error() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/processors][%d] createProcessorCreated  %+v", 201, o.Payload)
 }
+
+func (o *CreateProcessorCreated) String() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/processors][%d] createProcessorCreated  %+v", 201, o.Payload)
+}
+
 func (o *CreateProcessorCreated) GetPayload() *models.ProcessorEntity {
 	return o.Payload
 }
@@ -101,14 +132,44 @@ func NewCreateProcessorBadRequest() *CreateProcessorBadRequest {
 	return &CreateProcessorBadRequest{}
 }
 
-/* CreateProcessorBadRequest describes a response with status code 400, with default header values.
+/*
+CreateProcessorBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type CreateProcessorBadRequest struct {
 }
 
+// IsSuccess returns true when this create processor bad request response has a 2xx status code
+func (o *CreateProcessorBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create processor bad request response has a 3xx status code
+func (o *CreateProcessorBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create processor bad request response has a 4xx status code
+func (o *CreateProcessorBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create processor bad request response has a 5xx status code
+func (o *CreateProcessorBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create processor bad request response a status code equal to that given
+func (o *CreateProcessorBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CreateProcessorBadRequest) Error() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/processors][%d] createProcessorBadRequest ", 400)
+}
+
+func (o *CreateProcessorBadRequest) String() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/processors][%d] createProcessorBadRequest ", 400)
 }
 
@@ -122,14 +183,44 @@ func NewCreateProcessorUnauthorized() *CreateProcessorUnauthorized {
 	return &CreateProcessorUnauthorized{}
 }
 
-/* CreateProcessorUnauthorized describes a response with status code 401, with default header values.
+/*
+CreateProcessorUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type CreateProcessorUnauthorized struct {
 }
 
+// IsSuccess returns true when this create processor unauthorized response has a 2xx status code
+func (o *CreateProcessorUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create processor unauthorized response has a 3xx status code
+func (o *CreateProcessorUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create processor unauthorized response has a 4xx status code
+func (o *CreateProcessorUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create processor unauthorized response has a 5xx status code
+func (o *CreateProcessorUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create processor unauthorized response a status code equal to that given
+func (o *CreateProcessorUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *CreateProcessorUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/processors][%d] createProcessorUnauthorized ", 401)
+}
+
+func (o *CreateProcessorUnauthorized) String() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/processors][%d] createProcessorUnauthorized ", 401)
 }
 
@@ -143,14 +234,44 @@ func NewCreateProcessorForbidden() *CreateProcessorForbidden {
 	return &CreateProcessorForbidden{}
 }
 
-/* CreateProcessorForbidden describes a response with status code 403, with default header values.
+/*
+CreateProcessorForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type CreateProcessorForbidden struct {
 }
 
+// IsSuccess returns true when this create processor forbidden response has a 2xx status code
+func (o *CreateProcessorForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create processor forbidden response has a 3xx status code
+func (o *CreateProcessorForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create processor forbidden response has a 4xx status code
+func (o *CreateProcessorForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create processor forbidden response has a 5xx status code
+func (o *CreateProcessorForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create processor forbidden response a status code equal to that given
+func (o *CreateProcessorForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CreateProcessorForbidden) Error() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/processors][%d] createProcessorForbidden ", 403)
+}
+
+func (o *CreateProcessorForbidden) String() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/processors][%d] createProcessorForbidden ", 403)
 }
 
@@ -164,14 +285,44 @@ func NewCreateProcessorNotFound() *CreateProcessorNotFound {
 	return &CreateProcessorNotFound{}
 }
 
-/* CreateProcessorNotFound describes a response with status code 404, with default header values.
+/*
+CreateProcessorNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type CreateProcessorNotFound struct {
 }
 
+// IsSuccess returns true when this create processor not found response has a 2xx status code
+func (o *CreateProcessorNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create processor not found response has a 3xx status code
+func (o *CreateProcessorNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create processor not found response has a 4xx status code
+func (o *CreateProcessorNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create processor not found response has a 5xx status code
+func (o *CreateProcessorNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create processor not found response a status code equal to that given
+func (o *CreateProcessorNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *CreateProcessorNotFound) Error() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/processors][%d] createProcessorNotFound ", 404)
+}
+
+func (o *CreateProcessorNotFound) String() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/processors][%d] createProcessorNotFound ", 404)
 }
 
@@ -185,14 +336,44 @@ func NewCreateProcessorConflict() *CreateProcessorConflict {
 	return &CreateProcessorConflict{}
 }
 
-/* CreateProcessorConflict describes a response with status code 409, with default header values.
+/*
+CreateProcessorConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type CreateProcessorConflict struct {
 }
 
+// IsSuccess returns true when this create processor conflict response has a 2xx status code
+func (o *CreateProcessorConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create processor conflict response has a 3xx status code
+func (o *CreateProcessorConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create processor conflict response has a 4xx status code
+func (o *CreateProcessorConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create processor conflict response has a 5xx status code
+func (o *CreateProcessorConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create processor conflict response a status code equal to that given
+func (o *CreateProcessorConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *CreateProcessorConflict) Error() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/processors][%d] createProcessorConflict ", 409)
+}
+
+func (o *CreateProcessorConflict) String() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/processors][%d] createProcessorConflict ", 409)
 }
 

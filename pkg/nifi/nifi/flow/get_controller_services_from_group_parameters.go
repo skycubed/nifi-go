@@ -53,10 +53,12 @@ func NewGetControllerServicesFromGroupParamsWithHTTPClient(client *http.Client) 
 	}
 }
 
-/* GetControllerServicesFromGroupParams contains all the parameters to send to the API endpoint
-   for the get controller services from group operation.
+/*
+GetControllerServicesFromGroupParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get controller services from group operation.
+
+	Typically these are written to a http.Request.
 */
 type GetControllerServicesFromGroupParams struct {
 
@@ -80,6 +82,9 @@ type GetControllerServicesFromGroupParams struct {
 	*/
 	IncludeDescendantGroups *bool
 
+	// UIOnly.
+	UIOnly *bool
+
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
@@ -101,11 +106,14 @@ func (o *GetControllerServicesFromGroupParams) SetDefaults() {
 		includeAncestorGroupsDefault = bool(true)
 
 		includeDescendantGroupsDefault = bool(false)
+
+		uIOnlyDefault = bool(false)
 	)
 
 	val := GetControllerServicesFromGroupParams{
 		IncludeAncestorGroups:   &includeAncestorGroupsDefault,
 		IncludeDescendantGroups: &includeDescendantGroupsDefault,
+		UIOnly:                  &uIOnlyDefault,
 	}
 
 	val.timeout = o.timeout
@@ -180,6 +188,17 @@ func (o *GetControllerServicesFromGroupParams) SetIncludeDescendantGroups(includ
 	o.IncludeDescendantGroups = includeDescendantGroups
 }
 
+// WithUIOnly adds the uIOnly to the get controller services from group params
+func (o *GetControllerServicesFromGroupParams) WithUIOnly(uIOnly *bool) *GetControllerServicesFromGroupParams {
+	o.SetUIOnly(uIOnly)
+	return o
+}
+
+// SetUIOnly adds the uiOnly to the get controller services from group params
+func (o *GetControllerServicesFromGroupParams) SetUIOnly(uIOnly *bool) {
+	o.UIOnly = uIOnly
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *GetControllerServicesFromGroupParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -222,6 +241,23 @@ func (o *GetControllerServicesFromGroupParams) WriteToRequest(r runtime.ClientRe
 		if qIncludeDescendantGroups != "" {
 
 			if err := r.SetQueryParam("includeDescendantGroups", qIncludeDescendantGroups); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.UIOnly != nil {
+
+		// query param uiOnly
+		var qrUIOnly bool
+
+		if o.UIOnly != nil {
+			qrUIOnly = *o.UIOnly
+		}
+		qUIOnly := swag.FormatBool(qrUIOnly)
+		if qUIOnly != "" {
+
+			if err := r.SetQueryParam("uiOnly", qUIOnly); err != nil {
 				return err
 			}
 		}

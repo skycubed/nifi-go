@@ -7,6 +7,7 @@ package models
 
 import (
 	"context"
+	"encoding/json"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
@@ -25,6 +26,10 @@ type ProcessorConfigDTO struct {
 	// The names of all relationships that cause a flow file to be terminated if the relationship is not connected elsewhere. This property differs from the 'isAutoTerminate' property of the RelationshipDTO in that the RelationshipDTO is meant to depict the current configuration, whereas this property can be set in a DTO when updating a Processor in order to change which Relationships should be auto-terminated.
 	// Unique: true
 	AutoTerminatedRelationships []string `json:"autoTerminatedRelationships"`
+
+	// Determines whether the FlowFile should be penalized or the processor should be yielded between retries.
+	// Enum: [PENALIZE_FLOWFILE YIELD_PROCESSOR]
+	BackoffMechanism string `json:"backoffMechanism,omitempty"`
 
 	// The level at which the processor will report bulletins.
 	BulletinLevel string `json:"bulletinLevel,omitempty"`
@@ -53,11 +58,21 @@ type ProcessorConfigDTO struct {
 	// Whether the processor is loss tolerant.
 	LossTolerant bool `json:"lossTolerant,omitempty"`
 
+	// Maximum amount of time to be waited during a retry period.
+	MaxBackoffPeriod string `json:"maxBackoffPeriod,omitempty"`
+
 	// The amount of time that is used when the process penalizes a flowfile.
 	PenaltyDuration string `json:"penaltyDuration,omitempty"`
 
 	// The properties for the processor. Properties whose value is not set will only contain the property name.
 	Properties map[string]string `json:"properties,omitempty"`
+
+	// All the relationships should be retried.
+	// Unique: true
+	RetriedRelationships []string `json:"retriedRelationships"`
+
+	// Overall number of retries.
+	RetryCount int32 `json:"retryCount,omitempty"`
 
 	// The run duration for the processor in milliseconds.
 	RunDurationMillis int64 `json:"runDurationMillis,omitempty"`
@@ -67,6 +82,10 @@ type ProcessorConfigDTO struct {
 
 	// Indcates whether the prcessor should be scheduled to run in event or timer driven mode.
 	SchedulingStrategy string `json:"schedulingStrategy,omitempty"`
+
+	// Set of sensitive dynamic property names
+	// Unique: true
+	SensitiveDynamicPropertyNames []string `json:"sensitiveDynamicPropertyNames"`
 
 	// The amount of time that must elapse before this processor is scheduled again after yielding.
 	YieldDuration string `json:"yieldDuration,omitempty"`
@@ -80,7 +99,19 @@ func (m *ProcessorConfigDTO) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateBackoffMechanism(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateDescriptors(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateRetriedRelationships(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateSensitiveDynamicPropertyNames(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -96,6 +127,48 @@ func (m *ProcessorConfigDTO) validateAutoTerminatedRelationships(formats strfmt.
 	}
 
 	if err := validate.UniqueItems("autoTerminatedRelationships", "body", m.AutoTerminatedRelationships); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+var processorConfigDTOTypeBackoffMechanismPropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["PENALIZE_FLOWFILE","YIELD_PROCESSOR"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		processorConfigDTOTypeBackoffMechanismPropEnum = append(processorConfigDTOTypeBackoffMechanismPropEnum, v)
+	}
+}
+
+const (
+
+	// ProcessorConfigDTOBackoffMechanismPENALIZEFLOWFILE captures enum value "PENALIZE_FLOWFILE"
+	ProcessorConfigDTOBackoffMechanismPENALIZEFLOWFILE string = "PENALIZE_FLOWFILE"
+
+	// ProcessorConfigDTOBackoffMechanismYIELDPROCESSOR captures enum value "YIELD_PROCESSOR"
+	ProcessorConfigDTOBackoffMechanismYIELDPROCESSOR string = "YIELD_PROCESSOR"
+)
+
+// prop value enum
+func (m *ProcessorConfigDTO) validateBackoffMechanismEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, processorConfigDTOTypeBackoffMechanismPropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *ProcessorConfigDTO) validateBackoffMechanism(formats strfmt.Registry) error {
+	if swag.IsZero(m.BackoffMechanism) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateBackoffMechanismEnum("backoffMechanism", "body", m.BackoffMechanism); err != nil {
 		return err
 	}
 
@@ -123,6 +196,30 @@ func (m *ProcessorConfigDTO) validateDescriptors(formats strfmt.Registry) error 
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *ProcessorConfigDTO) validateRetriedRelationships(formats strfmt.Registry) error {
+	if swag.IsZero(m.RetriedRelationships) { // not required
+		return nil
+	}
+
+	if err := validate.UniqueItems("retriedRelationships", "body", m.RetriedRelationships); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *ProcessorConfigDTO) validateSensitiveDynamicPropertyNames(formats strfmt.Registry) error {
+	if swag.IsZero(m.SensitiveDynamicPropertyNames) { // not required
+		return nil
+	}
+
+	if err := validate.UniqueItems("sensitiveDynamicPropertyNames", "body", m.SensitiveDynamicPropertyNames); err != nil {
+		return err
 	}
 
 	return nil

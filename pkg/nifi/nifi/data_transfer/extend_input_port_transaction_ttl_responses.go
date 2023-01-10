@@ -69,7 +69,8 @@ func NewExtendInputPortTransactionTTLOK() *ExtendInputPortTransactionTTLOK {
 	return &ExtendInputPortTransactionTTLOK{}
 }
 
-/* ExtendInputPortTransactionTTLOK describes a response with status code 200, with default header values.
+/*
+ExtendInputPortTransactionTTLOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,39 @@ type ExtendInputPortTransactionTTLOK struct {
 	Payload *models.TransactionResultEntity
 }
 
+// IsSuccess returns true when this extend input port transaction Ttl o k response has a 2xx status code
+func (o *ExtendInputPortTransactionTTLOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this extend input port transaction Ttl o k response has a 3xx status code
+func (o *ExtendInputPortTransactionTTLOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this extend input port transaction Ttl o k response has a 4xx status code
+func (o *ExtendInputPortTransactionTTLOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this extend input port transaction Ttl o k response has a 5xx status code
+func (o *ExtendInputPortTransactionTTLOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this extend input port transaction Ttl o k response a status code equal to that given
+func (o *ExtendInputPortTransactionTTLOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ExtendInputPortTransactionTTLOK) Error() string {
 	return fmt.Sprintf("[PUT /data-transfer/input-ports/{portId}/transactions/{transactionId}][%d] extendInputPortTransactionTtlOK  %+v", 200, o.Payload)
 }
+
+func (o *ExtendInputPortTransactionTTLOK) String() string {
+	return fmt.Sprintf("[PUT /data-transfer/input-ports/{portId}/transactions/{transactionId}][%d] extendInputPortTransactionTtlOK  %+v", 200, o.Payload)
+}
+
 func (o *ExtendInputPortTransactionTTLOK) GetPayload() *models.TransactionResultEntity {
 	return o.Payload
 }
@@ -101,14 +132,44 @@ func NewExtendInputPortTransactionTTLBadRequest() *ExtendInputPortTransactionTTL
 	return &ExtendInputPortTransactionTTLBadRequest{}
 }
 
-/* ExtendInputPortTransactionTTLBadRequest describes a response with status code 400, with default header values.
+/*
+ExtendInputPortTransactionTTLBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type ExtendInputPortTransactionTTLBadRequest struct {
 }
 
+// IsSuccess returns true when this extend input port transaction Ttl bad request response has a 2xx status code
+func (o *ExtendInputPortTransactionTTLBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this extend input port transaction Ttl bad request response has a 3xx status code
+func (o *ExtendInputPortTransactionTTLBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this extend input port transaction Ttl bad request response has a 4xx status code
+func (o *ExtendInputPortTransactionTTLBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this extend input port transaction Ttl bad request response has a 5xx status code
+func (o *ExtendInputPortTransactionTTLBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this extend input port transaction Ttl bad request response a status code equal to that given
+func (o *ExtendInputPortTransactionTTLBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ExtendInputPortTransactionTTLBadRequest) Error() string {
+	return fmt.Sprintf("[PUT /data-transfer/input-ports/{portId}/transactions/{transactionId}][%d] extendInputPortTransactionTtlBadRequest ", 400)
+}
+
+func (o *ExtendInputPortTransactionTTLBadRequest) String() string {
 	return fmt.Sprintf("[PUT /data-transfer/input-ports/{portId}/transactions/{transactionId}][%d] extendInputPortTransactionTtlBadRequest ", 400)
 }
 
@@ -122,14 +183,44 @@ func NewExtendInputPortTransactionTTLUnauthorized() *ExtendInputPortTransactionT
 	return &ExtendInputPortTransactionTTLUnauthorized{}
 }
 
-/* ExtendInputPortTransactionTTLUnauthorized describes a response with status code 401, with default header values.
+/*
+ExtendInputPortTransactionTTLUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type ExtendInputPortTransactionTTLUnauthorized struct {
 }
 
+// IsSuccess returns true when this extend input port transaction Ttl unauthorized response has a 2xx status code
+func (o *ExtendInputPortTransactionTTLUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this extend input port transaction Ttl unauthorized response has a 3xx status code
+func (o *ExtendInputPortTransactionTTLUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this extend input port transaction Ttl unauthorized response has a 4xx status code
+func (o *ExtendInputPortTransactionTTLUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this extend input port transaction Ttl unauthorized response has a 5xx status code
+func (o *ExtendInputPortTransactionTTLUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this extend input port transaction Ttl unauthorized response a status code equal to that given
+func (o *ExtendInputPortTransactionTTLUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *ExtendInputPortTransactionTTLUnauthorized) Error() string {
+	return fmt.Sprintf("[PUT /data-transfer/input-ports/{portId}/transactions/{transactionId}][%d] extendInputPortTransactionTtlUnauthorized ", 401)
+}
+
+func (o *ExtendInputPortTransactionTTLUnauthorized) String() string {
 	return fmt.Sprintf("[PUT /data-transfer/input-ports/{portId}/transactions/{transactionId}][%d] extendInputPortTransactionTtlUnauthorized ", 401)
 }
 
@@ -143,14 +234,44 @@ func NewExtendInputPortTransactionTTLForbidden() *ExtendInputPortTransactionTTLF
 	return &ExtendInputPortTransactionTTLForbidden{}
 }
 
-/* ExtendInputPortTransactionTTLForbidden describes a response with status code 403, with default header values.
+/*
+ExtendInputPortTransactionTTLForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type ExtendInputPortTransactionTTLForbidden struct {
 }
 
+// IsSuccess returns true when this extend input port transaction Ttl forbidden response has a 2xx status code
+func (o *ExtendInputPortTransactionTTLForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this extend input port transaction Ttl forbidden response has a 3xx status code
+func (o *ExtendInputPortTransactionTTLForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this extend input port transaction Ttl forbidden response has a 4xx status code
+func (o *ExtendInputPortTransactionTTLForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this extend input port transaction Ttl forbidden response has a 5xx status code
+func (o *ExtendInputPortTransactionTTLForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this extend input port transaction Ttl forbidden response a status code equal to that given
+func (o *ExtendInputPortTransactionTTLForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *ExtendInputPortTransactionTTLForbidden) Error() string {
+	return fmt.Sprintf("[PUT /data-transfer/input-ports/{portId}/transactions/{transactionId}][%d] extendInputPortTransactionTtlForbidden ", 403)
+}
+
+func (o *ExtendInputPortTransactionTTLForbidden) String() string {
 	return fmt.Sprintf("[PUT /data-transfer/input-ports/{portId}/transactions/{transactionId}][%d] extendInputPortTransactionTtlForbidden ", 403)
 }
 
@@ -164,14 +285,44 @@ func NewExtendInputPortTransactionTTLNotFound() *ExtendInputPortTransactionTTLNo
 	return &ExtendInputPortTransactionTTLNotFound{}
 }
 
-/* ExtendInputPortTransactionTTLNotFound describes a response with status code 404, with default header values.
+/*
+ExtendInputPortTransactionTTLNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type ExtendInputPortTransactionTTLNotFound struct {
 }
 
+// IsSuccess returns true when this extend input port transaction Ttl not found response has a 2xx status code
+func (o *ExtendInputPortTransactionTTLNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this extend input port transaction Ttl not found response has a 3xx status code
+func (o *ExtendInputPortTransactionTTLNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this extend input port transaction Ttl not found response has a 4xx status code
+func (o *ExtendInputPortTransactionTTLNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this extend input port transaction Ttl not found response has a 5xx status code
+func (o *ExtendInputPortTransactionTTLNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this extend input port transaction Ttl not found response a status code equal to that given
+func (o *ExtendInputPortTransactionTTLNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ExtendInputPortTransactionTTLNotFound) Error() string {
+	return fmt.Sprintf("[PUT /data-transfer/input-ports/{portId}/transactions/{transactionId}][%d] extendInputPortTransactionTtlNotFound ", 404)
+}
+
+func (o *ExtendInputPortTransactionTTLNotFound) String() string {
 	return fmt.Sprintf("[PUT /data-transfer/input-ports/{portId}/transactions/{transactionId}][%d] extendInputPortTransactionTtlNotFound ", 404)
 }
 
@@ -185,14 +336,44 @@ func NewExtendInputPortTransactionTTLConflict() *ExtendInputPortTransactionTTLCo
 	return &ExtendInputPortTransactionTTLConflict{}
 }
 
-/* ExtendInputPortTransactionTTLConflict describes a response with status code 409, with default header values.
+/*
+ExtendInputPortTransactionTTLConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type ExtendInputPortTransactionTTLConflict struct {
 }
 
+// IsSuccess returns true when this extend input port transaction Ttl conflict response has a 2xx status code
+func (o *ExtendInputPortTransactionTTLConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this extend input port transaction Ttl conflict response has a 3xx status code
+func (o *ExtendInputPortTransactionTTLConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this extend input port transaction Ttl conflict response has a 4xx status code
+func (o *ExtendInputPortTransactionTTLConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this extend input port transaction Ttl conflict response has a 5xx status code
+func (o *ExtendInputPortTransactionTTLConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this extend input port transaction Ttl conflict response a status code equal to that given
+func (o *ExtendInputPortTransactionTTLConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *ExtendInputPortTransactionTTLConflict) Error() string {
+	return fmt.Sprintf("[PUT /data-transfer/input-ports/{portId}/transactions/{transactionId}][%d] extendInputPortTransactionTtlConflict ", 409)
+}
+
+func (o *ExtendInputPortTransactionTTLConflict) String() string {
 	return fmt.Sprintf("[PUT /data-transfer/input-ports/{portId}/transactions/{transactionId}][%d] extendInputPortTransactionTtlConflict ", 409)
 }
 

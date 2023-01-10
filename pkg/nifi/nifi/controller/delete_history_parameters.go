@@ -52,10 +52,12 @@ func NewDeleteHistoryParamsWithHTTPClient(client *http.Client) *DeleteHistoryPar
 	}
 }
 
-/* DeleteHistoryParams contains all the parameters to send to the API endpoint
-   for the delete history operation.
+/*
+DeleteHistoryParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete history operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteHistoryParams struct {
 
