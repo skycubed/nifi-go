@@ -88,6 +88,11 @@ func (m *VersionedFlowSnapshotMetadataSetEntity) contextValidateVersionedFlowSna
 	for i := 0; i < len(m.VersionedFlowSnapshotMetadataSet); i++ {
 
 		if m.VersionedFlowSnapshotMetadataSet[i] != nil {
+
+			if swag.IsZero(m.VersionedFlowSnapshotMetadataSet[i]) { // not required
+				return nil
+			}
+
 			if err := m.VersionedFlowSnapshotMetadataSet[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("versionedFlowSnapshotMetadataSet" + "." + strconv.Itoa(i))

@@ -52,10 +52,12 @@ func NewGetProvenanceEventParamsWithHTTPClient(client *http.Client) *GetProvenan
 	}
 }
 
-/* GetProvenanceEventParams contains all the parameters to send to the API endpoint
-   for the get provenance event operation.
+/*
+GetProvenanceEventParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get provenance event operation.
+
+	Typically these are written to a http.Request.
 */
 type GetProvenanceEventParams struct {
 

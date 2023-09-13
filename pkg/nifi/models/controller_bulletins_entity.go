@@ -156,6 +156,11 @@ func (m *ControllerBulletinsEntity) contextValidateBulletins(ctx context.Context
 	for i := 0; i < len(m.Bulletins); i++ {
 
 		if m.Bulletins[i] != nil {
+
+			if swag.IsZero(m.Bulletins[i]) { // not required
+				return nil
+			}
+
 			if err := m.Bulletins[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("bulletins" + "." + strconv.Itoa(i))
@@ -176,6 +181,11 @@ func (m *ControllerBulletinsEntity) contextValidateControllerServiceBulletins(ct
 	for i := 0; i < len(m.ControllerServiceBulletins); i++ {
 
 		if m.ControllerServiceBulletins[i] != nil {
+
+			if swag.IsZero(m.ControllerServiceBulletins[i]) { // not required
+				return nil
+			}
+
 			if err := m.ControllerServiceBulletins[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("controllerServiceBulletins" + "." + strconv.Itoa(i))
@@ -196,6 +206,11 @@ func (m *ControllerBulletinsEntity) contextValidateReportingTaskBulletins(ctx co
 	for i := 0; i < len(m.ReportingTaskBulletins); i++ {
 
 		if m.ReportingTaskBulletins[i] != nil {
+
+			if swag.IsZero(m.ReportingTaskBulletins[i]) { // not required
+				return nil
+			}
+
 			if err := m.ReportingTaskBulletins[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("reportingTaskBulletins" + "." + strconv.Itoa(i))

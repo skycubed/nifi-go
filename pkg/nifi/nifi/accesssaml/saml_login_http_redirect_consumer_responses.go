@@ -36,12 +36,38 @@ func NewSamlLoginHTTPRedirectConsumerDefault(code int) *SamlLoginHTTPRedirectCon
 	}
 }
 
-/* SamlLoginHTTPRedirectConsumerDefault describes a response with status code -1, with default header values.
+/*
+SamlLoginHTTPRedirectConsumerDefault describes a response with status code -1, with default header values.
 
 successful operation
 */
 type SamlLoginHTTPRedirectConsumerDefault struct {
 	_statusCode int
+}
+
+// IsSuccess returns true when this saml login Http redirect consumer default response has a 2xx status code
+func (o *SamlLoginHTTPRedirectConsumerDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this saml login Http redirect consumer default response has a 3xx status code
+func (o *SamlLoginHTTPRedirectConsumerDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this saml login Http redirect consumer default response has a 4xx status code
+func (o *SamlLoginHTTPRedirectConsumerDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this saml login Http redirect consumer default response has a 5xx status code
+func (o *SamlLoginHTTPRedirectConsumerDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this saml login Http redirect consumer default response a status code equal to that given
+func (o *SamlLoginHTTPRedirectConsumerDefault) IsCode(code int) bool {
+	return o._statusCode == code
 }
 
 // Code gets the status code for the saml login Http redirect consumer default response
@@ -50,6 +76,10 @@ func (o *SamlLoginHTTPRedirectConsumerDefault) Code() int {
 }
 
 func (o *SamlLoginHTTPRedirectConsumerDefault) Error() string {
+	return fmt.Sprintf("[GET /access/saml/login/consumer][%d] samlLoginHttpRedirectConsumer default ", o._statusCode)
+}
+
+func (o *SamlLoginHTTPRedirectConsumerDefault) String() string {
 	return fmt.Sprintf("[GET /access/saml/login/consumer][%d] samlLoginHttpRedirectConsumer default ", o._statusCode)
 }
 

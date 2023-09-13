@@ -60,7 +60,7 @@ func (o *GetUserReader) ReadResponse(response runtime.ClientResponse, consumer r
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /tenants/users/{id}] getUser", response, response.Code())
 	}
 }
 
@@ -69,7 +69,8 @@ func NewGetUserOK() *GetUserOK {
 	return &GetUserOK{}
 }
 
-/* GetUserOK describes a response with status code 200, with default header values.
+/*
+GetUserOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,44 @@ type GetUserOK struct {
 	Payload *models.User
 }
 
+// IsSuccess returns true when this get user o k response has a 2xx status code
+func (o *GetUserOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get user o k response has a 3xx status code
+func (o *GetUserOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get user o k response has a 4xx status code
+func (o *GetUserOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get user o k response has a 5xx status code
+func (o *GetUserOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get user o k response a status code equal to that given
+func (o *GetUserOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the get user o k response
+func (o *GetUserOK) Code() int {
+	return 200
+}
+
 func (o *GetUserOK) Error() string {
 	return fmt.Sprintf("[GET /tenants/users/{id}][%d] getUserOK  %+v", 200, o.Payload)
 }
+
+func (o *GetUserOK) String() string {
+	return fmt.Sprintf("[GET /tenants/users/{id}][%d] getUserOK  %+v", 200, o.Payload)
+}
+
 func (o *GetUserOK) GetPayload() *models.User {
 	return o.Payload
 }
@@ -101,14 +137,49 @@ func NewGetUserBadRequest() *GetUserBadRequest {
 	return &GetUserBadRequest{}
 }
 
-/* GetUserBadRequest describes a response with status code 400, with default header values.
+/*
+GetUserBadRequest describes a response with status code 400, with default header values.
 
 NiFi Registry was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type GetUserBadRequest struct {
 }
 
+// IsSuccess returns true when this get user bad request response has a 2xx status code
+func (o *GetUserBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get user bad request response has a 3xx status code
+func (o *GetUserBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get user bad request response has a 4xx status code
+func (o *GetUserBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get user bad request response has a 5xx status code
+func (o *GetUserBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get user bad request response a status code equal to that given
+func (o *GetUserBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the get user bad request response
+func (o *GetUserBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetUserBadRequest) Error() string {
+	return fmt.Sprintf("[GET /tenants/users/{id}][%d] getUserBadRequest ", 400)
+}
+
+func (o *GetUserBadRequest) String() string {
 	return fmt.Sprintf("[GET /tenants/users/{id}][%d] getUserBadRequest ", 400)
 }
 
@@ -122,14 +193,49 @@ func NewGetUserUnauthorized() *GetUserUnauthorized {
 	return &GetUserUnauthorized{}
 }
 
-/* GetUserUnauthorized describes a response with status code 401, with default header values.
+/*
+GetUserUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type GetUserUnauthorized struct {
 }
 
+// IsSuccess returns true when this get user unauthorized response has a 2xx status code
+func (o *GetUserUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get user unauthorized response has a 3xx status code
+func (o *GetUserUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get user unauthorized response has a 4xx status code
+func (o *GetUserUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get user unauthorized response has a 5xx status code
+func (o *GetUserUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get user unauthorized response a status code equal to that given
+func (o *GetUserUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the get user unauthorized response
+func (o *GetUserUnauthorized) Code() int {
+	return 401
+}
+
 func (o *GetUserUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /tenants/users/{id}][%d] getUserUnauthorized ", 401)
+}
+
+func (o *GetUserUnauthorized) String() string {
 	return fmt.Sprintf("[GET /tenants/users/{id}][%d] getUserUnauthorized ", 401)
 }
 
@@ -143,14 +249,49 @@ func NewGetUserForbidden() *GetUserForbidden {
 	return &GetUserForbidden{}
 }
 
-/* GetUserForbidden describes a response with status code 403, with default header values.
+/*
+GetUserForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type GetUserForbidden struct {
 }
 
+// IsSuccess returns true when this get user forbidden response has a 2xx status code
+func (o *GetUserForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get user forbidden response has a 3xx status code
+func (o *GetUserForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get user forbidden response has a 4xx status code
+func (o *GetUserForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get user forbidden response has a 5xx status code
+func (o *GetUserForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get user forbidden response a status code equal to that given
+func (o *GetUserForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the get user forbidden response
+func (o *GetUserForbidden) Code() int {
+	return 403
+}
+
 func (o *GetUserForbidden) Error() string {
+	return fmt.Sprintf("[GET /tenants/users/{id}][%d] getUserForbidden ", 403)
+}
+
+func (o *GetUserForbidden) String() string {
 	return fmt.Sprintf("[GET /tenants/users/{id}][%d] getUserForbidden ", 403)
 }
 
@@ -164,14 +305,49 @@ func NewGetUserNotFound() *GetUserNotFound {
 	return &GetUserNotFound{}
 }
 
-/* GetUserNotFound describes a response with status code 404, with default header values.
+/*
+GetUserNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type GetUserNotFound struct {
 }
 
+// IsSuccess returns true when this get user not found response has a 2xx status code
+func (o *GetUserNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get user not found response has a 3xx status code
+func (o *GetUserNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get user not found response has a 4xx status code
+func (o *GetUserNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get user not found response has a 5xx status code
+func (o *GetUserNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get user not found response a status code equal to that given
+func (o *GetUserNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+// Code gets the status code for the get user not found response
+func (o *GetUserNotFound) Code() int {
+	return 404
+}
+
 func (o *GetUserNotFound) Error() string {
+	return fmt.Sprintf("[GET /tenants/users/{id}][%d] getUserNotFound ", 404)
+}
+
+func (o *GetUserNotFound) String() string {
 	return fmt.Sprintf("[GET /tenants/users/{id}][%d] getUserNotFound ", 404)
 }
 
@@ -185,14 +361,49 @@ func NewGetUserConflict() *GetUserConflict {
 	return &GetUserConflict{}
 }
 
-/* GetUserConflict describes a response with status code 409, with default header values.
+/*
+GetUserConflict describes a response with status code 409, with default header values.
 
 NiFi Registry was unable to complete the request because it assumes a server state that is not valid.
 */
 type GetUserConflict struct {
 }
 
+// IsSuccess returns true when this get user conflict response has a 2xx status code
+func (o *GetUserConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get user conflict response has a 3xx status code
+func (o *GetUserConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get user conflict response has a 4xx status code
+func (o *GetUserConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get user conflict response has a 5xx status code
+func (o *GetUserConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get user conflict response a status code equal to that given
+func (o *GetUserConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the get user conflict response
+func (o *GetUserConflict) Code() int {
+	return 409
+}
+
 func (o *GetUserConflict) Error() string {
+	return fmt.Sprintf("[GET /tenants/users/{id}][%d] getUserConflict ", 409)
+}
+
+func (o *GetUserConflict) String() string {
 	return fmt.Sprintf("[GET /tenants/users/{id}][%d] getUserConflict ", 409)
 }
 

@@ -54,10 +54,12 @@ func NewCreateOutputPortParamsWithHTTPClient(client *http.Client) *CreateOutputP
 	}
 }
 
-/* CreateOutputPortParams contains all the parameters to send to the API endpoint
-   for the create output port operation.
+/*
+CreateOutputPortParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create output port operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateOutputPortParams struct {
 

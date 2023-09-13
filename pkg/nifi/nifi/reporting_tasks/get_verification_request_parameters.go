@@ -52,10 +52,12 @@ func NewGetVerificationRequestParamsWithHTTPClient(client *http.Client) *GetVeri
 	}
 }
 
-/* GetVerificationRequestParams contains all the parameters to send to the API endpoint
-   for the get verification request operation.
+/*
+GetVerificationRequestParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get verification request operation.
+
+	Typically these are written to a http.Request.
 */
 type GetVerificationRequestParams struct {
 

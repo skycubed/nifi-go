@@ -66,7 +66,7 @@ func (o *CreateDropRequestReader) ReadResponse(response runtime.ClientResponse, 
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /flowfile-queues/{id}/drop-requests] createDropRequest", response, response.Code())
 	}
 }
 
@@ -75,7 +75,8 @@ func NewCreateDropRequestOK() *CreateDropRequestOK {
 	return &CreateDropRequestOK{}
 }
 
-/* CreateDropRequestOK describes a response with status code 200, with default header values.
+/*
+CreateDropRequestOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -83,9 +84,44 @@ type CreateDropRequestOK struct {
 	Payload *models.DropRequestEntity
 }
 
+// IsSuccess returns true when this create drop request o k response has a 2xx status code
+func (o *CreateDropRequestOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create drop request o k response has a 3xx status code
+func (o *CreateDropRequestOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create drop request o k response has a 4xx status code
+func (o *CreateDropRequestOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create drop request o k response has a 5xx status code
+func (o *CreateDropRequestOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create drop request o k response a status code equal to that given
+func (o *CreateDropRequestOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the create drop request o k response
+func (o *CreateDropRequestOK) Code() int {
+	return 200
+}
+
 func (o *CreateDropRequestOK) Error() string {
 	return fmt.Sprintf("[POST /flowfile-queues/{id}/drop-requests][%d] createDropRequestOK  %+v", 200, o.Payload)
 }
+
+func (o *CreateDropRequestOK) String() string {
+	return fmt.Sprintf("[POST /flowfile-queues/{id}/drop-requests][%d] createDropRequestOK  %+v", 200, o.Payload)
+}
+
 func (o *CreateDropRequestOK) GetPayload() *models.DropRequestEntity {
 	return o.Payload
 }
@@ -107,14 +143,49 @@ func NewCreateDropRequestAccepted() *CreateDropRequestAccepted {
 	return &CreateDropRequestAccepted{}
 }
 
-/* CreateDropRequestAccepted describes a response with status code 202, with default header values.
+/*
+CreateDropRequestAccepted describes a response with status code 202, with default header values.
 
 The request has been accepted. A HTTP response header will contain the URI where the response can be polled.
 */
 type CreateDropRequestAccepted struct {
 }
 
+// IsSuccess returns true when this create drop request accepted response has a 2xx status code
+func (o *CreateDropRequestAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create drop request accepted response has a 3xx status code
+func (o *CreateDropRequestAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create drop request accepted response has a 4xx status code
+func (o *CreateDropRequestAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create drop request accepted response has a 5xx status code
+func (o *CreateDropRequestAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create drop request accepted response a status code equal to that given
+func (o *CreateDropRequestAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
+// Code gets the status code for the create drop request accepted response
+func (o *CreateDropRequestAccepted) Code() int {
+	return 202
+}
+
 func (o *CreateDropRequestAccepted) Error() string {
+	return fmt.Sprintf("[POST /flowfile-queues/{id}/drop-requests][%d] createDropRequestAccepted ", 202)
+}
+
+func (o *CreateDropRequestAccepted) String() string {
 	return fmt.Sprintf("[POST /flowfile-queues/{id}/drop-requests][%d] createDropRequestAccepted ", 202)
 }
 
@@ -128,14 +199,49 @@ func NewCreateDropRequestBadRequest() *CreateDropRequestBadRequest {
 	return &CreateDropRequestBadRequest{}
 }
 
-/* CreateDropRequestBadRequest describes a response with status code 400, with default header values.
+/*
+CreateDropRequestBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type CreateDropRequestBadRequest struct {
 }
 
+// IsSuccess returns true when this create drop request bad request response has a 2xx status code
+func (o *CreateDropRequestBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create drop request bad request response has a 3xx status code
+func (o *CreateDropRequestBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create drop request bad request response has a 4xx status code
+func (o *CreateDropRequestBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create drop request bad request response has a 5xx status code
+func (o *CreateDropRequestBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create drop request bad request response a status code equal to that given
+func (o *CreateDropRequestBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the create drop request bad request response
+func (o *CreateDropRequestBadRequest) Code() int {
+	return 400
+}
+
 func (o *CreateDropRequestBadRequest) Error() string {
+	return fmt.Sprintf("[POST /flowfile-queues/{id}/drop-requests][%d] createDropRequestBadRequest ", 400)
+}
+
+func (o *CreateDropRequestBadRequest) String() string {
 	return fmt.Sprintf("[POST /flowfile-queues/{id}/drop-requests][%d] createDropRequestBadRequest ", 400)
 }
 
@@ -149,14 +255,49 @@ func NewCreateDropRequestUnauthorized() *CreateDropRequestUnauthorized {
 	return &CreateDropRequestUnauthorized{}
 }
 
-/* CreateDropRequestUnauthorized describes a response with status code 401, with default header values.
+/*
+CreateDropRequestUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type CreateDropRequestUnauthorized struct {
 }
 
+// IsSuccess returns true when this create drop request unauthorized response has a 2xx status code
+func (o *CreateDropRequestUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create drop request unauthorized response has a 3xx status code
+func (o *CreateDropRequestUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create drop request unauthorized response has a 4xx status code
+func (o *CreateDropRequestUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create drop request unauthorized response has a 5xx status code
+func (o *CreateDropRequestUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create drop request unauthorized response a status code equal to that given
+func (o *CreateDropRequestUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the create drop request unauthorized response
+func (o *CreateDropRequestUnauthorized) Code() int {
+	return 401
+}
+
 func (o *CreateDropRequestUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /flowfile-queues/{id}/drop-requests][%d] createDropRequestUnauthorized ", 401)
+}
+
+func (o *CreateDropRequestUnauthorized) String() string {
 	return fmt.Sprintf("[POST /flowfile-queues/{id}/drop-requests][%d] createDropRequestUnauthorized ", 401)
 }
 
@@ -170,14 +311,49 @@ func NewCreateDropRequestForbidden() *CreateDropRequestForbidden {
 	return &CreateDropRequestForbidden{}
 }
 
-/* CreateDropRequestForbidden describes a response with status code 403, with default header values.
+/*
+CreateDropRequestForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type CreateDropRequestForbidden struct {
 }
 
+// IsSuccess returns true when this create drop request forbidden response has a 2xx status code
+func (o *CreateDropRequestForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create drop request forbidden response has a 3xx status code
+func (o *CreateDropRequestForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create drop request forbidden response has a 4xx status code
+func (o *CreateDropRequestForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create drop request forbidden response has a 5xx status code
+func (o *CreateDropRequestForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create drop request forbidden response a status code equal to that given
+func (o *CreateDropRequestForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the create drop request forbidden response
+func (o *CreateDropRequestForbidden) Code() int {
+	return 403
+}
+
 func (o *CreateDropRequestForbidden) Error() string {
+	return fmt.Sprintf("[POST /flowfile-queues/{id}/drop-requests][%d] createDropRequestForbidden ", 403)
+}
+
+func (o *CreateDropRequestForbidden) String() string {
 	return fmt.Sprintf("[POST /flowfile-queues/{id}/drop-requests][%d] createDropRequestForbidden ", 403)
 }
 
@@ -191,14 +367,49 @@ func NewCreateDropRequestNotFound() *CreateDropRequestNotFound {
 	return &CreateDropRequestNotFound{}
 }
 
-/* CreateDropRequestNotFound describes a response with status code 404, with default header values.
+/*
+CreateDropRequestNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type CreateDropRequestNotFound struct {
 }
 
+// IsSuccess returns true when this create drop request not found response has a 2xx status code
+func (o *CreateDropRequestNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create drop request not found response has a 3xx status code
+func (o *CreateDropRequestNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create drop request not found response has a 4xx status code
+func (o *CreateDropRequestNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create drop request not found response has a 5xx status code
+func (o *CreateDropRequestNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create drop request not found response a status code equal to that given
+func (o *CreateDropRequestNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+// Code gets the status code for the create drop request not found response
+func (o *CreateDropRequestNotFound) Code() int {
+	return 404
+}
+
 func (o *CreateDropRequestNotFound) Error() string {
+	return fmt.Sprintf("[POST /flowfile-queues/{id}/drop-requests][%d] createDropRequestNotFound ", 404)
+}
+
+func (o *CreateDropRequestNotFound) String() string {
 	return fmt.Sprintf("[POST /flowfile-queues/{id}/drop-requests][%d] createDropRequestNotFound ", 404)
 }
 
@@ -212,14 +423,49 @@ func NewCreateDropRequestConflict() *CreateDropRequestConflict {
 	return &CreateDropRequestConflict{}
 }
 
-/* CreateDropRequestConflict describes a response with status code 409, with default header values.
+/*
+CreateDropRequestConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type CreateDropRequestConflict struct {
 }
 
+// IsSuccess returns true when this create drop request conflict response has a 2xx status code
+func (o *CreateDropRequestConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create drop request conflict response has a 3xx status code
+func (o *CreateDropRequestConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create drop request conflict response has a 4xx status code
+func (o *CreateDropRequestConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create drop request conflict response has a 5xx status code
+func (o *CreateDropRequestConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create drop request conflict response a status code equal to that given
+func (o *CreateDropRequestConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the create drop request conflict response
+func (o *CreateDropRequestConflict) Code() int {
+	return 409
+}
+
 func (o *CreateDropRequestConflict) Error() string {
+	return fmt.Sprintf("[POST /flowfile-queues/{id}/drop-requests][%d] createDropRequestConflict ", 409)
+}
+
+func (o *CreateDropRequestConflict) String() string {
 	return fmt.Sprintf("[POST /flowfile-queues/{id}/drop-requests][%d] createDropRequestConflict ", 409)
 }
 

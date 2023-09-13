@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "description": "The Rest API provides programmatic access to command and control a NiFi instance in real time. Start and\n                                            stop processors, monitor queues, query provenance data, and more. Each endpoint below includes a description,\n                                            definitions of the expected input and output, potential response codes, and the authorizations required\n                                            to invoke each service.",
-    "version": "1.15.3",
+    "version": "1.15.0",
     "title": "NiFi Rest API",
     "contact": {
       "url": "https://nifi.apache.org",
@@ -15978,13 +15978,13 @@
           "format": "int32",
           "description": "The number of nodes in the cluster, regardless of whether or not they are connected"
         },
-        "connectedToCluster": {
-          "type": "boolean",
-          "description": "Whether this NiFi instance is connected to a cluster."
-        },
         "clustered": {
           "type": "boolean",
           "description": "Whether this NiFi instance is clustered."
+        },
+        "connectedToCluster": {
+          "type": "boolean",
+          "description": "Whether this NiFi instance is connected to a cluster."
         }
       }
     },
@@ -20627,15 +20627,15 @@
           "description": "The contents of this process group.",
           "$ref": "#/definitions/FlowSnippetDTO"
         },
-        "outputPortCount": {
-          "type": "integer",
-          "format": "int32",
-          "description": "The number of output ports in the process group."
-        },
         "inputPortCount": {
           "type": "integer",
           "format": "int32",
           "description": "The number of input ports in the process group."
+        },
+        "outputPortCount": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The number of output ports in the process group."
         }
       }
     },
@@ -20774,15 +20774,15 @@
           "description": "The Parameter Context, or null if no Parameter Context has been bound to the Process Group",
           "$ref": "#/definitions/ParameterContextReferenceEntity"
         },
-        "outputPortCount": {
-          "type": "integer",
-          "format": "int32",
-          "description": "The number of output ports in the process group."
-        },
         "inputPortCount": {
           "type": "integer",
           "format": "int32",
           "description": "The number of input ports in the process group."
+        },
+        "outputPortCount": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The number of output ports in the process group."
         }
       },
       "xml": {

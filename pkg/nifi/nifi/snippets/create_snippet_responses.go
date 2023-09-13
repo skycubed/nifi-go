@@ -60,7 +60,7 @@ func (o *CreateSnippetReader) ReadResponse(response runtime.ClientResponse, cons
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /snippets] createSnippet", response, response.Code())
 	}
 }
 
@@ -69,7 +69,8 @@ func NewCreateSnippetCreated() *CreateSnippetCreated {
 	return &CreateSnippetCreated{}
 }
 
-/* CreateSnippetCreated describes a response with status code 201, with default header values.
+/*
+CreateSnippetCreated describes a response with status code 201, with default header values.
 
 successful operation
 */
@@ -77,9 +78,44 @@ type CreateSnippetCreated struct {
 	Payload *models.SnippetEntity
 }
 
+// IsSuccess returns true when this create snippet created response has a 2xx status code
+func (o *CreateSnippetCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create snippet created response has a 3xx status code
+func (o *CreateSnippetCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create snippet created response has a 4xx status code
+func (o *CreateSnippetCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create snippet created response has a 5xx status code
+func (o *CreateSnippetCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create snippet created response a status code equal to that given
+func (o *CreateSnippetCreated) IsCode(code int) bool {
+	return code == 201
+}
+
+// Code gets the status code for the create snippet created response
+func (o *CreateSnippetCreated) Code() int {
+	return 201
+}
+
 func (o *CreateSnippetCreated) Error() string {
 	return fmt.Sprintf("[POST /snippets][%d] createSnippetCreated  %+v", 201, o.Payload)
 }
+
+func (o *CreateSnippetCreated) String() string {
+	return fmt.Sprintf("[POST /snippets][%d] createSnippetCreated  %+v", 201, o.Payload)
+}
+
 func (o *CreateSnippetCreated) GetPayload() *models.SnippetEntity {
 	return o.Payload
 }
@@ -101,14 +137,49 @@ func NewCreateSnippetBadRequest() *CreateSnippetBadRequest {
 	return &CreateSnippetBadRequest{}
 }
 
-/* CreateSnippetBadRequest describes a response with status code 400, with default header values.
+/*
+CreateSnippetBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type CreateSnippetBadRequest struct {
 }
 
+// IsSuccess returns true when this create snippet bad request response has a 2xx status code
+func (o *CreateSnippetBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create snippet bad request response has a 3xx status code
+func (o *CreateSnippetBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create snippet bad request response has a 4xx status code
+func (o *CreateSnippetBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create snippet bad request response has a 5xx status code
+func (o *CreateSnippetBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create snippet bad request response a status code equal to that given
+func (o *CreateSnippetBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the create snippet bad request response
+func (o *CreateSnippetBadRequest) Code() int {
+	return 400
+}
+
 func (o *CreateSnippetBadRequest) Error() string {
+	return fmt.Sprintf("[POST /snippets][%d] createSnippetBadRequest ", 400)
+}
+
+func (o *CreateSnippetBadRequest) String() string {
 	return fmt.Sprintf("[POST /snippets][%d] createSnippetBadRequest ", 400)
 }
 
@@ -122,14 +193,49 @@ func NewCreateSnippetUnauthorized() *CreateSnippetUnauthorized {
 	return &CreateSnippetUnauthorized{}
 }
 
-/* CreateSnippetUnauthorized describes a response with status code 401, with default header values.
+/*
+CreateSnippetUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type CreateSnippetUnauthorized struct {
 }
 
+// IsSuccess returns true when this create snippet unauthorized response has a 2xx status code
+func (o *CreateSnippetUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create snippet unauthorized response has a 3xx status code
+func (o *CreateSnippetUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create snippet unauthorized response has a 4xx status code
+func (o *CreateSnippetUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create snippet unauthorized response has a 5xx status code
+func (o *CreateSnippetUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create snippet unauthorized response a status code equal to that given
+func (o *CreateSnippetUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the create snippet unauthorized response
+func (o *CreateSnippetUnauthorized) Code() int {
+	return 401
+}
+
 func (o *CreateSnippetUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /snippets][%d] createSnippetUnauthorized ", 401)
+}
+
+func (o *CreateSnippetUnauthorized) String() string {
 	return fmt.Sprintf("[POST /snippets][%d] createSnippetUnauthorized ", 401)
 }
 
@@ -143,14 +249,49 @@ func NewCreateSnippetForbidden() *CreateSnippetForbidden {
 	return &CreateSnippetForbidden{}
 }
 
-/* CreateSnippetForbidden describes a response with status code 403, with default header values.
+/*
+CreateSnippetForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type CreateSnippetForbidden struct {
 }
 
+// IsSuccess returns true when this create snippet forbidden response has a 2xx status code
+func (o *CreateSnippetForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create snippet forbidden response has a 3xx status code
+func (o *CreateSnippetForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create snippet forbidden response has a 4xx status code
+func (o *CreateSnippetForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create snippet forbidden response has a 5xx status code
+func (o *CreateSnippetForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create snippet forbidden response a status code equal to that given
+func (o *CreateSnippetForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the create snippet forbidden response
+func (o *CreateSnippetForbidden) Code() int {
+	return 403
+}
+
 func (o *CreateSnippetForbidden) Error() string {
+	return fmt.Sprintf("[POST /snippets][%d] createSnippetForbidden ", 403)
+}
+
+func (o *CreateSnippetForbidden) String() string {
 	return fmt.Sprintf("[POST /snippets][%d] createSnippetForbidden ", 403)
 }
 
@@ -164,14 +305,49 @@ func NewCreateSnippetNotFound() *CreateSnippetNotFound {
 	return &CreateSnippetNotFound{}
 }
 
-/* CreateSnippetNotFound describes a response with status code 404, with default header values.
+/*
+CreateSnippetNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type CreateSnippetNotFound struct {
 }
 
+// IsSuccess returns true when this create snippet not found response has a 2xx status code
+func (o *CreateSnippetNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create snippet not found response has a 3xx status code
+func (o *CreateSnippetNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create snippet not found response has a 4xx status code
+func (o *CreateSnippetNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create snippet not found response has a 5xx status code
+func (o *CreateSnippetNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create snippet not found response a status code equal to that given
+func (o *CreateSnippetNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+// Code gets the status code for the create snippet not found response
+func (o *CreateSnippetNotFound) Code() int {
+	return 404
+}
+
 func (o *CreateSnippetNotFound) Error() string {
+	return fmt.Sprintf("[POST /snippets][%d] createSnippetNotFound ", 404)
+}
+
+func (o *CreateSnippetNotFound) String() string {
 	return fmt.Sprintf("[POST /snippets][%d] createSnippetNotFound ", 404)
 }
 
@@ -185,14 +361,49 @@ func NewCreateSnippetConflict() *CreateSnippetConflict {
 	return &CreateSnippetConflict{}
 }
 
-/* CreateSnippetConflict describes a response with status code 409, with default header values.
+/*
+CreateSnippetConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type CreateSnippetConflict struct {
 }
 
+// IsSuccess returns true when this create snippet conflict response has a 2xx status code
+func (o *CreateSnippetConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create snippet conflict response has a 3xx status code
+func (o *CreateSnippetConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create snippet conflict response has a 4xx status code
+func (o *CreateSnippetConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create snippet conflict response has a 5xx status code
+func (o *CreateSnippetConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create snippet conflict response a status code equal to that given
+func (o *CreateSnippetConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the create snippet conflict response
+func (o *CreateSnippetConflict) Code() int {
+	return 409
+}
+
 func (o *CreateSnippetConflict) Error() string {
+	return fmt.Sprintf("[POST /snippets][%d] createSnippetConflict ", 409)
+}
+
+func (o *CreateSnippetConflict) String() string {
 	return fmt.Sprintf("[POST /snippets][%d] createSnippetConflict ", 409)
 }
 

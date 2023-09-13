@@ -186,6 +186,11 @@ func (m *PortStatusDTO) ContextValidate(ctx context.Context, formats strfmt.Regi
 func (m *PortStatusDTO) contextValidateAggregateSnapshot(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.AggregateSnapshot != nil {
+
+		if swag.IsZero(m.AggregateSnapshot) { // not required
+			return nil
+		}
+
 		if err := m.AggregateSnapshot.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("aggregateSnapshot")
@@ -204,6 +209,11 @@ func (m *PortStatusDTO) contextValidateNodeSnapshots(ctx context.Context, format
 	for i := 0; i < len(m.NodeSnapshots); i++ {
 
 		if m.NodeSnapshots[i] != nil {
+
+			if swag.IsZero(m.NodeSnapshots[i]) { // not required
+				return nil
+			}
+
 			if err := m.NodeSnapshots[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("nodeSnapshots" + "." + strconv.Itoa(i))

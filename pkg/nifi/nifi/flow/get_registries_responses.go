@@ -60,7 +60,7 @@ func (o *GetRegistriesReader) ReadResponse(response runtime.ClientResponse, cons
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /flow/registries] getRegistries", response, response.Code())
 	}
 }
 
@@ -69,7 +69,8 @@ func NewGetRegistriesOK() *GetRegistriesOK {
 	return &GetRegistriesOK{}
 }
 
-/* GetRegistriesOK describes a response with status code 200, with default header values.
+/*
+GetRegistriesOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,44 @@ type GetRegistriesOK struct {
 	Payload *models.RegistryClientsEntity
 }
 
+// IsSuccess returns true when this get registries o k response has a 2xx status code
+func (o *GetRegistriesOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get registries o k response has a 3xx status code
+func (o *GetRegistriesOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get registries o k response has a 4xx status code
+func (o *GetRegistriesOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get registries o k response has a 5xx status code
+func (o *GetRegistriesOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get registries o k response a status code equal to that given
+func (o *GetRegistriesOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the get registries o k response
+func (o *GetRegistriesOK) Code() int {
+	return 200
+}
+
 func (o *GetRegistriesOK) Error() string {
 	return fmt.Sprintf("[GET /flow/registries][%d] getRegistriesOK  %+v", 200, o.Payload)
 }
+
+func (o *GetRegistriesOK) String() string {
+	return fmt.Sprintf("[GET /flow/registries][%d] getRegistriesOK  %+v", 200, o.Payload)
+}
+
 func (o *GetRegistriesOK) GetPayload() *models.RegistryClientsEntity {
 	return o.Payload
 }
@@ -101,14 +137,49 @@ func NewGetRegistriesBadRequest() *GetRegistriesBadRequest {
 	return &GetRegistriesBadRequest{}
 }
 
-/* GetRegistriesBadRequest describes a response with status code 400, with default header values.
+/*
+GetRegistriesBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type GetRegistriesBadRequest struct {
 }
 
+// IsSuccess returns true when this get registries bad request response has a 2xx status code
+func (o *GetRegistriesBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get registries bad request response has a 3xx status code
+func (o *GetRegistriesBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get registries bad request response has a 4xx status code
+func (o *GetRegistriesBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get registries bad request response has a 5xx status code
+func (o *GetRegistriesBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get registries bad request response a status code equal to that given
+func (o *GetRegistriesBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the get registries bad request response
+func (o *GetRegistriesBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetRegistriesBadRequest) Error() string {
+	return fmt.Sprintf("[GET /flow/registries][%d] getRegistriesBadRequest ", 400)
+}
+
+func (o *GetRegistriesBadRequest) String() string {
 	return fmt.Sprintf("[GET /flow/registries][%d] getRegistriesBadRequest ", 400)
 }
 
@@ -122,14 +193,49 @@ func NewGetRegistriesUnauthorized() *GetRegistriesUnauthorized {
 	return &GetRegistriesUnauthorized{}
 }
 
-/* GetRegistriesUnauthorized describes a response with status code 401, with default header values.
+/*
+GetRegistriesUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type GetRegistriesUnauthorized struct {
 }
 
+// IsSuccess returns true when this get registries unauthorized response has a 2xx status code
+func (o *GetRegistriesUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get registries unauthorized response has a 3xx status code
+func (o *GetRegistriesUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get registries unauthorized response has a 4xx status code
+func (o *GetRegistriesUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get registries unauthorized response has a 5xx status code
+func (o *GetRegistriesUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get registries unauthorized response a status code equal to that given
+func (o *GetRegistriesUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the get registries unauthorized response
+func (o *GetRegistriesUnauthorized) Code() int {
+	return 401
+}
+
 func (o *GetRegistriesUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /flow/registries][%d] getRegistriesUnauthorized ", 401)
+}
+
+func (o *GetRegistriesUnauthorized) String() string {
 	return fmt.Sprintf("[GET /flow/registries][%d] getRegistriesUnauthorized ", 401)
 }
 
@@ -143,14 +249,49 @@ func NewGetRegistriesForbidden() *GetRegistriesForbidden {
 	return &GetRegistriesForbidden{}
 }
 
-/* GetRegistriesForbidden describes a response with status code 403, with default header values.
+/*
+GetRegistriesForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type GetRegistriesForbidden struct {
 }
 
+// IsSuccess returns true when this get registries forbidden response has a 2xx status code
+func (o *GetRegistriesForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get registries forbidden response has a 3xx status code
+func (o *GetRegistriesForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get registries forbidden response has a 4xx status code
+func (o *GetRegistriesForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get registries forbidden response has a 5xx status code
+func (o *GetRegistriesForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get registries forbidden response a status code equal to that given
+func (o *GetRegistriesForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the get registries forbidden response
+func (o *GetRegistriesForbidden) Code() int {
+	return 403
+}
+
 func (o *GetRegistriesForbidden) Error() string {
+	return fmt.Sprintf("[GET /flow/registries][%d] getRegistriesForbidden ", 403)
+}
+
+func (o *GetRegistriesForbidden) String() string {
 	return fmt.Sprintf("[GET /flow/registries][%d] getRegistriesForbidden ", 403)
 }
 
@@ -164,14 +305,49 @@ func NewGetRegistriesNotFound() *GetRegistriesNotFound {
 	return &GetRegistriesNotFound{}
 }
 
-/* GetRegistriesNotFound describes a response with status code 404, with default header values.
+/*
+GetRegistriesNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type GetRegistriesNotFound struct {
 }
 
+// IsSuccess returns true when this get registries not found response has a 2xx status code
+func (o *GetRegistriesNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get registries not found response has a 3xx status code
+func (o *GetRegistriesNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get registries not found response has a 4xx status code
+func (o *GetRegistriesNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get registries not found response has a 5xx status code
+func (o *GetRegistriesNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get registries not found response a status code equal to that given
+func (o *GetRegistriesNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+// Code gets the status code for the get registries not found response
+func (o *GetRegistriesNotFound) Code() int {
+	return 404
+}
+
 func (o *GetRegistriesNotFound) Error() string {
+	return fmt.Sprintf("[GET /flow/registries][%d] getRegistriesNotFound ", 404)
+}
+
+func (o *GetRegistriesNotFound) String() string {
 	return fmt.Sprintf("[GET /flow/registries][%d] getRegistriesNotFound ", 404)
 }
 
@@ -185,14 +361,49 @@ func NewGetRegistriesConflict() *GetRegistriesConflict {
 	return &GetRegistriesConflict{}
 }
 
-/* GetRegistriesConflict describes a response with status code 409, with default header values.
+/*
+GetRegistriesConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type GetRegistriesConflict struct {
 }
 
+// IsSuccess returns true when this get registries conflict response has a 2xx status code
+func (o *GetRegistriesConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get registries conflict response has a 3xx status code
+func (o *GetRegistriesConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get registries conflict response has a 4xx status code
+func (o *GetRegistriesConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get registries conflict response has a 5xx status code
+func (o *GetRegistriesConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get registries conflict response a status code equal to that given
+func (o *GetRegistriesConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the get registries conflict response
+func (o *GetRegistriesConflict) Code() int {
+	return 409
+}
+
 func (o *GetRegistriesConflict) Error() string {
+	return fmt.Sprintf("[GET /flow/registries][%d] getRegistriesConflict ", 409)
+}
+
+func (o *GetRegistriesConflict) String() string {
 	return fmt.Sprintf("[GET /flow/registries][%d] getRegistriesConflict ", 409)
 }
 

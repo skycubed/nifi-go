@@ -52,10 +52,12 @@ func NewGetInputContentParamsWithHTTPClient(client *http.Client) *GetInputConten
 	}
 }
 
-/* GetInputContentParams contains all the parameters to send to the API endpoint
-   for the get input content operation.
+/*
+GetInputContentParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get input content operation.
+
+	Typically these are written to a http.Request.
 */
 type GetInputContentParams struct {
 

@@ -72,6 +72,11 @@ func (m *NodeEntity) ContextValidate(ctx context.Context, formats strfmt.Registr
 func (m *NodeEntity) contextValidateNode(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Node != nil {
+
+		if swag.IsZero(m.Node) { // not required
+			return nil
+		}
+
 		if err := m.Node.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("node")

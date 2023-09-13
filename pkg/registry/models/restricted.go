@@ -85,6 +85,11 @@ func (m *Restricted) contextValidateRestrictions(ctx context.Context, formats st
 	for i := 0; i < len(m.Restrictions); i++ {
 
 		if m.Restrictions[i] != nil {
+
+			if swag.IsZero(m.Restrictions[i]) { // not required
+				return nil
+			}
+
 			if err := m.Restrictions[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("restrictions" + "." + strconv.Itoa(i))

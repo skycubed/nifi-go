@@ -54,10 +54,12 @@ func NewUpdateRemoteProcessGroupParamsWithHTTPClient(client *http.Client) *Updat
 	}
 }
 
-/* UpdateRemoteProcessGroupParams contains all the parameters to send to the API endpoint
-   for the update remote process group operation.
+/*
+UpdateRemoteProcessGroupParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update remote process group operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateRemoteProcessGroupParams struct {
 

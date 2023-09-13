@@ -72,6 +72,11 @@ func (m *ClusteSummaryEntity) ContextValidate(ctx context.Context, formats strfm
 func (m *ClusteSummaryEntity) contextValidateClusterSummary(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ClusterSummary != nil {
+
+		if swag.IsZero(m.ClusterSummary) { // not required
+			return nil
+		}
+
 		if err := m.ClusterSummary.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("clusterSummary")

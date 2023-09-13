@@ -50,7 +50,7 @@ type ClientService interface {
 }
 
 /*
-  CreateParameterContext creates a parameter context
+CreateParameterContext creates a parameter context
 */
 func (a *Client) CreateParameterContext(params *CreateParameterContextParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateParameterContextCreated, error) {
 	// TODO: Validate the params before sending
@@ -89,9 +89,9 @@ func (a *Client) CreateParameterContext(params *CreateParameterContextParams, au
 }
 
 /*
-  DeleteParameterContext deletes the parameter context with the given ID
+DeleteParameterContext deletes the parameter context with the given ID
 
-  Deletes the Parameter Context with the given ID.
+Deletes the Parameter Context with the given ID.
 */
 func (a *Client) DeleteParameterContext(params *DeleteParameterContextParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteParameterContextOK, error) {
 	// TODO: Validate the params before sending
@@ -130,9 +130,9 @@ func (a *Client) DeleteParameterContext(params *DeleteParameterContextParams, au
 }
 
 /*
-  GetParameterContext returns the parameter context with the given ID
+GetParameterContext returns the parameter context with the given ID
 
-  Returns the Parameter Context with the given ID.
+Returns the Parameter Context with the given ID.
 */
 func (a *Client) GetParameterContext(params *GetParameterContextParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetParameterContextOK, error) {
 	// TODO: Validate the params before sending
@@ -171,9 +171,9 @@ func (a *Client) GetParameterContext(params *GetParameterContextParams, authInfo
 }
 
 /*
-  GetParameterContextUpdate returns the update request with the given ID
+GetParameterContextUpdate returns the update request with the given ID
 
-  Returns the Update Request with the given ID. Once an Update Request has been created by performing a POST to /nifi-api/parameter-contexts, that request can subsequently be retrieved via this endpoint, and the request that is fetched will contain the updated state, such as percent complete, the current state of the request, and any failures.
+Returns the Update Request with the given ID. Once an Update Request has been created by performing a POST to /nifi-api/parameter-contexts, that request can subsequently be retrieved via this endpoint, and the request that is fetched will contain the updated state, such as percent complete, the current state of the request, and any failures.
 */
 func (a *Client) GetParameterContextUpdate(params *GetParameterContextUpdateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetParameterContextUpdateOK, error) {
 	// TODO: Validate the params before sending
@@ -212,9 +212,9 @@ func (a *Client) GetParameterContextUpdate(params *GetParameterContextUpdatePara
 }
 
 /*
-  GetValidationRequest returns the validation request with the given ID
+GetValidationRequest returns the validation request with the given ID
 
-  Returns the Validation Request with the given ID. Once a Validation Request has been created by performing a POST to /nifi-api/validation-contexts, that request can subsequently be retrieved via this endpoint, and the request that is fetched will contain the updated state, such as percent complete, the current state of the request, and any failures.
+Returns the Validation Request with the given ID. Once a Validation Request has been created by performing a POST to /nifi-api/validation-contexts, that request can subsequently be retrieved via this endpoint, and the request that is fetched will contain the updated state, such as percent complete, the current state of the request, and any failures.
 */
 func (a *Client) GetValidationRequest(params *GetValidationRequestParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetValidationRequestOK, error) {
 	// TODO: Validate the params before sending
@@ -253,9 +253,9 @@ func (a *Client) GetValidationRequest(params *GetValidationRequestParams, authIn
 }
 
 /*
-  SubmitParameterContextUpdate initiates the update request of a parameter context
+SubmitParameterContextUpdate initiates the update request of a parameter context
 
-  This will initiate the process of updating a Parameter Context. Changing the value of a Parameter may require that one or more components be stopped and restarted, so this action may take significantly more time than many other REST API actions. As a result, this endpoint will immediately return a ParameterContextUpdateRequestEntity, and the process of updating the necessary components will occur asynchronously in the background. The client may then periodically poll the status of the request by issuing a GET request to /parameter-contexts/update-requests/{requestId}. Once the request is completed, the client is expected to issue a DELETE request to /parameter-contexts/update-requests/{requestId}.
+This will initiate the process of updating a Parameter Context. Changing the value of a Parameter may require that one or more components be stopped and restarted, so this action may take significantly more time than many other REST API actions. As a result, this endpoint will immediately return a ParameterContextUpdateRequestEntity, and the process of updating the necessary components will occur asynchronously in the background. The client may then periodically poll the status of the request by issuing a GET request to /parameter-contexts/update-requests/{requestId}. Once the request is completed, the client is expected to issue a DELETE request to /parameter-contexts/update-requests/{requestId}.
 */
 func (a *Client) SubmitParameterContextUpdate(params *SubmitParameterContextUpdateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SubmitParameterContextUpdateOK, error) {
 	// TODO: Validate the params before sending
@@ -294,9 +294,9 @@ func (a *Client) SubmitParameterContextUpdate(params *SubmitParameterContextUpda
 }
 
 /*
-  SubmitValidationRequest initiates a validation request to determine how the validity of components will change if a parameter context were to be updated
+SubmitValidationRequest initiates a validation request to determine how the validity of components will change if a parameter context were to be updated
 
-  This will initiate the process of validating all components whose Process Group is bound to the specified Parameter Context. Performing validation against an arbitrary number of components may be expect and take significantly more time than many other REST API actions. As a result, this endpoint will immediately return a ParameterContextValidationRequestEntity, and the process of validating the necessary components will occur asynchronously in the background. The client may then periodically poll the status of the request by issuing a GET request to /parameter-contexts/validation-requests/{requestId}. Once the request is completed, the client is expected to issue a DELETE request to /parameter-contexts/validation-requests/{requestId}.
+This will initiate the process of validating all components whose Process Group is bound to the specified Parameter Context. Performing validation against an arbitrary number of components may be expect and take significantly more time than many other REST API actions. As a result, this endpoint will immediately return a ParameterContextValidationRequestEntity, and the process of validating the necessary components will occur asynchronously in the background. The client may then periodically poll the status of the request by issuing a GET request to /parameter-contexts/validation-requests/{requestId}. Once the request is completed, the client is expected to issue a DELETE request to /parameter-contexts/validation-requests/{requestId}.
 */
 func (a *Client) SubmitValidationRequest(params *SubmitValidationRequestParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SubmitValidationRequestOK, error) {
 	// TODO: Validate the params before sending
@@ -335,9 +335,9 @@ func (a *Client) SubmitValidationRequest(params *SubmitValidationRequestParams, 
 }
 
 /*
-  UpdateParameterContext modifies a parameter context
+UpdateParameterContext modifies a parameter context
 
-  This endpoint will update a Parameter Context to match the provided entity. However, this request will fail if any component is running and is referencing a Parameter in the Parameter Context. Generally, this endpoint is not called directly. Instead, an update request should be submitted by making a POST to the /parameter-contexts/update-requests endpoint. That endpoint will, in turn, call this endpoint.
+This endpoint will update a Parameter Context to match the provided entity. However, this request will fail if any component is running and is referencing a Parameter in the Parameter Context. Generally, this endpoint is not called directly. Instead, an update request should be submitted by making a POST to the /parameter-contexts/update-requests endpoint. That endpoint will, in turn, call this endpoint.
 */
 func (a *Client) UpdateParameterContext(params *UpdateParameterContextParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateParameterContextOK, error) {
 	// TODO: Validate the params before sending

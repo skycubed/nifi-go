@@ -100,6 +100,11 @@ func (m *VersionedFlowDifference) contextValidateComponentDifferenceGroups(ctx c
 	for i := 0; i < len(m.ComponentDifferenceGroups); i++ {
 
 		if m.ComponentDifferenceGroups[i] != nil {
+
+			if swag.IsZero(m.ComponentDifferenceGroups[i]) { // not required
+				return nil
+			}
+
 			if err := m.ComponentDifferenceGroups[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("componentDifferenceGroups" + "." + strconv.Itoa(i))

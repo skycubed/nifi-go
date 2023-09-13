@@ -42,7 +42,7 @@ func (o *GetResourcesReader) ReadResponse(response runtime.ClientResponse, consu
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /policies/resources] getResources", response, response.Code())
 	}
 }
 
@@ -51,7 +51,8 @@ func NewGetResourcesOK() *GetResourcesOK {
 	return &GetResourcesOK{}
 }
 
-/* GetResourcesOK describes a response with status code 200, with default header values.
+/*
+GetResourcesOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -59,9 +60,44 @@ type GetResourcesOK struct {
 	Payload []*models.Resource
 }
 
+// IsSuccess returns true when this get resources o k response has a 2xx status code
+func (o *GetResourcesOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get resources o k response has a 3xx status code
+func (o *GetResourcesOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get resources o k response has a 4xx status code
+func (o *GetResourcesOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get resources o k response has a 5xx status code
+func (o *GetResourcesOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get resources o k response a status code equal to that given
+func (o *GetResourcesOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the get resources o k response
+func (o *GetResourcesOK) Code() int {
+	return 200
+}
+
 func (o *GetResourcesOK) Error() string {
 	return fmt.Sprintf("[GET /policies/resources][%d] getResourcesOK  %+v", 200, o.Payload)
 }
+
+func (o *GetResourcesOK) String() string {
+	return fmt.Sprintf("[GET /policies/resources][%d] getResourcesOK  %+v", 200, o.Payload)
+}
+
 func (o *GetResourcesOK) GetPayload() []*models.Resource {
 	return o.Payload
 }
@@ -81,14 +117,49 @@ func NewGetResourcesUnauthorized() *GetResourcesUnauthorized {
 	return &GetResourcesUnauthorized{}
 }
 
-/* GetResourcesUnauthorized describes a response with status code 401, with default header values.
+/*
+GetResourcesUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type GetResourcesUnauthorized struct {
 }
 
+// IsSuccess returns true when this get resources unauthorized response has a 2xx status code
+func (o *GetResourcesUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get resources unauthorized response has a 3xx status code
+func (o *GetResourcesUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get resources unauthorized response has a 4xx status code
+func (o *GetResourcesUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get resources unauthorized response has a 5xx status code
+func (o *GetResourcesUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get resources unauthorized response a status code equal to that given
+func (o *GetResourcesUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the get resources unauthorized response
+func (o *GetResourcesUnauthorized) Code() int {
+	return 401
+}
+
 func (o *GetResourcesUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /policies/resources][%d] getResourcesUnauthorized ", 401)
+}
+
+func (o *GetResourcesUnauthorized) String() string {
 	return fmt.Sprintf("[GET /policies/resources][%d] getResourcesUnauthorized ", 401)
 }
 
@@ -102,14 +173,49 @@ func NewGetResourcesForbidden() *GetResourcesForbidden {
 	return &GetResourcesForbidden{}
 }
 
-/* GetResourcesForbidden describes a response with status code 403, with default header values.
+/*
+GetResourcesForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type GetResourcesForbidden struct {
 }
 
+// IsSuccess returns true when this get resources forbidden response has a 2xx status code
+func (o *GetResourcesForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get resources forbidden response has a 3xx status code
+func (o *GetResourcesForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get resources forbidden response has a 4xx status code
+func (o *GetResourcesForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get resources forbidden response has a 5xx status code
+func (o *GetResourcesForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get resources forbidden response a status code equal to that given
+func (o *GetResourcesForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the get resources forbidden response
+func (o *GetResourcesForbidden) Code() int {
+	return 403
+}
+
 func (o *GetResourcesForbidden) Error() string {
+	return fmt.Sprintf("[GET /policies/resources][%d] getResourcesForbidden ", 403)
+}
+
+func (o *GetResourcesForbidden) String() string {
 	return fmt.Sprintf("[GET /policies/resources][%d] getResourcesForbidden ", 403)
 }
 

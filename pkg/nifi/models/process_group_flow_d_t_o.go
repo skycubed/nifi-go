@@ -144,6 +144,11 @@ func (m *ProcessGroupFlowDTO) ContextValidate(ctx context.Context, formats strfm
 func (m *ProcessGroupFlowDTO) contextValidateBreadcrumb(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Breadcrumb != nil {
+
+		if swag.IsZero(m.Breadcrumb) { // not required
+			return nil
+		}
+
 		if err := m.Breadcrumb.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("breadcrumb")
@@ -160,6 +165,11 @@ func (m *ProcessGroupFlowDTO) contextValidateBreadcrumb(ctx context.Context, for
 func (m *ProcessGroupFlowDTO) contextValidateFlow(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Flow != nil {
+
+		if swag.IsZero(m.Flow) { // not required
+			return nil
+		}
+
 		if err := m.Flow.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("flow")
@@ -176,6 +186,11 @@ func (m *ProcessGroupFlowDTO) contextValidateFlow(ctx context.Context, formats s
 func (m *ProcessGroupFlowDTO) contextValidateParameterContext(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ParameterContext != nil {
+
+		if swag.IsZero(m.ParameterContext) { // not required
+			return nil
+		}
+
 		if err := m.ParameterContext.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("parameterContext")

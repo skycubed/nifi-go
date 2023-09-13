@@ -54,10 +54,12 @@ func NewUpdateFlowParamsWithHTTPClient(client *http.Client) *UpdateFlowParams {
 	}
 }
 
-/* UpdateFlowParams contains all the parameters to send to the API endpoint
-   for the update flow operation.
+/*
+UpdateFlowParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update flow operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateFlowParams struct {
 

@@ -82,6 +82,11 @@ func (m *PropertyHistoryDTO) contextValidatePreviousValues(ctx context.Context, 
 	for i := 0; i < len(m.PreviousValues); i++ {
 
 		if m.PreviousValues[i] != nil {
+
+			if swag.IsZero(m.PreviousValues[i]) { // not required
+				return nil
+			}
+
 			if err := m.PreviousValues[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("previousValues" + "." + strconv.Itoa(i))

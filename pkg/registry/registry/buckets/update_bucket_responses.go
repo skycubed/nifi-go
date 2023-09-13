@@ -60,7 +60,7 @@ func (o *UpdateBucketReader) ReadResponse(response runtime.ClientResponse, consu
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PUT /buckets/{bucketId}] updateBucket", response, response.Code())
 	}
 }
 
@@ -69,7 +69,8 @@ func NewUpdateBucketOK() *UpdateBucketOK {
 	return &UpdateBucketOK{}
 }
 
-/* UpdateBucketOK describes a response with status code 200, with default header values.
+/*
+UpdateBucketOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,44 @@ type UpdateBucketOK struct {
 	Payload *models.Bucket
 }
 
+// IsSuccess returns true when this update bucket o k response has a 2xx status code
+func (o *UpdateBucketOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this update bucket o k response has a 3xx status code
+func (o *UpdateBucketOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update bucket o k response has a 4xx status code
+func (o *UpdateBucketOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this update bucket o k response has a 5xx status code
+func (o *UpdateBucketOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update bucket o k response a status code equal to that given
+func (o *UpdateBucketOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the update bucket o k response
+func (o *UpdateBucketOK) Code() int {
+	return 200
+}
+
 func (o *UpdateBucketOK) Error() string {
 	return fmt.Sprintf("[PUT /buckets/{bucketId}][%d] updateBucketOK  %+v", 200, o.Payload)
 }
+
+func (o *UpdateBucketOK) String() string {
+	return fmt.Sprintf("[PUT /buckets/{bucketId}][%d] updateBucketOK  %+v", 200, o.Payload)
+}
+
 func (o *UpdateBucketOK) GetPayload() *models.Bucket {
 	return o.Payload
 }
@@ -101,14 +137,49 @@ func NewUpdateBucketBadRequest() *UpdateBucketBadRequest {
 	return &UpdateBucketBadRequest{}
 }
 
-/* UpdateBucketBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateBucketBadRequest describes a response with status code 400, with default header values.
 
 NiFi Registry was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type UpdateBucketBadRequest struct {
 }
 
+// IsSuccess returns true when this update bucket bad request response has a 2xx status code
+func (o *UpdateBucketBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update bucket bad request response has a 3xx status code
+func (o *UpdateBucketBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update bucket bad request response has a 4xx status code
+func (o *UpdateBucketBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update bucket bad request response has a 5xx status code
+func (o *UpdateBucketBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update bucket bad request response a status code equal to that given
+func (o *UpdateBucketBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the update bucket bad request response
+func (o *UpdateBucketBadRequest) Code() int {
+	return 400
+}
+
 func (o *UpdateBucketBadRequest) Error() string {
+	return fmt.Sprintf("[PUT /buckets/{bucketId}][%d] updateBucketBadRequest ", 400)
+}
+
+func (o *UpdateBucketBadRequest) String() string {
 	return fmt.Sprintf("[PUT /buckets/{bucketId}][%d] updateBucketBadRequest ", 400)
 }
 
@@ -122,14 +193,49 @@ func NewUpdateBucketUnauthorized() *UpdateBucketUnauthorized {
 	return &UpdateBucketUnauthorized{}
 }
 
-/* UpdateBucketUnauthorized describes a response with status code 401, with default header values.
+/*
+UpdateBucketUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type UpdateBucketUnauthorized struct {
 }
 
+// IsSuccess returns true when this update bucket unauthorized response has a 2xx status code
+func (o *UpdateBucketUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update bucket unauthorized response has a 3xx status code
+func (o *UpdateBucketUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update bucket unauthorized response has a 4xx status code
+func (o *UpdateBucketUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update bucket unauthorized response has a 5xx status code
+func (o *UpdateBucketUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update bucket unauthorized response a status code equal to that given
+func (o *UpdateBucketUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the update bucket unauthorized response
+func (o *UpdateBucketUnauthorized) Code() int {
+	return 401
+}
+
 func (o *UpdateBucketUnauthorized) Error() string {
+	return fmt.Sprintf("[PUT /buckets/{bucketId}][%d] updateBucketUnauthorized ", 401)
+}
+
+func (o *UpdateBucketUnauthorized) String() string {
 	return fmt.Sprintf("[PUT /buckets/{bucketId}][%d] updateBucketUnauthorized ", 401)
 }
 
@@ -143,14 +249,49 @@ func NewUpdateBucketForbidden() *UpdateBucketForbidden {
 	return &UpdateBucketForbidden{}
 }
 
-/* UpdateBucketForbidden describes a response with status code 403, with default header values.
+/*
+UpdateBucketForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type UpdateBucketForbidden struct {
 }
 
+// IsSuccess returns true when this update bucket forbidden response has a 2xx status code
+func (o *UpdateBucketForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update bucket forbidden response has a 3xx status code
+func (o *UpdateBucketForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update bucket forbidden response has a 4xx status code
+func (o *UpdateBucketForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update bucket forbidden response has a 5xx status code
+func (o *UpdateBucketForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update bucket forbidden response a status code equal to that given
+func (o *UpdateBucketForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the update bucket forbidden response
+func (o *UpdateBucketForbidden) Code() int {
+	return 403
+}
+
 func (o *UpdateBucketForbidden) Error() string {
+	return fmt.Sprintf("[PUT /buckets/{bucketId}][%d] updateBucketForbidden ", 403)
+}
+
+func (o *UpdateBucketForbidden) String() string {
 	return fmt.Sprintf("[PUT /buckets/{bucketId}][%d] updateBucketForbidden ", 403)
 }
 
@@ -164,14 +305,49 @@ func NewUpdateBucketNotFound() *UpdateBucketNotFound {
 	return &UpdateBucketNotFound{}
 }
 
-/* UpdateBucketNotFound describes a response with status code 404, with default header values.
+/*
+UpdateBucketNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type UpdateBucketNotFound struct {
 }
 
+// IsSuccess returns true when this update bucket not found response has a 2xx status code
+func (o *UpdateBucketNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update bucket not found response has a 3xx status code
+func (o *UpdateBucketNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update bucket not found response has a 4xx status code
+func (o *UpdateBucketNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update bucket not found response has a 5xx status code
+func (o *UpdateBucketNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update bucket not found response a status code equal to that given
+func (o *UpdateBucketNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+// Code gets the status code for the update bucket not found response
+func (o *UpdateBucketNotFound) Code() int {
+	return 404
+}
+
 func (o *UpdateBucketNotFound) Error() string {
+	return fmt.Sprintf("[PUT /buckets/{bucketId}][%d] updateBucketNotFound ", 404)
+}
+
+func (o *UpdateBucketNotFound) String() string {
 	return fmt.Sprintf("[PUT /buckets/{bucketId}][%d] updateBucketNotFound ", 404)
 }
 
@@ -185,14 +361,49 @@ func NewUpdateBucketConflict() *UpdateBucketConflict {
 	return &UpdateBucketConflict{}
 }
 
-/* UpdateBucketConflict describes a response with status code 409, with default header values.
+/*
+UpdateBucketConflict describes a response with status code 409, with default header values.
 
 NiFi Registry was unable to complete the request because it assumes a server state that is not valid.
 */
 type UpdateBucketConflict struct {
 }
 
+// IsSuccess returns true when this update bucket conflict response has a 2xx status code
+func (o *UpdateBucketConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update bucket conflict response has a 3xx status code
+func (o *UpdateBucketConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update bucket conflict response has a 4xx status code
+func (o *UpdateBucketConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update bucket conflict response has a 5xx status code
+func (o *UpdateBucketConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update bucket conflict response a status code equal to that given
+func (o *UpdateBucketConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the update bucket conflict response
+func (o *UpdateBucketConflict) Code() int {
+	return 409
+}
+
 func (o *UpdateBucketConflict) Error() string {
+	return fmt.Sprintf("[PUT /buckets/{bucketId}][%d] updateBucketConflict ", 409)
+}
+
+func (o *UpdateBucketConflict) String() string {
 	return fmt.Sprintf("[PUT /buckets/{bucketId}][%d] updateBucketConflict ", 409)
 }
 

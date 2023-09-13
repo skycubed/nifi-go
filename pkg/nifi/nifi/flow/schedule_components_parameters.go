@@ -54,10 +54,12 @@ func NewScheduleComponentsParamsWithHTTPClient(client *http.Client) *ScheduleCom
 	}
 }
 
-/* ScheduleComponentsParams contains all the parameters to send to the API endpoint
-   for the schedule components operation.
+/*
+ScheduleComponentsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the schedule components operation.
+
+	Typically these are written to a http.Request.
 */
 type ScheduleComponentsParams struct {
 

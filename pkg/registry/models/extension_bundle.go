@@ -371,6 +371,11 @@ func (m *ExtensionBundle) contextValidateIdentifier(ctx context.Context, formats
 func (m *ExtensionBundle) contextValidateLink(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Link != nil {
+
+		if swag.IsZero(m.Link) { // not required
+			return nil
+		}
+
 		if err := m.Link.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("link")
@@ -396,6 +401,11 @@ func (m *ExtensionBundle) contextValidateModifiedTimestamp(ctx context.Context, 
 func (m *ExtensionBundle) contextValidatePermissions(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Permissions != nil {
+
+		if swag.IsZero(m.Permissions) { // not required
+			return nil
+		}
+
 		if err := m.Permissions.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("permissions")

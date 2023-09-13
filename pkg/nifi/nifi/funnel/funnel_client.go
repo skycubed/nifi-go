@@ -40,7 +40,7 @@ type ClientService interface {
 }
 
 /*
-  GetFunnel gets a funnel
+GetFunnel gets a funnel
 */
 func (a *Client) GetFunnel(params *GetFunnelParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetFunnelOK, error) {
 	// TODO: Validate the params before sending
@@ -79,7 +79,7 @@ func (a *Client) GetFunnel(params *GetFunnelParams, authInfo runtime.ClientAuthI
 }
 
 /*
-  RemoveFunnel deletes a funnel
+RemoveFunnel deletes a funnel
 */
 func (a *Client) RemoveFunnel(params *RemoveFunnelParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*RemoveFunnelOK, error) {
 	// TODO: Validate the params before sending
@@ -118,7 +118,7 @@ func (a *Client) RemoveFunnel(params *RemoveFunnelParams, authInfo runtime.Clien
 }
 
 /*
-  UpdateFunnel updates a funnel
+UpdateFunnel updates a funnel
 */
 func (a *Client) UpdateFunnel(params *UpdateFunnelParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateFunnelOK, error) {
 	// TODO: Validate the params before sending

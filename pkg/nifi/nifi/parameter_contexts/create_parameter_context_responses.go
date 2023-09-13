@@ -60,7 +60,7 @@ func (o *CreateParameterContextReader) ReadResponse(response runtime.ClientRespo
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /parameter-contexts] createParameterContext", response, response.Code())
 	}
 }
 
@@ -69,7 +69,8 @@ func NewCreateParameterContextCreated() *CreateParameterContextCreated {
 	return &CreateParameterContextCreated{}
 }
 
-/* CreateParameterContextCreated describes a response with status code 201, with default header values.
+/*
+CreateParameterContextCreated describes a response with status code 201, with default header values.
 
 successful operation
 */
@@ -77,9 +78,44 @@ type CreateParameterContextCreated struct {
 	Payload *models.ParameterContextEntity
 }
 
+// IsSuccess returns true when this create parameter context created response has a 2xx status code
+func (o *CreateParameterContextCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create parameter context created response has a 3xx status code
+func (o *CreateParameterContextCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create parameter context created response has a 4xx status code
+func (o *CreateParameterContextCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create parameter context created response has a 5xx status code
+func (o *CreateParameterContextCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create parameter context created response a status code equal to that given
+func (o *CreateParameterContextCreated) IsCode(code int) bool {
+	return code == 201
+}
+
+// Code gets the status code for the create parameter context created response
+func (o *CreateParameterContextCreated) Code() int {
+	return 201
+}
+
 func (o *CreateParameterContextCreated) Error() string {
 	return fmt.Sprintf("[POST /parameter-contexts][%d] createParameterContextCreated  %+v", 201, o.Payload)
 }
+
+func (o *CreateParameterContextCreated) String() string {
+	return fmt.Sprintf("[POST /parameter-contexts][%d] createParameterContextCreated  %+v", 201, o.Payload)
+}
+
 func (o *CreateParameterContextCreated) GetPayload() *models.ParameterContextEntity {
 	return o.Payload
 }
@@ -101,14 +137,49 @@ func NewCreateParameterContextBadRequest() *CreateParameterContextBadRequest {
 	return &CreateParameterContextBadRequest{}
 }
 
-/* CreateParameterContextBadRequest describes a response with status code 400, with default header values.
+/*
+CreateParameterContextBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type CreateParameterContextBadRequest struct {
 }
 
+// IsSuccess returns true when this create parameter context bad request response has a 2xx status code
+func (o *CreateParameterContextBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create parameter context bad request response has a 3xx status code
+func (o *CreateParameterContextBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create parameter context bad request response has a 4xx status code
+func (o *CreateParameterContextBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create parameter context bad request response has a 5xx status code
+func (o *CreateParameterContextBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create parameter context bad request response a status code equal to that given
+func (o *CreateParameterContextBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the create parameter context bad request response
+func (o *CreateParameterContextBadRequest) Code() int {
+	return 400
+}
+
 func (o *CreateParameterContextBadRequest) Error() string {
+	return fmt.Sprintf("[POST /parameter-contexts][%d] createParameterContextBadRequest ", 400)
+}
+
+func (o *CreateParameterContextBadRequest) String() string {
 	return fmt.Sprintf("[POST /parameter-contexts][%d] createParameterContextBadRequest ", 400)
 }
 
@@ -122,14 +193,49 @@ func NewCreateParameterContextUnauthorized() *CreateParameterContextUnauthorized
 	return &CreateParameterContextUnauthorized{}
 }
 
-/* CreateParameterContextUnauthorized describes a response with status code 401, with default header values.
+/*
+CreateParameterContextUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type CreateParameterContextUnauthorized struct {
 }
 
+// IsSuccess returns true when this create parameter context unauthorized response has a 2xx status code
+func (o *CreateParameterContextUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create parameter context unauthorized response has a 3xx status code
+func (o *CreateParameterContextUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create parameter context unauthorized response has a 4xx status code
+func (o *CreateParameterContextUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create parameter context unauthorized response has a 5xx status code
+func (o *CreateParameterContextUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create parameter context unauthorized response a status code equal to that given
+func (o *CreateParameterContextUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the create parameter context unauthorized response
+func (o *CreateParameterContextUnauthorized) Code() int {
+	return 401
+}
+
 func (o *CreateParameterContextUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /parameter-contexts][%d] createParameterContextUnauthorized ", 401)
+}
+
+func (o *CreateParameterContextUnauthorized) String() string {
 	return fmt.Sprintf("[POST /parameter-contexts][%d] createParameterContextUnauthorized ", 401)
 }
 
@@ -143,14 +249,49 @@ func NewCreateParameterContextForbidden() *CreateParameterContextForbidden {
 	return &CreateParameterContextForbidden{}
 }
 
-/* CreateParameterContextForbidden describes a response with status code 403, with default header values.
+/*
+CreateParameterContextForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type CreateParameterContextForbidden struct {
 }
 
+// IsSuccess returns true when this create parameter context forbidden response has a 2xx status code
+func (o *CreateParameterContextForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create parameter context forbidden response has a 3xx status code
+func (o *CreateParameterContextForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create parameter context forbidden response has a 4xx status code
+func (o *CreateParameterContextForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create parameter context forbidden response has a 5xx status code
+func (o *CreateParameterContextForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create parameter context forbidden response a status code equal to that given
+func (o *CreateParameterContextForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the create parameter context forbidden response
+func (o *CreateParameterContextForbidden) Code() int {
+	return 403
+}
+
 func (o *CreateParameterContextForbidden) Error() string {
+	return fmt.Sprintf("[POST /parameter-contexts][%d] createParameterContextForbidden ", 403)
+}
+
+func (o *CreateParameterContextForbidden) String() string {
 	return fmt.Sprintf("[POST /parameter-contexts][%d] createParameterContextForbidden ", 403)
 }
 
@@ -164,14 +305,49 @@ func NewCreateParameterContextNotFound() *CreateParameterContextNotFound {
 	return &CreateParameterContextNotFound{}
 }
 
-/* CreateParameterContextNotFound describes a response with status code 404, with default header values.
+/*
+CreateParameterContextNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type CreateParameterContextNotFound struct {
 }
 
+// IsSuccess returns true when this create parameter context not found response has a 2xx status code
+func (o *CreateParameterContextNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create parameter context not found response has a 3xx status code
+func (o *CreateParameterContextNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create parameter context not found response has a 4xx status code
+func (o *CreateParameterContextNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create parameter context not found response has a 5xx status code
+func (o *CreateParameterContextNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create parameter context not found response a status code equal to that given
+func (o *CreateParameterContextNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+// Code gets the status code for the create parameter context not found response
+func (o *CreateParameterContextNotFound) Code() int {
+	return 404
+}
+
 func (o *CreateParameterContextNotFound) Error() string {
+	return fmt.Sprintf("[POST /parameter-contexts][%d] createParameterContextNotFound ", 404)
+}
+
+func (o *CreateParameterContextNotFound) String() string {
 	return fmt.Sprintf("[POST /parameter-contexts][%d] createParameterContextNotFound ", 404)
 }
 
@@ -185,14 +361,49 @@ func NewCreateParameterContextConflict() *CreateParameterContextConflict {
 	return &CreateParameterContextConflict{}
 }
 
-/* CreateParameterContextConflict describes a response with status code 409, with default header values.
+/*
+CreateParameterContextConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type CreateParameterContextConflict struct {
 }
 
+// IsSuccess returns true when this create parameter context conflict response has a 2xx status code
+func (o *CreateParameterContextConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create parameter context conflict response has a 3xx status code
+func (o *CreateParameterContextConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create parameter context conflict response has a 4xx status code
+func (o *CreateParameterContextConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create parameter context conflict response has a 5xx status code
+func (o *CreateParameterContextConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create parameter context conflict response a status code equal to that given
+func (o *CreateParameterContextConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the create parameter context conflict response
+func (o *CreateParameterContextConflict) Code() int {
+	return 409
+}
+
 func (o *CreateParameterContextConflict) Error() string {
+	return fmt.Sprintf("[POST /parameter-contexts][%d] createParameterContextConflict ", 409)
+}
+
+func (o *CreateParameterContextConflict) String() string {
 	return fmt.Sprintf("[POST /parameter-contexts][%d] createParameterContextConflict ", 409)
 }
 

@@ -60,7 +60,7 @@ func (o *GetOutputContentReader) ReadResponse(response runtime.ClientResponse, c
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /provenance-events/{id}/content/output] getOutputContent", response, response.Code())
 	}
 }
 
@@ -69,7 +69,8 @@ func NewGetOutputContentOK() *GetOutputContentOK {
 	return &GetOutputContentOK{}
 }
 
-/* GetOutputContentOK describes a response with status code 200, with default header values.
+/*
+GetOutputContentOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,44 @@ type GetOutputContentOK struct {
 	Payload models.StreamingOutput
 }
 
+// IsSuccess returns true when this get output content o k response has a 2xx status code
+func (o *GetOutputContentOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get output content o k response has a 3xx status code
+func (o *GetOutputContentOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get output content o k response has a 4xx status code
+func (o *GetOutputContentOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get output content o k response has a 5xx status code
+func (o *GetOutputContentOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get output content o k response a status code equal to that given
+func (o *GetOutputContentOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the get output content o k response
+func (o *GetOutputContentOK) Code() int {
+	return 200
+}
+
 func (o *GetOutputContentOK) Error() string {
 	return fmt.Sprintf("[GET /provenance-events/{id}/content/output][%d] getOutputContentOK  %+v", 200, o.Payload)
 }
+
+func (o *GetOutputContentOK) String() string {
+	return fmt.Sprintf("[GET /provenance-events/{id}/content/output][%d] getOutputContentOK  %+v", 200, o.Payload)
+}
+
 func (o *GetOutputContentOK) GetPayload() models.StreamingOutput {
 	return o.Payload
 }
@@ -99,14 +135,49 @@ func NewGetOutputContentBadRequest() *GetOutputContentBadRequest {
 	return &GetOutputContentBadRequest{}
 }
 
-/* GetOutputContentBadRequest describes a response with status code 400, with default header values.
+/*
+GetOutputContentBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type GetOutputContentBadRequest struct {
 }
 
+// IsSuccess returns true when this get output content bad request response has a 2xx status code
+func (o *GetOutputContentBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get output content bad request response has a 3xx status code
+func (o *GetOutputContentBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get output content bad request response has a 4xx status code
+func (o *GetOutputContentBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get output content bad request response has a 5xx status code
+func (o *GetOutputContentBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get output content bad request response a status code equal to that given
+func (o *GetOutputContentBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the get output content bad request response
+func (o *GetOutputContentBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetOutputContentBadRequest) Error() string {
+	return fmt.Sprintf("[GET /provenance-events/{id}/content/output][%d] getOutputContentBadRequest ", 400)
+}
+
+func (o *GetOutputContentBadRequest) String() string {
 	return fmt.Sprintf("[GET /provenance-events/{id}/content/output][%d] getOutputContentBadRequest ", 400)
 }
 
@@ -120,14 +191,49 @@ func NewGetOutputContentUnauthorized() *GetOutputContentUnauthorized {
 	return &GetOutputContentUnauthorized{}
 }
 
-/* GetOutputContentUnauthorized describes a response with status code 401, with default header values.
+/*
+GetOutputContentUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type GetOutputContentUnauthorized struct {
 }
 
+// IsSuccess returns true when this get output content unauthorized response has a 2xx status code
+func (o *GetOutputContentUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get output content unauthorized response has a 3xx status code
+func (o *GetOutputContentUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get output content unauthorized response has a 4xx status code
+func (o *GetOutputContentUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get output content unauthorized response has a 5xx status code
+func (o *GetOutputContentUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get output content unauthorized response a status code equal to that given
+func (o *GetOutputContentUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the get output content unauthorized response
+func (o *GetOutputContentUnauthorized) Code() int {
+	return 401
+}
+
 func (o *GetOutputContentUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /provenance-events/{id}/content/output][%d] getOutputContentUnauthorized ", 401)
+}
+
+func (o *GetOutputContentUnauthorized) String() string {
 	return fmt.Sprintf("[GET /provenance-events/{id}/content/output][%d] getOutputContentUnauthorized ", 401)
 }
 
@@ -141,14 +247,49 @@ func NewGetOutputContentForbidden() *GetOutputContentForbidden {
 	return &GetOutputContentForbidden{}
 }
 
-/* GetOutputContentForbidden describes a response with status code 403, with default header values.
+/*
+GetOutputContentForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type GetOutputContentForbidden struct {
 }
 
+// IsSuccess returns true when this get output content forbidden response has a 2xx status code
+func (o *GetOutputContentForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get output content forbidden response has a 3xx status code
+func (o *GetOutputContentForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get output content forbidden response has a 4xx status code
+func (o *GetOutputContentForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get output content forbidden response has a 5xx status code
+func (o *GetOutputContentForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get output content forbidden response a status code equal to that given
+func (o *GetOutputContentForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the get output content forbidden response
+func (o *GetOutputContentForbidden) Code() int {
+	return 403
+}
+
 func (o *GetOutputContentForbidden) Error() string {
+	return fmt.Sprintf("[GET /provenance-events/{id}/content/output][%d] getOutputContentForbidden ", 403)
+}
+
+func (o *GetOutputContentForbidden) String() string {
 	return fmt.Sprintf("[GET /provenance-events/{id}/content/output][%d] getOutputContentForbidden ", 403)
 }
 
@@ -162,14 +303,49 @@ func NewGetOutputContentNotFound() *GetOutputContentNotFound {
 	return &GetOutputContentNotFound{}
 }
 
-/* GetOutputContentNotFound describes a response with status code 404, with default header values.
+/*
+GetOutputContentNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type GetOutputContentNotFound struct {
 }
 
+// IsSuccess returns true when this get output content not found response has a 2xx status code
+func (o *GetOutputContentNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get output content not found response has a 3xx status code
+func (o *GetOutputContentNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get output content not found response has a 4xx status code
+func (o *GetOutputContentNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get output content not found response has a 5xx status code
+func (o *GetOutputContentNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get output content not found response a status code equal to that given
+func (o *GetOutputContentNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+// Code gets the status code for the get output content not found response
+func (o *GetOutputContentNotFound) Code() int {
+	return 404
+}
+
 func (o *GetOutputContentNotFound) Error() string {
+	return fmt.Sprintf("[GET /provenance-events/{id}/content/output][%d] getOutputContentNotFound ", 404)
+}
+
+func (o *GetOutputContentNotFound) String() string {
 	return fmt.Sprintf("[GET /provenance-events/{id}/content/output][%d] getOutputContentNotFound ", 404)
 }
 
@@ -183,14 +359,49 @@ func NewGetOutputContentConflict() *GetOutputContentConflict {
 	return &GetOutputContentConflict{}
 }
 
-/* GetOutputContentConflict describes a response with status code 409, with default header values.
+/*
+GetOutputContentConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type GetOutputContentConflict struct {
 }
 
+// IsSuccess returns true when this get output content conflict response has a 2xx status code
+func (o *GetOutputContentConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get output content conflict response has a 3xx status code
+func (o *GetOutputContentConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get output content conflict response has a 4xx status code
+func (o *GetOutputContentConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get output content conflict response has a 5xx status code
+func (o *GetOutputContentConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get output content conflict response a status code equal to that given
+func (o *GetOutputContentConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the get output content conflict response
+func (o *GetOutputContentConflict) Code() int {
+	return 409
+}
+
 func (o *GetOutputContentConflict) Error() string {
+	return fmt.Sprintf("[GET /provenance-events/{id}/content/output][%d] getOutputContentConflict ", 409)
+}
+
+func (o *GetOutputContentConflict) String() string {
 	return fmt.Sprintf("[GET /provenance-events/{id}/content/output][%d] getOutputContentConflict ", 409)
 }
 

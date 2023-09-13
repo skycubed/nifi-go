@@ -87,6 +87,11 @@ func (m *InstantiateTemplateRequestEntity) ContextValidate(ctx context.Context, 
 func (m *InstantiateTemplateRequestEntity) contextValidateSnippet(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Snippet != nil {
+
+		if swag.IsZero(m.Snippet) { // not required
+			return nil
+		}
+
 		if err := m.Snippet.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("snippet")

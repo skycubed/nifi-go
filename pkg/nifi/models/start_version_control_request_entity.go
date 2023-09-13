@@ -105,6 +105,11 @@ func (m *StartVersionControlRequestEntity) ContextValidate(ctx context.Context, 
 func (m *StartVersionControlRequestEntity) contextValidateProcessGroupRevision(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ProcessGroupRevision != nil {
+
+		if swag.IsZero(m.ProcessGroupRevision) { // not required
+			return nil
+		}
+
 		if err := m.ProcessGroupRevision.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("processGroupRevision")
@@ -121,6 +126,11 @@ func (m *StartVersionControlRequestEntity) contextValidateProcessGroupRevision(c
 func (m *StartVersionControlRequestEntity) contextValidateVersionedFlow(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.VersionedFlow != nil {
+
+		if swag.IsZero(m.VersionedFlow) { // not required
+			return nil
+		}
+
 		if err := m.VersionedFlow.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("versionedFlow")

@@ -54,7 +54,7 @@ func (o *ImportProcessGroupReader) ReadResponse(response runtime.ClientResponse,
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /process-groups/{id}/process-groups/import] importProcessGroup", response, response.Code())
 	}
 }
 
@@ -63,7 +63,8 @@ func NewImportProcessGroupCreated() *ImportProcessGroupCreated {
 	return &ImportProcessGroupCreated{}
 }
 
-/* ImportProcessGroupCreated describes a response with status code 201, with default header values.
+/*
+ImportProcessGroupCreated describes a response with status code 201, with default header values.
 
 successful operation
 */
@@ -71,9 +72,44 @@ type ImportProcessGroupCreated struct {
 	Payload *models.ProcessGroupEntity
 }
 
+// IsSuccess returns true when this import process group created response has a 2xx status code
+func (o *ImportProcessGroupCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this import process group created response has a 3xx status code
+func (o *ImportProcessGroupCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this import process group created response has a 4xx status code
+func (o *ImportProcessGroupCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this import process group created response has a 5xx status code
+func (o *ImportProcessGroupCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this import process group created response a status code equal to that given
+func (o *ImportProcessGroupCreated) IsCode(code int) bool {
+	return code == 201
+}
+
+// Code gets the status code for the import process group created response
+func (o *ImportProcessGroupCreated) Code() int {
+	return 201
+}
+
 func (o *ImportProcessGroupCreated) Error() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/process-groups/import][%d] importProcessGroupCreated  %+v", 201, o.Payload)
 }
+
+func (o *ImportProcessGroupCreated) String() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/process-groups/import][%d] importProcessGroupCreated  %+v", 201, o.Payload)
+}
+
 func (o *ImportProcessGroupCreated) GetPayload() *models.ProcessGroupEntity {
 	return o.Payload
 }
@@ -95,14 +131,49 @@ func NewImportProcessGroupBadRequest() *ImportProcessGroupBadRequest {
 	return &ImportProcessGroupBadRequest{}
 }
 
-/* ImportProcessGroupBadRequest describes a response with status code 400, with default header values.
+/*
+ImportProcessGroupBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type ImportProcessGroupBadRequest struct {
 }
 
+// IsSuccess returns true when this import process group bad request response has a 2xx status code
+func (o *ImportProcessGroupBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this import process group bad request response has a 3xx status code
+func (o *ImportProcessGroupBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this import process group bad request response has a 4xx status code
+func (o *ImportProcessGroupBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this import process group bad request response has a 5xx status code
+func (o *ImportProcessGroupBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this import process group bad request response a status code equal to that given
+func (o *ImportProcessGroupBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the import process group bad request response
+func (o *ImportProcessGroupBadRequest) Code() int {
+	return 400
+}
+
 func (o *ImportProcessGroupBadRequest) Error() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/process-groups/import][%d] importProcessGroupBadRequest ", 400)
+}
+
+func (o *ImportProcessGroupBadRequest) String() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/process-groups/import][%d] importProcessGroupBadRequest ", 400)
 }
 
@@ -116,14 +187,49 @@ func NewImportProcessGroupUnauthorized() *ImportProcessGroupUnauthorized {
 	return &ImportProcessGroupUnauthorized{}
 }
 
-/* ImportProcessGroupUnauthorized describes a response with status code 401, with default header values.
+/*
+ImportProcessGroupUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type ImportProcessGroupUnauthorized struct {
 }
 
+// IsSuccess returns true when this import process group unauthorized response has a 2xx status code
+func (o *ImportProcessGroupUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this import process group unauthorized response has a 3xx status code
+func (o *ImportProcessGroupUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this import process group unauthorized response has a 4xx status code
+func (o *ImportProcessGroupUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this import process group unauthorized response has a 5xx status code
+func (o *ImportProcessGroupUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this import process group unauthorized response a status code equal to that given
+func (o *ImportProcessGroupUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the import process group unauthorized response
+func (o *ImportProcessGroupUnauthorized) Code() int {
+	return 401
+}
+
 func (o *ImportProcessGroupUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/process-groups/import][%d] importProcessGroupUnauthorized ", 401)
+}
+
+func (o *ImportProcessGroupUnauthorized) String() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/process-groups/import][%d] importProcessGroupUnauthorized ", 401)
 }
 
@@ -137,14 +243,49 @@ func NewImportProcessGroupForbidden() *ImportProcessGroupForbidden {
 	return &ImportProcessGroupForbidden{}
 }
 
-/* ImportProcessGroupForbidden describes a response with status code 403, with default header values.
+/*
+ImportProcessGroupForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type ImportProcessGroupForbidden struct {
 }
 
+// IsSuccess returns true when this import process group forbidden response has a 2xx status code
+func (o *ImportProcessGroupForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this import process group forbidden response has a 3xx status code
+func (o *ImportProcessGroupForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this import process group forbidden response has a 4xx status code
+func (o *ImportProcessGroupForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this import process group forbidden response has a 5xx status code
+func (o *ImportProcessGroupForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this import process group forbidden response a status code equal to that given
+func (o *ImportProcessGroupForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the import process group forbidden response
+func (o *ImportProcessGroupForbidden) Code() int {
+	return 403
+}
+
 func (o *ImportProcessGroupForbidden) Error() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/process-groups/import][%d] importProcessGroupForbidden ", 403)
+}
+
+func (o *ImportProcessGroupForbidden) String() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/process-groups/import][%d] importProcessGroupForbidden ", 403)
 }
 
@@ -158,14 +299,49 @@ func NewImportProcessGroupConflict() *ImportProcessGroupConflict {
 	return &ImportProcessGroupConflict{}
 }
 
-/* ImportProcessGroupConflict describes a response with status code 409, with default header values.
+/*
+ImportProcessGroupConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type ImportProcessGroupConflict struct {
 }
 
+// IsSuccess returns true when this import process group conflict response has a 2xx status code
+func (o *ImportProcessGroupConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this import process group conflict response has a 3xx status code
+func (o *ImportProcessGroupConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this import process group conflict response has a 4xx status code
+func (o *ImportProcessGroupConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this import process group conflict response has a 5xx status code
+func (o *ImportProcessGroupConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this import process group conflict response a status code equal to that given
+func (o *ImportProcessGroupConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the import process group conflict response
+func (o *ImportProcessGroupConflict) Code() int {
+	return 409
+}
+
 func (o *ImportProcessGroupConflict) Error() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/process-groups/import][%d] importProcessGroupConflict ", 409)
+}
+
+func (o *ImportProcessGroupConflict) String() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/process-groups/import][%d] importProcessGroupConflict ", 409)
 }
 

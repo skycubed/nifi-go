@@ -102,6 +102,11 @@ func (m *ProcessGroupFlowEntity) ContextValidate(ctx context.Context, formats st
 func (m *ProcessGroupFlowEntity) contextValidatePermissions(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Permissions != nil {
+
+		if swag.IsZero(m.Permissions) { // not required
+			return nil
+		}
+
 		if err := m.Permissions.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("permissions")
@@ -118,6 +123,11 @@ func (m *ProcessGroupFlowEntity) contextValidatePermissions(ctx context.Context,
 func (m *ProcessGroupFlowEntity) contextValidateProcessGroupFlow(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ProcessGroupFlow != nil {
+
+		if swag.IsZero(m.ProcessGroupFlow) { // not required
+			return nil
+		}
+
 		if err := m.ProcessGroupFlow.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("processGroupFlow")

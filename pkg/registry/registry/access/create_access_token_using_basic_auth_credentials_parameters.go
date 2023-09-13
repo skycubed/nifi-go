@@ -52,10 +52,12 @@ func NewCreateAccessTokenUsingBasicAuthCredentialsParamsWithHTTPClient(client *h
 	}
 }
 
-/* CreateAccessTokenUsingBasicAuthCredentialsParams contains all the parameters to send to the API endpoint
-   for the create access token using basic auth credentials operation.
+/*
+CreateAccessTokenUsingBasicAuthCredentialsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create access token using basic auth credentials operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateAccessTokenUsingBasicAuthCredentialsParams struct {
 	timeout    time.Duration

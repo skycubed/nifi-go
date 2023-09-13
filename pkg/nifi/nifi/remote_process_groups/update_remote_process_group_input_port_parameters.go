@@ -54,10 +54,12 @@ func NewUpdateRemoteProcessGroupInputPortParamsWithHTTPClient(client *http.Clien
 	}
 }
 
-/* UpdateRemoteProcessGroupInputPortParams contains all the parameters to send to the API endpoint
-   for the update remote process group input port operation.
+/*
+UpdateRemoteProcessGroupInputPortParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update remote process group input port operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateRemoteProcessGroupInputPortParams struct {
 

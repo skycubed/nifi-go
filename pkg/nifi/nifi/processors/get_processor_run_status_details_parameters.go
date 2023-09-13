@@ -54,10 +54,12 @@ func NewGetProcessorRunStatusDetailsParamsWithHTTPClient(client *http.Client) *G
 	}
 }
 
-/* GetProcessorRunStatusDetailsParams contains all the parameters to send to the API endpoint
-   for the get processor run status details operation.
+/*
+GetProcessorRunStatusDetailsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get processor run status details operation.
+
+	Typically these are written to a http.Request.
 */
 type GetProcessorRunStatusDetailsParams struct {
 

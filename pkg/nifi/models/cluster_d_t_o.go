@@ -85,6 +85,11 @@ func (m *ClusterDTO) contextValidateNodes(ctx context.Context, formats strfmt.Re
 	for i := 0; i < len(m.Nodes); i++ {
 
 		if m.Nodes[i] != nil {
+
+			if swag.IsZero(m.Nodes[i]) { // not required
+				return nil
+			}
+
 			if err := m.Nodes[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("nodes" + "." + strconv.Itoa(i))

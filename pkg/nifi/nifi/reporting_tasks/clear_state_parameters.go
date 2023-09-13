@@ -52,10 +52,12 @@ func NewClearStateParamsWithHTTPClient(client *http.Client) *ClearStateParams {
 	}
 }
 
-/* ClearStateParams contains all the parameters to send to the API endpoint
-   for the clear state operation.
+/*
+ClearStateParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the clear state operation.
+
+	Typically these are written to a http.Request.
 */
 type ClearStateParams struct {
 

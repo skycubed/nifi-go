@@ -52,10 +52,12 @@ func NewGetLatestFlowVersionParamsWithHTTPClient(client *http.Client) *GetLatest
 	}
 }
 
-/* GetLatestFlowVersionParams contains all the parameters to send to the API endpoint
-   for the get latest flow version operation.
+/*
+GetLatestFlowVersionParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get latest flow version operation.
+
+	Typically these are written to a http.Request.
 */
 type GetLatestFlowVersionParams struct {
 

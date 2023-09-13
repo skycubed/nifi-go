@@ -186,6 +186,11 @@ func (m *VariableRegistryUpdateRequestDTO) contextValidateAffectedComponents(ctx
 	for i := 0; i < len(m.AffectedComponents); i++ {
 
 		if m.AffectedComponents[i] != nil {
+
+			if swag.IsZero(m.AffectedComponents[i]) { // not required
+				return nil
+			}
+
 			if err := m.AffectedComponents[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("affectedComponents" + "." + strconv.Itoa(i))
@@ -206,6 +211,11 @@ func (m *VariableRegistryUpdateRequestDTO) contextValidateUpdateSteps(ctx contex
 	for i := 0; i < len(m.UpdateSteps); i++ {
 
 		if m.UpdateSteps[i] != nil {
+
+			if swag.IsZero(m.UpdateSteps[i]) { // not required
+				return nil
+			}
+
 			if err := m.UpdateSteps[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("updateSteps" + "." + strconv.Itoa(i))

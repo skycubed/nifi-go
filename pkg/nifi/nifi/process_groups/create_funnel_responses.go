@@ -60,7 +60,7 @@ func (o *CreateFunnelReader) ReadResponse(response runtime.ClientResponse, consu
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /process-groups/{id}/funnels] createFunnel", response, response.Code())
 	}
 }
 
@@ -69,7 +69,8 @@ func NewCreateFunnelCreated() *CreateFunnelCreated {
 	return &CreateFunnelCreated{}
 }
 
-/* CreateFunnelCreated describes a response with status code 201, with default header values.
+/*
+CreateFunnelCreated describes a response with status code 201, with default header values.
 
 successful operation
 */
@@ -77,9 +78,44 @@ type CreateFunnelCreated struct {
 	Payload *models.FunnelEntity
 }
 
+// IsSuccess returns true when this create funnel created response has a 2xx status code
+func (o *CreateFunnelCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create funnel created response has a 3xx status code
+func (o *CreateFunnelCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create funnel created response has a 4xx status code
+func (o *CreateFunnelCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create funnel created response has a 5xx status code
+func (o *CreateFunnelCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create funnel created response a status code equal to that given
+func (o *CreateFunnelCreated) IsCode(code int) bool {
+	return code == 201
+}
+
+// Code gets the status code for the create funnel created response
+func (o *CreateFunnelCreated) Code() int {
+	return 201
+}
+
 func (o *CreateFunnelCreated) Error() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/funnels][%d] createFunnelCreated  %+v", 201, o.Payload)
 }
+
+func (o *CreateFunnelCreated) String() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/funnels][%d] createFunnelCreated  %+v", 201, o.Payload)
+}
+
 func (o *CreateFunnelCreated) GetPayload() *models.FunnelEntity {
 	return o.Payload
 }
@@ -101,14 +137,49 @@ func NewCreateFunnelBadRequest() *CreateFunnelBadRequest {
 	return &CreateFunnelBadRequest{}
 }
 
-/* CreateFunnelBadRequest describes a response with status code 400, with default header values.
+/*
+CreateFunnelBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type CreateFunnelBadRequest struct {
 }
 
+// IsSuccess returns true when this create funnel bad request response has a 2xx status code
+func (o *CreateFunnelBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create funnel bad request response has a 3xx status code
+func (o *CreateFunnelBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create funnel bad request response has a 4xx status code
+func (o *CreateFunnelBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create funnel bad request response has a 5xx status code
+func (o *CreateFunnelBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create funnel bad request response a status code equal to that given
+func (o *CreateFunnelBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the create funnel bad request response
+func (o *CreateFunnelBadRequest) Code() int {
+	return 400
+}
+
 func (o *CreateFunnelBadRequest) Error() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/funnels][%d] createFunnelBadRequest ", 400)
+}
+
+func (o *CreateFunnelBadRequest) String() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/funnels][%d] createFunnelBadRequest ", 400)
 }
 
@@ -122,14 +193,49 @@ func NewCreateFunnelUnauthorized() *CreateFunnelUnauthorized {
 	return &CreateFunnelUnauthorized{}
 }
 
-/* CreateFunnelUnauthorized describes a response with status code 401, with default header values.
+/*
+CreateFunnelUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type CreateFunnelUnauthorized struct {
 }
 
+// IsSuccess returns true when this create funnel unauthorized response has a 2xx status code
+func (o *CreateFunnelUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create funnel unauthorized response has a 3xx status code
+func (o *CreateFunnelUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create funnel unauthorized response has a 4xx status code
+func (o *CreateFunnelUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create funnel unauthorized response has a 5xx status code
+func (o *CreateFunnelUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create funnel unauthorized response a status code equal to that given
+func (o *CreateFunnelUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the create funnel unauthorized response
+func (o *CreateFunnelUnauthorized) Code() int {
+	return 401
+}
+
 func (o *CreateFunnelUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/funnels][%d] createFunnelUnauthorized ", 401)
+}
+
+func (o *CreateFunnelUnauthorized) String() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/funnels][%d] createFunnelUnauthorized ", 401)
 }
 
@@ -143,14 +249,49 @@ func NewCreateFunnelForbidden() *CreateFunnelForbidden {
 	return &CreateFunnelForbidden{}
 }
 
-/* CreateFunnelForbidden describes a response with status code 403, with default header values.
+/*
+CreateFunnelForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type CreateFunnelForbidden struct {
 }
 
+// IsSuccess returns true when this create funnel forbidden response has a 2xx status code
+func (o *CreateFunnelForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create funnel forbidden response has a 3xx status code
+func (o *CreateFunnelForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create funnel forbidden response has a 4xx status code
+func (o *CreateFunnelForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create funnel forbidden response has a 5xx status code
+func (o *CreateFunnelForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create funnel forbidden response a status code equal to that given
+func (o *CreateFunnelForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the create funnel forbidden response
+func (o *CreateFunnelForbidden) Code() int {
+	return 403
+}
+
 func (o *CreateFunnelForbidden) Error() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/funnels][%d] createFunnelForbidden ", 403)
+}
+
+func (o *CreateFunnelForbidden) String() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/funnels][%d] createFunnelForbidden ", 403)
 }
 
@@ -164,14 +305,49 @@ func NewCreateFunnelNotFound() *CreateFunnelNotFound {
 	return &CreateFunnelNotFound{}
 }
 
-/* CreateFunnelNotFound describes a response with status code 404, with default header values.
+/*
+CreateFunnelNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type CreateFunnelNotFound struct {
 }
 
+// IsSuccess returns true when this create funnel not found response has a 2xx status code
+func (o *CreateFunnelNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create funnel not found response has a 3xx status code
+func (o *CreateFunnelNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create funnel not found response has a 4xx status code
+func (o *CreateFunnelNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create funnel not found response has a 5xx status code
+func (o *CreateFunnelNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create funnel not found response a status code equal to that given
+func (o *CreateFunnelNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+// Code gets the status code for the create funnel not found response
+func (o *CreateFunnelNotFound) Code() int {
+	return 404
+}
+
 func (o *CreateFunnelNotFound) Error() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/funnels][%d] createFunnelNotFound ", 404)
+}
+
+func (o *CreateFunnelNotFound) String() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/funnels][%d] createFunnelNotFound ", 404)
 }
 
@@ -185,14 +361,49 @@ func NewCreateFunnelConflict() *CreateFunnelConflict {
 	return &CreateFunnelConflict{}
 }
 
-/* CreateFunnelConflict describes a response with status code 409, with default header values.
+/*
+CreateFunnelConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type CreateFunnelConflict struct {
 }
 
+// IsSuccess returns true when this create funnel conflict response has a 2xx status code
+func (o *CreateFunnelConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create funnel conflict response has a 3xx status code
+func (o *CreateFunnelConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create funnel conflict response has a 4xx status code
+func (o *CreateFunnelConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create funnel conflict response has a 5xx status code
+func (o *CreateFunnelConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create funnel conflict response a status code equal to that given
+func (o *CreateFunnelConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the create funnel conflict response
+func (o *CreateFunnelConflict) Code() int {
+	return 409
+}
+
 func (o *CreateFunnelConflict) Error() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/funnels][%d] createFunnelConflict ", 409)
+}
+
+func (o *CreateFunnelConflict) String() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/funnels][%d] createFunnelConflict ", 409)
 }
 

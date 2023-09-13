@@ -188,6 +188,11 @@ func (m *Tenant) contextValidateAccessPolicies(ctx context.Context, formats strf
 	for i := 0; i < len(m.AccessPolicies); i++ {
 
 		if m.AccessPolicies[i] != nil {
+
+			if swag.IsZero(m.AccessPolicies[i]) { // not required
+				return nil
+			}
+
 			if err := m.AccessPolicies[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("accessPolicies" + "." + strconv.Itoa(i))
@@ -224,6 +229,11 @@ func (m *Tenant) contextValidateIdentifier(ctx context.Context, formats strfmt.R
 func (m *Tenant) contextValidateResourcePermissions(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ResourcePermissions != nil {
+
+		if swag.IsZero(m.ResourcePermissions) { // not required
+			return nil
+		}
+
 		if err := m.ResourcePermissions.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("resourcePermissions")
@@ -240,6 +250,11 @@ func (m *Tenant) contextValidateResourcePermissions(ctx context.Context, formats
 func (m *Tenant) contextValidateRevision(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Revision != nil {
+
+		if swag.IsZero(m.Revision) { // not required
+			return nil
+		}
+
 		if err := m.Revision.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("revision")

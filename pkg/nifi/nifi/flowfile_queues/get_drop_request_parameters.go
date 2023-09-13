@@ -52,10 +52,12 @@ func NewGetDropRequestParamsWithHTTPClient(client *http.Client) *GetDropRequestP
 	}
 }
 
-/* GetDropRequestParams contains all the parameters to send to the API endpoint
-   for the get drop request operation.
+/*
+GetDropRequestParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get drop request operation.
+
+	Typically these are written to a http.Request.
 */
 type GetDropRequestParams struct {
 

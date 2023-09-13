@@ -102,6 +102,11 @@ func (m *ParameterContextUpdateRequestEntity) ContextValidate(ctx context.Contex
 func (m *ParameterContextUpdateRequestEntity) contextValidateParameterContextRevision(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ParameterContextRevision != nil {
+
+		if swag.IsZero(m.ParameterContextRevision) { // not required
+			return nil
+		}
+
 		if err := m.ParameterContextRevision.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("parameterContextRevision")
@@ -118,6 +123,11 @@ func (m *ParameterContextUpdateRequestEntity) contextValidateParameterContextRev
 func (m *ParameterContextUpdateRequestEntity) contextValidateRequest(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Request != nil {
+
+		if swag.IsZero(m.Request) { // not required
+			return nil
+		}
+
 		if err := m.Request.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("request")

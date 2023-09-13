@@ -60,7 +60,7 @@ func (o *CreateLabelReader) ReadResponse(response runtime.ClientResponse, consum
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /process-groups/{id}/labels] createLabel", response, response.Code())
 	}
 }
 
@@ -69,7 +69,8 @@ func NewCreateLabelCreated() *CreateLabelCreated {
 	return &CreateLabelCreated{}
 }
 
-/* CreateLabelCreated describes a response with status code 201, with default header values.
+/*
+CreateLabelCreated describes a response with status code 201, with default header values.
 
 successful operation
 */
@@ -77,9 +78,44 @@ type CreateLabelCreated struct {
 	Payload *models.LabelEntity
 }
 
+// IsSuccess returns true when this create label created response has a 2xx status code
+func (o *CreateLabelCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create label created response has a 3xx status code
+func (o *CreateLabelCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create label created response has a 4xx status code
+func (o *CreateLabelCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create label created response has a 5xx status code
+func (o *CreateLabelCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create label created response a status code equal to that given
+func (o *CreateLabelCreated) IsCode(code int) bool {
+	return code == 201
+}
+
+// Code gets the status code for the create label created response
+func (o *CreateLabelCreated) Code() int {
+	return 201
+}
+
 func (o *CreateLabelCreated) Error() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/labels][%d] createLabelCreated  %+v", 201, o.Payload)
 }
+
+func (o *CreateLabelCreated) String() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/labels][%d] createLabelCreated  %+v", 201, o.Payload)
+}
+
 func (o *CreateLabelCreated) GetPayload() *models.LabelEntity {
 	return o.Payload
 }
@@ -101,14 +137,49 @@ func NewCreateLabelBadRequest() *CreateLabelBadRequest {
 	return &CreateLabelBadRequest{}
 }
 
-/* CreateLabelBadRequest describes a response with status code 400, with default header values.
+/*
+CreateLabelBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type CreateLabelBadRequest struct {
 }
 
+// IsSuccess returns true when this create label bad request response has a 2xx status code
+func (o *CreateLabelBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create label bad request response has a 3xx status code
+func (o *CreateLabelBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create label bad request response has a 4xx status code
+func (o *CreateLabelBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create label bad request response has a 5xx status code
+func (o *CreateLabelBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create label bad request response a status code equal to that given
+func (o *CreateLabelBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the create label bad request response
+func (o *CreateLabelBadRequest) Code() int {
+	return 400
+}
+
 func (o *CreateLabelBadRequest) Error() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/labels][%d] createLabelBadRequest ", 400)
+}
+
+func (o *CreateLabelBadRequest) String() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/labels][%d] createLabelBadRequest ", 400)
 }
 
@@ -122,14 +193,49 @@ func NewCreateLabelUnauthorized() *CreateLabelUnauthorized {
 	return &CreateLabelUnauthorized{}
 }
 
-/* CreateLabelUnauthorized describes a response with status code 401, with default header values.
+/*
+CreateLabelUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type CreateLabelUnauthorized struct {
 }
 
+// IsSuccess returns true when this create label unauthorized response has a 2xx status code
+func (o *CreateLabelUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create label unauthorized response has a 3xx status code
+func (o *CreateLabelUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create label unauthorized response has a 4xx status code
+func (o *CreateLabelUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create label unauthorized response has a 5xx status code
+func (o *CreateLabelUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create label unauthorized response a status code equal to that given
+func (o *CreateLabelUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the create label unauthorized response
+func (o *CreateLabelUnauthorized) Code() int {
+	return 401
+}
+
 func (o *CreateLabelUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/labels][%d] createLabelUnauthorized ", 401)
+}
+
+func (o *CreateLabelUnauthorized) String() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/labels][%d] createLabelUnauthorized ", 401)
 }
 
@@ -143,14 +249,49 @@ func NewCreateLabelForbidden() *CreateLabelForbidden {
 	return &CreateLabelForbidden{}
 }
 
-/* CreateLabelForbidden describes a response with status code 403, with default header values.
+/*
+CreateLabelForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type CreateLabelForbidden struct {
 }
 
+// IsSuccess returns true when this create label forbidden response has a 2xx status code
+func (o *CreateLabelForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create label forbidden response has a 3xx status code
+func (o *CreateLabelForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create label forbidden response has a 4xx status code
+func (o *CreateLabelForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create label forbidden response has a 5xx status code
+func (o *CreateLabelForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create label forbidden response a status code equal to that given
+func (o *CreateLabelForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the create label forbidden response
+func (o *CreateLabelForbidden) Code() int {
+	return 403
+}
+
 func (o *CreateLabelForbidden) Error() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/labels][%d] createLabelForbidden ", 403)
+}
+
+func (o *CreateLabelForbidden) String() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/labels][%d] createLabelForbidden ", 403)
 }
 
@@ -164,14 +305,49 @@ func NewCreateLabelNotFound() *CreateLabelNotFound {
 	return &CreateLabelNotFound{}
 }
 
-/* CreateLabelNotFound describes a response with status code 404, with default header values.
+/*
+CreateLabelNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type CreateLabelNotFound struct {
 }
 
+// IsSuccess returns true when this create label not found response has a 2xx status code
+func (o *CreateLabelNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create label not found response has a 3xx status code
+func (o *CreateLabelNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create label not found response has a 4xx status code
+func (o *CreateLabelNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create label not found response has a 5xx status code
+func (o *CreateLabelNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create label not found response a status code equal to that given
+func (o *CreateLabelNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+// Code gets the status code for the create label not found response
+func (o *CreateLabelNotFound) Code() int {
+	return 404
+}
+
 func (o *CreateLabelNotFound) Error() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/labels][%d] createLabelNotFound ", 404)
+}
+
+func (o *CreateLabelNotFound) String() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/labels][%d] createLabelNotFound ", 404)
 }
 
@@ -185,14 +361,49 @@ func NewCreateLabelConflict() *CreateLabelConflict {
 	return &CreateLabelConflict{}
 }
 
-/* CreateLabelConflict describes a response with status code 409, with default header values.
+/*
+CreateLabelConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type CreateLabelConflict struct {
 }
 
+// IsSuccess returns true when this create label conflict response has a 2xx status code
+func (o *CreateLabelConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create label conflict response has a 3xx status code
+func (o *CreateLabelConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create label conflict response has a 4xx status code
+func (o *CreateLabelConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create label conflict response has a 5xx status code
+func (o *CreateLabelConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create label conflict response a status code equal to that given
+func (o *CreateLabelConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the create label conflict response
+func (o *CreateLabelConflict) Code() int {
+	return 409
+}
+
 func (o *CreateLabelConflict) Error() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/labels][%d] createLabelConflict ", 409)
+}
+
+func (o *CreateLabelConflict) String() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/labels][%d] createLabelConflict ", 409)
 }
 

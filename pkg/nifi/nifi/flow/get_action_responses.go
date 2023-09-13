@@ -60,7 +60,7 @@ func (o *GetActionReader) ReadResponse(response runtime.ClientResponse, consumer
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /flow/history/{id}] getAction", response, response.Code())
 	}
 }
 
@@ -69,7 +69,8 @@ func NewGetActionOK() *GetActionOK {
 	return &GetActionOK{}
 }
 
-/* GetActionOK describes a response with status code 200, with default header values.
+/*
+GetActionOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,44 @@ type GetActionOK struct {
 	Payload *models.ActionEntity
 }
 
+// IsSuccess returns true when this get action o k response has a 2xx status code
+func (o *GetActionOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get action o k response has a 3xx status code
+func (o *GetActionOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get action o k response has a 4xx status code
+func (o *GetActionOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get action o k response has a 5xx status code
+func (o *GetActionOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get action o k response a status code equal to that given
+func (o *GetActionOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the get action o k response
+func (o *GetActionOK) Code() int {
+	return 200
+}
+
 func (o *GetActionOK) Error() string {
 	return fmt.Sprintf("[GET /flow/history/{id}][%d] getActionOK  %+v", 200, o.Payload)
 }
+
+func (o *GetActionOK) String() string {
+	return fmt.Sprintf("[GET /flow/history/{id}][%d] getActionOK  %+v", 200, o.Payload)
+}
+
 func (o *GetActionOK) GetPayload() *models.ActionEntity {
 	return o.Payload
 }
@@ -101,14 +137,49 @@ func NewGetActionBadRequest() *GetActionBadRequest {
 	return &GetActionBadRequest{}
 }
 
-/* GetActionBadRequest describes a response with status code 400, with default header values.
+/*
+GetActionBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type GetActionBadRequest struct {
 }
 
+// IsSuccess returns true when this get action bad request response has a 2xx status code
+func (o *GetActionBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get action bad request response has a 3xx status code
+func (o *GetActionBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get action bad request response has a 4xx status code
+func (o *GetActionBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get action bad request response has a 5xx status code
+func (o *GetActionBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get action bad request response a status code equal to that given
+func (o *GetActionBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the get action bad request response
+func (o *GetActionBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetActionBadRequest) Error() string {
+	return fmt.Sprintf("[GET /flow/history/{id}][%d] getActionBadRequest ", 400)
+}
+
+func (o *GetActionBadRequest) String() string {
 	return fmt.Sprintf("[GET /flow/history/{id}][%d] getActionBadRequest ", 400)
 }
 
@@ -122,14 +193,49 @@ func NewGetActionUnauthorized() *GetActionUnauthorized {
 	return &GetActionUnauthorized{}
 }
 
-/* GetActionUnauthorized describes a response with status code 401, with default header values.
+/*
+GetActionUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type GetActionUnauthorized struct {
 }
 
+// IsSuccess returns true when this get action unauthorized response has a 2xx status code
+func (o *GetActionUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get action unauthorized response has a 3xx status code
+func (o *GetActionUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get action unauthorized response has a 4xx status code
+func (o *GetActionUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get action unauthorized response has a 5xx status code
+func (o *GetActionUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get action unauthorized response a status code equal to that given
+func (o *GetActionUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the get action unauthorized response
+func (o *GetActionUnauthorized) Code() int {
+	return 401
+}
+
 func (o *GetActionUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /flow/history/{id}][%d] getActionUnauthorized ", 401)
+}
+
+func (o *GetActionUnauthorized) String() string {
 	return fmt.Sprintf("[GET /flow/history/{id}][%d] getActionUnauthorized ", 401)
 }
 
@@ -143,14 +249,49 @@ func NewGetActionForbidden() *GetActionForbidden {
 	return &GetActionForbidden{}
 }
 
-/* GetActionForbidden describes a response with status code 403, with default header values.
+/*
+GetActionForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type GetActionForbidden struct {
 }
 
+// IsSuccess returns true when this get action forbidden response has a 2xx status code
+func (o *GetActionForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get action forbidden response has a 3xx status code
+func (o *GetActionForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get action forbidden response has a 4xx status code
+func (o *GetActionForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get action forbidden response has a 5xx status code
+func (o *GetActionForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get action forbidden response a status code equal to that given
+func (o *GetActionForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the get action forbidden response
+func (o *GetActionForbidden) Code() int {
+	return 403
+}
+
 func (o *GetActionForbidden) Error() string {
+	return fmt.Sprintf("[GET /flow/history/{id}][%d] getActionForbidden ", 403)
+}
+
+func (o *GetActionForbidden) String() string {
 	return fmt.Sprintf("[GET /flow/history/{id}][%d] getActionForbidden ", 403)
 }
 
@@ -164,14 +305,49 @@ func NewGetActionNotFound() *GetActionNotFound {
 	return &GetActionNotFound{}
 }
 
-/* GetActionNotFound describes a response with status code 404, with default header values.
+/*
+GetActionNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type GetActionNotFound struct {
 }
 
+// IsSuccess returns true when this get action not found response has a 2xx status code
+func (o *GetActionNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get action not found response has a 3xx status code
+func (o *GetActionNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get action not found response has a 4xx status code
+func (o *GetActionNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get action not found response has a 5xx status code
+func (o *GetActionNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get action not found response a status code equal to that given
+func (o *GetActionNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+// Code gets the status code for the get action not found response
+func (o *GetActionNotFound) Code() int {
+	return 404
+}
+
 func (o *GetActionNotFound) Error() string {
+	return fmt.Sprintf("[GET /flow/history/{id}][%d] getActionNotFound ", 404)
+}
+
+func (o *GetActionNotFound) String() string {
 	return fmt.Sprintf("[GET /flow/history/{id}][%d] getActionNotFound ", 404)
 }
 
@@ -185,14 +361,49 @@ func NewGetActionConflict() *GetActionConflict {
 	return &GetActionConflict{}
 }
 
-/* GetActionConflict describes a response with status code 409, with default header values.
+/*
+GetActionConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type GetActionConflict struct {
 }
 
+// IsSuccess returns true when this get action conflict response has a 2xx status code
+func (o *GetActionConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get action conflict response has a 3xx status code
+func (o *GetActionConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get action conflict response has a 4xx status code
+func (o *GetActionConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get action conflict response has a 5xx status code
+func (o *GetActionConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get action conflict response a status code equal to that given
+func (o *GetActionConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the get action conflict response
+func (o *GetActionConflict) Code() int {
+	return 409
+}
+
 func (o *GetActionConflict) Error() string {
+	return fmt.Sprintf("[GET /flow/history/{id}][%d] getActionConflict ", 409)
+}
+
+func (o *GetActionConflict) String() string {
 	return fmt.Sprintf("[GET /flow/history/{id}][%d] getActionConflict ", 409)
 }
 

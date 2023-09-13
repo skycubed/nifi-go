@@ -52,10 +52,12 @@ func NewGetProcessorStatusHistoryParamsWithHTTPClient(client *http.Client) *GetP
 	}
 }
 
-/* GetProcessorStatusHistoryParams contains all the parameters to send to the API endpoint
-   for the get processor status history operation.
+/*
+GetProcessorStatusHistoryParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get processor status history operation.
+
+	Typically these are written to a http.Request.
 */
 type GetProcessorStatusHistoryParams struct {
 

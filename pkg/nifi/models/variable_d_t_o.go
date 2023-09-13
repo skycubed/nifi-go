@@ -97,6 +97,11 @@ func (m *VariableDTO) contextValidateAffectedComponents(ctx context.Context, for
 	for i := 0; i < len(m.AffectedComponents); i++ {
 
 		if m.AffectedComponents[i] != nil {
+
+			if swag.IsZero(m.AffectedComponents[i]) { // not required
+				return nil
+			}
+
 			if err := m.AffectedComponents[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("affectedComponents" + "." + strconv.Itoa(i))

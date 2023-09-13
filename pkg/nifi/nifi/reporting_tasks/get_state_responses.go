@@ -60,7 +60,7 @@ func (o *GetStateReader) ReadResponse(response runtime.ClientResponse, consumer 
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /reporting-tasks/{id}/state] getState", response, response.Code())
 	}
 }
 
@@ -69,7 +69,8 @@ func NewGetStateOK() *GetStateOK {
 	return &GetStateOK{}
 }
 
-/* GetStateOK describes a response with status code 200, with default header values.
+/*
+GetStateOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,44 @@ type GetStateOK struct {
 	Payload *models.ComponentStateEntity
 }
 
+// IsSuccess returns true when this get state o k response has a 2xx status code
+func (o *GetStateOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get state o k response has a 3xx status code
+func (o *GetStateOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get state o k response has a 4xx status code
+func (o *GetStateOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get state o k response has a 5xx status code
+func (o *GetStateOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get state o k response a status code equal to that given
+func (o *GetStateOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the get state o k response
+func (o *GetStateOK) Code() int {
+	return 200
+}
+
 func (o *GetStateOK) Error() string {
 	return fmt.Sprintf("[GET /reporting-tasks/{id}/state][%d] getStateOK  %+v", 200, o.Payload)
 }
+
+func (o *GetStateOK) String() string {
+	return fmt.Sprintf("[GET /reporting-tasks/{id}/state][%d] getStateOK  %+v", 200, o.Payload)
+}
+
 func (o *GetStateOK) GetPayload() *models.ComponentStateEntity {
 	return o.Payload
 }
@@ -101,14 +137,49 @@ func NewGetStateBadRequest() *GetStateBadRequest {
 	return &GetStateBadRequest{}
 }
 
-/* GetStateBadRequest describes a response with status code 400, with default header values.
+/*
+GetStateBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type GetStateBadRequest struct {
 }
 
+// IsSuccess returns true when this get state bad request response has a 2xx status code
+func (o *GetStateBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get state bad request response has a 3xx status code
+func (o *GetStateBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get state bad request response has a 4xx status code
+func (o *GetStateBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get state bad request response has a 5xx status code
+func (o *GetStateBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get state bad request response a status code equal to that given
+func (o *GetStateBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the get state bad request response
+func (o *GetStateBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetStateBadRequest) Error() string {
+	return fmt.Sprintf("[GET /reporting-tasks/{id}/state][%d] getStateBadRequest ", 400)
+}
+
+func (o *GetStateBadRequest) String() string {
 	return fmt.Sprintf("[GET /reporting-tasks/{id}/state][%d] getStateBadRequest ", 400)
 }
 
@@ -122,14 +193,49 @@ func NewGetStateUnauthorized() *GetStateUnauthorized {
 	return &GetStateUnauthorized{}
 }
 
-/* GetStateUnauthorized describes a response with status code 401, with default header values.
+/*
+GetStateUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type GetStateUnauthorized struct {
 }
 
+// IsSuccess returns true when this get state unauthorized response has a 2xx status code
+func (o *GetStateUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get state unauthorized response has a 3xx status code
+func (o *GetStateUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get state unauthorized response has a 4xx status code
+func (o *GetStateUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get state unauthorized response has a 5xx status code
+func (o *GetStateUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get state unauthorized response a status code equal to that given
+func (o *GetStateUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the get state unauthorized response
+func (o *GetStateUnauthorized) Code() int {
+	return 401
+}
+
 func (o *GetStateUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /reporting-tasks/{id}/state][%d] getStateUnauthorized ", 401)
+}
+
+func (o *GetStateUnauthorized) String() string {
 	return fmt.Sprintf("[GET /reporting-tasks/{id}/state][%d] getStateUnauthorized ", 401)
 }
 
@@ -143,14 +249,49 @@ func NewGetStateForbidden() *GetStateForbidden {
 	return &GetStateForbidden{}
 }
 
-/* GetStateForbidden describes a response with status code 403, with default header values.
+/*
+GetStateForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type GetStateForbidden struct {
 }
 
+// IsSuccess returns true when this get state forbidden response has a 2xx status code
+func (o *GetStateForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get state forbidden response has a 3xx status code
+func (o *GetStateForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get state forbidden response has a 4xx status code
+func (o *GetStateForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get state forbidden response has a 5xx status code
+func (o *GetStateForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get state forbidden response a status code equal to that given
+func (o *GetStateForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the get state forbidden response
+func (o *GetStateForbidden) Code() int {
+	return 403
+}
+
 func (o *GetStateForbidden) Error() string {
+	return fmt.Sprintf("[GET /reporting-tasks/{id}/state][%d] getStateForbidden ", 403)
+}
+
+func (o *GetStateForbidden) String() string {
 	return fmt.Sprintf("[GET /reporting-tasks/{id}/state][%d] getStateForbidden ", 403)
 }
 
@@ -164,14 +305,49 @@ func NewGetStateNotFound() *GetStateNotFound {
 	return &GetStateNotFound{}
 }
 
-/* GetStateNotFound describes a response with status code 404, with default header values.
+/*
+GetStateNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type GetStateNotFound struct {
 }
 
+// IsSuccess returns true when this get state not found response has a 2xx status code
+func (o *GetStateNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get state not found response has a 3xx status code
+func (o *GetStateNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get state not found response has a 4xx status code
+func (o *GetStateNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get state not found response has a 5xx status code
+func (o *GetStateNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get state not found response a status code equal to that given
+func (o *GetStateNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+// Code gets the status code for the get state not found response
+func (o *GetStateNotFound) Code() int {
+	return 404
+}
+
 func (o *GetStateNotFound) Error() string {
+	return fmt.Sprintf("[GET /reporting-tasks/{id}/state][%d] getStateNotFound ", 404)
+}
+
+func (o *GetStateNotFound) String() string {
 	return fmt.Sprintf("[GET /reporting-tasks/{id}/state][%d] getStateNotFound ", 404)
 }
 
@@ -185,14 +361,49 @@ func NewGetStateConflict() *GetStateConflict {
 	return &GetStateConflict{}
 }
 
-/* GetStateConflict describes a response with status code 409, with default header values.
+/*
+GetStateConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type GetStateConflict struct {
 }
 
+// IsSuccess returns true when this get state conflict response has a 2xx status code
+func (o *GetStateConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get state conflict response has a 3xx status code
+func (o *GetStateConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get state conflict response has a 4xx status code
+func (o *GetStateConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get state conflict response has a 5xx status code
+func (o *GetStateConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get state conflict response a status code equal to that given
+func (o *GetStateConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the get state conflict response
+func (o *GetStateConflict) Code() int {
+	return 409
+}
+
 func (o *GetStateConflict) Error() string {
+	return fmt.Sprintf("[GET /reporting-tasks/{id}/state][%d] getStateConflict ", 409)
+}
+
+func (o *GetStateConflict) String() string {
 	return fmt.Sprintf("[GET /reporting-tasks/{id}/state][%d] getStateConflict ", 409)
 }
 

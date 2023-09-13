@@ -88,6 +88,11 @@ func (m *ReportingTaskTypesEntity) contextValidateReportingTaskTypes(ctx context
 	for i := 0; i < len(m.ReportingTaskTypes); i++ {
 
 		if m.ReportingTaskTypes[i] != nil {
+
+			if swag.IsZero(m.ReportingTaskTypes[i]) { // not required
+				return nil
+			}
+
 			if err := m.ReportingTaskTypes[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("reportingTaskTypes" + "." + strconv.Itoa(i))

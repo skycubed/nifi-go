@@ -60,7 +60,7 @@ func (o *RemoveProcessGroupReader) ReadResponse(response runtime.ClientResponse,
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /process-groups/{id}] removeProcessGroup", response, response.Code())
 	}
 }
 
@@ -69,7 +69,8 @@ func NewRemoveProcessGroupOK() *RemoveProcessGroupOK {
 	return &RemoveProcessGroupOK{}
 }
 
-/* RemoveProcessGroupOK describes a response with status code 200, with default header values.
+/*
+RemoveProcessGroupOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,44 @@ type RemoveProcessGroupOK struct {
 	Payload *models.ProcessGroupEntity
 }
 
+// IsSuccess returns true when this remove process group o k response has a 2xx status code
+func (o *RemoveProcessGroupOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this remove process group o k response has a 3xx status code
+func (o *RemoveProcessGroupOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this remove process group o k response has a 4xx status code
+func (o *RemoveProcessGroupOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this remove process group o k response has a 5xx status code
+func (o *RemoveProcessGroupOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this remove process group o k response a status code equal to that given
+func (o *RemoveProcessGroupOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the remove process group o k response
+func (o *RemoveProcessGroupOK) Code() int {
+	return 200
+}
+
 func (o *RemoveProcessGroupOK) Error() string {
 	return fmt.Sprintf("[DELETE /process-groups/{id}][%d] removeProcessGroupOK  %+v", 200, o.Payload)
 }
+
+func (o *RemoveProcessGroupOK) String() string {
+	return fmt.Sprintf("[DELETE /process-groups/{id}][%d] removeProcessGroupOK  %+v", 200, o.Payload)
+}
+
 func (o *RemoveProcessGroupOK) GetPayload() *models.ProcessGroupEntity {
 	return o.Payload
 }
@@ -101,14 +137,49 @@ func NewRemoveProcessGroupBadRequest() *RemoveProcessGroupBadRequest {
 	return &RemoveProcessGroupBadRequest{}
 }
 
-/* RemoveProcessGroupBadRequest describes a response with status code 400, with default header values.
+/*
+RemoveProcessGroupBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type RemoveProcessGroupBadRequest struct {
 }
 
+// IsSuccess returns true when this remove process group bad request response has a 2xx status code
+func (o *RemoveProcessGroupBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this remove process group bad request response has a 3xx status code
+func (o *RemoveProcessGroupBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this remove process group bad request response has a 4xx status code
+func (o *RemoveProcessGroupBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this remove process group bad request response has a 5xx status code
+func (o *RemoveProcessGroupBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this remove process group bad request response a status code equal to that given
+func (o *RemoveProcessGroupBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the remove process group bad request response
+func (o *RemoveProcessGroupBadRequest) Code() int {
+	return 400
+}
+
 func (o *RemoveProcessGroupBadRequest) Error() string {
+	return fmt.Sprintf("[DELETE /process-groups/{id}][%d] removeProcessGroupBadRequest ", 400)
+}
+
+func (o *RemoveProcessGroupBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /process-groups/{id}][%d] removeProcessGroupBadRequest ", 400)
 }
 
@@ -122,14 +193,49 @@ func NewRemoveProcessGroupUnauthorized() *RemoveProcessGroupUnauthorized {
 	return &RemoveProcessGroupUnauthorized{}
 }
 
-/* RemoveProcessGroupUnauthorized describes a response with status code 401, with default header values.
+/*
+RemoveProcessGroupUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type RemoveProcessGroupUnauthorized struct {
 }
 
+// IsSuccess returns true when this remove process group unauthorized response has a 2xx status code
+func (o *RemoveProcessGroupUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this remove process group unauthorized response has a 3xx status code
+func (o *RemoveProcessGroupUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this remove process group unauthorized response has a 4xx status code
+func (o *RemoveProcessGroupUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this remove process group unauthorized response has a 5xx status code
+func (o *RemoveProcessGroupUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this remove process group unauthorized response a status code equal to that given
+func (o *RemoveProcessGroupUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the remove process group unauthorized response
+func (o *RemoveProcessGroupUnauthorized) Code() int {
+	return 401
+}
+
 func (o *RemoveProcessGroupUnauthorized) Error() string {
+	return fmt.Sprintf("[DELETE /process-groups/{id}][%d] removeProcessGroupUnauthorized ", 401)
+}
+
+func (o *RemoveProcessGroupUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /process-groups/{id}][%d] removeProcessGroupUnauthorized ", 401)
 }
 
@@ -143,14 +249,49 @@ func NewRemoveProcessGroupForbidden() *RemoveProcessGroupForbidden {
 	return &RemoveProcessGroupForbidden{}
 }
 
-/* RemoveProcessGroupForbidden describes a response with status code 403, with default header values.
+/*
+RemoveProcessGroupForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type RemoveProcessGroupForbidden struct {
 }
 
+// IsSuccess returns true when this remove process group forbidden response has a 2xx status code
+func (o *RemoveProcessGroupForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this remove process group forbidden response has a 3xx status code
+func (o *RemoveProcessGroupForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this remove process group forbidden response has a 4xx status code
+func (o *RemoveProcessGroupForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this remove process group forbidden response has a 5xx status code
+func (o *RemoveProcessGroupForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this remove process group forbidden response a status code equal to that given
+func (o *RemoveProcessGroupForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the remove process group forbidden response
+func (o *RemoveProcessGroupForbidden) Code() int {
+	return 403
+}
+
 func (o *RemoveProcessGroupForbidden) Error() string {
+	return fmt.Sprintf("[DELETE /process-groups/{id}][%d] removeProcessGroupForbidden ", 403)
+}
+
+func (o *RemoveProcessGroupForbidden) String() string {
 	return fmt.Sprintf("[DELETE /process-groups/{id}][%d] removeProcessGroupForbidden ", 403)
 }
 
@@ -164,14 +305,49 @@ func NewRemoveProcessGroupNotFound() *RemoveProcessGroupNotFound {
 	return &RemoveProcessGroupNotFound{}
 }
 
-/* RemoveProcessGroupNotFound describes a response with status code 404, with default header values.
+/*
+RemoveProcessGroupNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type RemoveProcessGroupNotFound struct {
 }
 
+// IsSuccess returns true when this remove process group not found response has a 2xx status code
+func (o *RemoveProcessGroupNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this remove process group not found response has a 3xx status code
+func (o *RemoveProcessGroupNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this remove process group not found response has a 4xx status code
+func (o *RemoveProcessGroupNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this remove process group not found response has a 5xx status code
+func (o *RemoveProcessGroupNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this remove process group not found response a status code equal to that given
+func (o *RemoveProcessGroupNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+// Code gets the status code for the remove process group not found response
+func (o *RemoveProcessGroupNotFound) Code() int {
+	return 404
+}
+
 func (o *RemoveProcessGroupNotFound) Error() string {
+	return fmt.Sprintf("[DELETE /process-groups/{id}][%d] removeProcessGroupNotFound ", 404)
+}
+
+func (o *RemoveProcessGroupNotFound) String() string {
 	return fmt.Sprintf("[DELETE /process-groups/{id}][%d] removeProcessGroupNotFound ", 404)
 }
 
@@ -185,14 +361,49 @@ func NewRemoveProcessGroupConflict() *RemoveProcessGroupConflict {
 	return &RemoveProcessGroupConflict{}
 }
 
-/* RemoveProcessGroupConflict describes a response with status code 409, with default header values.
+/*
+RemoveProcessGroupConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type RemoveProcessGroupConflict struct {
 }
 
+// IsSuccess returns true when this remove process group conflict response has a 2xx status code
+func (o *RemoveProcessGroupConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this remove process group conflict response has a 3xx status code
+func (o *RemoveProcessGroupConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this remove process group conflict response has a 4xx status code
+func (o *RemoveProcessGroupConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this remove process group conflict response has a 5xx status code
+func (o *RemoveProcessGroupConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this remove process group conflict response a status code equal to that given
+func (o *RemoveProcessGroupConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the remove process group conflict response
+func (o *RemoveProcessGroupConflict) Code() int {
+	return 409
+}
+
 func (o *RemoveProcessGroupConflict) Error() string {
+	return fmt.Sprintf("[DELETE /process-groups/{id}][%d] removeProcessGroupConflict ", 409)
+}
+
+func (o *RemoveProcessGroupConflict) String() string {
 	return fmt.Sprintf("[DELETE /process-groups/{id}][%d] removeProcessGroupConflict ", 409)
 }
 

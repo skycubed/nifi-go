@@ -91,6 +91,11 @@ func (m *ParameterContextsEntity) contextValidateParameterContexts(ctx context.C
 	for i := 0; i < len(m.ParameterContexts); i++ {
 
 		if m.ParameterContexts[i] != nil {
+
+			if swag.IsZero(m.ParameterContexts[i]) { // not required
+				return nil
+			}
+
 			if err := m.ParameterContexts[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("parameterContexts" + "." + strconv.Itoa(i))

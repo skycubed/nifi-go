@@ -60,7 +60,7 @@ func (o *GetFlowFileReader) ReadResponse(response runtime.ClientResponse, consum
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /flowfile-queues/{id}/flowfiles/{flowfile-uuid}] getFlowFile", response, response.Code())
 	}
 }
 
@@ -69,7 +69,8 @@ func NewGetFlowFileOK() *GetFlowFileOK {
 	return &GetFlowFileOK{}
 }
 
-/* GetFlowFileOK describes a response with status code 200, with default header values.
+/*
+GetFlowFileOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,44 @@ type GetFlowFileOK struct {
 	Payload *models.FlowFileEntity
 }
 
+// IsSuccess returns true when this get flow file o k response has a 2xx status code
+func (o *GetFlowFileOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get flow file o k response has a 3xx status code
+func (o *GetFlowFileOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get flow file o k response has a 4xx status code
+func (o *GetFlowFileOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get flow file o k response has a 5xx status code
+func (o *GetFlowFileOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get flow file o k response a status code equal to that given
+func (o *GetFlowFileOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the get flow file o k response
+func (o *GetFlowFileOK) Code() int {
+	return 200
+}
+
 func (o *GetFlowFileOK) Error() string {
 	return fmt.Sprintf("[GET /flowfile-queues/{id}/flowfiles/{flowfile-uuid}][%d] getFlowFileOK  %+v", 200, o.Payload)
 }
+
+func (o *GetFlowFileOK) String() string {
+	return fmt.Sprintf("[GET /flowfile-queues/{id}/flowfiles/{flowfile-uuid}][%d] getFlowFileOK  %+v", 200, o.Payload)
+}
+
 func (o *GetFlowFileOK) GetPayload() *models.FlowFileEntity {
 	return o.Payload
 }
@@ -101,14 +137,49 @@ func NewGetFlowFileBadRequest() *GetFlowFileBadRequest {
 	return &GetFlowFileBadRequest{}
 }
 
-/* GetFlowFileBadRequest describes a response with status code 400, with default header values.
+/*
+GetFlowFileBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type GetFlowFileBadRequest struct {
 }
 
+// IsSuccess returns true when this get flow file bad request response has a 2xx status code
+func (o *GetFlowFileBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get flow file bad request response has a 3xx status code
+func (o *GetFlowFileBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get flow file bad request response has a 4xx status code
+func (o *GetFlowFileBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get flow file bad request response has a 5xx status code
+func (o *GetFlowFileBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get flow file bad request response a status code equal to that given
+func (o *GetFlowFileBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the get flow file bad request response
+func (o *GetFlowFileBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetFlowFileBadRequest) Error() string {
+	return fmt.Sprintf("[GET /flowfile-queues/{id}/flowfiles/{flowfile-uuid}][%d] getFlowFileBadRequest ", 400)
+}
+
+func (o *GetFlowFileBadRequest) String() string {
 	return fmt.Sprintf("[GET /flowfile-queues/{id}/flowfiles/{flowfile-uuid}][%d] getFlowFileBadRequest ", 400)
 }
 
@@ -122,14 +193,49 @@ func NewGetFlowFileUnauthorized() *GetFlowFileUnauthorized {
 	return &GetFlowFileUnauthorized{}
 }
 
-/* GetFlowFileUnauthorized describes a response with status code 401, with default header values.
+/*
+GetFlowFileUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type GetFlowFileUnauthorized struct {
 }
 
+// IsSuccess returns true when this get flow file unauthorized response has a 2xx status code
+func (o *GetFlowFileUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get flow file unauthorized response has a 3xx status code
+func (o *GetFlowFileUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get flow file unauthorized response has a 4xx status code
+func (o *GetFlowFileUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get flow file unauthorized response has a 5xx status code
+func (o *GetFlowFileUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get flow file unauthorized response a status code equal to that given
+func (o *GetFlowFileUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the get flow file unauthorized response
+func (o *GetFlowFileUnauthorized) Code() int {
+	return 401
+}
+
 func (o *GetFlowFileUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /flowfile-queues/{id}/flowfiles/{flowfile-uuid}][%d] getFlowFileUnauthorized ", 401)
+}
+
+func (o *GetFlowFileUnauthorized) String() string {
 	return fmt.Sprintf("[GET /flowfile-queues/{id}/flowfiles/{flowfile-uuid}][%d] getFlowFileUnauthorized ", 401)
 }
 
@@ -143,14 +249,49 @@ func NewGetFlowFileForbidden() *GetFlowFileForbidden {
 	return &GetFlowFileForbidden{}
 }
 
-/* GetFlowFileForbidden describes a response with status code 403, with default header values.
+/*
+GetFlowFileForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type GetFlowFileForbidden struct {
 }
 
+// IsSuccess returns true when this get flow file forbidden response has a 2xx status code
+func (o *GetFlowFileForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get flow file forbidden response has a 3xx status code
+func (o *GetFlowFileForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get flow file forbidden response has a 4xx status code
+func (o *GetFlowFileForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get flow file forbidden response has a 5xx status code
+func (o *GetFlowFileForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get flow file forbidden response a status code equal to that given
+func (o *GetFlowFileForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the get flow file forbidden response
+func (o *GetFlowFileForbidden) Code() int {
+	return 403
+}
+
 func (o *GetFlowFileForbidden) Error() string {
+	return fmt.Sprintf("[GET /flowfile-queues/{id}/flowfiles/{flowfile-uuid}][%d] getFlowFileForbidden ", 403)
+}
+
+func (o *GetFlowFileForbidden) String() string {
 	return fmt.Sprintf("[GET /flowfile-queues/{id}/flowfiles/{flowfile-uuid}][%d] getFlowFileForbidden ", 403)
 }
 
@@ -164,14 +305,49 @@ func NewGetFlowFileNotFound() *GetFlowFileNotFound {
 	return &GetFlowFileNotFound{}
 }
 
-/* GetFlowFileNotFound describes a response with status code 404, with default header values.
+/*
+GetFlowFileNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type GetFlowFileNotFound struct {
 }
 
+// IsSuccess returns true when this get flow file not found response has a 2xx status code
+func (o *GetFlowFileNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get flow file not found response has a 3xx status code
+func (o *GetFlowFileNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get flow file not found response has a 4xx status code
+func (o *GetFlowFileNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get flow file not found response has a 5xx status code
+func (o *GetFlowFileNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get flow file not found response a status code equal to that given
+func (o *GetFlowFileNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+// Code gets the status code for the get flow file not found response
+func (o *GetFlowFileNotFound) Code() int {
+	return 404
+}
+
 func (o *GetFlowFileNotFound) Error() string {
+	return fmt.Sprintf("[GET /flowfile-queues/{id}/flowfiles/{flowfile-uuid}][%d] getFlowFileNotFound ", 404)
+}
+
+func (o *GetFlowFileNotFound) String() string {
 	return fmt.Sprintf("[GET /flowfile-queues/{id}/flowfiles/{flowfile-uuid}][%d] getFlowFileNotFound ", 404)
 }
 
@@ -185,14 +361,49 @@ func NewGetFlowFileConflict() *GetFlowFileConflict {
 	return &GetFlowFileConflict{}
 }
 
-/* GetFlowFileConflict describes a response with status code 409, with default header values.
+/*
+GetFlowFileConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type GetFlowFileConflict struct {
 }
 
+// IsSuccess returns true when this get flow file conflict response has a 2xx status code
+func (o *GetFlowFileConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get flow file conflict response has a 3xx status code
+func (o *GetFlowFileConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get flow file conflict response has a 4xx status code
+func (o *GetFlowFileConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get flow file conflict response has a 5xx status code
+func (o *GetFlowFileConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get flow file conflict response a status code equal to that given
+func (o *GetFlowFileConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the get flow file conflict response
+func (o *GetFlowFileConflict) Code() int {
+	return 409
+}
+
 func (o *GetFlowFileConflict) Error() string {
+	return fmt.Sprintf("[GET /flowfile-queues/{id}/flowfiles/{flowfile-uuid}][%d] getFlowFileConflict ", 409)
+}
+
+func (o *GetFlowFileConflict) String() string {
 	return fmt.Sprintf("[GET /flowfile-queues/{id}/flowfiles/{flowfile-uuid}][%d] getFlowFileConflict ", 409)
 }
 

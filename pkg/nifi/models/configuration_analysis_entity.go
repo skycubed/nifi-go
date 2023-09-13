@@ -72,6 +72,11 @@ func (m *ConfigurationAnalysisEntity) ContextValidate(ctx context.Context, forma
 func (m *ConfigurationAnalysisEntity) contextValidateConfigurationAnalysis(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ConfigurationAnalysis != nil {
+
+		if swag.IsZero(m.ConfigurationAnalysis) { // not required
+			return nil
+		}
+
 		if err := m.ConfigurationAnalysis.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("configurationAnalysis")

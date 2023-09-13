@@ -85,6 +85,11 @@ func (m *BulletinBoardDTO) contextValidateBulletins(ctx context.Context, formats
 	for i := 0; i < len(m.Bulletins); i++ {
 
 		if m.Bulletins[i] != nil {
+
+			if swag.IsZero(m.Bulletins[i]) { // not required
+				return nil
+			}
+
 			if err := m.Bulletins[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("bulletins" + "." + strconv.Itoa(i))

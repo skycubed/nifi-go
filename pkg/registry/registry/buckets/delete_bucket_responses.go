@@ -54,7 +54,7 @@ func (o *DeleteBucketReader) ReadResponse(response runtime.ClientResponse, consu
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /buckets/{bucketId}] deleteBucket", response, response.Code())
 	}
 }
 
@@ -63,7 +63,8 @@ func NewDeleteBucketOK() *DeleteBucketOK {
 	return &DeleteBucketOK{}
 }
 
-/* DeleteBucketOK describes a response with status code 200, with default header values.
+/*
+DeleteBucketOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -71,9 +72,44 @@ type DeleteBucketOK struct {
 	Payload *models.Bucket
 }
 
+// IsSuccess returns true when this delete bucket o k response has a 2xx status code
+func (o *DeleteBucketOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete bucket o k response has a 3xx status code
+func (o *DeleteBucketOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete bucket o k response has a 4xx status code
+func (o *DeleteBucketOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete bucket o k response has a 5xx status code
+func (o *DeleteBucketOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete bucket o k response a status code equal to that given
+func (o *DeleteBucketOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the delete bucket o k response
+func (o *DeleteBucketOK) Code() int {
+	return 200
+}
+
 func (o *DeleteBucketOK) Error() string {
 	return fmt.Sprintf("[DELETE /buckets/{bucketId}][%d] deleteBucketOK  %+v", 200, o.Payload)
 }
+
+func (o *DeleteBucketOK) String() string {
+	return fmt.Sprintf("[DELETE /buckets/{bucketId}][%d] deleteBucketOK  %+v", 200, o.Payload)
+}
+
 func (o *DeleteBucketOK) GetPayload() *models.Bucket {
 	return o.Payload
 }
@@ -95,14 +131,49 @@ func NewDeleteBucketBadRequest() *DeleteBucketBadRequest {
 	return &DeleteBucketBadRequest{}
 }
 
-/* DeleteBucketBadRequest describes a response with status code 400, with default header values.
+/*
+DeleteBucketBadRequest describes a response with status code 400, with default header values.
 
 NiFi Registry was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type DeleteBucketBadRequest struct {
 }
 
+// IsSuccess returns true when this delete bucket bad request response has a 2xx status code
+func (o *DeleteBucketBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete bucket bad request response has a 3xx status code
+func (o *DeleteBucketBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete bucket bad request response has a 4xx status code
+func (o *DeleteBucketBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete bucket bad request response has a 5xx status code
+func (o *DeleteBucketBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete bucket bad request response a status code equal to that given
+func (o *DeleteBucketBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the delete bucket bad request response
+func (o *DeleteBucketBadRequest) Code() int {
+	return 400
+}
+
 func (o *DeleteBucketBadRequest) Error() string {
+	return fmt.Sprintf("[DELETE /buckets/{bucketId}][%d] deleteBucketBadRequest ", 400)
+}
+
+func (o *DeleteBucketBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /buckets/{bucketId}][%d] deleteBucketBadRequest ", 400)
 }
 
@@ -116,14 +187,49 @@ func NewDeleteBucketUnauthorized() *DeleteBucketUnauthorized {
 	return &DeleteBucketUnauthorized{}
 }
 
-/* DeleteBucketUnauthorized describes a response with status code 401, with default header values.
+/*
+DeleteBucketUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type DeleteBucketUnauthorized struct {
 }
 
+// IsSuccess returns true when this delete bucket unauthorized response has a 2xx status code
+func (o *DeleteBucketUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete bucket unauthorized response has a 3xx status code
+func (o *DeleteBucketUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete bucket unauthorized response has a 4xx status code
+func (o *DeleteBucketUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete bucket unauthorized response has a 5xx status code
+func (o *DeleteBucketUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete bucket unauthorized response a status code equal to that given
+func (o *DeleteBucketUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the delete bucket unauthorized response
+func (o *DeleteBucketUnauthorized) Code() int {
+	return 401
+}
+
 func (o *DeleteBucketUnauthorized) Error() string {
+	return fmt.Sprintf("[DELETE /buckets/{bucketId}][%d] deleteBucketUnauthorized ", 401)
+}
+
+func (o *DeleteBucketUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /buckets/{bucketId}][%d] deleteBucketUnauthorized ", 401)
 }
 
@@ -137,14 +243,49 @@ func NewDeleteBucketForbidden() *DeleteBucketForbidden {
 	return &DeleteBucketForbidden{}
 }
 
-/* DeleteBucketForbidden describes a response with status code 403, with default header values.
+/*
+DeleteBucketForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type DeleteBucketForbidden struct {
 }
 
+// IsSuccess returns true when this delete bucket forbidden response has a 2xx status code
+func (o *DeleteBucketForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete bucket forbidden response has a 3xx status code
+func (o *DeleteBucketForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete bucket forbidden response has a 4xx status code
+func (o *DeleteBucketForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete bucket forbidden response has a 5xx status code
+func (o *DeleteBucketForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete bucket forbidden response a status code equal to that given
+func (o *DeleteBucketForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the delete bucket forbidden response
+func (o *DeleteBucketForbidden) Code() int {
+	return 403
+}
+
 func (o *DeleteBucketForbidden) Error() string {
+	return fmt.Sprintf("[DELETE /buckets/{bucketId}][%d] deleteBucketForbidden ", 403)
+}
+
+func (o *DeleteBucketForbidden) String() string {
 	return fmt.Sprintf("[DELETE /buckets/{bucketId}][%d] deleteBucketForbidden ", 403)
 }
 
@@ -158,14 +299,49 @@ func NewDeleteBucketNotFound() *DeleteBucketNotFound {
 	return &DeleteBucketNotFound{}
 }
 
-/* DeleteBucketNotFound describes a response with status code 404, with default header values.
+/*
+DeleteBucketNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type DeleteBucketNotFound struct {
 }
 
+// IsSuccess returns true when this delete bucket not found response has a 2xx status code
+func (o *DeleteBucketNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete bucket not found response has a 3xx status code
+func (o *DeleteBucketNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete bucket not found response has a 4xx status code
+func (o *DeleteBucketNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete bucket not found response has a 5xx status code
+func (o *DeleteBucketNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete bucket not found response a status code equal to that given
+func (o *DeleteBucketNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+// Code gets the status code for the delete bucket not found response
+func (o *DeleteBucketNotFound) Code() int {
+	return 404
+}
+
 func (o *DeleteBucketNotFound) Error() string {
+	return fmt.Sprintf("[DELETE /buckets/{bucketId}][%d] deleteBucketNotFound ", 404)
+}
+
+func (o *DeleteBucketNotFound) String() string {
 	return fmt.Sprintf("[DELETE /buckets/{bucketId}][%d] deleteBucketNotFound ", 404)
 }
 

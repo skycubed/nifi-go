@@ -52,10 +52,12 @@ func NewCreateAccessTokenFromTicketParamsWithHTTPClient(client *http.Client) *Cr
 	}
 }
 
-/* CreateAccessTokenFromTicketParams contains all the parameters to send to the API endpoint
-   for the create access token from ticket operation.
+/*
+CreateAccessTokenFromTicketParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create access token from ticket operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateAccessTokenFromTicketParams struct {
 	timeout    time.Duration

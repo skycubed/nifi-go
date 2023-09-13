@@ -60,7 +60,7 @@ func (o *UpdateFlowVersionReader) ReadResponse(response runtime.ClientResponse, 
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PUT /versions/process-groups/{id}] updateFlowVersion", response, response.Code())
 	}
 }
 
@@ -69,7 +69,8 @@ func NewUpdateFlowVersionOK() *UpdateFlowVersionOK {
 	return &UpdateFlowVersionOK{}
 }
 
-/* UpdateFlowVersionOK describes a response with status code 200, with default header values.
+/*
+UpdateFlowVersionOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,44 @@ type UpdateFlowVersionOK struct {
 	Payload *models.VersionControlInformationEntity
 }
 
+// IsSuccess returns true when this update flow version o k response has a 2xx status code
+func (o *UpdateFlowVersionOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this update flow version o k response has a 3xx status code
+func (o *UpdateFlowVersionOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update flow version o k response has a 4xx status code
+func (o *UpdateFlowVersionOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this update flow version o k response has a 5xx status code
+func (o *UpdateFlowVersionOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update flow version o k response a status code equal to that given
+func (o *UpdateFlowVersionOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the update flow version o k response
+func (o *UpdateFlowVersionOK) Code() int {
+	return 200
+}
+
 func (o *UpdateFlowVersionOK) Error() string {
 	return fmt.Sprintf("[PUT /versions/process-groups/{id}][%d] updateFlowVersionOK  %+v", 200, o.Payload)
 }
+
+func (o *UpdateFlowVersionOK) String() string {
+	return fmt.Sprintf("[PUT /versions/process-groups/{id}][%d] updateFlowVersionOK  %+v", 200, o.Payload)
+}
+
 func (o *UpdateFlowVersionOK) GetPayload() *models.VersionControlInformationEntity {
 	return o.Payload
 }
@@ -101,14 +137,49 @@ func NewUpdateFlowVersionBadRequest() *UpdateFlowVersionBadRequest {
 	return &UpdateFlowVersionBadRequest{}
 }
 
-/* UpdateFlowVersionBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateFlowVersionBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type UpdateFlowVersionBadRequest struct {
 }
 
+// IsSuccess returns true when this update flow version bad request response has a 2xx status code
+func (o *UpdateFlowVersionBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update flow version bad request response has a 3xx status code
+func (o *UpdateFlowVersionBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update flow version bad request response has a 4xx status code
+func (o *UpdateFlowVersionBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update flow version bad request response has a 5xx status code
+func (o *UpdateFlowVersionBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update flow version bad request response a status code equal to that given
+func (o *UpdateFlowVersionBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the update flow version bad request response
+func (o *UpdateFlowVersionBadRequest) Code() int {
+	return 400
+}
+
 func (o *UpdateFlowVersionBadRequest) Error() string {
+	return fmt.Sprintf("[PUT /versions/process-groups/{id}][%d] updateFlowVersionBadRequest ", 400)
+}
+
+func (o *UpdateFlowVersionBadRequest) String() string {
 	return fmt.Sprintf("[PUT /versions/process-groups/{id}][%d] updateFlowVersionBadRequest ", 400)
 }
 
@@ -122,14 +193,49 @@ func NewUpdateFlowVersionUnauthorized() *UpdateFlowVersionUnauthorized {
 	return &UpdateFlowVersionUnauthorized{}
 }
 
-/* UpdateFlowVersionUnauthorized describes a response with status code 401, with default header values.
+/*
+UpdateFlowVersionUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type UpdateFlowVersionUnauthorized struct {
 }
 
+// IsSuccess returns true when this update flow version unauthorized response has a 2xx status code
+func (o *UpdateFlowVersionUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update flow version unauthorized response has a 3xx status code
+func (o *UpdateFlowVersionUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update flow version unauthorized response has a 4xx status code
+func (o *UpdateFlowVersionUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update flow version unauthorized response has a 5xx status code
+func (o *UpdateFlowVersionUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update flow version unauthorized response a status code equal to that given
+func (o *UpdateFlowVersionUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the update flow version unauthorized response
+func (o *UpdateFlowVersionUnauthorized) Code() int {
+	return 401
+}
+
 func (o *UpdateFlowVersionUnauthorized) Error() string {
+	return fmt.Sprintf("[PUT /versions/process-groups/{id}][%d] updateFlowVersionUnauthorized ", 401)
+}
+
+func (o *UpdateFlowVersionUnauthorized) String() string {
 	return fmt.Sprintf("[PUT /versions/process-groups/{id}][%d] updateFlowVersionUnauthorized ", 401)
 }
 
@@ -143,14 +249,49 @@ func NewUpdateFlowVersionForbidden() *UpdateFlowVersionForbidden {
 	return &UpdateFlowVersionForbidden{}
 }
 
-/* UpdateFlowVersionForbidden describes a response with status code 403, with default header values.
+/*
+UpdateFlowVersionForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type UpdateFlowVersionForbidden struct {
 }
 
+// IsSuccess returns true when this update flow version forbidden response has a 2xx status code
+func (o *UpdateFlowVersionForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update flow version forbidden response has a 3xx status code
+func (o *UpdateFlowVersionForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update flow version forbidden response has a 4xx status code
+func (o *UpdateFlowVersionForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update flow version forbidden response has a 5xx status code
+func (o *UpdateFlowVersionForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update flow version forbidden response a status code equal to that given
+func (o *UpdateFlowVersionForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the update flow version forbidden response
+func (o *UpdateFlowVersionForbidden) Code() int {
+	return 403
+}
+
 func (o *UpdateFlowVersionForbidden) Error() string {
+	return fmt.Sprintf("[PUT /versions/process-groups/{id}][%d] updateFlowVersionForbidden ", 403)
+}
+
+func (o *UpdateFlowVersionForbidden) String() string {
 	return fmt.Sprintf("[PUT /versions/process-groups/{id}][%d] updateFlowVersionForbidden ", 403)
 }
 
@@ -164,14 +305,49 @@ func NewUpdateFlowVersionNotFound() *UpdateFlowVersionNotFound {
 	return &UpdateFlowVersionNotFound{}
 }
 
-/* UpdateFlowVersionNotFound describes a response with status code 404, with default header values.
+/*
+UpdateFlowVersionNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type UpdateFlowVersionNotFound struct {
 }
 
+// IsSuccess returns true when this update flow version not found response has a 2xx status code
+func (o *UpdateFlowVersionNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update flow version not found response has a 3xx status code
+func (o *UpdateFlowVersionNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update flow version not found response has a 4xx status code
+func (o *UpdateFlowVersionNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update flow version not found response has a 5xx status code
+func (o *UpdateFlowVersionNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update flow version not found response a status code equal to that given
+func (o *UpdateFlowVersionNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+// Code gets the status code for the update flow version not found response
+func (o *UpdateFlowVersionNotFound) Code() int {
+	return 404
+}
+
 func (o *UpdateFlowVersionNotFound) Error() string {
+	return fmt.Sprintf("[PUT /versions/process-groups/{id}][%d] updateFlowVersionNotFound ", 404)
+}
+
+func (o *UpdateFlowVersionNotFound) String() string {
 	return fmt.Sprintf("[PUT /versions/process-groups/{id}][%d] updateFlowVersionNotFound ", 404)
 }
 
@@ -185,14 +361,49 @@ func NewUpdateFlowVersionConflict() *UpdateFlowVersionConflict {
 	return &UpdateFlowVersionConflict{}
 }
 
-/* UpdateFlowVersionConflict describes a response with status code 409, with default header values.
+/*
+UpdateFlowVersionConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type UpdateFlowVersionConflict struct {
 }
 
+// IsSuccess returns true when this update flow version conflict response has a 2xx status code
+func (o *UpdateFlowVersionConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update flow version conflict response has a 3xx status code
+func (o *UpdateFlowVersionConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update flow version conflict response has a 4xx status code
+func (o *UpdateFlowVersionConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update flow version conflict response has a 5xx status code
+func (o *UpdateFlowVersionConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update flow version conflict response a status code equal to that given
+func (o *UpdateFlowVersionConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the update flow version conflict response
+func (o *UpdateFlowVersionConflict) Code() int {
+	return 409
+}
+
 func (o *UpdateFlowVersionConflict) Error() string {
+	return fmt.Sprintf("[PUT /versions/process-groups/{id}][%d] updateFlowVersionConflict ", 409)
+}
+
+func (o *UpdateFlowVersionConflict) String() string {
 	return fmt.Sprintf("[PUT /versions/process-groups/{id}][%d] updateFlowVersionConflict ", 409)
 }
 

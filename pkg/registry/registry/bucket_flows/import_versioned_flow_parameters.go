@@ -54,10 +54,12 @@ func NewImportVersionedFlowParamsWithHTTPClient(client *http.Client) *ImportVers
 	}
 }
 
-/* ImportVersionedFlowParams contains all the parameters to send to the API endpoint
-   for the import versioned flow operation.
+/*
+ImportVersionedFlowParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the import versioned flow operation.
+
+	Typically these are written to a http.Request.
 */
 type ImportVersionedFlowParams struct {
 

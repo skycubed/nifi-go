@@ -72,6 +72,11 @@ func (m *ListingRequestEntity) ContextValidate(ctx context.Context, formats strf
 func (m *ListingRequestEntity) contextValidateListingRequest(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ListingRequest != nil {
+
+		if swag.IsZero(m.ListingRequest) { // not required
+			return nil
+		}
+
 		if err := m.ListingRequest.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("listingRequest")

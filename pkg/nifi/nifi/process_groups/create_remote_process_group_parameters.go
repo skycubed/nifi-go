@@ -54,10 +54,12 @@ func NewCreateRemoteProcessGroupParamsWithHTTPClient(client *http.Client) *Creat
 	}
 }
 
-/* CreateRemoteProcessGroupParams contains all the parameters to send to the API endpoint
-   for the create remote process group operation.
+/*
+CreateRemoteProcessGroupParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create remote process group operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateRemoteProcessGroupParams struct {
 

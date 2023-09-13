@@ -52,10 +52,12 @@ func NewGetExtensionRepoVersionExtensionAdditionalDetailsDocsParamsWithHTTPClien
 	}
 }
 
-/* GetExtensionRepoVersionExtensionAdditionalDetailsDocsParams contains all the parameters to send to the API endpoint
-   for the get extension repo version extension additional details docs operation.
+/*
+GetExtensionRepoVersionExtensionAdditionalDetailsDocsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get extension repo version extension additional details docs operation.
+
+	Typically these are written to a http.Request.
 */
 type GetExtensionRepoVersionExtensionAdditionalDetailsDocsParams struct {
 

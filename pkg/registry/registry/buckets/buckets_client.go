@@ -46,7 +46,7 @@ type ClientService interface {
 }
 
 /*
-  CreateBucket creates bucket
+CreateBucket creates bucket
 */
 func (a *Client) CreateBucket(params *CreateBucketParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateBucketOK, error) {
 	// TODO: Validate the params before sending
@@ -85,9 +85,9 @@ func (a *Client) CreateBucket(params *CreateBucketParams, authInfo runtime.Clien
 }
 
 /*
-  DeleteBucket deletes bucket
+DeleteBucket deletes bucket
 
-  Deletes the bucket with the given id, along with all objects stored in the bucket
+Deletes the bucket with the given id, along with all objects stored in the bucket
 */
 func (a *Client) DeleteBucket(params *DeleteBucketParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteBucketOK, error) {
 	// TODO: Validate the params before sending
@@ -126,9 +126,9 @@ func (a *Client) DeleteBucket(params *DeleteBucketParams, authInfo runtime.Clien
 }
 
 /*
-  GetAvailableBucketFields gets bucket fields
+GetAvailableBucketFields gets bucket fields
 
-  Retrieves bucket field names for searching or sorting on buckets.
+Retrieves bucket field names for searching or sorting on buckets.
 */
 func (a *Client) GetAvailableBucketFields(params *GetAvailableBucketFieldsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetAvailableBucketFieldsOK, error) {
 	// TODO: Validate the params before sending
@@ -167,9 +167,9 @@ func (a *Client) GetAvailableBucketFields(params *GetAvailableBucketFieldsParams
 }
 
 /*
-  GetBucket gets bucket
+GetBucket gets bucket
 
-  Gets the bucket with the given id.
+Gets the bucket with the given id.
 */
 func (a *Client) GetBucket(params *GetBucketParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetBucketOK, error) {
 	// TODO: Validate the params before sending
@@ -208,9 +208,9 @@ func (a *Client) GetBucket(params *GetBucketParams, authInfo runtime.ClientAuthI
 }
 
 /*
-  GetBuckets gets all buckets
+GetBuckets gets all buckets
 
-  The returned list will include only buckets for which the user is authorized.If the user is not authorized for any buckets, this returns an empty list.
+The returned list will include only buckets for which the user is authorized.If the user is not authorized for any buckets, this returns an empty list.
 */
 func (a *Client) GetBuckets(params *GetBucketsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetBucketsOK, error) {
 	// TODO: Validate the params before sending
@@ -249,9 +249,9 @@ func (a *Client) GetBuckets(params *GetBucketsParams, authInfo runtime.ClientAut
 }
 
 /*
-  UpdateBucket updates bucket
+UpdateBucket updates bucket
 
-  Updates the bucket with the given id.
+Updates the bucket with the given id.
 */
 func (a *Client) UpdateBucket(params *UpdateBucketParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateBucketOK, error) {
 	// TODO: Validate the params before sending

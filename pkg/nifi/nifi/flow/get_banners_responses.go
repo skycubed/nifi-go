@@ -54,7 +54,7 @@ func (o *GetBannersReader) ReadResponse(response runtime.ClientResponse, consume
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /flow/banners] getBanners", response, response.Code())
 	}
 }
 
@@ -63,7 +63,8 @@ func NewGetBannersOK() *GetBannersOK {
 	return &GetBannersOK{}
 }
 
-/* GetBannersOK describes a response with status code 200, with default header values.
+/*
+GetBannersOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -71,9 +72,44 @@ type GetBannersOK struct {
 	Payload *models.BannerEntity
 }
 
+// IsSuccess returns true when this get banners o k response has a 2xx status code
+func (o *GetBannersOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get banners o k response has a 3xx status code
+func (o *GetBannersOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get banners o k response has a 4xx status code
+func (o *GetBannersOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get banners o k response has a 5xx status code
+func (o *GetBannersOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get banners o k response a status code equal to that given
+func (o *GetBannersOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the get banners o k response
+func (o *GetBannersOK) Code() int {
+	return 200
+}
+
 func (o *GetBannersOK) Error() string {
 	return fmt.Sprintf("[GET /flow/banners][%d] getBannersOK  %+v", 200, o.Payload)
 }
+
+func (o *GetBannersOK) String() string {
+	return fmt.Sprintf("[GET /flow/banners][%d] getBannersOK  %+v", 200, o.Payload)
+}
+
 func (o *GetBannersOK) GetPayload() *models.BannerEntity {
 	return o.Payload
 }
@@ -95,14 +131,49 @@ func NewGetBannersBadRequest() *GetBannersBadRequest {
 	return &GetBannersBadRequest{}
 }
 
-/* GetBannersBadRequest describes a response with status code 400, with default header values.
+/*
+GetBannersBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type GetBannersBadRequest struct {
 }
 
+// IsSuccess returns true when this get banners bad request response has a 2xx status code
+func (o *GetBannersBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get banners bad request response has a 3xx status code
+func (o *GetBannersBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get banners bad request response has a 4xx status code
+func (o *GetBannersBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get banners bad request response has a 5xx status code
+func (o *GetBannersBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get banners bad request response a status code equal to that given
+func (o *GetBannersBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the get banners bad request response
+func (o *GetBannersBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetBannersBadRequest) Error() string {
+	return fmt.Sprintf("[GET /flow/banners][%d] getBannersBadRequest ", 400)
+}
+
+func (o *GetBannersBadRequest) String() string {
 	return fmt.Sprintf("[GET /flow/banners][%d] getBannersBadRequest ", 400)
 }
 
@@ -116,14 +187,49 @@ func NewGetBannersUnauthorized() *GetBannersUnauthorized {
 	return &GetBannersUnauthorized{}
 }
 
-/* GetBannersUnauthorized describes a response with status code 401, with default header values.
+/*
+GetBannersUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type GetBannersUnauthorized struct {
 }
 
+// IsSuccess returns true when this get banners unauthorized response has a 2xx status code
+func (o *GetBannersUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get banners unauthorized response has a 3xx status code
+func (o *GetBannersUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get banners unauthorized response has a 4xx status code
+func (o *GetBannersUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get banners unauthorized response has a 5xx status code
+func (o *GetBannersUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get banners unauthorized response a status code equal to that given
+func (o *GetBannersUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the get banners unauthorized response
+func (o *GetBannersUnauthorized) Code() int {
+	return 401
+}
+
 func (o *GetBannersUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /flow/banners][%d] getBannersUnauthorized ", 401)
+}
+
+func (o *GetBannersUnauthorized) String() string {
 	return fmt.Sprintf("[GET /flow/banners][%d] getBannersUnauthorized ", 401)
 }
 
@@ -137,14 +243,49 @@ func NewGetBannersForbidden() *GetBannersForbidden {
 	return &GetBannersForbidden{}
 }
 
-/* GetBannersForbidden describes a response with status code 403, with default header values.
+/*
+GetBannersForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type GetBannersForbidden struct {
 }
 
+// IsSuccess returns true when this get banners forbidden response has a 2xx status code
+func (o *GetBannersForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get banners forbidden response has a 3xx status code
+func (o *GetBannersForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get banners forbidden response has a 4xx status code
+func (o *GetBannersForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get banners forbidden response has a 5xx status code
+func (o *GetBannersForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get banners forbidden response a status code equal to that given
+func (o *GetBannersForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the get banners forbidden response
+func (o *GetBannersForbidden) Code() int {
+	return 403
+}
+
 func (o *GetBannersForbidden) Error() string {
+	return fmt.Sprintf("[GET /flow/banners][%d] getBannersForbidden ", 403)
+}
+
+func (o *GetBannersForbidden) String() string {
 	return fmt.Sprintf("[GET /flow/banners][%d] getBannersForbidden ", 403)
 }
 
@@ -158,14 +299,49 @@ func NewGetBannersConflict() *GetBannersConflict {
 	return &GetBannersConflict{}
 }
 
-/* GetBannersConflict describes a response with status code 409, with default header values.
+/*
+GetBannersConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type GetBannersConflict struct {
 }
 
+// IsSuccess returns true when this get banners conflict response has a 2xx status code
+func (o *GetBannersConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get banners conflict response has a 3xx status code
+func (o *GetBannersConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get banners conflict response has a 4xx status code
+func (o *GetBannersConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get banners conflict response has a 5xx status code
+func (o *GetBannersConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get banners conflict response a status code equal to that given
+func (o *GetBannersConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the get banners conflict response
+func (o *GetBannersConflict) Code() int {
+	return 409
+}
+
 func (o *GetBannersConflict) Error() string {
+	return fmt.Sprintf("[GET /flow/banners][%d] getBannersConflict ", 409)
+}
+
+func (o *GetBannersConflict) String() string {
 	return fmt.Sprintf("[GET /flow/banners][%d] getBannersConflict ", 409)
 }
 

@@ -54,7 +54,7 @@ func (o *GetItemsInBucketReader) ReadResponse(response runtime.ClientResponse, c
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /items/{bucketId}] getItemsInBucket", response, response.Code())
 	}
 }
 
@@ -63,7 +63,8 @@ func NewGetItemsInBucketOK() *GetItemsInBucketOK {
 	return &GetItemsInBucketOK{}
 }
 
-/* GetItemsInBucketOK describes a response with status code 200, with default header values.
+/*
+GetItemsInBucketOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -71,9 +72,44 @@ type GetItemsInBucketOK struct {
 	Payload []*models.BucketItem
 }
 
+// IsSuccess returns true when this get items in bucket o k response has a 2xx status code
+func (o *GetItemsInBucketOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get items in bucket o k response has a 3xx status code
+func (o *GetItemsInBucketOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get items in bucket o k response has a 4xx status code
+func (o *GetItemsInBucketOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get items in bucket o k response has a 5xx status code
+func (o *GetItemsInBucketOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get items in bucket o k response a status code equal to that given
+func (o *GetItemsInBucketOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the get items in bucket o k response
+func (o *GetItemsInBucketOK) Code() int {
+	return 200
+}
+
 func (o *GetItemsInBucketOK) Error() string {
 	return fmt.Sprintf("[GET /items/{bucketId}][%d] getItemsInBucketOK  %+v", 200, o.Payload)
 }
+
+func (o *GetItemsInBucketOK) String() string {
+	return fmt.Sprintf("[GET /items/{bucketId}][%d] getItemsInBucketOK  %+v", 200, o.Payload)
+}
+
 func (o *GetItemsInBucketOK) GetPayload() []*models.BucketItem {
 	return o.Payload
 }
@@ -93,14 +129,49 @@ func NewGetItemsInBucketBadRequest() *GetItemsInBucketBadRequest {
 	return &GetItemsInBucketBadRequest{}
 }
 
-/* GetItemsInBucketBadRequest describes a response with status code 400, with default header values.
+/*
+GetItemsInBucketBadRequest describes a response with status code 400, with default header values.
 
 NiFi Registry was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type GetItemsInBucketBadRequest struct {
 }
 
+// IsSuccess returns true when this get items in bucket bad request response has a 2xx status code
+func (o *GetItemsInBucketBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get items in bucket bad request response has a 3xx status code
+func (o *GetItemsInBucketBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get items in bucket bad request response has a 4xx status code
+func (o *GetItemsInBucketBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get items in bucket bad request response has a 5xx status code
+func (o *GetItemsInBucketBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get items in bucket bad request response a status code equal to that given
+func (o *GetItemsInBucketBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the get items in bucket bad request response
+func (o *GetItemsInBucketBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetItemsInBucketBadRequest) Error() string {
+	return fmt.Sprintf("[GET /items/{bucketId}][%d] getItemsInBucketBadRequest ", 400)
+}
+
+func (o *GetItemsInBucketBadRequest) String() string {
 	return fmt.Sprintf("[GET /items/{bucketId}][%d] getItemsInBucketBadRequest ", 400)
 }
 
@@ -114,14 +185,49 @@ func NewGetItemsInBucketUnauthorized() *GetItemsInBucketUnauthorized {
 	return &GetItemsInBucketUnauthorized{}
 }
 
-/* GetItemsInBucketUnauthorized describes a response with status code 401, with default header values.
+/*
+GetItemsInBucketUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type GetItemsInBucketUnauthorized struct {
 }
 
+// IsSuccess returns true when this get items in bucket unauthorized response has a 2xx status code
+func (o *GetItemsInBucketUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get items in bucket unauthorized response has a 3xx status code
+func (o *GetItemsInBucketUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get items in bucket unauthorized response has a 4xx status code
+func (o *GetItemsInBucketUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get items in bucket unauthorized response has a 5xx status code
+func (o *GetItemsInBucketUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get items in bucket unauthorized response a status code equal to that given
+func (o *GetItemsInBucketUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the get items in bucket unauthorized response
+func (o *GetItemsInBucketUnauthorized) Code() int {
+	return 401
+}
+
 func (o *GetItemsInBucketUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /items/{bucketId}][%d] getItemsInBucketUnauthorized ", 401)
+}
+
+func (o *GetItemsInBucketUnauthorized) String() string {
 	return fmt.Sprintf("[GET /items/{bucketId}][%d] getItemsInBucketUnauthorized ", 401)
 }
 
@@ -135,14 +241,49 @@ func NewGetItemsInBucketForbidden() *GetItemsInBucketForbidden {
 	return &GetItemsInBucketForbidden{}
 }
 
-/* GetItemsInBucketForbidden describes a response with status code 403, with default header values.
+/*
+GetItemsInBucketForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type GetItemsInBucketForbidden struct {
 }
 
+// IsSuccess returns true when this get items in bucket forbidden response has a 2xx status code
+func (o *GetItemsInBucketForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get items in bucket forbidden response has a 3xx status code
+func (o *GetItemsInBucketForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get items in bucket forbidden response has a 4xx status code
+func (o *GetItemsInBucketForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get items in bucket forbidden response has a 5xx status code
+func (o *GetItemsInBucketForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get items in bucket forbidden response a status code equal to that given
+func (o *GetItemsInBucketForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the get items in bucket forbidden response
+func (o *GetItemsInBucketForbidden) Code() int {
+	return 403
+}
+
 func (o *GetItemsInBucketForbidden) Error() string {
+	return fmt.Sprintf("[GET /items/{bucketId}][%d] getItemsInBucketForbidden ", 403)
+}
+
+func (o *GetItemsInBucketForbidden) String() string {
 	return fmt.Sprintf("[GET /items/{bucketId}][%d] getItemsInBucketForbidden ", 403)
 }
 
@@ -156,14 +297,49 @@ func NewGetItemsInBucketNotFound() *GetItemsInBucketNotFound {
 	return &GetItemsInBucketNotFound{}
 }
 
-/* GetItemsInBucketNotFound describes a response with status code 404, with default header values.
+/*
+GetItemsInBucketNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type GetItemsInBucketNotFound struct {
 }
 
+// IsSuccess returns true when this get items in bucket not found response has a 2xx status code
+func (o *GetItemsInBucketNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get items in bucket not found response has a 3xx status code
+func (o *GetItemsInBucketNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get items in bucket not found response has a 4xx status code
+func (o *GetItemsInBucketNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get items in bucket not found response has a 5xx status code
+func (o *GetItemsInBucketNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get items in bucket not found response a status code equal to that given
+func (o *GetItemsInBucketNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+// Code gets the status code for the get items in bucket not found response
+func (o *GetItemsInBucketNotFound) Code() int {
+	return 404
+}
+
 func (o *GetItemsInBucketNotFound) Error() string {
+	return fmt.Sprintf("[GET /items/{bucketId}][%d] getItemsInBucketNotFound ", 404)
+}
+
+func (o *GetItemsInBucketNotFound) String() string {
 	return fmt.Sprintf("[GET /items/{bucketId}][%d] getItemsInBucketNotFound ", 404)
 }
 

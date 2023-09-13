@@ -60,7 +60,7 @@ func (o *GetPropertyDescriptorReader) ReadResponse(response runtime.ClientRespon
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /reporting-tasks/{id}/descriptors] getPropertyDescriptor", response, response.Code())
 	}
 }
 
@@ -69,7 +69,8 @@ func NewGetPropertyDescriptorOK() *GetPropertyDescriptorOK {
 	return &GetPropertyDescriptorOK{}
 }
 
-/* GetPropertyDescriptorOK describes a response with status code 200, with default header values.
+/*
+GetPropertyDescriptorOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,44 @@ type GetPropertyDescriptorOK struct {
 	Payload *models.PropertyDescriptorEntity
 }
 
+// IsSuccess returns true when this get property descriptor o k response has a 2xx status code
+func (o *GetPropertyDescriptorOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get property descriptor o k response has a 3xx status code
+func (o *GetPropertyDescriptorOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get property descriptor o k response has a 4xx status code
+func (o *GetPropertyDescriptorOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get property descriptor o k response has a 5xx status code
+func (o *GetPropertyDescriptorOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get property descriptor o k response a status code equal to that given
+func (o *GetPropertyDescriptorOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the get property descriptor o k response
+func (o *GetPropertyDescriptorOK) Code() int {
+	return 200
+}
+
 func (o *GetPropertyDescriptorOK) Error() string {
 	return fmt.Sprintf("[GET /reporting-tasks/{id}/descriptors][%d] getPropertyDescriptorOK  %+v", 200, o.Payload)
 }
+
+func (o *GetPropertyDescriptorOK) String() string {
+	return fmt.Sprintf("[GET /reporting-tasks/{id}/descriptors][%d] getPropertyDescriptorOK  %+v", 200, o.Payload)
+}
+
 func (o *GetPropertyDescriptorOK) GetPayload() *models.PropertyDescriptorEntity {
 	return o.Payload
 }
@@ -101,14 +137,49 @@ func NewGetPropertyDescriptorBadRequest() *GetPropertyDescriptorBadRequest {
 	return &GetPropertyDescriptorBadRequest{}
 }
 
-/* GetPropertyDescriptorBadRequest describes a response with status code 400, with default header values.
+/*
+GetPropertyDescriptorBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type GetPropertyDescriptorBadRequest struct {
 }
 
+// IsSuccess returns true when this get property descriptor bad request response has a 2xx status code
+func (o *GetPropertyDescriptorBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get property descriptor bad request response has a 3xx status code
+func (o *GetPropertyDescriptorBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get property descriptor bad request response has a 4xx status code
+func (o *GetPropertyDescriptorBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get property descriptor bad request response has a 5xx status code
+func (o *GetPropertyDescriptorBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get property descriptor bad request response a status code equal to that given
+func (o *GetPropertyDescriptorBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the get property descriptor bad request response
+func (o *GetPropertyDescriptorBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetPropertyDescriptorBadRequest) Error() string {
+	return fmt.Sprintf("[GET /reporting-tasks/{id}/descriptors][%d] getPropertyDescriptorBadRequest ", 400)
+}
+
+func (o *GetPropertyDescriptorBadRequest) String() string {
 	return fmt.Sprintf("[GET /reporting-tasks/{id}/descriptors][%d] getPropertyDescriptorBadRequest ", 400)
 }
 
@@ -122,14 +193,49 @@ func NewGetPropertyDescriptorUnauthorized() *GetPropertyDescriptorUnauthorized {
 	return &GetPropertyDescriptorUnauthorized{}
 }
 
-/* GetPropertyDescriptorUnauthorized describes a response with status code 401, with default header values.
+/*
+GetPropertyDescriptorUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type GetPropertyDescriptorUnauthorized struct {
 }
 
+// IsSuccess returns true when this get property descriptor unauthorized response has a 2xx status code
+func (o *GetPropertyDescriptorUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get property descriptor unauthorized response has a 3xx status code
+func (o *GetPropertyDescriptorUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get property descriptor unauthorized response has a 4xx status code
+func (o *GetPropertyDescriptorUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get property descriptor unauthorized response has a 5xx status code
+func (o *GetPropertyDescriptorUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get property descriptor unauthorized response a status code equal to that given
+func (o *GetPropertyDescriptorUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the get property descriptor unauthorized response
+func (o *GetPropertyDescriptorUnauthorized) Code() int {
+	return 401
+}
+
 func (o *GetPropertyDescriptorUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /reporting-tasks/{id}/descriptors][%d] getPropertyDescriptorUnauthorized ", 401)
+}
+
+func (o *GetPropertyDescriptorUnauthorized) String() string {
 	return fmt.Sprintf("[GET /reporting-tasks/{id}/descriptors][%d] getPropertyDescriptorUnauthorized ", 401)
 }
 
@@ -143,14 +249,49 @@ func NewGetPropertyDescriptorForbidden() *GetPropertyDescriptorForbidden {
 	return &GetPropertyDescriptorForbidden{}
 }
 
-/* GetPropertyDescriptorForbidden describes a response with status code 403, with default header values.
+/*
+GetPropertyDescriptorForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type GetPropertyDescriptorForbidden struct {
 }
 
+// IsSuccess returns true when this get property descriptor forbidden response has a 2xx status code
+func (o *GetPropertyDescriptorForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get property descriptor forbidden response has a 3xx status code
+func (o *GetPropertyDescriptorForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get property descriptor forbidden response has a 4xx status code
+func (o *GetPropertyDescriptorForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get property descriptor forbidden response has a 5xx status code
+func (o *GetPropertyDescriptorForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get property descriptor forbidden response a status code equal to that given
+func (o *GetPropertyDescriptorForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the get property descriptor forbidden response
+func (o *GetPropertyDescriptorForbidden) Code() int {
+	return 403
+}
+
 func (o *GetPropertyDescriptorForbidden) Error() string {
+	return fmt.Sprintf("[GET /reporting-tasks/{id}/descriptors][%d] getPropertyDescriptorForbidden ", 403)
+}
+
+func (o *GetPropertyDescriptorForbidden) String() string {
 	return fmt.Sprintf("[GET /reporting-tasks/{id}/descriptors][%d] getPropertyDescriptorForbidden ", 403)
 }
 
@@ -164,14 +305,49 @@ func NewGetPropertyDescriptorNotFound() *GetPropertyDescriptorNotFound {
 	return &GetPropertyDescriptorNotFound{}
 }
 
-/* GetPropertyDescriptorNotFound describes a response with status code 404, with default header values.
+/*
+GetPropertyDescriptorNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type GetPropertyDescriptorNotFound struct {
 }
 
+// IsSuccess returns true when this get property descriptor not found response has a 2xx status code
+func (o *GetPropertyDescriptorNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get property descriptor not found response has a 3xx status code
+func (o *GetPropertyDescriptorNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get property descriptor not found response has a 4xx status code
+func (o *GetPropertyDescriptorNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get property descriptor not found response has a 5xx status code
+func (o *GetPropertyDescriptorNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get property descriptor not found response a status code equal to that given
+func (o *GetPropertyDescriptorNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+// Code gets the status code for the get property descriptor not found response
+func (o *GetPropertyDescriptorNotFound) Code() int {
+	return 404
+}
+
 func (o *GetPropertyDescriptorNotFound) Error() string {
+	return fmt.Sprintf("[GET /reporting-tasks/{id}/descriptors][%d] getPropertyDescriptorNotFound ", 404)
+}
+
+func (o *GetPropertyDescriptorNotFound) String() string {
 	return fmt.Sprintf("[GET /reporting-tasks/{id}/descriptors][%d] getPropertyDescriptorNotFound ", 404)
 }
 
@@ -185,14 +361,49 @@ func NewGetPropertyDescriptorConflict() *GetPropertyDescriptorConflict {
 	return &GetPropertyDescriptorConflict{}
 }
 
-/* GetPropertyDescriptorConflict describes a response with status code 409, with default header values.
+/*
+GetPropertyDescriptorConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type GetPropertyDescriptorConflict struct {
 }
 
+// IsSuccess returns true when this get property descriptor conflict response has a 2xx status code
+func (o *GetPropertyDescriptorConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get property descriptor conflict response has a 3xx status code
+func (o *GetPropertyDescriptorConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get property descriptor conflict response has a 4xx status code
+func (o *GetPropertyDescriptorConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get property descriptor conflict response has a 5xx status code
+func (o *GetPropertyDescriptorConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get property descriptor conflict response a status code equal to that given
+func (o *GetPropertyDescriptorConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the get property descriptor conflict response
+func (o *GetPropertyDescriptorConflict) Code() int {
+	return 409
+}
+
 func (o *GetPropertyDescriptorConflict) Error() string {
+	return fmt.Sprintf("[GET /reporting-tasks/{id}/descriptors][%d] getPropertyDescriptorConflict ", 409)
+}
+
+func (o *GetPropertyDescriptorConflict) String() string {
 	return fmt.Sprintf("[GET /reporting-tasks/{id}/descriptors][%d] getPropertyDescriptorConflict ", 409)
 }
 

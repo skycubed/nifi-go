@@ -44,7 +44,7 @@ type ClientService interface {
 }
 
 /*
-  GetControllerService gets a controller service
+GetControllerService gets a controller service
 */
 func (a *Client) GetControllerService(params *GetControllerServiceParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetControllerServiceOK, error) {
 	// TODO: Validate the params before sending
@@ -83,7 +83,7 @@ func (a *Client) GetControllerService(params *GetControllerServiceParams, authIn
 }
 
 /*
-  GetControllerServiceReferences gets a controller service
+GetControllerServiceReferences gets a controller service
 */
 func (a *Client) GetControllerServiceReferences(params *GetControllerServiceReferencesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetControllerServiceReferencesOK, error) {
 	// TODO: Validate the params before sending
@@ -122,7 +122,7 @@ func (a *Client) GetControllerServiceReferences(params *GetControllerServiceRefe
 }
 
 /*
-  RemoveControllerService deletes a controller service
+RemoveControllerService deletes a controller service
 */
 func (a *Client) RemoveControllerService(params *RemoveControllerServiceParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*RemoveControllerServiceOK, error) {
 	// TODO: Validate the params before sending
@@ -161,7 +161,7 @@ func (a *Client) RemoveControllerService(params *RemoveControllerServiceParams, 
 }
 
 /*
-  UpdateControllerService updates a controller service
+UpdateControllerService updates a controller service
 */
 func (a *Client) UpdateControllerService(params *UpdateControllerServiceParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateControllerServiceOK, error) {
 	// TODO: Validate the params before sending
@@ -200,7 +200,7 @@ func (a *Client) UpdateControllerService(params *UpdateControllerServiceParams, 
 }
 
 /*
-  UpdateControllerServiceReferences updates a controller services references
+UpdateControllerServiceReferences updates a controller services references
 */
 func (a *Client) UpdateControllerServiceReferences(params *UpdateControllerServiceReferencesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateControllerServiceReferencesOK, error) {
 	// TODO: Validate the params before sending

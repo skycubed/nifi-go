@@ -54,7 +54,7 @@ func (o *GetAboutInfoReader) ReadResponse(response runtime.ClientResponse, consu
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /flow/about] getAboutInfo", response, response.Code())
 	}
 }
 
@@ -63,7 +63,8 @@ func NewGetAboutInfoOK() *GetAboutInfoOK {
 	return &GetAboutInfoOK{}
 }
 
-/* GetAboutInfoOK describes a response with status code 200, with default header values.
+/*
+GetAboutInfoOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -71,9 +72,44 @@ type GetAboutInfoOK struct {
 	Payload *models.AboutEntity
 }
 
+// IsSuccess returns true when this get about info o k response has a 2xx status code
+func (o *GetAboutInfoOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get about info o k response has a 3xx status code
+func (o *GetAboutInfoOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get about info o k response has a 4xx status code
+func (o *GetAboutInfoOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get about info o k response has a 5xx status code
+func (o *GetAboutInfoOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get about info o k response a status code equal to that given
+func (o *GetAboutInfoOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the get about info o k response
+func (o *GetAboutInfoOK) Code() int {
+	return 200
+}
+
 func (o *GetAboutInfoOK) Error() string {
 	return fmt.Sprintf("[GET /flow/about][%d] getAboutInfoOK  %+v", 200, o.Payload)
 }
+
+func (o *GetAboutInfoOK) String() string {
+	return fmt.Sprintf("[GET /flow/about][%d] getAboutInfoOK  %+v", 200, o.Payload)
+}
+
 func (o *GetAboutInfoOK) GetPayload() *models.AboutEntity {
 	return o.Payload
 }
@@ -95,14 +131,49 @@ func NewGetAboutInfoBadRequest() *GetAboutInfoBadRequest {
 	return &GetAboutInfoBadRequest{}
 }
 
-/* GetAboutInfoBadRequest describes a response with status code 400, with default header values.
+/*
+GetAboutInfoBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type GetAboutInfoBadRequest struct {
 }
 
+// IsSuccess returns true when this get about info bad request response has a 2xx status code
+func (o *GetAboutInfoBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get about info bad request response has a 3xx status code
+func (o *GetAboutInfoBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get about info bad request response has a 4xx status code
+func (o *GetAboutInfoBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get about info bad request response has a 5xx status code
+func (o *GetAboutInfoBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get about info bad request response a status code equal to that given
+func (o *GetAboutInfoBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the get about info bad request response
+func (o *GetAboutInfoBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetAboutInfoBadRequest) Error() string {
+	return fmt.Sprintf("[GET /flow/about][%d] getAboutInfoBadRequest ", 400)
+}
+
+func (o *GetAboutInfoBadRequest) String() string {
 	return fmt.Sprintf("[GET /flow/about][%d] getAboutInfoBadRequest ", 400)
 }
 
@@ -116,14 +187,49 @@ func NewGetAboutInfoUnauthorized() *GetAboutInfoUnauthorized {
 	return &GetAboutInfoUnauthorized{}
 }
 
-/* GetAboutInfoUnauthorized describes a response with status code 401, with default header values.
+/*
+GetAboutInfoUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type GetAboutInfoUnauthorized struct {
 }
 
+// IsSuccess returns true when this get about info unauthorized response has a 2xx status code
+func (o *GetAboutInfoUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get about info unauthorized response has a 3xx status code
+func (o *GetAboutInfoUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get about info unauthorized response has a 4xx status code
+func (o *GetAboutInfoUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get about info unauthorized response has a 5xx status code
+func (o *GetAboutInfoUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get about info unauthorized response a status code equal to that given
+func (o *GetAboutInfoUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the get about info unauthorized response
+func (o *GetAboutInfoUnauthorized) Code() int {
+	return 401
+}
+
 func (o *GetAboutInfoUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /flow/about][%d] getAboutInfoUnauthorized ", 401)
+}
+
+func (o *GetAboutInfoUnauthorized) String() string {
 	return fmt.Sprintf("[GET /flow/about][%d] getAboutInfoUnauthorized ", 401)
 }
 
@@ -137,14 +243,49 @@ func NewGetAboutInfoForbidden() *GetAboutInfoForbidden {
 	return &GetAboutInfoForbidden{}
 }
 
-/* GetAboutInfoForbidden describes a response with status code 403, with default header values.
+/*
+GetAboutInfoForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type GetAboutInfoForbidden struct {
 }
 
+// IsSuccess returns true when this get about info forbidden response has a 2xx status code
+func (o *GetAboutInfoForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get about info forbidden response has a 3xx status code
+func (o *GetAboutInfoForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get about info forbidden response has a 4xx status code
+func (o *GetAboutInfoForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get about info forbidden response has a 5xx status code
+func (o *GetAboutInfoForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get about info forbidden response a status code equal to that given
+func (o *GetAboutInfoForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the get about info forbidden response
+func (o *GetAboutInfoForbidden) Code() int {
+	return 403
+}
+
 func (o *GetAboutInfoForbidden) Error() string {
+	return fmt.Sprintf("[GET /flow/about][%d] getAboutInfoForbidden ", 403)
+}
+
+func (o *GetAboutInfoForbidden) String() string {
 	return fmt.Sprintf("[GET /flow/about][%d] getAboutInfoForbidden ", 403)
 }
 
@@ -158,14 +299,49 @@ func NewGetAboutInfoConflict() *GetAboutInfoConflict {
 	return &GetAboutInfoConflict{}
 }
 
-/* GetAboutInfoConflict describes a response with status code 409, with default header values.
+/*
+GetAboutInfoConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type GetAboutInfoConflict struct {
 }
 
+// IsSuccess returns true when this get about info conflict response has a 2xx status code
+func (o *GetAboutInfoConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get about info conflict response has a 3xx status code
+func (o *GetAboutInfoConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get about info conflict response has a 4xx status code
+func (o *GetAboutInfoConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get about info conflict response has a 5xx status code
+func (o *GetAboutInfoConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get about info conflict response a status code equal to that given
+func (o *GetAboutInfoConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the get about info conflict response
+func (o *GetAboutInfoConflict) Code() int {
+	return 409
+}
+
 func (o *GetAboutInfoConflict) Error() string {
+	return fmt.Sprintf("[GET /flow/about][%d] getAboutInfoConflict ", 409)
+}
+
+func (o *GetAboutInfoConflict) String() string {
 	return fmt.Sprintf("[GET /flow/about][%d] getAboutInfoConflict ", 409)
 }
 

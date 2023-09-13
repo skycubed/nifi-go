@@ -60,7 +60,7 @@ func (o *GetReplaceProcessGroupRequestReader) ReadResponse(response runtime.Clie
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /process-groups/replace-requests/{id}] getReplaceProcessGroupRequest", response, response.Code())
 	}
 }
 
@@ -69,7 +69,8 @@ func NewGetReplaceProcessGroupRequestOK() *GetReplaceProcessGroupRequestOK {
 	return &GetReplaceProcessGroupRequestOK{}
 }
 
-/* GetReplaceProcessGroupRequestOK describes a response with status code 200, with default header values.
+/*
+GetReplaceProcessGroupRequestOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,44 @@ type GetReplaceProcessGroupRequestOK struct {
 	Payload *models.ProcessGroupReplaceRequestEntity
 }
 
+// IsSuccess returns true when this get replace process group request o k response has a 2xx status code
+func (o *GetReplaceProcessGroupRequestOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get replace process group request o k response has a 3xx status code
+func (o *GetReplaceProcessGroupRequestOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get replace process group request o k response has a 4xx status code
+func (o *GetReplaceProcessGroupRequestOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get replace process group request o k response has a 5xx status code
+func (o *GetReplaceProcessGroupRequestOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get replace process group request o k response a status code equal to that given
+func (o *GetReplaceProcessGroupRequestOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the get replace process group request o k response
+func (o *GetReplaceProcessGroupRequestOK) Code() int {
+	return 200
+}
+
 func (o *GetReplaceProcessGroupRequestOK) Error() string {
 	return fmt.Sprintf("[GET /process-groups/replace-requests/{id}][%d] getReplaceProcessGroupRequestOK  %+v", 200, o.Payload)
 }
+
+func (o *GetReplaceProcessGroupRequestOK) String() string {
+	return fmt.Sprintf("[GET /process-groups/replace-requests/{id}][%d] getReplaceProcessGroupRequestOK  %+v", 200, o.Payload)
+}
+
 func (o *GetReplaceProcessGroupRequestOK) GetPayload() *models.ProcessGroupReplaceRequestEntity {
 	return o.Payload
 }
@@ -101,14 +137,49 @@ func NewGetReplaceProcessGroupRequestBadRequest() *GetReplaceProcessGroupRequest
 	return &GetReplaceProcessGroupRequestBadRequest{}
 }
 
-/* GetReplaceProcessGroupRequestBadRequest describes a response with status code 400, with default header values.
+/*
+GetReplaceProcessGroupRequestBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type GetReplaceProcessGroupRequestBadRequest struct {
 }
 
+// IsSuccess returns true when this get replace process group request bad request response has a 2xx status code
+func (o *GetReplaceProcessGroupRequestBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get replace process group request bad request response has a 3xx status code
+func (o *GetReplaceProcessGroupRequestBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get replace process group request bad request response has a 4xx status code
+func (o *GetReplaceProcessGroupRequestBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get replace process group request bad request response has a 5xx status code
+func (o *GetReplaceProcessGroupRequestBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get replace process group request bad request response a status code equal to that given
+func (o *GetReplaceProcessGroupRequestBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the get replace process group request bad request response
+func (o *GetReplaceProcessGroupRequestBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetReplaceProcessGroupRequestBadRequest) Error() string {
+	return fmt.Sprintf("[GET /process-groups/replace-requests/{id}][%d] getReplaceProcessGroupRequestBadRequest ", 400)
+}
+
+func (o *GetReplaceProcessGroupRequestBadRequest) String() string {
 	return fmt.Sprintf("[GET /process-groups/replace-requests/{id}][%d] getReplaceProcessGroupRequestBadRequest ", 400)
 }
 
@@ -122,14 +193,49 @@ func NewGetReplaceProcessGroupRequestUnauthorized() *GetReplaceProcessGroupReque
 	return &GetReplaceProcessGroupRequestUnauthorized{}
 }
 
-/* GetReplaceProcessGroupRequestUnauthorized describes a response with status code 401, with default header values.
+/*
+GetReplaceProcessGroupRequestUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type GetReplaceProcessGroupRequestUnauthorized struct {
 }
 
+// IsSuccess returns true when this get replace process group request unauthorized response has a 2xx status code
+func (o *GetReplaceProcessGroupRequestUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get replace process group request unauthorized response has a 3xx status code
+func (o *GetReplaceProcessGroupRequestUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get replace process group request unauthorized response has a 4xx status code
+func (o *GetReplaceProcessGroupRequestUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get replace process group request unauthorized response has a 5xx status code
+func (o *GetReplaceProcessGroupRequestUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get replace process group request unauthorized response a status code equal to that given
+func (o *GetReplaceProcessGroupRequestUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the get replace process group request unauthorized response
+func (o *GetReplaceProcessGroupRequestUnauthorized) Code() int {
+	return 401
+}
+
 func (o *GetReplaceProcessGroupRequestUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /process-groups/replace-requests/{id}][%d] getReplaceProcessGroupRequestUnauthorized ", 401)
+}
+
+func (o *GetReplaceProcessGroupRequestUnauthorized) String() string {
 	return fmt.Sprintf("[GET /process-groups/replace-requests/{id}][%d] getReplaceProcessGroupRequestUnauthorized ", 401)
 }
 
@@ -143,14 +249,49 @@ func NewGetReplaceProcessGroupRequestForbidden() *GetReplaceProcessGroupRequestF
 	return &GetReplaceProcessGroupRequestForbidden{}
 }
 
-/* GetReplaceProcessGroupRequestForbidden describes a response with status code 403, with default header values.
+/*
+GetReplaceProcessGroupRequestForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type GetReplaceProcessGroupRequestForbidden struct {
 }
 
+// IsSuccess returns true when this get replace process group request forbidden response has a 2xx status code
+func (o *GetReplaceProcessGroupRequestForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get replace process group request forbidden response has a 3xx status code
+func (o *GetReplaceProcessGroupRequestForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get replace process group request forbidden response has a 4xx status code
+func (o *GetReplaceProcessGroupRequestForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get replace process group request forbidden response has a 5xx status code
+func (o *GetReplaceProcessGroupRequestForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get replace process group request forbidden response a status code equal to that given
+func (o *GetReplaceProcessGroupRequestForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the get replace process group request forbidden response
+func (o *GetReplaceProcessGroupRequestForbidden) Code() int {
+	return 403
+}
+
 func (o *GetReplaceProcessGroupRequestForbidden) Error() string {
+	return fmt.Sprintf("[GET /process-groups/replace-requests/{id}][%d] getReplaceProcessGroupRequestForbidden ", 403)
+}
+
+func (o *GetReplaceProcessGroupRequestForbidden) String() string {
 	return fmt.Sprintf("[GET /process-groups/replace-requests/{id}][%d] getReplaceProcessGroupRequestForbidden ", 403)
 }
 
@@ -164,14 +305,49 @@ func NewGetReplaceProcessGroupRequestNotFound() *GetReplaceProcessGroupRequestNo
 	return &GetReplaceProcessGroupRequestNotFound{}
 }
 
-/* GetReplaceProcessGroupRequestNotFound describes a response with status code 404, with default header values.
+/*
+GetReplaceProcessGroupRequestNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type GetReplaceProcessGroupRequestNotFound struct {
 }
 
+// IsSuccess returns true when this get replace process group request not found response has a 2xx status code
+func (o *GetReplaceProcessGroupRequestNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get replace process group request not found response has a 3xx status code
+func (o *GetReplaceProcessGroupRequestNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get replace process group request not found response has a 4xx status code
+func (o *GetReplaceProcessGroupRequestNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get replace process group request not found response has a 5xx status code
+func (o *GetReplaceProcessGroupRequestNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get replace process group request not found response a status code equal to that given
+func (o *GetReplaceProcessGroupRequestNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+// Code gets the status code for the get replace process group request not found response
+func (o *GetReplaceProcessGroupRequestNotFound) Code() int {
+	return 404
+}
+
 func (o *GetReplaceProcessGroupRequestNotFound) Error() string {
+	return fmt.Sprintf("[GET /process-groups/replace-requests/{id}][%d] getReplaceProcessGroupRequestNotFound ", 404)
+}
+
+func (o *GetReplaceProcessGroupRequestNotFound) String() string {
 	return fmt.Sprintf("[GET /process-groups/replace-requests/{id}][%d] getReplaceProcessGroupRequestNotFound ", 404)
 }
 
@@ -185,14 +361,49 @@ func NewGetReplaceProcessGroupRequestConflict() *GetReplaceProcessGroupRequestCo
 	return &GetReplaceProcessGroupRequestConflict{}
 }
 
-/* GetReplaceProcessGroupRequestConflict describes a response with status code 409, with default header values.
+/*
+GetReplaceProcessGroupRequestConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type GetReplaceProcessGroupRequestConflict struct {
 }
 
+// IsSuccess returns true when this get replace process group request conflict response has a 2xx status code
+func (o *GetReplaceProcessGroupRequestConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get replace process group request conflict response has a 3xx status code
+func (o *GetReplaceProcessGroupRequestConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get replace process group request conflict response has a 4xx status code
+func (o *GetReplaceProcessGroupRequestConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get replace process group request conflict response has a 5xx status code
+func (o *GetReplaceProcessGroupRequestConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get replace process group request conflict response a status code equal to that given
+func (o *GetReplaceProcessGroupRequestConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the get replace process group request conflict response
+func (o *GetReplaceProcessGroupRequestConflict) Code() int {
+	return 409
+}
+
 func (o *GetReplaceProcessGroupRequestConflict) Error() string {
+	return fmt.Sprintf("[GET /process-groups/replace-requests/{id}][%d] getReplaceProcessGroupRequestConflict ", 409)
+}
+
+func (o *GetReplaceProcessGroupRequestConflict) String() string {
 	return fmt.Sprintf("[GET /process-groups/replace-requests/{id}][%d] getReplaceProcessGroupRequestConflict ", 409)
 }
 

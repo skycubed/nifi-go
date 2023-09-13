@@ -40,7 +40,7 @@ type ClientService interface {
 }
 
 /*
-  DeleteConnection deletes a connection
+DeleteConnection deletes a connection
 */
 func (a *Client) DeleteConnection(params *DeleteConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteConnectionOK, error) {
 	// TODO: Validate the params before sending
@@ -79,7 +79,7 @@ func (a *Client) DeleteConnection(params *DeleteConnectionParams, authInfo runti
 }
 
 /*
-  GetConnection gets a connection
+GetConnection gets a connection
 */
 func (a *Client) GetConnection(params *GetConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetConnectionOK, error) {
 	// TODO: Validate the params before sending
@@ -118,7 +118,7 @@ func (a *Client) GetConnection(params *GetConnectionParams, authInfo runtime.Cli
 }
 
 /*
-  UpdateConnection updates a connection
+UpdateConnection updates a connection
 */
 func (a *Client) UpdateConnection(params *UpdateConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateConnectionOK, error) {
 	// TODO: Validate the params before sending

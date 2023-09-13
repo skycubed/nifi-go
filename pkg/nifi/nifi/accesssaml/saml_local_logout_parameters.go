@@ -52,10 +52,12 @@ func NewSamlLocalLogoutParamsWithHTTPClient(client *http.Client) *SamlLocalLogou
 	}
 }
 
-/* SamlLocalLogoutParams contains all the parameters to send to the API endpoint
-   for the saml local logout operation.
+/*
+SamlLocalLogoutParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the saml local logout operation.
+
+	Typically these are written to a http.Request.
 */
 type SamlLocalLogoutParams struct {
 	timeout    time.Duration

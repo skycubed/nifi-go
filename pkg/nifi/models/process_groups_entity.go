@@ -88,6 +88,11 @@ func (m *ProcessGroupsEntity) contextValidateProcessGroups(ctx context.Context, 
 	for i := 0; i < len(m.ProcessGroups); i++ {
 
 		if m.ProcessGroups[i] != nil {
+
+			if swag.IsZero(m.ProcessGroups[i]) { // not required
+				return nil
+			}
+
 			if err := m.ProcessGroups[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("processGroups" + "." + strconv.Itoa(i))

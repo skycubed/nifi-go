@@ -53,10 +53,12 @@ func NewDeleteUpdateRequestParamsWithHTTPClient(client *http.Client) *DeleteUpda
 	}
 }
 
-/* DeleteUpdateRequestParams contains all the parameters to send to the API endpoint
-   for the delete update request operation.
+/*
+DeleteUpdateRequestParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete update request operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteUpdateRequestParams struct {
 

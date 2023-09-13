@@ -85,6 +85,11 @@ func (m *CountersSnapshotDTO) contextValidateCounters(ctx context.Context, forma
 	for i := 0; i < len(m.Counters); i++ {
 
 		if m.Counters[i] != nil {
+
+			if swag.IsZero(m.Counters[i]) { // not required
+				return nil
+			}
+
 			if err := m.Counters[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("counters" + "." + strconv.Itoa(i))

@@ -179,6 +179,11 @@ func (m *PropertyDescriptorDTO) contextValidateAllowableValues(ctx context.Conte
 	for i := 0; i < len(m.AllowableValues); i++ {
 
 		if m.AllowableValues[i] != nil {
+
+			if swag.IsZero(m.AllowableValues[i]) { // not required
+				return nil
+			}
+
 			if err := m.AllowableValues[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("allowableValues" + "." + strconv.Itoa(i))
@@ -199,6 +204,11 @@ func (m *PropertyDescriptorDTO) contextValidateDependencies(ctx context.Context,
 	for i := 0; i < len(m.Dependencies); i++ {
 
 		if m.Dependencies[i] != nil {
+
+			if swag.IsZero(m.Dependencies[i]) { // not required
+				return nil
+			}
+
 			if err := m.Dependencies[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("dependencies" + "." + strconv.Itoa(i))
@@ -217,6 +227,11 @@ func (m *PropertyDescriptorDTO) contextValidateDependencies(ctx context.Context,
 func (m *PropertyDescriptorDTO) contextValidateIdentifiesControllerServiceBundle(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.IdentifiesControllerServiceBundle != nil {
+
+		if swag.IsZero(m.IdentifiesControllerServiceBundle) { // not required
+			return nil
+		}
+
 		if err := m.IdentifiesControllerServiceBundle.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("identifiesControllerServiceBundle")

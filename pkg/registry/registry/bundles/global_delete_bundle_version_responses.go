@@ -60,7 +60,7 @@ func (o *GlobalDeleteBundleVersionReader) ReadResponse(response runtime.ClientRe
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /bundles/{bundleId}/versions/{version}] globalDeleteBundleVersion", response, response.Code())
 	}
 }
 
@@ -69,7 +69,8 @@ func NewGlobalDeleteBundleVersionOK() *GlobalDeleteBundleVersionOK {
 	return &GlobalDeleteBundleVersionOK{}
 }
 
-/* GlobalDeleteBundleVersionOK describes a response with status code 200, with default header values.
+/*
+GlobalDeleteBundleVersionOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,44 @@ type GlobalDeleteBundleVersionOK struct {
 	Payload *models.BundleVersion
 }
 
+// IsSuccess returns true when this global delete bundle version o k response has a 2xx status code
+func (o *GlobalDeleteBundleVersionOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this global delete bundle version o k response has a 3xx status code
+func (o *GlobalDeleteBundleVersionOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this global delete bundle version o k response has a 4xx status code
+func (o *GlobalDeleteBundleVersionOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this global delete bundle version o k response has a 5xx status code
+func (o *GlobalDeleteBundleVersionOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this global delete bundle version o k response a status code equal to that given
+func (o *GlobalDeleteBundleVersionOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the global delete bundle version o k response
+func (o *GlobalDeleteBundleVersionOK) Code() int {
+	return 200
+}
+
 func (o *GlobalDeleteBundleVersionOK) Error() string {
 	return fmt.Sprintf("[DELETE /bundles/{bundleId}/versions/{version}][%d] globalDeleteBundleVersionOK  %+v", 200, o.Payload)
 }
+
+func (o *GlobalDeleteBundleVersionOK) String() string {
+	return fmt.Sprintf("[DELETE /bundles/{bundleId}/versions/{version}][%d] globalDeleteBundleVersionOK  %+v", 200, o.Payload)
+}
+
 func (o *GlobalDeleteBundleVersionOK) GetPayload() *models.BundleVersion {
 	return o.Payload
 }
@@ -101,14 +137,49 @@ func NewGlobalDeleteBundleVersionBadRequest() *GlobalDeleteBundleVersionBadReque
 	return &GlobalDeleteBundleVersionBadRequest{}
 }
 
-/* GlobalDeleteBundleVersionBadRequest describes a response with status code 400, with default header values.
+/*
+GlobalDeleteBundleVersionBadRequest describes a response with status code 400, with default header values.
 
 NiFi Registry was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type GlobalDeleteBundleVersionBadRequest struct {
 }
 
+// IsSuccess returns true when this global delete bundle version bad request response has a 2xx status code
+func (o *GlobalDeleteBundleVersionBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this global delete bundle version bad request response has a 3xx status code
+func (o *GlobalDeleteBundleVersionBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this global delete bundle version bad request response has a 4xx status code
+func (o *GlobalDeleteBundleVersionBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this global delete bundle version bad request response has a 5xx status code
+func (o *GlobalDeleteBundleVersionBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this global delete bundle version bad request response a status code equal to that given
+func (o *GlobalDeleteBundleVersionBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the global delete bundle version bad request response
+func (o *GlobalDeleteBundleVersionBadRequest) Code() int {
+	return 400
+}
+
 func (o *GlobalDeleteBundleVersionBadRequest) Error() string {
+	return fmt.Sprintf("[DELETE /bundles/{bundleId}/versions/{version}][%d] globalDeleteBundleVersionBadRequest ", 400)
+}
+
+func (o *GlobalDeleteBundleVersionBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /bundles/{bundleId}/versions/{version}][%d] globalDeleteBundleVersionBadRequest ", 400)
 }
 
@@ -122,14 +193,49 @@ func NewGlobalDeleteBundleVersionUnauthorized() *GlobalDeleteBundleVersionUnauth
 	return &GlobalDeleteBundleVersionUnauthorized{}
 }
 
-/* GlobalDeleteBundleVersionUnauthorized describes a response with status code 401, with default header values.
+/*
+GlobalDeleteBundleVersionUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type GlobalDeleteBundleVersionUnauthorized struct {
 }
 
+// IsSuccess returns true when this global delete bundle version unauthorized response has a 2xx status code
+func (o *GlobalDeleteBundleVersionUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this global delete bundle version unauthorized response has a 3xx status code
+func (o *GlobalDeleteBundleVersionUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this global delete bundle version unauthorized response has a 4xx status code
+func (o *GlobalDeleteBundleVersionUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this global delete bundle version unauthorized response has a 5xx status code
+func (o *GlobalDeleteBundleVersionUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this global delete bundle version unauthorized response a status code equal to that given
+func (o *GlobalDeleteBundleVersionUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the global delete bundle version unauthorized response
+func (o *GlobalDeleteBundleVersionUnauthorized) Code() int {
+	return 401
+}
+
 func (o *GlobalDeleteBundleVersionUnauthorized) Error() string {
+	return fmt.Sprintf("[DELETE /bundles/{bundleId}/versions/{version}][%d] globalDeleteBundleVersionUnauthorized ", 401)
+}
+
+func (o *GlobalDeleteBundleVersionUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /bundles/{bundleId}/versions/{version}][%d] globalDeleteBundleVersionUnauthorized ", 401)
 }
 
@@ -143,14 +249,49 @@ func NewGlobalDeleteBundleVersionForbidden() *GlobalDeleteBundleVersionForbidden
 	return &GlobalDeleteBundleVersionForbidden{}
 }
 
-/* GlobalDeleteBundleVersionForbidden describes a response with status code 403, with default header values.
+/*
+GlobalDeleteBundleVersionForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type GlobalDeleteBundleVersionForbidden struct {
 }
 
+// IsSuccess returns true when this global delete bundle version forbidden response has a 2xx status code
+func (o *GlobalDeleteBundleVersionForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this global delete bundle version forbidden response has a 3xx status code
+func (o *GlobalDeleteBundleVersionForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this global delete bundle version forbidden response has a 4xx status code
+func (o *GlobalDeleteBundleVersionForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this global delete bundle version forbidden response has a 5xx status code
+func (o *GlobalDeleteBundleVersionForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this global delete bundle version forbidden response a status code equal to that given
+func (o *GlobalDeleteBundleVersionForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the global delete bundle version forbidden response
+func (o *GlobalDeleteBundleVersionForbidden) Code() int {
+	return 403
+}
+
 func (o *GlobalDeleteBundleVersionForbidden) Error() string {
+	return fmt.Sprintf("[DELETE /bundles/{bundleId}/versions/{version}][%d] globalDeleteBundleVersionForbidden ", 403)
+}
+
+func (o *GlobalDeleteBundleVersionForbidden) String() string {
 	return fmt.Sprintf("[DELETE /bundles/{bundleId}/versions/{version}][%d] globalDeleteBundleVersionForbidden ", 403)
 }
 
@@ -164,14 +305,49 @@ func NewGlobalDeleteBundleVersionNotFound() *GlobalDeleteBundleVersionNotFound {
 	return &GlobalDeleteBundleVersionNotFound{}
 }
 
-/* GlobalDeleteBundleVersionNotFound describes a response with status code 404, with default header values.
+/*
+GlobalDeleteBundleVersionNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type GlobalDeleteBundleVersionNotFound struct {
 }
 
+// IsSuccess returns true when this global delete bundle version not found response has a 2xx status code
+func (o *GlobalDeleteBundleVersionNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this global delete bundle version not found response has a 3xx status code
+func (o *GlobalDeleteBundleVersionNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this global delete bundle version not found response has a 4xx status code
+func (o *GlobalDeleteBundleVersionNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this global delete bundle version not found response has a 5xx status code
+func (o *GlobalDeleteBundleVersionNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this global delete bundle version not found response a status code equal to that given
+func (o *GlobalDeleteBundleVersionNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+// Code gets the status code for the global delete bundle version not found response
+func (o *GlobalDeleteBundleVersionNotFound) Code() int {
+	return 404
+}
+
 func (o *GlobalDeleteBundleVersionNotFound) Error() string {
+	return fmt.Sprintf("[DELETE /bundles/{bundleId}/versions/{version}][%d] globalDeleteBundleVersionNotFound ", 404)
+}
+
+func (o *GlobalDeleteBundleVersionNotFound) String() string {
 	return fmt.Sprintf("[DELETE /bundles/{bundleId}/versions/{version}][%d] globalDeleteBundleVersionNotFound ", 404)
 }
 
@@ -185,14 +361,49 @@ func NewGlobalDeleteBundleVersionConflict() *GlobalDeleteBundleVersionConflict {
 	return &GlobalDeleteBundleVersionConflict{}
 }
 
-/* GlobalDeleteBundleVersionConflict describes a response with status code 409, with default header values.
+/*
+GlobalDeleteBundleVersionConflict describes a response with status code 409, with default header values.
 
 NiFi Registry was unable to complete the request because it assumes a server state that is not valid.
 */
 type GlobalDeleteBundleVersionConflict struct {
 }
 
+// IsSuccess returns true when this global delete bundle version conflict response has a 2xx status code
+func (o *GlobalDeleteBundleVersionConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this global delete bundle version conflict response has a 3xx status code
+func (o *GlobalDeleteBundleVersionConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this global delete bundle version conflict response has a 4xx status code
+func (o *GlobalDeleteBundleVersionConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this global delete bundle version conflict response has a 5xx status code
+func (o *GlobalDeleteBundleVersionConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this global delete bundle version conflict response a status code equal to that given
+func (o *GlobalDeleteBundleVersionConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the global delete bundle version conflict response
+func (o *GlobalDeleteBundleVersionConflict) Code() int {
+	return 409
+}
+
 func (o *GlobalDeleteBundleVersionConflict) Error() string {
+	return fmt.Sprintf("[DELETE /bundles/{bundleId}/versions/{version}][%d] globalDeleteBundleVersionConflict ", 409)
+}
+
+func (o *GlobalDeleteBundleVersionConflict) String() string {
 	return fmt.Sprintf("[DELETE /bundles/{bundleId}/versions/{version}][%d] globalDeleteBundleVersionConflict ", 409)
 }
 

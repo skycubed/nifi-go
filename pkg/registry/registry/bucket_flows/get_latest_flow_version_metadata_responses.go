@@ -54,7 +54,7 @@ func (o *GetLatestFlowVersionMetadataReader) ReadResponse(response runtime.Clien
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /buckets/{bucketId}/flows/{flowId}/versions/latest/metadata] getLatestFlowVersionMetadata", response, response.Code())
 	}
 }
 
@@ -63,7 +63,8 @@ func NewGetLatestFlowVersionMetadataOK() *GetLatestFlowVersionMetadataOK {
 	return &GetLatestFlowVersionMetadataOK{}
 }
 
-/* GetLatestFlowVersionMetadataOK describes a response with status code 200, with default header values.
+/*
+GetLatestFlowVersionMetadataOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -71,9 +72,44 @@ type GetLatestFlowVersionMetadataOK struct {
 	Payload *models.VersionedFlowSnapshotMetadata
 }
 
+// IsSuccess returns true when this get latest flow version metadata o k response has a 2xx status code
+func (o *GetLatestFlowVersionMetadataOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get latest flow version metadata o k response has a 3xx status code
+func (o *GetLatestFlowVersionMetadataOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get latest flow version metadata o k response has a 4xx status code
+func (o *GetLatestFlowVersionMetadataOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get latest flow version metadata o k response has a 5xx status code
+func (o *GetLatestFlowVersionMetadataOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get latest flow version metadata o k response a status code equal to that given
+func (o *GetLatestFlowVersionMetadataOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the get latest flow version metadata o k response
+func (o *GetLatestFlowVersionMetadataOK) Code() int {
+	return 200
+}
+
 func (o *GetLatestFlowVersionMetadataOK) Error() string {
 	return fmt.Sprintf("[GET /buckets/{bucketId}/flows/{flowId}/versions/latest/metadata][%d] getLatestFlowVersionMetadataOK  %+v", 200, o.Payload)
 }
+
+func (o *GetLatestFlowVersionMetadataOK) String() string {
+	return fmt.Sprintf("[GET /buckets/{bucketId}/flows/{flowId}/versions/latest/metadata][%d] getLatestFlowVersionMetadataOK  %+v", 200, o.Payload)
+}
+
 func (o *GetLatestFlowVersionMetadataOK) GetPayload() *models.VersionedFlowSnapshotMetadata {
 	return o.Payload
 }
@@ -95,14 +131,49 @@ func NewGetLatestFlowVersionMetadataUnauthorized() *GetLatestFlowVersionMetadata
 	return &GetLatestFlowVersionMetadataUnauthorized{}
 }
 
-/* GetLatestFlowVersionMetadataUnauthorized describes a response with status code 401, with default header values.
+/*
+GetLatestFlowVersionMetadataUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type GetLatestFlowVersionMetadataUnauthorized struct {
 }
 
+// IsSuccess returns true when this get latest flow version metadata unauthorized response has a 2xx status code
+func (o *GetLatestFlowVersionMetadataUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get latest flow version metadata unauthorized response has a 3xx status code
+func (o *GetLatestFlowVersionMetadataUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get latest flow version metadata unauthorized response has a 4xx status code
+func (o *GetLatestFlowVersionMetadataUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get latest flow version metadata unauthorized response has a 5xx status code
+func (o *GetLatestFlowVersionMetadataUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get latest flow version metadata unauthorized response a status code equal to that given
+func (o *GetLatestFlowVersionMetadataUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the get latest flow version metadata unauthorized response
+func (o *GetLatestFlowVersionMetadataUnauthorized) Code() int {
+	return 401
+}
+
 func (o *GetLatestFlowVersionMetadataUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /buckets/{bucketId}/flows/{flowId}/versions/latest/metadata][%d] getLatestFlowVersionMetadataUnauthorized ", 401)
+}
+
+func (o *GetLatestFlowVersionMetadataUnauthorized) String() string {
 	return fmt.Sprintf("[GET /buckets/{bucketId}/flows/{flowId}/versions/latest/metadata][%d] getLatestFlowVersionMetadataUnauthorized ", 401)
 }
 
@@ -116,14 +187,49 @@ func NewGetLatestFlowVersionMetadataForbidden() *GetLatestFlowVersionMetadataFor
 	return &GetLatestFlowVersionMetadataForbidden{}
 }
 
-/* GetLatestFlowVersionMetadataForbidden describes a response with status code 403, with default header values.
+/*
+GetLatestFlowVersionMetadataForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type GetLatestFlowVersionMetadataForbidden struct {
 }
 
+// IsSuccess returns true when this get latest flow version metadata forbidden response has a 2xx status code
+func (o *GetLatestFlowVersionMetadataForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get latest flow version metadata forbidden response has a 3xx status code
+func (o *GetLatestFlowVersionMetadataForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get latest flow version metadata forbidden response has a 4xx status code
+func (o *GetLatestFlowVersionMetadataForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get latest flow version metadata forbidden response has a 5xx status code
+func (o *GetLatestFlowVersionMetadataForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get latest flow version metadata forbidden response a status code equal to that given
+func (o *GetLatestFlowVersionMetadataForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the get latest flow version metadata forbidden response
+func (o *GetLatestFlowVersionMetadataForbidden) Code() int {
+	return 403
+}
+
 func (o *GetLatestFlowVersionMetadataForbidden) Error() string {
+	return fmt.Sprintf("[GET /buckets/{bucketId}/flows/{flowId}/versions/latest/metadata][%d] getLatestFlowVersionMetadataForbidden ", 403)
+}
+
+func (o *GetLatestFlowVersionMetadataForbidden) String() string {
 	return fmt.Sprintf("[GET /buckets/{bucketId}/flows/{flowId}/versions/latest/metadata][%d] getLatestFlowVersionMetadataForbidden ", 403)
 }
 
@@ -137,14 +243,49 @@ func NewGetLatestFlowVersionMetadataNotFound() *GetLatestFlowVersionMetadataNotF
 	return &GetLatestFlowVersionMetadataNotFound{}
 }
 
-/* GetLatestFlowVersionMetadataNotFound describes a response with status code 404, with default header values.
+/*
+GetLatestFlowVersionMetadataNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type GetLatestFlowVersionMetadataNotFound struct {
 }
 
+// IsSuccess returns true when this get latest flow version metadata not found response has a 2xx status code
+func (o *GetLatestFlowVersionMetadataNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get latest flow version metadata not found response has a 3xx status code
+func (o *GetLatestFlowVersionMetadataNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get latest flow version metadata not found response has a 4xx status code
+func (o *GetLatestFlowVersionMetadataNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get latest flow version metadata not found response has a 5xx status code
+func (o *GetLatestFlowVersionMetadataNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get latest flow version metadata not found response a status code equal to that given
+func (o *GetLatestFlowVersionMetadataNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+// Code gets the status code for the get latest flow version metadata not found response
+func (o *GetLatestFlowVersionMetadataNotFound) Code() int {
+	return 404
+}
+
 func (o *GetLatestFlowVersionMetadataNotFound) Error() string {
+	return fmt.Sprintf("[GET /buckets/{bucketId}/flows/{flowId}/versions/latest/metadata][%d] getLatestFlowVersionMetadataNotFound ", 404)
+}
+
+func (o *GetLatestFlowVersionMetadataNotFound) String() string {
 	return fmt.Sprintf("[GET /buckets/{bucketId}/flows/{flowId}/versions/latest/metadata][%d] getLatestFlowVersionMetadataNotFound ", 404)
 }
 
@@ -158,14 +299,49 @@ func NewGetLatestFlowVersionMetadataConflict() *GetLatestFlowVersionMetadataConf
 	return &GetLatestFlowVersionMetadataConflict{}
 }
 
-/* GetLatestFlowVersionMetadataConflict describes a response with status code 409, with default header values.
+/*
+GetLatestFlowVersionMetadataConflict describes a response with status code 409, with default header values.
 
 NiFi Registry was unable to complete the request because it assumes a server state that is not valid.
 */
 type GetLatestFlowVersionMetadataConflict struct {
 }
 
+// IsSuccess returns true when this get latest flow version metadata conflict response has a 2xx status code
+func (o *GetLatestFlowVersionMetadataConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get latest flow version metadata conflict response has a 3xx status code
+func (o *GetLatestFlowVersionMetadataConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get latest flow version metadata conflict response has a 4xx status code
+func (o *GetLatestFlowVersionMetadataConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get latest flow version metadata conflict response has a 5xx status code
+func (o *GetLatestFlowVersionMetadataConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get latest flow version metadata conflict response a status code equal to that given
+func (o *GetLatestFlowVersionMetadataConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the get latest flow version metadata conflict response
+func (o *GetLatestFlowVersionMetadataConflict) Code() int {
+	return 409
+}
+
 func (o *GetLatestFlowVersionMetadataConflict) Error() string {
+	return fmt.Sprintf("[GET /buckets/{bucketId}/flows/{flowId}/versions/latest/metadata][%d] getLatestFlowVersionMetadataConflict ", 409)
+}
+
+func (o *GetLatestFlowVersionMetadataConflict) String() string {
 	return fmt.Sprintf("[GET /buckets/{bucketId}/flows/{flowId}/versions/latest/metadata][%d] getLatestFlowVersionMetadataConflict ", 409)
 }
 

@@ -60,7 +60,7 @@ func (o *UpdateRunStatusReader) ReadResponse(response runtime.ClientResponse, co
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PUT /reporting-tasks/{id}/run-status] updateRunStatus", response, response.Code())
 	}
 }
 
@@ -69,7 +69,8 @@ func NewUpdateRunStatusOK() *UpdateRunStatusOK {
 	return &UpdateRunStatusOK{}
 }
 
-/* UpdateRunStatusOK describes a response with status code 200, with default header values.
+/*
+UpdateRunStatusOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,44 @@ type UpdateRunStatusOK struct {
 	Payload *models.ReportingTaskEntity
 }
 
+// IsSuccess returns true when this update run status o k response has a 2xx status code
+func (o *UpdateRunStatusOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this update run status o k response has a 3xx status code
+func (o *UpdateRunStatusOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update run status o k response has a 4xx status code
+func (o *UpdateRunStatusOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this update run status o k response has a 5xx status code
+func (o *UpdateRunStatusOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update run status o k response a status code equal to that given
+func (o *UpdateRunStatusOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the update run status o k response
+func (o *UpdateRunStatusOK) Code() int {
+	return 200
+}
+
 func (o *UpdateRunStatusOK) Error() string {
 	return fmt.Sprintf("[PUT /reporting-tasks/{id}/run-status][%d] updateRunStatusOK  %+v", 200, o.Payload)
 }
+
+func (o *UpdateRunStatusOK) String() string {
+	return fmt.Sprintf("[PUT /reporting-tasks/{id}/run-status][%d] updateRunStatusOK  %+v", 200, o.Payload)
+}
+
 func (o *UpdateRunStatusOK) GetPayload() *models.ReportingTaskEntity {
 	return o.Payload
 }
@@ -101,14 +137,49 @@ func NewUpdateRunStatusBadRequest() *UpdateRunStatusBadRequest {
 	return &UpdateRunStatusBadRequest{}
 }
 
-/* UpdateRunStatusBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateRunStatusBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type UpdateRunStatusBadRequest struct {
 }
 
+// IsSuccess returns true when this update run status bad request response has a 2xx status code
+func (o *UpdateRunStatusBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update run status bad request response has a 3xx status code
+func (o *UpdateRunStatusBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update run status bad request response has a 4xx status code
+func (o *UpdateRunStatusBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update run status bad request response has a 5xx status code
+func (o *UpdateRunStatusBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update run status bad request response a status code equal to that given
+func (o *UpdateRunStatusBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the update run status bad request response
+func (o *UpdateRunStatusBadRequest) Code() int {
+	return 400
+}
+
 func (o *UpdateRunStatusBadRequest) Error() string {
+	return fmt.Sprintf("[PUT /reporting-tasks/{id}/run-status][%d] updateRunStatusBadRequest ", 400)
+}
+
+func (o *UpdateRunStatusBadRequest) String() string {
 	return fmt.Sprintf("[PUT /reporting-tasks/{id}/run-status][%d] updateRunStatusBadRequest ", 400)
 }
 
@@ -122,14 +193,49 @@ func NewUpdateRunStatusUnauthorized() *UpdateRunStatusUnauthorized {
 	return &UpdateRunStatusUnauthorized{}
 }
 
-/* UpdateRunStatusUnauthorized describes a response with status code 401, with default header values.
+/*
+UpdateRunStatusUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type UpdateRunStatusUnauthorized struct {
 }
 
+// IsSuccess returns true when this update run status unauthorized response has a 2xx status code
+func (o *UpdateRunStatusUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update run status unauthorized response has a 3xx status code
+func (o *UpdateRunStatusUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update run status unauthorized response has a 4xx status code
+func (o *UpdateRunStatusUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update run status unauthorized response has a 5xx status code
+func (o *UpdateRunStatusUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update run status unauthorized response a status code equal to that given
+func (o *UpdateRunStatusUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the update run status unauthorized response
+func (o *UpdateRunStatusUnauthorized) Code() int {
+	return 401
+}
+
 func (o *UpdateRunStatusUnauthorized) Error() string {
+	return fmt.Sprintf("[PUT /reporting-tasks/{id}/run-status][%d] updateRunStatusUnauthorized ", 401)
+}
+
+func (o *UpdateRunStatusUnauthorized) String() string {
 	return fmt.Sprintf("[PUT /reporting-tasks/{id}/run-status][%d] updateRunStatusUnauthorized ", 401)
 }
 
@@ -143,14 +249,49 @@ func NewUpdateRunStatusForbidden() *UpdateRunStatusForbidden {
 	return &UpdateRunStatusForbidden{}
 }
 
-/* UpdateRunStatusForbidden describes a response with status code 403, with default header values.
+/*
+UpdateRunStatusForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type UpdateRunStatusForbidden struct {
 }
 
+// IsSuccess returns true when this update run status forbidden response has a 2xx status code
+func (o *UpdateRunStatusForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update run status forbidden response has a 3xx status code
+func (o *UpdateRunStatusForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update run status forbidden response has a 4xx status code
+func (o *UpdateRunStatusForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update run status forbidden response has a 5xx status code
+func (o *UpdateRunStatusForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update run status forbidden response a status code equal to that given
+func (o *UpdateRunStatusForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the update run status forbidden response
+func (o *UpdateRunStatusForbidden) Code() int {
+	return 403
+}
+
 func (o *UpdateRunStatusForbidden) Error() string {
+	return fmt.Sprintf("[PUT /reporting-tasks/{id}/run-status][%d] updateRunStatusForbidden ", 403)
+}
+
+func (o *UpdateRunStatusForbidden) String() string {
 	return fmt.Sprintf("[PUT /reporting-tasks/{id}/run-status][%d] updateRunStatusForbidden ", 403)
 }
 
@@ -164,14 +305,49 @@ func NewUpdateRunStatusNotFound() *UpdateRunStatusNotFound {
 	return &UpdateRunStatusNotFound{}
 }
 
-/* UpdateRunStatusNotFound describes a response with status code 404, with default header values.
+/*
+UpdateRunStatusNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type UpdateRunStatusNotFound struct {
 }
 
+// IsSuccess returns true when this update run status not found response has a 2xx status code
+func (o *UpdateRunStatusNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update run status not found response has a 3xx status code
+func (o *UpdateRunStatusNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update run status not found response has a 4xx status code
+func (o *UpdateRunStatusNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update run status not found response has a 5xx status code
+func (o *UpdateRunStatusNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update run status not found response a status code equal to that given
+func (o *UpdateRunStatusNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+// Code gets the status code for the update run status not found response
+func (o *UpdateRunStatusNotFound) Code() int {
+	return 404
+}
+
 func (o *UpdateRunStatusNotFound) Error() string {
+	return fmt.Sprintf("[PUT /reporting-tasks/{id}/run-status][%d] updateRunStatusNotFound ", 404)
+}
+
+func (o *UpdateRunStatusNotFound) String() string {
 	return fmt.Sprintf("[PUT /reporting-tasks/{id}/run-status][%d] updateRunStatusNotFound ", 404)
 }
 
@@ -185,14 +361,49 @@ func NewUpdateRunStatusConflict() *UpdateRunStatusConflict {
 	return &UpdateRunStatusConflict{}
 }
 
-/* UpdateRunStatusConflict describes a response with status code 409, with default header values.
+/*
+UpdateRunStatusConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type UpdateRunStatusConflict struct {
 }
 
+// IsSuccess returns true when this update run status conflict response has a 2xx status code
+func (o *UpdateRunStatusConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update run status conflict response has a 3xx status code
+func (o *UpdateRunStatusConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update run status conflict response has a 4xx status code
+func (o *UpdateRunStatusConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update run status conflict response has a 5xx status code
+func (o *UpdateRunStatusConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update run status conflict response a status code equal to that given
+func (o *UpdateRunStatusConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the update run status conflict response
+func (o *UpdateRunStatusConflict) Code() int {
+	return 409
+}
+
 func (o *UpdateRunStatusConflict) Error() string {
+	return fmt.Sprintf("[PUT /reporting-tasks/{id}/run-status][%d] updateRunStatusConflict ", 409)
+}
+
+func (o *UpdateRunStatusConflict) String() string {
 	return fmt.Sprintf("[PUT /reporting-tasks/{id}/run-status][%d] updateRunStatusConflict ", 409)
 }
 
