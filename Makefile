@@ -1,4 +1,4 @@
-NIFI_VER := 1.19.1
+NIFI_VER := 1.23.2
 
 .PHONY: generate
 generate: swagger

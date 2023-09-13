@@ -21,6 +21,9 @@ import (
 // swagger:model ProcessorDefinition
 type ProcessorDefinition struct {
 
+	// Indicates if the component has additional details documentation
+	AdditionalDetails bool `json:"additionalDetails,omitempty"`
+
 	// The artifact name of the bundle that provides the referenced type.
 	Artifact string `json:"artifact,omitempty"`
 
@@ -48,8 +51,18 @@ type ProcessorDefinition struct {
 	// Whether or not the component has been deprecated
 	Deprecated bool `json:"deprecated,omitempty"`
 
+	// If this component has been deprecated, this optional field provides alternatives to use
+	// Unique: true
+	DeprecationAlternatives []string `json:"deprecationAlternatives"`
+
 	// If this component has been deprecated, this optional field can be used to provide an explanation
 	DeprecationReason string `json:"deprecationReason,omitempty"`
+
+	// Describes the dynamic properties supported by this component
+	DynamicProperties []*DynamicProperty `json:"dynamicProperties"`
+
+	// If the processor supports dynamic relationships, this describes the dynamic relationship
+	DynamicRelationship *DynamicRelationship `json:"dynamicRelationship,omitempty"`
 
 	// Explicit restrictions that indicate a require permission to use the component
 	// Unique: true
@@ -71,16 +84,23 @@ type ProcessorDefinition struct {
 	// If this type represents a provider for an interface, this lists the APIs it implements
 	ProvidedAPIImplementations []*DefinedType `json:"providedApiImplementations"`
 
+	// The FlowFile attributes this processor reads
+	ReadsAttributes []*Attribute `json:"readsAttributes"`
+
 	// Whether or not the component has a general restriction
 	Restricted bool `json:"restricted,omitempty"`
 
 	// An optional description of the general restriction
 	RestrictedExplanation string `json:"restrictedExplanation,omitempty"`
 
+	// The names of other component types that may be related
+	// Unique: true
+	SeeAlso []string `json:"seeAlso"`
+
 	// Whether or not this processor is considered side-effect free. Side-effect free indicate that the processor's operations on FlowFiles can be safely repeated across process sessions.
 	SideEffectFree bool `json:"sideEffectFree,omitempty"`
 
-	// stateful
+	// Indicates if the component stores state
 	Stateful *Stateful `json:"stateful,omitempty"`
 
 	// The supported relationships for this processor.
@@ -100,6 +120,12 @@ type ProcessorDefinition struct {
 
 	// Whether or not this processor supports event driven scheduling. Indicates to the framework that the Processor is eligible to be scheduled to run based on the occurrence of an "Event" (e.g., when a FlowFile is enqueued in an incoming Connection), rather than being triggered periodically.
 	SupportsEventDriven bool `json:"supportsEventDriven,omitempty"`
+
+	// Whether or not this component makes use of sensitive dynamic (user-set) properties.
+	SupportsSensitiveDynamicProperties bool `json:"supportsSensitiveDynamicProperties,omitempty"`
+
+	// The system resource considerations for the given component
+	SystemResourceConsiderations []*SystemResourceConsideration `json:"systemResourceConsiderations"`
 
 	// The tags associated with this type
 	// Unique: true
@@ -123,6 +149,9 @@ type ProcessorDefinition struct {
 
 	// The version of the bundle that provides the referenced type.
 	Version string `json:"version,omitempty"`
+
+	// The FlowFile attributes this processor writes/updates
+	WritesAttributes []*Attribute `json:"writesAttributes"`
 }
 
 // Validate validates this processor definition
@@ -130,6 +159,18 @@ func (m *ProcessorDefinition) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateBuildInfo(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateDeprecationAlternatives(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateDynamicProperties(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateDynamicRelationship(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -149,6 +190,14 @@ func (m *ProcessorDefinition) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateReadsAttributes(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateSeeAlso(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateStateful(formats); err != nil {
 		res = append(res, err)
 	}
@@ -157,11 +206,19 @@ func (m *ProcessorDefinition) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateSystemResourceConsiderations(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateTags(formats); err != nil {
 		res = append(res, err)
 	}
 
 	if err := m.validateType(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateWritesAttributes(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -182,6 +239,63 @@ func (m *ProcessorDefinition) validateBuildInfo(formats strfmt.Registry) error {
 				return ve.ValidateName("buildInfo")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("buildInfo")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ProcessorDefinition) validateDeprecationAlternatives(formats strfmt.Registry) error {
+	if swag.IsZero(m.DeprecationAlternatives) { // not required
+		return nil
+	}
+
+	if err := validate.UniqueItems("deprecationAlternatives", "body", m.DeprecationAlternatives); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *ProcessorDefinition) validateDynamicProperties(formats strfmt.Registry) error {
+	if swag.IsZero(m.DynamicProperties) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.DynamicProperties); i++ {
+		if swag.IsZero(m.DynamicProperties[i]) { // not required
+			continue
+		}
+
+		if m.DynamicProperties[i] != nil {
+			if err := m.DynamicProperties[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("dynamicProperties" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("dynamicProperties" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *ProcessorDefinition) validateDynamicRelationship(formats strfmt.Registry) error {
+	if swag.IsZero(m.DynamicRelationship) { // not required
+		return nil
+	}
+
+	if m.DynamicRelationship != nil {
+		if err := m.DynamicRelationship.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("dynamicRelationship")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("dynamicRelationship")
 			}
 			return err
 		}
@@ -317,6 +431,44 @@ func (m *ProcessorDefinition) validateProvidedAPIImplementations(formats strfmt.
 	return nil
 }
 
+func (m *ProcessorDefinition) validateReadsAttributes(formats strfmt.Registry) error {
+	if swag.IsZero(m.ReadsAttributes) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.ReadsAttributes); i++ {
+		if swag.IsZero(m.ReadsAttributes[i]) { // not required
+			continue
+		}
+
+		if m.ReadsAttributes[i] != nil {
+			if err := m.ReadsAttributes[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("readsAttributes" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("readsAttributes" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *ProcessorDefinition) validateSeeAlso(formats strfmt.Registry) error {
+	if swag.IsZero(m.SeeAlso) { // not required
+		return nil
+	}
+
+	if err := validate.UniqueItems("seeAlso", "body", m.SeeAlso); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func (m *ProcessorDefinition) validateStateful(formats strfmt.Registry) error {
 	if swag.IsZero(m.Stateful) { // not required
 		return nil
@@ -362,6 +514,32 @@ func (m *ProcessorDefinition) validateSupportedRelationships(formats strfmt.Regi
 	return nil
 }
 
+func (m *ProcessorDefinition) validateSystemResourceConsiderations(formats strfmt.Registry) error {
+	if swag.IsZero(m.SystemResourceConsiderations) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.SystemResourceConsiderations); i++ {
+		if swag.IsZero(m.SystemResourceConsiderations[i]) { // not required
+			continue
+		}
+
+		if m.SystemResourceConsiderations[i] != nil {
+			if err := m.SystemResourceConsiderations[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("systemResourceConsiderations" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("systemResourceConsiderations" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
 func (m *ProcessorDefinition) validateTags(formats strfmt.Registry) error {
 	if swag.IsZero(m.Tags) { // not required
 		return nil
@@ -383,11 +561,45 @@ func (m *ProcessorDefinition) validateType(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *ProcessorDefinition) validateWritesAttributes(formats strfmt.Registry) error {
+	if swag.IsZero(m.WritesAttributes) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.WritesAttributes); i++ {
+		if swag.IsZero(m.WritesAttributes[i]) { // not required
+			continue
+		}
+
+		if m.WritesAttributes[i] != nil {
+			if err := m.WritesAttributes[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("writesAttributes" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("writesAttributes" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
 // ContextValidate validate this processor definition based on the context it is used
 func (m *ProcessorDefinition) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.contextValidateBuildInfo(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateDynamicProperties(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateDynamicRelationship(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -403,11 +615,23 @@ func (m *ProcessorDefinition) ContextValidate(ctx context.Context, formats strfm
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateReadsAttributes(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateStateful(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
 	if err := m.contextValidateSupportedRelationships(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateSystemResourceConsiderations(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateWritesAttributes(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -430,6 +654,52 @@ func (m *ProcessorDefinition) contextValidateBuildInfo(ctx context.Context, form
 				return ve.ValidateName("buildInfo")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("buildInfo")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ProcessorDefinition) contextValidateDynamicProperties(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.DynamicProperties); i++ {
+
+		if m.DynamicProperties[i] != nil {
+
+			if swag.IsZero(m.DynamicProperties[i]) { // not required
+				return nil
+			}
+
+			if err := m.DynamicProperties[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("dynamicProperties" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("dynamicProperties" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *ProcessorDefinition) contextValidateDynamicRelationship(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.DynamicRelationship != nil {
+
+		if swag.IsZero(m.DynamicRelationship) { // not required
+			return nil
+		}
+
+		if err := m.DynamicRelationship.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("dynamicRelationship")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("dynamicRelationship")
 			}
 			return err
 		}
@@ -503,6 +773,31 @@ func (m *ProcessorDefinition) contextValidateProvidedAPIImplementations(ctx cont
 	return nil
 }
 
+func (m *ProcessorDefinition) contextValidateReadsAttributes(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.ReadsAttributes); i++ {
+
+		if m.ReadsAttributes[i] != nil {
+
+			if swag.IsZero(m.ReadsAttributes[i]) { // not required
+				return nil
+			}
+
+			if err := m.ReadsAttributes[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("readsAttributes" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("readsAttributes" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
 func (m *ProcessorDefinition) contextValidateStateful(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Stateful != nil {
@@ -539,6 +834,56 @@ func (m *ProcessorDefinition) contextValidateSupportedRelationships(ctx context.
 					return ve.ValidateName("supportedRelationships" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
 					return ce.ValidateName("supportedRelationships" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *ProcessorDefinition) contextValidateSystemResourceConsiderations(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.SystemResourceConsiderations); i++ {
+
+		if m.SystemResourceConsiderations[i] != nil {
+
+			if swag.IsZero(m.SystemResourceConsiderations[i]) { // not required
+				return nil
+			}
+
+			if err := m.SystemResourceConsiderations[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("systemResourceConsiderations" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("systemResourceConsiderations" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *ProcessorDefinition) contextValidateWritesAttributes(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.WritesAttributes); i++ {
+
+		if m.WritesAttributes[i] != nil {
+
+			if swag.IsZero(m.WritesAttributes[i]) { // not required
+				return nil
+			}
+
+			if err := m.WritesAttributes[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("writesAttributes" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("writesAttributes" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

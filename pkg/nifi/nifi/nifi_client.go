@@ -11,7 +11,6 @@ import (
 	"github.com/go-openapi/strfmt"
 
 	"github.com/skycubed/nifi-go/pkg/nifi/nifi/access"
-	"github.com/skycubed/nifi-go/pkg/nifi/nifi/accessoidc"
 	"github.com/skycubed/nifi-go/pkg/nifi/nifi/connections"
 	"github.com/skycubed/nifi-go/pkg/nifi/nifi/controller"
 	"github.com/skycubed/nifi-go/pkg/nifi/nifi/controller_services"
@@ -84,7 +83,6 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Nifi {
 	cli := new(Nifi)
 	cli.Transport = transport
 	cli.Access = access.New(transport, formats)
-	cli.Accessoidc = accessoidc.New(transport, formats)
 	cli.Connections = connections.New(transport, formats)
 	cli.Controller = controller.New(transport, formats)
 	cli.ControllerServices = controller_services.New(transport, formats)
@@ -158,8 +156,6 @@ func (cfg *TransportConfig) WithSchemes(schemes []string) *TransportConfig {
 type Nifi struct {
 	Access access.ClientService
 
-	Accessoidc accessoidc.ClientService
-
 	Connections connections.ClientService
 
 	Controller controller.ClientService
@@ -221,7 +217,6 @@ type Nifi struct {
 func (c *Nifi) SetTransport(transport runtime.ClientTransport) {
 	c.Transport = transport
 	c.Access.SetTransport(transport)
-	c.Accessoidc.SetTransport(transport)
 	c.Connections.SetTransport(transport)
 	c.Controller.SetTransport(transport)
 	c.ControllerServices.SetTransport(transport)

@@ -14,6 +14,7 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+	"github.com/go-openapi/swag"
 
 	"github.com/skycubed/nifi-go/pkg/registry/models"
 )
@@ -68,6 +69,12 @@ type CreateBucketParams struct {
 	   The bucket to create
 	*/
 	Body *models.Bucket
+
+	/* PreserveSourceProperties.
+
+	   Whether source properties like identifier should be kept
+	*/
+	PreserveSourceProperties *bool
 
 	timeout    time.Duration
 	Context    context.Context
@@ -133,6 +140,17 @@ func (o *CreateBucketParams) SetBody(body *models.Bucket) {
 	o.Body = body
 }
 
+// WithPreserveSourceProperties adds the preserveSourceProperties to the create bucket params
+func (o *CreateBucketParams) WithPreserveSourceProperties(preserveSourceProperties *bool) *CreateBucketParams {
+	o.SetPreserveSourceProperties(preserveSourceProperties)
+	return o
+}
+
+// SetPreserveSourceProperties adds the preserveSourceProperties to the create bucket params
+func (o *CreateBucketParams) SetPreserveSourceProperties(preserveSourceProperties *bool) {
+	o.PreserveSourceProperties = preserveSourceProperties
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *CreateBucketParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -143,6 +161,23 @@ func (o *CreateBucketParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.
 	if o.Body != nil {
 		if err := r.SetBodyParam(o.Body); err != nil {
 			return err
+		}
+	}
+
+	if o.PreserveSourceProperties != nil {
+
+		// query param preserveSourceProperties
+		var qrPreserveSourceProperties bool
+
+		if o.PreserveSourceProperties != nil {
+			qrPreserveSourceProperties = *o.PreserveSourceProperties
+		}
+		qPreserveSourceProperties := swag.FormatBool(qrPreserveSourceProperties)
+		if qPreserveSourceProperties != "" {
+
+			if err := r.SetQueryParam("preserveSourceProperties", qPreserveSourceProperties); err != nil {
+				return err
+			}
 		}
 	}
 

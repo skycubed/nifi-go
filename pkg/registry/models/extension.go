@@ -79,6 +79,9 @@ type Extension struct {
 	// Indicates that a processor supports batching
 	SupportsBatching bool `json:"supportsBatching,omitempty"`
 
+	// supports sensitive dynamic properties
+	SupportsSensitiveDynamicProperties bool `json:"supportsSensitiveDynamicProperties,omitempty"`
+
 	// The resource considerations of the extension
 	SystemResourceConsiderations []*SystemResourceConsideration `json:"systemResourceConsiderations" xml:"systemResourceConsiderations"`
 

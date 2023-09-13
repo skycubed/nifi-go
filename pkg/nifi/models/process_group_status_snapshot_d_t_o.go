@@ -90,6 +90,9 @@ type ProcessGroupStatusSnapshotDTO struct {
 	// The status of all process groups in the process group.
 	ProcessGroupStatusSnapshots []*ProcessGroupStatusSnapshotEntity `json:"processGroupStatusSnapshots"`
 
+	// processing nanos
+	ProcessingNanos int64 `json:"processingNanos,omitempty"`
+
 	// The status of all processors in the process group.
 	ProcessorStatusSnapshots []*ProcessorStatusSnapshotEntity `json:"processorStatusSnapshots"`
 

@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "description": "The Rest API provides programmatic access to command and control a NiFi instance in real time. Start and\n                                            stop processors, monitor queues, query provenance data, and more. Each endpoint below includes a description,\n                                            definitions of the expected input and output, potential response codes, and the authorizations required\n                                            to invoke each service.",
-    "version": "1.19.1",
+    "version": "1.23.2",
     "title": "NiFi Rest API",
     "contact": {
       "url": "https://nifi.apache.org",
@@ -17,10 +17,6 @@
   "tags": [
     {
       "name": "access",
-      "description": "Endpoints for obtaining an access token or checking access status."
-    },
-    {
-      "name": "accessoidc",
       "description": "Endpoints for obtaining an access token or checking access status."
     },
     {
@@ -349,114 +345,6 @@
           },
           "500": {
             "description": "Client failed to log out."
-          }
-        }
-      }
-    },
-    "/access/oidc/callback": {
-      "get": {
-        "tags": [
-          "accessoidc"
-        ],
-        "summary": "Redirect/callback URI for processing the result of the OpenId Connect login sequence.",
-        "description": "Note: This endpoint is subject to change as NiFi and it's REST API evolve.",
-        "operationId": "oidcCallback",
-        "consumes": [
-          "*/*"
-        ],
-        "produces": [
-          "*/*"
-        ],
-        "responses": {
-          "default": {
-            "description": "successful operation"
-          }
-        }
-      }
-    },
-    "/access/oidc/exchange": {
-      "post": {
-        "tags": [
-          "accessoidc"
-        ],
-        "summary": "Retrieves a JWT following a successful login sequence using the configured OpenId Connect provider.",
-        "description": "Note: This endpoint is subject to change as NiFi and it's REST API evolve.",
-        "operationId": "oidcExchange",
-        "consumes": [
-          "*/*"
-        ],
-        "produces": [
-          "text/plain"
-        ],
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "schema": {
-              "type": "string"
-            }
-          }
-        }
-      }
-    },
-    "/access/oidc/logout": {
-      "get": {
-        "tags": [
-          "accessoidc"
-        ],
-        "summary": "Performs a logout in the OpenId Provider.",
-        "description": "Note: This endpoint is subject to change as NiFi and it's REST API evolve.",
-        "operationId": "oidcLogout",
-        "consumes": [
-          "*/*"
-        ],
-        "produces": [
-          "*/*"
-        ],
-        "responses": {
-          "default": {
-            "description": "successful operation"
-          }
-        }
-      }
-    },
-    "/access/oidc/logoutCallback": {
-      "get": {
-        "tags": [
-          "accessoidc"
-        ],
-        "summary": "Redirect/callback URI for processing the result of the OpenId Connect logout sequence.",
-        "description": "Note: This endpoint is subject to change as NiFi and it's REST API evolve.",
-        "operationId": "oidcLogoutCallback",
-        "consumes": [
-          "*/*"
-        ],
-        "produces": [
-          "*/*"
-        ],
-        "responses": {
-          "default": {
-            "description": "successful operation"
-          }
-        }
-      }
-    },
-    "/access/oidc/request": {
-      "get": {
-        "tags": [
-          "accessoidc"
-        ],
-        "summary": "Initiates a request to authenticate through the configured OpenId Connect provider.",
-        "description": "Note: This endpoint is subject to change as NiFi and it's REST API evolve.",
-        "operationId": "oidcRequest",
-        "consumes": [
-          "*/*"
-        ],
-        "produces": [
-          "*/*"
-        ],
-        "responses": {
-          "default": {
-            "description": "successful operation"
           }
         }
       }
@@ -3806,6 +3694,14 @@
             "required": false,
             "type": "boolean",
             "default": false
+          },
+          {
+            "name": "includeReferencingComponents",
+            "in": "query",
+            "description": "Whether or not to include services' referencing components in the response",
+            "required": false,
+            "type": "boolean",
+            "default": true
           }
         ],
         "responses": {
@@ -4637,7 +4533,7 @@
           {
             "name": "includeAncestorGroups",
             "in": "query",
-            "description": "Whether or not to include parent/ancestory process groups",
+            "description": "Whether or not to include parent/ancestor process groups",
             "required": false,
             "type": "boolean",
             "default": true
@@ -4649,6 +4545,14 @@
             "required": false,
             "type": "boolean",
             "default": false
+          },
+          {
+            "name": "includeReferencingComponents",
+            "in": "query",
+            "description": "Whether or not to include services' referencing components in the response",
+            "required": false,
+            "type": "boolean",
+            "default": true
           },
           {
             "name": "uiOnly",
@@ -10516,6 +10420,18 @@
             "schema": {
               "$ref": "#/definitions/ProcessGroupEntity"
             }
+          },
+          {
+            "name": "parameterContextHandlingStrategy",
+            "in": "query",
+            "description": "Handling Strategy controls whether to keep or replace Parameter Contexts",
+            "required": false,
+            "type": "string",
+            "default": "KEEP_EXISTING",
+            "enum": [
+              "KEEP_EXISTING",
+              "REPLACE"
+            ]
           }
         ],
         "responses": {
@@ -14743,6 +14659,59 @@
         ]
       }
     },
+    "/system-diagnostics/jmx-metrics": {
+      "get": {
+        "tags": [
+          "system-diagnostics"
+        ],
+        "summary": "Retrieve available JMX metrics",
+        "description": "Note: This endpoint is subject to change as NiFi and it's REST API evolve.",
+        "operationId": "getJmxMetrics",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "beanNameFilter",
+            "in": "query",
+            "description": "Regular Expression Pattern to be applied against the ObjectName",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/JmxMetricsResultsEntity"
+            }
+          },
+          "400": {
+            "description": "NiFi was unable to complete the request because it was invalid. The request should not be retried without modification."
+          },
+          "401": {
+            "description": "Client could not be authenticated."
+          },
+          "403": {
+            "description": "Client is not authorized to make this request."
+          },
+          "404": {
+            "description": "The specified resource could not be found."
+          },
+          "409": {
+            "description": "The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful."
+          }
+        },
+        "security": [
+          {
+            "Read - /system": []
+          }
+        ]
+      }
+    },
     "/templates/{id}": {
       "delete": {
         "tags": [
@@ -16892,6 +16861,19 @@
         "name": "entity"
       }
     },
+    "Attribute": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the attribute"
+        },
+        "description": {
+          "type": "string",
+          "description": "The description of the attribute"
+        }
+      }
+    },
     "AttributeDTO": {
       "type": "object",
       "properties": {
@@ -17216,13 +17198,13 @@
           "format": "int32",
           "description": "The number of nodes in the cluster, regardless of whether or not they are connected"
         },
-        "connectedToCluster": {
-          "type": "boolean",
-          "description": "Whether this NiFi instance is connected to a cluster."
-        },
         "clustered": {
           "type": "boolean",
           "description": "Whether this NiFi instance is clustered."
+        },
+        "connectedToCluster": {
+          "type": "boolean",
+          "description": "Whether this NiFi instance is connected to a cluster."
         }
       }
     },
@@ -18729,6 +18711,14 @@
             "type": "string"
           }
         },
+        "seeAlso": {
+          "type": "array",
+          "description": "The names of other component types that may be related",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        },
         "deprecated": {
           "type": "boolean",
           "description": "Whether or not the component has been deprecated"
@@ -18736,6 +18726,14 @@
         "deprecationReason": {
           "type": "string",
           "description": "If this component has been deprecated, this optional field can be used to provide an explanation"
+        },
+        "deprecationAlternatives": {
+          "type": "array",
+          "description": "If this component has been deprecated, this optional field provides alternatives to use",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
         },
         "restricted": {
           "type": "boolean",
@@ -18754,7 +18752,19 @@
           }
         },
         "stateful": {
+          "description": "Indicates if the component stores state",
           "$ref": "#/definitions/Stateful"
+        },
+        "systemResourceConsiderations": {
+          "type": "array",
+          "description": "The system resource considerations for the given component",
+          "items": {
+            "$ref": "#/definitions/SystemResourceConsideration"
+          }
+        },
+        "additionalDetails": {
+          "type": "boolean",
+          "description": "Indicates if the component has additional details documentation"
         },
         "propertyDescriptors": {
           "type": "object",
@@ -18766,6 +18776,17 @@
         "supportsDynamicProperties": {
           "type": "boolean",
           "description": "Whether or not this component makes use of dynamic (user-set) properties."
+        },
+        "supportsSensitiveDynamicProperties": {
+          "type": "boolean",
+          "description": "Whether or not this component makes use of sensitive dynamic (user-set) properties."
+        },
+        "dynamicProperties": {
+          "type": "array",
+          "description": "Describes the dynamic properties supported by this component",
+          "items": {
+            "$ref": "#/definitions/DynamicProperty"
+          }
         }
       }
     },
@@ -18886,7 +18907,8 @@
           "enum": [
             "Processor",
             "ControllerService",
-            "ReportingTask"
+            "ReportingTask",
+            "FlowRegistryClient"
           ]
         },
         "activeThreadCount": {
@@ -19563,6 +19585,45 @@
     "DtoFactory": {
       "type": "object"
     },
+    "DynamicProperty": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The description of the dynamic property name"
+        },
+        "value": {
+          "type": "string",
+          "description": "The description of the dynamic property value"
+        },
+        "description": {
+          "type": "string",
+          "description": "The description of the dynamic property"
+        },
+        "expressionLanguageScope": {
+          "type": "string",
+          "description": "The scope of the expression language support",
+          "enum": [
+            "NONE",
+            "VARIABLE_REGISTRY",
+            "FLOWFILE_ATTRIBUTES"
+          ]
+        }
+      }
+    },
+    "DynamicRelationship": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The description of the dynamic relationship name"
+        },
+        "description": {
+          "type": "string",
+          "description": "The description of the dynamic relationship"
+        }
+      }
+    },
     "Entity": {
       "type": "object",
       "xml": {
@@ -20102,13 +20163,13 @@
           "type": "string",
           "description": "The annotation data for the repoting task. This is how the custom UI relays configuration to the reporting task."
         },
-        "multipleVersionsAvailable": {
-          "type": "boolean",
-          "description": "Whether the flow registry client has multiple versions available."
-        },
         "extensionMissing": {
           "type": "boolean",
           "description": "Whether the underlying extension is missing."
+        },
+        "multipleVersionsAvailable": {
+          "type": "boolean",
+          "description": "Whether the flow registry client has multiple versions available."
         }
       }
     },
@@ -20665,6 +20726,37 @@
           "format": "int64",
           "description": "The maximum number of open file descriptors that are available to each process"
         }
+      }
+    },
+    "JmxMetricsResultDTO": {
+      "type": "object",
+      "properties": {
+        "beanName": {
+          "type": "string",
+          "description": "The bean name of the metrics bean."
+        },
+        "attributeName": {
+          "type": "string",
+          "description": "The attribute name of the metrics bean's attribute."
+        },
+        "attributeValue": {
+          "type": "object",
+          "description": "The attribute value of the the metrics bean's attribute"
+        }
+      }
+    },
+    "JmxMetricsResultsEntity": {
+      "type": "object",
+      "properties": {
+        "jmxMetricsResults": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/JmxMetricsResultDTO"
+          }
+        }
+      },
+      "xml": {
+        "name": "jmxMetricsResult"
       }
     },
     "LabelDTO": {
@@ -22892,6 +22984,10 @@
           "type": "string",
           "description": "Default value used in this Process Group for the maximum data size of objects that can be queued before back pressure is applied."
         },
+        "logFileSuffix": {
+          "type": "string",
+          "description": "The log file suffix for this Process Group for dedicated logging."
+        },
         "runningCount": {
           "type": "integer",
           "format": "int32",
@@ -23498,6 +23594,10 @@
           "type": "integer",
           "format": "int32",
           "description": "The number of threads currently terminated for the process group."
+        },
+        "processingNanos": {
+          "type": "integer",
+          "format": "int64"
         }
       }
     },
@@ -23828,6 +23928,14 @@
             "type": "string"
           }
         },
+        "seeAlso": {
+          "type": "array",
+          "description": "The names of other component types that may be related",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        },
         "deprecated": {
           "type": "boolean",
           "description": "Whether or not the component has been deprecated"
@@ -23835,6 +23943,14 @@
         "deprecationReason": {
           "type": "string",
           "description": "If this component has been deprecated, this optional field can be used to provide an explanation"
+        },
+        "deprecationAlternatives": {
+          "type": "array",
+          "description": "If this component has been deprecated, this optional field provides alternatives to use",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
         },
         "restricted": {
           "type": "boolean",
@@ -23853,7 +23969,19 @@
           }
         },
         "stateful": {
+          "description": "Indicates if the component stores state",
           "$ref": "#/definitions/Stateful"
+        },
+        "systemResourceConsiderations": {
+          "type": "array",
+          "description": "The system resource considerations for the given component",
+          "items": {
+            "$ref": "#/definitions/SystemResourceConsideration"
+          }
+        },
+        "additionalDetails": {
+          "type": "boolean",
+          "description": "Indicates if the component has additional details documentation"
         },
         "propertyDescriptors": {
           "type": "object",
@@ -23865,6 +23993,17 @@
         "supportsDynamicProperties": {
           "type": "boolean",
           "description": "Whether or not this component makes use of dynamic (user-set) properties."
+        },
+        "supportsSensitiveDynamicProperties": {
+          "type": "boolean",
+          "description": "Whether or not this component makes use of sensitive dynamic (user-set) properties."
+        },
+        "dynamicProperties": {
+          "type": "array",
+          "description": "Describes the dynamic properties supported by this component",
+          "items": {
+            "$ref": "#/definitions/DynamicProperty"
+          }
         },
         "inputRequirement": {
           "type": "string",
@@ -23885,6 +24024,10 @@
         "supportsDynamicRelationships": {
           "type": "boolean",
           "description": "Whether or not this processor supports dynamic relationships."
+        },
+        "dynamicRelationship": {
+          "description": "If the processor supports dynamic relationships, this describes the dynamic relationship",
+          "$ref": "#/definitions/DynamicRelationship"
         },
         "triggerSerially": {
           "type": "boolean",
@@ -23951,6 +24094,20 @@
         "defaultBulletinLevel": {
           "type": "string",
           "description": "The default bulletin level, such as WARN, INFO, DEBUG, etc."
+        },
+        "readsAttributes": {
+          "type": "array",
+          "description": "The FlowFile attributes this processor reads",
+          "items": {
+            "$ref": "#/definitions/Attribute"
+          }
+        },
+        "writesAttributes": {
+          "type": "array",
+          "description": "The FlowFile attributes this processor writes/updates",
+          "items": {
+            "$ref": "#/definitions/Attribute"
+          }
         }
       }
     },
@@ -26104,6 +26261,14 @@
             "type": "string"
           }
         },
+        "seeAlso": {
+          "type": "array",
+          "description": "The names of other component types that may be related",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        },
         "deprecated": {
           "type": "boolean",
           "description": "Whether or not the component has been deprecated"
@@ -26111,6 +26276,14 @@
         "deprecationReason": {
           "type": "string",
           "description": "If this component has been deprecated, this optional field can be used to provide an explanation"
+        },
+        "deprecationAlternatives": {
+          "type": "array",
+          "description": "If this component has been deprecated, this optional field provides alternatives to use",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
         },
         "restricted": {
           "type": "boolean",
@@ -26129,7 +26302,19 @@
           }
         },
         "stateful": {
+          "description": "Indicates if the component stores state",
           "$ref": "#/definitions/Stateful"
+        },
+        "systemResourceConsiderations": {
+          "type": "array",
+          "description": "The system resource considerations for the given component",
+          "items": {
+            "$ref": "#/definitions/SystemResourceConsideration"
+          }
+        },
+        "additionalDetails": {
+          "type": "boolean",
+          "description": "Indicates if the component has additional details documentation"
         },
         "propertyDescriptors": {
           "type": "object",
@@ -26141,6 +26326,17 @@
         "supportsDynamicProperties": {
           "type": "boolean",
           "description": "Whether or not this component makes use of dynamic (user-set) properties."
+        },
+        "supportsSensitiveDynamicProperties": {
+          "type": "boolean",
+          "description": "Whether or not this component makes use of sensitive dynamic (user-set) properties."
+        },
+        "dynamicProperties": {
+          "type": "array",
+          "description": "Describes the dynamic properties supported by this component",
+          "items": {
+            "$ref": "#/definitions/DynamicProperty"
+          }
         },
         "supportedSchedulingStrategies": {
           "type": "array",
@@ -27197,6 +27393,19 @@
         "versionInfo": {
           "description": "The nifi, os, java, and build version information",
           "$ref": "#/definitions/VersionInfoDTO"
+        }
+      }
+    },
+    "SystemResourceConsideration": {
+      "type": "object",
+      "properties": {
+        "resource": {
+          "type": "string",
+          "description": "The resource to consider"
+        },
+        "description": {
+          "type": "string",
+          "description": "The description of how the resource is affected"
         }
       }
     },
@@ -29011,6 +29220,10 @@
         "defaultBackPressureDataSizeThreshold": {
           "type": "string",
           "description": "Default value used in this Process Group for the maximum data size of objects that can be queued before back pressure is applied."
+        },
+        "logFileSuffix": {
+          "type": "string",
+          "description": "The log file suffix for this Process Group for dedicated logging."
         },
         "flowFileConcurrency": {
           "type": "string",

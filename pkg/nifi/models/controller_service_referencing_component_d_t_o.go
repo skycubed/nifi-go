@@ -43,7 +43,7 @@ type ControllerServiceReferencingComponentDTO struct {
 	ReferenceCycle bool `json:"referenceCycle,omitempty"`
 
 	// The type of reference this is.
-	// Enum: [Processor ControllerService ReportingTask]
+	// Enum: [Processor ControllerService ReportingTask FlowRegistryClient]
 	ReferenceType string `json:"referenceType,omitempty"`
 
 	// If the referencing component represents a controller service, these are the components that reference it.
@@ -112,7 +112,7 @@ var controllerServiceReferencingComponentDTOTypeReferenceTypePropEnum []interfac
 
 func init() {
 	var res []string
-	if err := json.Unmarshal([]byte(`["Processor","ControllerService","ReportingTask"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["Processor","ControllerService","ReportingTask","FlowRegistryClient"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
@@ -130,6 +130,9 @@ const (
 
 	// ControllerServiceReferencingComponentDTOReferenceTypeReportingTask captures enum value "ReportingTask"
 	ControllerServiceReferencingComponentDTOReferenceTypeReportingTask string = "ReportingTask"
+
+	// ControllerServiceReferencingComponentDTOReferenceTypeFlowRegistryClient captures enum value "FlowRegistryClient"
+	ControllerServiceReferencingComponentDTOReferenceTypeFlowRegistryClient string = "FlowRegistryClient"
 )
 
 // prop value enum

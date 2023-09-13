@@ -70,7 +70,7 @@ type GetControllerServicesFromGroupParams struct {
 
 	/* IncludeAncestorGroups.
 
-	   Whether or not to include parent/ancestory process groups
+	   Whether or not to include parent/ancestor process groups
 
 	   Default: true
 	*/
@@ -81,6 +81,14 @@ type GetControllerServicesFromGroupParams struct {
 	   Whether or not to include descendant process groups
 	*/
 	IncludeDescendantGroups *bool
+
+	/* IncludeReferencingComponents.
+
+	   Whether or not to include services' referencing components in the response
+
+	   Default: true
+	*/
+	IncludeReferencingComponents *bool
 
 	// UIOnly.
 	UIOnly *bool
@@ -107,13 +115,16 @@ func (o *GetControllerServicesFromGroupParams) SetDefaults() {
 
 		includeDescendantGroupsDefault = bool(false)
 
+		includeReferencingComponentsDefault = bool(true)
+
 		uIOnlyDefault = bool(false)
 	)
 
 	val := GetControllerServicesFromGroupParams{
-		IncludeAncestorGroups:   &includeAncestorGroupsDefault,
-		IncludeDescendantGroups: &includeDescendantGroupsDefault,
-		UIOnly:                  &uIOnlyDefault,
+		IncludeAncestorGroups:        &includeAncestorGroupsDefault,
+		IncludeDescendantGroups:      &includeDescendantGroupsDefault,
+		IncludeReferencingComponents: &includeReferencingComponentsDefault,
+		UIOnly:                       &uIOnlyDefault,
 	}
 
 	val.timeout = o.timeout
@@ -188,6 +199,17 @@ func (o *GetControllerServicesFromGroupParams) SetIncludeDescendantGroups(includ
 	o.IncludeDescendantGroups = includeDescendantGroups
 }
 
+// WithIncludeReferencingComponents adds the includeReferencingComponents to the get controller services from group params
+func (o *GetControllerServicesFromGroupParams) WithIncludeReferencingComponents(includeReferencingComponents *bool) *GetControllerServicesFromGroupParams {
+	o.SetIncludeReferencingComponents(includeReferencingComponents)
+	return o
+}
+
+// SetIncludeReferencingComponents adds the includeReferencingComponents to the get controller services from group params
+func (o *GetControllerServicesFromGroupParams) SetIncludeReferencingComponents(includeReferencingComponents *bool) {
+	o.IncludeReferencingComponents = includeReferencingComponents
+}
+
 // WithUIOnly adds the uIOnly to the get controller services from group params
 func (o *GetControllerServicesFromGroupParams) WithUIOnly(uIOnly *bool) *GetControllerServicesFromGroupParams {
 	o.SetUIOnly(uIOnly)
@@ -241,6 +263,23 @@ func (o *GetControllerServicesFromGroupParams) WriteToRequest(r runtime.ClientRe
 		if qIncludeDescendantGroups != "" {
 
 			if err := r.SetQueryParam("includeDescendantGroups", qIncludeDescendantGroups); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.IncludeReferencingComponents != nil {
+
+		// query param includeReferencingComponents
+		var qrIncludeReferencingComponents bool
+
+		if o.IncludeReferencingComponents != nil {
+			qrIncludeReferencingComponents = *o.IncludeReferencingComponents
+		}
+		qIncludeReferencingComponents := swag.FormatBool(qrIncludeReferencingComponents)
+		if qIncludeReferencingComponents != "" {
+
+			if err := r.SetQueryParam("includeReferencingComponents", qIncludeReferencingComponents); err != nil {
 				return err
 			}
 		}

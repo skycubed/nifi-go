@@ -72,6 +72,9 @@ type VersionedProcessGroup struct {
 	// Unique: true
 	Labels []*VersionedLabel `json:"labels"`
 
+	// The log file suffix for this Process Group for dedicated logging.
+	LogFileSuffix string `json:"logFileSuffix,omitempty"`
+
 	// The component's name
 	Name string `json:"name,omitempty"`
 

@@ -73,6 +73,9 @@ type ProcessGroupDTO struct {
 	// The number of locally modified versioned process groups in the process group.
 	LocallyModifiedCount int32 `json:"locallyModifiedCount,omitempty"`
 
+	// The log file suffix for this Process Group for dedicated logging.
+	LogFileSuffix string `json:"logFileSuffix,omitempty"`
+
 	// The name of the process group.
 	Name string `json:"name,omitempty"`
 

@@ -75,6 +75,14 @@ type CreateProcessGroupParams struct {
 	*/
 	ID string
 
+	/* ParameterContextHandlingStrategy.
+
+	   Handling Strategy controls whether to keep or replace Parameter Contexts
+
+	   Default: "KEEP_EXISTING"
+	*/
+	ParameterContextHandlingStrategy *string
+
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
@@ -92,7 +100,18 @@ func (o *CreateProcessGroupParams) WithDefaults() *CreateProcessGroupParams {
 //
 // All values with no default are reset to their zero value.
 func (o *CreateProcessGroupParams) SetDefaults() {
-	// no default values defined for this parameter
+	var (
+		parameterContextHandlingStrategyDefault = string("KEEP_EXISTING")
+	)
+
+	val := CreateProcessGroupParams{
+		ParameterContextHandlingStrategy: &parameterContextHandlingStrategyDefault,
+	}
+
+	val.timeout = o.timeout
+	val.Context = o.Context
+	val.HTTPClient = o.HTTPClient
+	*o = val
 }
 
 // WithTimeout adds the timeout to the create process group params
@@ -150,6 +169,17 @@ func (o *CreateProcessGroupParams) SetID(id string) {
 	o.ID = id
 }
 
+// WithParameterContextHandlingStrategy adds the parameterContextHandlingStrategy to the create process group params
+func (o *CreateProcessGroupParams) WithParameterContextHandlingStrategy(parameterContextHandlingStrategy *string) *CreateProcessGroupParams {
+	o.SetParameterContextHandlingStrategy(parameterContextHandlingStrategy)
+	return o
+}
+
+// SetParameterContextHandlingStrategy adds the parameterContextHandlingStrategy to the create process group params
+func (o *CreateProcessGroupParams) SetParameterContextHandlingStrategy(parameterContextHandlingStrategy *string) {
+	o.ParameterContextHandlingStrategy = parameterContextHandlingStrategy
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *CreateProcessGroupParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -166,6 +196,23 @@ func (o *CreateProcessGroupParams) WriteToRequest(r runtime.ClientRequest, reg s
 	// path param id
 	if err := r.SetPathParam("id", o.ID); err != nil {
 		return err
+	}
+
+	if o.ParameterContextHandlingStrategy != nil {
+
+		// query param parameterContextHandlingStrategy
+		var qrParameterContextHandlingStrategy string
+
+		if o.ParameterContextHandlingStrategy != nil {
+			qrParameterContextHandlingStrategy = *o.ParameterContextHandlingStrategy
+		}
+		qParameterContextHandlingStrategy := qrParameterContextHandlingStrategy
+		if qParameterContextHandlingStrategy != "" {
+
+			if err := r.SetQueryParam("parameterContextHandlingStrategy", qParameterContextHandlingStrategy); err != nil {
+				return err
+			}
+		}
 	}
 
 	if len(res) > 0 {

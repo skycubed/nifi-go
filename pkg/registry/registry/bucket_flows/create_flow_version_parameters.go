@@ -14,6 +14,7 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+	"github.com/go-openapi/swag"
 
 	"github.com/skycubed/nifi-go/pkg/registry/models"
 )
@@ -80,6 +81,12 @@ type CreateFlowVersionParams struct {
 	   The flow identifier
 	*/
 	FlowID string
+
+	/* PreserveSourceProperties.
+
+	   Whether source properties like author should be kept
+	*/
+	PreserveSourceProperties *bool
 
 	timeout    time.Duration
 	Context    context.Context
@@ -167,6 +174,17 @@ func (o *CreateFlowVersionParams) SetFlowID(flowID string) {
 	o.FlowID = flowID
 }
 
+// WithPreserveSourceProperties adds the preserveSourceProperties to the create flow version params
+func (o *CreateFlowVersionParams) WithPreserveSourceProperties(preserveSourceProperties *bool) *CreateFlowVersionParams {
+	o.SetPreserveSourceProperties(preserveSourceProperties)
+	return o
+}
+
+// SetPreserveSourceProperties adds the preserveSourceProperties to the create flow version params
+func (o *CreateFlowVersionParams) SetPreserveSourceProperties(preserveSourceProperties *bool) {
+	o.PreserveSourceProperties = preserveSourceProperties
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *CreateFlowVersionParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -188,6 +206,23 @@ func (o *CreateFlowVersionParams) WriteToRequest(r runtime.ClientRequest, reg st
 	// path param flowId
 	if err := r.SetPathParam("flowId", o.FlowID); err != nil {
 		return err
+	}
+
+	if o.PreserveSourceProperties != nil {
+
+		// query param preserveSourceProperties
+		var qrPreserveSourceProperties bool
+
+		if o.PreserveSourceProperties != nil {
+			qrPreserveSourceProperties = *o.PreserveSourceProperties
+		}
+		qPreserveSourceProperties := swag.FormatBool(qrPreserveSourceProperties)
+		if qPreserveSourceProperties != "" {
+
+			if err := r.SetQueryParam("preserveSourceProperties", qPreserveSourceProperties); err != nil {
+				return err
+			}
+		}
 	}
 
 	if len(res) > 0 {

@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "description": "The REST API provides an interface to a registry with operations for saving, versioning, reading NiFi flows and components.",
-    "version": "1.19.1",
+    "version": "1.23.2",
     "title": "Apache NiFi Registry REST API",
     "termsOfService": "As described in the license",
     "contact": {
@@ -569,6 +569,13 @@
             "schema": {
               "$ref": "#/definitions/Bucket"
             }
+          },
+          {
+            "name": "preserveSourceProperties",
+            "in": "query",
+            "description": "Whether source properties like identifier should be kept",
+            "required": false,
+            "type": "boolean"
           }
         ],
         "responses": {
@@ -1450,6 +1457,13 @@
             "schema": {
               "$ref": "#/definitions/VersionedFlowSnapshot"
             }
+          },
+          {
+            "name": "preserveSourceProperties",
+            "in": "query",
+            "description": "Whether source properties like author should be kept",
+            "required": false,
+            "type": "boolean"
           }
         ],
         "responses": {
@@ -5980,6 +5994,9 @@
             "$ref": "#/definitions/Property"
           }
         },
+        "supportsSensitiveDynamicProperties": {
+          "type": "boolean"
+        },
         "dynamicProperties": {
           "type": "array",
           "xml": {
@@ -7692,10 +7709,6 @@
           "type": "string",
           "description": "The corresponding parameter group name fetched from the parameter provider, if applicable"
         },
-        "synchronized": {
-          "type": "boolean",
-          "description": "True if the parameter provider is set and the context should receive updates when its parameters are next fetched"
-        },
         "componentType": {
           "type": "string",
           "enum": [
@@ -7716,6 +7729,10 @@
             "TEMPLATE",
             "FLOW_REGISTRY_CLIENT"
           ]
+        },
+        "synchronized": {
+          "type": "boolean",
+          "description": "True if the parameter provider is set and the context should receive updates when its parameters are next fetched"
         },
         "groupIdentifier": {
           "type": "string",
@@ -7922,13 +7939,9 @@
           "type": "string",
           "description": "Default value used in this Process Group for the maximum data size of objects that can be queued before back pressure is applied."
         },
-        "flowFileConcurrency": {
+        "logFileSuffix": {
           "type": "string",
-          "description": "The configured FlowFile Concurrency for the Process Group"
-        },
-        "flowFileOutboundPolicy": {
-          "type": "string",
-          "description": "The FlowFile Outbound Policy for the Process Group"
+          "description": "The log file suffix for this Process Group for dedicated logging."
         },
         "componentType": {
           "type": "string",
@@ -7950,6 +7963,14 @@
             "TEMPLATE",
             "FLOW_REGISTRY_CLIENT"
           ]
+        },
+        "flowFileConcurrency": {
+          "type": "string",
+          "description": "The configured FlowFile Concurrency for the Process Group"
+        },
+        "flowFileOutboundPolicy": {
+          "type": "string",
+          "description": "The FlowFile Outbound Policy for the Process Group"
         },
         "groupIdentifier": {
           "type": "string",

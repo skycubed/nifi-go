@@ -20,6 +20,9 @@ import (
 // swagger:model ReportingTaskDefinition
 type ReportingTaskDefinition struct {
 
+	// Indicates if the component has additional details documentation
+	AdditionalDetails bool `json:"additionalDetails,omitempty"`
+
 	// The artifact name of the bundle that provides the referenced type.
 	Artifact string `json:"artifact,omitempty"`
 
@@ -35,8 +38,15 @@ type ReportingTaskDefinition struct {
 	// Whether or not the component has been deprecated
 	Deprecated bool `json:"deprecated,omitempty"`
 
+	// If this component has been deprecated, this optional field provides alternatives to use
+	// Unique: true
+	DeprecationAlternatives []string `json:"deprecationAlternatives"`
+
 	// If this component has been deprecated, this optional field can be used to provide an explanation
 	DeprecationReason string `json:"deprecationReason,omitempty"`
+
+	// Describes the dynamic properties supported by this component
+	DynamicProperties []*DynamicProperty `json:"dynamicProperties"`
 
 	// Explicit restrictions that indicate a require permission to use the component
 	// Unique: true
@@ -57,7 +67,11 @@ type ReportingTaskDefinition struct {
 	// An optional description of the general restriction
 	RestrictedExplanation string `json:"restrictedExplanation,omitempty"`
 
-	// stateful
+	// The names of other component types that may be related
+	// Unique: true
+	SeeAlso []string `json:"seeAlso"`
+
+	// Indicates if the component stores state
 	Stateful *Stateful `json:"stateful,omitempty"`
 
 	// The supported scheduling strategies, such as TIME_DRIVER or CRON.
@@ -65,6 +79,12 @@ type ReportingTaskDefinition struct {
 
 	// Whether or not this component makes use of dynamic (user-set) properties.
 	SupportsDynamicProperties bool `json:"supportsDynamicProperties,omitempty"`
+
+	// Whether or not this component makes use of sensitive dynamic (user-set) properties.
+	SupportsSensitiveDynamicProperties bool `json:"supportsSensitiveDynamicProperties,omitempty"`
+
+	// The system resource considerations for the given component
+	SystemResourceConsiderations []*SystemResourceConsideration `json:"systemResourceConsiderations"`
 
 	// The tags associated with this type
 	// Unique: true
@@ -89,6 +109,14 @@ func (m *ReportingTaskDefinition) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateDeprecationAlternatives(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateDynamicProperties(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateExplicitRestrictions(formats); err != nil {
 		res = append(res, err)
 	}
@@ -101,7 +129,15 @@ func (m *ReportingTaskDefinition) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateSeeAlso(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateStateful(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateSystemResourceConsiderations(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -133,6 +169,44 @@ func (m *ReportingTaskDefinition) validateBuildInfo(formats strfmt.Registry) err
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *ReportingTaskDefinition) validateDeprecationAlternatives(formats strfmt.Registry) error {
+	if swag.IsZero(m.DeprecationAlternatives) { // not required
+		return nil
+	}
+
+	if err := validate.UniqueItems("deprecationAlternatives", "body", m.DeprecationAlternatives); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *ReportingTaskDefinition) validateDynamicProperties(formats strfmt.Registry) error {
+	if swag.IsZero(m.DynamicProperties) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.DynamicProperties); i++ {
+		if swag.IsZero(m.DynamicProperties[i]) { // not required
+			continue
+		}
+
+		if m.DynamicProperties[i] != nil {
+			if err := m.DynamicProperties[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("dynamicProperties" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("dynamicProperties" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil
@@ -220,6 +294,18 @@ func (m *ReportingTaskDefinition) validateProvidedAPIImplementations(formats str
 	return nil
 }
 
+func (m *ReportingTaskDefinition) validateSeeAlso(formats strfmt.Registry) error {
+	if swag.IsZero(m.SeeAlso) { // not required
+		return nil
+	}
+
+	if err := validate.UniqueItems("seeAlso", "body", m.SeeAlso); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func (m *ReportingTaskDefinition) validateStateful(formats strfmt.Registry) error {
 	if swag.IsZero(m.Stateful) { // not required
 		return nil
@@ -234,6 +320,32 @@ func (m *ReportingTaskDefinition) validateStateful(formats strfmt.Registry) erro
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *ReportingTaskDefinition) validateSystemResourceConsiderations(formats strfmt.Registry) error {
+	if swag.IsZero(m.SystemResourceConsiderations) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.SystemResourceConsiderations); i++ {
+		if swag.IsZero(m.SystemResourceConsiderations[i]) { // not required
+			continue
+		}
+
+		if m.SystemResourceConsiderations[i] != nil {
+			if err := m.SystemResourceConsiderations[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("systemResourceConsiderations" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("systemResourceConsiderations" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil
@@ -268,6 +380,10 @@ func (m *ReportingTaskDefinition) ContextValidate(ctx context.Context, formats s
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateDynamicProperties(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateExplicitRestrictions(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -281,6 +397,10 @@ func (m *ReportingTaskDefinition) ContextValidate(ctx context.Context, formats s
 	}
 
 	if err := m.contextValidateStateful(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateSystemResourceConsiderations(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -306,6 +426,31 @@ func (m *ReportingTaskDefinition) contextValidateBuildInfo(ctx context.Context, 
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *ReportingTaskDefinition) contextValidateDynamicProperties(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.DynamicProperties); i++ {
+
+		if m.DynamicProperties[i] != nil {
+
+			if swag.IsZero(m.DynamicProperties[i]) { // not required
+				return nil
+			}
+
+			if err := m.DynamicProperties[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("dynamicProperties" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("dynamicProperties" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil
@@ -392,6 +537,31 @@ func (m *ReportingTaskDefinition) contextValidateStateful(ctx context.Context, f
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *ReportingTaskDefinition) contextValidateSystemResourceConsiderations(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.SystemResourceConsiderations); i++ {
+
+		if m.SystemResourceConsiderations[i] != nil {
+
+			if swag.IsZero(m.SystemResourceConsiderations[i]) { // not required
+				return nil
+			}
+
+			if err := m.SystemResourceConsiderations[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("systemResourceConsiderations" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("systemResourceConsiderations" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil

@@ -62,6 +62,14 @@ GetControllerServicesFromControllerParams contains all the parameters to send to
 */
 type GetControllerServicesFromControllerParams struct {
 
+	/* IncludeReferencingComponents.
+
+	   Whether or not to include services' referencing components in the response
+
+	   Default: true
+	*/
+	IncludeReferencingComponents *bool
+
 	// UIOnly.
 	UIOnly *bool
 
@@ -83,11 +91,14 @@ func (o *GetControllerServicesFromControllerParams) WithDefaults() *GetControlle
 // All values with no default are reset to their zero value.
 func (o *GetControllerServicesFromControllerParams) SetDefaults() {
 	var (
+		includeReferencingComponentsDefault = bool(true)
+
 		uIOnlyDefault = bool(false)
 	)
 
 	val := GetControllerServicesFromControllerParams{
-		UIOnly: &uIOnlyDefault,
+		IncludeReferencingComponents: &includeReferencingComponentsDefault,
+		UIOnly:                       &uIOnlyDefault,
 	}
 
 	val.timeout = o.timeout
@@ -129,6 +140,17 @@ func (o *GetControllerServicesFromControllerParams) SetHTTPClient(client *http.C
 	o.HTTPClient = client
 }
 
+// WithIncludeReferencingComponents adds the includeReferencingComponents to the get controller services from controller params
+func (o *GetControllerServicesFromControllerParams) WithIncludeReferencingComponents(includeReferencingComponents *bool) *GetControllerServicesFromControllerParams {
+	o.SetIncludeReferencingComponents(includeReferencingComponents)
+	return o
+}
+
+// SetIncludeReferencingComponents adds the includeReferencingComponents to the get controller services from controller params
+func (o *GetControllerServicesFromControllerParams) SetIncludeReferencingComponents(includeReferencingComponents *bool) {
+	o.IncludeReferencingComponents = includeReferencingComponents
+}
+
 // WithUIOnly adds the uIOnly to the get controller services from controller params
 func (o *GetControllerServicesFromControllerParams) WithUIOnly(uIOnly *bool) *GetControllerServicesFromControllerParams {
 	o.SetUIOnly(uIOnly)
@@ -147,6 +169,23 @@ func (o *GetControllerServicesFromControllerParams) WriteToRequest(r runtime.Cli
 		return err
 	}
 	var res []error
+
+	if o.IncludeReferencingComponents != nil {
+
+		// query param includeReferencingComponents
+		var qrIncludeReferencingComponents bool
+
+		if o.IncludeReferencingComponents != nil {
+			qrIncludeReferencingComponents = *o.IncludeReferencingComponents
+		}
+		qIncludeReferencingComponents := swag.FormatBool(qrIncludeReferencingComponents)
+		if qIncludeReferencingComponents != "" {
+
+			if err := r.SetQueryParam("includeReferencingComponents", qIncludeReferencingComponents); err != nil {
+				return err
+			}
+		}
+	}
 
 	if o.UIOnly != nil {
 
