@@ -78,6 +78,11 @@ func (m *ProcessorStatusSnapshotEntity) ContextValidate(ctx context.Context, for
 func (m *ProcessorStatusSnapshotEntity) contextValidateProcessorStatusSnapshot(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ProcessorStatusSnapshot != nil {
+
+		if swag.IsZero(m.ProcessorStatusSnapshot) { // not required
+			return nil
+		}
+
 		if err := m.ProcessorStatusSnapshot.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("processorStatusSnapshot")

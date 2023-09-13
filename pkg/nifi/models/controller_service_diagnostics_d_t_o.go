@@ -102,6 +102,11 @@ func (m *ControllerServiceDiagnosticsDTO) ContextValidate(ctx context.Context, f
 func (m *ControllerServiceDiagnosticsDTO) contextValidateClassLoaderDiagnostics(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ClassLoaderDiagnostics != nil {
+
+		if swag.IsZero(m.ClassLoaderDiagnostics) { // not required
+			return nil
+		}
+
 		if err := m.ClassLoaderDiagnostics.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("classLoaderDiagnostics")
@@ -118,6 +123,11 @@ func (m *ControllerServiceDiagnosticsDTO) contextValidateClassLoaderDiagnostics(
 func (m *ControllerServiceDiagnosticsDTO) contextValidateControllerService(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ControllerService != nil {
+
+		if swag.IsZero(m.ControllerService) { // not required
+			return nil
+		}
+
 		if err := m.ControllerService.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("controllerService")

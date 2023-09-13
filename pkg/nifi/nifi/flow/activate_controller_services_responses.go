@@ -60,7 +60,7 @@ func (o *ActivateControllerServicesReader) ReadResponse(response runtime.ClientR
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PUT /flow/process-groups/{id}/controller-services] activateControllerServices", response, response.Code())
 	}
 }
 
@@ -69,7 +69,8 @@ func NewActivateControllerServicesOK() *ActivateControllerServicesOK {
 	return &ActivateControllerServicesOK{}
 }
 
-/* ActivateControllerServicesOK describes a response with status code 200, with default header values.
+/*
+ActivateControllerServicesOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,44 @@ type ActivateControllerServicesOK struct {
 	Payload *models.ActivateControllerServicesEntity
 }
 
+// IsSuccess returns true when this activate controller services o k response has a 2xx status code
+func (o *ActivateControllerServicesOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this activate controller services o k response has a 3xx status code
+func (o *ActivateControllerServicesOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this activate controller services o k response has a 4xx status code
+func (o *ActivateControllerServicesOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this activate controller services o k response has a 5xx status code
+func (o *ActivateControllerServicesOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this activate controller services o k response a status code equal to that given
+func (o *ActivateControllerServicesOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the activate controller services o k response
+func (o *ActivateControllerServicesOK) Code() int {
+	return 200
+}
+
 func (o *ActivateControllerServicesOK) Error() string {
 	return fmt.Sprintf("[PUT /flow/process-groups/{id}/controller-services][%d] activateControllerServicesOK  %+v", 200, o.Payload)
 }
+
+func (o *ActivateControllerServicesOK) String() string {
+	return fmt.Sprintf("[PUT /flow/process-groups/{id}/controller-services][%d] activateControllerServicesOK  %+v", 200, o.Payload)
+}
+
 func (o *ActivateControllerServicesOK) GetPayload() *models.ActivateControllerServicesEntity {
 	return o.Payload
 }
@@ -101,14 +137,49 @@ func NewActivateControllerServicesBadRequest() *ActivateControllerServicesBadReq
 	return &ActivateControllerServicesBadRequest{}
 }
 
-/* ActivateControllerServicesBadRequest describes a response with status code 400, with default header values.
+/*
+ActivateControllerServicesBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type ActivateControllerServicesBadRequest struct {
 }
 
+// IsSuccess returns true when this activate controller services bad request response has a 2xx status code
+func (o *ActivateControllerServicesBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this activate controller services bad request response has a 3xx status code
+func (o *ActivateControllerServicesBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this activate controller services bad request response has a 4xx status code
+func (o *ActivateControllerServicesBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this activate controller services bad request response has a 5xx status code
+func (o *ActivateControllerServicesBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this activate controller services bad request response a status code equal to that given
+func (o *ActivateControllerServicesBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the activate controller services bad request response
+func (o *ActivateControllerServicesBadRequest) Code() int {
+	return 400
+}
+
 func (o *ActivateControllerServicesBadRequest) Error() string {
+	return fmt.Sprintf("[PUT /flow/process-groups/{id}/controller-services][%d] activateControllerServicesBadRequest ", 400)
+}
+
+func (o *ActivateControllerServicesBadRequest) String() string {
 	return fmt.Sprintf("[PUT /flow/process-groups/{id}/controller-services][%d] activateControllerServicesBadRequest ", 400)
 }
 
@@ -122,14 +193,49 @@ func NewActivateControllerServicesUnauthorized() *ActivateControllerServicesUnau
 	return &ActivateControllerServicesUnauthorized{}
 }
 
-/* ActivateControllerServicesUnauthorized describes a response with status code 401, with default header values.
+/*
+ActivateControllerServicesUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type ActivateControllerServicesUnauthorized struct {
 }
 
+// IsSuccess returns true when this activate controller services unauthorized response has a 2xx status code
+func (o *ActivateControllerServicesUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this activate controller services unauthorized response has a 3xx status code
+func (o *ActivateControllerServicesUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this activate controller services unauthorized response has a 4xx status code
+func (o *ActivateControllerServicesUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this activate controller services unauthorized response has a 5xx status code
+func (o *ActivateControllerServicesUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this activate controller services unauthorized response a status code equal to that given
+func (o *ActivateControllerServicesUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the activate controller services unauthorized response
+func (o *ActivateControllerServicesUnauthorized) Code() int {
+	return 401
+}
+
 func (o *ActivateControllerServicesUnauthorized) Error() string {
+	return fmt.Sprintf("[PUT /flow/process-groups/{id}/controller-services][%d] activateControllerServicesUnauthorized ", 401)
+}
+
+func (o *ActivateControllerServicesUnauthorized) String() string {
 	return fmt.Sprintf("[PUT /flow/process-groups/{id}/controller-services][%d] activateControllerServicesUnauthorized ", 401)
 }
 
@@ -143,14 +249,49 @@ func NewActivateControllerServicesForbidden() *ActivateControllerServicesForbidd
 	return &ActivateControllerServicesForbidden{}
 }
 
-/* ActivateControllerServicesForbidden describes a response with status code 403, with default header values.
+/*
+ActivateControllerServicesForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type ActivateControllerServicesForbidden struct {
 }
 
+// IsSuccess returns true when this activate controller services forbidden response has a 2xx status code
+func (o *ActivateControllerServicesForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this activate controller services forbidden response has a 3xx status code
+func (o *ActivateControllerServicesForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this activate controller services forbidden response has a 4xx status code
+func (o *ActivateControllerServicesForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this activate controller services forbidden response has a 5xx status code
+func (o *ActivateControllerServicesForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this activate controller services forbidden response a status code equal to that given
+func (o *ActivateControllerServicesForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the activate controller services forbidden response
+func (o *ActivateControllerServicesForbidden) Code() int {
+	return 403
+}
+
 func (o *ActivateControllerServicesForbidden) Error() string {
+	return fmt.Sprintf("[PUT /flow/process-groups/{id}/controller-services][%d] activateControllerServicesForbidden ", 403)
+}
+
+func (o *ActivateControllerServicesForbidden) String() string {
 	return fmt.Sprintf("[PUT /flow/process-groups/{id}/controller-services][%d] activateControllerServicesForbidden ", 403)
 }
 
@@ -164,14 +305,49 @@ func NewActivateControllerServicesNotFound() *ActivateControllerServicesNotFound
 	return &ActivateControllerServicesNotFound{}
 }
 
-/* ActivateControllerServicesNotFound describes a response with status code 404, with default header values.
+/*
+ActivateControllerServicesNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type ActivateControllerServicesNotFound struct {
 }
 
+// IsSuccess returns true when this activate controller services not found response has a 2xx status code
+func (o *ActivateControllerServicesNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this activate controller services not found response has a 3xx status code
+func (o *ActivateControllerServicesNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this activate controller services not found response has a 4xx status code
+func (o *ActivateControllerServicesNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this activate controller services not found response has a 5xx status code
+func (o *ActivateControllerServicesNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this activate controller services not found response a status code equal to that given
+func (o *ActivateControllerServicesNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+// Code gets the status code for the activate controller services not found response
+func (o *ActivateControllerServicesNotFound) Code() int {
+	return 404
+}
+
 func (o *ActivateControllerServicesNotFound) Error() string {
+	return fmt.Sprintf("[PUT /flow/process-groups/{id}/controller-services][%d] activateControllerServicesNotFound ", 404)
+}
+
+func (o *ActivateControllerServicesNotFound) String() string {
 	return fmt.Sprintf("[PUT /flow/process-groups/{id}/controller-services][%d] activateControllerServicesNotFound ", 404)
 }
 
@@ -185,14 +361,49 @@ func NewActivateControllerServicesConflict() *ActivateControllerServicesConflict
 	return &ActivateControllerServicesConflict{}
 }
 
-/* ActivateControllerServicesConflict describes a response with status code 409, with default header values.
+/*
+ActivateControllerServicesConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type ActivateControllerServicesConflict struct {
 }
 
+// IsSuccess returns true when this activate controller services conflict response has a 2xx status code
+func (o *ActivateControllerServicesConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this activate controller services conflict response has a 3xx status code
+func (o *ActivateControllerServicesConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this activate controller services conflict response has a 4xx status code
+func (o *ActivateControllerServicesConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this activate controller services conflict response has a 5xx status code
+func (o *ActivateControllerServicesConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this activate controller services conflict response a status code equal to that given
+func (o *ActivateControllerServicesConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the activate controller services conflict response
+func (o *ActivateControllerServicesConflict) Code() int {
+	return 409
+}
+
 func (o *ActivateControllerServicesConflict) Error() string {
+	return fmt.Sprintf("[PUT /flow/process-groups/{id}/controller-services][%d] activateControllerServicesConflict ", 409)
+}
+
+func (o *ActivateControllerServicesConflict) String() string {
 	return fmt.Sprintf("[PUT /flow/process-groups/{id}/controller-services][%d] activateControllerServicesConflict ", 409)
 }
 

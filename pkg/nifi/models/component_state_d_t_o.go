@@ -108,6 +108,11 @@ func (m *ComponentStateDTO) ContextValidate(ctx context.Context, formats strfmt.
 func (m *ComponentStateDTO) contextValidateClusterState(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ClusterState != nil {
+
+		if swag.IsZero(m.ClusterState) { // not required
+			return nil
+		}
+
 		if err := m.ClusterState.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("clusterState")
@@ -124,6 +129,11 @@ func (m *ComponentStateDTO) contextValidateClusterState(ctx context.Context, for
 func (m *ComponentStateDTO) contextValidateLocalState(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.LocalState != nil {
+
+		if swag.IsZero(m.LocalState) { // not required
+			return nil
+		}
+
 		if err := m.LocalState.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("localState")

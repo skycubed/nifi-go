@@ -52,10 +52,12 @@ func NewGetExtensionsProvidingServiceAPIParamsWithHTTPClient(client *http.Client
 	}
 }
 
-/* GetExtensionsProvidingServiceAPIParams contains all the parameters to send to the API endpoint
-   for the get extensions providing service API operation.
+/*
+GetExtensionsProvidingServiceAPIParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get extensions providing service API operation.
+
+	Typically these are written to a http.Request.
 */
 type GetExtensionsProvidingServiceAPIParams struct {
 

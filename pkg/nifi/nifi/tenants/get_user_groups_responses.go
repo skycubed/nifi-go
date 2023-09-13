@@ -60,7 +60,7 @@ func (o *GetUserGroupsReader) ReadResponse(response runtime.ClientResponse, cons
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /tenants/user-groups] getUserGroups", response, response.Code())
 	}
 }
 
@@ -69,7 +69,8 @@ func NewGetUserGroupsOK() *GetUserGroupsOK {
 	return &GetUserGroupsOK{}
 }
 
-/* GetUserGroupsOK describes a response with status code 200, with default header values.
+/*
+GetUserGroupsOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,44 @@ type GetUserGroupsOK struct {
 	Payload *models.UserGroupsEntity
 }
 
+// IsSuccess returns true when this get user groups o k response has a 2xx status code
+func (o *GetUserGroupsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get user groups o k response has a 3xx status code
+func (o *GetUserGroupsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get user groups o k response has a 4xx status code
+func (o *GetUserGroupsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get user groups o k response has a 5xx status code
+func (o *GetUserGroupsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get user groups o k response a status code equal to that given
+func (o *GetUserGroupsOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the get user groups o k response
+func (o *GetUserGroupsOK) Code() int {
+	return 200
+}
+
 func (o *GetUserGroupsOK) Error() string {
 	return fmt.Sprintf("[GET /tenants/user-groups][%d] getUserGroupsOK  %+v", 200, o.Payload)
 }
+
+func (o *GetUserGroupsOK) String() string {
+	return fmt.Sprintf("[GET /tenants/user-groups][%d] getUserGroupsOK  %+v", 200, o.Payload)
+}
+
 func (o *GetUserGroupsOK) GetPayload() *models.UserGroupsEntity {
 	return o.Payload
 }
@@ -101,14 +137,49 @@ func NewGetUserGroupsBadRequest() *GetUserGroupsBadRequest {
 	return &GetUserGroupsBadRequest{}
 }
 
-/* GetUserGroupsBadRequest describes a response with status code 400, with default header values.
+/*
+GetUserGroupsBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type GetUserGroupsBadRequest struct {
 }
 
+// IsSuccess returns true when this get user groups bad request response has a 2xx status code
+func (o *GetUserGroupsBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get user groups bad request response has a 3xx status code
+func (o *GetUserGroupsBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get user groups bad request response has a 4xx status code
+func (o *GetUserGroupsBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get user groups bad request response has a 5xx status code
+func (o *GetUserGroupsBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get user groups bad request response a status code equal to that given
+func (o *GetUserGroupsBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the get user groups bad request response
+func (o *GetUserGroupsBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetUserGroupsBadRequest) Error() string {
+	return fmt.Sprintf("[GET /tenants/user-groups][%d] getUserGroupsBadRequest ", 400)
+}
+
+func (o *GetUserGroupsBadRequest) String() string {
 	return fmt.Sprintf("[GET /tenants/user-groups][%d] getUserGroupsBadRequest ", 400)
 }
 
@@ -122,14 +193,49 @@ func NewGetUserGroupsUnauthorized() *GetUserGroupsUnauthorized {
 	return &GetUserGroupsUnauthorized{}
 }
 
-/* GetUserGroupsUnauthorized describes a response with status code 401, with default header values.
+/*
+GetUserGroupsUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type GetUserGroupsUnauthorized struct {
 }
 
+// IsSuccess returns true when this get user groups unauthorized response has a 2xx status code
+func (o *GetUserGroupsUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get user groups unauthorized response has a 3xx status code
+func (o *GetUserGroupsUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get user groups unauthorized response has a 4xx status code
+func (o *GetUserGroupsUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get user groups unauthorized response has a 5xx status code
+func (o *GetUserGroupsUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get user groups unauthorized response a status code equal to that given
+func (o *GetUserGroupsUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the get user groups unauthorized response
+func (o *GetUserGroupsUnauthorized) Code() int {
+	return 401
+}
+
 func (o *GetUserGroupsUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /tenants/user-groups][%d] getUserGroupsUnauthorized ", 401)
+}
+
+func (o *GetUserGroupsUnauthorized) String() string {
 	return fmt.Sprintf("[GET /tenants/user-groups][%d] getUserGroupsUnauthorized ", 401)
 }
 
@@ -143,14 +249,49 @@ func NewGetUserGroupsForbidden() *GetUserGroupsForbidden {
 	return &GetUserGroupsForbidden{}
 }
 
-/* GetUserGroupsForbidden describes a response with status code 403, with default header values.
+/*
+GetUserGroupsForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type GetUserGroupsForbidden struct {
 }
 
+// IsSuccess returns true when this get user groups forbidden response has a 2xx status code
+func (o *GetUserGroupsForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get user groups forbidden response has a 3xx status code
+func (o *GetUserGroupsForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get user groups forbidden response has a 4xx status code
+func (o *GetUserGroupsForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get user groups forbidden response has a 5xx status code
+func (o *GetUserGroupsForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get user groups forbidden response a status code equal to that given
+func (o *GetUserGroupsForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the get user groups forbidden response
+func (o *GetUserGroupsForbidden) Code() int {
+	return 403
+}
+
 func (o *GetUserGroupsForbidden) Error() string {
+	return fmt.Sprintf("[GET /tenants/user-groups][%d] getUserGroupsForbidden ", 403)
+}
+
+func (o *GetUserGroupsForbidden) String() string {
 	return fmt.Sprintf("[GET /tenants/user-groups][%d] getUserGroupsForbidden ", 403)
 }
 
@@ -164,14 +305,49 @@ func NewGetUserGroupsNotFound() *GetUserGroupsNotFound {
 	return &GetUserGroupsNotFound{}
 }
 
-/* GetUserGroupsNotFound describes a response with status code 404, with default header values.
+/*
+GetUserGroupsNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type GetUserGroupsNotFound struct {
 }
 
+// IsSuccess returns true when this get user groups not found response has a 2xx status code
+func (o *GetUserGroupsNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get user groups not found response has a 3xx status code
+func (o *GetUserGroupsNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get user groups not found response has a 4xx status code
+func (o *GetUserGroupsNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get user groups not found response has a 5xx status code
+func (o *GetUserGroupsNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get user groups not found response a status code equal to that given
+func (o *GetUserGroupsNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+// Code gets the status code for the get user groups not found response
+func (o *GetUserGroupsNotFound) Code() int {
+	return 404
+}
+
 func (o *GetUserGroupsNotFound) Error() string {
+	return fmt.Sprintf("[GET /tenants/user-groups][%d] getUserGroupsNotFound ", 404)
+}
+
+func (o *GetUserGroupsNotFound) String() string {
 	return fmt.Sprintf("[GET /tenants/user-groups][%d] getUserGroupsNotFound ", 404)
 }
 
@@ -185,14 +361,49 @@ func NewGetUserGroupsConflict() *GetUserGroupsConflict {
 	return &GetUserGroupsConflict{}
 }
 
-/* GetUserGroupsConflict describes a response with status code 409, with default header values.
+/*
+GetUserGroupsConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type GetUserGroupsConflict struct {
 }
 
+// IsSuccess returns true when this get user groups conflict response has a 2xx status code
+func (o *GetUserGroupsConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get user groups conflict response has a 3xx status code
+func (o *GetUserGroupsConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get user groups conflict response has a 4xx status code
+func (o *GetUserGroupsConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get user groups conflict response has a 5xx status code
+func (o *GetUserGroupsConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get user groups conflict response a status code equal to that given
+func (o *GetUserGroupsConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the get user groups conflict response
+func (o *GetUserGroupsConflict) Code() int {
+	return 409
+}
+
 func (o *GetUserGroupsConflict) Error() string {
+	return fmt.Sprintf("[GET /tenants/user-groups][%d] getUserGroupsConflict ", 409)
+}
+
+func (o *GetUserGroupsConflict) String() string {
 	return fmt.Sprintf("[GET /tenants/user-groups][%d] getUserGroupsConflict ", 409)
 }
 

@@ -75,6 +75,11 @@ func (m *StatusHistoryEntity) ContextValidate(ctx context.Context, formats strfm
 func (m *StatusHistoryEntity) contextValidateStatusHistory(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.StatusHistory != nil {
+
+		if swag.IsZero(m.StatusHistory) { // not required
+			return nil
+		}
+
 		if err := m.StatusHistory.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("statusHistory")

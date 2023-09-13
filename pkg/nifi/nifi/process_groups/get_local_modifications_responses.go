@@ -60,7 +60,7 @@ func (o *GetLocalModificationsReader) ReadResponse(response runtime.ClientRespon
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /process-groups/{id}/local-modifications] getLocalModifications", response, response.Code())
 	}
 }
 
@@ -69,7 +69,8 @@ func NewGetLocalModificationsOK() *GetLocalModificationsOK {
 	return &GetLocalModificationsOK{}
 }
 
-/* GetLocalModificationsOK describes a response with status code 200, with default header values.
+/*
+GetLocalModificationsOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,44 @@ type GetLocalModificationsOK struct {
 	Payload *models.FlowComparisonEntity
 }
 
+// IsSuccess returns true when this get local modifications o k response has a 2xx status code
+func (o *GetLocalModificationsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get local modifications o k response has a 3xx status code
+func (o *GetLocalModificationsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get local modifications o k response has a 4xx status code
+func (o *GetLocalModificationsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get local modifications o k response has a 5xx status code
+func (o *GetLocalModificationsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get local modifications o k response a status code equal to that given
+func (o *GetLocalModificationsOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the get local modifications o k response
+func (o *GetLocalModificationsOK) Code() int {
+	return 200
+}
+
 func (o *GetLocalModificationsOK) Error() string {
 	return fmt.Sprintf("[GET /process-groups/{id}/local-modifications][%d] getLocalModificationsOK  %+v", 200, o.Payload)
 }
+
+func (o *GetLocalModificationsOK) String() string {
+	return fmt.Sprintf("[GET /process-groups/{id}/local-modifications][%d] getLocalModificationsOK  %+v", 200, o.Payload)
+}
+
 func (o *GetLocalModificationsOK) GetPayload() *models.FlowComparisonEntity {
 	return o.Payload
 }
@@ -101,14 +137,49 @@ func NewGetLocalModificationsBadRequest() *GetLocalModificationsBadRequest {
 	return &GetLocalModificationsBadRequest{}
 }
 
-/* GetLocalModificationsBadRequest describes a response with status code 400, with default header values.
+/*
+GetLocalModificationsBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type GetLocalModificationsBadRequest struct {
 }
 
+// IsSuccess returns true when this get local modifications bad request response has a 2xx status code
+func (o *GetLocalModificationsBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get local modifications bad request response has a 3xx status code
+func (o *GetLocalModificationsBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get local modifications bad request response has a 4xx status code
+func (o *GetLocalModificationsBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get local modifications bad request response has a 5xx status code
+func (o *GetLocalModificationsBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get local modifications bad request response a status code equal to that given
+func (o *GetLocalModificationsBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the get local modifications bad request response
+func (o *GetLocalModificationsBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetLocalModificationsBadRequest) Error() string {
+	return fmt.Sprintf("[GET /process-groups/{id}/local-modifications][%d] getLocalModificationsBadRequest ", 400)
+}
+
+func (o *GetLocalModificationsBadRequest) String() string {
 	return fmt.Sprintf("[GET /process-groups/{id}/local-modifications][%d] getLocalModificationsBadRequest ", 400)
 }
 
@@ -122,14 +193,49 @@ func NewGetLocalModificationsUnauthorized() *GetLocalModificationsUnauthorized {
 	return &GetLocalModificationsUnauthorized{}
 }
 
-/* GetLocalModificationsUnauthorized describes a response with status code 401, with default header values.
+/*
+GetLocalModificationsUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type GetLocalModificationsUnauthorized struct {
 }
 
+// IsSuccess returns true when this get local modifications unauthorized response has a 2xx status code
+func (o *GetLocalModificationsUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get local modifications unauthorized response has a 3xx status code
+func (o *GetLocalModificationsUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get local modifications unauthorized response has a 4xx status code
+func (o *GetLocalModificationsUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get local modifications unauthorized response has a 5xx status code
+func (o *GetLocalModificationsUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get local modifications unauthorized response a status code equal to that given
+func (o *GetLocalModificationsUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the get local modifications unauthorized response
+func (o *GetLocalModificationsUnauthorized) Code() int {
+	return 401
+}
+
 func (o *GetLocalModificationsUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /process-groups/{id}/local-modifications][%d] getLocalModificationsUnauthorized ", 401)
+}
+
+func (o *GetLocalModificationsUnauthorized) String() string {
 	return fmt.Sprintf("[GET /process-groups/{id}/local-modifications][%d] getLocalModificationsUnauthorized ", 401)
 }
 
@@ -143,14 +249,49 @@ func NewGetLocalModificationsForbidden() *GetLocalModificationsForbidden {
 	return &GetLocalModificationsForbidden{}
 }
 
-/* GetLocalModificationsForbidden describes a response with status code 403, with default header values.
+/*
+GetLocalModificationsForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type GetLocalModificationsForbidden struct {
 }
 
+// IsSuccess returns true when this get local modifications forbidden response has a 2xx status code
+func (o *GetLocalModificationsForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get local modifications forbidden response has a 3xx status code
+func (o *GetLocalModificationsForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get local modifications forbidden response has a 4xx status code
+func (o *GetLocalModificationsForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get local modifications forbidden response has a 5xx status code
+func (o *GetLocalModificationsForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get local modifications forbidden response a status code equal to that given
+func (o *GetLocalModificationsForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the get local modifications forbidden response
+func (o *GetLocalModificationsForbidden) Code() int {
+	return 403
+}
+
 func (o *GetLocalModificationsForbidden) Error() string {
+	return fmt.Sprintf("[GET /process-groups/{id}/local-modifications][%d] getLocalModificationsForbidden ", 403)
+}
+
+func (o *GetLocalModificationsForbidden) String() string {
 	return fmt.Sprintf("[GET /process-groups/{id}/local-modifications][%d] getLocalModificationsForbidden ", 403)
 }
 
@@ -164,14 +305,49 @@ func NewGetLocalModificationsNotFound() *GetLocalModificationsNotFound {
 	return &GetLocalModificationsNotFound{}
 }
 
-/* GetLocalModificationsNotFound describes a response with status code 404, with default header values.
+/*
+GetLocalModificationsNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type GetLocalModificationsNotFound struct {
 }
 
+// IsSuccess returns true when this get local modifications not found response has a 2xx status code
+func (o *GetLocalModificationsNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get local modifications not found response has a 3xx status code
+func (o *GetLocalModificationsNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get local modifications not found response has a 4xx status code
+func (o *GetLocalModificationsNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get local modifications not found response has a 5xx status code
+func (o *GetLocalModificationsNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get local modifications not found response a status code equal to that given
+func (o *GetLocalModificationsNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+// Code gets the status code for the get local modifications not found response
+func (o *GetLocalModificationsNotFound) Code() int {
+	return 404
+}
+
 func (o *GetLocalModificationsNotFound) Error() string {
+	return fmt.Sprintf("[GET /process-groups/{id}/local-modifications][%d] getLocalModificationsNotFound ", 404)
+}
+
+func (o *GetLocalModificationsNotFound) String() string {
 	return fmt.Sprintf("[GET /process-groups/{id}/local-modifications][%d] getLocalModificationsNotFound ", 404)
 }
 
@@ -185,14 +361,49 @@ func NewGetLocalModificationsConflict() *GetLocalModificationsConflict {
 	return &GetLocalModificationsConflict{}
 }
 
-/* GetLocalModificationsConflict describes a response with status code 409, with default header values.
+/*
+GetLocalModificationsConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type GetLocalModificationsConflict struct {
 }
 
+// IsSuccess returns true when this get local modifications conflict response has a 2xx status code
+func (o *GetLocalModificationsConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get local modifications conflict response has a 3xx status code
+func (o *GetLocalModificationsConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get local modifications conflict response has a 4xx status code
+func (o *GetLocalModificationsConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get local modifications conflict response has a 5xx status code
+func (o *GetLocalModificationsConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get local modifications conflict response a status code equal to that given
+func (o *GetLocalModificationsConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the get local modifications conflict response
+func (o *GetLocalModificationsConflict) Code() int {
+	return 409
+}
+
 func (o *GetLocalModificationsConflict) Error() string {
+	return fmt.Sprintf("[GET /process-groups/{id}/local-modifications][%d] getLocalModificationsConflict ", 409)
+}
+
+func (o *GetLocalModificationsConflict) String() string {
 	return fmt.Sprintf("[GET /process-groups/{id}/local-modifications][%d] getLocalModificationsConflict ", 409)
 }
 

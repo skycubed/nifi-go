@@ -60,7 +60,7 @@ func (o *UpdateProcessGroupReader) ReadResponse(response runtime.ClientResponse,
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PUT /process-groups/{id}] updateProcessGroup", response, response.Code())
 	}
 }
 
@@ -69,7 +69,8 @@ func NewUpdateProcessGroupOK() *UpdateProcessGroupOK {
 	return &UpdateProcessGroupOK{}
 }
 
-/* UpdateProcessGroupOK describes a response with status code 200, with default header values.
+/*
+UpdateProcessGroupOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,44 @@ type UpdateProcessGroupOK struct {
 	Payload *models.ProcessGroupEntity
 }
 
+// IsSuccess returns true when this update process group o k response has a 2xx status code
+func (o *UpdateProcessGroupOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this update process group o k response has a 3xx status code
+func (o *UpdateProcessGroupOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update process group o k response has a 4xx status code
+func (o *UpdateProcessGroupOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this update process group o k response has a 5xx status code
+func (o *UpdateProcessGroupOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update process group o k response a status code equal to that given
+func (o *UpdateProcessGroupOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the update process group o k response
+func (o *UpdateProcessGroupOK) Code() int {
+	return 200
+}
+
 func (o *UpdateProcessGroupOK) Error() string {
 	return fmt.Sprintf("[PUT /process-groups/{id}][%d] updateProcessGroupOK  %+v", 200, o.Payload)
 }
+
+func (o *UpdateProcessGroupOK) String() string {
+	return fmt.Sprintf("[PUT /process-groups/{id}][%d] updateProcessGroupOK  %+v", 200, o.Payload)
+}
+
 func (o *UpdateProcessGroupOK) GetPayload() *models.ProcessGroupEntity {
 	return o.Payload
 }
@@ -101,14 +137,49 @@ func NewUpdateProcessGroupBadRequest() *UpdateProcessGroupBadRequest {
 	return &UpdateProcessGroupBadRequest{}
 }
 
-/* UpdateProcessGroupBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateProcessGroupBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type UpdateProcessGroupBadRequest struct {
 }
 
+// IsSuccess returns true when this update process group bad request response has a 2xx status code
+func (o *UpdateProcessGroupBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update process group bad request response has a 3xx status code
+func (o *UpdateProcessGroupBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update process group bad request response has a 4xx status code
+func (o *UpdateProcessGroupBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update process group bad request response has a 5xx status code
+func (o *UpdateProcessGroupBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update process group bad request response a status code equal to that given
+func (o *UpdateProcessGroupBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the update process group bad request response
+func (o *UpdateProcessGroupBadRequest) Code() int {
+	return 400
+}
+
 func (o *UpdateProcessGroupBadRequest) Error() string {
+	return fmt.Sprintf("[PUT /process-groups/{id}][%d] updateProcessGroupBadRequest ", 400)
+}
+
+func (o *UpdateProcessGroupBadRequest) String() string {
 	return fmt.Sprintf("[PUT /process-groups/{id}][%d] updateProcessGroupBadRequest ", 400)
 }
 
@@ -122,14 +193,49 @@ func NewUpdateProcessGroupUnauthorized() *UpdateProcessGroupUnauthorized {
 	return &UpdateProcessGroupUnauthorized{}
 }
 
-/* UpdateProcessGroupUnauthorized describes a response with status code 401, with default header values.
+/*
+UpdateProcessGroupUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type UpdateProcessGroupUnauthorized struct {
 }
 
+// IsSuccess returns true when this update process group unauthorized response has a 2xx status code
+func (o *UpdateProcessGroupUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update process group unauthorized response has a 3xx status code
+func (o *UpdateProcessGroupUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update process group unauthorized response has a 4xx status code
+func (o *UpdateProcessGroupUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update process group unauthorized response has a 5xx status code
+func (o *UpdateProcessGroupUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update process group unauthorized response a status code equal to that given
+func (o *UpdateProcessGroupUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the update process group unauthorized response
+func (o *UpdateProcessGroupUnauthorized) Code() int {
+	return 401
+}
+
 func (o *UpdateProcessGroupUnauthorized) Error() string {
+	return fmt.Sprintf("[PUT /process-groups/{id}][%d] updateProcessGroupUnauthorized ", 401)
+}
+
+func (o *UpdateProcessGroupUnauthorized) String() string {
 	return fmt.Sprintf("[PUT /process-groups/{id}][%d] updateProcessGroupUnauthorized ", 401)
 }
 
@@ -143,14 +249,49 @@ func NewUpdateProcessGroupForbidden() *UpdateProcessGroupForbidden {
 	return &UpdateProcessGroupForbidden{}
 }
 
-/* UpdateProcessGroupForbidden describes a response with status code 403, with default header values.
+/*
+UpdateProcessGroupForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type UpdateProcessGroupForbidden struct {
 }
 
+// IsSuccess returns true when this update process group forbidden response has a 2xx status code
+func (o *UpdateProcessGroupForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update process group forbidden response has a 3xx status code
+func (o *UpdateProcessGroupForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update process group forbidden response has a 4xx status code
+func (o *UpdateProcessGroupForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update process group forbidden response has a 5xx status code
+func (o *UpdateProcessGroupForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update process group forbidden response a status code equal to that given
+func (o *UpdateProcessGroupForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the update process group forbidden response
+func (o *UpdateProcessGroupForbidden) Code() int {
+	return 403
+}
+
 func (o *UpdateProcessGroupForbidden) Error() string {
+	return fmt.Sprintf("[PUT /process-groups/{id}][%d] updateProcessGroupForbidden ", 403)
+}
+
+func (o *UpdateProcessGroupForbidden) String() string {
 	return fmt.Sprintf("[PUT /process-groups/{id}][%d] updateProcessGroupForbidden ", 403)
 }
 
@@ -164,14 +305,49 @@ func NewUpdateProcessGroupNotFound() *UpdateProcessGroupNotFound {
 	return &UpdateProcessGroupNotFound{}
 }
 
-/* UpdateProcessGroupNotFound describes a response with status code 404, with default header values.
+/*
+UpdateProcessGroupNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type UpdateProcessGroupNotFound struct {
 }
 
+// IsSuccess returns true when this update process group not found response has a 2xx status code
+func (o *UpdateProcessGroupNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update process group not found response has a 3xx status code
+func (o *UpdateProcessGroupNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update process group not found response has a 4xx status code
+func (o *UpdateProcessGroupNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update process group not found response has a 5xx status code
+func (o *UpdateProcessGroupNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update process group not found response a status code equal to that given
+func (o *UpdateProcessGroupNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+// Code gets the status code for the update process group not found response
+func (o *UpdateProcessGroupNotFound) Code() int {
+	return 404
+}
+
 func (o *UpdateProcessGroupNotFound) Error() string {
+	return fmt.Sprintf("[PUT /process-groups/{id}][%d] updateProcessGroupNotFound ", 404)
+}
+
+func (o *UpdateProcessGroupNotFound) String() string {
 	return fmt.Sprintf("[PUT /process-groups/{id}][%d] updateProcessGroupNotFound ", 404)
 }
 
@@ -185,14 +361,49 @@ func NewUpdateProcessGroupConflict() *UpdateProcessGroupConflict {
 	return &UpdateProcessGroupConflict{}
 }
 
-/* UpdateProcessGroupConflict describes a response with status code 409, with default header values.
+/*
+UpdateProcessGroupConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type UpdateProcessGroupConflict struct {
 }
 
+// IsSuccess returns true when this update process group conflict response has a 2xx status code
+func (o *UpdateProcessGroupConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update process group conflict response has a 3xx status code
+func (o *UpdateProcessGroupConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update process group conflict response has a 4xx status code
+func (o *UpdateProcessGroupConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update process group conflict response has a 5xx status code
+func (o *UpdateProcessGroupConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update process group conflict response a status code equal to that given
+func (o *UpdateProcessGroupConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the update process group conflict response
+func (o *UpdateProcessGroupConflict) Code() int {
+	return 409
+}
+
 func (o *UpdateProcessGroupConflict) Error() string {
+	return fmt.Sprintf("[PUT /process-groups/{id}][%d] updateProcessGroupConflict ", 409)
+}
+
+func (o *UpdateProcessGroupConflict) String() string {
 	return fmt.Sprintf("[PUT /process-groups/{id}][%d] updateProcessGroupConflict ", 409)
 }
 

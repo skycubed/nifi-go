@@ -60,7 +60,7 @@ func (o *DeleteParameterContextReader) ReadResponse(response runtime.ClientRespo
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /parameter-contexts/{id}] deleteParameterContext", response, response.Code())
 	}
 }
 
@@ -69,7 +69,8 @@ func NewDeleteParameterContextOK() *DeleteParameterContextOK {
 	return &DeleteParameterContextOK{}
 }
 
-/* DeleteParameterContextOK describes a response with status code 200, with default header values.
+/*
+DeleteParameterContextOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,44 @@ type DeleteParameterContextOK struct {
 	Payload *models.ParameterContextEntity
 }
 
+// IsSuccess returns true when this delete parameter context o k response has a 2xx status code
+func (o *DeleteParameterContextOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete parameter context o k response has a 3xx status code
+func (o *DeleteParameterContextOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete parameter context o k response has a 4xx status code
+func (o *DeleteParameterContextOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete parameter context o k response has a 5xx status code
+func (o *DeleteParameterContextOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete parameter context o k response a status code equal to that given
+func (o *DeleteParameterContextOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the delete parameter context o k response
+func (o *DeleteParameterContextOK) Code() int {
+	return 200
+}
+
 func (o *DeleteParameterContextOK) Error() string {
 	return fmt.Sprintf("[DELETE /parameter-contexts/{id}][%d] deleteParameterContextOK  %+v", 200, o.Payload)
 }
+
+func (o *DeleteParameterContextOK) String() string {
+	return fmt.Sprintf("[DELETE /parameter-contexts/{id}][%d] deleteParameterContextOK  %+v", 200, o.Payload)
+}
+
 func (o *DeleteParameterContextOK) GetPayload() *models.ParameterContextEntity {
 	return o.Payload
 }
@@ -101,14 +137,49 @@ func NewDeleteParameterContextBadRequest() *DeleteParameterContextBadRequest {
 	return &DeleteParameterContextBadRequest{}
 }
 
-/* DeleteParameterContextBadRequest describes a response with status code 400, with default header values.
+/*
+DeleteParameterContextBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type DeleteParameterContextBadRequest struct {
 }
 
+// IsSuccess returns true when this delete parameter context bad request response has a 2xx status code
+func (o *DeleteParameterContextBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete parameter context bad request response has a 3xx status code
+func (o *DeleteParameterContextBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete parameter context bad request response has a 4xx status code
+func (o *DeleteParameterContextBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete parameter context bad request response has a 5xx status code
+func (o *DeleteParameterContextBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete parameter context bad request response a status code equal to that given
+func (o *DeleteParameterContextBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the delete parameter context bad request response
+func (o *DeleteParameterContextBadRequest) Code() int {
+	return 400
+}
+
 func (o *DeleteParameterContextBadRequest) Error() string {
+	return fmt.Sprintf("[DELETE /parameter-contexts/{id}][%d] deleteParameterContextBadRequest ", 400)
+}
+
+func (o *DeleteParameterContextBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /parameter-contexts/{id}][%d] deleteParameterContextBadRequest ", 400)
 }
 
@@ -122,14 +193,49 @@ func NewDeleteParameterContextUnauthorized() *DeleteParameterContextUnauthorized
 	return &DeleteParameterContextUnauthorized{}
 }
 
-/* DeleteParameterContextUnauthorized describes a response with status code 401, with default header values.
+/*
+DeleteParameterContextUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type DeleteParameterContextUnauthorized struct {
 }
 
+// IsSuccess returns true when this delete parameter context unauthorized response has a 2xx status code
+func (o *DeleteParameterContextUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete parameter context unauthorized response has a 3xx status code
+func (o *DeleteParameterContextUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete parameter context unauthorized response has a 4xx status code
+func (o *DeleteParameterContextUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete parameter context unauthorized response has a 5xx status code
+func (o *DeleteParameterContextUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete parameter context unauthorized response a status code equal to that given
+func (o *DeleteParameterContextUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the delete parameter context unauthorized response
+func (o *DeleteParameterContextUnauthorized) Code() int {
+	return 401
+}
+
 func (o *DeleteParameterContextUnauthorized) Error() string {
+	return fmt.Sprintf("[DELETE /parameter-contexts/{id}][%d] deleteParameterContextUnauthorized ", 401)
+}
+
+func (o *DeleteParameterContextUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /parameter-contexts/{id}][%d] deleteParameterContextUnauthorized ", 401)
 }
 
@@ -143,14 +249,49 @@ func NewDeleteParameterContextForbidden() *DeleteParameterContextForbidden {
 	return &DeleteParameterContextForbidden{}
 }
 
-/* DeleteParameterContextForbidden describes a response with status code 403, with default header values.
+/*
+DeleteParameterContextForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type DeleteParameterContextForbidden struct {
 }
 
+// IsSuccess returns true when this delete parameter context forbidden response has a 2xx status code
+func (o *DeleteParameterContextForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete parameter context forbidden response has a 3xx status code
+func (o *DeleteParameterContextForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete parameter context forbidden response has a 4xx status code
+func (o *DeleteParameterContextForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete parameter context forbidden response has a 5xx status code
+func (o *DeleteParameterContextForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete parameter context forbidden response a status code equal to that given
+func (o *DeleteParameterContextForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the delete parameter context forbidden response
+func (o *DeleteParameterContextForbidden) Code() int {
+	return 403
+}
+
 func (o *DeleteParameterContextForbidden) Error() string {
+	return fmt.Sprintf("[DELETE /parameter-contexts/{id}][%d] deleteParameterContextForbidden ", 403)
+}
+
+func (o *DeleteParameterContextForbidden) String() string {
 	return fmt.Sprintf("[DELETE /parameter-contexts/{id}][%d] deleteParameterContextForbidden ", 403)
 }
 
@@ -164,14 +305,49 @@ func NewDeleteParameterContextNotFound() *DeleteParameterContextNotFound {
 	return &DeleteParameterContextNotFound{}
 }
 
-/* DeleteParameterContextNotFound describes a response with status code 404, with default header values.
+/*
+DeleteParameterContextNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type DeleteParameterContextNotFound struct {
 }
 
+// IsSuccess returns true when this delete parameter context not found response has a 2xx status code
+func (o *DeleteParameterContextNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete parameter context not found response has a 3xx status code
+func (o *DeleteParameterContextNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete parameter context not found response has a 4xx status code
+func (o *DeleteParameterContextNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete parameter context not found response has a 5xx status code
+func (o *DeleteParameterContextNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete parameter context not found response a status code equal to that given
+func (o *DeleteParameterContextNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+// Code gets the status code for the delete parameter context not found response
+func (o *DeleteParameterContextNotFound) Code() int {
+	return 404
+}
+
 func (o *DeleteParameterContextNotFound) Error() string {
+	return fmt.Sprintf("[DELETE /parameter-contexts/{id}][%d] deleteParameterContextNotFound ", 404)
+}
+
+func (o *DeleteParameterContextNotFound) String() string {
 	return fmt.Sprintf("[DELETE /parameter-contexts/{id}][%d] deleteParameterContextNotFound ", 404)
 }
 
@@ -185,14 +361,49 @@ func NewDeleteParameterContextConflict() *DeleteParameterContextConflict {
 	return &DeleteParameterContextConflict{}
 }
 
-/* DeleteParameterContextConflict describes a response with status code 409, with default header values.
+/*
+DeleteParameterContextConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type DeleteParameterContextConflict struct {
 }
 
+// IsSuccess returns true when this delete parameter context conflict response has a 2xx status code
+func (o *DeleteParameterContextConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete parameter context conflict response has a 3xx status code
+func (o *DeleteParameterContextConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete parameter context conflict response has a 4xx status code
+func (o *DeleteParameterContextConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete parameter context conflict response has a 5xx status code
+func (o *DeleteParameterContextConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete parameter context conflict response a status code equal to that given
+func (o *DeleteParameterContextConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the delete parameter context conflict response
+func (o *DeleteParameterContextConflict) Code() int {
+	return 409
+}
+
 func (o *DeleteParameterContextConflict) Error() string {
+	return fmt.Sprintf("[DELETE /parameter-contexts/{id}][%d] deleteParameterContextConflict ", 409)
+}
+
+func (o *DeleteParameterContextConflict) String() string {
 	return fmt.Sprintf("[DELETE /parameter-contexts/{id}][%d] deleteParameterContextConflict ", 409)
 }
 

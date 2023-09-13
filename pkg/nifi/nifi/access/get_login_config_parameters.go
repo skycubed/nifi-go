@@ -52,10 +52,12 @@ func NewGetLoginConfigParamsWithHTTPClient(client *http.Client) *GetLoginConfigP
 	}
 }
 
-/* GetLoginConfigParams contains all the parameters to send to the API endpoint
-   for the get login config operation.
+/*
+GetLoginConfigParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get login config operation.
+
+	Typically these are written to a http.Request.
 */
 type GetLoginConfigParams struct {
 	timeout    time.Duration

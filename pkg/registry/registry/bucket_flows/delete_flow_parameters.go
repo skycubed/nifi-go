@@ -52,10 +52,12 @@ func NewDeleteFlowParamsWithHTTPClient(client *http.Client) *DeleteFlowParams {
 	}
 }
 
-/* DeleteFlowParams contains all the parameters to send to the API endpoint
-   for the delete flow operation.
+/*
+DeleteFlowParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete flow operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteFlowParams struct {
 

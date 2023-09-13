@@ -54,10 +54,12 @@ func NewUpdateProcessGroupParamsWithHTTPClient(client *http.Client) *UpdateProce
 	}
 }
 
-/* UpdateProcessGroupParams contains all the parameters to send to the API endpoint
-   for the update process group operation.
+/*
+UpdateProcessGroupParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update process group operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateProcessGroupParams struct {
 

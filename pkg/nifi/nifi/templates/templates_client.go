@@ -38,7 +38,7 @@ type ClientService interface {
 }
 
 /*
-  ExportTemplate exports a template
+ExportTemplate exports a template
 */
 func (a *Client) ExportTemplate(params *ExportTemplateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ExportTemplateOK, error) {
 	// TODO: Validate the params before sending
@@ -77,7 +77,7 @@ func (a *Client) ExportTemplate(params *ExportTemplateParams, authInfo runtime.C
 }
 
 /*
-  RemoveTemplate deletes a template
+RemoveTemplate deletes a template
 */
 func (a *Client) RemoveTemplate(params *RemoveTemplateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*RemoveTemplateOK, error) {
 	// TODO: Validate the params before sending

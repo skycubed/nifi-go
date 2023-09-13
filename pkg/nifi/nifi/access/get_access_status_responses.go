@@ -60,7 +60,7 @@ func (o *GetAccessStatusReader) ReadResponse(response runtime.ClientResponse, co
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /access] getAccessStatus", response, response.Code())
 	}
 }
 
@@ -69,7 +69,8 @@ func NewGetAccessStatusOK() *GetAccessStatusOK {
 	return &GetAccessStatusOK{}
 }
 
-/* GetAccessStatusOK describes a response with status code 200, with default header values.
+/*
+GetAccessStatusOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,44 @@ type GetAccessStatusOK struct {
 	Payload *models.AccessStatusEntity
 }
 
+// IsSuccess returns true when this get access status o k response has a 2xx status code
+func (o *GetAccessStatusOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get access status o k response has a 3xx status code
+func (o *GetAccessStatusOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get access status o k response has a 4xx status code
+func (o *GetAccessStatusOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get access status o k response has a 5xx status code
+func (o *GetAccessStatusOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get access status o k response a status code equal to that given
+func (o *GetAccessStatusOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the get access status o k response
+func (o *GetAccessStatusOK) Code() int {
+	return 200
+}
+
 func (o *GetAccessStatusOK) Error() string {
 	return fmt.Sprintf("[GET /access][%d] getAccessStatusOK  %+v", 200, o.Payload)
 }
+
+func (o *GetAccessStatusOK) String() string {
+	return fmt.Sprintf("[GET /access][%d] getAccessStatusOK  %+v", 200, o.Payload)
+}
+
 func (o *GetAccessStatusOK) GetPayload() *models.AccessStatusEntity {
 	return o.Payload
 }
@@ -101,14 +137,49 @@ func NewGetAccessStatusBadRequest() *GetAccessStatusBadRequest {
 	return &GetAccessStatusBadRequest{}
 }
 
-/* GetAccessStatusBadRequest describes a response with status code 400, with default header values.
+/*
+GetAccessStatusBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type GetAccessStatusBadRequest struct {
 }
 
+// IsSuccess returns true when this get access status bad request response has a 2xx status code
+func (o *GetAccessStatusBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get access status bad request response has a 3xx status code
+func (o *GetAccessStatusBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get access status bad request response has a 4xx status code
+func (o *GetAccessStatusBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get access status bad request response has a 5xx status code
+func (o *GetAccessStatusBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get access status bad request response a status code equal to that given
+func (o *GetAccessStatusBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the get access status bad request response
+func (o *GetAccessStatusBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetAccessStatusBadRequest) Error() string {
+	return fmt.Sprintf("[GET /access][%d] getAccessStatusBadRequest ", 400)
+}
+
+func (o *GetAccessStatusBadRequest) String() string {
 	return fmt.Sprintf("[GET /access][%d] getAccessStatusBadRequest ", 400)
 }
 
@@ -122,14 +193,49 @@ func NewGetAccessStatusUnauthorized() *GetAccessStatusUnauthorized {
 	return &GetAccessStatusUnauthorized{}
 }
 
-/* GetAccessStatusUnauthorized describes a response with status code 401, with default header values.
+/*
+GetAccessStatusUnauthorized describes a response with status code 401, with default header values.
 
 Unable to determine access status because the client could not be authenticated.
 */
 type GetAccessStatusUnauthorized struct {
 }
 
+// IsSuccess returns true when this get access status unauthorized response has a 2xx status code
+func (o *GetAccessStatusUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get access status unauthorized response has a 3xx status code
+func (o *GetAccessStatusUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get access status unauthorized response has a 4xx status code
+func (o *GetAccessStatusUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get access status unauthorized response has a 5xx status code
+func (o *GetAccessStatusUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get access status unauthorized response a status code equal to that given
+func (o *GetAccessStatusUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the get access status unauthorized response
+func (o *GetAccessStatusUnauthorized) Code() int {
+	return 401
+}
+
 func (o *GetAccessStatusUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /access][%d] getAccessStatusUnauthorized ", 401)
+}
+
+func (o *GetAccessStatusUnauthorized) String() string {
 	return fmt.Sprintf("[GET /access][%d] getAccessStatusUnauthorized ", 401)
 }
 
@@ -143,14 +249,49 @@ func NewGetAccessStatusForbidden() *GetAccessStatusForbidden {
 	return &GetAccessStatusForbidden{}
 }
 
-/* GetAccessStatusForbidden describes a response with status code 403, with default header values.
+/*
+GetAccessStatusForbidden describes a response with status code 403, with default header values.
 
 Unable to determine access status because the client is not authorized to make this request.
 */
 type GetAccessStatusForbidden struct {
 }
 
+// IsSuccess returns true when this get access status forbidden response has a 2xx status code
+func (o *GetAccessStatusForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get access status forbidden response has a 3xx status code
+func (o *GetAccessStatusForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get access status forbidden response has a 4xx status code
+func (o *GetAccessStatusForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get access status forbidden response has a 5xx status code
+func (o *GetAccessStatusForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get access status forbidden response a status code equal to that given
+func (o *GetAccessStatusForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the get access status forbidden response
+func (o *GetAccessStatusForbidden) Code() int {
+	return 403
+}
+
 func (o *GetAccessStatusForbidden) Error() string {
+	return fmt.Sprintf("[GET /access][%d] getAccessStatusForbidden ", 403)
+}
+
+func (o *GetAccessStatusForbidden) String() string {
 	return fmt.Sprintf("[GET /access][%d] getAccessStatusForbidden ", 403)
 }
 
@@ -164,14 +305,49 @@ func NewGetAccessStatusConflict() *GetAccessStatusConflict {
 	return &GetAccessStatusConflict{}
 }
 
-/* GetAccessStatusConflict describes a response with status code 409, with default header values.
+/*
+GetAccessStatusConflict describes a response with status code 409, with default header values.
 
 Unable to determine access status because NiFi is not in the appropriate state.
 */
 type GetAccessStatusConflict struct {
 }
 
+// IsSuccess returns true when this get access status conflict response has a 2xx status code
+func (o *GetAccessStatusConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get access status conflict response has a 3xx status code
+func (o *GetAccessStatusConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get access status conflict response has a 4xx status code
+func (o *GetAccessStatusConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get access status conflict response has a 5xx status code
+func (o *GetAccessStatusConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get access status conflict response a status code equal to that given
+func (o *GetAccessStatusConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the get access status conflict response
+func (o *GetAccessStatusConflict) Code() int {
+	return 409
+}
+
 func (o *GetAccessStatusConflict) Error() string {
+	return fmt.Sprintf("[GET /access][%d] getAccessStatusConflict ", 409)
+}
+
+func (o *GetAccessStatusConflict) String() string {
 	return fmt.Sprintf("[GET /access][%d] getAccessStatusConflict ", 409)
 }
 
@@ -185,14 +361,49 @@ func NewGetAccessStatusInternalServerError() *GetAccessStatusInternalServerError
 	return &GetAccessStatusInternalServerError{}
 }
 
-/* GetAccessStatusInternalServerError describes a response with status code 500, with default header values.
+/*
+GetAccessStatusInternalServerError describes a response with status code 500, with default header values.
 
 Unable to determine access status because an unexpected error occurred.
 */
 type GetAccessStatusInternalServerError struct {
 }
 
+// IsSuccess returns true when this get access status internal server error response has a 2xx status code
+func (o *GetAccessStatusInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get access status internal server error response has a 3xx status code
+func (o *GetAccessStatusInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get access status internal server error response has a 4xx status code
+func (o *GetAccessStatusInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get access status internal server error response has a 5xx status code
+func (o *GetAccessStatusInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this get access status internal server error response a status code equal to that given
+func (o *GetAccessStatusInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
+// Code gets the status code for the get access status internal server error response
+func (o *GetAccessStatusInternalServerError) Code() int {
+	return 500
+}
+
 func (o *GetAccessStatusInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /access][%d] getAccessStatusInternalServerError ", 500)
+}
+
+func (o *GetAccessStatusInternalServerError) String() string {
 	return fmt.Sprintf("[GET /access][%d] getAccessStatusInternalServerError ", 500)
 }
 

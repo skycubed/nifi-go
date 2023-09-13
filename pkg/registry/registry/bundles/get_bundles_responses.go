@@ -36,7 +36,7 @@ func (o *GetBundlesReader) ReadResponse(response runtime.ClientResponse, consume
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /bundles] getBundles", response, response.Code())
 	}
 }
 
@@ -45,7 +45,8 @@ func NewGetBundlesOK() *GetBundlesOK {
 	return &GetBundlesOK{}
 }
 
-/* GetBundlesOK describes a response with status code 200, with default header values.
+/*
+GetBundlesOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -53,9 +54,44 @@ type GetBundlesOK struct {
 	Payload []*models.ExtensionBundle
 }
 
+// IsSuccess returns true when this get bundles o k response has a 2xx status code
+func (o *GetBundlesOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get bundles o k response has a 3xx status code
+func (o *GetBundlesOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get bundles o k response has a 4xx status code
+func (o *GetBundlesOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get bundles o k response has a 5xx status code
+func (o *GetBundlesOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get bundles o k response a status code equal to that given
+func (o *GetBundlesOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the get bundles o k response
+func (o *GetBundlesOK) Code() int {
+	return 200
+}
+
 func (o *GetBundlesOK) Error() string {
 	return fmt.Sprintf("[GET /bundles][%d] getBundlesOK  %+v", 200, o.Payload)
 }
+
+func (o *GetBundlesOK) String() string {
+	return fmt.Sprintf("[GET /bundles][%d] getBundlesOK  %+v", 200, o.Payload)
+}
+
 func (o *GetBundlesOK) GetPayload() []*models.ExtensionBundle {
 	return o.Payload
 }
@@ -75,14 +111,49 @@ func NewGetBundlesUnauthorized() *GetBundlesUnauthorized {
 	return &GetBundlesUnauthorized{}
 }
 
-/* GetBundlesUnauthorized describes a response with status code 401, with default header values.
+/*
+GetBundlesUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type GetBundlesUnauthorized struct {
 }
 
+// IsSuccess returns true when this get bundles unauthorized response has a 2xx status code
+func (o *GetBundlesUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get bundles unauthorized response has a 3xx status code
+func (o *GetBundlesUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get bundles unauthorized response has a 4xx status code
+func (o *GetBundlesUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get bundles unauthorized response has a 5xx status code
+func (o *GetBundlesUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get bundles unauthorized response a status code equal to that given
+func (o *GetBundlesUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the get bundles unauthorized response
+func (o *GetBundlesUnauthorized) Code() int {
+	return 401
+}
+
 func (o *GetBundlesUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /bundles][%d] getBundlesUnauthorized ", 401)
+}
+
+func (o *GetBundlesUnauthorized) String() string {
 	return fmt.Sprintf("[GET /bundles][%d] getBundlesUnauthorized ", 401)
 }
 

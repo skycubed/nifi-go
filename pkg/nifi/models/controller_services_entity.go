@@ -91,6 +91,11 @@ func (m *ControllerServicesEntity) contextValidateControllerServices(ctx context
 	for i := 0; i < len(m.ControllerServices); i++ {
 
 		if m.ControllerServices[i] != nil {
+
+			if swag.IsZero(m.ControllerServices[i]) { // not required
+				return nil
+			}
+
 			if err := m.ControllerServices[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("controllerServices" + "." + strconv.Itoa(i))

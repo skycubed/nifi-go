@@ -211,6 +211,11 @@ func (m *ParameterContextUpdateRequestDTO) ContextValidate(ctx context.Context, 
 func (m *ParameterContextUpdateRequestDTO) contextValidateParameterContext(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ParameterContext != nil {
+
+		if swag.IsZero(m.ParameterContext) { // not required
+			return nil
+		}
+
 		if err := m.ParameterContext.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("parameterContext")
@@ -229,6 +234,11 @@ func (m *ParameterContextUpdateRequestDTO) contextValidateReferencingComponents(
 	for i := 0; i < len(m.ReferencingComponents); i++ {
 
 		if m.ReferencingComponents[i] != nil {
+
+			if swag.IsZero(m.ReferencingComponents[i]) { // not required
+				return nil
+			}
+
 			if err := m.ReferencingComponents[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("referencingComponents" + "." + strconv.Itoa(i))
@@ -249,6 +259,11 @@ func (m *ParameterContextUpdateRequestDTO) contextValidateUpdateSteps(ctx contex
 	for i := 0; i < len(m.UpdateSteps); i++ {
 
 		if m.UpdateSteps[i] != nil {
+
+			if swag.IsZero(m.UpdateSteps[i]) { // not required
+				return nil
+			}
+
 			if err := m.UpdateSteps[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("updateSteps" + "." + strconv.Itoa(i))

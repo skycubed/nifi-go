@@ -52,10 +52,12 @@ func NewTransferFlowFilesParamsWithHTTPClient(client *http.Client) *TransferFlow
 	}
 }
 
-/* TransferFlowFilesParams contains all the parameters to send to the API endpoint
-   for the transfer flow files operation.
+/*
+TransferFlowFilesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the transfer flow files operation.
+
+	Typically these are written to a http.Request.
 */
 type TransferFlowFilesParams struct {
 

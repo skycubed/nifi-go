@@ -54,7 +54,7 @@ func (o *DeleteHistoryReader) ReadResponse(response runtime.ClientResponse, cons
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /controller/history] deleteHistory", response, response.Code())
 	}
 }
 
@@ -63,7 +63,8 @@ func NewDeleteHistoryOK() *DeleteHistoryOK {
 	return &DeleteHistoryOK{}
 }
 
-/* DeleteHistoryOK describes a response with status code 200, with default header values.
+/*
+DeleteHistoryOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -71,9 +72,44 @@ type DeleteHistoryOK struct {
 	Payload *models.HistoryEntity
 }
 
+// IsSuccess returns true when this delete history o k response has a 2xx status code
+func (o *DeleteHistoryOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete history o k response has a 3xx status code
+func (o *DeleteHistoryOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete history o k response has a 4xx status code
+func (o *DeleteHistoryOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete history o k response has a 5xx status code
+func (o *DeleteHistoryOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete history o k response a status code equal to that given
+func (o *DeleteHistoryOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the delete history o k response
+func (o *DeleteHistoryOK) Code() int {
+	return 200
+}
+
 func (o *DeleteHistoryOK) Error() string {
 	return fmt.Sprintf("[DELETE /controller/history][%d] deleteHistoryOK  %+v", 200, o.Payload)
 }
+
+func (o *DeleteHistoryOK) String() string {
+	return fmt.Sprintf("[DELETE /controller/history][%d] deleteHistoryOK  %+v", 200, o.Payload)
+}
+
 func (o *DeleteHistoryOK) GetPayload() *models.HistoryEntity {
 	return o.Payload
 }
@@ -95,14 +131,49 @@ func NewDeleteHistoryBadRequest() *DeleteHistoryBadRequest {
 	return &DeleteHistoryBadRequest{}
 }
 
-/* DeleteHistoryBadRequest describes a response with status code 400, with default header values.
+/*
+DeleteHistoryBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type DeleteHistoryBadRequest struct {
 }
 
+// IsSuccess returns true when this delete history bad request response has a 2xx status code
+func (o *DeleteHistoryBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete history bad request response has a 3xx status code
+func (o *DeleteHistoryBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete history bad request response has a 4xx status code
+func (o *DeleteHistoryBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete history bad request response has a 5xx status code
+func (o *DeleteHistoryBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete history bad request response a status code equal to that given
+func (o *DeleteHistoryBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the delete history bad request response
+func (o *DeleteHistoryBadRequest) Code() int {
+	return 400
+}
+
 func (o *DeleteHistoryBadRequest) Error() string {
+	return fmt.Sprintf("[DELETE /controller/history][%d] deleteHistoryBadRequest ", 400)
+}
+
+func (o *DeleteHistoryBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /controller/history][%d] deleteHistoryBadRequest ", 400)
 }
 
@@ -116,14 +187,49 @@ func NewDeleteHistoryUnauthorized() *DeleteHistoryUnauthorized {
 	return &DeleteHistoryUnauthorized{}
 }
 
-/* DeleteHistoryUnauthorized describes a response with status code 401, with default header values.
+/*
+DeleteHistoryUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type DeleteHistoryUnauthorized struct {
 }
 
+// IsSuccess returns true when this delete history unauthorized response has a 2xx status code
+func (o *DeleteHistoryUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete history unauthorized response has a 3xx status code
+func (o *DeleteHistoryUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete history unauthorized response has a 4xx status code
+func (o *DeleteHistoryUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete history unauthorized response has a 5xx status code
+func (o *DeleteHistoryUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete history unauthorized response a status code equal to that given
+func (o *DeleteHistoryUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the delete history unauthorized response
+func (o *DeleteHistoryUnauthorized) Code() int {
+	return 401
+}
+
 func (o *DeleteHistoryUnauthorized) Error() string {
+	return fmt.Sprintf("[DELETE /controller/history][%d] deleteHistoryUnauthorized ", 401)
+}
+
+func (o *DeleteHistoryUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /controller/history][%d] deleteHistoryUnauthorized ", 401)
 }
 
@@ -137,14 +243,49 @@ func NewDeleteHistoryForbidden() *DeleteHistoryForbidden {
 	return &DeleteHistoryForbidden{}
 }
 
-/* DeleteHistoryForbidden describes a response with status code 403, with default header values.
+/*
+DeleteHistoryForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type DeleteHistoryForbidden struct {
 }
 
+// IsSuccess returns true when this delete history forbidden response has a 2xx status code
+func (o *DeleteHistoryForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete history forbidden response has a 3xx status code
+func (o *DeleteHistoryForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete history forbidden response has a 4xx status code
+func (o *DeleteHistoryForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete history forbidden response has a 5xx status code
+func (o *DeleteHistoryForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete history forbidden response a status code equal to that given
+func (o *DeleteHistoryForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the delete history forbidden response
+func (o *DeleteHistoryForbidden) Code() int {
+	return 403
+}
+
 func (o *DeleteHistoryForbidden) Error() string {
+	return fmt.Sprintf("[DELETE /controller/history][%d] deleteHistoryForbidden ", 403)
+}
+
+func (o *DeleteHistoryForbidden) String() string {
 	return fmt.Sprintf("[DELETE /controller/history][%d] deleteHistoryForbidden ", 403)
 }
 
@@ -158,14 +299,49 @@ func NewDeleteHistoryConflict() *DeleteHistoryConflict {
 	return &DeleteHistoryConflict{}
 }
 
-/* DeleteHistoryConflict describes a response with status code 409, with default header values.
+/*
+DeleteHistoryConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type DeleteHistoryConflict struct {
 }
 
+// IsSuccess returns true when this delete history conflict response has a 2xx status code
+func (o *DeleteHistoryConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete history conflict response has a 3xx status code
+func (o *DeleteHistoryConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete history conflict response has a 4xx status code
+func (o *DeleteHistoryConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete history conflict response has a 5xx status code
+func (o *DeleteHistoryConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete history conflict response a status code equal to that given
+func (o *DeleteHistoryConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the delete history conflict response
+func (o *DeleteHistoryConflict) Code() int {
+	return 409
+}
+
 func (o *DeleteHistoryConflict) Error() string {
+	return fmt.Sprintf("[DELETE /controller/history][%d] deleteHistoryConflict ", 409)
+}
+
+func (o *DeleteHistoryConflict) String() string {
 	return fmt.Sprintf("[DELETE /controller/history][%d] deleteHistoryConflict ", 409)
 }
 

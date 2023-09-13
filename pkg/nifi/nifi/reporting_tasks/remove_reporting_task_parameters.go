@@ -53,10 +53,12 @@ func NewRemoveReportingTaskParamsWithHTTPClient(client *http.Client) *RemoveRepo
 	}
 }
 
-/* RemoveReportingTaskParams contains all the parameters to send to the API endpoint
-   for the remove reporting task operation.
+/*
+RemoveReportingTaskParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the remove reporting task operation.
+
+	Typically these are written to a http.Request.
 */
 type RemoveReportingTaskParams struct {
 

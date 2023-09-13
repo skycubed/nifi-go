@@ -53,10 +53,12 @@ func NewRemoveTemplateParamsWithHTTPClient(client *http.Client) *RemoveTemplateP
 	}
 }
 
-/* RemoveTemplateParams contains all the parameters to send to the API endpoint
-   for the remove template operation.
+/*
+RemoveTemplateParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the remove template operation.
+
+	Typically these are written to a http.Request.
 */
 type RemoveTemplateParams struct {
 

@@ -52,10 +52,12 @@ func NewGetReportingTaskParamsWithHTTPClient(client *http.Client) *GetReportingT
 	}
 }
 
-/* GetReportingTaskParams contains all the parameters to send to the API endpoint
-   for the get reporting task operation.
+/*
+GetReportingTaskParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get reporting task operation.
+
+	Typically these are written to a http.Request.
 */
 type GetReportingTaskParams struct {
 

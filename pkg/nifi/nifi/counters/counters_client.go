@@ -38,9 +38,9 @@ type ClientService interface {
 }
 
 /*
-  GetCounters gets the current counters for this ni fi
+GetCounters gets the current counters for this ni fi
 
-  Note: This endpoint is subject to change as NiFi and it's REST API evolve.
+Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 */
 func (a *Client) GetCounters(params *GetCountersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetCountersOK, error) {
 	// TODO: Validate the params before sending
@@ -79,9 +79,9 @@ func (a *Client) GetCounters(params *GetCountersParams, authInfo runtime.ClientA
 }
 
 /*
-  UpdateCounter updates the specified counter this will reset the counter value to 0
+UpdateCounter updates the specified counter this will reset the counter value to 0
 
-  Note: This endpoint is subject to change as NiFi and it's REST API evolve.
+Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 */
 func (a *Client) UpdateCounter(params *UpdateCounterParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateCounterOK, error) {
 	// TODO: Validate the params before sending

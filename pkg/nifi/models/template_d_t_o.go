@@ -93,6 +93,11 @@ func (m *TemplateDTO) ContextValidate(ctx context.Context, formats strfmt.Regist
 func (m *TemplateDTO) contextValidateSnippet(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Snippet != nil {
+
+		if swag.IsZero(m.Snippet) { // not required
+			return nil
+		}
+
 		if err := m.Snippet.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("snippet")

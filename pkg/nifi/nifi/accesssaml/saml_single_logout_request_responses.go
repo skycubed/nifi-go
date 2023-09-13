@@ -36,12 +36,38 @@ func NewSamlSingleLogoutRequestDefault(code int) *SamlSingleLogoutRequestDefault
 	}
 }
 
-/* SamlSingleLogoutRequestDefault describes a response with status code -1, with default header values.
+/*
+SamlSingleLogoutRequestDefault describes a response with status code -1, with default header values.
 
 successful operation
 */
 type SamlSingleLogoutRequestDefault struct {
 	_statusCode int
+}
+
+// IsSuccess returns true when this saml single logout request default response has a 2xx status code
+func (o *SamlSingleLogoutRequestDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this saml single logout request default response has a 3xx status code
+func (o *SamlSingleLogoutRequestDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this saml single logout request default response has a 4xx status code
+func (o *SamlSingleLogoutRequestDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this saml single logout request default response has a 5xx status code
+func (o *SamlSingleLogoutRequestDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this saml single logout request default response a status code equal to that given
+func (o *SamlSingleLogoutRequestDefault) IsCode(code int) bool {
+	return o._statusCode == code
 }
 
 // Code gets the status code for the saml single logout request default response
@@ -50,6 +76,10 @@ func (o *SamlSingleLogoutRequestDefault) Code() int {
 }
 
 func (o *SamlSingleLogoutRequestDefault) Error() string {
+	return fmt.Sprintf("[GET /access/saml/single-logout/request][%d] samlSingleLogoutRequest default ", o._statusCode)
+}
+
+func (o *SamlSingleLogoutRequestDefault) String() string {
 	return fmt.Sprintf("[GET /access/saml/single-logout/request][%d] samlSingleLogoutRequest default ", o._statusCode)
 }
 

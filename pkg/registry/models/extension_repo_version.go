@@ -166,6 +166,11 @@ func (m *ExtensionRepoVersion) ContextValidate(ctx context.Context, formats strf
 func (m *ExtensionRepoVersion) contextValidateDownloadLink(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.DownloadLink != nil {
+
+		if swag.IsZero(m.DownloadLink) { // not required
+			return nil
+		}
+
 		if err := m.DownloadLink.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("downloadLink")
@@ -182,6 +187,11 @@ func (m *ExtensionRepoVersion) contextValidateDownloadLink(ctx context.Context, 
 func (m *ExtensionRepoVersion) contextValidateExtensionsLink(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ExtensionsLink != nil {
+
+		if swag.IsZero(m.ExtensionsLink) { // not required
+			return nil
+		}
+
 		if err := m.ExtensionsLink.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("extensionsLink")
@@ -198,6 +208,11 @@ func (m *ExtensionRepoVersion) contextValidateExtensionsLink(ctx context.Context
 func (m *ExtensionRepoVersion) contextValidateSha256Link(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Sha256Link != nil {
+
+		if swag.IsZero(m.Sha256Link) { // not required
+			return nil
+		}
+
 		if err := m.Sha256Link.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("sha256Link")
@@ -214,6 +229,11 @@ func (m *ExtensionRepoVersion) contextValidateSha256Link(ctx context.Context, fo
 func (m *ExtensionRepoVersion) contextValidateSha256Supplied(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Sha256Supplied != nil {
+
+		if swag.IsZero(m.Sha256Supplied) { // not required
+			return nil
+		}
+
 		if err := m.Sha256Supplied.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("sha256Supplied")

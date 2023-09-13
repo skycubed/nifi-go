@@ -72,6 +72,11 @@ func (m *AccessStatusEntity) ContextValidate(ctx context.Context, formats strfmt
 func (m *AccessStatusEntity) contextValidateAccessStatus(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.AccessStatus != nil {
+
+		if swag.IsZero(m.AccessStatus) { // not required
+			return nil
+		}
+
 		if err := m.AccessStatus.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("accessStatus")

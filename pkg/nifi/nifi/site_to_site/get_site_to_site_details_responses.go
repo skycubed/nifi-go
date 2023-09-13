@@ -54,7 +54,7 @@ func (o *GetSiteToSiteDetailsReader) ReadResponse(response runtime.ClientRespons
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /site-to-site] getSiteToSiteDetails", response, response.Code())
 	}
 }
 
@@ -63,7 +63,8 @@ func NewGetSiteToSiteDetailsOK() *GetSiteToSiteDetailsOK {
 	return &GetSiteToSiteDetailsOK{}
 }
 
-/* GetSiteToSiteDetailsOK describes a response with status code 200, with default header values.
+/*
+GetSiteToSiteDetailsOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -71,9 +72,44 @@ type GetSiteToSiteDetailsOK struct {
 	Payload *models.ControllerEntity
 }
 
+// IsSuccess returns true when this get site to site details o k response has a 2xx status code
+func (o *GetSiteToSiteDetailsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get site to site details o k response has a 3xx status code
+func (o *GetSiteToSiteDetailsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get site to site details o k response has a 4xx status code
+func (o *GetSiteToSiteDetailsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get site to site details o k response has a 5xx status code
+func (o *GetSiteToSiteDetailsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get site to site details o k response a status code equal to that given
+func (o *GetSiteToSiteDetailsOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the get site to site details o k response
+func (o *GetSiteToSiteDetailsOK) Code() int {
+	return 200
+}
+
 func (o *GetSiteToSiteDetailsOK) Error() string {
 	return fmt.Sprintf("[GET /site-to-site][%d] getSiteToSiteDetailsOK  %+v", 200, o.Payload)
 }
+
+func (o *GetSiteToSiteDetailsOK) String() string {
+	return fmt.Sprintf("[GET /site-to-site][%d] getSiteToSiteDetailsOK  %+v", 200, o.Payload)
+}
+
 func (o *GetSiteToSiteDetailsOK) GetPayload() *models.ControllerEntity {
 	return o.Payload
 }
@@ -95,14 +131,49 @@ func NewGetSiteToSiteDetailsBadRequest() *GetSiteToSiteDetailsBadRequest {
 	return &GetSiteToSiteDetailsBadRequest{}
 }
 
-/* GetSiteToSiteDetailsBadRequest describes a response with status code 400, with default header values.
+/*
+GetSiteToSiteDetailsBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type GetSiteToSiteDetailsBadRequest struct {
 }
 
+// IsSuccess returns true when this get site to site details bad request response has a 2xx status code
+func (o *GetSiteToSiteDetailsBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get site to site details bad request response has a 3xx status code
+func (o *GetSiteToSiteDetailsBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get site to site details bad request response has a 4xx status code
+func (o *GetSiteToSiteDetailsBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get site to site details bad request response has a 5xx status code
+func (o *GetSiteToSiteDetailsBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get site to site details bad request response a status code equal to that given
+func (o *GetSiteToSiteDetailsBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the get site to site details bad request response
+func (o *GetSiteToSiteDetailsBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetSiteToSiteDetailsBadRequest) Error() string {
+	return fmt.Sprintf("[GET /site-to-site][%d] getSiteToSiteDetailsBadRequest ", 400)
+}
+
+func (o *GetSiteToSiteDetailsBadRequest) String() string {
 	return fmt.Sprintf("[GET /site-to-site][%d] getSiteToSiteDetailsBadRequest ", 400)
 }
 
@@ -116,14 +187,49 @@ func NewGetSiteToSiteDetailsUnauthorized() *GetSiteToSiteDetailsUnauthorized {
 	return &GetSiteToSiteDetailsUnauthorized{}
 }
 
-/* GetSiteToSiteDetailsUnauthorized describes a response with status code 401, with default header values.
+/*
+GetSiteToSiteDetailsUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type GetSiteToSiteDetailsUnauthorized struct {
 }
 
+// IsSuccess returns true when this get site to site details unauthorized response has a 2xx status code
+func (o *GetSiteToSiteDetailsUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get site to site details unauthorized response has a 3xx status code
+func (o *GetSiteToSiteDetailsUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get site to site details unauthorized response has a 4xx status code
+func (o *GetSiteToSiteDetailsUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get site to site details unauthorized response has a 5xx status code
+func (o *GetSiteToSiteDetailsUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get site to site details unauthorized response a status code equal to that given
+func (o *GetSiteToSiteDetailsUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the get site to site details unauthorized response
+func (o *GetSiteToSiteDetailsUnauthorized) Code() int {
+	return 401
+}
+
 func (o *GetSiteToSiteDetailsUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /site-to-site][%d] getSiteToSiteDetailsUnauthorized ", 401)
+}
+
+func (o *GetSiteToSiteDetailsUnauthorized) String() string {
 	return fmt.Sprintf("[GET /site-to-site][%d] getSiteToSiteDetailsUnauthorized ", 401)
 }
 
@@ -137,14 +243,49 @@ func NewGetSiteToSiteDetailsForbidden() *GetSiteToSiteDetailsForbidden {
 	return &GetSiteToSiteDetailsForbidden{}
 }
 
-/* GetSiteToSiteDetailsForbidden describes a response with status code 403, with default header values.
+/*
+GetSiteToSiteDetailsForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type GetSiteToSiteDetailsForbidden struct {
 }
 
+// IsSuccess returns true when this get site to site details forbidden response has a 2xx status code
+func (o *GetSiteToSiteDetailsForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get site to site details forbidden response has a 3xx status code
+func (o *GetSiteToSiteDetailsForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get site to site details forbidden response has a 4xx status code
+func (o *GetSiteToSiteDetailsForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get site to site details forbidden response has a 5xx status code
+func (o *GetSiteToSiteDetailsForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get site to site details forbidden response a status code equal to that given
+func (o *GetSiteToSiteDetailsForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the get site to site details forbidden response
+func (o *GetSiteToSiteDetailsForbidden) Code() int {
+	return 403
+}
+
 func (o *GetSiteToSiteDetailsForbidden) Error() string {
+	return fmt.Sprintf("[GET /site-to-site][%d] getSiteToSiteDetailsForbidden ", 403)
+}
+
+func (o *GetSiteToSiteDetailsForbidden) String() string {
 	return fmt.Sprintf("[GET /site-to-site][%d] getSiteToSiteDetailsForbidden ", 403)
 }
 
@@ -158,14 +299,49 @@ func NewGetSiteToSiteDetailsConflict() *GetSiteToSiteDetailsConflict {
 	return &GetSiteToSiteDetailsConflict{}
 }
 
-/* GetSiteToSiteDetailsConflict describes a response with status code 409, with default header values.
+/*
+GetSiteToSiteDetailsConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type GetSiteToSiteDetailsConflict struct {
 }
 
+// IsSuccess returns true when this get site to site details conflict response has a 2xx status code
+func (o *GetSiteToSiteDetailsConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get site to site details conflict response has a 3xx status code
+func (o *GetSiteToSiteDetailsConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get site to site details conflict response has a 4xx status code
+func (o *GetSiteToSiteDetailsConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get site to site details conflict response has a 5xx status code
+func (o *GetSiteToSiteDetailsConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get site to site details conflict response a status code equal to that given
+func (o *GetSiteToSiteDetailsConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the get site to site details conflict response
+func (o *GetSiteToSiteDetailsConflict) Code() int {
+	return 409
+}
+
 func (o *GetSiteToSiteDetailsConflict) Error() string {
+	return fmt.Sprintf("[GET /site-to-site][%d] getSiteToSiteDetailsConflict ", 409)
+}
+
+func (o *GetSiteToSiteDetailsConflict) String() string {
 	return fmt.Sprintf("[GET /site-to-site][%d] getSiteToSiteDetailsConflict ", 409)
 }
 

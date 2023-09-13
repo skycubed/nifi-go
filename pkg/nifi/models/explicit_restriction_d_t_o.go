@@ -75,6 +75,11 @@ func (m *ExplicitRestrictionDTO) ContextValidate(ctx context.Context, formats st
 func (m *ExplicitRestrictionDTO) contextValidateRequiredPermission(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.RequiredPermission != nil {
+
+		if swag.IsZero(m.RequiredPermission) { // not required
+			return nil
+		}
+
 		if err := m.RequiredPermission.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("requiredPermission")

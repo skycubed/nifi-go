@@ -75,6 +75,11 @@ func (m *PortStatusEntity) ContextValidate(ctx context.Context, formats strfmt.R
 func (m *PortStatusEntity) contextValidatePortStatus(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.PortStatus != nil {
+
+		if swag.IsZero(m.PortStatus) { // not required
+			return nil
+		}
+
 		if err := m.PortStatus.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("portStatus")

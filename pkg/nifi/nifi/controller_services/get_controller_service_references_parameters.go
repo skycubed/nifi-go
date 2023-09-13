@@ -52,10 +52,12 @@ func NewGetControllerServiceReferencesParamsWithHTTPClient(client *http.Client) 
 	}
 }
 
-/* GetControllerServiceReferencesParams contains all the parameters to send to the API endpoint
-   for the get controller service references operation.
+/*
+GetControllerServiceReferencesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get controller service references operation.
+
+	Typically these are written to a http.Request.
 */
 type GetControllerServiceReferencesParams struct {
 

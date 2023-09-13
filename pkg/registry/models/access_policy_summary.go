@@ -181,6 +181,11 @@ func (m *AccessPolicySummary) contextValidateIdentifier(ctx context.Context, for
 func (m *AccessPolicySummary) contextValidateRevision(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Revision != nil {
+
+		if swag.IsZero(m.Revision) { // not required
+			return nil
+		}
+
 		if err := m.Revision.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("revision")

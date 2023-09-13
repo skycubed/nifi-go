@@ -60,7 +60,7 @@ func (o *RemoveOutputPortReader) ReadResponse(response runtime.ClientResponse, c
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /output-ports/{id}] removeOutputPort", response, response.Code())
 	}
 }
 
@@ -69,7 +69,8 @@ func NewRemoveOutputPortOK() *RemoveOutputPortOK {
 	return &RemoveOutputPortOK{}
 }
 
-/* RemoveOutputPortOK describes a response with status code 200, with default header values.
+/*
+RemoveOutputPortOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,44 @@ type RemoveOutputPortOK struct {
 	Payload *models.PortEntity
 }
 
+// IsSuccess returns true when this remove output port o k response has a 2xx status code
+func (o *RemoveOutputPortOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this remove output port o k response has a 3xx status code
+func (o *RemoveOutputPortOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this remove output port o k response has a 4xx status code
+func (o *RemoveOutputPortOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this remove output port o k response has a 5xx status code
+func (o *RemoveOutputPortOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this remove output port o k response a status code equal to that given
+func (o *RemoveOutputPortOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the remove output port o k response
+func (o *RemoveOutputPortOK) Code() int {
+	return 200
+}
+
 func (o *RemoveOutputPortOK) Error() string {
 	return fmt.Sprintf("[DELETE /output-ports/{id}][%d] removeOutputPortOK  %+v", 200, o.Payload)
 }
+
+func (o *RemoveOutputPortOK) String() string {
+	return fmt.Sprintf("[DELETE /output-ports/{id}][%d] removeOutputPortOK  %+v", 200, o.Payload)
+}
+
 func (o *RemoveOutputPortOK) GetPayload() *models.PortEntity {
 	return o.Payload
 }
@@ -101,14 +137,49 @@ func NewRemoveOutputPortBadRequest() *RemoveOutputPortBadRequest {
 	return &RemoveOutputPortBadRequest{}
 }
 
-/* RemoveOutputPortBadRequest describes a response with status code 400, with default header values.
+/*
+RemoveOutputPortBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type RemoveOutputPortBadRequest struct {
 }
 
+// IsSuccess returns true when this remove output port bad request response has a 2xx status code
+func (o *RemoveOutputPortBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this remove output port bad request response has a 3xx status code
+func (o *RemoveOutputPortBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this remove output port bad request response has a 4xx status code
+func (o *RemoveOutputPortBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this remove output port bad request response has a 5xx status code
+func (o *RemoveOutputPortBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this remove output port bad request response a status code equal to that given
+func (o *RemoveOutputPortBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the remove output port bad request response
+func (o *RemoveOutputPortBadRequest) Code() int {
+	return 400
+}
+
 func (o *RemoveOutputPortBadRequest) Error() string {
+	return fmt.Sprintf("[DELETE /output-ports/{id}][%d] removeOutputPortBadRequest ", 400)
+}
+
+func (o *RemoveOutputPortBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /output-ports/{id}][%d] removeOutputPortBadRequest ", 400)
 }
 
@@ -122,14 +193,49 @@ func NewRemoveOutputPortUnauthorized() *RemoveOutputPortUnauthorized {
 	return &RemoveOutputPortUnauthorized{}
 }
 
-/* RemoveOutputPortUnauthorized describes a response with status code 401, with default header values.
+/*
+RemoveOutputPortUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type RemoveOutputPortUnauthorized struct {
 }
 
+// IsSuccess returns true when this remove output port unauthorized response has a 2xx status code
+func (o *RemoveOutputPortUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this remove output port unauthorized response has a 3xx status code
+func (o *RemoveOutputPortUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this remove output port unauthorized response has a 4xx status code
+func (o *RemoveOutputPortUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this remove output port unauthorized response has a 5xx status code
+func (o *RemoveOutputPortUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this remove output port unauthorized response a status code equal to that given
+func (o *RemoveOutputPortUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the remove output port unauthorized response
+func (o *RemoveOutputPortUnauthorized) Code() int {
+	return 401
+}
+
 func (o *RemoveOutputPortUnauthorized) Error() string {
+	return fmt.Sprintf("[DELETE /output-ports/{id}][%d] removeOutputPortUnauthorized ", 401)
+}
+
+func (o *RemoveOutputPortUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /output-ports/{id}][%d] removeOutputPortUnauthorized ", 401)
 }
 
@@ -143,14 +249,49 @@ func NewRemoveOutputPortForbidden() *RemoveOutputPortForbidden {
 	return &RemoveOutputPortForbidden{}
 }
 
-/* RemoveOutputPortForbidden describes a response with status code 403, with default header values.
+/*
+RemoveOutputPortForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type RemoveOutputPortForbidden struct {
 }
 
+// IsSuccess returns true when this remove output port forbidden response has a 2xx status code
+func (o *RemoveOutputPortForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this remove output port forbidden response has a 3xx status code
+func (o *RemoveOutputPortForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this remove output port forbidden response has a 4xx status code
+func (o *RemoveOutputPortForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this remove output port forbidden response has a 5xx status code
+func (o *RemoveOutputPortForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this remove output port forbidden response a status code equal to that given
+func (o *RemoveOutputPortForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the remove output port forbidden response
+func (o *RemoveOutputPortForbidden) Code() int {
+	return 403
+}
+
 func (o *RemoveOutputPortForbidden) Error() string {
+	return fmt.Sprintf("[DELETE /output-ports/{id}][%d] removeOutputPortForbidden ", 403)
+}
+
+func (o *RemoveOutputPortForbidden) String() string {
 	return fmt.Sprintf("[DELETE /output-ports/{id}][%d] removeOutputPortForbidden ", 403)
 }
 
@@ -164,14 +305,49 @@ func NewRemoveOutputPortNotFound() *RemoveOutputPortNotFound {
 	return &RemoveOutputPortNotFound{}
 }
 
-/* RemoveOutputPortNotFound describes a response with status code 404, with default header values.
+/*
+RemoveOutputPortNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type RemoveOutputPortNotFound struct {
 }
 
+// IsSuccess returns true when this remove output port not found response has a 2xx status code
+func (o *RemoveOutputPortNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this remove output port not found response has a 3xx status code
+func (o *RemoveOutputPortNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this remove output port not found response has a 4xx status code
+func (o *RemoveOutputPortNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this remove output port not found response has a 5xx status code
+func (o *RemoveOutputPortNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this remove output port not found response a status code equal to that given
+func (o *RemoveOutputPortNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+// Code gets the status code for the remove output port not found response
+func (o *RemoveOutputPortNotFound) Code() int {
+	return 404
+}
+
 func (o *RemoveOutputPortNotFound) Error() string {
+	return fmt.Sprintf("[DELETE /output-ports/{id}][%d] removeOutputPortNotFound ", 404)
+}
+
+func (o *RemoveOutputPortNotFound) String() string {
 	return fmt.Sprintf("[DELETE /output-ports/{id}][%d] removeOutputPortNotFound ", 404)
 }
 
@@ -185,14 +361,49 @@ func NewRemoveOutputPortConflict() *RemoveOutputPortConflict {
 	return &RemoveOutputPortConflict{}
 }
 
-/* RemoveOutputPortConflict describes a response with status code 409, with default header values.
+/*
+RemoveOutputPortConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type RemoveOutputPortConflict struct {
 }
 
+// IsSuccess returns true when this remove output port conflict response has a 2xx status code
+func (o *RemoveOutputPortConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this remove output port conflict response has a 3xx status code
+func (o *RemoveOutputPortConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this remove output port conflict response has a 4xx status code
+func (o *RemoveOutputPortConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this remove output port conflict response has a 5xx status code
+func (o *RemoveOutputPortConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this remove output port conflict response a status code equal to that given
+func (o *RemoveOutputPortConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the remove output port conflict response
+func (o *RemoveOutputPortConflict) Code() int {
+	return 409
+}
+
 func (o *RemoveOutputPortConflict) Error() string {
+	return fmt.Sprintf("[DELETE /output-ports/{id}][%d] removeOutputPortConflict ", 409)
+}
+
+func (o *RemoveOutputPortConflict) String() string {
 	return fmt.Sprintf("[DELETE /output-ports/{id}][%d] removeOutputPortConflict ", 409)
 }
 

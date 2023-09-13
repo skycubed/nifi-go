@@ -44,7 +44,7 @@ type ClientService interface {
 }
 
 /*
-  CreateAccessPolicy creates an access policy
+CreateAccessPolicy creates an access policy
 */
 func (a *Client) CreateAccessPolicy(params *CreateAccessPolicyParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateAccessPolicyCreated, error) {
 	// TODO: Validate the params before sending
@@ -83,7 +83,7 @@ func (a *Client) CreateAccessPolicy(params *CreateAccessPolicyParams, authInfo r
 }
 
 /*
-  GetAccessPolicy gets an access policy
+GetAccessPolicy gets an access policy
 */
 func (a *Client) GetAccessPolicy(params *GetAccessPolicyParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetAccessPolicyOK, error) {
 	// TODO: Validate the params before sending
@@ -122,9 +122,9 @@ func (a *Client) GetAccessPolicy(params *GetAccessPolicyParams, authInfo runtime
 }
 
 /*
-  GetAccessPolicyForResource gets an access policy for the specified action and resource
+GetAccessPolicyForResource gets an access policy for the specified action and resource
 
-  Will return the effective policy if no component specific policy exists for the specified action and resource. Must have Read permissions to the policy with the desired action and resource. Permissions for the policy that is returned will be indicated in the response. This means the client could be authorized to get the policy for a given component but the effective policy may be inherited from an ancestor Process Group. If the client does not have permissions to that policy, the response will not include the policy and the permissions in the response will be marked accordingly. If the client does not have permissions to the policy of the desired action and resource a 403 response will be returned.
+Will return the effective policy if no component specific policy exists for the specified action and resource. Must have Read permissions to the policy with the desired action and resource. Permissions for the policy that is returned will be indicated in the response. This means the client could be authorized to get the policy for a given component but the effective policy may be inherited from an ancestor Process Group. If the client does not have permissions to that policy, the response will not include the policy and the permissions in the response will be marked accordingly. If the client does not have permissions to the policy of the desired action and resource a 403 response will be returned.
 */
 func (a *Client) GetAccessPolicyForResource(params *GetAccessPolicyForResourceParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetAccessPolicyForResourceOK, error) {
 	// TODO: Validate the params before sending
@@ -163,7 +163,7 @@ func (a *Client) GetAccessPolicyForResource(params *GetAccessPolicyForResourcePa
 }
 
 /*
-  RemoveAccessPolicy deletes an access policy
+RemoveAccessPolicy deletes an access policy
 */
 func (a *Client) RemoveAccessPolicy(params *RemoveAccessPolicyParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*RemoveAccessPolicyOK, error) {
 	// TODO: Validate the params before sending
@@ -202,7 +202,7 @@ func (a *Client) RemoveAccessPolicy(params *RemoveAccessPolicyParams, authInfo r
 }
 
 /*
-  UpdateAccessPolicy updates a access policy
+UpdateAccessPolicy updates a access policy
 */
 func (a *Client) UpdateAccessPolicy(params *UpdateAccessPolicyParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateAccessPolicyOK, error) {
 	// TODO: Validate the params before sending

@@ -82,6 +82,11 @@ func (m *ProcessorsRunStatusDetailsEntity) contextValidateRunStatusDetails(ctx c
 	for i := 0; i < len(m.RunStatusDetails); i++ {
 
 		if m.RunStatusDetails[i] != nil {
+
+			if swag.IsZero(m.RunStatusDetails[i]) { // not required
+				return nil
+			}
+
 			if err := m.RunStatusDetails[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("runStatusDetails" + "." + strconv.Itoa(i))

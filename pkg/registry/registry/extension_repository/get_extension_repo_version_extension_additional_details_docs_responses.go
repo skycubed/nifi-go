@@ -58,7 +58,7 @@ func (o *GetExtensionRepoVersionExtensionAdditionalDetailsDocsReader) ReadRespon
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /extension-repository/{bucketName}/{groupId}/{artifactId}/{version}/extensions/{name}/docs/additional-details] getExtensionRepoVersionExtensionAdditionalDetailsDocs", response, response.Code())
 	}
 }
 
@@ -67,7 +67,8 @@ func NewGetExtensionRepoVersionExtensionAdditionalDetailsDocsOK() *GetExtensionR
 	return &GetExtensionRepoVersionExtensionAdditionalDetailsDocsOK{}
 }
 
-/* GetExtensionRepoVersionExtensionAdditionalDetailsDocsOK describes a response with status code 200, with default header values.
+/*
+GetExtensionRepoVersionExtensionAdditionalDetailsDocsOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -75,9 +76,44 @@ type GetExtensionRepoVersionExtensionAdditionalDetailsDocsOK struct {
 	Payload string
 }
 
+// IsSuccess returns true when this get extension repo version extension additional details docs o k response has a 2xx status code
+func (o *GetExtensionRepoVersionExtensionAdditionalDetailsDocsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get extension repo version extension additional details docs o k response has a 3xx status code
+func (o *GetExtensionRepoVersionExtensionAdditionalDetailsDocsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get extension repo version extension additional details docs o k response has a 4xx status code
+func (o *GetExtensionRepoVersionExtensionAdditionalDetailsDocsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get extension repo version extension additional details docs o k response has a 5xx status code
+func (o *GetExtensionRepoVersionExtensionAdditionalDetailsDocsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get extension repo version extension additional details docs o k response a status code equal to that given
+func (o *GetExtensionRepoVersionExtensionAdditionalDetailsDocsOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the get extension repo version extension additional details docs o k response
+func (o *GetExtensionRepoVersionExtensionAdditionalDetailsDocsOK) Code() int {
+	return 200
+}
+
 func (o *GetExtensionRepoVersionExtensionAdditionalDetailsDocsOK) Error() string {
 	return fmt.Sprintf("[GET /extension-repository/{bucketName}/{groupId}/{artifactId}/{version}/extensions/{name}/docs/additional-details][%d] getExtensionRepoVersionExtensionAdditionalDetailsDocsOK  %+v", 200, o.Payload)
 }
+
+func (o *GetExtensionRepoVersionExtensionAdditionalDetailsDocsOK) String() string {
+	return fmt.Sprintf("[GET /extension-repository/{bucketName}/{groupId}/{artifactId}/{version}/extensions/{name}/docs/additional-details][%d] getExtensionRepoVersionExtensionAdditionalDetailsDocsOK  %+v", 200, o.Payload)
+}
+
 func (o *GetExtensionRepoVersionExtensionAdditionalDetailsDocsOK) GetPayload() string {
 	return o.Payload
 }
@@ -97,14 +133,49 @@ func NewGetExtensionRepoVersionExtensionAdditionalDetailsDocsBadRequest() *GetEx
 	return &GetExtensionRepoVersionExtensionAdditionalDetailsDocsBadRequest{}
 }
 
-/* GetExtensionRepoVersionExtensionAdditionalDetailsDocsBadRequest describes a response with status code 400, with default header values.
+/*
+GetExtensionRepoVersionExtensionAdditionalDetailsDocsBadRequest describes a response with status code 400, with default header values.
 
 NiFi Registry was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type GetExtensionRepoVersionExtensionAdditionalDetailsDocsBadRequest struct {
 }
 
+// IsSuccess returns true when this get extension repo version extension additional details docs bad request response has a 2xx status code
+func (o *GetExtensionRepoVersionExtensionAdditionalDetailsDocsBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get extension repo version extension additional details docs bad request response has a 3xx status code
+func (o *GetExtensionRepoVersionExtensionAdditionalDetailsDocsBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get extension repo version extension additional details docs bad request response has a 4xx status code
+func (o *GetExtensionRepoVersionExtensionAdditionalDetailsDocsBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get extension repo version extension additional details docs bad request response has a 5xx status code
+func (o *GetExtensionRepoVersionExtensionAdditionalDetailsDocsBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get extension repo version extension additional details docs bad request response a status code equal to that given
+func (o *GetExtensionRepoVersionExtensionAdditionalDetailsDocsBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the get extension repo version extension additional details docs bad request response
+func (o *GetExtensionRepoVersionExtensionAdditionalDetailsDocsBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetExtensionRepoVersionExtensionAdditionalDetailsDocsBadRequest) Error() string {
+	return fmt.Sprintf("[GET /extension-repository/{bucketName}/{groupId}/{artifactId}/{version}/extensions/{name}/docs/additional-details][%d] getExtensionRepoVersionExtensionAdditionalDetailsDocsBadRequest ", 400)
+}
+
+func (o *GetExtensionRepoVersionExtensionAdditionalDetailsDocsBadRequest) String() string {
 	return fmt.Sprintf("[GET /extension-repository/{bucketName}/{groupId}/{artifactId}/{version}/extensions/{name}/docs/additional-details][%d] getExtensionRepoVersionExtensionAdditionalDetailsDocsBadRequest ", 400)
 }
 
@@ -118,14 +189,49 @@ func NewGetExtensionRepoVersionExtensionAdditionalDetailsDocsUnauthorized() *Get
 	return &GetExtensionRepoVersionExtensionAdditionalDetailsDocsUnauthorized{}
 }
 
-/* GetExtensionRepoVersionExtensionAdditionalDetailsDocsUnauthorized describes a response with status code 401, with default header values.
+/*
+GetExtensionRepoVersionExtensionAdditionalDetailsDocsUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type GetExtensionRepoVersionExtensionAdditionalDetailsDocsUnauthorized struct {
 }
 
+// IsSuccess returns true when this get extension repo version extension additional details docs unauthorized response has a 2xx status code
+func (o *GetExtensionRepoVersionExtensionAdditionalDetailsDocsUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get extension repo version extension additional details docs unauthorized response has a 3xx status code
+func (o *GetExtensionRepoVersionExtensionAdditionalDetailsDocsUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get extension repo version extension additional details docs unauthorized response has a 4xx status code
+func (o *GetExtensionRepoVersionExtensionAdditionalDetailsDocsUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get extension repo version extension additional details docs unauthorized response has a 5xx status code
+func (o *GetExtensionRepoVersionExtensionAdditionalDetailsDocsUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get extension repo version extension additional details docs unauthorized response a status code equal to that given
+func (o *GetExtensionRepoVersionExtensionAdditionalDetailsDocsUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the get extension repo version extension additional details docs unauthorized response
+func (o *GetExtensionRepoVersionExtensionAdditionalDetailsDocsUnauthorized) Code() int {
+	return 401
+}
+
 func (o *GetExtensionRepoVersionExtensionAdditionalDetailsDocsUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /extension-repository/{bucketName}/{groupId}/{artifactId}/{version}/extensions/{name}/docs/additional-details][%d] getExtensionRepoVersionExtensionAdditionalDetailsDocsUnauthorized ", 401)
+}
+
+func (o *GetExtensionRepoVersionExtensionAdditionalDetailsDocsUnauthorized) String() string {
 	return fmt.Sprintf("[GET /extension-repository/{bucketName}/{groupId}/{artifactId}/{version}/extensions/{name}/docs/additional-details][%d] getExtensionRepoVersionExtensionAdditionalDetailsDocsUnauthorized ", 401)
 }
 
@@ -139,14 +245,49 @@ func NewGetExtensionRepoVersionExtensionAdditionalDetailsDocsForbidden() *GetExt
 	return &GetExtensionRepoVersionExtensionAdditionalDetailsDocsForbidden{}
 }
 
-/* GetExtensionRepoVersionExtensionAdditionalDetailsDocsForbidden describes a response with status code 403, with default header values.
+/*
+GetExtensionRepoVersionExtensionAdditionalDetailsDocsForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type GetExtensionRepoVersionExtensionAdditionalDetailsDocsForbidden struct {
 }
 
+// IsSuccess returns true when this get extension repo version extension additional details docs forbidden response has a 2xx status code
+func (o *GetExtensionRepoVersionExtensionAdditionalDetailsDocsForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get extension repo version extension additional details docs forbidden response has a 3xx status code
+func (o *GetExtensionRepoVersionExtensionAdditionalDetailsDocsForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get extension repo version extension additional details docs forbidden response has a 4xx status code
+func (o *GetExtensionRepoVersionExtensionAdditionalDetailsDocsForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get extension repo version extension additional details docs forbidden response has a 5xx status code
+func (o *GetExtensionRepoVersionExtensionAdditionalDetailsDocsForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get extension repo version extension additional details docs forbidden response a status code equal to that given
+func (o *GetExtensionRepoVersionExtensionAdditionalDetailsDocsForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the get extension repo version extension additional details docs forbidden response
+func (o *GetExtensionRepoVersionExtensionAdditionalDetailsDocsForbidden) Code() int {
+	return 403
+}
+
 func (o *GetExtensionRepoVersionExtensionAdditionalDetailsDocsForbidden) Error() string {
+	return fmt.Sprintf("[GET /extension-repository/{bucketName}/{groupId}/{artifactId}/{version}/extensions/{name}/docs/additional-details][%d] getExtensionRepoVersionExtensionAdditionalDetailsDocsForbidden ", 403)
+}
+
+func (o *GetExtensionRepoVersionExtensionAdditionalDetailsDocsForbidden) String() string {
 	return fmt.Sprintf("[GET /extension-repository/{bucketName}/{groupId}/{artifactId}/{version}/extensions/{name}/docs/additional-details][%d] getExtensionRepoVersionExtensionAdditionalDetailsDocsForbidden ", 403)
 }
 
@@ -160,14 +301,49 @@ func NewGetExtensionRepoVersionExtensionAdditionalDetailsDocsNotFound() *GetExte
 	return &GetExtensionRepoVersionExtensionAdditionalDetailsDocsNotFound{}
 }
 
-/* GetExtensionRepoVersionExtensionAdditionalDetailsDocsNotFound describes a response with status code 404, with default header values.
+/*
+GetExtensionRepoVersionExtensionAdditionalDetailsDocsNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type GetExtensionRepoVersionExtensionAdditionalDetailsDocsNotFound struct {
 }
 
+// IsSuccess returns true when this get extension repo version extension additional details docs not found response has a 2xx status code
+func (o *GetExtensionRepoVersionExtensionAdditionalDetailsDocsNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get extension repo version extension additional details docs not found response has a 3xx status code
+func (o *GetExtensionRepoVersionExtensionAdditionalDetailsDocsNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get extension repo version extension additional details docs not found response has a 4xx status code
+func (o *GetExtensionRepoVersionExtensionAdditionalDetailsDocsNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get extension repo version extension additional details docs not found response has a 5xx status code
+func (o *GetExtensionRepoVersionExtensionAdditionalDetailsDocsNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get extension repo version extension additional details docs not found response a status code equal to that given
+func (o *GetExtensionRepoVersionExtensionAdditionalDetailsDocsNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+// Code gets the status code for the get extension repo version extension additional details docs not found response
+func (o *GetExtensionRepoVersionExtensionAdditionalDetailsDocsNotFound) Code() int {
+	return 404
+}
+
 func (o *GetExtensionRepoVersionExtensionAdditionalDetailsDocsNotFound) Error() string {
+	return fmt.Sprintf("[GET /extension-repository/{bucketName}/{groupId}/{artifactId}/{version}/extensions/{name}/docs/additional-details][%d] getExtensionRepoVersionExtensionAdditionalDetailsDocsNotFound ", 404)
+}
+
+func (o *GetExtensionRepoVersionExtensionAdditionalDetailsDocsNotFound) String() string {
 	return fmt.Sprintf("[GET /extension-repository/{bucketName}/{groupId}/{artifactId}/{version}/extensions/{name}/docs/additional-details][%d] getExtensionRepoVersionExtensionAdditionalDetailsDocsNotFound ", 404)
 }
 
@@ -181,14 +357,49 @@ func NewGetExtensionRepoVersionExtensionAdditionalDetailsDocsConflict() *GetExte
 	return &GetExtensionRepoVersionExtensionAdditionalDetailsDocsConflict{}
 }
 
-/* GetExtensionRepoVersionExtensionAdditionalDetailsDocsConflict describes a response with status code 409, with default header values.
+/*
+GetExtensionRepoVersionExtensionAdditionalDetailsDocsConflict describes a response with status code 409, with default header values.
 
 NiFi Registry was unable to complete the request because it assumes a server state that is not valid.
 */
 type GetExtensionRepoVersionExtensionAdditionalDetailsDocsConflict struct {
 }
 
+// IsSuccess returns true when this get extension repo version extension additional details docs conflict response has a 2xx status code
+func (o *GetExtensionRepoVersionExtensionAdditionalDetailsDocsConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get extension repo version extension additional details docs conflict response has a 3xx status code
+func (o *GetExtensionRepoVersionExtensionAdditionalDetailsDocsConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get extension repo version extension additional details docs conflict response has a 4xx status code
+func (o *GetExtensionRepoVersionExtensionAdditionalDetailsDocsConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get extension repo version extension additional details docs conflict response has a 5xx status code
+func (o *GetExtensionRepoVersionExtensionAdditionalDetailsDocsConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get extension repo version extension additional details docs conflict response a status code equal to that given
+func (o *GetExtensionRepoVersionExtensionAdditionalDetailsDocsConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the get extension repo version extension additional details docs conflict response
+func (o *GetExtensionRepoVersionExtensionAdditionalDetailsDocsConflict) Code() int {
+	return 409
+}
+
 func (o *GetExtensionRepoVersionExtensionAdditionalDetailsDocsConflict) Error() string {
+	return fmt.Sprintf("[GET /extension-repository/{bucketName}/{groupId}/{artifactId}/{version}/extensions/{name}/docs/additional-details][%d] getExtensionRepoVersionExtensionAdditionalDetailsDocsConflict ", 409)
+}
+
+func (o *GetExtensionRepoVersionExtensionAdditionalDetailsDocsConflict) String() string {
 	return fmt.Sprintf("[GET /extension-repository/{bucketName}/{groupId}/{artifactId}/{version}/extensions/{name}/docs/additional-details][%d] getExtensionRepoVersionExtensionAdditionalDetailsDocsConflict ", 409)
 }
 

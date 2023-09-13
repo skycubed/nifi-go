@@ -46,9 +46,9 @@ type ClientService interface {
 }
 
 /*
-  GetAvailableFlowFields gets flow fields
+GetAvailableFlowFields gets flow fields
 
-  Retrieves the flow field names that can be used for searching or sorting on flows.
+Retrieves the flow field names that can be used for searching or sorting on flows.
 */
 func (a *Client) GetAvailableFlowFields(params *GetAvailableFlowFieldsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetAvailableFlowFieldsOK, error) {
 	// TODO: Validate the params before sending
@@ -87,9 +87,9 @@ func (a *Client) GetAvailableFlowFields(params *GetAvailableFlowFieldsParams, au
 }
 
 /*
-  GlobalGetFlow gets flow
+GlobalGetFlow gets flow
 
-  Gets a flow by id.
+Gets a flow by id.
 */
 func (a *Client) GlobalGetFlow(params *GlobalGetFlowParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GlobalGetFlowOK, error) {
 	// TODO: Validate the params before sending
@@ -128,9 +128,9 @@ func (a *Client) GlobalGetFlow(params *GlobalGetFlowParams, authInfo runtime.Cli
 }
 
 /*
-  GlobalGetFlowVersion gets flow version
+GlobalGetFlowVersion gets flow version
 
-  Gets the given version of a flow, including metadata and flow content.
+Gets the given version of a flow, including metadata and flow content.
 */
 func (a *Client) GlobalGetFlowVersion(params *GlobalGetFlowVersionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GlobalGetFlowVersionOK, error) {
 	// TODO: Validate the params before sending
@@ -169,9 +169,9 @@ func (a *Client) GlobalGetFlowVersion(params *GlobalGetFlowVersionParams, authIn
 }
 
 /*
-  GlobalGetFlowVersions gets flow versions
+GlobalGetFlowVersions gets flow versions
 
-  Gets summary information for all versions of a given flow. Versions are ordered newest->oldest.
+Gets summary information for all versions of a given flow. Versions are ordered newest->oldest.
 */
 func (a *Client) GlobalGetFlowVersions(params *GlobalGetFlowVersionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GlobalGetFlowVersionsOK, error) {
 	// TODO: Validate the params before sending
@@ -210,9 +210,9 @@ func (a *Client) GlobalGetFlowVersions(params *GlobalGetFlowVersionsParams, auth
 }
 
 /*
-  GlobalGetLatestFlowVersion gets latest flow version
+GlobalGetLatestFlowVersion gets latest flow version
 
-  Gets the latest version of a flow, including metadata and flow content.
+Gets the latest version of a flow, including metadata and flow content.
 */
 func (a *Client) GlobalGetLatestFlowVersion(params *GlobalGetLatestFlowVersionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GlobalGetLatestFlowVersionOK, error) {
 	// TODO: Validate the params before sending
@@ -251,9 +251,9 @@ func (a *Client) GlobalGetLatestFlowVersion(params *GlobalGetLatestFlowVersionPa
 }
 
 /*
-  GlobalGetLatestFlowVersionMetadata gets latest flow version metadata
+GlobalGetLatestFlowVersionMetadata gets latest flow version metadata
 
-  Gets the metadata for the latest version of a flow.
+Gets the metadata for the latest version of a flow.
 */
 func (a *Client) GlobalGetLatestFlowVersionMetadata(params *GlobalGetLatestFlowVersionMetadataParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GlobalGetLatestFlowVersionMetadataOK, error) {
 	// TODO: Validate the params before sending

@@ -60,7 +60,7 @@ func (o *GetFunnelReader) ReadResponse(response runtime.ClientResponse, consumer
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /funnels/{id}] getFunnel", response, response.Code())
 	}
 }
 
@@ -69,7 +69,8 @@ func NewGetFunnelOK() *GetFunnelOK {
 	return &GetFunnelOK{}
 }
 
-/* GetFunnelOK describes a response with status code 200, with default header values.
+/*
+GetFunnelOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,44 @@ type GetFunnelOK struct {
 	Payload *models.FunnelEntity
 }
 
+// IsSuccess returns true when this get funnel o k response has a 2xx status code
+func (o *GetFunnelOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get funnel o k response has a 3xx status code
+func (o *GetFunnelOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get funnel o k response has a 4xx status code
+func (o *GetFunnelOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get funnel o k response has a 5xx status code
+func (o *GetFunnelOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get funnel o k response a status code equal to that given
+func (o *GetFunnelOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the get funnel o k response
+func (o *GetFunnelOK) Code() int {
+	return 200
+}
+
 func (o *GetFunnelOK) Error() string {
 	return fmt.Sprintf("[GET /funnels/{id}][%d] getFunnelOK  %+v", 200, o.Payload)
 }
+
+func (o *GetFunnelOK) String() string {
+	return fmt.Sprintf("[GET /funnels/{id}][%d] getFunnelOK  %+v", 200, o.Payload)
+}
+
 func (o *GetFunnelOK) GetPayload() *models.FunnelEntity {
 	return o.Payload
 }
@@ -101,14 +137,49 @@ func NewGetFunnelBadRequest() *GetFunnelBadRequest {
 	return &GetFunnelBadRequest{}
 }
 
-/* GetFunnelBadRequest describes a response with status code 400, with default header values.
+/*
+GetFunnelBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type GetFunnelBadRequest struct {
 }
 
+// IsSuccess returns true when this get funnel bad request response has a 2xx status code
+func (o *GetFunnelBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get funnel bad request response has a 3xx status code
+func (o *GetFunnelBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get funnel bad request response has a 4xx status code
+func (o *GetFunnelBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get funnel bad request response has a 5xx status code
+func (o *GetFunnelBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get funnel bad request response a status code equal to that given
+func (o *GetFunnelBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the get funnel bad request response
+func (o *GetFunnelBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetFunnelBadRequest) Error() string {
+	return fmt.Sprintf("[GET /funnels/{id}][%d] getFunnelBadRequest ", 400)
+}
+
+func (o *GetFunnelBadRequest) String() string {
 	return fmt.Sprintf("[GET /funnels/{id}][%d] getFunnelBadRequest ", 400)
 }
 
@@ -122,14 +193,49 @@ func NewGetFunnelUnauthorized() *GetFunnelUnauthorized {
 	return &GetFunnelUnauthorized{}
 }
 
-/* GetFunnelUnauthorized describes a response with status code 401, with default header values.
+/*
+GetFunnelUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type GetFunnelUnauthorized struct {
 }
 
+// IsSuccess returns true when this get funnel unauthorized response has a 2xx status code
+func (o *GetFunnelUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get funnel unauthorized response has a 3xx status code
+func (o *GetFunnelUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get funnel unauthorized response has a 4xx status code
+func (o *GetFunnelUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get funnel unauthorized response has a 5xx status code
+func (o *GetFunnelUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get funnel unauthorized response a status code equal to that given
+func (o *GetFunnelUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the get funnel unauthorized response
+func (o *GetFunnelUnauthorized) Code() int {
+	return 401
+}
+
 func (o *GetFunnelUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /funnels/{id}][%d] getFunnelUnauthorized ", 401)
+}
+
+func (o *GetFunnelUnauthorized) String() string {
 	return fmt.Sprintf("[GET /funnels/{id}][%d] getFunnelUnauthorized ", 401)
 }
 
@@ -143,14 +249,49 @@ func NewGetFunnelForbidden() *GetFunnelForbidden {
 	return &GetFunnelForbidden{}
 }
 
-/* GetFunnelForbidden describes a response with status code 403, with default header values.
+/*
+GetFunnelForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type GetFunnelForbidden struct {
 }
 
+// IsSuccess returns true when this get funnel forbidden response has a 2xx status code
+func (o *GetFunnelForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get funnel forbidden response has a 3xx status code
+func (o *GetFunnelForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get funnel forbidden response has a 4xx status code
+func (o *GetFunnelForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get funnel forbidden response has a 5xx status code
+func (o *GetFunnelForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get funnel forbidden response a status code equal to that given
+func (o *GetFunnelForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the get funnel forbidden response
+func (o *GetFunnelForbidden) Code() int {
+	return 403
+}
+
 func (o *GetFunnelForbidden) Error() string {
+	return fmt.Sprintf("[GET /funnels/{id}][%d] getFunnelForbidden ", 403)
+}
+
+func (o *GetFunnelForbidden) String() string {
 	return fmt.Sprintf("[GET /funnels/{id}][%d] getFunnelForbidden ", 403)
 }
 
@@ -164,14 +305,49 @@ func NewGetFunnelNotFound() *GetFunnelNotFound {
 	return &GetFunnelNotFound{}
 }
 
-/* GetFunnelNotFound describes a response with status code 404, with default header values.
+/*
+GetFunnelNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type GetFunnelNotFound struct {
 }
 
+// IsSuccess returns true when this get funnel not found response has a 2xx status code
+func (o *GetFunnelNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get funnel not found response has a 3xx status code
+func (o *GetFunnelNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get funnel not found response has a 4xx status code
+func (o *GetFunnelNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get funnel not found response has a 5xx status code
+func (o *GetFunnelNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get funnel not found response a status code equal to that given
+func (o *GetFunnelNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+// Code gets the status code for the get funnel not found response
+func (o *GetFunnelNotFound) Code() int {
+	return 404
+}
+
 func (o *GetFunnelNotFound) Error() string {
+	return fmt.Sprintf("[GET /funnels/{id}][%d] getFunnelNotFound ", 404)
+}
+
+func (o *GetFunnelNotFound) String() string {
 	return fmt.Sprintf("[GET /funnels/{id}][%d] getFunnelNotFound ", 404)
 }
 
@@ -185,14 +361,49 @@ func NewGetFunnelConflict() *GetFunnelConflict {
 	return &GetFunnelConflict{}
 }
 
-/* GetFunnelConflict describes a response with status code 409, with default header values.
+/*
+GetFunnelConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type GetFunnelConflict struct {
 }
 
+// IsSuccess returns true when this get funnel conflict response has a 2xx status code
+func (o *GetFunnelConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get funnel conflict response has a 3xx status code
+func (o *GetFunnelConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get funnel conflict response has a 4xx status code
+func (o *GetFunnelConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get funnel conflict response has a 5xx status code
+func (o *GetFunnelConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get funnel conflict response a status code equal to that given
+func (o *GetFunnelConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the get funnel conflict response
+func (o *GetFunnelConflict) Code() int {
+	return 409
+}
+
 func (o *GetFunnelConflict) Error() string {
+	return fmt.Sprintf("[GET /funnels/{id}][%d] getFunnelConflict ", 409)
+}
+
+func (o *GetFunnelConflict) String() string {
 	return fmt.Sprintf("[GET /funnels/{id}][%d] getFunnelConflict ", 409)
 }
 

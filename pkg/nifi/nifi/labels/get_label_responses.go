@@ -60,7 +60,7 @@ func (o *GetLabelReader) ReadResponse(response runtime.ClientResponse, consumer 
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /labels/{id}] getLabel", response, response.Code())
 	}
 }
 
@@ -69,7 +69,8 @@ func NewGetLabelOK() *GetLabelOK {
 	return &GetLabelOK{}
 }
 
-/* GetLabelOK describes a response with status code 200, with default header values.
+/*
+GetLabelOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,44 @@ type GetLabelOK struct {
 	Payload *models.LabelEntity
 }
 
+// IsSuccess returns true when this get label o k response has a 2xx status code
+func (o *GetLabelOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get label o k response has a 3xx status code
+func (o *GetLabelOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get label o k response has a 4xx status code
+func (o *GetLabelOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get label o k response has a 5xx status code
+func (o *GetLabelOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get label o k response a status code equal to that given
+func (o *GetLabelOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the get label o k response
+func (o *GetLabelOK) Code() int {
+	return 200
+}
+
 func (o *GetLabelOK) Error() string {
 	return fmt.Sprintf("[GET /labels/{id}][%d] getLabelOK  %+v", 200, o.Payload)
 }
+
+func (o *GetLabelOK) String() string {
+	return fmt.Sprintf("[GET /labels/{id}][%d] getLabelOK  %+v", 200, o.Payload)
+}
+
 func (o *GetLabelOK) GetPayload() *models.LabelEntity {
 	return o.Payload
 }
@@ -101,14 +137,49 @@ func NewGetLabelBadRequest() *GetLabelBadRequest {
 	return &GetLabelBadRequest{}
 }
 
-/* GetLabelBadRequest describes a response with status code 400, with default header values.
+/*
+GetLabelBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type GetLabelBadRequest struct {
 }
 
+// IsSuccess returns true when this get label bad request response has a 2xx status code
+func (o *GetLabelBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get label bad request response has a 3xx status code
+func (o *GetLabelBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get label bad request response has a 4xx status code
+func (o *GetLabelBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get label bad request response has a 5xx status code
+func (o *GetLabelBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get label bad request response a status code equal to that given
+func (o *GetLabelBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the get label bad request response
+func (o *GetLabelBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetLabelBadRequest) Error() string {
+	return fmt.Sprintf("[GET /labels/{id}][%d] getLabelBadRequest ", 400)
+}
+
+func (o *GetLabelBadRequest) String() string {
 	return fmt.Sprintf("[GET /labels/{id}][%d] getLabelBadRequest ", 400)
 }
 
@@ -122,14 +193,49 @@ func NewGetLabelUnauthorized() *GetLabelUnauthorized {
 	return &GetLabelUnauthorized{}
 }
 
-/* GetLabelUnauthorized describes a response with status code 401, with default header values.
+/*
+GetLabelUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type GetLabelUnauthorized struct {
 }
 
+// IsSuccess returns true when this get label unauthorized response has a 2xx status code
+func (o *GetLabelUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get label unauthorized response has a 3xx status code
+func (o *GetLabelUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get label unauthorized response has a 4xx status code
+func (o *GetLabelUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get label unauthorized response has a 5xx status code
+func (o *GetLabelUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get label unauthorized response a status code equal to that given
+func (o *GetLabelUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the get label unauthorized response
+func (o *GetLabelUnauthorized) Code() int {
+	return 401
+}
+
 func (o *GetLabelUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /labels/{id}][%d] getLabelUnauthorized ", 401)
+}
+
+func (o *GetLabelUnauthorized) String() string {
 	return fmt.Sprintf("[GET /labels/{id}][%d] getLabelUnauthorized ", 401)
 }
 
@@ -143,14 +249,49 @@ func NewGetLabelForbidden() *GetLabelForbidden {
 	return &GetLabelForbidden{}
 }
 
-/* GetLabelForbidden describes a response with status code 403, with default header values.
+/*
+GetLabelForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type GetLabelForbidden struct {
 }
 
+// IsSuccess returns true when this get label forbidden response has a 2xx status code
+func (o *GetLabelForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get label forbidden response has a 3xx status code
+func (o *GetLabelForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get label forbidden response has a 4xx status code
+func (o *GetLabelForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get label forbidden response has a 5xx status code
+func (o *GetLabelForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get label forbidden response a status code equal to that given
+func (o *GetLabelForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the get label forbidden response
+func (o *GetLabelForbidden) Code() int {
+	return 403
+}
+
 func (o *GetLabelForbidden) Error() string {
+	return fmt.Sprintf("[GET /labels/{id}][%d] getLabelForbidden ", 403)
+}
+
+func (o *GetLabelForbidden) String() string {
 	return fmt.Sprintf("[GET /labels/{id}][%d] getLabelForbidden ", 403)
 }
 
@@ -164,14 +305,49 @@ func NewGetLabelNotFound() *GetLabelNotFound {
 	return &GetLabelNotFound{}
 }
 
-/* GetLabelNotFound describes a response with status code 404, with default header values.
+/*
+GetLabelNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type GetLabelNotFound struct {
 }
 
+// IsSuccess returns true when this get label not found response has a 2xx status code
+func (o *GetLabelNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get label not found response has a 3xx status code
+func (o *GetLabelNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get label not found response has a 4xx status code
+func (o *GetLabelNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get label not found response has a 5xx status code
+func (o *GetLabelNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get label not found response a status code equal to that given
+func (o *GetLabelNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+// Code gets the status code for the get label not found response
+func (o *GetLabelNotFound) Code() int {
+	return 404
+}
+
 func (o *GetLabelNotFound) Error() string {
+	return fmt.Sprintf("[GET /labels/{id}][%d] getLabelNotFound ", 404)
+}
+
+func (o *GetLabelNotFound) String() string {
 	return fmt.Sprintf("[GET /labels/{id}][%d] getLabelNotFound ", 404)
 }
 
@@ -185,14 +361,49 @@ func NewGetLabelConflict() *GetLabelConflict {
 	return &GetLabelConflict{}
 }
 
-/* GetLabelConflict describes a response with status code 409, with default header values.
+/*
+GetLabelConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type GetLabelConflict struct {
 }
 
+// IsSuccess returns true when this get label conflict response has a 2xx status code
+func (o *GetLabelConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get label conflict response has a 3xx status code
+func (o *GetLabelConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get label conflict response has a 4xx status code
+func (o *GetLabelConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get label conflict response has a 5xx status code
+func (o *GetLabelConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get label conflict response a status code equal to that given
+func (o *GetLabelConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the get label conflict response
+func (o *GetLabelConflict) Code() int {
+	return 409
+}
+
 func (o *GetLabelConflict) Error() string {
+	return fmt.Sprintf("[GET /labels/{id}][%d] getLabelConflict ", 409)
+}
+
+func (o *GetLabelConflict) String() string {
 	return fmt.Sprintf("[GET /labels/{id}][%d] getLabelConflict ", 409)
 }
 

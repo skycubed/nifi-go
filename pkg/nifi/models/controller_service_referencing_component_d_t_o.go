@@ -221,6 +221,11 @@ func (m *ControllerServiceReferencingComponentDTO) contextValidateReferencingCom
 	for i := 0; i < len(m.ReferencingComponents); i++ {
 
 		if m.ReferencingComponents[i] != nil {
+
+			if swag.IsZero(m.ReferencingComponents[i]) { // not required
+				return nil
+			}
+
 			if err := m.ReferencingComponents[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("referencingComponents" + "." + strconv.Itoa(i))

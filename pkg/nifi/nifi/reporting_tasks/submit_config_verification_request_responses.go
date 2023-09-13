@@ -60,7 +60,7 @@ func (o *SubmitConfigVerificationRequestReader) ReadResponse(response runtime.Cl
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /reporting-tasks/{id}/config/verification-requests] submitConfigVerificationRequest", response, response.Code())
 	}
 }
 
@@ -69,7 +69,8 @@ func NewSubmitConfigVerificationRequestOK() *SubmitConfigVerificationRequestOK {
 	return &SubmitConfigVerificationRequestOK{}
 }
 
-/* SubmitConfigVerificationRequestOK describes a response with status code 200, with default header values.
+/*
+SubmitConfigVerificationRequestOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,44 @@ type SubmitConfigVerificationRequestOK struct {
 	Payload *models.VerifyConfigRequestEntity
 }
 
+// IsSuccess returns true when this submit config verification request o k response has a 2xx status code
+func (o *SubmitConfigVerificationRequestOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this submit config verification request o k response has a 3xx status code
+func (o *SubmitConfigVerificationRequestOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this submit config verification request o k response has a 4xx status code
+func (o *SubmitConfigVerificationRequestOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this submit config verification request o k response has a 5xx status code
+func (o *SubmitConfigVerificationRequestOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this submit config verification request o k response a status code equal to that given
+func (o *SubmitConfigVerificationRequestOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the submit config verification request o k response
+func (o *SubmitConfigVerificationRequestOK) Code() int {
+	return 200
+}
+
 func (o *SubmitConfigVerificationRequestOK) Error() string {
 	return fmt.Sprintf("[POST /reporting-tasks/{id}/config/verification-requests][%d] submitConfigVerificationRequestOK  %+v", 200, o.Payload)
 }
+
+func (o *SubmitConfigVerificationRequestOK) String() string {
+	return fmt.Sprintf("[POST /reporting-tasks/{id}/config/verification-requests][%d] submitConfigVerificationRequestOK  %+v", 200, o.Payload)
+}
+
 func (o *SubmitConfigVerificationRequestOK) GetPayload() *models.VerifyConfigRequestEntity {
 	return o.Payload
 }
@@ -101,14 +137,49 @@ func NewSubmitConfigVerificationRequestBadRequest() *SubmitConfigVerificationReq
 	return &SubmitConfigVerificationRequestBadRequest{}
 }
 
-/* SubmitConfigVerificationRequestBadRequest describes a response with status code 400, with default header values.
+/*
+SubmitConfigVerificationRequestBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type SubmitConfigVerificationRequestBadRequest struct {
 }
 
+// IsSuccess returns true when this submit config verification request bad request response has a 2xx status code
+func (o *SubmitConfigVerificationRequestBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this submit config verification request bad request response has a 3xx status code
+func (o *SubmitConfigVerificationRequestBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this submit config verification request bad request response has a 4xx status code
+func (o *SubmitConfigVerificationRequestBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this submit config verification request bad request response has a 5xx status code
+func (o *SubmitConfigVerificationRequestBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this submit config verification request bad request response a status code equal to that given
+func (o *SubmitConfigVerificationRequestBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the submit config verification request bad request response
+func (o *SubmitConfigVerificationRequestBadRequest) Code() int {
+	return 400
+}
+
 func (o *SubmitConfigVerificationRequestBadRequest) Error() string {
+	return fmt.Sprintf("[POST /reporting-tasks/{id}/config/verification-requests][%d] submitConfigVerificationRequestBadRequest ", 400)
+}
+
+func (o *SubmitConfigVerificationRequestBadRequest) String() string {
 	return fmt.Sprintf("[POST /reporting-tasks/{id}/config/verification-requests][%d] submitConfigVerificationRequestBadRequest ", 400)
 }
 
@@ -122,14 +193,49 @@ func NewSubmitConfigVerificationRequestUnauthorized() *SubmitConfigVerificationR
 	return &SubmitConfigVerificationRequestUnauthorized{}
 }
 
-/* SubmitConfigVerificationRequestUnauthorized describes a response with status code 401, with default header values.
+/*
+SubmitConfigVerificationRequestUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type SubmitConfigVerificationRequestUnauthorized struct {
 }
 
+// IsSuccess returns true when this submit config verification request unauthorized response has a 2xx status code
+func (o *SubmitConfigVerificationRequestUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this submit config verification request unauthorized response has a 3xx status code
+func (o *SubmitConfigVerificationRequestUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this submit config verification request unauthorized response has a 4xx status code
+func (o *SubmitConfigVerificationRequestUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this submit config verification request unauthorized response has a 5xx status code
+func (o *SubmitConfigVerificationRequestUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this submit config verification request unauthorized response a status code equal to that given
+func (o *SubmitConfigVerificationRequestUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the submit config verification request unauthorized response
+func (o *SubmitConfigVerificationRequestUnauthorized) Code() int {
+	return 401
+}
+
 func (o *SubmitConfigVerificationRequestUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /reporting-tasks/{id}/config/verification-requests][%d] submitConfigVerificationRequestUnauthorized ", 401)
+}
+
+func (o *SubmitConfigVerificationRequestUnauthorized) String() string {
 	return fmt.Sprintf("[POST /reporting-tasks/{id}/config/verification-requests][%d] submitConfigVerificationRequestUnauthorized ", 401)
 }
 
@@ -143,14 +249,49 @@ func NewSubmitConfigVerificationRequestForbidden() *SubmitConfigVerificationRequ
 	return &SubmitConfigVerificationRequestForbidden{}
 }
 
-/* SubmitConfigVerificationRequestForbidden describes a response with status code 403, with default header values.
+/*
+SubmitConfigVerificationRequestForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type SubmitConfigVerificationRequestForbidden struct {
 }
 
+// IsSuccess returns true when this submit config verification request forbidden response has a 2xx status code
+func (o *SubmitConfigVerificationRequestForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this submit config verification request forbidden response has a 3xx status code
+func (o *SubmitConfigVerificationRequestForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this submit config verification request forbidden response has a 4xx status code
+func (o *SubmitConfigVerificationRequestForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this submit config verification request forbidden response has a 5xx status code
+func (o *SubmitConfigVerificationRequestForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this submit config verification request forbidden response a status code equal to that given
+func (o *SubmitConfigVerificationRequestForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the submit config verification request forbidden response
+func (o *SubmitConfigVerificationRequestForbidden) Code() int {
+	return 403
+}
+
 func (o *SubmitConfigVerificationRequestForbidden) Error() string {
+	return fmt.Sprintf("[POST /reporting-tasks/{id}/config/verification-requests][%d] submitConfigVerificationRequestForbidden ", 403)
+}
+
+func (o *SubmitConfigVerificationRequestForbidden) String() string {
 	return fmt.Sprintf("[POST /reporting-tasks/{id}/config/verification-requests][%d] submitConfigVerificationRequestForbidden ", 403)
 }
 
@@ -164,14 +305,49 @@ func NewSubmitConfigVerificationRequestNotFound() *SubmitConfigVerificationReque
 	return &SubmitConfigVerificationRequestNotFound{}
 }
 
-/* SubmitConfigVerificationRequestNotFound describes a response with status code 404, with default header values.
+/*
+SubmitConfigVerificationRequestNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type SubmitConfigVerificationRequestNotFound struct {
 }
 
+// IsSuccess returns true when this submit config verification request not found response has a 2xx status code
+func (o *SubmitConfigVerificationRequestNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this submit config verification request not found response has a 3xx status code
+func (o *SubmitConfigVerificationRequestNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this submit config verification request not found response has a 4xx status code
+func (o *SubmitConfigVerificationRequestNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this submit config verification request not found response has a 5xx status code
+func (o *SubmitConfigVerificationRequestNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this submit config verification request not found response a status code equal to that given
+func (o *SubmitConfigVerificationRequestNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+// Code gets the status code for the submit config verification request not found response
+func (o *SubmitConfigVerificationRequestNotFound) Code() int {
+	return 404
+}
+
 func (o *SubmitConfigVerificationRequestNotFound) Error() string {
+	return fmt.Sprintf("[POST /reporting-tasks/{id}/config/verification-requests][%d] submitConfigVerificationRequestNotFound ", 404)
+}
+
+func (o *SubmitConfigVerificationRequestNotFound) String() string {
 	return fmt.Sprintf("[POST /reporting-tasks/{id}/config/verification-requests][%d] submitConfigVerificationRequestNotFound ", 404)
 }
 
@@ -185,14 +361,49 @@ func NewSubmitConfigVerificationRequestConflict() *SubmitConfigVerificationReque
 	return &SubmitConfigVerificationRequestConflict{}
 }
 
-/* SubmitConfigVerificationRequestConflict describes a response with status code 409, with default header values.
+/*
+SubmitConfigVerificationRequestConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type SubmitConfigVerificationRequestConflict struct {
 }
 
+// IsSuccess returns true when this submit config verification request conflict response has a 2xx status code
+func (o *SubmitConfigVerificationRequestConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this submit config verification request conflict response has a 3xx status code
+func (o *SubmitConfigVerificationRequestConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this submit config verification request conflict response has a 4xx status code
+func (o *SubmitConfigVerificationRequestConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this submit config verification request conflict response has a 5xx status code
+func (o *SubmitConfigVerificationRequestConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this submit config verification request conflict response a status code equal to that given
+func (o *SubmitConfigVerificationRequestConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the submit config verification request conflict response
+func (o *SubmitConfigVerificationRequestConflict) Code() int {
+	return 409
+}
+
 func (o *SubmitConfigVerificationRequestConflict) Error() string {
+	return fmt.Sprintf("[POST /reporting-tasks/{id}/config/verification-requests][%d] submitConfigVerificationRequestConflict ", 409)
+}
+
+func (o *SubmitConfigVerificationRequestConflict) String() string {
 	return fmt.Sprintf("[POST /reporting-tasks/{id}/config/verification-requests][%d] submitConfigVerificationRequestConflict ", 409)
 }
 

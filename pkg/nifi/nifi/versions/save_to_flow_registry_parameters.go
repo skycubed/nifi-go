@@ -54,10 +54,12 @@ func NewSaveToFlowRegistryParamsWithHTTPClient(client *http.Client) *SaveToFlowR
 	}
 }
 
-/* SaveToFlowRegistryParams contains all the parameters to send to the API endpoint
-   for the save to flow registry operation.
+/*
+SaveToFlowRegistryParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the save to flow registry operation.
+
+	Typically these are written to a http.Request.
 */
 type SaveToFlowRegistryParams struct {
 

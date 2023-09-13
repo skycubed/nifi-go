@@ -36,12 +36,38 @@ func NewSamlLoginHTTPPostConsumerDefault(code int) *SamlLoginHTTPPostConsumerDef
 	}
 }
 
-/* SamlLoginHTTPPostConsumerDefault describes a response with status code -1, with default header values.
+/*
+SamlLoginHTTPPostConsumerDefault describes a response with status code -1, with default header values.
 
 successful operation
 */
 type SamlLoginHTTPPostConsumerDefault struct {
 	_statusCode int
+}
+
+// IsSuccess returns true when this saml login Http post consumer default response has a 2xx status code
+func (o *SamlLoginHTTPPostConsumerDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this saml login Http post consumer default response has a 3xx status code
+func (o *SamlLoginHTTPPostConsumerDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this saml login Http post consumer default response has a 4xx status code
+func (o *SamlLoginHTTPPostConsumerDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this saml login Http post consumer default response has a 5xx status code
+func (o *SamlLoginHTTPPostConsumerDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this saml login Http post consumer default response a status code equal to that given
+func (o *SamlLoginHTTPPostConsumerDefault) IsCode(code int) bool {
+	return o._statusCode == code
 }
 
 // Code gets the status code for the saml login Http post consumer default response
@@ -50,6 +76,10 @@ func (o *SamlLoginHTTPPostConsumerDefault) Code() int {
 }
 
 func (o *SamlLoginHTTPPostConsumerDefault) Error() string {
+	return fmt.Sprintf("[POST /access/saml/login/consumer][%d] samlLoginHttpPostConsumer default ", o._statusCode)
+}
+
+func (o *SamlLoginHTTPPostConsumerDefault) String() string {
 	return fmt.Sprintf("[POST /access/saml/login/consumer][%d] samlLoginHttpPostConsumer default ", o._statusCode)
 }
 

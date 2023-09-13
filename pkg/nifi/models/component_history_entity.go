@@ -72,6 +72,11 @@ func (m *ComponentHistoryEntity) ContextValidate(ctx context.Context, formats st
 func (m *ComponentHistoryEntity) contextValidateComponentHistory(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ComponentHistory != nil {
+
+		if swag.IsZero(m.ComponentHistory) { // not required
+			return nil
+		}
+
 		if err := m.ComponentHistory.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("componentHistory")

@@ -60,7 +60,7 @@ func (o *SubmitProcessorVerificationRequestReader) ReadResponse(response runtime
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /processors/{id}/config/verification-requests] submitProcessorVerificationRequest", response, response.Code())
 	}
 }
 
@@ -69,7 +69,8 @@ func NewSubmitProcessorVerificationRequestOK() *SubmitProcessorVerificationReque
 	return &SubmitProcessorVerificationRequestOK{}
 }
 
-/* SubmitProcessorVerificationRequestOK describes a response with status code 200, with default header values.
+/*
+SubmitProcessorVerificationRequestOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,44 @@ type SubmitProcessorVerificationRequestOK struct {
 	Payload *models.VerifyConfigRequestEntity
 }
 
+// IsSuccess returns true when this submit processor verification request o k response has a 2xx status code
+func (o *SubmitProcessorVerificationRequestOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this submit processor verification request o k response has a 3xx status code
+func (o *SubmitProcessorVerificationRequestOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this submit processor verification request o k response has a 4xx status code
+func (o *SubmitProcessorVerificationRequestOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this submit processor verification request o k response has a 5xx status code
+func (o *SubmitProcessorVerificationRequestOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this submit processor verification request o k response a status code equal to that given
+func (o *SubmitProcessorVerificationRequestOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the submit processor verification request o k response
+func (o *SubmitProcessorVerificationRequestOK) Code() int {
+	return 200
+}
+
 func (o *SubmitProcessorVerificationRequestOK) Error() string {
 	return fmt.Sprintf("[POST /processors/{id}/config/verification-requests][%d] submitProcessorVerificationRequestOK  %+v", 200, o.Payload)
 }
+
+func (o *SubmitProcessorVerificationRequestOK) String() string {
+	return fmt.Sprintf("[POST /processors/{id}/config/verification-requests][%d] submitProcessorVerificationRequestOK  %+v", 200, o.Payload)
+}
+
 func (o *SubmitProcessorVerificationRequestOK) GetPayload() *models.VerifyConfigRequestEntity {
 	return o.Payload
 }
@@ -101,14 +137,49 @@ func NewSubmitProcessorVerificationRequestBadRequest() *SubmitProcessorVerificat
 	return &SubmitProcessorVerificationRequestBadRequest{}
 }
 
-/* SubmitProcessorVerificationRequestBadRequest describes a response with status code 400, with default header values.
+/*
+SubmitProcessorVerificationRequestBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type SubmitProcessorVerificationRequestBadRequest struct {
 }
 
+// IsSuccess returns true when this submit processor verification request bad request response has a 2xx status code
+func (o *SubmitProcessorVerificationRequestBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this submit processor verification request bad request response has a 3xx status code
+func (o *SubmitProcessorVerificationRequestBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this submit processor verification request bad request response has a 4xx status code
+func (o *SubmitProcessorVerificationRequestBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this submit processor verification request bad request response has a 5xx status code
+func (o *SubmitProcessorVerificationRequestBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this submit processor verification request bad request response a status code equal to that given
+func (o *SubmitProcessorVerificationRequestBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the submit processor verification request bad request response
+func (o *SubmitProcessorVerificationRequestBadRequest) Code() int {
+	return 400
+}
+
 func (o *SubmitProcessorVerificationRequestBadRequest) Error() string {
+	return fmt.Sprintf("[POST /processors/{id}/config/verification-requests][%d] submitProcessorVerificationRequestBadRequest ", 400)
+}
+
+func (o *SubmitProcessorVerificationRequestBadRequest) String() string {
 	return fmt.Sprintf("[POST /processors/{id}/config/verification-requests][%d] submitProcessorVerificationRequestBadRequest ", 400)
 }
 
@@ -122,14 +193,49 @@ func NewSubmitProcessorVerificationRequestUnauthorized() *SubmitProcessorVerific
 	return &SubmitProcessorVerificationRequestUnauthorized{}
 }
 
-/* SubmitProcessorVerificationRequestUnauthorized describes a response with status code 401, with default header values.
+/*
+SubmitProcessorVerificationRequestUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type SubmitProcessorVerificationRequestUnauthorized struct {
 }
 
+// IsSuccess returns true when this submit processor verification request unauthorized response has a 2xx status code
+func (o *SubmitProcessorVerificationRequestUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this submit processor verification request unauthorized response has a 3xx status code
+func (o *SubmitProcessorVerificationRequestUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this submit processor verification request unauthorized response has a 4xx status code
+func (o *SubmitProcessorVerificationRequestUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this submit processor verification request unauthorized response has a 5xx status code
+func (o *SubmitProcessorVerificationRequestUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this submit processor verification request unauthorized response a status code equal to that given
+func (o *SubmitProcessorVerificationRequestUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the submit processor verification request unauthorized response
+func (o *SubmitProcessorVerificationRequestUnauthorized) Code() int {
+	return 401
+}
+
 func (o *SubmitProcessorVerificationRequestUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /processors/{id}/config/verification-requests][%d] submitProcessorVerificationRequestUnauthorized ", 401)
+}
+
+func (o *SubmitProcessorVerificationRequestUnauthorized) String() string {
 	return fmt.Sprintf("[POST /processors/{id}/config/verification-requests][%d] submitProcessorVerificationRequestUnauthorized ", 401)
 }
 
@@ -143,14 +249,49 @@ func NewSubmitProcessorVerificationRequestForbidden() *SubmitProcessorVerificati
 	return &SubmitProcessorVerificationRequestForbidden{}
 }
 
-/* SubmitProcessorVerificationRequestForbidden describes a response with status code 403, with default header values.
+/*
+SubmitProcessorVerificationRequestForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type SubmitProcessorVerificationRequestForbidden struct {
 }
 
+// IsSuccess returns true when this submit processor verification request forbidden response has a 2xx status code
+func (o *SubmitProcessorVerificationRequestForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this submit processor verification request forbidden response has a 3xx status code
+func (o *SubmitProcessorVerificationRequestForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this submit processor verification request forbidden response has a 4xx status code
+func (o *SubmitProcessorVerificationRequestForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this submit processor verification request forbidden response has a 5xx status code
+func (o *SubmitProcessorVerificationRequestForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this submit processor verification request forbidden response a status code equal to that given
+func (o *SubmitProcessorVerificationRequestForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the submit processor verification request forbidden response
+func (o *SubmitProcessorVerificationRequestForbidden) Code() int {
+	return 403
+}
+
 func (o *SubmitProcessorVerificationRequestForbidden) Error() string {
+	return fmt.Sprintf("[POST /processors/{id}/config/verification-requests][%d] submitProcessorVerificationRequestForbidden ", 403)
+}
+
+func (o *SubmitProcessorVerificationRequestForbidden) String() string {
 	return fmt.Sprintf("[POST /processors/{id}/config/verification-requests][%d] submitProcessorVerificationRequestForbidden ", 403)
 }
 
@@ -164,14 +305,49 @@ func NewSubmitProcessorVerificationRequestNotFound() *SubmitProcessorVerificatio
 	return &SubmitProcessorVerificationRequestNotFound{}
 }
 
-/* SubmitProcessorVerificationRequestNotFound describes a response with status code 404, with default header values.
+/*
+SubmitProcessorVerificationRequestNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type SubmitProcessorVerificationRequestNotFound struct {
 }
 
+// IsSuccess returns true when this submit processor verification request not found response has a 2xx status code
+func (o *SubmitProcessorVerificationRequestNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this submit processor verification request not found response has a 3xx status code
+func (o *SubmitProcessorVerificationRequestNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this submit processor verification request not found response has a 4xx status code
+func (o *SubmitProcessorVerificationRequestNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this submit processor verification request not found response has a 5xx status code
+func (o *SubmitProcessorVerificationRequestNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this submit processor verification request not found response a status code equal to that given
+func (o *SubmitProcessorVerificationRequestNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+// Code gets the status code for the submit processor verification request not found response
+func (o *SubmitProcessorVerificationRequestNotFound) Code() int {
+	return 404
+}
+
 func (o *SubmitProcessorVerificationRequestNotFound) Error() string {
+	return fmt.Sprintf("[POST /processors/{id}/config/verification-requests][%d] submitProcessorVerificationRequestNotFound ", 404)
+}
+
+func (o *SubmitProcessorVerificationRequestNotFound) String() string {
 	return fmt.Sprintf("[POST /processors/{id}/config/verification-requests][%d] submitProcessorVerificationRequestNotFound ", 404)
 }
 
@@ -185,14 +361,49 @@ func NewSubmitProcessorVerificationRequestConflict() *SubmitProcessorVerificatio
 	return &SubmitProcessorVerificationRequestConflict{}
 }
 
-/* SubmitProcessorVerificationRequestConflict describes a response with status code 409, with default header values.
+/*
+SubmitProcessorVerificationRequestConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type SubmitProcessorVerificationRequestConflict struct {
 }
 
+// IsSuccess returns true when this submit processor verification request conflict response has a 2xx status code
+func (o *SubmitProcessorVerificationRequestConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this submit processor verification request conflict response has a 3xx status code
+func (o *SubmitProcessorVerificationRequestConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this submit processor verification request conflict response has a 4xx status code
+func (o *SubmitProcessorVerificationRequestConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this submit processor verification request conflict response has a 5xx status code
+func (o *SubmitProcessorVerificationRequestConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this submit processor verification request conflict response a status code equal to that given
+func (o *SubmitProcessorVerificationRequestConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the submit processor verification request conflict response
+func (o *SubmitProcessorVerificationRequestConflict) Code() int {
+	return 409
+}
+
 func (o *SubmitProcessorVerificationRequestConflict) Error() string {
+	return fmt.Sprintf("[POST /processors/{id}/config/verification-requests][%d] submitProcessorVerificationRequestConflict ", 409)
+}
+
+func (o *SubmitProcessorVerificationRequestConflict) String() string {
 	return fmt.Sprintf("[POST /processors/{id}/config/verification-requests][%d] submitProcessorVerificationRequestConflict ", 409)
 }
 

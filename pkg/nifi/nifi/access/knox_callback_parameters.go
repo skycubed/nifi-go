@@ -52,10 +52,12 @@ func NewKnoxCallbackParamsWithHTTPClient(client *http.Client) *KnoxCallbackParam
 	}
 }
 
-/* KnoxCallbackParams contains all the parameters to send to the API endpoint
-   for the knox callback operation.
+/*
+KnoxCallbackParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the knox callback operation.
+
+	Typically these are written to a http.Request.
 */
 type KnoxCallbackParams struct {
 	timeout    time.Duration

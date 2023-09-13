@@ -54,10 +54,12 @@ func NewSubmitConfigVerificationRequestParamsWithHTTPClient(client *http.Client)
 	}
 }
 
-/* SubmitConfigVerificationRequestParams contains all the parameters to send to the API endpoint
-   for the submit config verification request operation.
+/*
+SubmitConfigVerificationRequestParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the submit config verification request operation.
+
+	Typically these are written to a http.Request.
 */
 type SubmitConfigVerificationRequestParams struct {
 

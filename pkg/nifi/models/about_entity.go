@@ -72,6 +72,11 @@ func (m *AboutEntity) ContextValidate(ctx context.Context, formats strfmt.Regist
 func (m *AboutEntity) contextValidateAbout(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.About != nil {
+
+		if swag.IsZero(m.About) { // not required
+			return nil
+		}
+
 		if err := m.About.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("about")

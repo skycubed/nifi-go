@@ -40,7 +40,7 @@ type ClientService interface {
 }
 
 /*
-  CreateSnippet creates a snippet the snippet will be automatically discarded if not used in a subsequent request after 1 minute
+CreateSnippet creates a snippet the snippet will be automatically discarded if not used in a subsequent request after 1 minute
 */
 func (a *Client) CreateSnippet(params *CreateSnippetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateSnippetCreated, error) {
 	// TODO: Validate the params before sending
@@ -79,7 +79,7 @@ func (a *Client) CreateSnippet(params *CreateSnippetParams, authInfo runtime.Cli
 }
 
 /*
-  DeleteSnippet deletes the components in a snippet and discards the snippet
+DeleteSnippet deletes the components in a snippet and discards the snippet
 */
 func (a *Client) DeleteSnippet(params *DeleteSnippetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteSnippetOK, error) {
 	// TODO: Validate the params before sending
@@ -118,7 +118,7 @@ func (a *Client) DeleteSnippet(params *DeleteSnippetParams, authInfo runtime.Cli
 }
 
 /*
-  UpdateSnippet moves s the components in this snippet into a new process group and discards the snippet
+UpdateSnippet moves s the components in this snippet into a new process group and discards the snippet
 */
 func (a *Client) UpdateSnippet(params *UpdateSnippetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateSnippetOK, error) {
 	// TODO: Validate the params before sending

@@ -145,6 +145,11 @@ func (m *ListingRequestDTO) contextValidateFlowFileSummaries(ctx context.Context
 	for i := 0; i < len(m.FlowFileSummaries); i++ {
 
 		if m.FlowFileSummaries[i] != nil {
+
+			if swag.IsZero(m.FlowFileSummaries[i]) { // not required
+				return nil
+			}
+
 			if err := m.FlowFileSummaries[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("flowFileSummaries" + "." + strconv.Itoa(i))
@@ -163,6 +168,11 @@ func (m *ListingRequestDTO) contextValidateFlowFileSummaries(ctx context.Context
 func (m *ListingRequestDTO) contextValidateQueueSize(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.QueueSize != nil {
+
+		if swag.IsZero(m.QueueSize) { // not required
+			return nil
+		}
+
 		if err := m.QueueSize.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("queueSize")

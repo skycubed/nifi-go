@@ -304,6 +304,11 @@ func (m *ReportingTaskDTO) ContextValidate(ctx context.Context, formats strfmt.R
 func (m *ReportingTaskDTO) contextValidateBundle(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Bundle != nil {
+
+		if swag.IsZero(m.Bundle) { // not required
+			return nil
+		}
+
 		if err := m.Bundle.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("bundle")
@@ -335,6 +340,11 @@ func (m *ReportingTaskDTO) contextValidateDescriptors(ctx context.Context, forma
 func (m *ReportingTaskDTO) contextValidatePosition(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Position != nil {
+
+		if swag.IsZero(m.Position) { // not required
+			return nil
+		}
+
 		if err := m.Position.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("position")

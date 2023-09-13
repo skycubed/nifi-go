@@ -52,10 +52,12 @@ func NewGetExtensionRepoBucketsParamsWithHTTPClient(client *http.Client) *GetExt
 	}
 }
 
-/* GetExtensionRepoBucketsParams contains all the parameters to send to the API endpoint
-   for the get extension repo buckets operation.
+/*
+GetExtensionRepoBucketsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get extension repo buckets operation.
+
+	Typically these are written to a http.Request.
 */
 type GetExtensionRepoBucketsParams struct {
 	timeout    time.Duration

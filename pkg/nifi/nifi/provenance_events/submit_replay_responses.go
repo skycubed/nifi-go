@@ -60,7 +60,7 @@ func (o *SubmitReplayReader) ReadResponse(response runtime.ClientResponse, consu
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /provenance-events/replays] submitReplay", response, response.Code())
 	}
 }
 
@@ -69,7 +69,8 @@ func NewSubmitReplayCreated() *SubmitReplayCreated {
 	return &SubmitReplayCreated{}
 }
 
-/* SubmitReplayCreated describes a response with status code 201, with default header values.
+/*
+SubmitReplayCreated describes a response with status code 201, with default header values.
 
 successful operation
 */
@@ -77,9 +78,44 @@ type SubmitReplayCreated struct {
 	Payload *models.ProvenanceEventEntity
 }
 
+// IsSuccess returns true when this submit replay created response has a 2xx status code
+func (o *SubmitReplayCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this submit replay created response has a 3xx status code
+func (o *SubmitReplayCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this submit replay created response has a 4xx status code
+func (o *SubmitReplayCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this submit replay created response has a 5xx status code
+func (o *SubmitReplayCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this submit replay created response a status code equal to that given
+func (o *SubmitReplayCreated) IsCode(code int) bool {
+	return code == 201
+}
+
+// Code gets the status code for the submit replay created response
+func (o *SubmitReplayCreated) Code() int {
+	return 201
+}
+
 func (o *SubmitReplayCreated) Error() string {
 	return fmt.Sprintf("[POST /provenance-events/replays][%d] submitReplayCreated  %+v", 201, o.Payload)
 }
+
+func (o *SubmitReplayCreated) String() string {
+	return fmt.Sprintf("[POST /provenance-events/replays][%d] submitReplayCreated  %+v", 201, o.Payload)
+}
+
 func (o *SubmitReplayCreated) GetPayload() *models.ProvenanceEventEntity {
 	return o.Payload
 }
@@ -101,14 +137,49 @@ func NewSubmitReplayBadRequest() *SubmitReplayBadRequest {
 	return &SubmitReplayBadRequest{}
 }
 
-/* SubmitReplayBadRequest describes a response with status code 400, with default header values.
+/*
+SubmitReplayBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type SubmitReplayBadRequest struct {
 }
 
+// IsSuccess returns true when this submit replay bad request response has a 2xx status code
+func (o *SubmitReplayBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this submit replay bad request response has a 3xx status code
+func (o *SubmitReplayBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this submit replay bad request response has a 4xx status code
+func (o *SubmitReplayBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this submit replay bad request response has a 5xx status code
+func (o *SubmitReplayBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this submit replay bad request response a status code equal to that given
+func (o *SubmitReplayBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the submit replay bad request response
+func (o *SubmitReplayBadRequest) Code() int {
+	return 400
+}
+
 func (o *SubmitReplayBadRequest) Error() string {
+	return fmt.Sprintf("[POST /provenance-events/replays][%d] submitReplayBadRequest ", 400)
+}
+
+func (o *SubmitReplayBadRequest) String() string {
 	return fmt.Sprintf("[POST /provenance-events/replays][%d] submitReplayBadRequest ", 400)
 }
 
@@ -122,14 +193,49 @@ func NewSubmitReplayUnauthorized() *SubmitReplayUnauthorized {
 	return &SubmitReplayUnauthorized{}
 }
 
-/* SubmitReplayUnauthorized describes a response with status code 401, with default header values.
+/*
+SubmitReplayUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type SubmitReplayUnauthorized struct {
 }
 
+// IsSuccess returns true when this submit replay unauthorized response has a 2xx status code
+func (o *SubmitReplayUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this submit replay unauthorized response has a 3xx status code
+func (o *SubmitReplayUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this submit replay unauthorized response has a 4xx status code
+func (o *SubmitReplayUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this submit replay unauthorized response has a 5xx status code
+func (o *SubmitReplayUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this submit replay unauthorized response a status code equal to that given
+func (o *SubmitReplayUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the submit replay unauthorized response
+func (o *SubmitReplayUnauthorized) Code() int {
+	return 401
+}
+
 func (o *SubmitReplayUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /provenance-events/replays][%d] submitReplayUnauthorized ", 401)
+}
+
+func (o *SubmitReplayUnauthorized) String() string {
 	return fmt.Sprintf("[POST /provenance-events/replays][%d] submitReplayUnauthorized ", 401)
 }
 
@@ -143,14 +249,49 @@ func NewSubmitReplayForbidden() *SubmitReplayForbidden {
 	return &SubmitReplayForbidden{}
 }
 
-/* SubmitReplayForbidden describes a response with status code 403, with default header values.
+/*
+SubmitReplayForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type SubmitReplayForbidden struct {
 }
 
+// IsSuccess returns true when this submit replay forbidden response has a 2xx status code
+func (o *SubmitReplayForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this submit replay forbidden response has a 3xx status code
+func (o *SubmitReplayForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this submit replay forbidden response has a 4xx status code
+func (o *SubmitReplayForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this submit replay forbidden response has a 5xx status code
+func (o *SubmitReplayForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this submit replay forbidden response a status code equal to that given
+func (o *SubmitReplayForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the submit replay forbidden response
+func (o *SubmitReplayForbidden) Code() int {
+	return 403
+}
+
 func (o *SubmitReplayForbidden) Error() string {
+	return fmt.Sprintf("[POST /provenance-events/replays][%d] submitReplayForbidden ", 403)
+}
+
+func (o *SubmitReplayForbidden) String() string {
 	return fmt.Sprintf("[POST /provenance-events/replays][%d] submitReplayForbidden ", 403)
 }
 
@@ -164,14 +305,49 @@ func NewSubmitReplayNotFound() *SubmitReplayNotFound {
 	return &SubmitReplayNotFound{}
 }
 
-/* SubmitReplayNotFound describes a response with status code 404, with default header values.
+/*
+SubmitReplayNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type SubmitReplayNotFound struct {
 }
 
+// IsSuccess returns true when this submit replay not found response has a 2xx status code
+func (o *SubmitReplayNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this submit replay not found response has a 3xx status code
+func (o *SubmitReplayNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this submit replay not found response has a 4xx status code
+func (o *SubmitReplayNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this submit replay not found response has a 5xx status code
+func (o *SubmitReplayNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this submit replay not found response a status code equal to that given
+func (o *SubmitReplayNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+// Code gets the status code for the submit replay not found response
+func (o *SubmitReplayNotFound) Code() int {
+	return 404
+}
+
 func (o *SubmitReplayNotFound) Error() string {
+	return fmt.Sprintf("[POST /provenance-events/replays][%d] submitReplayNotFound ", 404)
+}
+
+func (o *SubmitReplayNotFound) String() string {
 	return fmt.Sprintf("[POST /provenance-events/replays][%d] submitReplayNotFound ", 404)
 }
 
@@ -185,14 +361,49 @@ func NewSubmitReplayConflict() *SubmitReplayConflict {
 	return &SubmitReplayConflict{}
 }
 
-/* SubmitReplayConflict describes a response with status code 409, with default header values.
+/*
+SubmitReplayConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type SubmitReplayConflict struct {
 }
 
+// IsSuccess returns true when this submit replay conflict response has a 2xx status code
+func (o *SubmitReplayConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this submit replay conflict response has a 3xx status code
+func (o *SubmitReplayConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this submit replay conflict response has a 4xx status code
+func (o *SubmitReplayConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this submit replay conflict response has a 5xx status code
+func (o *SubmitReplayConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this submit replay conflict response a status code equal to that given
+func (o *SubmitReplayConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the submit replay conflict response
+func (o *SubmitReplayConflict) Code() int {
+	return 409
+}
+
 func (o *SubmitReplayConflict) Error() string {
+	return fmt.Sprintf("[POST /provenance-events/replays][%d] submitReplayConflict ", 409)
+}
+
+func (o *SubmitReplayConflict) String() string {
 	return fmt.Sprintf("[POST /provenance-events/replays][%d] submitReplayConflict ", 409)
 }
 

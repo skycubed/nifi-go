@@ -52,10 +52,12 @@ func NewCreatePortTransactionParamsWithHTTPClient(client *http.Client) *CreatePo
 	}
 }
 
-/* CreatePortTransactionParams contains all the parameters to send to the API endpoint
-   for the create port transaction operation.
+/*
+CreatePortTransactionParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create port transaction operation.
+
+	Typically these are written to a http.Request.
 */
 type CreatePortTransactionParams struct {
 

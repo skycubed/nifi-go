@@ -52,10 +52,12 @@ func NewGetControllerConfigParamsWithHTTPClient(client *http.Client) *GetControl
 	}
 }
 
-/* GetControllerConfigParams contains all the parameters to send to the API endpoint
-   for the get controller config operation.
+/*
+GetControllerConfigParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get controller config operation.
+
+	Typically these are written to a http.Request.
 */
 type GetControllerConfigParams struct {
 	timeout    time.Duration

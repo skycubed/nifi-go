@@ -52,10 +52,12 @@ func NewTerminateProcessorParamsWithHTTPClient(client *http.Client) *TerminatePr
 	}
 }
 
-/* TerminateProcessorParams contains all the parameters to send to the API endpoint
-   for the terminate processor operation.
+/*
+TerminateProcessorParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the terminate processor operation.
+
+	Typically these are written to a http.Request.
 */
 type TerminateProcessorParams struct {
 

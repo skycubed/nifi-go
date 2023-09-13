@@ -54,7 +54,7 @@ func (o *GetControllerStatusReader) ReadResponse(response runtime.ClientResponse
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /flow/status] getControllerStatus", response, response.Code())
 	}
 }
 
@@ -63,7 +63,8 @@ func NewGetControllerStatusOK() *GetControllerStatusOK {
 	return &GetControllerStatusOK{}
 }
 
-/* GetControllerStatusOK describes a response with status code 200, with default header values.
+/*
+GetControllerStatusOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -71,9 +72,44 @@ type GetControllerStatusOK struct {
 	Payload *models.ControllerStatusEntity
 }
 
+// IsSuccess returns true when this get controller status o k response has a 2xx status code
+func (o *GetControllerStatusOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get controller status o k response has a 3xx status code
+func (o *GetControllerStatusOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get controller status o k response has a 4xx status code
+func (o *GetControllerStatusOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get controller status o k response has a 5xx status code
+func (o *GetControllerStatusOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get controller status o k response a status code equal to that given
+func (o *GetControllerStatusOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the get controller status o k response
+func (o *GetControllerStatusOK) Code() int {
+	return 200
+}
+
 func (o *GetControllerStatusOK) Error() string {
 	return fmt.Sprintf("[GET /flow/status][%d] getControllerStatusOK  %+v", 200, o.Payload)
 }
+
+func (o *GetControllerStatusOK) String() string {
+	return fmt.Sprintf("[GET /flow/status][%d] getControllerStatusOK  %+v", 200, o.Payload)
+}
+
 func (o *GetControllerStatusOK) GetPayload() *models.ControllerStatusEntity {
 	return o.Payload
 }
@@ -95,14 +131,49 @@ func NewGetControllerStatusBadRequest() *GetControllerStatusBadRequest {
 	return &GetControllerStatusBadRequest{}
 }
 
-/* GetControllerStatusBadRequest describes a response with status code 400, with default header values.
+/*
+GetControllerStatusBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type GetControllerStatusBadRequest struct {
 }
 
+// IsSuccess returns true when this get controller status bad request response has a 2xx status code
+func (o *GetControllerStatusBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get controller status bad request response has a 3xx status code
+func (o *GetControllerStatusBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get controller status bad request response has a 4xx status code
+func (o *GetControllerStatusBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get controller status bad request response has a 5xx status code
+func (o *GetControllerStatusBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get controller status bad request response a status code equal to that given
+func (o *GetControllerStatusBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the get controller status bad request response
+func (o *GetControllerStatusBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetControllerStatusBadRequest) Error() string {
+	return fmt.Sprintf("[GET /flow/status][%d] getControllerStatusBadRequest ", 400)
+}
+
+func (o *GetControllerStatusBadRequest) String() string {
 	return fmt.Sprintf("[GET /flow/status][%d] getControllerStatusBadRequest ", 400)
 }
 
@@ -116,14 +187,49 @@ func NewGetControllerStatusUnauthorized() *GetControllerStatusUnauthorized {
 	return &GetControllerStatusUnauthorized{}
 }
 
-/* GetControllerStatusUnauthorized describes a response with status code 401, with default header values.
+/*
+GetControllerStatusUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type GetControllerStatusUnauthorized struct {
 }
 
+// IsSuccess returns true when this get controller status unauthorized response has a 2xx status code
+func (o *GetControllerStatusUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get controller status unauthorized response has a 3xx status code
+func (o *GetControllerStatusUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get controller status unauthorized response has a 4xx status code
+func (o *GetControllerStatusUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get controller status unauthorized response has a 5xx status code
+func (o *GetControllerStatusUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get controller status unauthorized response a status code equal to that given
+func (o *GetControllerStatusUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the get controller status unauthorized response
+func (o *GetControllerStatusUnauthorized) Code() int {
+	return 401
+}
+
 func (o *GetControllerStatusUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /flow/status][%d] getControllerStatusUnauthorized ", 401)
+}
+
+func (o *GetControllerStatusUnauthorized) String() string {
 	return fmt.Sprintf("[GET /flow/status][%d] getControllerStatusUnauthorized ", 401)
 }
 
@@ -137,14 +243,49 @@ func NewGetControllerStatusForbidden() *GetControllerStatusForbidden {
 	return &GetControllerStatusForbidden{}
 }
 
-/* GetControllerStatusForbidden describes a response with status code 403, with default header values.
+/*
+GetControllerStatusForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type GetControllerStatusForbidden struct {
 }
 
+// IsSuccess returns true when this get controller status forbidden response has a 2xx status code
+func (o *GetControllerStatusForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get controller status forbidden response has a 3xx status code
+func (o *GetControllerStatusForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get controller status forbidden response has a 4xx status code
+func (o *GetControllerStatusForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get controller status forbidden response has a 5xx status code
+func (o *GetControllerStatusForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get controller status forbidden response a status code equal to that given
+func (o *GetControllerStatusForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the get controller status forbidden response
+func (o *GetControllerStatusForbidden) Code() int {
+	return 403
+}
+
 func (o *GetControllerStatusForbidden) Error() string {
+	return fmt.Sprintf("[GET /flow/status][%d] getControllerStatusForbidden ", 403)
+}
+
+func (o *GetControllerStatusForbidden) String() string {
 	return fmt.Sprintf("[GET /flow/status][%d] getControllerStatusForbidden ", 403)
 }
 
@@ -158,14 +299,49 @@ func NewGetControllerStatusConflict() *GetControllerStatusConflict {
 	return &GetControllerStatusConflict{}
 }
 
-/* GetControllerStatusConflict describes a response with status code 409, with default header values.
+/*
+GetControllerStatusConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type GetControllerStatusConflict struct {
 }
 
+// IsSuccess returns true when this get controller status conflict response has a 2xx status code
+func (o *GetControllerStatusConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get controller status conflict response has a 3xx status code
+func (o *GetControllerStatusConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get controller status conflict response has a 4xx status code
+func (o *GetControllerStatusConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get controller status conflict response has a 5xx status code
+func (o *GetControllerStatusConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get controller status conflict response a status code equal to that given
+func (o *GetControllerStatusConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the get controller status conflict response
+func (o *GetControllerStatusConflict) Code() int {
+	return 409
+}
+
 func (o *GetControllerStatusConflict) Error() string {
+	return fmt.Sprintf("[GET /flow/status][%d] getControllerStatusConflict ", 409)
+}
+
+func (o *GetControllerStatusConflict) String() string {
 	return fmt.Sprintf("[GET /flow/status][%d] getControllerStatusConflict ", 409)
 }
 

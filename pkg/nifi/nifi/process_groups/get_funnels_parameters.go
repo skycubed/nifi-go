@@ -52,10 +52,12 @@ func NewGetFunnelsParamsWithHTTPClient(client *http.Client) *GetFunnelsParams {
 	}
 }
 
-/* GetFunnelsParams contains all the parameters to send to the API endpoint
-   for the get funnels operation.
+/*
+GetFunnelsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get funnels operation.
+
+	Typically these are written to a http.Request.
 */
 type GetFunnelsParams struct {
 

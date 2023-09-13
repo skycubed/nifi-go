@@ -116,7 +116,7 @@ type ClientService interface {
 }
 
 /*
-  CopySnippet copies a snippet and discards it
+CopySnippet copies a snippet and discards it
 */
 func (a *Client) CopySnippet(params *CopySnippetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CopySnippetCreated, error) {
 	// TODO: Validate the params before sending
@@ -155,7 +155,7 @@ func (a *Client) CopySnippet(params *CopySnippetParams, authInfo runtime.ClientA
 }
 
 /*
-  CreateConnection creates a connection
+CreateConnection creates a connection
 */
 func (a *Client) CreateConnection(params *CreateConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateConnectionCreated, error) {
 	// TODO: Validate the params before sending
@@ -194,7 +194,7 @@ func (a *Client) CreateConnection(params *CreateConnectionParams, authInfo runti
 }
 
 /*
-  CreateControllerService creates a new controller service
+CreateControllerService creates a new controller service
 */
 func (a *Client) CreateControllerService(params *CreateControllerServiceParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateControllerServiceCreated, error) {
 	// TODO: Validate the params before sending
@@ -233,7 +233,7 @@ func (a *Client) CreateControllerService(params *CreateControllerServiceParams, 
 }
 
 /*
-  CreateEmptyAllConnectionsRequest creates a request to drop all flowfiles of all connection queues in this process group
+CreateEmptyAllConnectionsRequest creates a request to drop all flowfiles of all connection queues in this process group
 */
 func (a *Client) CreateEmptyAllConnectionsRequest(params *CreateEmptyAllConnectionsRequestParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateEmptyAllConnectionsRequestOK, *CreateEmptyAllConnectionsRequestAccepted, error) {
 	// TODO: Validate the params before sending
@@ -273,7 +273,7 @@ func (a *Client) CreateEmptyAllConnectionsRequest(params *CreateEmptyAllConnecti
 }
 
 /*
-  CreateFunnel creates a funnel
+CreateFunnel creates a funnel
 */
 func (a *Client) CreateFunnel(params *CreateFunnelParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateFunnelCreated, error) {
 	// TODO: Validate the params before sending
@@ -312,7 +312,7 @@ func (a *Client) CreateFunnel(params *CreateFunnelParams, authInfo runtime.Clien
 }
 
 /*
-  CreateInputPort creates an input port
+CreateInputPort creates an input port
 */
 func (a *Client) CreateInputPort(params *CreateInputPortParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateInputPortCreated, error) {
 	// TODO: Validate the params before sending
@@ -351,7 +351,7 @@ func (a *Client) CreateInputPort(params *CreateInputPortParams, authInfo runtime
 }
 
 /*
-  CreateLabel creates a label
+CreateLabel creates a label
 */
 func (a *Client) CreateLabel(params *CreateLabelParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateLabelCreated, error) {
 	// TODO: Validate the params before sending
@@ -390,7 +390,7 @@ func (a *Client) CreateLabel(params *CreateLabelParams, authInfo runtime.ClientA
 }
 
 /*
-  CreateOutputPort creates an output port
+CreateOutputPort creates an output port
 */
 func (a *Client) CreateOutputPort(params *CreateOutputPortParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateOutputPortCreated, error) {
 	// TODO: Validate the params before sending
@@ -429,7 +429,7 @@ func (a *Client) CreateOutputPort(params *CreateOutputPortParams, authInfo runti
 }
 
 /*
-  CreateProcessGroup creates a process group
+CreateProcessGroup creates a process group
 */
 func (a *Client) CreateProcessGroup(params *CreateProcessGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateProcessGroupCreated, error) {
 	// TODO: Validate the params before sending
@@ -468,7 +468,7 @@ func (a *Client) CreateProcessGroup(params *CreateProcessGroupParams, authInfo r
 }
 
 /*
-  CreateProcessor creates a new processor
+CreateProcessor creates a new processor
 */
 func (a *Client) CreateProcessor(params *CreateProcessorParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateProcessorCreated, error) {
 	// TODO: Validate the params before sending
@@ -507,7 +507,7 @@ func (a *Client) CreateProcessor(params *CreateProcessorParams, authInfo runtime
 }
 
 /*
-  CreateRemoteProcessGroup creates a new process group
+CreateRemoteProcessGroup creates a new process group
 */
 func (a *Client) CreateRemoteProcessGroup(params *CreateRemoteProcessGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateRemoteProcessGroupCreated, error) {
 	// TODO: Validate the params before sending
@@ -546,7 +546,7 @@ func (a *Client) CreateRemoteProcessGroup(params *CreateRemoteProcessGroupParams
 }
 
 /*
-  CreateTemplate creates a template and discards the specified snippet
+CreateTemplate creates a template and discards the specified snippet
 */
 func (a *Client) CreateTemplate(params *CreateTemplateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateTemplateCreated, error) {
 	// TODO: Validate the params before sending
@@ -585,9 +585,9 @@ func (a *Client) CreateTemplate(params *CreateTemplateParams, authInfo runtime.C
 }
 
 /*
-  DeleteReplaceProcessGroupRequest deletes the replace request with the given ID
+DeleteReplaceProcessGroupRequest deletes the replace request with the given ID
 
-  Deletes the Replace Request with the given ID. After a request is created via a POST to /process-groups/{id}/replace-requests, it is expected that the client will properly clean up the request by DELETE'ing it, once the Replace process has completed. If the request is deleted before the request completes, then the Replace request will finish the step that it is currently performing and then will cancel any subsequent steps. Note: This endpoint is subject to change as NiFi and it's REST API evolve.
+Deletes the Replace Request with the given ID. After a request is created via a POST to /process-groups/{id}/replace-requests, it is expected that the client will properly clean up the request by DELETE'ing it, once the Replace process has completed. If the request is deleted before the request completes, then the Replace request will finish the step that it is currently performing and then will cancel any subsequent steps. Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 */
 func (a *Client) DeleteReplaceProcessGroupRequest(params *DeleteReplaceProcessGroupRequestParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteReplaceProcessGroupRequestOK, error) {
 	// TODO: Validate the params before sending
@@ -626,9 +626,9 @@ func (a *Client) DeleteReplaceProcessGroupRequest(params *DeleteReplaceProcessGr
 }
 
 /*
-  DeleteVariableRegistryUpdateRequest deletes an update request for a process group s variable registry if the request is not yet complete it will automatically be cancelled
+DeleteVariableRegistryUpdateRequest deletes an update request for a process group s variable registry if the request is not yet complete it will automatically be cancelled
 
-  Note: This endpoint is subject to change as NiFi and it's REST API evolve.
+Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 */
 func (a *Client) DeleteVariableRegistryUpdateRequest(params *DeleteVariableRegistryUpdateRequestParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteVariableRegistryUpdateRequestOK, error) {
 	// TODO: Validate the params before sending
@@ -667,7 +667,7 @@ func (a *Client) DeleteVariableRegistryUpdateRequest(params *DeleteVariableRegis
 }
 
 /*
-  ExportProcessGroup gets a process group for download
+ExportProcessGroup gets a process group for download
 */
 func (a *Client) ExportProcessGroup(params *ExportProcessGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ExportProcessGroupOK, error) {
 	// TODO: Validate the params before sending
@@ -706,7 +706,7 @@ func (a *Client) ExportProcessGroup(params *ExportProcessGroupParams, authInfo r
 }
 
 /*
-  GetConnections gets all connections
+GetConnections gets all connections
 */
 func (a *Client) GetConnections(params *GetConnectionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetConnectionsOK, error) {
 	// TODO: Validate the params before sending
@@ -745,7 +745,7 @@ func (a *Client) GetConnections(params *GetConnectionsParams, authInfo runtime.C
 }
 
 /*
-  GetDropAllFlowfilesRequest gets the current status of a drop all flowfiles request
+GetDropAllFlowfilesRequest gets the current status of a drop all flowfiles request
 */
 func (a *Client) GetDropAllFlowfilesRequest(params *GetDropAllFlowfilesRequestParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetDropAllFlowfilesRequestOK, error) {
 	// TODO: Validate the params before sending
@@ -784,7 +784,7 @@ func (a *Client) GetDropAllFlowfilesRequest(params *GetDropAllFlowfilesRequestPa
 }
 
 /*
-  GetFunnels gets all funnels
+GetFunnels gets all funnels
 */
 func (a *Client) GetFunnels(params *GetFunnelsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetFunnelsOK, error) {
 	// TODO: Validate the params before sending
@@ -823,7 +823,7 @@ func (a *Client) GetFunnels(params *GetFunnelsParams, authInfo runtime.ClientAut
 }
 
 /*
-  GetInputPorts gets all input ports
+GetInputPorts gets all input ports
 */
 func (a *Client) GetInputPorts(params *GetInputPortsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetInputPortsOK, error) {
 	// TODO: Validate the params before sending
@@ -862,7 +862,7 @@ func (a *Client) GetInputPorts(params *GetInputPortsParams, authInfo runtime.Cli
 }
 
 /*
-  GetLabels gets all labels
+GetLabels gets all labels
 */
 func (a *Client) GetLabels(params *GetLabelsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetLabelsOK, error) {
 	// TODO: Validate the params before sending
@@ -901,7 +901,7 @@ func (a *Client) GetLabels(params *GetLabelsParams, authInfo runtime.ClientAuthI
 }
 
 /*
-  GetLocalModifications gets a list of local modifications to the process group since it was last synchronized with the flow registry
+GetLocalModifications gets a list of local modifications to the process group since it was last synchronized with the flow registry
 */
 func (a *Client) GetLocalModifications(params *GetLocalModificationsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetLocalModificationsOK, error) {
 	// TODO: Validate the params before sending
@@ -940,7 +940,7 @@ func (a *Client) GetLocalModifications(params *GetLocalModificationsParams, auth
 }
 
 /*
-  GetOutputPorts gets all output ports
+GetOutputPorts gets all output ports
 */
 func (a *Client) GetOutputPorts(params *GetOutputPortsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetOutputPortsOK, error) {
 	// TODO: Validate the params before sending
@@ -979,7 +979,7 @@ func (a *Client) GetOutputPorts(params *GetOutputPortsParams, authInfo runtime.C
 }
 
 /*
-  GetProcessGroup gets a process group
+GetProcessGroup gets a process group
 */
 func (a *Client) GetProcessGroup(params *GetProcessGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetProcessGroupOK, error) {
 	// TODO: Validate the params before sending
@@ -1018,7 +1018,7 @@ func (a *Client) GetProcessGroup(params *GetProcessGroupParams, authInfo runtime
 }
 
 /*
-  GetProcessGroups gets all process groups
+GetProcessGroups gets all process groups
 */
 func (a *Client) GetProcessGroups(params *GetProcessGroupsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetProcessGroupsOK, error) {
 	// TODO: Validate the params before sending
@@ -1057,7 +1057,7 @@ func (a *Client) GetProcessGroups(params *GetProcessGroupsParams, authInfo runti
 }
 
 /*
-  GetProcessors gets all processors
+GetProcessors gets all processors
 */
 func (a *Client) GetProcessors(params *GetProcessorsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetProcessorsOK, error) {
 	// TODO: Validate the params before sending
@@ -1096,7 +1096,7 @@ func (a *Client) GetProcessors(params *GetProcessorsParams, authInfo runtime.Cli
 }
 
 /*
-  GetRemoteProcessGroups gets all remote process groups
+GetRemoteProcessGroups gets all remote process groups
 */
 func (a *Client) GetRemoteProcessGroups(params *GetRemoteProcessGroupsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetRemoteProcessGroupsOK, error) {
 	// TODO: Validate the params before sending
@@ -1135,9 +1135,9 @@ func (a *Client) GetRemoteProcessGroups(params *GetRemoteProcessGroupsParams, au
 }
 
 /*
-  GetReplaceProcessGroupRequest returns the replace request with the given ID
+GetReplaceProcessGroupRequest returns the replace request with the given ID
 
-  Returns the Replace Request with the given ID. Once a Replace Request has been created by performing a POST to /process-groups/{id}/replace-requests, that request can subsequently be retrieved via this endpoint, and the request that is fetched will contain the updated state, such as percent complete, the current state of the request, and any failures. Note: This endpoint is subject to change as NiFi and it's REST API evolve.
+Returns the Replace Request with the given ID. Once a Replace Request has been created by performing a POST to /process-groups/{id}/replace-requests, that request can subsequently be retrieved via this endpoint, and the request that is fetched will contain the updated state, such as percent complete, the current state of the request, and any failures. Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 */
 func (a *Client) GetReplaceProcessGroupRequest(params *GetReplaceProcessGroupRequestParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetReplaceProcessGroupRequestOK, error) {
 	// TODO: Validate the params before sending
@@ -1176,9 +1176,9 @@ func (a *Client) GetReplaceProcessGroupRequest(params *GetReplaceProcessGroupReq
 }
 
 /*
-  GetVariableRegistry gets a process group s variable registry
+GetVariableRegistry gets a process group s variable registry
 
-  Note: This endpoint is subject to change as NiFi and it's REST API evolve.
+Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 */
 func (a *Client) GetVariableRegistry(params *GetVariableRegistryParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetVariableRegistryOK, error) {
 	// TODO: Validate the params before sending
@@ -1217,9 +1217,9 @@ func (a *Client) GetVariableRegistry(params *GetVariableRegistryParams, authInfo
 }
 
 /*
-  GetVariableRegistryUpdateRequest gets a process group s variable registry
+GetVariableRegistryUpdateRequest gets a process group s variable registry
 
-  Note: This endpoint is subject to change as NiFi and it's REST API evolve.
+Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 */
 func (a *Client) GetVariableRegistryUpdateRequest(params *GetVariableRegistryUpdateRequestParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetVariableRegistryUpdateRequestOK, error) {
 	// TODO: Validate the params before sending
@@ -1258,7 +1258,7 @@ func (a *Client) GetVariableRegistryUpdateRequest(params *GetVariableRegistryUpd
 }
 
 /*
-  ImportProcessGroup imports a specified process group
+ImportProcessGroup imports a specified process group
 */
 func (a *Client) ImportProcessGroup(params *ImportProcessGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ImportProcessGroupCreated, error) {
 	// TODO: Validate the params before sending
@@ -1297,7 +1297,7 @@ func (a *Client) ImportProcessGroup(params *ImportProcessGroupParams, authInfo r
 }
 
 /*
-  ImportTemplate imports a template
+ImportTemplate imports a template
 */
 func (a *Client) ImportTemplate(params *ImportTemplateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ImportTemplateCreated, error) {
 	// TODO: Validate the params before sending
@@ -1336,9 +1336,9 @@ func (a *Client) ImportTemplate(params *ImportTemplateParams, authInfo runtime.C
 }
 
 /*
-  InitiateReplaceProcessGroup initiates the replace request of a process group with the given ID
+InitiateReplaceProcessGroup initiates the replace request of a process group with the given ID
 
-  This will initiate the action of replacing a process group with the given process group. This can be a lengthy process, as it will stop any Processors and disable any Controller Services necessary to perform the action and then restart them. As a result, the endpoint will immediately return a ProcessGroupReplaceRequestEntity, and the process of replacing the flow will occur asynchronously in the background. The client may then periodically poll the status of the request by issuing a GET request to /process-groups/replace-requests/{requestId}. Once the request is completed, the client is expected to issue a DELETE request to /process-groups/replace-requests/{requestId}. Note: This endpoint is subject to change as NiFi and it's REST API evolve.
+This will initiate the action of replacing a process group with the given process group. This can be a lengthy process, as it will stop any Processors and disable any Controller Services necessary to perform the action and then restart them. As a result, the endpoint will immediately return a ProcessGroupReplaceRequestEntity, and the process of replacing the flow will occur asynchronously in the background. The client may then periodically poll the status of the request by issuing a GET request to /process-groups/replace-requests/{requestId}. Once the request is completed, the client is expected to issue a DELETE request to /process-groups/replace-requests/{requestId}. Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 */
 func (a *Client) InitiateReplaceProcessGroup(params *InitiateReplaceProcessGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*InitiateReplaceProcessGroupOK, error) {
 	// TODO: Validate the params before sending
@@ -1377,7 +1377,7 @@ func (a *Client) InitiateReplaceProcessGroup(params *InitiateReplaceProcessGroup
 }
 
 /*
-  InstantiateTemplate instantiates a template
+InstantiateTemplate instantiates a template
 */
 func (a *Client) InstantiateTemplate(params *InstantiateTemplateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*InstantiateTemplateCreated, error) {
 	// TODO: Validate the params before sending
@@ -1416,7 +1416,7 @@ func (a *Client) InstantiateTemplate(params *InstantiateTemplateParams, authInfo
 }
 
 /*
-  RemoveDropRequest cancels and or removes a request to drop all flowfiles
+RemoveDropRequest cancels and or removes a request to drop all flowfiles
 */
 func (a *Client) RemoveDropRequest(params *RemoveDropRequestParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*RemoveDropRequestOK, error) {
 	// TODO: Validate the params before sending
@@ -1455,7 +1455,7 @@ func (a *Client) RemoveDropRequest(params *RemoveDropRequestParams, authInfo run
 }
 
 /*
-  RemoveProcessGroup deletes a process group
+RemoveProcessGroup deletes a process group
 */
 func (a *Client) RemoveProcessGroup(params *RemoveProcessGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*RemoveProcessGroupOK, error) {
 	// TODO: Validate the params before sending
@@ -1494,9 +1494,9 @@ func (a *Client) RemoveProcessGroup(params *RemoveProcessGroupParams, authInfo r
 }
 
 /*
-  ReplaceProcessGroup replaces process group contents with the given ID with the specified process group contents
+ReplaceProcessGroup replaces process group contents with the given ID with the specified process group contents
 
-  This endpoint is used for replication within a cluster, when replacing a flow with a new flow. It expects that the flow beingreplaced is not under version control and that the given snapshot will not modify any Processor that is currently running or any Controller Service that is enabled. Note: This endpoint is subject to change as NiFi and it's REST API evolve.
+This endpoint is used for replication within a cluster, when replacing a flow with a new flow. It expects that the flow beingreplaced is not under version control and that the given snapshot will not modify any Processor that is currently running or any Controller Service that is enabled. Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 */
 func (a *Client) ReplaceProcessGroup(params *ReplaceProcessGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceProcessGroupOK, error) {
 	// TODO: Validate the params before sending
@@ -1535,9 +1535,9 @@ func (a *Client) ReplaceProcessGroup(params *ReplaceProcessGroupParams, authInfo
 }
 
 /*
-  SubmitUpdateVariableRegistryRequest submits a request to update a process group s variable registry
+SubmitUpdateVariableRegistryRequest submits a request to update a process group s variable registry
 
-  Note: This endpoint is subject to change as NiFi and it's REST API evolve.
+Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 */
 func (a *Client) SubmitUpdateVariableRegistryRequest(params *SubmitUpdateVariableRegistryRequestParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SubmitUpdateVariableRegistryRequestOK, error) {
 	// TODO: Validate the params before sending
@@ -1576,7 +1576,7 @@ func (a *Client) SubmitUpdateVariableRegistryRequest(params *SubmitUpdateVariabl
 }
 
 /*
-  UpdateProcessGroup updates a process group
+UpdateProcessGroup updates a process group
 */
 func (a *Client) UpdateProcessGroup(params *UpdateProcessGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateProcessGroupOK, error) {
 	// TODO: Validate the params before sending
@@ -1615,9 +1615,9 @@ func (a *Client) UpdateProcessGroup(params *UpdateProcessGroupParams, authInfo r
 }
 
 /*
-  UpdateVariableRegistry updates the contents of a process group s variable registry
+UpdateVariableRegistry updates the contents of a process group s variable registry
 
-  Note: This endpoint is subject to change as NiFi and it's REST API evolve.
+Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 */
 func (a *Client) UpdateVariableRegistry(params *UpdateVariableRegistryParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateVariableRegistryOK, error) {
 	// TODO: Validate the params before sending
@@ -1656,7 +1656,7 @@ func (a *Client) UpdateVariableRegistry(params *UpdateVariableRegistryParams, au
 }
 
 /*
-  UploadProcessGroup uploads a versioned flow definition and creates a process group
+UploadProcessGroup uploads a versioned flow definition and creates a process group
 */
 func (a *Client) UploadProcessGroup(params *UploadProcessGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UploadProcessGroupOK, error) {
 	// TODO: Validate the params before sending
@@ -1695,7 +1695,7 @@ func (a *Client) UploadProcessGroup(params *UploadProcessGroupParams, authInfo r
 }
 
 /*
-  UploadTemplate uploads a template
+UploadTemplate uploads a template
 */
 func (a *Client) UploadTemplate(params *UploadTemplateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UploadTemplateOK, error) {
 	// TODO: Validate the params before sending

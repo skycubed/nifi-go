@@ -52,10 +52,12 @@ func NewRemoveDropRequestParamsWithHTTPClient(client *http.Client) *RemoveDropRe
 	}
 }
 
-/* RemoveDropRequestParams contains all the parameters to send to the API endpoint
-   for the remove drop request operation.
+/*
+RemoveDropRequestParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the remove drop request operation.
+
+	Typically these are written to a http.Request.
 */
 type RemoveDropRequestParams struct {
 

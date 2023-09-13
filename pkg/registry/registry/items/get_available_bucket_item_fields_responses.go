@@ -30,7 +30,7 @@ func (o *GetAvailableBucketItemFieldsReader) ReadResponse(response runtime.Clien
 		}
 		return result, nil
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /items/fields] getAvailableBucketItemFields", response, response.Code())
 	}
 }
 
@@ -39,7 +39,8 @@ func NewGetAvailableBucketItemFieldsOK() *GetAvailableBucketItemFieldsOK {
 	return &GetAvailableBucketItemFieldsOK{}
 }
 
-/* GetAvailableBucketItemFieldsOK describes a response with status code 200, with default header values.
+/*
+GetAvailableBucketItemFieldsOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -47,9 +48,44 @@ type GetAvailableBucketItemFieldsOK struct {
 	Payload *models.Fields
 }
 
+// IsSuccess returns true when this get available bucket item fields o k response has a 2xx status code
+func (o *GetAvailableBucketItemFieldsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get available bucket item fields o k response has a 3xx status code
+func (o *GetAvailableBucketItemFieldsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get available bucket item fields o k response has a 4xx status code
+func (o *GetAvailableBucketItemFieldsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get available bucket item fields o k response has a 5xx status code
+func (o *GetAvailableBucketItemFieldsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get available bucket item fields o k response a status code equal to that given
+func (o *GetAvailableBucketItemFieldsOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the get available bucket item fields o k response
+func (o *GetAvailableBucketItemFieldsOK) Code() int {
+	return 200
+}
+
 func (o *GetAvailableBucketItemFieldsOK) Error() string {
 	return fmt.Sprintf("[GET /items/fields][%d] getAvailableBucketItemFieldsOK  %+v", 200, o.Payload)
 }
+
+func (o *GetAvailableBucketItemFieldsOK) String() string {
+	return fmt.Sprintf("[GET /items/fields][%d] getAvailableBucketItemFieldsOK  %+v", 200, o.Payload)
+}
+
 func (o *GetAvailableBucketItemFieldsOK) GetPayload() *models.Fields {
 	return o.Payload
 }

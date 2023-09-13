@@ -36,7 +36,7 @@ func (o *GetBucketsReader) ReadResponse(response runtime.ClientResponse, consume
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /buckets] getBuckets", response, response.Code())
 	}
 }
 
@@ -45,7 +45,8 @@ func NewGetBucketsOK() *GetBucketsOK {
 	return &GetBucketsOK{}
 }
 
-/* GetBucketsOK describes a response with status code 200, with default header values.
+/*
+GetBucketsOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -53,9 +54,44 @@ type GetBucketsOK struct {
 	Payload []*models.Bucket
 }
 
+// IsSuccess returns true when this get buckets o k response has a 2xx status code
+func (o *GetBucketsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get buckets o k response has a 3xx status code
+func (o *GetBucketsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get buckets o k response has a 4xx status code
+func (o *GetBucketsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get buckets o k response has a 5xx status code
+func (o *GetBucketsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get buckets o k response a status code equal to that given
+func (o *GetBucketsOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the get buckets o k response
+func (o *GetBucketsOK) Code() int {
+	return 200
+}
+
 func (o *GetBucketsOK) Error() string {
 	return fmt.Sprintf("[GET /buckets][%d] getBucketsOK  %+v", 200, o.Payload)
 }
+
+func (o *GetBucketsOK) String() string {
+	return fmt.Sprintf("[GET /buckets][%d] getBucketsOK  %+v", 200, o.Payload)
+}
+
 func (o *GetBucketsOK) GetPayload() []*models.Bucket {
 	return o.Payload
 }
@@ -75,14 +111,49 @@ func NewGetBucketsUnauthorized() *GetBucketsUnauthorized {
 	return &GetBucketsUnauthorized{}
 }
 
-/* GetBucketsUnauthorized describes a response with status code 401, with default header values.
+/*
+GetBucketsUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type GetBucketsUnauthorized struct {
 }
 
+// IsSuccess returns true when this get buckets unauthorized response has a 2xx status code
+func (o *GetBucketsUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get buckets unauthorized response has a 3xx status code
+func (o *GetBucketsUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get buckets unauthorized response has a 4xx status code
+func (o *GetBucketsUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get buckets unauthorized response has a 5xx status code
+func (o *GetBucketsUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get buckets unauthorized response a status code equal to that given
+func (o *GetBucketsUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the get buckets unauthorized response
+func (o *GetBucketsUnauthorized) Code() int {
+	return 401
+}
+
 func (o *GetBucketsUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /buckets][%d] getBucketsUnauthorized ", 401)
+}
+
+func (o *GetBucketsUnauthorized) String() string {
 	return fmt.Sprintf("[GET /buckets][%d] getBucketsUnauthorized ", 401)
 }
 

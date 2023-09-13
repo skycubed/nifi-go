@@ -132,6 +132,11 @@ func (m *ProcessGroupReplaceRequestEntity) ContextValidate(ctx context.Context, 
 func (m *ProcessGroupReplaceRequestEntity) contextValidateProcessGroupRevision(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ProcessGroupRevision != nil {
+
+		if swag.IsZero(m.ProcessGroupRevision) { // not required
+			return nil
+		}
+
 		if err := m.ProcessGroupRevision.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("processGroupRevision")
@@ -148,6 +153,11 @@ func (m *ProcessGroupReplaceRequestEntity) contextValidateProcessGroupRevision(c
 func (m *ProcessGroupReplaceRequestEntity) contextValidateRequest(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Request != nil {
+
+		if swag.IsZero(m.Request) { // not required
+			return nil
+		}
+
 		if err := m.Request.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("request")
@@ -164,6 +174,11 @@ func (m *ProcessGroupReplaceRequestEntity) contextValidateRequest(ctx context.Co
 func (m *ProcessGroupReplaceRequestEntity) contextValidateVersionedFlowSnapshot(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.VersionedFlowSnapshot != nil {
+
+		if swag.IsZero(m.VersionedFlowSnapshot) { // not required
+			return nil
+		}
+
 		if err := m.VersionedFlowSnapshot.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("versionedFlowSnapshot")

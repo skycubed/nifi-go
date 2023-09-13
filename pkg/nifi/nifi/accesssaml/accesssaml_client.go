@@ -52,9 +52,9 @@ type ClientService interface {
 }
 
 /*
-  SamlLocalLogout locals logout when s a m l is enabled does not communicate with the ID p
+SamlLocalLogout locals logout when s a m l is enabled does not communicate with the ID p
 
-  Note: This endpoint is subject to change as NiFi and it's REST API evolve.
+Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 */
 func (a *Client) SamlLocalLogout(params *SamlLocalLogoutParams, opts ...ClientOption) error {
 	// TODO: Validate the params before sending
@@ -85,9 +85,9 @@ func (a *Client) SamlLocalLogout(params *SamlLocalLogoutParams, opts ...ClientOp
 }
 
 /*
-  SamlLoginExchange retrieves a j w t following a successful login sequence using the configured s a m l identity provider
+SamlLoginExchange retrieves a j w t following a successful login sequence using the configured s a m l identity provider
 
-  Note: This endpoint is subject to change as NiFi and it's REST API evolve.
+Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 */
 func (a *Client) SamlLoginExchange(params *SamlLoginExchangeParams, opts ...ClientOption) (*SamlLoginExchangeOK, error) {
 	// TODO: Validate the params before sending
@@ -125,9 +125,9 @@ func (a *Client) SamlLoginExchange(params *SamlLoginExchangeParams, opts ...Clie
 }
 
 /*
-  SamlLoginHTTPPostConsumer processes the s s o response from the s a m l identity provider for HTTP p o s t binding
+SamlLoginHTTPPostConsumer processes the s s o response from the s a m l identity provider for HTTP p o s t binding
 
-  Note: This endpoint is subject to change as NiFi and it's REST API evolve.
+Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 */
 func (a *Client) SamlLoginHTTPPostConsumer(params *SamlLoginHTTPPostConsumerParams, opts ...ClientOption) error {
 	// TODO: Validate the params before sending
@@ -158,9 +158,9 @@ func (a *Client) SamlLoginHTTPPostConsumer(params *SamlLoginHTTPPostConsumerPara
 }
 
 /*
-  SamlLoginHTTPRedirectConsumer processes the s s o response from the s a m l identity provider for HTTP r e d i r e c t binding
+SamlLoginHTTPRedirectConsumer processes the s s o response from the s a m l identity provider for HTTP r e d i r e c t binding
 
-  Note: This endpoint is subject to change as NiFi and it's REST API evolve.
+Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 */
 func (a *Client) SamlLoginHTTPRedirectConsumer(params *SamlLoginHTTPRedirectConsumerParams, opts ...ClientOption) error {
 	// TODO: Validate the params before sending
@@ -191,9 +191,9 @@ func (a *Client) SamlLoginHTTPRedirectConsumer(params *SamlLoginHTTPRedirectCons
 }
 
 /*
-  SamlLoginRequest initiates an s s o request to the configured s a m l identity provider
+SamlLoginRequest initiates an s s o request to the configured s a m l identity provider
 
-  Note: This endpoint is subject to change as NiFi and it's REST API evolve.
+Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 */
 func (a *Client) SamlLoginRequest(params *SamlLoginRequestParams, opts ...ClientOption) error {
 	// TODO: Validate the params before sending
@@ -224,9 +224,9 @@ func (a *Client) SamlLoginRequest(params *SamlLoginRequestParams, opts ...Client
 }
 
 /*
-  SamlMetadata retrieves the service provider metadata
+SamlMetadata retrieves the service provider metadata
 
-  Note: This endpoint is subject to change as NiFi and it's REST API evolve.
+Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 */
 func (a *Client) SamlMetadata(params *SamlMetadataParams, opts ...ClientOption) error {
 	// TODO: Validate the params before sending
@@ -257,9 +257,9 @@ func (a *Client) SamlMetadata(params *SamlMetadataParams, opts ...ClientOption) 
 }
 
 /*
-  SamlSingleLogoutHTTPPostConsumer processes a single logout message from the configured s a m l identity provider using the HTTP p o s t binding
+SamlSingleLogoutHTTPPostConsumer processes a single logout message from the configured s a m l identity provider using the HTTP p o s t binding
 
-  Note: This endpoint is subject to change as NiFi and it's REST API evolve.
+Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 */
 func (a *Client) SamlSingleLogoutHTTPPostConsumer(params *SamlSingleLogoutHTTPPostConsumerParams, opts ...ClientOption) error {
 	// TODO: Validate the params before sending
@@ -290,9 +290,9 @@ func (a *Client) SamlSingleLogoutHTTPPostConsumer(params *SamlSingleLogoutHTTPPo
 }
 
 /*
-  SamlSingleLogoutHTTPRedirectConsumer processes a single logout message from the configured s a m l identity provider using the HTTP r e d i r e c t binding
+SamlSingleLogoutHTTPRedirectConsumer processes a single logout message from the configured s a m l identity provider using the HTTP r e d i r e c t binding
 
-  Note: This endpoint is subject to change as NiFi and it's REST API evolve.
+Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 */
 func (a *Client) SamlSingleLogoutHTTPRedirectConsumer(params *SamlSingleLogoutHTTPRedirectConsumerParams, opts ...ClientOption) error {
 	// TODO: Validate the params before sending
@@ -323,9 +323,9 @@ func (a *Client) SamlSingleLogoutHTTPRedirectConsumer(params *SamlSingleLogoutHT
 }
 
 /*
-  SamlSingleLogoutRequest initiates a logout request using the single logout service of the configured s a m l identity provider
+SamlSingleLogoutRequest initiates a logout request using the single logout service of the configured s a m l identity provider
 
-  Note: This endpoint is subject to change as NiFi and it's REST API evolve.
+Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 */
 func (a *Client) SamlSingleLogoutRequest(params *SamlSingleLogoutRequestParams, opts ...ClientOption) error {
 	// TODO: Validate the params before sending

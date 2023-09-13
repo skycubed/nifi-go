@@ -52,10 +52,12 @@ func NewGetProcessGroupsParamsWithHTTPClient(client *http.Client) *GetProcessGro
 	}
 }
 
-/* GetProcessGroupsParams contains all the parameters to send to the API endpoint
-   for the get process groups operation.
+/*
+GetProcessGroupsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get process groups operation.
+
+	Typically these are written to a http.Request.
 */
 type GetProcessGroupsParams struct {
 

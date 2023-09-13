@@ -54,7 +54,7 @@ func (o *RemoveAccessPolicyReader) ReadResponse(response runtime.ClientResponse,
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /policies/{id}] removeAccessPolicy", response, response.Code())
 	}
 }
 
@@ -63,7 +63,8 @@ func NewRemoveAccessPolicyOK() *RemoveAccessPolicyOK {
 	return &RemoveAccessPolicyOK{}
 }
 
-/* RemoveAccessPolicyOK describes a response with status code 200, with default header values.
+/*
+RemoveAccessPolicyOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -71,9 +72,44 @@ type RemoveAccessPolicyOK struct {
 	Payload *models.AccessPolicy
 }
 
+// IsSuccess returns true when this remove access policy o k response has a 2xx status code
+func (o *RemoveAccessPolicyOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this remove access policy o k response has a 3xx status code
+func (o *RemoveAccessPolicyOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this remove access policy o k response has a 4xx status code
+func (o *RemoveAccessPolicyOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this remove access policy o k response has a 5xx status code
+func (o *RemoveAccessPolicyOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this remove access policy o k response a status code equal to that given
+func (o *RemoveAccessPolicyOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the remove access policy o k response
+func (o *RemoveAccessPolicyOK) Code() int {
+	return 200
+}
+
 func (o *RemoveAccessPolicyOK) Error() string {
 	return fmt.Sprintf("[DELETE /policies/{id}][%d] removeAccessPolicyOK  %+v", 200, o.Payload)
 }
+
+func (o *RemoveAccessPolicyOK) String() string {
+	return fmt.Sprintf("[DELETE /policies/{id}][%d] removeAccessPolicyOK  %+v", 200, o.Payload)
+}
+
 func (o *RemoveAccessPolicyOK) GetPayload() *models.AccessPolicy {
 	return o.Payload
 }
@@ -95,14 +131,49 @@ func NewRemoveAccessPolicyUnauthorized() *RemoveAccessPolicyUnauthorized {
 	return &RemoveAccessPolicyUnauthorized{}
 }
 
-/* RemoveAccessPolicyUnauthorized describes a response with status code 401, with default header values.
+/*
+RemoveAccessPolicyUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type RemoveAccessPolicyUnauthorized struct {
 }
 
+// IsSuccess returns true when this remove access policy unauthorized response has a 2xx status code
+func (o *RemoveAccessPolicyUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this remove access policy unauthorized response has a 3xx status code
+func (o *RemoveAccessPolicyUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this remove access policy unauthorized response has a 4xx status code
+func (o *RemoveAccessPolicyUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this remove access policy unauthorized response has a 5xx status code
+func (o *RemoveAccessPolicyUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this remove access policy unauthorized response a status code equal to that given
+func (o *RemoveAccessPolicyUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the remove access policy unauthorized response
+func (o *RemoveAccessPolicyUnauthorized) Code() int {
+	return 401
+}
+
 func (o *RemoveAccessPolicyUnauthorized) Error() string {
+	return fmt.Sprintf("[DELETE /policies/{id}][%d] removeAccessPolicyUnauthorized ", 401)
+}
+
+func (o *RemoveAccessPolicyUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /policies/{id}][%d] removeAccessPolicyUnauthorized ", 401)
 }
 
@@ -116,14 +187,49 @@ func NewRemoveAccessPolicyForbidden() *RemoveAccessPolicyForbidden {
 	return &RemoveAccessPolicyForbidden{}
 }
 
-/* RemoveAccessPolicyForbidden describes a response with status code 403, with default header values.
+/*
+RemoveAccessPolicyForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type RemoveAccessPolicyForbidden struct {
 }
 
+// IsSuccess returns true when this remove access policy forbidden response has a 2xx status code
+func (o *RemoveAccessPolicyForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this remove access policy forbidden response has a 3xx status code
+func (o *RemoveAccessPolicyForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this remove access policy forbidden response has a 4xx status code
+func (o *RemoveAccessPolicyForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this remove access policy forbidden response has a 5xx status code
+func (o *RemoveAccessPolicyForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this remove access policy forbidden response a status code equal to that given
+func (o *RemoveAccessPolicyForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the remove access policy forbidden response
+func (o *RemoveAccessPolicyForbidden) Code() int {
+	return 403
+}
+
 func (o *RemoveAccessPolicyForbidden) Error() string {
+	return fmt.Sprintf("[DELETE /policies/{id}][%d] removeAccessPolicyForbidden ", 403)
+}
+
+func (o *RemoveAccessPolicyForbidden) String() string {
 	return fmt.Sprintf("[DELETE /policies/{id}][%d] removeAccessPolicyForbidden ", 403)
 }
 
@@ -137,14 +243,49 @@ func NewRemoveAccessPolicyNotFound() *RemoveAccessPolicyNotFound {
 	return &RemoveAccessPolicyNotFound{}
 }
 
-/* RemoveAccessPolicyNotFound describes a response with status code 404, with default header values.
+/*
+RemoveAccessPolicyNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type RemoveAccessPolicyNotFound struct {
 }
 
+// IsSuccess returns true when this remove access policy not found response has a 2xx status code
+func (o *RemoveAccessPolicyNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this remove access policy not found response has a 3xx status code
+func (o *RemoveAccessPolicyNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this remove access policy not found response has a 4xx status code
+func (o *RemoveAccessPolicyNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this remove access policy not found response has a 5xx status code
+func (o *RemoveAccessPolicyNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this remove access policy not found response a status code equal to that given
+func (o *RemoveAccessPolicyNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+// Code gets the status code for the remove access policy not found response
+func (o *RemoveAccessPolicyNotFound) Code() int {
+	return 404
+}
+
 func (o *RemoveAccessPolicyNotFound) Error() string {
+	return fmt.Sprintf("[DELETE /policies/{id}][%d] removeAccessPolicyNotFound ", 404)
+}
+
+func (o *RemoveAccessPolicyNotFound) String() string {
 	return fmt.Sprintf("[DELETE /policies/{id}][%d] removeAccessPolicyNotFound ", 404)
 }
 
@@ -158,14 +299,49 @@ func NewRemoveAccessPolicyConflict() *RemoveAccessPolicyConflict {
 	return &RemoveAccessPolicyConflict{}
 }
 
-/* RemoveAccessPolicyConflict describes a response with status code 409, with default header values.
+/*
+RemoveAccessPolicyConflict describes a response with status code 409, with default header values.
 
 NiFi Registry was unable to complete the request because it assumes a server state that is not valid. The NiFi Registry might not be configured to use a ConfigurableAccessPolicyProvider.
 */
 type RemoveAccessPolicyConflict struct {
 }
 
+// IsSuccess returns true when this remove access policy conflict response has a 2xx status code
+func (o *RemoveAccessPolicyConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this remove access policy conflict response has a 3xx status code
+func (o *RemoveAccessPolicyConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this remove access policy conflict response has a 4xx status code
+func (o *RemoveAccessPolicyConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this remove access policy conflict response has a 5xx status code
+func (o *RemoveAccessPolicyConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this remove access policy conflict response a status code equal to that given
+func (o *RemoveAccessPolicyConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the remove access policy conflict response
+func (o *RemoveAccessPolicyConflict) Code() int {
+	return 409
+}
+
 func (o *RemoveAccessPolicyConflict) Error() string {
+	return fmt.Sprintf("[DELETE /policies/{id}][%d] removeAccessPolicyConflict ", 409)
+}
+
+func (o *RemoveAccessPolicyConflict) String() string {
 	return fmt.Sprintf("[DELETE /policies/{id}][%d] removeAccessPolicyConflict ", 409)
 }
 

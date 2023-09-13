@@ -60,7 +60,7 @@ func (o *GetFlowVersionReader) ReadResponse(response runtime.ClientResponse, con
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /buckets/{bucketId}/flows/{flowId}/versions/{versionNumber}] getFlowVersion", response, response.Code())
 	}
 }
 
@@ -69,7 +69,8 @@ func NewGetFlowVersionOK() *GetFlowVersionOK {
 	return &GetFlowVersionOK{}
 }
 
-/* GetFlowVersionOK describes a response with status code 200, with default header values.
+/*
+GetFlowVersionOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,44 @@ type GetFlowVersionOK struct {
 	Payload *models.VersionedFlowSnapshot
 }
 
+// IsSuccess returns true when this get flow version o k response has a 2xx status code
+func (o *GetFlowVersionOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get flow version o k response has a 3xx status code
+func (o *GetFlowVersionOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get flow version o k response has a 4xx status code
+func (o *GetFlowVersionOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get flow version o k response has a 5xx status code
+func (o *GetFlowVersionOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get flow version o k response a status code equal to that given
+func (o *GetFlowVersionOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the get flow version o k response
+func (o *GetFlowVersionOK) Code() int {
+	return 200
+}
+
 func (o *GetFlowVersionOK) Error() string {
 	return fmt.Sprintf("[GET /buckets/{bucketId}/flows/{flowId}/versions/{versionNumber}][%d] getFlowVersionOK  %+v", 200, o.Payload)
 }
+
+func (o *GetFlowVersionOK) String() string {
+	return fmt.Sprintf("[GET /buckets/{bucketId}/flows/{flowId}/versions/{versionNumber}][%d] getFlowVersionOK  %+v", 200, o.Payload)
+}
+
 func (o *GetFlowVersionOK) GetPayload() *models.VersionedFlowSnapshot {
 	return o.Payload
 }
@@ -101,14 +137,49 @@ func NewGetFlowVersionBadRequest() *GetFlowVersionBadRequest {
 	return &GetFlowVersionBadRequest{}
 }
 
-/* GetFlowVersionBadRequest describes a response with status code 400, with default header values.
+/*
+GetFlowVersionBadRequest describes a response with status code 400, with default header values.
 
 NiFi Registry was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type GetFlowVersionBadRequest struct {
 }
 
+// IsSuccess returns true when this get flow version bad request response has a 2xx status code
+func (o *GetFlowVersionBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get flow version bad request response has a 3xx status code
+func (o *GetFlowVersionBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get flow version bad request response has a 4xx status code
+func (o *GetFlowVersionBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get flow version bad request response has a 5xx status code
+func (o *GetFlowVersionBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get flow version bad request response a status code equal to that given
+func (o *GetFlowVersionBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the get flow version bad request response
+func (o *GetFlowVersionBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetFlowVersionBadRequest) Error() string {
+	return fmt.Sprintf("[GET /buckets/{bucketId}/flows/{flowId}/versions/{versionNumber}][%d] getFlowVersionBadRequest ", 400)
+}
+
+func (o *GetFlowVersionBadRequest) String() string {
 	return fmt.Sprintf("[GET /buckets/{bucketId}/flows/{flowId}/versions/{versionNumber}][%d] getFlowVersionBadRequest ", 400)
 }
 
@@ -122,14 +193,49 @@ func NewGetFlowVersionUnauthorized() *GetFlowVersionUnauthorized {
 	return &GetFlowVersionUnauthorized{}
 }
 
-/* GetFlowVersionUnauthorized describes a response with status code 401, with default header values.
+/*
+GetFlowVersionUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type GetFlowVersionUnauthorized struct {
 }
 
+// IsSuccess returns true when this get flow version unauthorized response has a 2xx status code
+func (o *GetFlowVersionUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get flow version unauthorized response has a 3xx status code
+func (o *GetFlowVersionUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get flow version unauthorized response has a 4xx status code
+func (o *GetFlowVersionUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get flow version unauthorized response has a 5xx status code
+func (o *GetFlowVersionUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get flow version unauthorized response a status code equal to that given
+func (o *GetFlowVersionUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the get flow version unauthorized response
+func (o *GetFlowVersionUnauthorized) Code() int {
+	return 401
+}
+
 func (o *GetFlowVersionUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /buckets/{bucketId}/flows/{flowId}/versions/{versionNumber}][%d] getFlowVersionUnauthorized ", 401)
+}
+
+func (o *GetFlowVersionUnauthorized) String() string {
 	return fmt.Sprintf("[GET /buckets/{bucketId}/flows/{flowId}/versions/{versionNumber}][%d] getFlowVersionUnauthorized ", 401)
 }
 
@@ -143,14 +249,49 @@ func NewGetFlowVersionForbidden() *GetFlowVersionForbidden {
 	return &GetFlowVersionForbidden{}
 }
 
-/* GetFlowVersionForbidden describes a response with status code 403, with default header values.
+/*
+GetFlowVersionForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type GetFlowVersionForbidden struct {
 }
 
+// IsSuccess returns true when this get flow version forbidden response has a 2xx status code
+func (o *GetFlowVersionForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get flow version forbidden response has a 3xx status code
+func (o *GetFlowVersionForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get flow version forbidden response has a 4xx status code
+func (o *GetFlowVersionForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get flow version forbidden response has a 5xx status code
+func (o *GetFlowVersionForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get flow version forbidden response a status code equal to that given
+func (o *GetFlowVersionForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the get flow version forbidden response
+func (o *GetFlowVersionForbidden) Code() int {
+	return 403
+}
+
 func (o *GetFlowVersionForbidden) Error() string {
+	return fmt.Sprintf("[GET /buckets/{bucketId}/flows/{flowId}/versions/{versionNumber}][%d] getFlowVersionForbidden ", 403)
+}
+
+func (o *GetFlowVersionForbidden) String() string {
 	return fmt.Sprintf("[GET /buckets/{bucketId}/flows/{flowId}/versions/{versionNumber}][%d] getFlowVersionForbidden ", 403)
 }
 
@@ -164,14 +305,49 @@ func NewGetFlowVersionNotFound() *GetFlowVersionNotFound {
 	return &GetFlowVersionNotFound{}
 }
 
-/* GetFlowVersionNotFound describes a response with status code 404, with default header values.
+/*
+GetFlowVersionNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type GetFlowVersionNotFound struct {
 }
 
+// IsSuccess returns true when this get flow version not found response has a 2xx status code
+func (o *GetFlowVersionNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get flow version not found response has a 3xx status code
+func (o *GetFlowVersionNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get flow version not found response has a 4xx status code
+func (o *GetFlowVersionNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get flow version not found response has a 5xx status code
+func (o *GetFlowVersionNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get flow version not found response a status code equal to that given
+func (o *GetFlowVersionNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+// Code gets the status code for the get flow version not found response
+func (o *GetFlowVersionNotFound) Code() int {
+	return 404
+}
+
 func (o *GetFlowVersionNotFound) Error() string {
+	return fmt.Sprintf("[GET /buckets/{bucketId}/flows/{flowId}/versions/{versionNumber}][%d] getFlowVersionNotFound ", 404)
+}
+
+func (o *GetFlowVersionNotFound) String() string {
 	return fmt.Sprintf("[GET /buckets/{bucketId}/flows/{flowId}/versions/{versionNumber}][%d] getFlowVersionNotFound ", 404)
 }
 
@@ -185,14 +361,49 @@ func NewGetFlowVersionConflict() *GetFlowVersionConflict {
 	return &GetFlowVersionConflict{}
 }
 
-/* GetFlowVersionConflict describes a response with status code 409, with default header values.
+/*
+GetFlowVersionConflict describes a response with status code 409, with default header values.
 
 NiFi Registry was unable to complete the request because it assumes a server state that is not valid.
 */
 type GetFlowVersionConflict struct {
 }
 
+// IsSuccess returns true when this get flow version conflict response has a 2xx status code
+func (o *GetFlowVersionConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get flow version conflict response has a 3xx status code
+func (o *GetFlowVersionConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get flow version conflict response has a 4xx status code
+func (o *GetFlowVersionConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get flow version conflict response has a 5xx status code
+func (o *GetFlowVersionConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get flow version conflict response a status code equal to that given
+func (o *GetFlowVersionConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the get flow version conflict response
+func (o *GetFlowVersionConflict) Code() int {
+	return 409
+}
+
 func (o *GetFlowVersionConflict) Error() string {
+	return fmt.Sprintf("[GET /buckets/{bucketId}/flows/{flowId}/versions/{versionNumber}][%d] getFlowVersionConflict ", 409)
+}
+
+func (o *GetFlowVersionConflict) String() string {
 	return fmt.Sprintf("[GET /buckets/{bucketId}/flows/{flowId}/versions/{versionNumber}][%d] getFlowVersionConflict ", 409)
 }
 

@@ -52,10 +52,12 @@ func NewOidcLogoutParamsWithHTTPClient(client *http.Client) *OidcLogoutParams {
 	}
 }
 
-/* OidcLogoutParams contains all the parameters to send to the API endpoint
-   for the oidc logout operation.
+/*
+OidcLogoutParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the oidc logout operation.
+
+	Typically these are written to a http.Request.
 */
 type OidcLogoutParams struct {
 	timeout    time.Duration

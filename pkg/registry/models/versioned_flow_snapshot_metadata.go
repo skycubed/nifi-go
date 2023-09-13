@@ -175,6 +175,11 @@ func (m *VersionedFlowSnapshotMetadata) contextValidateAuthor(ctx context.Contex
 func (m *VersionedFlowSnapshotMetadata) contextValidateLink(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Link != nil {
+
+		if swag.IsZero(m.Link) { // not required
+			return nil
+		}
+
 		if err := m.Link.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("link")

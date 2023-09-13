@@ -52,10 +52,12 @@ func NewSamlLoginHTTPPostConsumerParamsWithHTTPClient(client *http.Client) *Saml
 	}
 }
 
-/* SamlLoginHTTPPostConsumerParams contains all the parameters to send to the API endpoint
-   for the saml login Http post consumer operation.
+/*
+SamlLoginHTTPPostConsumerParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the saml login Http post consumer operation.
+
+	Typically these are written to a http.Request.
 */
 type SamlLoginHTTPPostConsumerParams struct {
 	timeout    time.Duration

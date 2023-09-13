@@ -52,10 +52,12 @@ func NewGetControllerServiceTypesParamsWithHTTPClient(client *http.Client) *GetC
 	}
 }
 
-/* GetControllerServiceTypesParams contains all the parameters to send to the API endpoint
-   for the get controller service types operation.
+/*
+GetControllerServiceTypesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get controller service types operation.
+
+	Typically these are written to a http.Request.
 */
 type GetControllerServiceTypesParams struct {
 

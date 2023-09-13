@@ -88,6 +88,11 @@ func (m *StateMapDTO) contextValidateState(ctx context.Context, formats strfmt.R
 	for i := 0; i < len(m.State); i++ {
 
 		if m.State[i] != nil {
+
+			if swag.IsZero(m.State[i]) { // not required
+				return nil
+			}
+
 			if err := m.State[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("state" + "." + strconv.Itoa(i))

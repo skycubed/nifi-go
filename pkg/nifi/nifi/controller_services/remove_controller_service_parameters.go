@@ -53,10 +53,12 @@ func NewRemoveControllerServiceParamsWithHTTPClient(client *http.Client) *Remove
 	}
 }
 
-/* RemoveControllerServiceParams contains all the parameters to send to the API endpoint
-   for the remove controller service operation.
+/*
+RemoveControllerServiceParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the remove controller service operation.
+
+	Typically these are written to a http.Request.
 */
 type RemoveControllerServiceParams struct {
 

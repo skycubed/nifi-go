@@ -54,10 +54,12 @@ func NewSubmitProvenanceRequestParamsWithHTTPClient(client *http.Client) *Submit
 	}
 }
 
-/* SubmitProvenanceRequestParams contains all the parameters to send to the API endpoint
-   for the submit provenance request operation.
+/*
+SubmitProvenanceRequestParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the submit provenance request operation.
+
+	Typically these are written to a http.Request.
 */
 type SubmitProvenanceRequestParams struct {
 

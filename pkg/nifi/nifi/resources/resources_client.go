@@ -36,7 +36,7 @@ type ClientService interface {
 }
 
 /*
-  GetResources gets the available resources that support access authorization policies
+GetResources gets the available resources that support access authorization policies
 */
 func (a *Client) GetResources(params *GetResourcesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetResourcesOK, error) {
 	// TODO: Validate the params before sending

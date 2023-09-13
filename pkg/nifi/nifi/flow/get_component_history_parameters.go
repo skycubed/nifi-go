@@ -52,10 +52,12 @@ func NewGetComponentHistoryParamsWithHTTPClient(client *http.Client) *GetCompone
 	}
 }
 
-/* GetComponentHistoryParams contains all the parameters to send to the API endpoint
-   for the get component history operation.
+/*
+GetComponentHistoryParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get component history operation.
+
+	Typically these are written to a http.Request.
 */
 type GetComponentHistoryParams struct {
 

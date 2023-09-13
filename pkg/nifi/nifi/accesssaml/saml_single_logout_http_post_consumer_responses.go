@@ -36,12 +36,38 @@ func NewSamlSingleLogoutHTTPPostConsumerDefault(code int) *SamlSingleLogoutHTTPP
 	}
 }
 
-/* SamlSingleLogoutHTTPPostConsumerDefault describes a response with status code -1, with default header values.
+/*
+SamlSingleLogoutHTTPPostConsumerDefault describes a response with status code -1, with default header values.
 
 successful operation
 */
 type SamlSingleLogoutHTTPPostConsumerDefault struct {
 	_statusCode int
+}
+
+// IsSuccess returns true when this saml single logout Http post consumer default response has a 2xx status code
+func (o *SamlSingleLogoutHTTPPostConsumerDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this saml single logout Http post consumer default response has a 3xx status code
+func (o *SamlSingleLogoutHTTPPostConsumerDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this saml single logout Http post consumer default response has a 4xx status code
+func (o *SamlSingleLogoutHTTPPostConsumerDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this saml single logout Http post consumer default response has a 5xx status code
+func (o *SamlSingleLogoutHTTPPostConsumerDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this saml single logout Http post consumer default response a status code equal to that given
+func (o *SamlSingleLogoutHTTPPostConsumerDefault) IsCode(code int) bool {
+	return o._statusCode == code
 }
 
 // Code gets the status code for the saml single logout Http post consumer default response
@@ -50,6 +76,10 @@ func (o *SamlSingleLogoutHTTPPostConsumerDefault) Code() int {
 }
 
 func (o *SamlSingleLogoutHTTPPostConsumerDefault) Error() string {
+	return fmt.Sprintf("[POST /access/saml/single-logout/consumer][%d] samlSingleLogoutHttpPostConsumer default ", o._statusCode)
+}
+
+func (o *SamlSingleLogoutHTTPPostConsumerDefault) String() string {
 	return fmt.Sprintf("[POST /access/saml/single-logout/consumer][%d] samlSingleLogoutHttpPostConsumer default ", o._statusCode)
 }
 

@@ -54,10 +54,12 @@ func NewCreateProcessGroupParamsWithHTTPClient(client *http.Client) *CreateProce
 	}
 }
 
-/* CreateProcessGroupParams contains all the parameters to send to the API endpoint
-   for the create process group operation.
+/*
+CreateProcessGroupParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create process group operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateProcessGroupParams struct {
 

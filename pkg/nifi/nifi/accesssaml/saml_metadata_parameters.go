@@ -52,10 +52,12 @@ func NewSamlMetadataParamsWithHTTPClient(client *http.Client) *SamlMetadataParam
 	}
 }
 
-/* SamlMetadataParams contains all the parameters to send to the API endpoint
-   for the saml metadata operation.
+/*
+SamlMetadataParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the saml metadata operation.
+
+	Typically these are written to a http.Request.
 */
 type SamlMetadataParams struct {
 	timeout    time.Duration

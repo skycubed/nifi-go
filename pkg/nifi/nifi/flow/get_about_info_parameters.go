@@ -52,10 +52,12 @@ func NewGetAboutInfoParamsWithHTTPClient(client *http.Client) *GetAboutInfoParam
 	}
 }
 
-/* GetAboutInfoParams contains all the parameters to send to the API endpoint
-   for the get about info operation.
+/*
+GetAboutInfoParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get about info operation.
+
+	Typically these are written to a http.Request.
 */
 type GetAboutInfoParams struct {
 	timeout    time.Duration

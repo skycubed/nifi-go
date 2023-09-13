@@ -48,7 +48,7 @@ type ClientService interface {
 }
 
 /*
-  CreateDropRequest creates a request to drop the contents of the queue in this connection
+CreateDropRequest creates a request to drop the contents of the queue in this connection
 */
 func (a *Client) CreateDropRequest(params *CreateDropRequestParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateDropRequestOK, *CreateDropRequestAccepted, error) {
 	// TODO: Validate the params before sending
@@ -88,7 +88,7 @@ func (a *Client) CreateDropRequest(params *CreateDropRequestParams, authInfo run
 }
 
 /*
-  CreateFlowFileListing lists the contents of the queue in this connection
+CreateFlowFileListing lists the contents of the queue in this connection
 */
 func (a *Client) CreateFlowFileListing(params *CreateFlowFileListingParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateFlowFileListingOK, *CreateFlowFileListingAccepted, error) {
 	// TODO: Validate the params before sending
@@ -128,7 +128,7 @@ func (a *Client) CreateFlowFileListing(params *CreateFlowFileListingParams, auth
 }
 
 /*
-  DeleteListingRequest cancels and or removes a request to list the contents of this connection
+DeleteListingRequest cancels and or removes a request to list the contents of this connection
 */
 func (a *Client) DeleteListingRequest(params *DeleteListingRequestParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteListingRequestOK, error) {
 	// TODO: Validate the params before sending
@@ -167,7 +167,7 @@ func (a *Client) DeleteListingRequest(params *DeleteListingRequestParams, authIn
 }
 
 /*
-  DownloadFlowFileContent gets the content for a flow file in a connection
+DownloadFlowFileContent gets the content for a flow file in a connection
 */
 func (a *Client) DownloadFlowFileContent(params *DownloadFlowFileContentParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DownloadFlowFileContentOK, error) {
 	// TODO: Validate the params before sending
@@ -206,7 +206,7 @@ func (a *Client) DownloadFlowFileContent(params *DownloadFlowFileContentParams, 
 }
 
 /*
-  GetDropRequest gets the current status of a drop request for the specified connection
+GetDropRequest gets the current status of a drop request for the specified connection
 */
 func (a *Client) GetDropRequest(params *GetDropRequestParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetDropRequestOK, error) {
 	// TODO: Validate the params before sending
@@ -245,7 +245,7 @@ func (a *Client) GetDropRequest(params *GetDropRequestParams, authInfo runtime.C
 }
 
 /*
-  GetFlowFile gets a flow file from a connection
+GetFlowFile gets a flow file from a connection
 */
 func (a *Client) GetFlowFile(params *GetFlowFileParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetFlowFileOK, error) {
 	// TODO: Validate the params before sending
@@ -284,7 +284,7 @@ func (a *Client) GetFlowFile(params *GetFlowFileParams, authInfo runtime.ClientA
 }
 
 /*
-  GetListingRequest gets the current status of a listing request for the specified connection
+GetListingRequest gets the current status of a listing request for the specified connection
 */
 func (a *Client) GetListingRequest(params *GetListingRequestParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetListingRequestOK, error) {
 	// TODO: Validate the params before sending

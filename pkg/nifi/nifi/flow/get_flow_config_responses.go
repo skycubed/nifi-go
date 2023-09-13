@@ -54,7 +54,7 @@ func (o *GetFlowConfigReader) ReadResponse(response runtime.ClientResponse, cons
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /flow/config] getFlowConfig", response, response.Code())
 	}
 }
 
@@ -63,7 +63,8 @@ func NewGetFlowConfigOK() *GetFlowConfigOK {
 	return &GetFlowConfigOK{}
 }
 
-/* GetFlowConfigOK describes a response with status code 200, with default header values.
+/*
+GetFlowConfigOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -71,9 +72,44 @@ type GetFlowConfigOK struct {
 	Payload *models.FlowConfigurationEntity
 }
 
+// IsSuccess returns true when this get flow config o k response has a 2xx status code
+func (o *GetFlowConfigOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get flow config o k response has a 3xx status code
+func (o *GetFlowConfigOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get flow config o k response has a 4xx status code
+func (o *GetFlowConfigOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get flow config o k response has a 5xx status code
+func (o *GetFlowConfigOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get flow config o k response a status code equal to that given
+func (o *GetFlowConfigOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the get flow config o k response
+func (o *GetFlowConfigOK) Code() int {
+	return 200
+}
+
 func (o *GetFlowConfigOK) Error() string {
 	return fmt.Sprintf("[GET /flow/config][%d] getFlowConfigOK  %+v", 200, o.Payload)
 }
+
+func (o *GetFlowConfigOK) String() string {
+	return fmt.Sprintf("[GET /flow/config][%d] getFlowConfigOK  %+v", 200, o.Payload)
+}
+
 func (o *GetFlowConfigOK) GetPayload() *models.FlowConfigurationEntity {
 	return o.Payload
 }
@@ -95,14 +131,49 @@ func NewGetFlowConfigBadRequest() *GetFlowConfigBadRequest {
 	return &GetFlowConfigBadRequest{}
 }
 
-/* GetFlowConfigBadRequest describes a response with status code 400, with default header values.
+/*
+GetFlowConfigBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type GetFlowConfigBadRequest struct {
 }
 
+// IsSuccess returns true when this get flow config bad request response has a 2xx status code
+func (o *GetFlowConfigBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get flow config bad request response has a 3xx status code
+func (o *GetFlowConfigBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get flow config bad request response has a 4xx status code
+func (o *GetFlowConfigBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get flow config bad request response has a 5xx status code
+func (o *GetFlowConfigBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get flow config bad request response a status code equal to that given
+func (o *GetFlowConfigBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the get flow config bad request response
+func (o *GetFlowConfigBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetFlowConfigBadRequest) Error() string {
+	return fmt.Sprintf("[GET /flow/config][%d] getFlowConfigBadRequest ", 400)
+}
+
+func (o *GetFlowConfigBadRequest) String() string {
 	return fmt.Sprintf("[GET /flow/config][%d] getFlowConfigBadRequest ", 400)
 }
 
@@ -116,14 +187,49 @@ func NewGetFlowConfigUnauthorized() *GetFlowConfigUnauthorized {
 	return &GetFlowConfigUnauthorized{}
 }
 
-/* GetFlowConfigUnauthorized describes a response with status code 401, with default header values.
+/*
+GetFlowConfigUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type GetFlowConfigUnauthorized struct {
 }
 
+// IsSuccess returns true when this get flow config unauthorized response has a 2xx status code
+func (o *GetFlowConfigUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get flow config unauthorized response has a 3xx status code
+func (o *GetFlowConfigUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get flow config unauthorized response has a 4xx status code
+func (o *GetFlowConfigUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get flow config unauthorized response has a 5xx status code
+func (o *GetFlowConfigUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get flow config unauthorized response a status code equal to that given
+func (o *GetFlowConfigUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the get flow config unauthorized response
+func (o *GetFlowConfigUnauthorized) Code() int {
+	return 401
+}
+
 func (o *GetFlowConfigUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /flow/config][%d] getFlowConfigUnauthorized ", 401)
+}
+
+func (o *GetFlowConfigUnauthorized) String() string {
 	return fmt.Sprintf("[GET /flow/config][%d] getFlowConfigUnauthorized ", 401)
 }
 
@@ -137,14 +243,49 @@ func NewGetFlowConfigForbidden() *GetFlowConfigForbidden {
 	return &GetFlowConfigForbidden{}
 }
 
-/* GetFlowConfigForbidden describes a response with status code 403, with default header values.
+/*
+GetFlowConfigForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type GetFlowConfigForbidden struct {
 }
 
+// IsSuccess returns true when this get flow config forbidden response has a 2xx status code
+func (o *GetFlowConfigForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get flow config forbidden response has a 3xx status code
+func (o *GetFlowConfigForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get flow config forbidden response has a 4xx status code
+func (o *GetFlowConfigForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get flow config forbidden response has a 5xx status code
+func (o *GetFlowConfigForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get flow config forbidden response a status code equal to that given
+func (o *GetFlowConfigForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the get flow config forbidden response
+func (o *GetFlowConfigForbidden) Code() int {
+	return 403
+}
+
 func (o *GetFlowConfigForbidden) Error() string {
+	return fmt.Sprintf("[GET /flow/config][%d] getFlowConfigForbidden ", 403)
+}
+
+func (o *GetFlowConfigForbidden) String() string {
 	return fmt.Sprintf("[GET /flow/config][%d] getFlowConfigForbidden ", 403)
 }
 
@@ -158,14 +299,49 @@ func NewGetFlowConfigConflict() *GetFlowConfigConflict {
 	return &GetFlowConfigConflict{}
 }
 
-/* GetFlowConfigConflict describes a response with status code 409, with default header values.
+/*
+GetFlowConfigConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type GetFlowConfigConflict struct {
 }
 
+// IsSuccess returns true when this get flow config conflict response has a 2xx status code
+func (o *GetFlowConfigConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get flow config conflict response has a 3xx status code
+func (o *GetFlowConfigConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get flow config conflict response has a 4xx status code
+func (o *GetFlowConfigConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get flow config conflict response has a 5xx status code
+func (o *GetFlowConfigConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get flow config conflict response a status code equal to that given
+func (o *GetFlowConfigConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the get flow config conflict response
+func (o *GetFlowConfigConflict) Code() int {
+	return 409
+}
+
 func (o *GetFlowConfigConflict) Error() string {
+	return fmt.Sprintf("[GET /flow/config][%d] getFlowConfigConflict ", 409)
+}
+
+func (o *GetFlowConfigConflict) String() string {
 	return fmt.Sprintf("[GET /flow/config][%d] getFlowConfigConflict ", 409)
 }
 

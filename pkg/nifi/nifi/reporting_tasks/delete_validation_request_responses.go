@@ -60,7 +60,7 @@ func (o *DeleteValidationRequestReader) ReadResponse(response runtime.ClientResp
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /reporting-tasks/{id}/config/verification-requests/{requestId}] deleteValidationRequest", response, response.Code())
 	}
 }
 
@@ -69,7 +69,8 @@ func NewDeleteValidationRequestOK() *DeleteValidationRequestOK {
 	return &DeleteValidationRequestOK{}
 }
 
-/* DeleteValidationRequestOK describes a response with status code 200, with default header values.
+/*
+DeleteValidationRequestOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,44 @@ type DeleteValidationRequestOK struct {
 	Payload *models.VerifyConfigRequestEntity
 }
 
+// IsSuccess returns true when this delete validation request o k response has a 2xx status code
+func (o *DeleteValidationRequestOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete validation request o k response has a 3xx status code
+func (o *DeleteValidationRequestOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete validation request o k response has a 4xx status code
+func (o *DeleteValidationRequestOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete validation request o k response has a 5xx status code
+func (o *DeleteValidationRequestOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete validation request o k response a status code equal to that given
+func (o *DeleteValidationRequestOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the delete validation request o k response
+func (o *DeleteValidationRequestOK) Code() int {
+	return 200
+}
+
 func (o *DeleteValidationRequestOK) Error() string {
 	return fmt.Sprintf("[DELETE /reporting-tasks/{id}/config/verification-requests/{requestId}][%d] deleteValidationRequestOK  %+v", 200, o.Payload)
 }
+
+func (o *DeleteValidationRequestOK) String() string {
+	return fmt.Sprintf("[DELETE /reporting-tasks/{id}/config/verification-requests/{requestId}][%d] deleteValidationRequestOK  %+v", 200, o.Payload)
+}
+
 func (o *DeleteValidationRequestOK) GetPayload() *models.VerifyConfigRequestEntity {
 	return o.Payload
 }
@@ -101,14 +137,49 @@ func NewDeleteValidationRequestBadRequest() *DeleteValidationRequestBadRequest {
 	return &DeleteValidationRequestBadRequest{}
 }
 
-/* DeleteValidationRequestBadRequest describes a response with status code 400, with default header values.
+/*
+DeleteValidationRequestBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type DeleteValidationRequestBadRequest struct {
 }
 
+// IsSuccess returns true when this delete validation request bad request response has a 2xx status code
+func (o *DeleteValidationRequestBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete validation request bad request response has a 3xx status code
+func (o *DeleteValidationRequestBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete validation request bad request response has a 4xx status code
+func (o *DeleteValidationRequestBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete validation request bad request response has a 5xx status code
+func (o *DeleteValidationRequestBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete validation request bad request response a status code equal to that given
+func (o *DeleteValidationRequestBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the delete validation request bad request response
+func (o *DeleteValidationRequestBadRequest) Code() int {
+	return 400
+}
+
 func (o *DeleteValidationRequestBadRequest) Error() string {
+	return fmt.Sprintf("[DELETE /reporting-tasks/{id}/config/verification-requests/{requestId}][%d] deleteValidationRequestBadRequest ", 400)
+}
+
+func (o *DeleteValidationRequestBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /reporting-tasks/{id}/config/verification-requests/{requestId}][%d] deleteValidationRequestBadRequest ", 400)
 }
 
@@ -122,14 +193,49 @@ func NewDeleteValidationRequestUnauthorized() *DeleteValidationRequestUnauthoriz
 	return &DeleteValidationRequestUnauthorized{}
 }
 
-/* DeleteValidationRequestUnauthorized describes a response with status code 401, with default header values.
+/*
+DeleteValidationRequestUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type DeleteValidationRequestUnauthorized struct {
 }
 
+// IsSuccess returns true when this delete validation request unauthorized response has a 2xx status code
+func (o *DeleteValidationRequestUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete validation request unauthorized response has a 3xx status code
+func (o *DeleteValidationRequestUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete validation request unauthorized response has a 4xx status code
+func (o *DeleteValidationRequestUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete validation request unauthorized response has a 5xx status code
+func (o *DeleteValidationRequestUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete validation request unauthorized response a status code equal to that given
+func (o *DeleteValidationRequestUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the delete validation request unauthorized response
+func (o *DeleteValidationRequestUnauthorized) Code() int {
+	return 401
+}
+
 func (o *DeleteValidationRequestUnauthorized) Error() string {
+	return fmt.Sprintf("[DELETE /reporting-tasks/{id}/config/verification-requests/{requestId}][%d] deleteValidationRequestUnauthorized ", 401)
+}
+
+func (o *DeleteValidationRequestUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /reporting-tasks/{id}/config/verification-requests/{requestId}][%d] deleteValidationRequestUnauthorized ", 401)
 }
 
@@ -143,14 +249,49 @@ func NewDeleteValidationRequestForbidden() *DeleteValidationRequestForbidden {
 	return &DeleteValidationRequestForbidden{}
 }
 
-/* DeleteValidationRequestForbidden describes a response with status code 403, with default header values.
+/*
+DeleteValidationRequestForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type DeleteValidationRequestForbidden struct {
 }
 
+// IsSuccess returns true when this delete validation request forbidden response has a 2xx status code
+func (o *DeleteValidationRequestForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete validation request forbidden response has a 3xx status code
+func (o *DeleteValidationRequestForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete validation request forbidden response has a 4xx status code
+func (o *DeleteValidationRequestForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete validation request forbidden response has a 5xx status code
+func (o *DeleteValidationRequestForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete validation request forbidden response a status code equal to that given
+func (o *DeleteValidationRequestForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the delete validation request forbidden response
+func (o *DeleteValidationRequestForbidden) Code() int {
+	return 403
+}
+
 func (o *DeleteValidationRequestForbidden) Error() string {
+	return fmt.Sprintf("[DELETE /reporting-tasks/{id}/config/verification-requests/{requestId}][%d] deleteValidationRequestForbidden ", 403)
+}
+
+func (o *DeleteValidationRequestForbidden) String() string {
 	return fmt.Sprintf("[DELETE /reporting-tasks/{id}/config/verification-requests/{requestId}][%d] deleteValidationRequestForbidden ", 403)
 }
 
@@ -164,14 +305,49 @@ func NewDeleteValidationRequestNotFound() *DeleteValidationRequestNotFound {
 	return &DeleteValidationRequestNotFound{}
 }
 
-/* DeleteValidationRequestNotFound describes a response with status code 404, with default header values.
+/*
+DeleteValidationRequestNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type DeleteValidationRequestNotFound struct {
 }
 
+// IsSuccess returns true when this delete validation request not found response has a 2xx status code
+func (o *DeleteValidationRequestNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete validation request not found response has a 3xx status code
+func (o *DeleteValidationRequestNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete validation request not found response has a 4xx status code
+func (o *DeleteValidationRequestNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete validation request not found response has a 5xx status code
+func (o *DeleteValidationRequestNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete validation request not found response a status code equal to that given
+func (o *DeleteValidationRequestNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+// Code gets the status code for the delete validation request not found response
+func (o *DeleteValidationRequestNotFound) Code() int {
+	return 404
+}
+
 func (o *DeleteValidationRequestNotFound) Error() string {
+	return fmt.Sprintf("[DELETE /reporting-tasks/{id}/config/verification-requests/{requestId}][%d] deleteValidationRequestNotFound ", 404)
+}
+
+func (o *DeleteValidationRequestNotFound) String() string {
 	return fmt.Sprintf("[DELETE /reporting-tasks/{id}/config/verification-requests/{requestId}][%d] deleteValidationRequestNotFound ", 404)
 }
 
@@ -185,14 +361,49 @@ func NewDeleteValidationRequestConflict() *DeleteValidationRequestConflict {
 	return &DeleteValidationRequestConflict{}
 }
 
-/* DeleteValidationRequestConflict describes a response with status code 409, with default header values.
+/*
+DeleteValidationRequestConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type DeleteValidationRequestConflict struct {
 }
 
+// IsSuccess returns true when this delete validation request conflict response has a 2xx status code
+func (o *DeleteValidationRequestConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete validation request conflict response has a 3xx status code
+func (o *DeleteValidationRequestConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete validation request conflict response has a 4xx status code
+func (o *DeleteValidationRequestConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete validation request conflict response has a 5xx status code
+func (o *DeleteValidationRequestConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete validation request conflict response a status code equal to that given
+func (o *DeleteValidationRequestConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the delete validation request conflict response
+func (o *DeleteValidationRequestConflict) Code() int {
+	return 409
+}
+
 func (o *DeleteValidationRequestConflict) Error() string {
+	return fmt.Sprintf("[DELETE /reporting-tasks/{id}/config/verification-requests/{requestId}][%d] deleteValidationRequestConflict ", 409)
+}
+
+func (o *DeleteValidationRequestConflict) String() string {
 	return fmt.Sprintf("[DELETE /reporting-tasks/{id}/config/verification-requests/{requestId}][%d] deleteValidationRequestConflict ", 409)
 }
 

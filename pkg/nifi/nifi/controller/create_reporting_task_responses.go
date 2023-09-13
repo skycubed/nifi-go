@@ -54,7 +54,7 @@ func (o *CreateReportingTaskReader) ReadResponse(response runtime.ClientResponse
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /controller/reporting-tasks] createReportingTask", response, response.Code())
 	}
 }
 
@@ -63,7 +63,8 @@ func NewCreateReportingTaskCreated() *CreateReportingTaskCreated {
 	return &CreateReportingTaskCreated{}
 }
 
-/* CreateReportingTaskCreated describes a response with status code 201, with default header values.
+/*
+CreateReportingTaskCreated describes a response with status code 201, with default header values.
 
 successful operation
 */
@@ -71,9 +72,44 @@ type CreateReportingTaskCreated struct {
 	Payload *models.ReportingTaskEntity
 }
 
+// IsSuccess returns true when this create reporting task created response has a 2xx status code
+func (o *CreateReportingTaskCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create reporting task created response has a 3xx status code
+func (o *CreateReportingTaskCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create reporting task created response has a 4xx status code
+func (o *CreateReportingTaskCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create reporting task created response has a 5xx status code
+func (o *CreateReportingTaskCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create reporting task created response a status code equal to that given
+func (o *CreateReportingTaskCreated) IsCode(code int) bool {
+	return code == 201
+}
+
+// Code gets the status code for the create reporting task created response
+func (o *CreateReportingTaskCreated) Code() int {
+	return 201
+}
+
 func (o *CreateReportingTaskCreated) Error() string {
 	return fmt.Sprintf("[POST /controller/reporting-tasks][%d] createReportingTaskCreated  %+v", 201, o.Payload)
 }
+
+func (o *CreateReportingTaskCreated) String() string {
+	return fmt.Sprintf("[POST /controller/reporting-tasks][%d] createReportingTaskCreated  %+v", 201, o.Payload)
+}
+
 func (o *CreateReportingTaskCreated) GetPayload() *models.ReportingTaskEntity {
 	return o.Payload
 }
@@ -95,14 +131,49 @@ func NewCreateReportingTaskBadRequest() *CreateReportingTaskBadRequest {
 	return &CreateReportingTaskBadRequest{}
 }
 
-/* CreateReportingTaskBadRequest describes a response with status code 400, with default header values.
+/*
+CreateReportingTaskBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type CreateReportingTaskBadRequest struct {
 }
 
+// IsSuccess returns true when this create reporting task bad request response has a 2xx status code
+func (o *CreateReportingTaskBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create reporting task bad request response has a 3xx status code
+func (o *CreateReportingTaskBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create reporting task bad request response has a 4xx status code
+func (o *CreateReportingTaskBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create reporting task bad request response has a 5xx status code
+func (o *CreateReportingTaskBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create reporting task bad request response a status code equal to that given
+func (o *CreateReportingTaskBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the create reporting task bad request response
+func (o *CreateReportingTaskBadRequest) Code() int {
+	return 400
+}
+
 func (o *CreateReportingTaskBadRequest) Error() string {
+	return fmt.Sprintf("[POST /controller/reporting-tasks][%d] createReportingTaskBadRequest ", 400)
+}
+
+func (o *CreateReportingTaskBadRequest) String() string {
 	return fmt.Sprintf("[POST /controller/reporting-tasks][%d] createReportingTaskBadRequest ", 400)
 }
 
@@ -116,14 +187,49 @@ func NewCreateReportingTaskUnauthorized() *CreateReportingTaskUnauthorized {
 	return &CreateReportingTaskUnauthorized{}
 }
 
-/* CreateReportingTaskUnauthorized describes a response with status code 401, with default header values.
+/*
+CreateReportingTaskUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type CreateReportingTaskUnauthorized struct {
 }
 
+// IsSuccess returns true when this create reporting task unauthorized response has a 2xx status code
+func (o *CreateReportingTaskUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create reporting task unauthorized response has a 3xx status code
+func (o *CreateReportingTaskUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create reporting task unauthorized response has a 4xx status code
+func (o *CreateReportingTaskUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create reporting task unauthorized response has a 5xx status code
+func (o *CreateReportingTaskUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create reporting task unauthorized response a status code equal to that given
+func (o *CreateReportingTaskUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the create reporting task unauthorized response
+func (o *CreateReportingTaskUnauthorized) Code() int {
+	return 401
+}
+
 func (o *CreateReportingTaskUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /controller/reporting-tasks][%d] createReportingTaskUnauthorized ", 401)
+}
+
+func (o *CreateReportingTaskUnauthorized) String() string {
 	return fmt.Sprintf("[POST /controller/reporting-tasks][%d] createReportingTaskUnauthorized ", 401)
 }
 
@@ -137,14 +243,49 @@ func NewCreateReportingTaskForbidden() *CreateReportingTaskForbidden {
 	return &CreateReportingTaskForbidden{}
 }
 
-/* CreateReportingTaskForbidden describes a response with status code 403, with default header values.
+/*
+CreateReportingTaskForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type CreateReportingTaskForbidden struct {
 }
 
+// IsSuccess returns true when this create reporting task forbidden response has a 2xx status code
+func (o *CreateReportingTaskForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create reporting task forbidden response has a 3xx status code
+func (o *CreateReportingTaskForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create reporting task forbidden response has a 4xx status code
+func (o *CreateReportingTaskForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create reporting task forbidden response has a 5xx status code
+func (o *CreateReportingTaskForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create reporting task forbidden response a status code equal to that given
+func (o *CreateReportingTaskForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the create reporting task forbidden response
+func (o *CreateReportingTaskForbidden) Code() int {
+	return 403
+}
+
 func (o *CreateReportingTaskForbidden) Error() string {
+	return fmt.Sprintf("[POST /controller/reporting-tasks][%d] createReportingTaskForbidden ", 403)
+}
+
+func (o *CreateReportingTaskForbidden) String() string {
 	return fmt.Sprintf("[POST /controller/reporting-tasks][%d] createReportingTaskForbidden ", 403)
 }
 
@@ -158,14 +299,49 @@ func NewCreateReportingTaskConflict() *CreateReportingTaskConflict {
 	return &CreateReportingTaskConflict{}
 }
 
-/* CreateReportingTaskConflict describes a response with status code 409, with default header values.
+/*
+CreateReportingTaskConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type CreateReportingTaskConflict struct {
 }
 
+// IsSuccess returns true when this create reporting task conflict response has a 2xx status code
+func (o *CreateReportingTaskConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create reporting task conflict response has a 3xx status code
+func (o *CreateReportingTaskConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create reporting task conflict response has a 4xx status code
+func (o *CreateReportingTaskConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create reporting task conflict response has a 5xx status code
+func (o *CreateReportingTaskConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create reporting task conflict response a status code equal to that given
+func (o *CreateReportingTaskConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the create reporting task conflict response
+func (o *CreateReportingTaskConflict) Code() int {
+	return 409
+}
+
 func (o *CreateReportingTaskConflict) Error() string {
+	return fmt.Sprintf("[POST /controller/reporting-tasks][%d] createReportingTaskConflict ", 409)
+}
+
+func (o *CreateReportingTaskConflict) String() string {
 	return fmt.Sprintf("[POST /controller/reporting-tasks][%d] createReportingTaskConflict ", 409)
 }
 
