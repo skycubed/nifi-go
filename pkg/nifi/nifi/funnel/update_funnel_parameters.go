@@ -54,10 +54,12 @@ func NewUpdateFunnelParamsWithHTTPClient(client *http.Client) *UpdateFunnelParam
 	}
 }
 
-/* UpdateFunnelParams contains all the parameters to send to the API endpoint
-   for the update funnel operation.
+/*
+UpdateFunnelParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update funnel operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateFunnelParams struct {
 

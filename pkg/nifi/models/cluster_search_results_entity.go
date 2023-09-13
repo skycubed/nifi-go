@@ -82,6 +82,11 @@ func (m *ClusterSearchResultsEntity) contextValidateNodeResults(ctx context.Cont
 	for i := 0; i < len(m.NodeResults); i++ {
 
 		if m.NodeResults[i] != nil {
+
+			if swag.IsZero(m.NodeResults[i]) { // not required
+				return nil
+			}
+
 			if err := m.NodeResults[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("nodeResults" + "." + strconv.Itoa(i))

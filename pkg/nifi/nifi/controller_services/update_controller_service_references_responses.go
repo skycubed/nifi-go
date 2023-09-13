@@ -60,7 +60,7 @@ func (o *UpdateControllerServiceReferencesReader) ReadResponse(response runtime.
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PUT /controller-services/{id}/references] updateControllerServiceReferences", response, response.Code())
 	}
 }
 
@@ -69,7 +69,8 @@ func NewUpdateControllerServiceReferencesOK() *UpdateControllerServiceReferences
 	return &UpdateControllerServiceReferencesOK{}
 }
 
-/* UpdateControllerServiceReferencesOK describes a response with status code 200, with default header values.
+/*
+UpdateControllerServiceReferencesOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,44 @@ type UpdateControllerServiceReferencesOK struct {
 	Payload *models.ControllerServiceReferencingComponentsEntity
 }
 
+// IsSuccess returns true when this update controller service references o k response has a 2xx status code
+func (o *UpdateControllerServiceReferencesOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this update controller service references o k response has a 3xx status code
+func (o *UpdateControllerServiceReferencesOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update controller service references o k response has a 4xx status code
+func (o *UpdateControllerServiceReferencesOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this update controller service references o k response has a 5xx status code
+func (o *UpdateControllerServiceReferencesOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update controller service references o k response a status code equal to that given
+func (o *UpdateControllerServiceReferencesOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the update controller service references o k response
+func (o *UpdateControllerServiceReferencesOK) Code() int {
+	return 200
+}
+
 func (o *UpdateControllerServiceReferencesOK) Error() string {
 	return fmt.Sprintf("[PUT /controller-services/{id}/references][%d] updateControllerServiceReferencesOK  %+v", 200, o.Payload)
 }
+
+func (o *UpdateControllerServiceReferencesOK) String() string {
+	return fmt.Sprintf("[PUT /controller-services/{id}/references][%d] updateControllerServiceReferencesOK  %+v", 200, o.Payload)
+}
+
 func (o *UpdateControllerServiceReferencesOK) GetPayload() *models.ControllerServiceReferencingComponentsEntity {
 	return o.Payload
 }
@@ -101,14 +137,49 @@ func NewUpdateControllerServiceReferencesBadRequest() *UpdateControllerServiceRe
 	return &UpdateControllerServiceReferencesBadRequest{}
 }
 
-/* UpdateControllerServiceReferencesBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateControllerServiceReferencesBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type UpdateControllerServiceReferencesBadRequest struct {
 }
 
+// IsSuccess returns true when this update controller service references bad request response has a 2xx status code
+func (o *UpdateControllerServiceReferencesBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update controller service references bad request response has a 3xx status code
+func (o *UpdateControllerServiceReferencesBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update controller service references bad request response has a 4xx status code
+func (o *UpdateControllerServiceReferencesBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update controller service references bad request response has a 5xx status code
+func (o *UpdateControllerServiceReferencesBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update controller service references bad request response a status code equal to that given
+func (o *UpdateControllerServiceReferencesBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the update controller service references bad request response
+func (o *UpdateControllerServiceReferencesBadRequest) Code() int {
+	return 400
+}
+
 func (o *UpdateControllerServiceReferencesBadRequest) Error() string {
+	return fmt.Sprintf("[PUT /controller-services/{id}/references][%d] updateControllerServiceReferencesBadRequest ", 400)
+}
+
+func (o *UpdateControllerServiceReferencesBadRequest) String() string {
 	return fmt.Sprintf("[PUT /controller-services/{id}/references][%d] updateControllerServiceReferencesBadRequest ", 400)
 }
 
@@ -122,14 +193,49 @@ func NewUpdateControllerServiceReferencesUnauthorized() *UpdateControllerService
 	return &UpdateControllerServiceReferencesUnauthorized{}
 }
 
-/* UpdateControllerServiceReferencesUnauthorized describes a response with status code 401, with default header values.
+/*
+UpdateControllerServiceReferencesUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type UpdateControllerServiceReferencesUnauthorized struct {
 }
 
+// IsSuccess returns true when this update controller service references unauthorized response has a 2xx status code
+func (o *UpdateControllerServiceReferencesUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update controller service references unauthorized response has a 3xx status code
+func (o *UpdateControllerServiceReferencesUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update controller service references unauthorized response has a 4xx status code
+func (o *UpdateControllerServiceReferencesUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update controller service references unauthorized response has a 5xx status code
+func (o *UpdateControllerServiceReferencesUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update controller service references unauthorized response a status code equal to that given
+func (o *UpdateControllerServiceReferencesUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the update controller service references unauthorized response
+func (o *UpdateControllerServiceReferencesUnauthorized) Code() int {
+	return 401
+}
+
 func (o *UpdateControllerServiceReferencesUnauthorized) Error() string {
+	return fmt.Sprintf("[PUT /controller-services/{id}/references][%d] updateControllerServiceReferencesUnauthorized ", 401)
+}
+
+func (o *UpdateControllerServiceReferencesUnauthorized) String() string {
 	return fmt.Sprintf("[PUT /controller-services/{id}/references][%d] updateControllerServiceReferencesUnauthorized ", 401)
 }
 
@@ -143,14 +249,49 @@ func NewUpdateControllerServiceReferencesForbidden() *UpdateControllerServiceRef
 	return &UpdateControllerServiceReferencesForbidden{}
 }
 
-/* UpdateControllerServiceReferencesForbidden describes a response with status code 403, with default header values.
+/*
+UpdateControllerServiceReferencesForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type UpdateControllerServiceReferencesForbidden struct {
 }
 
+// IsSuccess returns true when this update controller service references forbidden response has a 2xx status code
+func (o *UpdateControllerServiceReferencesForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update controller service references forbidden response has a 3xx status code
+func (o *UpdateControllerServiceReferencesForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update controller service references forbidden response has a 4xx status code
+func (o *UpdateControllerServiceReferencesForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update controller service references forbidden response has a 5xx status code
+func (o *UpdateControllerServiceReferencesForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update controller service references forbidden response a status code equal to that given
+func (o *UpdateControllerServiceReferencesForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the update controller service references forbidden response
+func (o *UpdateControllerServiceReferencesForbidden) Code() int {
+	return 403
+}
+
 func (o *UpdateControllerServiceReferencesForbidden) Error() string {
+	return fmt.Sprintf("[PUT /controller-services/{id}/references][%d] updateControllerServiceReferencesForbidden ", 403)
+}
+
+func (o *UpdateControllerServiceReferencesForbidden) String() string {
 	return fmt.Sprintf("[PUT /controller-services/{id}/references][%d] updateControllerServiceReferencesForbidden ", 403)
 }
 
@@ -164,14 +305,49 @@ func NewUpdateControllerServiceReferencesNotFound() *UpdateControllerServiceRefe
 	return &UpdateControllerServiceReferencesNotFound{}
 }
 
-/* UpdateControllerServiceReferencesNotFound describes a response with status code 404, with default header values.
+/*
+UpdateControllerServiceReferencesNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type UpdateControllerServiceReferencesNotFound struct {
 }
 
+// IsSuccess returns true when this update controller service references not found response has a 2xx status code
+func (o *UpdateControllerServiceReferencesNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update controller service references not found response has a 3xx status code
+func (o *UpdateControllerServiceReferencesNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update controller service references not found response has a 4xx status code
+func (o *UpdateControllerServiceReferencesNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update controller service references not found response has a 5xx status code
+func (o *UpdateControllerServiceReferencesNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update controller service references not found response a status code equal to that given
+func (o *UpdateControllerServiceReferencesNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+// Code gets the status code for the update controller service references not found response
+func (o *UpdateControllerServiceReferencesNotFound) Code() int {
+	return 404
+}
+
 func (o *UpdateControllerServiceReferencesNotFound) Error() string {
+	return fmt.Sprintf("[PUT /controller-services/{id}/references][%d] updateControllerServiceReferencesNotFound ", 404)
+}
+
+func (o *UpdateControllerServiceReferencesNotFound) String() string {
 	return fmt.Sprintf("[PUT /controller-services/{id}/references][%d] updateControllerServiceReferencesNotFound ", 404)
 }
 
@@ -185,14 +361,49 @@ func NewUpdateControllerServiceReferencesConflict() *UpdateControllerServiceRefe
 	return &UpdateControllerServiceReferencesConflict{}
 }
 
-/* UpdateControllerServiceReferencesConflict describes a response with status code 409, with default header values.
+/*
+UpdateControllerServiceReferencesConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type UpdateControllerServiceReferencesConflict struct {
 }
 
+// IsSuccess returns true when this update controller service references conflict response has a 2xx status code
+func (o *UpdateControllerServiceReferencesConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update controller service references conflict response has a 3xx status code
+func (o *UpdateControllerServiceReferencesConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update controller service references conflict response has a 4xx status code
+func (o *UpdateControllerServiceReferencesConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update controller service references conflict response has a 5xx status code
+func (o *UpdateControllerServiceReferencesConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update controller service references conflict response a status code equal to that given
+func (o *UpdateControllerServiceReferencesConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the update controller service references conflict response
+func (o *UpdateControllerServiceReferencesConflict) Code() int {
+	return 409
+}
+
 func (o *UpdateControllerServiceReferencesConflict) Error() string {
+	return fmt.Sprintf("[PUT /controller-services/{id}/references][%d] updateControllerServiceReferencesConflict ", 409)
+}
+
+func (o *UpdateControllerServiceReferencesConflict) String() string {
 	return fmt.Sprintf("[PUT /controller-services/{id}/references][%d] updateControllerServiceReferencesConflict ", 409)
 }
 

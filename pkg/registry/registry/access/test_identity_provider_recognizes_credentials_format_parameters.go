@@ -52,10 +52,12 @@ func NewTestIdentityProviderRecognizesCredentialsFormatParamsWithHTTPClient(clie
 	}
 }
 
-/* TestIdentityProviderRecognizesCredentialsFormatParams contains all the parameters to send to the API endpoint
-   for the test identity provider recognizes credentials format operation.
+/*
+TestIdentityProviderRecognizesCredentialsFormatParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the test identity provider recognizes credentials format operation.
+
+	Typically these are written to a http.Request.
 */
 type TestIdentityProviderRecognizesCredentialsFormatParams struct {
 	timeout    time.Duration

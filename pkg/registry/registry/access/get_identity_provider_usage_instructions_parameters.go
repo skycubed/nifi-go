@@ -52,10 +52,12 @@ func NewGetIdentityProviderUsageInstructionsParamsWithHTTPClient(client *http.Cl
 	}
 }
 
-/* GetIdentityProviderUsageInstructionsParams contains all the parameters to send to the API endpoint
-   for the get identity provider usage instructions operation.
+/*
+GetIdentityProviderUsageInstructionsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get identity provider usage instructions operation.
+
+	Typically these are written to a http.Request.
 */
 type GetIdentityProviderUsageInstructionsParams struct {
 	timeout    time.Duration

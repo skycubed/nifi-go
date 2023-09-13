@@ -88,6 +88,11 @@ func (m *OutputPortsEntity) contextValidateOutputPorts(ctx context.Context, form
 	for i := 0; i < len(m.OutputPorts); i++ {
 
 		if m.OutputPorts[i] != nil {
+
+			if swag.IsZero(m.OutputPorts[i]) { // not required
+				return nil
+			}
+
 			if err := m.OutputPorts[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("outputPorts" + "." + strconv.Itoa(i))

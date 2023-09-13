@@ -52,10 +52,12 @@ func NewSearchTenantsParamsWithHTTPClient(client *http.Client) *SearchTenantsPar
 	}
 }
 
-/* SearchTenantsParams contains all the parameters to send to the API endpoint
-   for the search tenants operation.
+/*
+SearchTenantsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the search tenants operation.
+
+	Typically these are written to a http.Request.
 */
 type SearchTenantsParams struct {
 

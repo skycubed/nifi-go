@@ -120,6 +120,11 @@ func (m *ProvenanceDTO) ContextValidate(ctx context.Context, formats strfmt.Regi
 func (m *ProvenanceDTO) contextValidateRequest(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Request != nil {
+
+		if swag.IsZero(m.Request) { // not required
+			return nil
+		}
+
 		if err := m.Request.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("request")
@@ -136,6 +141,11 @@ func (m *ProvenanceDTO) contextValidateRequest(ctx context.Context, formats strf
 func (m *ProvenanceDTO) contextValidateResults(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Results != nil {
+
+		if swag.IsZero(m.Results) { // not required
+			return nil
+		}
+
 		if err := m.Results.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("results")

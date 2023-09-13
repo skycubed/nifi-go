@@ -52,10 +52,12 @@ func NewGlobalGetBundleVersionsParamsWithHTTPClient(client *http.Client) *Global
 	}
 }
 
-/* GlobalGetBundleVersionsParams contains all the parameters to send to the API endpoint
-   for the global get bundle versions operation.
+/*
+GlobalGetBundleVersionsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the global get bundle versions operation.
+
+	Typically these are written to a http.Request.
 */
 type GlobalGetBundleVersionsParams struct {
 

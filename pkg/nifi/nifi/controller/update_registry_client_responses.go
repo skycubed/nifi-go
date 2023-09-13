@@ -60,7 +60,7 @@ func (o *UpdateRegistryClientReader) ReadResponse(response runtime.ClientRespons
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PUT /controller/registry-clients/{id}] updateRegistryClient", response, response.Code())
 	}
 }
 
@@ -69,7 +69,8 @@ func NewUpdateRegistryClientOK() *UpdateRegistryClientOK {
 	return &UpdateRegistryClientOK{}
 }
 
-/* UpdateRegistryClientOK describes a response with status code 200, with default header values.
+/*
+UpdateRegistryClientOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,44 @@ type UpdateRegistryClientOK struct {
 	Payload *models.RegistryClientEntity
 }
 
+// IsSuccess returns true when this update registry client o k response has a 2xx status code
+func (o *UpdateRegistryClientOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this update registry client o k response has a 3xx status code
+func (o *UpdateRegistryClientOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update registry client o k response has a 4xx status code
+func (o *UpdateRegistryClientOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this update registry client o k response has a 5xx status code
+func (o *UpdateRegistryClientOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update registry client o k response a status code equal to that given
+func (o *UpdateRegistryClientOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the update registry client o k response
+func (o *UpdateRegistryClientOK) Code() int {
+	return 200
+}
+
 func (o *UpdateRegistryClientOK) Error() string {
 	return fmt.Sprintf("[PUT /controller/registry-clients/{id}][%d] updateRegistryClientOK  %+v", 200, o.Payload)
 }
+
+func (o *UpdateRegistryClientOK) String() string {
+	return fmt.Sprintf("[PUT /controller/registry-clients/{id}][%d] updateRegistryClientOK  %+v", 200, o.Payload)
+}
+
 func (o *UpdateRegistryClientOK) GetPayload() *models.RegistryClientEntity {
 	return o.Payload
 }
@@ -101,14 +137,49 @@ func NewUpdateRegistryClientBadRequest() *UpdateRegistryClientBadRequest {
 	return &UpdateRegistryClientBadRequest{}
 }
 
-/* UpdateRegistryClientBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateRegistryClientBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type UpdateRegistryClientBadRequest struct {
 }
 
+// IsSuccess returns true when this update registry client bad request response has a 2xx status code
+func (o *UpdateRegistryClientBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update registry client bad request response has a 3xx status code
+func (o *UpdateRegistryClientBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update registry client bad request response has a 4xx status code
+func (o *UpdateRegistryClientBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update registry client bad request response has a 5xx status code
+func (o *UpdateRegistryClientBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update registry client bad request response a status code equal to that given
+func (o *UpdateRegistryClientBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the update registry client bad request response
+func (o *UpdateRegistryClientBadRequest) Code() int {
+	return 400
+}
+
 func (o *UpdateRegistryClientBadRequest) Error() string {
+	return fmt.Sprintf("[PUT /controller/registry-clients/{id}][%d] updateRegistryClientBadRequest ", 400)
+}
+
+func (o *UpdateRegistryClientBadRequest) String() string {
 	return fmt.Sprintf("[PUT /controller/registry-clients/{id}][%d] updateRegistryClientBadRequest ", 400)
 }
 
@@ -122,14 +193,49 @@ func NewUpdateRegistryClientUnauthorized() *UpdateRegistryClientUnauthorized {
 	return &UpdateRegistryClientUnauthorized{}
 }
 
-/* UpdateRegistryClientUnauthorized describes a response with status code 401, with default header values.
+/*
+UpdateRegistryClientUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type UpdateRegistryClientUnauthorized struct {
 }
 
+// IsSuccess returns true when this update registry client unauthorized response has a 2xx status code
+func (o *UpdateRegistryClientUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update registry client unauthorized response has a 3xx status code
+func (o *UpdateRegistryClientUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update registry client unauthorized response has a 4xx status code
+func (o *UpdateRegistryClientUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update registry client unauthorized response has a 5xx status code
+func (o *UpdateRegistryClientUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update registry client unauthorized response a status code equal to that given
+func (o *UpdateRegistryClientUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the update registry client unauthorized response
+func (o *UpdateRegistryClientUnauthorized) Code() int {
+	return 401
+}
+
 func (o *UpdateRegistryClientUnauthorized) Error() string {
+	return fmt.Sprintf("[PUT /controller/registry-clients/{id}][%d] updateRegistryClientUnauthorized ", 401)
+}
+
+func (o *UpdateRegistryClientUnauthorized) String() string {
 	return fmt.Sprintf("[PUT /controller/registry-clients/{id}][%d] updateRegistryClientUnauthorized ", 401)
 }
 
@@ -143,14 +249,49 @@ func NewUpdateRegistryClientForbidden() *UpdateRegistryClientForbidden {
 	return &UpdateRegistryClientForbidden{}
 }
 
-/* UpdateRegistryClientForbidden describes a response with status code 403, with default header values.
+/*
+UpdateRegistryClientForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type UpdateRegistryClientForbidden struct {
 }
 
+// IsSuccess returns true when this update registry client forbidden response has a 2xx status code
+func (o *UpdateRegistryClientForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update registry client forbidden response has a 3xx status code
+func (o *UpdateRegistryClientForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update registry client forbidden response has a 4xx status code
+func (o *UpdateRegistryClientForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update registry client forbidden response has a 5xx status code
+func (o *UpdateRegistryClientForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update registry client forbidden response a status code equal to that given
+func (o *UpdateRegistryClientForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the update registry client forbidden response
+func (o *UpdateRegistryClientForbidden) Code() int {
+	return 403
+}
+
 func (o *UpdateRegistryClientForbidden) Error() string {
+	return fmt.Sprintf("[PUT /controller/registry-clients/{id}][%d] updateRegistryClientForbidden ", 403)
+}
+
+func (o *UpdateRegistryClientForbidden) String() string {
 	return fmt.Sprintf("[PUT /controller/registry-clients/{id}][%d] updateRegistryClientForbidden ", 403)
 }
 
@@ -164,14 +305,49 @@ func NewUpdateRegistryClientNotFound() *UpdateRegistryClientNotFound {
 	return &UpdateRegistryClientNotFound{}
 }
 
-/* UpdateRegistryClientNotFound describes a response with status code 404, with default header values.
+/*
+UpdateRegistryClientNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type UpdateRegistryClientNotFound struct {
 }
 
+// IsSuccess returns true when this update registry client not found response has a 2xx status code
+func (o *UpdateRegistryClientNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update registry client not found response has a 3xx status code
+func (o *UpdateRegistryClientNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update registry client not found response has a 4xx status code
+func (o *UpdateRegistryClientNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update registry client not found response has a 5xx status code
+func (o *UpdateRegistryClientNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update registry client not found response a status code equal to that given
+func (o *UpdateRegistryClientNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+// Code gets the status code for the update registry client not found response
+func (o *UpdateRegistryClientNotFound) Code() int {
+	return 404
+}
+
 func (o *UpdateRegistryClientNotFound) Error() string {
+	return fmt.Sprintf("[PUT /controller/registry-clients/{id}][%d] updateRegistryClientNotFound ", 404)
+}
+
+func (o *UpdateRegistryClientNotFound) String() string {
 	return fmt.Sprintf("[PUT /controller/registry-clients/{id}][%d] updateRegistryClientNotFound ", 404)
 }
 
@@ -185,14 +361,49 @@ func NewUpdateRegistryClientConflict() *UpdateRegistryClientConflict {
 	return &UpdateRegistryClientConflict{}
 }
 
-/* UpdateRegistryClientConflict describes a response with status code 409, with default header values.
+/*
+UpdateRegistryClientConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type UpdateRegistryClientConflict struct {
 }
 
+// IsSuccess returns true when this update registry client conflict response has a 2xx status code
+func (o *UpdateRegistryClientConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update registry client conflict response has a 3xx status code
+func (o *UpdateRegistryClientConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update registry client conflict response has a 4xx status code
+func (o *UpdateRegistryClientConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update registry client conflict response has a 5xx status code
+func (o *UpdateRegistryClientConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update registry client conflict response a status code equal to that given
+func (o *UpdateRegistryClientConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the update registry client conflict response
+func (o *UpdateRegistryClientConflict) Code() int {
+	return 409
+}
+
 func (o *UpdateRegistryClientConflict) Error() string {
+	return fmt.Sprintf("[PUT /controller/registry-clients/{id}][%d] updateRegistryClientConflict ", 409)
+}
+
+func (o *UpdateRegistryClientConflict) String() string {
 	return fmt.Sprintf("[PUT /controller/registry-clients/{id}][%d] updateRegistryClientConflict ", 409)
 }
 

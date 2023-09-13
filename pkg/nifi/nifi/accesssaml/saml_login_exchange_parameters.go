@@ -52,10 +52,12 @@ func NewSamlLoginExchangeParamsWithHTTPClient(client *http.Client) *SamlLoginExc
 	}
 }
 
-/* SamlLoginExchangeParams contains all the parameters to send to the API endpoint
-   for the saml login exchange operation.
+/*
+SamlLoginExchangeParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the saml login exchange operation.
+
+	Typically these are written to a http.Request.
 */
 type SamlLoginExchangeParams struct {
 	timeout    time.Duration

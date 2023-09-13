@@ -52,10 +52,12 @@ func NewGetFlowConfigParamsWithHTTPClient(client *http.Client) *GetFlowConfigPar
 	}
 }
 
-/* GetFlowConfigParams contains all the parameters to send to the API endpoint
-   for the get flow config operation.
+/*
+GetFlowConfigParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get flow config operation.
+
+	Typically these are written to a http.Request.
 */
 type GetFlowConfigParams struct {
 	timeout    time.Duration

@@ -302,6 +302,11 @@ func (m *ExtensionMetadata) ContextValidate(ctx context.Context, formats strfmt.
 func (m *ExtensionMetadata) contextValidateBundleInfo(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.BundleInfo != nil {
+
+		if swag.IsZero(m.BundleInfo) { // not required
+			return nil
+		}
+
 		if err := m.BundleInfo.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("bundleInfo")
@@ -318,6 +323,11 @@ func (m *ExtensionMetadata) contextValidateBundleInfo(ctx context.Context, forma
 func (m *ExtensionMetadata) contextValidateDeprecationNotice(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.DeprecationNotice != nil {
+
+		if swag.IsZero(m.DeprecationNotice) { // not required
+			return nil
+		}
+
 		if err := m.DeprecationNotice.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("deprecationNotice")
@@ -334,6 +344,11 @@ func (m *ExtensionMetadata) contextValidateDeprecationNotice(ctx context.Context
 func (m *ExtensionMetadata) contextValidateLink(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Link != nil {
+
+		if swag.IsZero(m.Link) { // not required
+			return nil
+		}
+
 		if err := m.Link.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("link")
@@ -350,6 +365,11 @@ func (m *ExtensionMetadata) contextValidateLink(ctx context.Context, formats str
 func (m *ExtensionMetadata) contextValidateLinkDocs(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.LinkDocs != nil {
+
+		if swag.IsZero(m.LinkDocs) { // not required
+			return nil
+		}
+
 		if err := m.LinkDocs.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("linkDocs")
@@ -368,6 +388,11 @@ func (m *ExtensionMetadata) contextValidateProvidedServiceAPIs(ctx context.Conte
 	for i := 0; i < len(m.ProvidedServiceAPIs); i++ {
 
 		if m.ProvidedServiceAPIs[i] != nil {
+
+			if swag.IsZero(m.ProvidedServiceAPIs[i]) { // not required
+				return nil
+			}
+
 			if err := m.ProvidedServiceAPIs[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("providedServiceAPIs" + "." + strconv.Itoa(i))
@@ -386,6 +411,11 @@ func (m *ExtensionMetadata) contextValidateProvidedServiceAPIs(ctx context.Conte
 func (m *ExtensionMetadata) contextValidateRestricted(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Restricted != nil {
+
+		if swag.IsZero(m.Restricted) { // not required
+			return nil
+		}
+
 		if err := m.Restricted.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("restricted")

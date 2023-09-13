@@ -82,6 +82,11 @@ func (m *ProvenanceOptionsDTO) contextValidateSearchableFields(ctx context.Conte
 	for i := 0; i < len(m.SearchableFields); i++ {
 
 		if m.SearchableFields[i] != nil {
+
+			if swag.IsZero(m.SearchableFields[i]) { // not required
+				return nil
+			}
+
 			if err := m.SearchableFields[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("searchableFields" + "." + strconv.Itoa(i))

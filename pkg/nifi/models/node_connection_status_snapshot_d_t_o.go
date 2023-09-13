@@ -81,6 +81,11 @@ func (m *NodeConnectionStatusSnapshotDTO) ContextValidate(ctx context.Context, f
 func (m *NodeConnectionStatusSnapshotDTO) contextValidateStatusSnapshot(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.StatusSnapshot != nil {
+
+		if swag.IsZero(m.StatusSnapshot) { // not required
+			return nil
+		}
+
 		if err := m.StatusSnapshot.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("statusSnapshot")

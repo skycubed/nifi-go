@@ -52,10 +52,12 @@ func NewExtendOutputPortTransactionTTLParamsWithHTTPClient(client *http.Client) 
 	}
 }
 
-/* ExtendOutputPortTransactionTTLParams contains all the parameters to send to the API endpoint
-   for the extend output port transaction TTL operation.
+/*
+ExtendOutputPortTransactionTTLParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the extend output port transaction TTL operation.
+
+	Typically these are written to a http.Request.
 */
 type ExtendOutputPortTransactionTTLParams struct {
 

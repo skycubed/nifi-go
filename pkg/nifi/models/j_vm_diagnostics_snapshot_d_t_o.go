@@ -132,6 +132,11 @@ func (m *JVMDiagnosticsSnapshotDTO) ContextValidate(ctx context.Context, formats
 func (m *JVMDiagnosticsSnapshotDTO) contextValidateControllerDiagnostics(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ControllerDiagnostics != nil {
+
+		if swag.IsZero(m.ControllerDiagnostics) { // not required
+			return nil
+		}
+
 		if err := m.ControllerDiagnostics.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("controllerDiagnostics")
@@ -148,6 +153,11 @@ func (m *JVMDiagnosticsSnapshotDTO) contextValidateControllerDiagnostics(ctx con
 func (m *JVMDiagnosticsSnapshotDTO) contextValidateFlowDiagnosticsDto(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.FlowDiagnosticsDto != nil {
+
+		if swag.IsZero(m.FlowDiagnosticsDto) { // not required
+			return nil
+		}
+
 		if err := m.FlowDiagnosticsDto.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("flowDiagnosticsDto")
@@ -164,6 +174,11 @@ func (m *JVMDiagnosticsSnapshotDTO) contextValidateFlowDiagnosticsDto(ctx contex
 func (m *JVMDiagnosticsSnapshotDTO) contextValidateSystemDiagnosticsDto(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.SystemDiagnosticsDto != nil {
+
+		if swag.IsZero(m.SystemDiagnosticsDto) { // not required
+			return nil
+		}
+
 		if err := m.SystemDiagnosticsDto.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("systemDiagnosticsDto")

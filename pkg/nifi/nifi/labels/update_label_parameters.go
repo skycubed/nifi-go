@@ -54,10 +54,12 @@ func NewUpdateLabelParamsWithHTTPClient(client *http.Client) *UpdateLabelParams 
 	}
 }
 
-/* UpdateLabelParams contains all the parameters to send to the API endpoint
-   for the update label operation.
+/*
+UpdateLabelParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update label operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateLabelParams struct {
 

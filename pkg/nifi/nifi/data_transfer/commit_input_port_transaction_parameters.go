@@ -53,10 +53,12 @@ func NewCommitInputPortTransactionParamsWithHTTPClient(client *http.Client) *Com
 	}
 }
 
-/* CommitInputPortTransactionParams contains all the parameters to send to the API endpoint
-   for the commit input port transaction operation.
+/*
+CommitInputPortTransactionParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the commit input port transaction operation.
+
+	Typically these are written to a http.Request.
 */
 type CommitInputPortTransactionParams struct {
 

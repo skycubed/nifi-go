@@ -53,10 +53,12 @@ func NewGetSystemDiagnosticsParamsWithHTTPClient(client *http.Client) *GetSystem
 	}
 }
 
-/* GetSystemDiagnosticsParams contains all the parameters to send to the API endpoint
-   for the get system diagnostics operation.
+/*
+GetSystemDiagnosticsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get system diagnostics operation.
+
+	Typically these are written to a http.Request.
 */
 type GetSystemDiagnosticsParams struct {
 

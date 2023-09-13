@@ -62,9 +62,9 @@ type ClientService interface {
 }
 
 /*
-  CreateVersionControlRequest creates a version control request
+CreateVersionControlRequest creates a version control request
 
-  Creates a request so that a Process Group can be placed under Version Control or have its Version Control configuration changed. Creating this request will prevent any other threads from simultaneously saving local changes to Version Control. It will not, however, actually save the local flow to the Flow Registry. A POST to /versions/process-groups/{id} should be used to initiate saving of the local flow to the Flow Registry. Note: This endpoint is subject to change as NiFi and it's REST API evolve.
+Creates a request so that a Process Group can be placed under Version Control or have its Version Control configuration changed. Creating this request will prevent any other threads from simultaneously saving local changes to Version Control. It will not, however, actually save the local flow to the Flow Registry. A POST to /versions/process-groups/{id} should be used to initiate saving of the local flow to the Flow Registry. Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 */
 func (a *Client) CreateVersionControlRequest(params *CreateVersionControlRequestParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateVersionControlRequestOK, error) {
 	// TODO: Validate the params before sending
@@ -103,9 +103,9 @@ func (a *Client) CreateVersionControlRequest(params *CreateVersionControlRequest
 }
 
 /*
-  DeleteRevertRequest deletes the revert request with the given ID
+DeleteRevertRequest deletes the revert request with the given ID
 
-  Deletes the Revert Request with the given ID. After a request is created via a POST to /versions/revert-requests/process-groups/{id}, it is expected that the client will properly clean up the request by DELETE'ing it, once the Revert process has completed. If the request is deleted before the request completes, then the Revert request will finish the step that it is currently performing and then will cancel any subsequent steps. Note: This endpoint is subject to change as NiFi and it's REST API evolve.
+Deletes the Revert Request with the given ID. After a request is created via a POST to /versions/revert-requests/process-groups/{id}, it is expected that the client will properly clean up the request by DELETE'ing it, once the Revert process has completed. If the request is deleted before the request completes, then the Revert request will finish the step that it is currently performing and then will cancel any subsequent steps. Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 */
 func (a *Client) DeleteRevertRequest(params *DeleteRevertRequestParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteRevertRequestOK, error) {
 	// TODO: Validate the params before sending
@@ -144,9 +144,9 @@ func (a *Client) DeleteRevertRequest(params *DeleteRevertRequestParams, authInfo
 }
 
 /*
-  DeleteUpdateRequest deletes the update request with the given ID
+DeleteUpdateRequest deletes the update request with the given ID
 
-  Deletes the Update Request with the given ID. After a request is created via a POST to /versions/update-requests/process-groups/{id}, it is expected that the client will properly clean up the request by DELETE'ing it, once the Update process has completed. If the request is deleted before the request completes, then the Update request will finish the step that it is currently performing and then will cancel any subsequent steps. Note: This endpoint is subject to change as NiFi and it's REST API evolve.
+Deletes the Update Request with the given ID. After a request is created via a POST to /versions/update-requests/process-groups/{id}, it is expected that the client will properly clean up the request by DELETE'ing it, once the Update process has completed. If the request is deleted before the request completes, then the Update request will finish the step that it is currently performing and then will cancel any subsequent steps. Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 */
 func (a *Client) DeleteUpdateRequest(params *DeleteUpdateRequestParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteUpdateRequestOK, error) {
 	// TODO: Validate the params before sending
@@ -185,9 +185,9 @@ func (a *Client) DeleteUpdateRequest(params *DeleteUpdateRequestParams, authInfo
 }
 
 /*
-  DeleteVersionControlRequest deletes the version control request with the given ID
+DeleteVersionControlRequest deletes the version control request with the given ID
 
-  Deletes the Version Control Request with the given ID. This will allow other threads to save flows to the Flow Registry. See also the documentation for POSTing to /versions/active-requests for information regarding why this is done. Note: This endpoint is subject to change as NiFi and it's REST API evolve.
+Deletes the Version Control Request with the given ID. This will allow other threads to save flows to the Flow Registry. See also the documentation for POSTing to /versions/active-requests for information regarding why this is done. Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 */
 func (a *Client) DeleteVersionControlRequest(params *DeleteVersionControlRequestParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) error {
 	// TODO: Validate the params before sending
@@ -219,7 +219,7 @@ func (a *Client) DeleteVersionControlRequest(params *DeleteVersionControlRequest
 }
 
 /*
-  ExportFlowVersion gets the latest version of a process group for download
+ExportFlowVersion gets the latest version of a process group for download
 */
 func (a *Client) ExportFlowVersion(params *ExportFlowVersionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ExportFlowVersionOK, error) {
 	// TODO: Validate the params before sending
@@ -258,9 +258,9 @@ func (a *Client) ExportFlowVersion(params *ExportFlowVersionParams, authInfo run
 }
 
 /*
-  GetRevertRequest returns the revert request with the given ID
+GetRevertRequest returns the revert request with the given ID
 
-  Returns the Revert Request with the given ID. Once a Revert Request has been created by performing a POST to /versions/revert-requests/process-groups/{id}, that request can subsequently be retrieved via this endpoint, and the request that is fetched will contain the updated state, such as percent complete, the current state of the request, and any failures. Note: This endpoint is subject to change as NiFi and it's REST API evolve.
+Returns the Revert Request with the given ID. Once a Revert Request has been created by performing a POST to /versions/revert-requests/process-groups/{id}, that request can subsequently be retrieved via this endpoint, and the request that is fetched will contain the updated state, such as percent complete, the current state of the request, and any failures. Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 */
 func (a *Client) GetRevertRequest(params *GetRevertRequestParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetRevertRequestOK, error) {
 	// TODO: Validate the params before sending
@@ -299,9 +299,9 @@ func (a *Client) GetRevertRequest(params *GetRevertRequestParams, authInfo runti
 }
 
 /*
-  GetUpdateRequest returns the update request with the given ID
+GetUpdateRequest returns the update request with the given ID
 
-  Returns the Update Request with the given ID. Once an Update Request has been created by performing a POST to /versions/update-requests/process-groups/{id}, that request can subsequently be retrieved via this endpoint, and the request that is fetched will contain the updated state, such as percent complete, the current state of the request, and any failures. Note: This endpoint is subject to change as NiFi and it's REST API evolve.
+Returns the Update Request with the given ID. Once an Update Request has been created by performing a POST to /versions/update-requests/process-groups/{id}, that request can subsequently be retrieved via this endpoint, and the request that is fetched will contain the updated state, such as percent complete, the current state of the request, and any failures. Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 */
 func (a *Client) GetUpdateRequest(params *GetUpdateRequestParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetUpdateRequestOK, error) {
 	// TODO: Validate the params before sending
@@ -340,9 +340,9 @@ func (a *Client) GetUpdateRequest(params *GetUpdateRequestParams, authInfo runti
 }
 
 /*
-  GetVersionInformation gets the version control information for a process group
+GetVersionInformation gets the version control information for a process group
 
-  Note: This endpoint is subject to change as NiFi and it's REST API evolve.
+Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 */
 func (a *Client) GetVersionInformation(params *GetVersionInformationParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetVersionInformationOK, error) {
 	// TODO: Validate the params before sending
@@ -381,9 +381,9 @@ func (a *Client) GetVersionInformation(params *GetVersionInformationParams, auth
 }
 
 /*
-  InitiateRevertFlowVersion initiates the revert request of a process group with the given ID
+InitiateRevertFlowVersion initiates the revert request of a process group with the given ID
 
-  For a Process Group that is already under Version Control, this will initiate the action of reverting any local changes that have been made to the Process Group since it was last synchronized with the Flow Registry. This will result in the flow matching the Versioned Flow that exists in the Flow Registry. This can be a lengthy process, as it will stop any Processors and disable any Controller Services necessary to perform the action and then restart them. As a result, the endpoint will immediately return a VersionedFlowUpdateRequestEntity, and the process of updating the flow will occur asynchronously in the background. The client may then periodically poll the status of the request by issuing a GET request to /versions/revert-requests/{requestId}. Once the request is completed, the client is expected to issue a DELETE request to /versions/revert-requests/{requestId}. Note: This endpoint is subject to change as NiFi and it's REST API evolve.
+For a Process Group that is already under Version Control, this will initiate the action of reverting any local changes that have been made to the Process Group since it was last synchronized with the Flow Registry. This will result in the flow matching the Versioned Flow that exists in the Flow Registry. This can be a lengthy process, as it will stop any Processors and disable any Controller Services necessary to perform the action and then restart them. As a result, the endpoint will immediately return a VersionedFlowUpdateRequestEntity, and the process of updating the flow will occur asynchronously in the background. The client may then periodically poll the status of the request by issuing a GET request to /versions/revert-requests/{requestId}. Once the request is completed, the client is expected to issue a DELETE request to /versions/revert-requests/{requestId}. Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 */
 func (a *Client) InitiateRevertFlowVersion(params *InitiateRevertFlowVersionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*InitiateRevertFlowVersionOK, error) {
 	// TODO: Validate the params before sending
@@ -422,9 +422,9 @@ func (a *Client) InitiateRevertFlowVersion(params *InitiateRevertFlowVersionPara
 }
 
 /*
-  InitiateVersionControlUpdate initiates the update request of a process group with the given ID
+InitiateVersionControlUpdate initiates the update request of a process group with the given ID
 
-  For a Process Group that is already under Version Control, this will initiate the action of changing from a specific version of the flow in the Flow Registry to a different version of the flow. This can be a lengthy process, as it will stop any Processors and disable any Controller Services necessary to perform the action and then restart them. As a result, the endpoint will immediately return a VersionedFlowUpdateRequestEntity, and the process of updating the flow will occur asynchronously in the background. The client may then periodically poll the status of the request by issuing a GET request to /versions/update-requests/{requestId}. Once the request is completed, the client is expected to issue a DELETE request to /versions/update-requests/{requestId}. Note: This endpoint is subject to change as NiFi and it's REST API evolve.
+For a Process Group that is already under Version Control, this will initiate the action of changing from a specific version of the flow in the Flow Registry to a different version of the flow. This can be a lengthy process, as it will stop any Processors and disable any Controller Services necessary to perform the action and then restart them. As a result, the endpoint will immediately return a VersionedFlowUpdateRequestEntity, and the process of updating the flow will occur asynchronously in the background. The client may then periodically poll the status of the request by issuing a GET request to /versions/update-requests/{requestId}. Once the request is completed, the client is expected to issue a DELETE request to /versions/update-requests/{requestId}. Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 */
 func (a *Client) InitiateVersionControlUpdate(params *InitiateVersionControlUpdateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*InitiateVersionControlUpdateOK, error) {
 	// TODO: Validate the params before sending
@@ -463,9 +463,9 @@ func (a *Client) InitiateVersionControlUpdate(params *InitiateVersionControlUpda
 }
 
 /*
-  SaveToFlowRegistry saves the process group with the given ID
+SaveToFlowRegistry saves the process group with the given ID
 
-  Begins version controlling the Process Group with the given ID or commits changes to the Versioned Flow, depending on if the provided VersionControlInformation includes a flowId. Note: This endpoint is subject to change as NiFi and it's REST API evolve.
+Begins version controlling the Process Group with the given ID or commits changes to the Versioned Flow, depending on if the provided VersionControlInformation includes a flowId. Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 */
 func (a *Client) SaveToFlowRegistry(params *SaveToFlowRegistryParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SaveToFlowRegistryOK, error) {
 	// TODO: Validate the params before sending
@@ -504,9 +504,9 @@ func (a *Client) SaveToFlowRegistry(params *SaveToFlowRegistryParams, authInfo r
 }
 
 /*
-  StopVersionControl stops version controlling the process group with the given ID
+StopVersionControl stops version controlling the process group with the given ID
 
-  Stops version controlling the Process Group with the given ID. The Process Group will no longer track to any Versioned Flow. Note: This endpoint is subject to change as NiFi and it's REST API evolve.
+Stops version controlling the Process Group with the given ID. The Process Group will no longer track to any Versioned Flow. Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 */
 func (a *Client) StopVersionControl(params *StopVersionControlParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StopVersionControlOK, error) {
 	// TODO: Validate the params before sending
@@ -545,9 +545,9 @@ func (a *Client) StopVersionControl(params *StopVersionControlParams, authInfo r
 }
 
 /*
-  UpdateFlowVersion updates the version of a process group with the given ID
+UpdateFlowVersion updates the version of a process group with the given ID
 
-  For a Process Group that is already under Version Control, this will update the version of the flow to a different version. This endpoint expects that the given snapshot will not modify any Processor that is currently running or any Controller Service that is enabled. Note: This endpoint is subject to change as NiFi and it's REST API evolve.
+For a Process Group that is already under Version Control, this will update the version of the flow to a different version. This endpoint expects that the given snapshot will not modify any Processor that is currently running or any Controller Service that is enabled. Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 */
 func (a *Client) UpdateFlowVersion(params *UpdateFlowVersionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateFlowVersionOK, error) {
 	// TODO: Validate the params before sending
@@ -586,9 +586,9 @@ func (a *Client) UpdateFlowVersion(params *UpdateFlowVersionParams, authInfo run
 }
 
 /*
-  UpdateVersionControlRequest updates the request with the given ID
+UpdateVersionControlRequest updates the request with the given ID
 
-  Note: This endpoint is subject to change as NiFi and it's REST API evolve.
+Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 */
 func (a *Client) UpdateVersionControlRequest(params *UpdateVersionControlRequestParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateVersionControlRequestOK, error) {
 	// TODO: Validate the params before sending

@@ -53,10 +53,12 @@ func NewGetRemoteProcessGroupStatusParamsWithHTTPClient(client *http.Client) *Ge
 	}
 }
 
-/* GetRemoteProcessGroupStatusParams contains all the parameters to send to the API endpoint
-   for the get remote process group status operation.
+/*
+GetRemoteProcessGroupStatusParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get remote process group status operation.
+
+	Typically these are written to a http.Request.
 */
 type GetRemoteProcessGroupStatusParams struct {
 

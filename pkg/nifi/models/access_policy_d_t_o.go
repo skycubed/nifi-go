@@ -254,6 +254,11 @@ func (m *AccessPolicyDTO) ContextValidate(ctx context.Context, formats strfmt.Re
 func (m *AccessPolicyDTO) contextValidateComponentReference(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ComponentReference != nil {
+
+		if swag.IsZero(m.ComponentReference) { // not required
+			return nil
+		}
+
 		if err := m.ComponentReference.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("componentReference")
@@ -270,6 +275,11 @@ func (m *AccessPolicyDTO) contextValidateComponentReference(ctx context.Context,
 func (m *AccessPolicyDTO) contextValidatePosition(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Position != nil {
+
+		if swag.IsZero(m.Position) { // not required
+			return nil
+		}
+
 		if err := m.Position.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("position")
@@ -288,6 +298,11 @@ func (m *AccessPolicyDTO) contextValidateUserGroups(ctx context.Context, formats
 	for i := 0; i < len(m.UserGroups); i++ {
 
 		if m.UserGroups[i] != nil {
+
+			if swag.IsZero(m.UserGroups[i]) { // not required
+				return nil
+			}
+
 			if err := m.UserGroups[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("userGroups" + "." + strconv.Itoa(i))
@@ -308,6 +323,11 @@ func (m *AccessPolicyDTO) contextValidateUsers(ctx context.Context, formats strf
 	for i := 0; i < len(m.Users); i++ {
 
 		if m.Users[i] != nil {
+
+			if swag.IsZero(m.Users[i]) { // not required
+				return nil
+			}
+
 			if err := m.Users[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("users" + "." + strconv.Itoa(i))

@@ -53,10 +53,12 @@ func NewRemoveOutputPortParamsWithHTTPClient(client *http.Client) *RemoveOutputP
 	}
 }
 
-/* RemoveOutputPortParams contains all the parameters to send to the API endpoint
-   for the remove output port operation.
+/*
+RemoveOutputPortParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the remove output port operation.
+
+	Typically these are written to a http.Request.
 */
 type RemoveOutputPortParams struct {
 

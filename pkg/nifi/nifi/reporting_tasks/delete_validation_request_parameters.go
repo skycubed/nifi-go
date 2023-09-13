@@ -52,10 +52,12 @@ func NewDeleteValidationRequestParamsWithHTTPClient(client *http.Client) *Delete
 	}
 }
 
-/* DeleteValidationRequestParams contains all the parameters to send to the API endpoint
-   for the delete validation request operation.
+/*
+DeleteValidationRequestParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete validation request operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteValidationRequestParams struct {
 

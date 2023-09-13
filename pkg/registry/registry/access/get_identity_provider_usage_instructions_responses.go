@@ -46,7 +46,7 @@ func (o *GetIdentityProviderUsageInstructionsReader) ReadResponse(response runti
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /access/token/identity-provider/usage] getIdentityProviderUsageInstructions", response, response.Code())
 	}
 }
 
@@ -55,7 +55,8 @@ func NewGetIdentityProviderUsageInstructionsOK() *GetIdentityProviderUsageInstru
 	return &GetIdentityProviderUsageInstructionsOK{}
 }
 
-/* GetIdentityProviderUsageInstructionsOK describes a response with status code 200, with default header values.
+/*
+GetIdentityProviderUsageInstructionsOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -63,9 +64,44 @@ type GetIdentityProviderUsageInstructionsOK struct {
 	Payload string
 }
 
+// IsSuccess returns true when this get identity provider usage instructions o k response has a 2xx status code
+func (o *GetIdentityProviderUsageInstructionsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get identity provider usage instructions o k response has a 3xx status code
+func (o *GetIdentityProviderUsageInstructionsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get identity provider usage instructions o k response has a 4xx status code
+func (o *GetIdentityProviderUsageInstructionsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get identity provider usage instructions o k response has a 5xx status code
+func (o *GetIdentityProviderUsageInstructionsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get identity provider usage instructions o k response a status code equal to that given
+func (o *GetIdentityProviderUsageInstructionsOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the get identity provider usage instructions o k response
+func (o *GetIdentityProviderUsageInstructionsOK) Code() int {
+	return 200
+}
+
 func (o *GetIdentityProviderUsageInstructionsOK) Error() string {
 	return fmt.Sprintf("[GET /access/token/identity-provider/usage][%d] getIdentityProviderUsageInstructionsOK  %+v", 200, o.Payload)
 }
+
+func (o *GetIdentityProviderUsageInstructionsOK) String() string {
+	return fmt.Sprintf("[GET /access/token/identity-provider/usage][%d] getIdentityProviderUsageInstructionsOK  %+v", 200, o.Payload)
+}
+
 func (o *GetIdentityProviderUsageInstructionsOK) GetPayload() string {
 	return o.Payload
 }
@@ -85,14 +121,49 @@ func NewGetIdentityProviderUsageInstructionsBadRequest() *GetIdentityProviderUsa
 	return &GetIdentityProviderUsageInstructionsBadRequest{}
 }
 
-/* GetIdentityProviderUsageInstructionsBadRequest describes a response with status code 400, with default header values.
+/*
+GetIdentityProviderUsageInstructionsBadRequest describes a response with status code 400, with default header values.
 
 NiFi Registry was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type GetIdentityProviderUsageInstructionsBadRequest struct {
 }
 
+// IsSuccess returns true when this get identity provider usage instructions bad request response has a 2xx status code
+func (o *GetIdentityProviderUsageInstructionsBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get identity provider usage instructions bad request response has a 3xx status code
+func (o *GetIdentityProviderUsageInstructionsBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get identity provider usage instructions bad request response has a 4xx status code
+func (o *GetIdentityProviderUsageInstructionsBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get identity provider usage instructions bad request response has a 5xx status code
+func (o *GetIdentityProviderUsageInstructionsBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get identity provider usage instructions bad request response a status code equal to that given
+func (o *GetIdentityProviderUsageInstructionsBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the get identity provider usage instructions bad request response
+func (o *GetIdentityProviderUsageInstructionsBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetIdentityProviderUsageInstructionsBadRequest) Error() string {
+	return fmt.Sprintf("[GET /access/token/identity-provider/usage][%d] getIdentityProviderUsageInstructionsBadRequest ", 400)
+}
+
+func (o *GetIdentityProviderUsageInstructionsBadRequest) String() string {
 	return fmt.Sprintf("[GET /access/token/identity-provider/usage][%d] getIdentityProviderUsageInstructionsBadRequest ", 400)
 }
 
@@ -106,14 +177,49 @@ func NewGetIdentityProviderUsageInstructionsConflict() *GetIdentityProviderUsage
 	return &GetIdentityProviderUsageInstructionsConflict{}
 }
 
-/* GetIdentityProviderUsageInstructionsConflict describes a response with status code 409, with default header values.
+/*
+GetIdentityProviderUsageInstructionsConflict describes a response with status code 409, with default header values.
 
 NiFi Registry was unable to complete the request because it assumes a server state that is not valid. The NiFi Registry may not be configured to support login with customized credentials.
 */
 type GetIdentityProviderUsageInstructionsConflict struct {
 }
 
+// IsSuccess returns true when this get identity provider usage instructions conflict response has a 2xx status code
+func (o *GetIdentityProviderUsageInstructionsConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get identity provider usage instructions conflict response has a 3xx status code
+func (o *GetIdentityProviderUsageInstructionsConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get identity provider usage instructions conflict response has a 4xx status code
+func (o *GetIdentityProviderUsageInstructionsConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get identity provider usage instructions conflict response has a 5xx status code
+func (o *GetIdentityProviderUsageInstructionsConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get identity provider usage instructions conflict response a status code equal to that given
+func (o *GetIdentityProviderUsageInstructionsConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the get identity provider usage instructions conflict response
+func (o *GetIdentityProviderUsageInstructionsConflict) Code() int {
+	return 409
+}
+
 func (o *GetIdentityProviderUsageInstructionsConflict) Error() string {
+	return fmt.Sprintf("[GET /access/token/identity-provider/usage][%d] getIdentityProviderUsageInstructionsConflict ", 409)
+}
+
+func (o *GetIdentityProviderUsageInstructionsConflict) String() string {
 	return fmt.Sprintf("[GET /access/token/identity-provider/usage][%d] getIdentityProviderUsageInstructionsConflict ", 409)
 }
 
@@ -127,14 +233,49 @@ func NewGetIdentityProviderUsageInstructionsInternalServerError() *GetIdentityPr
 	return &GetIdentityProviderUsageInstructionsInternalServerError{}
 }
 
-/* GetIdentityProviderUsageInstructionsInternalServerError describes a response with status code 500, with default header values.
+/*
+GetIdentityProviderUsageInstructionsInternalServerError describes a response with status code 500, with default header values.
 
 NiFi Registry was unable to complete the request because an unexpected error occurred.
 */
 type GetIdentityProviderUsageInstructionsInternalServerError struct {
 }
 
+// IsSuccess returns true when this get identity provider usage instructions internal server error response has a 2xx status code
+func (o *GetIdentityProviderUsageInstructionsInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get identity provider usage instructions internal server error response has a 3xx status code
+func (o *GetIdentityProviderUsageInstructionsInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get identity provider usage instructions internal server error response has a 4xx status code
+func (o *GetIdentityProviderUsageInstructionsInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get identity provider usage instructions internal server error response has a 5xx status code
+func (o *GetIdentityProviderUsageInstructionsInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this get identity provider usage instructions internal server error response a status code equal to that given
+func (o *GetIdentityProviderUsageInstructionsInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
+// Code gets the status code for the get identity provider usage instructions internal server error response
+func (o *GetIdentityProviderUsageInstructionsInternalServerError) Code() int {
+	return 500
+}
+
 func (o *GetIdentityProviderUsageInstructionsInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /access/token/identity-provider/usage][%d] getIdentityProviderUsageInstructionsInternalServerError ", 500)
+}
+
+func (o *GetIdentityProviderUsageInstructionsInternalServerError) String() string {
 	return fmt.Sprintf("[GET /access/token/identity-provider/usage][%d] getIdentityProviderUsageInstructionsInternalServerError ", 500)
 }
 

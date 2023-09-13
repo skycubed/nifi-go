@@ -54,7 +54,7 @@ func (o *GetControllerServicesFromGroupReader) ReadResponse(response runtime.Cli
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /flow/process-groups/{id}/controller-services] getControllerServicesFromGroup", response, response.Code())
 	}
 }
 
@@ -63,7 +63,8 @@ func NewGetControllerServicesFromGroupOK() *GetControllerServicesFromGroupOK {
 	return &GetControllerServicesFromGroupOK{}
 }
 
-/* GetControllerServicesFromGroupOK describes a response with status code 200, with default header values.
+/*
+GetControllerServicesFromGroupOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -71,9 +72,44 @@ type GetControllerServicesFromGroupOK struct {
 	Payload *models.ControllerServicesEntity
 }
 
+// IsSuccess returns true when this get controller services from group o k response has a 2xx status code
+func (o *GetControllerServicesFromGroupOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get controller services from group o k response has a 3xx status code
+func (o *GetControllerServicesFromGroupOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get controller services from group o k response has a 4xx status code
+func (o *GetControllerServicesFromGroupOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get controller services from group o k response has a 5xx status code
+func (o *GetControllerServicesFromGroupOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get controller services from group o k response a status code equal to that given
+func (o *GetControllerServicesFromGroupOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the get controller services from group o k response
+func (o *GetControllerServicesFromGroupOK) Code() int {
+	return 200
+}
+
 func (o *GetControllerServicesFromGroupOK) Error() string {
 	return fmt.Sprintf("[GET /flow/process-groups/{id}/controller-services][%d] getControllerServicesFromGroupOK  %+v", 200, o.Payload)
 }
+
+func (o *GetControllerServicesFromGroupOK) String() string {
+	return fmt.Sprintf("[GET /flow/process-groups/{id}/controller-services][%d] getControllerServicesFromGroupOK  %+v", 200, o.Payload)
+}
+
 func (o *GetControllerServicesFromGroupOK) GetPayload() *models.ControllerServicesEntity {
 	return o.Payload
 }
@@ -95,14 +131,49 @@ func NewGetControllerServicesFromGroupBadRequest() *GetControllerServicesFromGro
 	return &GetControllerServicesFromGroupBadRequest{}
 }
 
-/* GetControllerServicesFromGroupBadRequest describes a response with status code 400, with default header values.
+/*
+GetControllerServicesFromGroupBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type GetControllerServicesFromGroupBadRequest struct {
 }
 
+// IsSuccess returns true when this get controller services from group bad request response has a 2xx status code
+func (o *GetControllerServicesFromGroupBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get controller services from group bad request response has a 3xx status code
+func (o *GetControllerServicesFromGroupBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get controller services from group bad request response has a 4xx status code
+func (o *GetControllerServicesFromGroupBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get controller services from group bad request response has a 5xx status code
+func (o *GetControllerServicesFromGroupBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get controller services from group bad request response a status code equal to that given
+func (o *GetControllerServicesFromGroupBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the get controller services from group bad request response
+func (o *GetControllerServicesFromGroupBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetControllerServicesFromGroupBadRequest) Error() string {
+	return fmt.Sprintf("[GET /flow/process-groups/{id}/controller-services][%d] getControllerServicesFromGroupBadRequest ", 400)
+}
+
+func (o *GetControllerServicesFromGroupBadRequest) String() string {
 	return fmt.Sprintf("[GET /flow/process-groups/{id}/controller-services][%d] getControllerServicesFromGroupBadRequest ", 400)
 }
 
@@ -116,14 +187,49 @@ func NewGetControllerServicesFromGroupUnauthorized() *GetControllerServicesFromG
 	return &GetControllerServicesFromGroupUnauthorized{}
 }
 
-/* GetControllerServicesFromGroupUnauthorized describes a response with status code 401, with default header values.
+/*
+GetControllerServicesFromGroupUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type GetControllerServicesFromGroupUnauthorized struct {
 }
 
+// IsSuccess returns true when this get controller services from group unauthorized response has a 2xx status code
+func (o *GetControllerServicesFromGroupUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get controller services from group unauthorized response has a 3xx status code
+func (o *GetControllerServicesFromGroupUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get controller services from group unauthorized response has a 4xx status code
+func (o *GetControllerServicesFromGroupUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get controller services from group unauthorized response has a 5xx status code
+func (o *GetControllerServicesFromGroupUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get controller services from group unauthorized response a status code equal to that given
+func (o *GetControllerServicesFromGroupUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the get controller services from group unauthorized response
+func (o *GetControllerServicesFromGroupUnauthorized) Code() int {
+	return 401
+}
+
 func (o *GetControllerServicesFromGroupUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /flow/process-groups/{id}/controller-services][%d] getControllerServicesFromGroupUnauthorized ", 401)
+}
+
+func (o *GetControllerServicesFromGroupUnauthorized) String() string {
 	return fmt.Sprintf("[GET /flow/process-groups/{id}/controller-services][%d] getControllerServicesFromGroupUnauthorized ", 401)
 }
 
@@ -137,14 +243,49 @@ func NewGetControllerServicesFromGroupForbidden() *GetControllerServicesFromGrou
 	return &GetControllerServicesFromGroupForbidden{}
 }
 
-/* GetControllerServicesFromGroupForbidden describes a response with status code 403, with default header values.
+/*
+GetControllerServicesFromGroupForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type GetControllerServicesFromGroupForbidden struct {
 }
 
+// IsSuccess returns true when this get controller services from group forbidden response has a 2xx status code
+func (o *GetControllerServicesFromGroupForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get controller services from group forbidden response has a 3xx status code
+func (o *GetControllerServicesFromGroupForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get controller services from group forbidden response has a 4xx status code
+func (o *GetControllerServicesFromGroupForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get controller services from group forbidden response has a 5xx status code
+func (o *GetControllerServicesFromGroupForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get controller services from group forbidden response a status code equal to that given
+func (o *GetControllerServicesFromGroupForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the get controller services from group forbidden response
+func (o *GetControllerServicesFromGroupForbidden) Code() int {
+	return 403
+}
+
 func (o *GetControllerServicesFromGroupForbidden) Error() string {
+	return fmt.Sprintf("[GET /flow/process-groups/{id}/controller-services][%d] getControllerServicesFromGroupForbidden ", 403)
+}
+
+func (o *GetControllerServicesFromGroupForbidden) String() string {
 	return fmt.Sprintf("[GET /flow/process-groups/{id}/controller-services][%d] getControllerServicesFromGroupForbidden ", 403)
 }
 
@@ -158,14 +299,49 @@ func NewGetControllerServicesFromGroupConflict() *GetControllerServicesFromGroup
 	return &GetControllerServicesFromGroupConflict{}
 }
 
-/* GetControllerServicesFromGroupConflict describes a response with status code 409, with default header values.
+/*
+GetControllerServicesFromGroupConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type GetControllerServicesFromGroupConflict struct {
 }
 
+// IsSuccess returns true when this get controller services from group conflict response has a 2xx status code
+func (o *GetControllerServicesFromGroupConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get controller services from group conflict response has a 3xx status code
+func (o *GetControllerServicesFromGroupConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get controller services from group conflict response has a 4xx status code
+func (o *GetControllerServicesFromGroupConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get controller services from group conflict response has a 5xx status code
+func (o *GetControllerServicesFromGroupConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get controller services from group conflict response a status code equal to that given
+func (o *GetControllerServicesFromGroupConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the get controller services from group conflict response
+func (o *GetControllerServicesFromGroupConflict) Code() int {
+	return 409
+}
+
 func (o *GetControllerServicesFromGroupConflict) Error() string {
+	return fmt.Sprintf("[GET /flow/process-groups/{id}/controller-services][%d] getControllerServicesFromGroupConflict ", 409)
+}
+
+func (o *GetControllerServicesFromGroupConflict) String() string {
 	return fmt.Sprintf("[GET /flow/process-groups/{id}/controller-services][%d] getControllerServicesFromGroupConflict ", 409)
 }
 

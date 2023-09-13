@@ -52,10 +52,12 @@ func NewGetRevertRequestParamsWithHTTPClient(client *http.Client) *GetRevertRequ
 	}
 }
 
-/* GetRevertRequestParams contains all the parameters to send to the API endpoint
-   for the get revert request operation.
+/*
+GetRevertRequestParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get revert request operation.
+
+	Typically these are written to a http.Request.
 */
 type GetRevertRequestParams struct {
 

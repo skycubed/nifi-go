@@ -60,7 +60,7 @@ func (o *GlobalGetFlowReader) ReadResponse(response runtime.ClientResponse, cons
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /flows/{flowId}] globalGetFlow", response, response.Code())
 	}
 }
 
@@ -69,7 +69,8 @@ func NewGlobalGetFlowOK() *GlobalGetFlowOK {
 	return &GlobalGetFlowOK{}
 }
 
-/* GlobalGetFlowOK describes a response with status code 200, with default header values.
+/*
+GlobalGetFlowOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,44 @@ type GlobalGetFlowOK struct {
 	Payload *models.VersionedFlow
 }
 
+// IsSuccess returns true when this global get flow o k response has a 2xx status code
+func (o *GlobalGetFlowOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this global get flow o k response has a 3xx status code
+func (o *GlobalGetFlowOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this global get flow o k response has a 4xx status code
+func (o *GlobalGetFlowOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this global get flow o k response has a 5xx status code
+func (o *GlobalGetFlowOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this global get flow o k response a status code equal to that given
+func (o *GlobalGetFlowOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the global get flow o k response
+func (o *GlobalGetFlowOK) Code() int {
+	return 200
+}
+
 func (o *GlobalGetFlowOK) Error() string {
 	return fmt.Sprintf("[GET /flows/{flowId}][%d] globalGetFlowOK  %+v", 200, o.Payload)
 }
+
+func (o *GlobalGetFlowOK) String() string {
+	return fmt.Sprintf("[GET /flows/{flowId}][%d] globalGetFlowOK  %+v", 200, o.Payload)
+}
+
 func (o *GlobalGetFlowOK) GetPayload() *models.VersionedFlow {
 	return o.Payload
 }
@@ -101,14 +137,49 @@ func NewGlobalGetFlowBadRequest() *GlobalGetFlowBadRequest {
 	return &GlobalGetFlowBadRequest{}
 }
 
-/* GlobalGetFlowBadRequest describes a response with status code 400, with default header values.
+/*
+GlobalGetFlowBadRequest describes a response with status code 400, with default header values.
 
 NiFi Registry was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type GlobalGetFlowBadRequest struct {
 }
 
+// IsSuccess returns true when this global get flow bad request response has a 2xx status code
+func (o *GlobalGetFlowBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this global get flow bad request response has a 3xx status code
+func (o *GlobalGetFlowBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this global get flow bad request response has a 4xx status code
+func (o *GlobalGetFlowBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this global get flow bad request response has a 5xx status code
+func (o *GlobalGetFlowBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this global get flow bad request response a status code equal to that given
+func (o *GlobalGetFlowBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the global get flow bad request response
+func (o *GlobalGetFlowBadRequest) Code() int {
+	return 400
+}
+
 func (o *GlobalGetFlowBadRequest) Error() string {
+	return fmt.Sprintf("[GET /flows/{flowId}][%d] globalGetFlowBadRequest ", 400)
+}
+
+func (o *GlobalGetFlowBadRequest) String() string {
 	return fmt.Sprintf("[GET /flows/{flowId}][%d] globalGetFlowBadRequest ", 400)
 }
 
@@ -122,14 +193,49 @@ func NewGlobalGetFlowUnauthorized() *GlobalGetFlowUnauthorized {
 	return &GlobalGetFlowUnauthorized{}
 }
 
-/* GlobalGetFlowUnauthorized describes a response with status code 401, with default header values.
+/*
+GlobalGetFlowUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type GlobalGetFlowUnauthorized struct {
 }
 
+// IsSuccess returns true when this global get flow unauthorized response has a 2xx status code
+func (o *GlobalGetFlowUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this global get flow unauthorized response has a 3xx status code
+func (o *GlobalGetFlowUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this global get flow unauthorized response has a 4xx status code
+func (o *GlobalGetFlowUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this global get flow unauthorized response has a 5xx status code
+func (o *GlobalGetFlowUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this global get flow unauthorized response a status code equal to that given
+func (o *GlobalGetFlowUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the global get flow unauthorized response
+func (o *GlobalGetFlowUnauthorized) Code() int {
+	return 401
+}
+
 func (o *GlobalGetFlowUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /flows/{flowId}][%d] globalGetFlowUnauthorized ", 401)
+}
+
+func (o *GlobalGetFlowUnauthorized) String() string {
 	return fmt.Sprintf("[GET /flows/{flowId}][%d] globalGetFlowUnauthorized ", 401)
 }
 
@@ -143,14 +249,49 @@ func NewGlobalGetFlowForbidden() *GlobalGetFlowForbidden {
 	return &GlobalGetFlowForbidden{}
 }
 
-/* GlobalGetFlowForbidden describes a response with status code 403, with default header values.
+/*
+GlobalGetFlowForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type GlobalGetFlowForbidden struct {
 }
 
+// IsSuccess returns true when this global get flow forbidden response has a 2xx status code
+func (o *GlobalGetFlowForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this global get flow forbidden response has a 3xx status code
+func (o *GlobalGetFlowForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this global get flow forbidden response has a 4xx status code
+func (o *GlobalGetFlowForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this global get flow forbidden response has a 5xx status code
+func (o *GlobalGetFlowForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this global get flow forbidden response a status code equal to that given
+func (o *GlobalGetFlowForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the global get flow forbidden response
+func (o *GlobalGetFlowForbidden) Code() int {
+	return 403
+}
+
 func (o *GlobalGetFlowForbidden) Error() string {
+	return fmt.Sprintf("[GET /flows/{flowId}][%d] globalGetFlowForbidden ", 403)
+}
+
+func (o *GlobalGetFlowForbidden) String() string {
 	return fmt.Sprintf("[GET /flows/{flowId}][%d] globalGetFlowForbidden ", 403)
 }
 
@@ -164,14 +305,49 @@ func NewGlobalGetFlowNotFound() *GlobalGetFlowNotFound {
 	return &GlobalGetFlowNotFound{}
 }
 
-/* GlobalGetFlowNotFound describes a response with status code 404, with default header values.
+/*
+GlobalGetFlowNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type GlobalGetFlowNotFound struct {
 }
 
+// IsSuccess returns true when this global get flow not found response has a 2xx status code
+func (o *GlobalGetFlowNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this global get flow not found response has a 3xx status code
+func (o *GlobalGetFlowNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this global get flow not found response has a 4xx status code
+func (o *GlobalGetFlowNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this global get flow not found response has a 5xx status code
+func (o *GlobalGetFlowNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this global get flow not found response a status code equal to that given
+func (o *GlobalGetFlowNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+// Code gets the status code for the global get flow not found response
+func (o *GlobalGetFlowNotFound) Code() int {
+	return 404
+}
+
 func (o *GlobalGetFlowNotFound) Error() string {
+	return fmt.Sprintf("[GET /flows/{flowId}][%d] globalGetFlowNotFound ", 404)
+}
+
+func (o *GlobalGetFlowNotFound) String() string {
 	return fmt.Sprintf("[GET /flows/{flowId}][%d] globalGetFlowNotFound ", 404)
 }
 
@@ -185,14 +361,49 @@ func NewGlobalGetFlowConflict() *GlobalGetFlowConflict {
 	return &GlobalGetFlowConflict{}
 }
 
-/* GlobalGetFlowConflict describes a response with status code 409, with default header values.
+/*
+GlobalGetFlowConflict describes a response with status code 409, with default header values.
 
 NiFi Registry was unable to complete the request because it assumes a server state that is not valid.
 */
 type GlobalGetFlowConflict struct {
 }
 
+// IsSuccess returns true when this global get flow conflict response has a 2xx status code
+func (o *GlobalGetFlowConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this global get flow conflict response has a 3xx status code
+func (o *GlobalGetFlowConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this global get flow conflict response has a 4xx status code
+func (o *GlobalGetFlowConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this global get flow conflict response has a 5xx status code
+func (o *GlobalGetFlowConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this global get flow conflict response a status code equal to that given
+func (o *GlobalGetFlowConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the global get flow conflict response
+func (o *GlobalGetFlowConflict) Code() int {
+	return 409
+}
+
 func (o *GlobalGetFlowConflict) Error() string {
+	return fmt.Sprintf("[GET /flows/{flowId}][%d] globalGetFlowConflict ", 409)
+}
+
+func (o *GlobalGetFlowConflict) String() string {
 	return fmt.Sprintf("[GET /flows/{flowId}][%d] globalGetFlowConflict ", 409)
 }
 

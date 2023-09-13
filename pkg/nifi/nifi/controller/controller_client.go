@@ -64,7 +64,7 @@ type ClientService interface {
 }
 
 /*
-  CreateBulletin creates a new bulletin
+CreateBulletin creates a new bulletin
 */
 func (a *Client) CreateBulletin(params *CreateBulletinParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateBulletinOK, error) {
 	// TODO: Validate the params before sending
@@ -103,7 +103,7 @@ func (a *Client) CreateBulletin(params *CreateBulletinParams, authInfo runtime.C
 }
 
 /*
-  CreateRegistryClient creates a new registry client
+CreateRegistryClient creates a new registry client
 */
 func (a *Client) CreateRegistryClient(params *CreateRegistryClientParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateRegistryClientCreated, error) {
 	// TODO: Validate the params before sending
@@ -142,7 +142,7 @@ func (a *Client) CreateRegistryClient(params *CreateRegistryClientParams, authIn
 }
 
 /*
-  CreateReportingTask creates a new reporting task
+CreateReportingTask creates a new reporting task
 */
 func (a *Client) CreateReportingTask(params *CreateReportingTaskParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateReportingTaskCreated, error) {
 	// TODO: Validate the params before sending
@@ -181,7 +181,7 @@ func (a *Client) CreateReportingTask(params *CreateReportingTaskParams, authInfo
 }
 
 /*
-  DeleteHistory purges history
+DeleteHistory purges history
 */
 func (a *Client) DeleteHistory(params *DeleteHistoryParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteHistoryOK, error) {
 	// TODO: Validate the params before sending
@@ -220,7 +220,7 @@ func (a *Client) DeleteHistory(params *DeleteHistoryParams, authInfo runtime.Cli
 }
 
 /*
-  DeleteNode removes a node from the cluster
+DeleteNode removes a node from the cluster
 */
 func (a *Client) DeleteNode(params *DeleteNodeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteNodeOK, error) {
 	// TODO: Validate the params before sending
@@ -259,7 +259,7 @@ func (a *Client) DeleteNode(params *DeleteNodeParams, authInfo runtime.ClientAut
 }
 
 /*
-  DeleteRegistryClient deletes a registry client
+DeleteRegistryClient deletes a registry client
 */
 func (a *Client) DeleteRegistryClient(params *DeleteRegistryClientParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteRegistryClientOK, error) {
 	// TODO: Validate the params before sending
@@ -298,9 +298,9 @@ func (a *Client) DeleteRegistryClient(params *DeleteRegistryClientParams, authIn
 }
 
 /*
-  GetCluster gets the contents of the cluster
+GetCluster gets the contents of the cluster
 
-  Returns the contents of the cluster including all nodes and their status.
+Returns the contents of the cluster including all nodes and their status.
 */
 func (a *Client) GetCluster(params *GetClusterParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetClusterOK, error) {
 	// TODO: Validate the params before sending
@@ -339,7 +339,7 @@ func (a *Client) GetCluster(params *GetClusterParams, authInfo runtime.ClientAut
 }
 
 /*
-  GetControllerConfig retrieves the configuration for this ni fi controller
+GetControllerConfig retrieves the configuration for this ni fi controller
 */
 func (a *Client) GetControllerConfig(params *GetControllerConfigParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetControllerConfigOK, error) {
 	// TODO: Validate the params before sending
@@ -378,7 +378,7 @@ func (a *Client) GetControllerConfig(params *GetControllerConfigParams, authInfo
 }
 
 /*
-  GetNode gets a node in the cluster
+GetNode gets a node in the cluster
 */
 func (a *Client) GetNode(params *GetNodeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetNodeOK, error) {
 	// TODO: Validate the params before sending
@@ -417,9 +417,9 @@ func (a *Client) GetNode(params *GetNodeParams, authInfo runtime.ClientAuthInfoW
 }
 
 /*
-  GetNodeStatusHistory gets status history for the node
+GetNodeStatusHistory gets status history for the node
 
-  Note: This endpoint is subject to change as NiFi and it's REST API evolve.
+Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 */
 func (a *Client) GetNodeStatusHistory(params *GetNodeStatusHistoryParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetNodeStatusHistoryOK, error) {
 	// TODO: Validate the params before sending
@@ -458,7 +458,7 @@ func (a *Client) GetNodeStatusHistory(params *GetNodeStatusHistoryParams, authIn
 }
 
 /*
-  GetRegistryClient gets a registry client
+GetRegistryClient gets a registry client
 */
 func (a *Client) GetRegistryClient(params *GetRegistryClientParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetRegistryClientOK, error) {
 	// TODO: Validate the params before sending
@@ -497,7 +497,7 @@ func (a *Client) GetRegistryClient(params *GetRegistryClientParams, authInfo run
 }
 
 /*
-  GetRegistryClients gets the listing of available registry clients
+GetRegistryClients gets the listing of available registry clients
 */
 func (a *Client) GetRegistryClients(params *GetRegistryClientsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetRegistryClientsOK, error) {
 	// TODO: Validate the params before sending
@@ -536,7 +536,7 @@ func (a *Client) GetRegistryClients(params *GetRegistryClientsParams, authInfo r
 }
 
 /*
-  UpdateControllerConfig retrieves the configuration for this ni fi
+UpdateControllerConfig retrieves the configuration for this ni fi
 */
 func (a *Client) UpdateControllerConfig(params *UpdateControllerConfigParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateControllerConfigOK, error) {
 	// TODO: Validate the params before sending
@@ -575,7 +575,7 @@ func (a *Client) UpdateControllerConfig(params *UpdateControllerConfigParams, au
 }
 
 /*
-  UpdateNode updates a node in the cluster
+UpdateNode updates a node in the cluster
 */
 func (a *Client) UpdateNode(params *UpdateNodeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateNodeOK, error) {
 	// TODO: Validate the params before sending
@@ -614,7 +614,7 @@ func (a *Client) UpdateNode(params *UpdateNodeParams, authInfo runtime.ClientAut
 }
 
 /*
-  UpdateRegistryClient updates a registry client
+UpdateRegistryClient updates a registry client
 */
 func (a *Client) UpdateRegistryClient(params *UpdateRegistryClientParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateRegistryClientOK, error) {
 	// TODO: Validate the params before sending

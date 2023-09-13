@@ -54,7 +54,7 @@ func (o *CreateControllerServiceReader) ReadResponse(response runtime.ClientResp
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /process-groups/{id}/controller-services] createControllerService", response, response.Code())
 	}
 }
 
@@ -63,7 +63,8 @@ func NewCreateControllerServiceCreated() *CreateControllerServiceCreated {
 	return &CreateControllerServiceCreated{}
 }
 
-/* CreateControllerServiceCreated describes a response with status code 201, with default header values.
+/*
+CreateControllerServiceCreated describes a response with status code 201, with default header values.
 
 successful operation
 */
@@ -71,9 +72,44 @@ type CreateControllerServiceCreated struct {
 	Payload *models.ControllerServiceEntity
 }
 
+// IsSuccess returns true when this create controller service created response has a 2xx status code
+func (o *CreateControllerServiceCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create controller service created response has a 3xx status code
+func (o *CreateControllerServiceCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create controller service created response has a 4xx status code
+func (o *CreateControllerServiceCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create controller service created response has a 5xx status code
+func (o *CreateControllerServiceCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create controller service created response a status code equal to that given
+func (o *CreateControllerServiceCreated) IsCode(code int) bool {
+	return code == 201
+}
+
+// Code gets the status code for the create controller service created response
+func (o *CreateControllerServiceCreated) Code() int {
+	return 201
+}
+
 func (o *CreateControllerServiceCreated) Error() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/controller-services][%d] createControllerServiceCreated  %+v", 201, o.Payload)
 }
+
+func (o *CreateControllerServiceCreated) String() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/controller-services][%d] createControllerServiceCreated  %+v", 201, o.Payload)
+}
+
 func (o *CreateControllerServiceCreated) GetPayload() *models.ControllerServiceEntity {
 	return o.Payload
 }
@@ -95,14 +131,49 @@ func NewCreateControllerServiceBadRequest() *CreateControllerServiceBadRequest {
 	return &CreateControllerServiceBadRequest{}
 }
 
-/* CreateControllerServiceBadRequest describes a response with status code 400, with default header values.
+/*
+CreateControllerServiceBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type CreateControllerServiceBadRequest struct {
 }
 
+// IsSuccess returns true when this create controller service bad request response has a 2xx status code
+func (o *CreateControllerServiceBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create controller service bad request response has a 3xx status code
+func (o *CreateControllerServiceBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create controller service bad request response has a 4xx status code
+func (o *CreateControllerServiceBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create controller service bad request response has a 5xx status code
+func (o *CreateControllerServiceBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create controller service bad request response a status code equal to that given
+func (o *CreateControllerServiceBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the create controller service bad request response
+func (o *CreateControllerServiceBadRequest) Code() int {
+	return 400
+}
+
 func (o *CreateControllerServiceBadRequest) Error() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/controller-services][%d] createControllerServiceBadRequest ", 400)
+}
+
+func (o *CreateControllerServiceBadRequest) String() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/controller-services][%d] createControllerServiceBadRequest ", 400)
 }
 
@@ -116,14 +187,49 @@ func NewCreateControllerServiceUnauthorized() *CreateControllerServiceUnauthoriz
 	return &CreateControllerServiceUnauthorized{}
 }
 
-/* CreateControllerServiceUnauthorized describes a response with status code 401, with default header values.
+/*
+CreateControllerServiceUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type CreateControllerServiceUnauthorized struct {
 }
 
+// IsSuccess returns true when this create controller service unauthorized response has a 2xx status code
+func (o *CreateControllerServiceUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create controller service unauthorized response has a 3xx status code
+func (o *CreateControllerServiceUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create controller service unauthorized response has a 4xx status code
+func (o *CreateControllerServiceUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create controller service unauthorized response has a 5xx status code
+func (o *CreateControllerServiceUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create controller service unauthorized response a status code equal to that given
+func (o *CreateControllerServiceUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the create controller service unauthorized response
+func (o *CreateControllerServiceUnauthorized) Code() int {
+	return 401
+}
+
 func (o *CreateControllerServiceUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/controller-services][%d] createControllerServiceUnauthorized ", 401)
+}
+
+func (o *CreateControllerServiceUnauthorized) String() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/controller-services][%d] createControllerServiceUnauthorized ", 401)
 }
 
@@ -137,14 +243,49 @@ func NewCreateControllerServiceForbidden() *CreateControllerServiceForbidden {
 	return &CreateControllerServiceForbidden{}
 }
 
-/* CreateControllerServiceForbidden describes a response with status code 403, with default header values.
+/*
+CreateControllerServiceForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type CreateControllerServiceForbidden struct {
 }
 
+// IsSuccess returns true when this create controller service forbidden response has a 2xx status code
+func (o *CreateControllerServiceForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create controller service forbidden response has a 3xx status code
+func (o *CreateControllerServiceForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create controller service forbidden response has a 4xx status code
+func (o *CreateControllerServiceForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create controller service forbidden response has a 5xx status code
+func (o *CreateControllerServiceForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create controller service forbidden response a status code equal to that given
+func (o *CreateControllerServiceForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the create controller service forbidden response
+func (o *CreateControllerServiceForbidden) Code() int {
+	return 403
+}
+
 func (o *CreateControllerServiceForbidden) Error() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/controller-services][%d] createControllerServiceForbidden ", 403)
+}
+
+func (o *CreateControllerServiceForbidden) String() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/controller-services][%d] createControllerServiceForbidden ", 403)
 }
 
@@ -158,14 +299,49 @@ func NewCreateControllerServiceConflict() *CreateControllerServiceConflict {
 	return &CreateControllerServiceConflict{}
 }
 
-/* CreateControllerServiceConflict describes a response with status code 409, with default header values.
+/*
+CreateControllerServiceConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type CreateControllerServiceConflict struct {
 }
 
+// IsSuccess returns true when this create controller service conflict response has a 2xx status code
+func (o *CreateControllerServiceConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create controller service conflict response has a 3xx status code
+func (o *CreateControllerServiceConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create controller service conflict response has a 4xx status code
+func (o *CreateControllerServiceConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create controller service conflict response has a 5xx status code
+func (o *CreateControllerServiceConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create controller service conflict response a status code equal to that given
+func (o *CreateControllerServiceConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the create controller service conflict response
+func (o *CreateControllerServiceConflict) Code() int {
+	return 409
+}
+
 func (o *CreateControllerServiceConflict) Error() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/controller-services][%d] createControllerServiceConflict ", 409)
+}
+
+func (o *CreateControllerServiceConflict) String() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/controller-services][%d] createControllerServiceConflict ", 409)
 }
 

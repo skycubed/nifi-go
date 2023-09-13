@@ -60,7 +60,7 @@ func (o *CreateConnectionReader) ReadResponse(response runtime.ClientResponse, c
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /process-groups/{id}/connections] createConnection", response, response.Code())
 	}
 }
 
@@ -69,7 +69,8 @@ func NewCreateConnectionCreated() *CreateConnectionCreated {
 	return &CreateConnectionCreated{}
 }
 
-/* CreateConnectionCreated describes a response with status code 201, with default header values.
+/*
+CreateConnectionCreated describes a response with status code 201, with default header values.
 
 successful operation
 */
@@ -77,9 +78,44 @@ type CreateConnectionCreated struct {
 	Payload *models.ConnectionEntity
 }
 
+// IsSuccess returns true when this create connection created response has a 2xx status code
+func (o *CreateConnectionCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create connection created response has a 3xx status code
+func (o *CreateConnectionCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create connection created response has a 4xx status code
+func (o *CreateConnectionCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create connection created response has a 5xx status code
+func (o *CreateConnectionCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create connection created response a status code equal to that given
+func (o *CreateConnectionCreated) IsCode(code int) bool {
+	return code == 201
+}
+
+// Code gets the status code for the create connection created response
+func (o *CreateConnectionCreated) Code() int {
+	return 201
+}
+
 func (o *CreateConnectionCreated) Error() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/connections][%d] createConnectionCreated  %+v", 201, o.Payload)
 }
+
+func (o *CreateConnectionCreated) String() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/connections][%d] createConnectionCreated  %+v", 201, o.Payload)
+}
+
 func (o *CreateConnectionCreated) GetPayload() *models.ConnectionEntity {
 	return o.Payload
 }
@@ -101,14 +137,49 @@ func NewCreateConnectionBadRequest() *CreateConnectionBadRequest {
 	return &CreateConnectionBadRequest{}
 }
 
-/* CreateConnectionBadRequest describes a response with status code 400, with default header values.
+/*
+CreateConnectionBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type CreateConnectionBadRequest struct {
 }
 
+// IsSuccess returns true when this create connection bad request response has a 2xx status code
+func (o *CreateConnectionBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create connection bad request response has a 3xx status code
+func (o *CreateConnectionBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create connection bad request response has a 4xx status code
+func (o *CreateConnectionBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create connection bad request response has a 5xx status code
+func (o *CreateConnectionBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create connection bad request response a status code equal to that given
+func (o *CreateConnectionBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the create connection bad request response
+func (o *CreateConnectionBadRequest) Code() int {
+	return 400
+}
+
 func (o *CreateConnectionBadRequest) Error() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/connections][%d] createConnectionBadRequest ", 400)
+}
+
+func (o *CreateConnectionBadRequest) String() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/connections][%d] createConnectionBadRequest ", 400)
 }
 
@@ -122,14 +193,49 @@ func NewCreateConnectionUnauthorized() *CreateConnectionUnauthorized {
 	return &CreateConnectionUnauthorized{}
 }
 
-/* CreateConnectionUnauthorized describes a response with status code 401, with default header values.
+/*
+CreateConnectionUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type CreateConnectionUnauthorized struct {
 }
 
+// IsSuccess returns true when this create connection unauthorized response has a 2xx status code
+func (o *CreateConnectionUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create connection unauthorized response has a 3xx status code
+func (o *CreateConnectionUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create connection unauthorized response has a 4xx status code
+func (o *CreateConnectionUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create connection unauthorized response has a 5xx status code
+func (o *CreateConnectionUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create connection unauthorized response a status code equal to that given
+func (o *CreateConnectionUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the create connection unauthorized response
+func (o *CreateConnectionUnauthorized) Code() int {
+	return 401
+}
+
 func (o *CreateConnectionUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/connections][%d] createConnectionUnauthorized ", 401)
+}
+
+func (o *CreateConnectionUnauthorized) String() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/connections][%d] createConnectionUnauthorized ", 401)
 }
 
@@ -143,14 +249,49 @@ func NewCreateConnectionForbidden() *CreateConnectionForbidden {
 	return &CreateConnectionForbidden{}
 }
 
-/* CreateConnectionForbidden describes a response with status code 403, with default header values.
+/*
+CreateConnectionForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type CreateConnectionForbidden struct {
 }
 
+// IsSuccess returns true when this create connection forbidden response has a 2xx status code
+func (o *CreateConnectionForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create connection forbidden response has a 3xx status code
+func (o *CreateConnectionForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create connection forbidden response has a 4xx status code
+func (o *CreateConnectionForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create connection forbidden response has a 5xx status code
+func (o *CreateConnectionForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create connection forbidden response a status code equal to that given
+func (o *CreateConnectionForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the create connection forbidden response
+func (o *CreateConnectionForbidden) Code() int {
+	return 403
+}
+
 func (o *CreateConnectionForbidden) Error() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/connections][%d] createConnectionForbidden ", 403)
+}
+
+func (o *CreateConnectionForbidden) String() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/connections][%d] createConnectionForbidden ", 403)
 }
 
@@ -164,14 +305,49 @@ func NewCreateConnectionNotFound() *CreateConnectionNotFound {
 	return &CreateConnectionNotFound{}
 }
 
-/* CreateConnectionNotFound describes a response with status code 404, with default header values.
+/*
+CreateConnectionNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type CreateConnectionNotFound struct {
 }
 
+// IsSuccess returns true when this create connection not found response has a 2xx status code
+func (o *CreateConnectionNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create connection not found response has a 3xx status code
+func (o *CreateConnectionNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create connection not found response has a 4xx status code
+func (o *CreateConnectionNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create connection not found response has a 5xx status code
+func (o *CreateConnectionNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create connection not found response a status code equal to that given
+func (o *CreateConnectionNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+// Code gets the status code for the create connection not found response
+func (o *CreateConnectionNotFound) Code() int {
+	return 404
+}
+
 func (o *CreateConnectionNotFound) Error() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/connections][%d] createConnectionNotFound ", 404)
+}
+
+func (o *CreateConnectionNotFound) String() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/connections][%d] createConnectionNotFound ", 404)
 }
 
@@ -185,14 +361,49 @@ func NewCreateConnectionConflict() *CreateConnectionConflict {
 	return &CreateConnectionConflict{}
 }
 
-/* CreateConnectionConflict describes a response with status code 409, with default header values.
+/*
+CreateConnectionConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type CreateConnectionConflict struct {
 }
 
+// IsSuccess returns true when this create connection conflict response has a 2xx status code
+func (o *CreateConnectionConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create connection conflict response has a 3xx status code
+func (o *CreateConnectionConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create connection conflict response has a 4xx status code
+func (o *CreateConnectionConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create connection conflict response has a 5xx status code
+func (o *CreateConnectionConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create connection conflict response a status code equal to that given
+func (o *CreateConnectionConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the create connection conflict response
+func (o *CreateConnectionConflict) Code() int {
+	return 409
+}
+
 func (o *CreateConnectionConflict) Error() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/connections][%d] createConnectionConflict ", 409)
+}
+
+func (o *CreateConnectionConflict) String() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/connections][%d] createConnectionConflict ", 409)
 }
 

@@ -36,9 +36,9 @@ type ClientService interface {
 }
 
 /*
-  GetConfiguration gets configration
+GetConfiguration gets configration
 
-  Gets the NiFi Registry configurations.
+Gets the NiFi Registry configurations.
 */
 func (a *Client) GetConfiguration(params *GetConfigurationParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetConfigurationOK, error) {
 	// TODO: Validate the params before sending

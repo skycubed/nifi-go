@@ -54,10 +54,12 @@ func NewInstantiateTemplateParamsWithHTTPClient(client *http.Client) *Instantiat
 	}
 }
 
-/* InstantiateTemplateParams contains all the parameters to send to the API endpoint
-   for the instantiate template operation.
+/*
+InstantiateTemplateParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the instantiate template operation.
+
+	Typically these are written to a http.Request.
 */
 type InstantiateTemplateParams struct {
 

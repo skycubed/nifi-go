@@ -72,6 +72,11 @@ func (m *ProvenanceOptionsEntity) ContextValidate(ctx context.Context, formats s
 func (m *ProvenanceOptionsEntity) contextValidateProvenanceOptions(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ProvenanceOptions != nil {
+
+		if swag.IsZero(m.ProvenanceOptions) { // not required
+			return nil
+		}
+
 		if err := m.ProvenanceOptions.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("provenanceOptions")

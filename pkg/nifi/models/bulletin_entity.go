@@ -90,6 +90,11 @@ func (m *BulletinEntity) ContextValidate(ctx context.Context, formats strfmt.Reg
 func (m *BulletinEntity) contextValidateBulletin(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Bulletin != nil {
+
+		if swag.IsZero(m.Bulletin) { // not required
+			return nil
+		}
+
 		if err := m.Bulletin.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("bulletin")

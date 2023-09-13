@@ -72,6 +72,11 @@ func (m *ControllerEntity) ContextValidate(ctx context.Context, formats strfmt.R
 func (m *ControllerEntity) contextValidateController(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Controller != nil {
+
+		if swag.IsZero(m.Controller) { // not required
+			return nil
+		}
+
 		if err := m.Controller.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("controller")

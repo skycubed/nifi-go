@@ -7515,6 +7515,14 @@
           "type": "string",
           "description": "Default value used in this Process Group for the maximum data size of objects that can be queued before back pressure is applied."
         },
+        "flowFileConcurrency": {
+          "type": "string",
+          "description": "The configured FlowFile Concurrency for the Process Group"
+        },
+        "flowFileOutboundPolicy": {
+          "type": "string",
+          "description": "The FlowFile Outbound Policy for the Process Group"
+        },
         "componentType": {
           "type": "string",
           "enum": [
@@ -7530,14 +7538,6 @@
             "LABEL",
             "CONTROLLER_SERVICE"
           ]
-        },
-        "flowFileConcurrency": {
-          "type": "string",
-          "description": "The configured FlowFile Concurrency for the Process Group"
-        },
-        "flowFileOutboundPolicy": {
-          "type": "string",
-          "description": "The FlowFile Outbound Policy for the Process Group"
         },
         "groupIdentifier": {
           "type": "string",

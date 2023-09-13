@@ -52,10 +52,12 @@ func NewSamlLoginHTTPRedirectConsumerParamsWithHTTPClient(client *http.Client) *
 	}
 }
 
-/* SamlLoginHTTPRedirectConsumerParams contains all the parameters to send to the API endpoint
-   for the saml login Http redirect consumer operation.
+/*
+SamlLoginHTTPRedirectConsumerParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the saml login Http redirect consumer operation.
+
+	Typically these are written to a http.Request.
 */
 type SamlLoginHTTPRedirectConsumerParams struct {
 	timeout    time.Duration

@@ -54,10 +54,12 @@ func NewUpdateBucketParamsWithHTTPClient(client *http.Client) *UpdateBucketParam
 	}
 }
 
-/* UpdateBucketParams contains all the parameters to send to the API endpoint
-   for the update bucket operation.
+/*
+UpdateBucketParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update bucket operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateBucketParams struct {
 

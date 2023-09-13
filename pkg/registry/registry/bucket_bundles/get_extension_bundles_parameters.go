@@ -52,10 +52,12 @@ func NewGetExtensionBundlesParamsWithHTTPClient(client *http.Client) *GetExtensi
 	}
 }
 
-/* GetExtensionBundlesParams contains all the parameters to send to the API endpoint
-   for the get extension bundles operation.
+/*
+GetExtensionBundlesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get extension bundles operation.
+
+	Typically these are written to a http.Request.
 */
 type GetExtensionBundlesParams struct {
 

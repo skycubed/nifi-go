@@ -38,7 +38,7 @@ type ClientService interface {
 }
 
 /*
-  GetPeers returns the available peers and its status of this ni fi
+GetPeers returns the available peers and its status of this ni fi
 */
 func (a *Client) GetPeers(params *GetPeersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetPeersOK, error) {
 	// TODO: Validate the params before sending
@@ -77,7 +77,7 @@ func (a *Client) GetPeers(params *GetPeersParams, authInfo runtime.ClientAuthInf
 }
 
 /*
-  GetSiteToSiteDetails returns the details about this ni fi necessary to communicate via site to site
+GetSiteToSiteDetails returns the details about this ni fi necessary to communicate via site to site
 */
 func (a *Client) GetSiteToSiteDetails(params *GetSiteToSiteDetailsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSiteToSiteDetailsOK, error) {
 	// TODO: Validate the params before sending

@@ -60,7 +60,7 @@ func (o *UpdateProcessorReader) ReadResponse(response runtime.ClientResponse, co
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PUT /processors/{id}] updateProcessor", response, response.Code())
 	}
 }
 
@@ -69,7 +69,8 @@ func NewUpdateProcessorOK() *UpdateProcessorOK {
 	return &UpdateProcessorOK{}
 }
 
-/* UpdateProcessorOK describes a response with status code 200, with default header values.
+/*
+UpdateProcessorOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,44 @@ type UpdateProcessorOK struct {
 	Payload *models.ProcessorEntity
 }
 
+// IsSuccess returns true when this update processor o k response has a 2xx status code
+func (o *UpdateProcessorOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this update processor o k response has a 3xx status code
+func (o *UpdateProcessorOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update processor o k response has a 4xx status code
+func (o *UpdateProcessorOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this update processor o k response has a 5xx status code
+func (o *UpdateProcessorOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update processor o k response a status code equal to that given
+func (o *UpdateProcessorOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the update processor o k response
+func (o *UpdateProcessorOK) Code() int {
+	return 200
+}
+
 func (o *UpdateProcessorOK) Error() string {
 	return fmt.Sprintf("[PUT /processors/{id}][%d] updateProcessorOK  %+v", 200, o.Payload)
 }
+
+func (o *UpdateProcessorOK) String() string {
+	return fmt.Sprintf("[PUT /processors/{id}][%d] updateProcessorOK  %+v", 200, o.Payload)
+}
+
 func (o *UpdateProcessorOK) GetPayload() *models.ProcessorEntity {
 	return o.Payload
 }
@@ -101,14 +137,49 @@ func NewUpdateProcessorBadRequest() *UpdateProcessorBadRequest {
 	return &UpdateProcessorBadRequest{}
 }
 
-/* UpdateProcessorBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateProcessorBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type UpdateProcessorBadRequest struct {
 }
 
+// IsSuccess returns true when this update processor bad request response has a 2xx status code
+func (o *UpdateProcessorBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update processor bad request response has a 3xx status code
+func (o *UpdateProcessorBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update processor bad request response has a 4xx status code
+func (o *UpdateProcessorBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update processor bad request response has a 5xx status code
+func (o *UpdateProcessorBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update processor bad request response a status code equal to that given
+func (o *UpdateProcessorBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the update processor bad request response
+func (o *UpdateProcessorBadRequest) Code() int {
+	return 400
+}
+
 func (o *UpdateProcessorBadRequest) Error() string {
+	return fmt.Sprintf("[PUT /processors/{id}][%d] updateProcessorBadRequest ", 400)
+}
+
+func (o *UpdateProcessorBadRequest) String() string {
 	return fmt.Sprintf("[PUT /processors/{id}][%d] updateProcessorBadRequest ", 400)
 }
 
@@ -122,14 +193,49 @@ func NewUpdateProcessorUnauthorized() *UpdateProcessorUnauthorized {
 	return &UpdateProcessorUnauthorized{}
 }
 
-/* UpdateProcessorUnauthorized describes a response with status code 401, with default header values.
+/*
+UpdateProcessorUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type UpdateProcessorUnauthorized struct {
 }
 
+// IsSuccess returns true when this update processor unauthorized response has a 2xx status code
+func (o *UpdateProcessorUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update processor unauthorized response has a 3xx status code
+func (o *UpdateProcessorUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update processor unauthorized response has a 4xx status code
+func (o *UpdateProcessorUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update processor unauthorized response has a 5xx status code
+func (o *UpdateProcessorUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update processor unauthorized response a status code equal to that given
+func (o *UpdateProcessorUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the update processor unauthorized response
+func (o *UpdateProcessorUnauthorized) Code() int {
+	return 401
+}
+
 func (o *UpdateProcessorUnauthorized) Error() string {
+	return fmt.Sprintf("[PUT /processors/{id}][%d] updateProcessorUnauthorized ", 401)
+}
+
+func (o *UpdateProcessorUnauthorized) String() string {
 	return fmt.Sprintf("[PUT /processors/{id}][%d] updateProcessorUnauthorized ", 401)
 }
 
@@ -143,14 +249,49 @@ func NewUpdateProcessorForbidden() *UpdateProcessorForbidden {
 	return &UpdateProcessorForbidden{}
 }
 
-/* UpdateProcessorForbidden describes a response with status code 403, with default header values.
+/*
+UpdateProcessorForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type UpdateProcessorForbidden struct {
 }
 
+// IsSuccess returns true when this update processor forbidden response has a 2xx status code
+func (o *UpdateProcessorForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update processor forbidden response has a 3xx status code
+func (o *UpdateProcessorForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update processor forbidden response has a 4xx status code
+func (o *UpdateProcessorForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update processor forbidden response has a 5xx status code
+func (o *UpdateProcessorForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update processor forbidden response a status code equal to that given
+func (o *UpdateProcessorForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the update processor forbidden response
+func (o *UpdateProcessorForbidden) Code() int {
+	return 403
+}
+
 func (o *UpdateProcessorForbidden) Error() string {
+	return fmt.Sprintf("[PUT /processors/{id}][%d] updateProcessorForbidden ", 403)
+}
+
+func (o *UpdateProcessorForbidden) String() string {
 	return fmt.Sprintf("[PUT /processors/{id}][%d] updateProcessorForbidden ", 403)
 }
 
@@ -164,14 +305,49 @@ func NewUpdateProcessorNotFound() *UpdateProcessorNotFound {
 	return &UpdateProcessorNotFound{}
 }
 
-/* UpdateProcessorNotFound describes a response with status code 404, with default header values.
+/*
+UpdateProcessorNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type UpdateProcessorNotFound struct {
 }
 
+// IsSuccess returns true when this update processor not found response has a 2xx status code
+func (o *UpdateProcessorNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update processor not found response has a 3xx status code
+func (o *UpdateProcessorNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update processor not found response has a 4xx status code
+func (o *UpdateProcessorNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update processor not found response has a 5xx status code
+func (o *UpdateProcessorNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update processor not found response a status code equal to that given
+func (o *UpdateProcessorNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+// Code gets the status code for the update processor not found response
+func (o *UpdateProcessorNotFound) Code() int {
+	return 404
+}
+
 func (o *UpdateProcessorNotFound) Error() string {
+	return fmt.Sprintf("[PUT /processors/{id}][%d] updateProcessorNotFound ", 404)
+}
+
+func (o *UpdateProcessorNotFound) String() string {
 	return fmt.Sprintf("[PUT /processors/{id}][%d] updateProcessorNotFound ", 404)
 }
 
@@ -185,14 +361,49 @@ func NewUpdateProcessorConflict() *UpdateProcessorConflict {
 	return &UpdateProcessorConflict{}
 }
 
-/* UpdateProcessorConflict describes a response with status code 409, with default header values.
+/*
+UpdateProcessorConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type UpdateProcessorConflict struct {
 }
 
+// IsSuccess returns true when this update processor conflict response has a 2xx status code
+func (o *UpdateProcessorConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update processor conflict response has a 3xx status code
+func (o *UpdateProcessorConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update processor conflict response has a 4xx status code
+func (o *UpdateProcessorConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update processor conflict response has a 5xx status code
+func (o *UpdateProcessorConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update processor conflict response a status code equal to that given
+func (o *UpdateProcessorConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the update processor conflict response
+func (o *UpdateProcessorConflict) Code() int {
+	return 409
+}
+
 func (o *UpdateProcessorConflict) Error() string {
+	return fmt.Sprintf("[PUT /processors/{id}][%d] updateProcessorConflict ", 409)
+}
+
+func (o *UpdateProcessorConflict) String() string {
 	return fmt.Sprintf("[PUT /processors/{id}][%d] updateProcessorConflict ", 409)
 }
 

@@ -52,10 +52,12 @@ func NewGenerateClientIDParamsWithHTTPClient(client *http.Client) *GenerateClien
 	}
 }
 
-/* GenerateClientIDParams contains all the parameters to send to the API endpoint
-   for the generate client Id operation.
+/*
+GenerateClientIDParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the generate client Id operation.
+
+	Typically these are written to a http.Request.
 */
 type GenerateClientIDParams struct {
 	timeout    time.Duration

@@ -75,6 +75,11 @@ func (m *ConnectionStatisticsEntity) ContextValidate(ctx context.Context, format
 func (m *ConnectionStatisticsEntity) contextValidateConnectionStatistics(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ConnectionStatistics != nil {
+
+		if swag.IsZero(m.ConnectionStatistics) { // not required
+			return nil
+		}
+
 		if err := m.ConnectionStatistics.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("connectionStatistics")

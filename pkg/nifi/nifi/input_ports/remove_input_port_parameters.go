@@ -53,10 +53,12 @@ func NewRemoveInputPortParamsWithHTTPClient(client *http.Client) *RemoveInputPor
 	}
 }
 
-/* RemoveInputPortParams contains all the parameters to send to the API endpoint
-   for the remove input port operation.
+/*
+RemoveInputPortParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the remove input port operation.
+
+	Typically these are written to a http.Request.
 */
 type RemoveInputPortParams struct {
 

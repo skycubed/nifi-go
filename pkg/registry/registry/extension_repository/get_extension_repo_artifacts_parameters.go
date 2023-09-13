@@ -52,10 +52,12 @@ func NewGetExtensionRepoArtifactsParamsWithHTTPClient(client *http.Client) *GetE
 	}
 }
 
-/* GetExtensionRepoArtifactsParams contains all the parameters to send to the API endpoint
-   for the get extension repo artifacts operation.
+/*
+GetExtensionRepoArtifactsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get extension repo artifacts operation.
+
+	Typically these are written to a http.Request.
 */
 type GetExtensionRepoArtifactsParams struct {
 

@@ -52,10 +52,12 @@ func NewGetVariableRegistryUpdateRequestParamsWithHTTPClient(client *http.Client
 	}
 }
 
-/* GetVariableRegistryUpdateRequestParams contains all the parameters to send to the API endpoint
-   for the get variable registry update request operation.
+/*
+GetVariableRegistryUpdateRequestParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get variable registry update request operation.
+
+	Typically these are written to a http.Request.
 */
 type GetVariableRegistryUpdateRequestParams struct {
 

@@ -54,9 +54,7 @@ type ClientService interface {
 }
 
 /*
-  CreateUser creates user
-
-
+	CreateUser creates user
 
 NOTE: This endpoint is subject to change as NiFi Registry and its REST API evolve.
 */
@@ -97,9 +95,7 @@ func (a *Client) CreateUser(params *CreateUserParams, authInfo runtime.ClientAut
 }
 
 /*
-  CreateUserGroup creates user group
-
-
+	CreateUserGroup creates user group
 
 NOTE: This endpoint is subject to change as NiFi Registry and its REST API evolve.
 */
@@ -140,9 +136,7 @@ func (a *Client) CreateUserGroup(params *CreateUserGroupParams, authInfo runtime
 }
 
 /*
-  GetUser gets user
-
-
+	GetUser gets user
 
 NOTE: This endpoint is subject to change as NiFi Registry and its REST API evolve.
 */
@@ -183,9 +177,7 @@ func (a *Client) GetUser(params *GetUserParams, authInfo runtime.ClientAuthInfoW
 }
 
 /*
-  GetUserGroup gets user group
-
-
+	GetUserGroup gets user group
 
 NOTE: This endpoint is subject to change as NiFi Registry and its REST API evolve.
 */
@@ -226,9 +218,7 @@ func (a *Client) GetUserGroup(params *GetUserGroupParams, authInfo runtime.Clien
 }
 
 /*
-  GetUserGroups gets user groups
-
-
+	GetUserGroups gets user groups
 
 NOTE: This endpoint is subject to change as NiFi Registry and its REST API evolve.
 */
@@ -269,9 +259,7 @@ func (a *Client) GetUserGroups(params *GetUserGroupsParams, authInfo runtime.Cli
 }
 
 /*
-  GetUsers gets all users
-
-
+	GetUsers gets all users
 
 NOTE: This endpoint is subject to change as NiFi Registry and its REST API evolve.
 */
@@ -312,9 +300,7 @@ func (a *Client) GetUsers(params *GetUsersParams, authInfo runtime.ClientAuthInf
 }
 
 /*
-  RemoveUser deletes user
-
-
+	RemoveUser deletes user
 
 NOTE: This endpoint is subject to change as NiFi Registry and its REST API evolve.
 */
@@ -355,9 +341,7 @@ func (a *Client) RemoveUser(params *RemoveUserParams, authInfo runtime.ClientAut
 }
 
 /*
-  RemoveUserGroup deletes user group
-
-
+	RemoveUserGroup deletes user group
 
 NOTE: This endpoint is subject to change as NiFi Registry and its REST API evolve.
 */
@@ -398,9 +382,7 @@ func (a *Client) RemoveUserGroup(params *RemoveUserGroupParams, authInfo runtime
 }
 
 /*
-  UpdateUser updates user
-
-
+	UpdateUser updates user
 
 NOTE: This endpoint is subject to change as NiFi Registry and its REST API evolve.
 */
@@ -441,9 +423,7 @@ func (a *Client) UpdateUser(params *UpdateUserParams, authInfo runtime.ClientAut
 }
 
 /*
-  UpdateUserGroup updates user group
-
-
+	UpdateUserGroup updates user group
 
 NOTE: This endpoint is subject to change as NiFi Registry and its REST API evolve.
 */

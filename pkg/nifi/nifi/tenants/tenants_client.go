@@ -56,9 +56,9 @@ type ClientService interface {
 }
 
 /*
-  CreateUser creates a user
+CreateUser creates a user
 
-  Note: This endpoint is subject to change as NiFi and it's REST API evolve.
+Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 */
 func (a *Client) CreateUser(params *CreateUserParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateUserCreated, error) {
 	// TODO: Validate the params before sending
@@ -97,9 +97,9 @@ func (a *Client) CreateUser(params *CreateUserParams, authInfo runtime.ClientAut
 }
 
 /*
-  CreateUserGroup creates a user group
+CreateUserGroup creates a user group
 
-  Note: This endpoint is subject to change as NiFi and it's REST API evolve.
+Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 */
 func (a *Client) CreateUserGroup(params *CreateUserGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateUserGroupCreated, error) {
 	// TODO: Validate the params before sending
@@ -138,9 +138,9 @@ func (a *Client) CreateUserGroup(params *CreateUserGroupParams, authInfo runtime
 }
 
 /*
-  GetUser gets a user
+GetUser gets a user
 
-  Note: This endpoint is subject to change as NiFi and it's REST API evolve.
+Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 */
 func (a *Client) GetUser(params *GetUserParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetUserOK, error) {
 	// TODO: Validate the params before sending
@@ -179,9 +179,9 @@ func (a *Client) GetUser(params *GetUserParams, authInfo runtime.ClientAuthInfoW
 }
 
 /*
-  GetUserGroup gets a user group
+GetUserGroup gets a user group
 
-  Note: This endpoint is subject to change as NiFi and it's REST API evolve.
+Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 */
 func (a *Client) GetUserGroup(params *GetUserGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetUserGroupOK, error) {
 	// TODO: Validate the params before sending
@@ -220,9 +220,9 @@ func (a *Client) GetUserGroup(params *GetUserGroupParams, authInfo runtime.Clien
 }
 
 /*
-  GetUserGroups gets all user groups
+GetUserGroups gets all user groups
 
-  Note: This endpoint is subject to change as NiFi and it's REST API evolve.
+Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 */
 func (a *Client) GetUserGroups(params *GetUserGroupsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetUserGroupsOK, error) {
 	// TODO: Validate the params before sending
@@ -261,9 +261,9 @@ func (a *Client) GetUserGroups(params *GetUserGroupsParams, authInfo runtime.Cli
 }
 
 /*
-  GetUsers gets all users
+GetUsers gets all users
 
-  Note: This endpoint is subject to change as NiFi and it's REST API evolve.
+Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 */
 func (a *Client) GetUsers(params *GetUsersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetUsersOK, error) {
 	// TODO: Validate the params before sending
@@ -302,9 +302,9 @@ func (a *Client) GetUsers(params *GetUsersParams, authInfo runtime.ClientAuthInf
 }
 
 /*
-  RemoveUser deletes a user
+RemoveUser deletes a user
 
-  Note: This endpoint is subject to change as NiFi and it's REST API evolve.
+Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 */
 func (a *Client) RemoveUser(params *RemoveUserParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*RemoveUserOK, error) {
 	// TODO: Validate the params before sending
@@ -343,9 +343,9 @@ func (a *Client) RemoveUser(params *RemoveUserParams, authInfo runtime.ClientAut
 }
 
 /*
-  RemoveUserGroup deletes a user group
+RemoveUserGroup deletes a user group
 
-  Note: This endpoint is subject to change as NiFi and it's REST API evolve.
+Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 */
 func (a *Client) RemoveUserGroup(params *RemoveUserGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*RemoveUserGroupOK, error) {
 	// TODO: Validate the params before sending
@@ -384,9 +384,9 @@ func (a *Client) RemoveUserGroup(params *RemoveUserGroupParams, authInfo runtime
 }
 
 /*
-  SearchTenants searches for a tenant with the specified identity
+SearchTenants searches for a tenant with the specified identity
 
-  Note: This endpoint is subject to change as NiFi and it's REST API evolve.
+Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 */
 func (a *Client) SearchTenants(params *SearchTenantsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SearchTenantsOK, error) {
 	// TODO: Validate the params before sending
@@ -425,9 +425,9 @@ func (a *Client) SearchTenants(params *SearchTenantsParams, authInfo runtime.Cli
 }
 
 /*
-  UpdateUser updates a user
+UpdateUser updates a user
 
-  Note: This endpoint is subject to change as NiFi and it's REST API evolve.
+Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 */
 func (a *Client) UpdateUser(params *UpdateUserParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateUserOK, error) {
 	// TODO: Validate the params before sending
@@ -466,9 +466,9 @@ func (a *Client) UpdateUser(params *UpdateUserParams, authInfo runtime.ClientAut
 }
 
 /*
-  UpdateUserGroup updates a user group
+UpdateUserGroup updates a user group
 
-  Note: This endpoint is subject to change as NiFi and it's REST API evolve.
+Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 */
 func (a *Client) UpdateUserGroup(params *UpdateUserGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateUserGroupOK, error) {
 	// TODO: Validate the params before sending

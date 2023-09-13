@@ -40,9 +40,9 @@ type ClientService interface {
 }
 
 /*
-  GetAvailableBucketItemFields gets item fields
+GetAvailableBucketItemFields gets item fields
 
-  Retrieves the item field names for searching or sorting on bucket items.
+Retrieves the item field names for searching or sorting on bucket items.
 */
 func (a *Client) GetAvailableBucketItemFields(params *GetAvailableBucketItemFieldsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetAvailableBucketItemFieldsOK, error) {
 	// TODO: Validate the params before sending
@@ -81,9 +81,9 @@ func (a *Client) GetAvailableBucketItemFields(params *GetAvailableBucketItemFiel
 }
 
 /*
-  GetItems gets all items
+GetItems gets all items
 
-  Get items across all buckets. The returned items will include only items from buckets for which the user is authorized. If the user is not authorized to any buckets, an empty list will be returned.
+Get items across all buckets. The returned items will include only items from buckets for which the user is authorized. If the user is not authorized to any buckets, an empty list will be returned.
 */
 func (a *Client) GetItems(params *GetItemsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetItemsOK, error) {
 	// TODO: Validate the params before sending
@@ -122,9 +122,9 @@ func (a *Client) GetItems(params *GetItemsParams, authInfo runtime.ClientAuthInf
 }
 
 /*
-  GetItemsInBucket gets bucket items
+GetItemsInBucket gets bucket items
 
-  Gets the items located in the given bucket.
+Gets the items located in the given bucket.
 */
 func (a *Client) GetItemsInBucket(params *GetItemsInBucketParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetItemsInBucketOK, error) {
 	// TODO: Validate the params before sending

@@ -54,7 +54,7 @@ func (o *QueryHistoryReader) ReadResponse(response runtime.ClientResponse, consu
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /flow/history] queryHistory", response, response.Code())
 	}
 }
 
@@ -63,7 +63,8 @@ func NewQueryHistoryOK() *QueryHistoryOK {
 	return &QueryHistoryOK{}
 }
 
-/* QueryHistoryOK describes a response with status code 200, with default header values.
+/*
+QueryHistoryOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -71,9 +72,44 @@ type QueryHistoryOK struct {
 	Payload *models.HistoryEntity
 }
 
+// IsSuccess returns true when this query history o k response has a 2xx status code
+func (o *QueryHistoryOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this query history o k response has a 3xx status code
+func (o *QueryHistoryOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this query history o k response has a 4xx status code
+func (o *QueryHistoryOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this query history o k response has a 5xx status code
+func (o *QueryHistoryOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this query history o k response a status code equal to that given
+func (o *QueryHistoryOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the query history o k response
+func (o *QueryHistoryOK) Code() int {
+	return 200
+}
+
 func (o *QueryHistoryOK) Error() string {
 	return fmt.Sprintf("[GET /flow/history][%d] queryHistoryOK  %+v", 200, o.Payload)
 }
+
+func (o *QueryHistoryOK) String() string {
+	return fmt.Sprintf("[GET /flow/history][%d] queryHistoryOK  %+v", 200, o.Payload)
+}
+
 func (o *QueryHistoryOK) GetPayload() *models.HistoryEntity {
 	return o.Payload
 }
@@ -95,14 +131,49 @@ func NewQueryHistoryBadRequest() *QueryHistoryBadRequest {
 	return &QueryHistoryBadRequest{}
 }
 
-/* QueryHistoryBadRequest describes a response with status code 400, with default header values.
+/*
+QueryHistoryBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type QueryHistoryBadRequest struct {
 }
 
+// IsSuccess returns true when this query history bad request response has a 2xx status code
+func (o *QueryHistoryBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this query history bad request response has a 3xx status code
+func (o *QueryHistoryBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this query history bad request response has a 4xx status code
+func (o *QueryHistoryBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this query history bad request response has a 5xx status code
+func (o *QueryHistoryBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this query history bad request response a status code equal to that given
+func (o *QueryHistoryBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the query history bad request response
+func (o *QueryHistoryBadRequest) Code() int {
+	return 400
+}
+
 func (o *QueryHistoryBadRequest) Error() string {
+	return fmt.Sprintf("[GET /flow/history][%d] queryHistoryBadRequest ", 400)
+}
+
+func (o *QueryHistoryBadRequest) String() string {
 	return fmt.Sprintf("[GET /flow/history][%d] queryHistoryBadRequest ", 400)
 }
 
@@ -116,14 +187,49 @@ func NewQueryHistoryUnauthorized() *QueryHistoryUnauthorized {
 	return &QueryHistoryUnauthorized{}
 }
 
-/* QueryHistoryUnauthorized describes a response with status code 401, with default header values.
+/*
+QueryHistoryUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type QueryHistoryUnauthorized struct {
 }
 
+// IsSuccess returns true when this query history unauthorized response has a 2xx status code
+func (o *QueryHistoryUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this query history unauthorized response has a 3xx status code
+func (o *QueryHistoryUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this query history unauthorized response has a 4xx status code
+func (o *QueryHistoryUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this query history unauthorized response has a 5xx status code
+func (o *QueryHistoryUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this query history unauthorized response a status code equal to that given
+func (o *QueryHistoryUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the query history unauthorized response
+func (o *QueryHistoryUnauthorized) Code() int {
+	return 401
+}
+
 func (o *QueryHistoryUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /flow/history][%d] queryHistoryUnauthorized ", 401)
+}
+
+func (o *QueryHistoryUnauthorized) String() string {
 	return fmt.Sprintf("[GET /flow/history][%d] queryHistoryUnauthorized ", 401)
 }
 
@@ -137,14 +243,49 @@ func NewQueryHistoryForbidden() *QueryHistoryForbidden {
 	return &QueryHistoryForbidden{}
 }
 
-/* QueryHistoryForbidden describes a response with status code 403, with default header values.
+/*
+QueryHistoryForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type QueryHistoryForbidden struct {
 }
 
+// IsSuccess returns true when this query history forbidden response has a 2xx status code
+func (o *QueryHistoryForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this query history forbidden response has a 3xx status code
+func (o *QueryHistoryForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this query history forbidden response has a 4xx status code
+func (o *QueryHistoryForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this query history forbidden response has a 5xx status code
+func (o *QueryHistoryForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this query history forbidden response a status code equal to that given
+func (o *QueryHistoryForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the query history forbidden response
+func (o *QueryHistoryForbidden) Code() int {
+	return 403
+}
+
 func (o *QueryHistoryForbidden) Error() string {
+	return fmt.Sprintf("[GET /flow/history][%d] queryHistoryForbidden ", 403)
+}
+
+func (o *QueryHistoryForbidden) String() string {
 	return fmt.Sprintf("[GET /flow/history][%d] queryHistoryForbidden ", 403)
 }
 
@@ -158,14 +299,49 @@ func NewQueryHistoryConflict() *QueryHistoryConflict {
 	return &QueryHistoryConflict{}
 }
 
-/* QueryHistoryConflict describes a response with status code 409, with default header values.
+/*
+QueryHistoryConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type QueryHistoryConflict struct {
 }
 
+// IsSuccess returns true when this query history conflict response has a 2xx status code
+func (o *QueryHistoryConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this query history conflict response has a 3xx status code
+func (o *QueryHistoryConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this query history conflict response has a 4xx status code
+func (o *QueryHistoryConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this query history conflict response has a 5xx status code
+func (o *QueryHistoryConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this query history conflict response a status code equal to that given
+func (o *QueryHistoryConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the query history conflict response
+func (o *QueryHistoryConflict) Code() int {
+	return 409
+}
+
 func (o *QueryHistoryConflict) Error() string {
+	return fmt.Sprintf("[GET /flow/history][%d] queryHistoryConflict ", 409)
+}
+
+func (o *QueryHistoryConflict) String() string {
 	return fmt.Sprintf("[GET /flow/history][%d] queryHistoryConflict ", 409)
 }
 

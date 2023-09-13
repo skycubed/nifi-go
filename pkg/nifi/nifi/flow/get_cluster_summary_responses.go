@@ -54,7 +54,7 @@ func (o *GetClusterSummaryReader) ReadResponse(response runtime.ClientResponse, 
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /flow/cluster/summary] getClusterSummary", response, response.Code())
 	}
 }
 
@@ -63,7 +63,8 @@ func NewGetClusterSummaryOK() *GetClusterSummaryOK {
 	return &GetClusterSummaryOK{}
 }
 
-/* GetClusterSummaryOK describes a response with status code 200, with default header values.
+/*
+GetClusterSummaryOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -71,9 +72,44 @@ type GetClusterSummaryOK struct {
 	Payload *models.ClusteSummaryEntity
 }
 
+// IsSuccess returns true when this get cluster summary o k response has a 2xx status code
+func (o *GetClusterSummaryOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get cluster summary o k response has a 3xx status code
+func (o *GetClusterSummaryOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get cluster summary o k response has a 4xx status code
+func (o *GetClusterSummaryOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get cluster summary o k response has a 5xx status code
+func (o *GetClusterSummaryOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get cluster summary o k response a status code equal to that given
+func (o *GetClusterSummaryOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the get cluster summary o k response
+func (o *GetClusterSummaryOK) Code() int {
+	return 200
+}
+
 func (o *GetClusterSummaryOK) Error() string {
 	return fmt.Sprintf("[GET /flow/cluster/summary][%d] getClusterSummaryOK  %+v", 200, o.Payload)
 }
+
+func (o *GetClusterSummaryOK) String() string {
+	return fmt.Sprintf("[GET /flow/cluster/summary][%d] getClusterSummaryOK  %+v", 200, o.Payload)
+}
+
 func (o *GetClusterSummaryOK) GetPayload() *models.ClusteSummaryEntity {
 	return o.Payload
 }
@@ -95,14 +131,49 @@ func NewGetClusterSummaryBadRequest() *GetClusterSummaryBadRequest {
 	return &GetClusterSummaryBadRequest{}
 }
 
-/* GetClusterSummaryBadRequest describes a response with status code 400, with default header values.
+/*
+GetClusterSummaryBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type GetClusterSummaryBadRequest struct {
 }
 
+// IsSuccess returns true when this get cluster summary bad request response has a 2xx status code
+func (o *GetClusterSummaryBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get cluster summary bad request response has a 3xx status code
+func (o *GetClusterSummaryBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get cluster summary bad request response has a 4xx status code
+func (o *GetClusterSummaryBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get cluster summary bad request response has a 5xx status code
+func (o *GetClusterSummaryBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get cluster summary bad request response a status code equal to that given
+func (o *GetClusterSummaryBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the get cluster summary bad request response
+func (o *GetClusterSummaryBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetClusterSummaryBadRequest) Error() string {
+	return fmt.Sprintf("[GET /flow/cluster/summary][%d] getClusterSummaryBadRequest ", 400)
+}
+
+func (o *GetClusterSummaryBadRequest) String() string {
 	return fmt.Sprintf("[GET /flow/cluster/summary][%d] getClusterSummaryBadRequest ", 400)
 }
 
@@ -116,14 +187,49 @@ func NewGetClusterSummaryUnauthorized() *GetClusterSummaryUnauthorized {
 	return &GetClusterSummaryUnauthorized{}
 }
 
-/* GetClusterSummaryUnauthorized describes a response with status code 401, with default header values.
+/*
+GetClusterSummaryUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type GetClusterSummaryUnauthorized struct {
 }
 
+// IsSuccess returns true when this get cluster summary unauthorized response has a 2xx status code
+func (o *GetClusterSummaryUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get cluster summary unauthorized response has a 3xx status code
+func (o *GetClusterSummaryUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get cluster summary unauthorized response has a 4xx status code
+func (o *GetClusterSummaryUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get cluster summary unauthorized response has a 5xx status code
+func (o *GetClusterSummaryUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get cluster summary unauthorized response a status code equal to that given
+func (o *GetClusterSummaryUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the get cluster summary unauthorized response
+func (o *GetClusterSummaryUnauthorized) Code() int {
+	return 401
+}
+
 func (o *GetClusterSummaryUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /flow/cluster/summary][%d] getClusterSummaryUnauthorized ", 401)
+}
+
+func (o *GetClusterSummaryUnauthorized) String() string {
 	return fmt.Sprintf("[GET /flow/cluster/summary][%d] getClusterSummaryUnauthorized ", 401)
 }
 
@@ -137,14 +243,49 @@ func NewGetClusterSummaryForbidden() *GetClusterSummaryForbidden {
 	return &GetClusterSummaryForbidden{}
 }
 
-/* GetClusterSummaryForbidden describes a response with status code 403, with default header values.
+/*
+GetClusterSummaryForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type GetClusterSummaryForbidden struct {
 }
 
+// IsSuccess returns true when this get cluster summary forbidden response has a 2xx status code
+func (o *GetClusterSummaryForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get cluster summary forbidden response has a 3xx status code
+func (o *GetClusterSummaryForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get cluster summary forbidden response has a 4xx status code
+func (o *GetClusterSummaryForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get cluster summary forbidden response has a 5xx status code
+func (o *GetClusterSummaryForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get cluster summary forbidden response a status code equal to that given
+func (o *GetClusterSummaryForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the get cluster summary forbidden response
+func (o *GetClusterSummaryForbidden) Code() int {
+	return 403
+}
+
 func (o *GetClusterSummaryForbidden) Error() string {
+	return fmt.Sprintf("[GET /flow/cluster/summary][%d] getClusterSummaryForbidden ", 403)
+}
+
+func (o *GetClusterSummaryForbidden) String() string {
 	return fmt.Sprintf("[GET /flow/cluster/summary][%d] getClusterSummaryForbidden ", 403)
 }
 
@@ -158,14 +299,49 @@ func NewGetClusterSummaryConflict() *GetClusterSummaryConflict {
 	return &GetClusterSummaryConflict{}
 }
 
-/* GetClusterSummaryConflict describes a response with status code 409, with default header values.
+/*
+GetClusterSummaryConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type GetClusterSummaryConflict struct {
 }
 
+// IsSuccess returns true when this get cluster summary conflict response has a 2xx status code
+func (o *GetClusterSummaryConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get cluster summary conflict response has a 3xx status code
+func (o *GetClusterSummaryConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get cluster summary conflict response has a 4xx status code
+func (o *GetClusterSummaryConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get cluster summary conflict response has a 5xx status code
+func (o *GetClusterSummaryConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get cluster summary conflict response a status code equal to that given
+func (o *GetClusterSummaryConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the get cluster summary conflict response
+func (o *GetClusterSummaryConflict) Code() int {
+	return 409
+}
+
 func (o *GetClusterSummaryConflict) Error() string {
+	return fmt.Sprintf("[GET /flow/cluster/summary][%d] getClusterSummaryConflict ", 409)
+}
+
+func (o *GetClusterSummaryConflict) String() string {
 	return fmt.Sprintf("[GET /flow/cluster/summary][%d] getClusterSummaryConflict ", 409)
 }
 

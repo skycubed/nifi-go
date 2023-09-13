@@ -30,7 +30,7 @@ func (o *GetCurrentUserReader) ReadResponse(response runtime.ClientResponse, con
 		}
 		return result, nil
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /flow/current-user] getCurrentUser", response, response.Code())
 	}
 }
 
@@ -39,7 +39,8 @@ func NewGetCurrentUserOK() *GetCurrentUserOK {
 	return &GetCurrentUserOK{}
 }
 
-/* GetCurrentUserOK describes a response with status code 200, with default header values.
+/*
+GetCurrentUserOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -47,9 +48,44 @@ type GetCurrentUserOK struct {
 	Payload *models.CurrentUserEntity
 }
 
+// IsSuccess returns true when this get current user o k response has a 2xx status code
+func (o *GetCurrentUserOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get current user o k response has a 3xx status code
+func (o *GetCurrentUserOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get current user o k response has a 4xx status code
+func (o *GetCurrentUserOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get current user o k response has a 5xx status code
+func (o *GetCurrentUserOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get current user o k response a status code equal to that given
+func (o *GetCurrentUserOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the get current user o k response
+func (o *GetCurrentUserOK) Code() int {
+	return 200
+}
+
 func (o *GetCurrentUserOK) Error() string {
 	return fmt.Sprintf("[GET /flow/current-user][%d] getCurrentUserOK  %+v", 200, o.Payload)
 }
+
+func (o *GetCurrentUserOK) String() string {
+	return fmt.Sprintf("[GET /flow/current-user][%d] getCurrentUserOK  %+v", 200, o.Payload)
+}
+
 func (o *GetCurrentUserOK) GetPayload() *models.CurrentUserEntity {
 	return o.Payload
 }

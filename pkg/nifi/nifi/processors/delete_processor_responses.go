@@ -60,7 +60,7 @@ func (o *DeleteProcessorReader) ReadResponse(response runtime.ClientResponse, co
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /processors/{id}] deleteProcessor", response, response.Code())
 	}
 }
 
@@ -69,7 +69,8 @@ func NewDeleteProcessorOK() *DeleteProcessorOK {
 	return &DeleteProcessorOK{}
 }
 
-/* DeleteProcessorOK describes a response with status code 200, with default header values.
+/*
+DeleteProcessorOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,44 @@ type DeleteProcessorOK struct {
 	Payload *models.ProcessorEntity
 }
 
+// IsSuccess returns true when this delete processor o k response has a 2xx status code
+func (o *DeleteProcessorOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete processor o k response has a 3xx status code
+func (o *DeleteProcessorOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete processor o k response has a 4xx status code
+func (o *DeleteProcessorOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete processor o k response has a 5xx status code
+func (o *DeleteProcessorOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete processor o k response a status code equal to that given
+func (o *DeleteProcessorOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the delete processor o k response
+func (o *DeleteProcessorOK) Code() int {
+	return 200
+}
+
 func (o *DeleteProcessorOK) Error() string {
 	return fmt.Sprintf("[DELETE /processors/{id}][%d] deleteProcessorOK  %+v", 200, o.Payload)
 }
+
+func (o *DeleteProcessorOK) String() string {
+	return fmt.Sprintf("[DELETE /processors/{id}][%d] deleteProcessorOK  %+v", 200, o.Payload)
+}
+
 func (o *DeleteProcessorOK) GetPayload() *models.ProcessorEntity {
 	return o.Payload
 }
@@ -101,14 +137,49 @@ func NewDeleteProcessorBadRequest() *DeleteProcessorBadRequest {
 	return &DeleteProcessorBadRequest{}
 }
 
-/* DeleteProcessorBadRequest describes a response with status code 400, with default header values.
+/*
+DeleteProcessorBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type DeleteProcessorBadRequest struct {
 }
 
+// IsSuccess returns true when this delete processor bad request response has a 2xx status code
+func (o *DeleteProcessorBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete processor bad request response has a 3xx status code
+func (o *DeleteProcessorBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete processor bad request response has a 4xx status code
+func (o *DeleteProcessorBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete processor bad request response has a 5xx status code
+func (o *DeleteProcessorBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete processor bad request response a status code equal to that given
+func (o *DeleteProcessorBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the delete processor bad request response
+func (o *DeleteProcessorBadRequest) Code() int {
+	return 400
+}
+
 func (o *DeleteProcessorBadRequest) Error() string {
+	return fmt.Sprintf("[DELETE /processors/{id}][%d] deleteProcessorBadRequest ", 400)
+}
+
+func (o *DeleteProcessorBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /processors/{id}][%d] deleteProcessorBadRequest ", 400)
 }
 
@@ -122,14 +193,49 @@ func NewDeleteProcessorUnauthorized() *DeleteProcessorUnauthorized {
 	return &DeleteProcessorUnauthorized{}
 }
 
-/* DeleteProcessorUnauthorized describes a response with status code 401, with default header values.
+/*
+DeleteProcessorUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type DeleteProcessorUnauthorized struct {
 }
 
+// IsSuccess returns true when this delete processor unauthorized response has a 2xx status code
+func (o *DeleteProcessorUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete processor unauthorized response has a 3xx status code
+func (o *DeleteProcessorUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete processor unauthorized response has a 4xx status code
+func (o *DeleteProcessorUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete processor unauthorized response has a 5xx status code
+func (o *DeleteProcessorUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete processor unauthorized response a status code equal to that given
+func (o *DeleteProcessorUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the delete processor unauthorized response
+func (o *DeleteProcessorUnauthorized) Code() int {
+	return 401
+}
+
 func (o *DeleteProcessorUnauthorized) Error() string {
+	return fmt.Sprintf("[DELETE /processors/{id}][%d] deleteProcessorUnauthorized ", 401)
+}
+
+func (o *DeleteProcessorUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /processors/{id}][%d] deleteProcessorUnauthorized ", 401)
 }
 
@@ -143,14 +249,49 @@ func NewDeleteProcessorForbidden() *DeleteProcessorForbidden {
 	return &DeleteProcessorForbidden{}
 }
 
-/* DeleteProcessorForbidden describes a response with status code 403, with default header values.
+/*
+DeleteProcessorForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type DeleteProcessorForbidden struct {
 }
 
+// IsSuccess returns true when this delete processor forbidden response has a 2xx status code
+func (o *DeleteProcessorForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete processor forbidden response has a 3xx status code
+func (o *DeleteProcessorForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete processor forbidden response has a 4xx status code
+func (o *DeleteProcessorForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete processor forbidden response has a 5xx status code
+func (o *DeleteProcessorForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete processor forbidden response a status code equal to that given
+func (o *DeleteProcessorForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the delete processor forbidden response
+func (o *DeleteProcessorForbidden) Code() int {
+	return 403
+}
+
 func (o *DeleteProcessorForbidden) Error() string {
+	return fmt.Sprintf("[DELETE /processors/{id}][%d] deleteProcessorForbidden ", 403)
+}
+
+func (o *DeleteProcessorForbidden) String() string {
 	return fmt.Sprintf("[DELETE /processors/{id}][%d] deleteProcessorForbidden ", 403)
 }
 
@@ -164,14 +305,49 @@ func NewDeleteProcessorNotFound() *DeleteProcessorNotFound {
 	return &DeleteProcessorNotFound{}
 }
 
-/* DeleteProcessorNotFound describes a response with status code 404, with default header values.
+/*
+DeleteProcessorNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type DeleteProcessorNotFound struct {
 }
 
+// IsSuccess returns true when this delete processor not found response has a 2xx status code
+func (o *DeleteProcessorNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete processor not found response has a 3xx status code
+func (o *DeleteProcessorNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete processor not found response has a 4xx status code
+func (o *DeleteProcessorNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete processor not found response has a 5xx status code
+func (o *DeleteProcessorNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete processor not found response a status code equal to that given
+func (o *DeleteProcessorNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+// Code gets the status code for the delete processor not found response
+func (o *DeleteProcessorNotFound) Code() int {
+	return 404
+}
+
 func (o *DeleteProcessorNotFound) Error() string {
+	return fmt.Sprintf("[DELETE /processors/{id}][%d] deleteProcessorNotFound ", 404)
+}
+
+func (o *DeleteProcessorNotFound) String() string {
 	return fmt.Sprintf("[DELETE /processors/{id}][%d] deleteProcessorNotFound ", 404)
 }
 
@@ -185,14 +361,49 @@ func NewDeleteProcessorConflict() *DeleteProcessorConflict {
 	return &DeleteProcessorConflict{}
 }
 
-/* DeleteProcessorConflict describes a response with status code 409, with default header values.
+/*
+DeleteProcessorConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type DeleteProcessorConflict struct {
 }
 
+// IsSuccess returns true when this delete processor conflict response has a 2xx status code
+func (o *DeleteProcessorConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete processor conflict response has a 3xx status code
+func (o *DeleteProcessorConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete processor conflict response has a 4xx status code
+func (o *DeleteProcessorConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete processor conflict response has a 5xx status code
+func (o *DeleteProcessorConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete processor conflict response a status code equal to that given
+func (o *DeleteProcessorConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the delete processor conflict response
+func (o *DeleteProcessorConflict) Code() int {
+	return 409
+}
+
 func (o *DeleteProcessorConflict) Error() string {
+	return fmt.Sprintf("[DELETE /processors/{id}][%d] deleteProcessorConflict ", 409)
+}
+
+func (o *DeleteProcessorConflict) String() string {
 	return fmt.Sprintf("[DELETE /processors/{id}][%d] deleteProcessorConflict ", 409)
 }
 

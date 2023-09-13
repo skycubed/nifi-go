@@ -140,6 +140,11 @@ func (m *ConnectionDiagnosticsDTO) ContextValidate(ctx context.Context, formats 
 func (m *ConnectionDiagnosticsDTO) contextValidateAggregateSnapshot(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.AggregateSnapshot != nil {
+
+		if swag.IsZero(m.AggregateSnapshot) { // not required
+			return nil
+		}
+
 		if err := m.AggregateSnapshot.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("aggregateSnapshot")
@@ -156,6 +161,11 @@ func (m *ConnectionDiagnosticsDTO) contextValidateAggregateSnapshot(ctx context.
 func (m *ConnectionDiagnosticsDTO) contextValidateConnection(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Connection != nil {
+
+		if swag.IsZero(m.Connection) { // not required
+			return nil
+		}
+
 		if err := m.Connection.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("connection")
@@ -174,6 +184,11 @@ func (m *ConnectionDiagnosticsDTO) contextValidateNodeSnapshots(ctx context.Cont
 	for i := 0; i < len(m.NodeSnapshots); i++ {
 
 		if m.NodeSnapshots[i] != nil {
+
+			if swag.IsZero(m.NodeSnapshots[i]) { // not required
+				return nil
+			}
+
 			if err := m.NodeSnapshots[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("nodeSnapshots" + "." + strconv.Itoa(i))

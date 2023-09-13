@@ -30,7 +30,7 @@ func (o *GetLoginConfigReader) ReadResponse(response runtime.ClientResponse, con
 		}
 		return result, nil
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /access/config] getLoginConfig", response, response.Code())
 	}
 }
 
@@ -39,7 +39,8 @@ func NewGetLoginConfigOK() *GetLoginConfigOK {
 	return &GetLoginConfigOK{}
 }
 
-/* GetLoginConfigOK describes a response with status code 200, with default header values.
+/*
+GetLoginConfigOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -47,9 +48,44 @@ type GetLoginConfigOK struct {
 	Payload *models.AccessConfigurationEntity
 }
 
+// IsSuccess returns true when this get login config o k response has a 2xx status code
+func (o *GetLoginConfigOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get login config o k response has a 3xx status code
+func (o *GetLoginConfigOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get login config o k response has a 4xx status code
+func (o *GetLoginConfigOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get login config o k response has a 5xx status code
+func (o *GetLoginConfigOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get login config o k response a status code equal to that given
+func (o *GetLoginConfigOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the get login config o k response
+func (o *GetLoginConfigOK) Code() int {
+	return 200
+}
+
 func (o *GetLoginConfigOK) Error() string {
 	return fmt.Sprintf("[GET /access/config][%d] getLoginConfigOK  %+v", 200, o.Payload)
 }
+
+func (o *GetLoginConfigOK) String() string {
+	return fmt.Sprintf("[GET /access/config][%d] getLoginConfigOK  %+v", 200, o.Payload)
+}
+
 func (o *GetLoginConfigOK) GetPayload() *models.AccessConfigurationEntity {
 	return o.Payload
 }

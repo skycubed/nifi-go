@@ -132,6 +132,11 @@ func (m *ProcessorRunStatusDetailsEntity) ContextValidate(ctx context.Context, f
 func (m *ProcessorRunStatusDetailsEntity) contextValidatePermissions(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Permissions != nil {
+
+		if swag.IsZero(m.Permissions) { // not required
+			return nil
+		}
+
 		if err := m.Permissions.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("permissions")
@@ -148,6 +153,11 @@ func (m *ProcessorRunStatusDetailsEntity) contextValidatePermissions(ctx context
 func (m *ProcessorRunStatusDetailsEntity) contextValidateRevision(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Revision != nil {
+
+		if swag.IsZero(m.Revision) { // not required
+			return nil
+		}
+
 		if err := m.Revision.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("revision")
@@ -164,6 +174,11 @@ func (m *ProcessorRunStatusDetailsEntity) contextValidateRevision(ctx context.Co
 func (m *ProcessorRunStatusDetailsEntity) contextValidateRunStatusDetails(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.RunStatusDetails != nil {
+
+		if swag.IsZero(m.RunStatusDetails) { // not required
+			return nil
+		}
+
 		if err := m.RunStatusDetails.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("runStatusDetails")

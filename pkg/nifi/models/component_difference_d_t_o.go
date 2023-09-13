@@ -94,6 +94,11 @@ func (m *ComponentDifferenceDTO) contextValidateDifferences(ctx context.Context,
 	for i := 0; i < len(m.Differences); i++ {
 
 		if m.Differences[i] != nil {
+
+			if swag.IsZero(m.Differences[i]) { // not required
+				return nil
+			}
+
 			if err := m.Differences[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("differences" + "." + strconv.Itoa(i))

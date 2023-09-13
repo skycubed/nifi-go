@@ -60,7 +60,7 @@ func (o *RemoveDropRequestReader) ReadResponse(response runtime.ClientResponse, 
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /process-groups/{id}/empty-all-connections-requests/{drop-request-id}] removeDropRequest", response, response.Code())
 	}
 }
 
@@ -69,7 +69,8 @@ func NewRemoveDropRequestOK() *RemoveDropRequestOK {
 	return &RemoveDropRequestOK{}
 }
 
-/* RemoveDropRequestOK describes a response with status code 200, with default header values.
+/*
+RemoveDropRequestOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,44 @@ type RemoveDropRequestOK struct {
 	Payload *models.DropRequestEntity
 }
 
+// IsSuccess returns true when this remove drop request o k response has a 2xx status code
+func (o *RemoveDropRequestOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this remove drop request o k response has a 3xx status code
+func (o *RemoveDropRequestOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this remove drop request o k response has a 4xx status code
+func (o *RemoveDropRequestOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this remove drop request o k response has a 5xx status code
+func (o *RemoveDropRequestOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this remove drop request o k response a status code equal to that given
+func (o *RemoveDropRequestOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the remove drop request o k response
+func (o *RemoveDropRequestOK) Code() int {
+	return 200
+}
+
 func (o *RemoveDropRequestOK) Error() string {
 	return fmt.Sprintf("[DELETE /process-groups/{id}/empty-all-connections-requests/{drop-request-id}][%d] removeDropRequestOK  %+v", 200, o.Payload)
 }
+
+func (o *RemoveDropRequestOK) String() string {
+	return fmt.Sprintf("[DELETE /process-groups/{id}/empty-all-connections-requests/{drop-request-id}][%d] removeDropRequestOK  %+v", 200, o.Payload)
+}
+
 func (o *RemoveDropRequestOK) GetPayload() *models.DropRequestEntity {
 	return o.Payload
 }
@@ -101,14 +137,49 @@ func NewRemoveDropRequestBadRequest() *RemoveDropRequestBadRequest {
 	return &RemoveDropRequestBadRequest{}
 }
 
-/* RemoveDropRequestBadRequest describes a response with status code 400, with default header values.
+/*
+RemoveDropRequestBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type RemoveDropRequestBadRequest struct {
 }
 
+// IsSuccess returns true when this remove drop request bad request response has a 2xx status code
+func (o *RemoveDropRequestBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this remove drop request bad request response has a 3xx status code
+func (o *RemoveDropRequestBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this remove drop request bad request response has a 4xx status code
+func (o *RemoveDropRequestBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this remove drop request bad request response has a 5xx status code
+func (o *RemoveDropRequestBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this remove drop request bad request response a status code equal to that given
+func (o *RemoveDropRequestBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the remove drop request bad request response
+func (o *RemoveDropRequestBadRequest) Code() int {
+	return 400
+}
+
 func (o *RemoveDropRequestBadRequest) Error() string {
+	return fmt.Sprintf("[DELETE /process-groups/{id}/empty-all-connections-requests/{drop-request-id}][%d] removeDropRequestBadRequest ", 400)
+}
+
+func (o *RemoveDropRequestBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /process-groups/{id}/empty-all-connections-requests/{drop-request-id}][%d] removeDropRequestBadRequest ", 400)
 }
 
@@ -122,14 +193,49 @@ func NewRemoveDropRequestUnauthorized() *RemoveDropRequestUnauthorized {
 	return &RemoveDropRequestUnauthorized{}
 }
 
-/* RemoveDropRequestUnauthorized describes a response with status code 401, with default header values.
+/*
+RemoveDropRequestUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type RemoveDropRequestUnauthorized struct {
 }
 
+// IsSuccess returns true when this remove drop request unauthorized response has a 2xx status code
+func (o *RemoveDropRequestUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this remove drop request unauthorized response has a 3xx status code
+func (o *RemoveDropRequestUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this remove drop request unauthorized response has a 4xx status code
+func (o *RemoveDropRequestUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this remove drop request unauthorized response has a 5xx status code
+func (o *RemoveDropRequestUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this remove drop request unauthorized response a status code equal to that given
+func (o *RemoveDropRequestUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the remove drop request unauthorized response
+func (o *RemoveDropRequestUnauthorized) Code() int {
+	return 401
+}
+
 func (o *RemoveDropRequestUnauthorized) Error() string {
+	return fmt.Sprintf("[DELETE /process-groups/{id}/empty-all-connections-requests/{drop-request-id}][%d] removeDropRequestUnauthorized ", 401)
+}
+
+func (o *RemoveDropRequestUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /process-groups/{id}/empty-all-connections-requests/{drop-request-id}][%d] removeDropRequestUnauthorized ", 401)
 }
 
@@ -143,14 +249,49 @@ func NewRemoveDropRequestForbidden() *RemoveDropRequestForbidden {
 	return &RemoveDropRequestForbidden{}
 }
 
-/* RemoveDropRequestForbidden describes a response with status code 403, with default header values.
+/*
+RemoveDropRequestForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type RemoveDropRequestForbidden struct {
 }
 
+// IsSuccess returns true when this remove drop request forbidden response has a 2xx status code
+func (o *RemoveDropRequestForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this remove drop request forbidden response has a 3xx status code
+func (o *RemoveDropRequestForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this remove drop request forbidden response has a 4xx status code
+func (o *RemoveDropRequestForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this remove drop request forbidden response has a 5xx status code
+func (o *RemoveDropRequestForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this remove drop request forbidden response a status code equal to that given
+func (o *RemoveDropRequestForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the remove drop request forbidden response
+func (o *RemoveDropRequestForbidden) Code() int {
+	return 403
+}
+
 func (o *RemoveDropRequestForbidden) Error() string {
+	return fmt.Sprintf("[DELETE /process-groups/{id}/empty-all-connections-requests/{drop-request-id}][%d] removeDropRequestForbidden ", 403)
+}
+
+func (o *RemoveDropRequestForbidden) String() string {
 	return fmt.Sprintf("[DELETE /process-groups/{id}/empty-all-connections-requests/{drop-request-id}][%d] removeDropRequestForbidden ", 403)
 }
 
@@ -164,14 +305,49 @@ func NewRemoveDropRequestNotFound() *RemoveDropRequestNotFound {
 	return &RemoveDropRequestNotFound{}
 }
 
-/* RemoveDropRequestNotFound describes a response with status code 404, with default header values.
+/*
+RemoveDropRequestNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type RemoveDropRequestNotFound struct {
 }
 
+// IsSuccess returns true when this remove drop request not found response has a 2xx status code
+func (o *RemoveDropRequestNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this remove drop request not found response has a 3xx status code
+func (o *RemoveDropRequestNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this remove drop request not found response has a 4xx status code
+func (o *RemoveDropRequestNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this remove drop request not found response has a 5xx status code
+func (o *RemoveDropRequestNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this remove drop request not found response a status code equal to that given
+func (o *RemoveDropRequestNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+// Code gets the status code for the remove drop request not found response
+func (o *RemoveDropRequestNotFound) Code() int {
+	return 404
+}
+
 func (o *RemoveDropRequestNotFound) Error() string {
+	return fmt.Sprintf("[DELETE /process-groups/{id}/empty-all-connections-requests/{drop-request-id}][%d] removeDropRequestNotFound ", 404)
+}
+
+func (o *RemoveDropRequestNotFound) String() string {
 	return fmt.Sprintf("[DELETE /process-groups/{id}/empty-all-connections-requests/{drop-request-id}][%d] removeDropRequestNotFound ", 404)
 }
 
@@ -185,14 +361,49 @@ func NewRemoveDropRequestConflict() *RemoveDropRequestConflict {
 	return &RemoveDropRequestConflict{}
 }
 
-/* RemoveDropRequestConflict describes a response with status code 409, with default header values.
+/*
+RemoveDropRequestConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type RemoveDropRequestConflict struct {
 }
 
+// IsSuccess returns true when this remove drop request conflict response has a 2xx status code
+func (o *RemoveDropRequestConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this remove drop request conflict response has a 3xx status code
+func (o *RemoveDropRequestConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this remove drop request conflict response has a 4xx status code
+func (o *RemoveDropRequestConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this remove drop request conflict response has a 5xx status code
+func (o *RemoveDropRequestConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this remove drop request conflict response a status code equal to that given
+func (o *RemoveDropRequestConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the remove drop request conflict response
+func (o *RemoveDropRequestConflict) Code() int {
+	return 409
+}
+
 func (o *RemoveDropRequestConflict) Error() string {
+	return fmt.Sprintf("[DELETE /process-groups/{id}/empty-all-connections-requests/{drop-request-id}][%d] removeDropRequestConflict ", 409)
+}
+
+func (o *RemoveDropRequestConflict) String() string {
 	return fmt.Sprintf("[DELETE /process-groups/{id}/empty-all-connections-requests/{drop-request-id}][%d] removeDropRequestConflict ", 409)
 }
 

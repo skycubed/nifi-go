@@ -60,7 +60,7 @@ func (o *GetProcessorDiagnosticsReader) ReadResponse(response runtime.ClientResp
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /processors/{id}/diagnostics] getProcessorDiagnostics", response, response.Code())
 	}
 }
 
@@ -69,7 +69,8 @@ func NewGetProcessorDiagnosticsOK() *GetProcessorDiagnosticsOK {
 	return &GetProcessorDiagnosticsOK{}
 }
 
-/* GetProcessorDiagnosticsOK describes a response with status code 200, with default header values.
+/*
+GetProcessorDiagnosticsOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,44 @@ type GetProcessorDiagnosticsOK struct {
 	Payload *models.ProcessorEntity
 }
 
+// IsSuccess returns true when this get processor diagnostics o k response has a 2xx status code
+func (o *GetProcessorDiagnosticsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get processor diagnostics o k response has a 3xx status code
+func (o *GetProcessorDiagnosticsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get processor diagnostics o k response has a 4xx status code
+func (o *GetProcessorDiagnosticsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get processor diagnostics o k response has a 5xx status code
+func (o *GetProcessorDiagnosticsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get processor diagnostics o k response a status code equal to that given
+func (o *GetProcessorDiagnosticsOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the get processor diagnostics o k response
+func (o *GetProcessorDiagnosticsOK) Code() int {
+	return 200
+}
+
 func (o *GetProcessorDiagnosticsOK) Error() string {
 	return fmt.Sprintf("[GET /processors/{id}/diagnostics][%d] getProcessorDiagnosticsOK  %+v", 200, o.Payload)
 }
+
+func (o *GetProcessorDiagnosticsOK) String() string {
+	return fmt.Sprintf("[GET /processors/{id}/diagnostics][%d] getProcessorDiagnosticsOK  %+v", 200, o.Payload)
+}
+
 func (o *GetProcessorDiagnosticsOK) GetPayload() *models.ProcessorEntity {
 	return o.Payload
 }
@@ -101,14 +137,49 @@ func NewGetProcessorDiagnosticsBadRequest() *GetProcessorDiagnosticsBadRequest {
 	return &GetProcessorDiagnosticsBadRequest{}
 }
 
-/* GetProcessorDiagnosticsBadRequest describes a response with status code 400, with default header values.
+/*
+GetProcessorDiagnosticsBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type GetProcessorDiagnosticsBadRequest struct {
 }
 
+// IsSuccess returns true when this get processor diagnostics bad request response has a 2xx status code
+func (o *GetProcessorDiagnosticsBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get processor diagnostics bad request response has a 3xx status code
+func (o *GetProcessorDiagnosticsBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get processor diagnostics bad request response has a 4xx status code
+func (o *GetProcessorDiagnosticsBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get processor diagnostics bad request response has a 5xx status code
+func (o *GetProcessorDiagnosticsBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get processor diagnostics bad request response a status code equal to that given
+func (o *GetProcessorDiagnosticsBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the get processor diagnostics bad request response
+func (o *GetProcessorDiagnosticsBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetProcessorDiagnosticsBadRequest) Error() string {
+	return fmt.Sprintf("[GET /processors/{id}/diagnostics][%d] getProcessorDiagnosticsBadRequest ", 400)
+}
+
+func (o *GetProcessorDiagnosticsBadRequest) String() string {
 	return fmt.Sprintf("[GET /processors/{id}/diagnostics][%d] getProcessorDiagnosticsBadRequest ", 400)
 }
 
@@ -122,14 +193,49 @@ func NewGetProcessorDiagnosticsUnauthorized() *GetProcessorDiagnosticsUnauthoriz
 	return &GetProcessorDiagnosticsUnauthorized{}
 }
 
-/* GetProcessorDiagnosticsUnauthorized describes a response with status code 401, with default header values.
+/*
+GetProcessorDiagnosticsUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type GetProcessorDiagnosticsUnauthorized struct {
 }
 
+// IsSuccess returns true when this get processor diagnostics unauthorized response has a 2xx status code
+func (o *GetProcessorDiagnosticsUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get processor diagnostics unauthorized response has a 3xx status code
+func (o *GetProcessorDiagnosticsUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get processor diagnostics unauthorized response has a 4xx status code
+func (o *GetProcessorDiagnosticsUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get processor diagnostics unauthorized response has a 5xx status code
+func (o *GetProcessorDiagnosticsUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get processor diagnostics unauthorized response a status code equal to that given
+func (o *GetProcessorDiagnosticsUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the get processor diagnostics unauthorized response
+func (o *GetProcessorDiagnosticsUnauthorized) Code() int {
+	return 401
+}
+
 func (o *GetProcessorDiagnosticsUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /processors/{id}/diagnostics][%d] getProcessorDiagnosticsUnauthorized ", 401)
+}
+
+func (o *GetProcessorDiagnosticsUnauthorized) String() string {
 	return fmt.Sprintf("[GET /processors/{id}/diagnostics][%d] getProcessorDiagnosticsUnauthorized ", 401)
 }
 
@@ -143,14 +249,49 @@ func NewGetProcessorDiagnosticsForbidden() *GetProcessorDiagnosticsForbidden {
 	return &GetProcessorDiagnosticsForbidden{}
 }
 
-/* GetProcessorDiagnosticsForbidden describes a response with status code 403, with default header values.
+/*
+GetProcessorDiagnosticsForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type GetProcessorDiagnosticsForbidden struct {
 }
 
+// IsSuccess returns true when this get processor diagnostics forbidden response has a 2xx status code
+func (o *GetProcessorDiagnosticsForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get processor diagnostics forbidden response has a 3xx status code
+func (o *GetProcessorDiagnosticsForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get processor diagnostics forbidden response has a 4xx status code
+func (o *GetProcessorDiagnosticsForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get processor diagnostics forbidden response has a 5xx status code
+func (o *GetProcessorDiagnosticsForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get processor diagnostics forbidden response a status code equal to that given
+func (o *GetProcessorDiagnosticsForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the get processor diagnostics forbidden response
+func (o *GetProcessorDiagnosticsForbidden) Code() int {
+	return 403
+}
+
 func (o *GetProcessorDiagnosticsForbidden) Error() string {
+	return fmt.Sprintf("[GET /processors/{id}/diagnostics][%d] getProcessorDiagnosticsForbidden ", 403)
+}
+
+func (o *GetProcessorDiagnosticsForbidden) String() string {
 	return fmt.Sprintf("[GET /processors/{id}/diagnostics][%d] getProcessorDiagnosticsForbidden ", 403)
 }
 
@@ -164,14 +305,49 @@ func NewGetProcessorDiagnosticsNotFound() *GetProcessorDiagnosticsNotFound {
 	return &GetProcessorDiagnosticsNotFound{}
 }
 
-/* GetProcessorDiagnosticsNotFound describes a response with status code 404, with default header values.
+/*
+GetProcessorDiagnosticsNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type GetProcessorDiagnosticsNotFound struct {
 }
 
+// IsSuccess returns true when this get processor diagnostics not found response has a 2xx status code
+func (o *GetProcessorDiagnosticsNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get processor diagnostics not found response has a 3xx status code
+func (o *GetProcessorDiagnosticsNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get processor diagnostics not found response has a 4xx status code
+func (o *GetProcessorDiagnosticsNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get processor diagnostics not found response has a 5xx status code
+func (o *GetProcessorDiagnosticsNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get processor diagnostics not found response a status code equal to that given
+func (o *GetProcessorDiagnosticsNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+// Code gets the status code for the get processor diagnostics not found response
+func (o *GetProcessorDiagnosticsNotFound) Code() int {
+	return 404
+}
+
 func (o *GetProcessorDiagnosticsNotFound) Error() string {
+	return fmt.Sprintf("[GET /processors/{id}/diagnostics][%d] getProcessorDiagnosticsNotFound ", 404)
+}
+
+func (o *GetProcessorDiagnosticsNotFound) String() string {
 	return fmt.Sprintf("[GET /processors/{id}/diagnostics][%d] getProcessorDiagnosticsNotFound ", 404)
 }
 
@@ -185,14 +361,49 @@ func NewGetProcessorDiagnosticsConflict() *GetProcessorDiagnosticsConflict {
 	return &GetProcessorDiagnosticsConflict{}
 }
 
-/* GetProcessorDiagnosticsConflict describes a response with status code 409, with default header values.
+/*
+GetProcessorDiagnosticsConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type GetProcessorDiagnosticsConflict struct {
 }
 
+// IsSuccess returns true when this get processor diagnostics conflict response has a 2xx status code
+func (o *GetProcessorDiagnosticsConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get processor diagnostics conflict response has a 3xx status code
+func (o *GetProcessorDiagnosticsConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get processor diagnostics conflict response has a 4xx status code
+func (o *GetProcessorDiagnosticsConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get processor diagnostics conflict response has a 5xx status code
+func (o *GetProcessorDiagnosticsConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get processor diagnostics conflict response a status code equal to that given
+func (o *GetProcessorDiagnosticsConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the get processor diagnostics conflict response
+func (o *GetProcessorDiagnosticsConflict) Code() int {
+	return 409
+}
+
 func (o *GetProcessorDiagnosticsConflict) Error() string {
+	return fmt.Sprintf("[GET /processors/{id}/diagnostics][%d] getProcessorDiagnosticsConflict ", 409)
+}
+
+func (o *GetProcessorDiagnosticsConflict) String() string {
 	return fmt.Sprintf("[GET /processors/{id}/diagnostics][%d] getProcessorDiagnosticsConflict ", 409)
 }
 

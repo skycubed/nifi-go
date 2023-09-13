@@ -52,10 +52,12 @@ func NewGetPropertyDescriptorParamsWithHTTPClient(client *http.Client) *GetPrope
 	}
 }
 
-/* GetPropertyDescriptorParams contains all the parameters to send to the API endpoint
-   for the get property descriptor operation.
+/*
+GetPropertyDescriptorParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get property descriptor operation.
+
+	Typically these are written to a http.Request.
 */
 type GetPropertyDescriptorParams struct {
 

@@ -60,7 +60,7 @@ func (o *GetParameterContextUpdateReader) ReadResponse(response runtime.ClientRe
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /parameter-contexts/{contextId}/update-requests/{requestId}] getParameterContextUpdate", response, response.Code())
 	}
 }
 
@@ -69,7 +69,8 @@ func NewGetParameterContextUpdateOK() *GetParameterContextUpdateOK {
 	return &GetParameterContextUpdateOK{}
 }
 
-/* GetParameterContextUpdateOK describes a response with status code 200, with default header values.
+/*
+GetParameterContextUpdateOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,44 @@ type GetParameterContextUpdateOK struct {
 	Payload *models.ParameterContextUpdateRequestEntity
 }
 
+// IsSuccess returns true when this get parameter context update o k response has a 2xx status code
+func (o *GetParameterContextUpdateOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get parameter context update o k response has a 3xx status code
+func (o *GetParameterContextUpdateOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get parameter context update o k response has a 4xx status code
+func (o *GetParameterContextUpdateOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get parameter context update o k response has a 5xx status code
+func (o *GetParameterContextUpdateOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get parameter context update o k response a status code equal to that given
+func (o *GetParameterContextUpdateOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the get parameter context update o k response
+func (o *GetParameterContextUpdateOK) Code() int {
+	return 200
+}
+
 func (o *GetParameterContextUpdateOK) Error() string {
 	return fmt.Sprintf("[GET /parameter-contexts/{contextId}/update-requests/{requestId}][%d] getParameterContextUpdateOK  %+v", 200, o.Payload)
 }
+
+func (o *GetParameterContextUpdateOK) String() string {
+	return fmt.Sprintf("[GET /parameter-contexts/{contextId}/update-requests/{requestId}][%d] getParameterContextUpdateOK  %+v", 200, o.Payload)
+}
+
 func (o *GetParameterContextUpdateOK) GetPayload() *models.ParameterContextUpdateRequestEntity {
 	return o.Payload
 }
@@ -101,14 +137,49 @@ func NewGetParameterContextUpdateBadRequest() *GetParameterContextUpdateBadReque
 	return &GetParameterContextUpdateBadRequest{}
 }
 
-/* GetParameterContextUpdateBadRequest describes a response with status code 400, with default header values.
+/*
+GetParameterContextUpdateBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type GetParameterContextUpdateBadRequest struct {
 }
 
+// IsSuccess returns true when this get parameter context update bad request response has a 2xx status code
+func (o *GetParameterContextUpdateBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get parameter context update bad request response has a 3xx status code
+func (o *GetParameterContextUpdateBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get parameter context update bad request response has a 4xx status code
+func (o *GetParameterContextUpdateBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get parameter context update bad request response has a 5xx status code
+func (o *GetParameterContextUpdateBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get parameter context update bad request response a status code equal to that given
+func (o *GetParameterContextUpdateBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the get parameter context update bad request response
+func (o *GetParameterContextUpdateBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetParameterContextUpdateBadRequest) Error() string {
+	return fmt.Sprintf("[GET /parameter-contexts/{contextId}/update-requests/{requestId}][%d] getParameterContextUpdateBadRequest ", 400)
+}
+
+func (o *GetParameterContextUpdateBadRequest) String() string {
 	return fmt.Sprintf("[GET /parameter-contexts/{contextId}/update-requests/{requestId}][%d] getParameterContextUpdateBadRequest ", 400)
 }
 
@@ -122,14 +193,49 @@ func NewGetParameterContextUpdateUnauthorized() *GetParameterContextUpdateUnauth
 	return &GetParameterContextUpdateUnauthorized{}
 }
 
-/* GetParameterContextUpdateUnauthorized describes a response with status code 401, with default header values.
+/*
+GetParameterContextUpdateUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type GetParameterContextUpdateUnauthorized struct {
 }
 
+// IsSuccess returns true when this get parameter context update unauthorized response has a 2xx status code
+func (o *GetParameterContextUpdateUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get parameter context update unauthorized response has a 3xx status code
+func (o *GetParameterContextUpdateUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get parameter context update unauthorized response has a 4xx status code
+func (o *GetParameterContextUpdateUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get parameter context update unauthorized response has a 5xx status code
+func (o *GetParameterContextUpdateUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get parameter context update unauthorized response a status code equal to that given
+func (o *GetParameterContextUpdateUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the get parameter context update unauthorized response
+func (o *GetParameterContextUpdateUnauthorized) Code() int {
+	return 401
+}
+
 func (o *GetParameterContextUpdateUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /parameter-contexts/{contextId}/update-requests/{requestId}][%d] getParameterContextUpdateUnauthorized ", 401)
+}
+
+func (o *GetParameterContextUpdateUnauthorized) String() string {
 	return fmt.Sprintf("[GET /parameter-contexts/{contextId}/update-requests/{requestId}][%d] getParameterContextUpdateUnauthorized ", 401)
 }
 
@@ -143,14 +249,49 @@ func NewGetParameterContextUpdateForbidden() *GetParameterContextUpdateForbidden
 	return &GetParameterContextUpdateForbidden{}
 }
 
-/* GetParameterContextUpdateForbidden describes a response with status code 403, with default header values.
+/*
+GetParameterContextUpdateForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type GetParameterContextUpdateForbidden struct {
 }
 
+// IsSuccess returns true when this get parameter context update forbidden response has a 2xx status code
+func (o *GetParameterContextUpdateForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get parameter context update forbidden response has a 3xx status code
+func (o *GetParameterContextUpdateForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get parameter context update forbidden response has a 4xx status code
+func (o *GetParameterContextUpdateForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get parameter context update forbidden response has a 5xx status code
+func (o *GetParameterContextUpdateForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get parameter context update forbidden response a status code equal to that given
+func (o *GetParameterContextUpdateForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the get parameter context update forbidden response
+func (o *GetParameterContextUpdateForbidden) Code() int {
+	return 403
+}
+
 func (o *GetParameterContextUpdateForbidden) Error() string {
+	return fmt.Sprintf("[GET /parameter-contexts/{contextId}/update-requests/{requestId}][%d] getParameterContextUpdateForbidden ", 403)
+}
+
+func (o *GetParameterContextUpdateForbidden) String() string {
 	return fmt.Sprintf("[GET /parameter-contexts/{contextId}/update-requests/{requestId}][%d] getParameterContextUpdateForbidden ", 403)
 }
 
@@ -164,14 +305,49 @@ func NewGetParameterContextUpdateNotFound() *GetParameterContextUpdateNotFound {
 	return &GetParameterContextUpdateNotFound{}
 }
 
-/* GetParameterContextUpdateNotFound describes a response with status code 404, with default header values.
+/*
+GetParameterContextUpdateNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type GetParameterContextUpdateNotFound struct {
 }
 
+// IsSuccess returns true when this get parameter context update not found response has a 2xx status code
+func (o *GetParameterContextUpdateNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get parameter context update not found response has a 3xx status code
+func (o *GetParameterContextUpdateNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get parameter context update not found response has a 4xx status code
+func (o *GetParameterContextUpdateNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get parameter context update not found response has a 5xx status code
+func (o *GetParameterContextUpdateNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get parameter context update not found response a status code equal to that given
+func (o *GetParameterContextUpdateNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+// Code gets the status code for the get parameter context update not found response
+func (o *GetParameterContextUpdateNotFound) Code() int {
+	return 404
+}
+
 func (o *GetParameterContextUpdateNotFound) Error() string {
+	return fmt.Sprintf("[GET /parameter-contexts/{contextId}/update-requests/{requestId}][%d] getParameterContextUpdateNotFound ", 404)
+}
+
+func (o *GetParameterContextUpdateNotFound) String() string {
 	return fmt.Sprintf("[GET /parameter-contexts/{contextId}/update-requests/{requestId}][%d] getParameterContextUpdateNotFound ", 404)
 }
 
@@ -185,14 +361,49 @@ func NewGetParameterContextUpdateConflict() *GetParameterContextUpdateConflict {
 	return &GetParameterContextUpdateConflict{}
 }
 
-/* GetParameterContextUpdateConflict describes a response with status code 409, with default header values.
+/*
+GetParameterContextUpdateConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type GetParameterContextUpdateConflict struct {
 }
 
+// IsSuccess returns true when this get parameter context update conflict response has a 2xx status code
+func (o *GetParameterContextUpdateConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get parameter context update conflict response has a 3xx status code
+func (o *GetParameterContextUpdateConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get parameter context update conflict response has a 4xx status code
+func (o *GetParameterContextUpdateConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get parameter context update conflict response has a 5xx status code
+func (o *GetParameterContextUpdateConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get parameter context update conflict response a status code equal to that given
+func (o *GetParameterContextUpdateConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the get parameter context update conflict response
+func (o *GetParameterContextUpdateConflict) Code() int {
+	return 409
+}
+
 func (o *GetParameterContextUpdateConflict) Error() string {
+	return fmt.Sprintf("[GET /parameter-contexts/{contextId}/update-requests/{requestId}][%d] getParameterContextUpdateConflict ", 409)
+}
+
+func (o *GetParameterContextUpdateConflict) String() string {
 	return fmt.Sprintf("[GET /parameter-contexts/{contextId}/update-requests/{requestId}][%d] getParameterContextUpdateConflict ", 409)
 }
 

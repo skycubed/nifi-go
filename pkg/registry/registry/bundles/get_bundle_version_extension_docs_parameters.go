@@ -52,10 +52,12 @@ func NewGetBundleVersionExtensionDocsParamsWithHTTPClient(client *http.Client) *
 	}
 }
 
-/* GetBundleVersionExtensionDocsParams contains all the parameters to send to the API endpoint
-   for the get bundle version extension docs operation.
+/*
+GetBundleVersionExtensionDocsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get bundle version extension docs operation.
+
+	Typically these are written to a http.Request.
 */
 type GetBundleVersionExtensionDocsParams struct {
 

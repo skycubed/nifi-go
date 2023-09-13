@@ -53,10 +53,12 @@ func NewExportVersionedFlowParamsWithHTTPClient(client *http.Client) *ExportVers
 	}
 }
 
-/* ExportVersionedFlowParams contains all the parameters to send to the API endpoint
-   for the export versioned flow operation.
+/*
+ExportVersionedFlowParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the export versioned flow operation.
+
+	Typically these are written to a http.Request.
 */
 type ExportVersionedFlowParams struct {
 

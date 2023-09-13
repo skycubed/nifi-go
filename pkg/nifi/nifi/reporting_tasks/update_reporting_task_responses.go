@@ -60,7 +60,7 @@ func (o *UpdateReportingTaskReader) ReadResponse(response runtime.ClientResponse
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PUT /reporting-tasks/{id}] updateReportingTask", response, response.Code())
 	}
 }
 
@@ -69,7 +69,8 @@ func NewUpdateReportingTaskOK() *UpdateReportingTaskOK {
 	return &UpdateReportingTaskOK{}
 }
 
-/* UpdateReportingTaskOK describes a response with status code 200, with default header values.
+/*
+UpdateReportingTaskOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,44 @@ type UpdateReportingTaskOK struct {
 	Payload *models.ReportingTaskEntity
 }
 
+// IsSuccess returns true when this update reporting task o k response has a 2xx status code
+func (o *UpdateReportingTaskOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this update reporting task o k response has a 3xx status code
+func (o *UpdateReportingTaskOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update reporting task o k response has a 4xx status code
+func (o *UpdateReportingTaskOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this update reporting task o k response has a 5xx status code
+func (o *UpdateReportingTaskOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update reporting task o k response a status code equal to that given
+func (o *UpdateReportingTaskOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the update reporting task o k response
+func (o *UpdateReportingTaskOK) Code() int {
+	return 200
+}
+
 func (o *UpdateReportingTaskOK) Error() string {
 	return fmt.Sprintf("[PUT /reporting-tasks/{id}][%d] updateReportingTaskOK  %+v", 200, o.Payload)
 }
+
+func (o *UpdateReportingTaskOK) String() string {
+	return fmt.Sprintf("[PUT /reporting-tasks/{id}][%d] updateReportingTaskOK  %+v", 200, o.Payload)
+}
+
 func (o *UpdateReportingTaskOK) GetPayload() *models.ReportingTaskEntity {
 	return o.Payload
 }
@@ -101,14 +137,49 @@ func NewUpdateReportingTaskBadRequest() *UpdateReportingTaskBadRequest {
 	return &UpdateReportingTaskBadRequest{}
 }
 
-/* UpdateReportingTaskBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateReportingTaskBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type UpdateReportingTaskBadRequest struct {
 }
 
+// IsSuccess returns true when this update reporting task bad request response has a 2xx status code
+func (o *UpdateReportingTaskBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update reporting task bad request response has a 3xx status code
+func (o *UpdateReportingTaskBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update reporting task bad request response has a 4xx status code
+func (o *UpdateReportingTaskBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update reporting task bad request response has a 5xx status code
+func (o *UpdateReportingTaskBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update reporting task bad request response a status code equal to that given
+func (o *UpdateReportingTaskBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the update reporting task bad request response
+func (o *UpdateReportingTaskBadRequest) Code() int {
+	return 400
+}
+
 func (o *UpdateReportingTaskBadRequest) Error() string {
+	return fmt.Sprintf("[PUT /reporting-tasks/{id}][%d] updateReportingTaskBadRequest ", 400)
+}
+
+func (o *UpdateReportingTaskBadRequest) String() string {
 	return fmt.Sprintf("[PUT /reporting-tasks/{id}][%d] updateReportingTaskBadRequest ", 400)
 }
 
@@ -122,14 +193,49 @@ func NewUpdateReportingTaskUnauthorized() *UpdateReportingTaskUnauthorized {
 	return &UpdateReportingTaskUnauthorized{}
 }
 
-/* UpdateReportingTaskUnauthorized describes a response with status code 401, with default header values.
+/*
+UpdateReportingTaskUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type UpdateReportingTaskUnauthorized struct {
 }
 
+// IsSuccess returns true when this update reporting task unauthorized response has a 2xx status code
+func (o *UpdateReportingTaskUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update reporting task unauthorized response has a 3xx status code
+func (o *UpdateReportingTaskUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update reporting task unauthorized response has a 4xx status code
+func (o *UpdateReportingTaskUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update reporting task unauthorized response has a 5xx status code
+func (o *UpdateReportingTaskUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update reporting task unauthorized response a status code equal to that given
+func (o *UpdateReportingTaskUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the update reporting task unauthorized response
+func (o *UpdateReportingTaskUnauthorized) Code() int {
+	return 401
+}
+
 func (o *UpdateReportingTaskUnauthorized) Error() string {
+	return fmt.Sprintf("[PUT /reporting-tasks/{id}][%d] updateReportingTaskUnauthorized ", 401)
+}
+
+func (o *UpdateReportingTaskUnauthorized) String() string {
 	return fmt.Sprintf("[PUT /reporting-tasks/{id}][%d] updateReportingTaskUnauthorized ", 401)
 }
 
@@ -143,14 +249,49 @@ func NewUpdateReportingTaskForbidden() *UpdateReportingTaskForbidden {
 	return &UpdateReportingTaskForbidden{}
 }
 
-/* UpdateReportingTaskForbidden describes a response with status code 403, with default header values.
+/*
+UpdateReportingTaskForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type UpdateReportingTaskForbidden struct {
 }
 
+// IsSuccess returns true when this update reporting task forbidden response has a 2xx status code
+func (o *UpdateReportingTaskForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update reporting task forbidden response has a 3xx status code
+func (o *UpdateReportingTaskForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update reporting task forbidden response has a 4xx status code
+func (o *UpdateReportingTaskForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update reporting task forbidden response has a 5xx status code
+func (o *UpdateReportingTaskForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update reporting task forbidden response a status code equal to that given
+func (o *UpdateReportingTaskForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the update reporting task forbidden response
+func (o *UpdateReportingTaskForbidden) Code() int {
+	return 403
+}
+
 func (o *UpdateReportingTaskForbidden) Error() string {
+	return fmt.Sprintf("[PUT /reporting-tasks/{id}][%d] updateReportingTaskForbidden ", 403)
+}
+
+func (o *UpdateReportingTaskForbidden) String() string {
 	return fmt.Sprintf("[PUT /reporting-tasks/{id}][%d] updateReportingTaskForbidden ", 403)
 }
 
@@ -164,14 +305,49 @@ func NewUpdateReportingTaskNotFound() *UpdateReportingTaskNotFound {
 	return &UpdateReportingTaskNotFound{}
 }
 
-/* UpdateReportingTaskNotFound describes a response with status code 404, with default header values.
+/*
+UpdateReportingTaskNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type UpdateReportingTaskNotFound struct {
 }
 
+// IsSuccess returns true when this update reporting task not found response has a 2xx status code
+func (o *UpdateReportingTaskNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update reporting task not found response has a 3xx status code
+func (o *UpdateReportingTaskNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update reporting task not found response has a 4xx status code
+func (o *UpdateReportingTaskNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update reporting task not found response has a 5xx status code
+func (o *UpdateReportingTaskNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update reporting task not found response a status code equal to that given
+func (o *UpdateReportingTaskNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+// Code gets the status code for the update reporting task not found response
+func (o *UpdateReportingTaskNotFound) Code() int {
+	return 404
+}
+
 func (o *UpdateReportingTaskNotFound) Error() string {
+	return fmt.Sprintf("[PUT /reporting-tasks/{id}][%d] updateReportingTaskNotFound ", 404)
+}
+
+func (o *UpdateReportingTaskNotFound) String() string {
 	return fmt.Sprintf("[PUT /reporting-tasks/{id}][%d] updateReportingTaskNotFound ", 404)
 }
 
@@ -185,14 +361,49 @@ func NewUpdateReportingTaskConflict() *UpdateReportingTaskConflict {
 	return &UpdateReportingTaskConflict{}
 }
 
-/* UpdateReportingTaskConflict describes a response with status code 409, with default header values.
+/*
+UpdateReportingTaskConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type UpdateReportingTaskConflict struct {
 }
 
+// IsSuccess returns true when this update reporting task conflict response has a 2xx status code
+func (o *UpdateReportingTaskConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update reporting task conflict response has a 3xx status code
+func (o *UpdateReportingTaskConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update reporting task conflict response has a 4xx status code
+func (o *UpdateReportingTaskConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update reporting task conflict response has a 5xx status code
+func (o *UpdateReportingTaskConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update reporting task conflict response a status code equal to that given
+func (o *UpdateReportingTaskConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the update reporting task conflict response
+func (o *UpdateReportingTaskConflict) Code() int {
+	return 409
+}
+
 func (o *UpdateReportingTaskConflict) Error() string {
+	return fmt.Sprintf("[PUT /reporting-tasks/{id}][%d] updateReportingTaskConflict ", 409)
+}
+
+func (o *UpdateReportingTaskConflict) String() string {
 	return fmt.Sprintf("[PUT /reporting-tasks/{id}][%d] updateReportingTaskConflict ", 409)
 }
 

@@ -52,10 +52,12 @@ func NewGetBulletinsParamsWithHTTPClient(client *http.Client) *GetBulletinsParam
 	}
 }
 
-/* GetBulletinsParams contains all the parameters to send to the API endpoint
-   for the get bulletins operation.
+/*
+GetBulletinsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get bulletins operation.
+
+	Typically these are written to a http.Request.
 */
 type GetBulletinsParams struct {
 	timeout    time.Duration

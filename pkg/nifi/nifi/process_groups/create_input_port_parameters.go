@@ -54,10 +54,12 @@ func NewCreateInputPortParamsWithHTTPClient(client *http.Client) *CreateInputPor
 	}
 }
 
-/* CreateInputPortParams contains all the parameters to send to the API endpoint
-   for the create input port operation.
+/*
+CreateInputPortParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create input port operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateInputPortParams struct {
 
