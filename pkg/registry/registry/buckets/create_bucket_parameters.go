@@ -54,10 +54,12 @@ func NewCreateBucketParamsWithHTTPClient(client *http.Client) *CreateBucketParam
 	}
 }
 
-/* CreateBucketParams contains all the parameters to send to the API endpoint
-   for the create bucket operation.
+/*
+CreateBucketParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create bucket operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateBucketParams struct {
 

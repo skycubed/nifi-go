@@ -52,10 +52,12 @@ func NewGetAccessPolicyParamsWithHTTPClient(client *http.Client) *GetAccessPolic
 	}
 }
 
-/* GetAccessPolicyParams contains all the parameters to send to the API endpoint
-   for the get access policy operation.
+/*
+GetAccessPolicyParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get access policy operation.
+
+	Typically these are written to a http.Request.
 */
 type GetAccessPolicyParams struct {
 

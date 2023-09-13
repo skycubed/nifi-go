@@ -54,10 +54,12 @@ func NewCreateUserGroupParamsWithHTTPClient(client *http.Client) *CreateUserGrou
 	}
 }
 
-/* CreateUserGroupParams contains all the parameters to send to the API endpoint
-   for the create user group operation.
+/*
+CreateUserGroupParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create user group operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateUserGroupParams struct {
 

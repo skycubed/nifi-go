@@ -40,9 +40,9 @@ type ClientService interface {
 }
 
 /*
-  GetExtensions gets all extensions
+	GetExtensions gets all extensions
 
-  Gets the metadata for all extensions that match the filter params and are part of bundles located in buckets the current user is authorized for. If the user is not authorized to any buckets, an empty result set will be returned.
+	Gets the metadata for all extensions that match the filter params and are part of bundles located in buckets the current user is authorized for. If the user is not authorized to any buckets, an empty result set will be returned.
 
 NOTE: This endpoint is subject to change as NiFi Registry and its REST API evolve.
 */
@@ -83,9 +83,9 @@ func (a *Client) GetExtensions(params *GetExtensionsParams, authInfo runtime.Cli
 }
 
 /*
-  GetExtensionsProvidingServiceAPI gets extensions providing service API
+	GetExtensionsProvidingServiceAPI gets extensions providing service API
 
-  Gets the metadata for extensions that provide the specified API and are part of bundles located in buckets the current user is authorized for. If the user is not authorized to any buckets, an empty result set will be returned.
+	Gets the metadata for extensions that provide the specified API and are part of bundles located in buckets the current user is authorized for. If the user is not authorized to any buckets, an empty result set will be returned.
 
 NOTE: This endpoint is subject to change as NiFi Registry and its REST API evolve.
 */
@@ -126,9 +126,9 @@ func (a *Client) GetExtensionsProvidingServiceAPI(params *GetExtensionsProviding
 }
 
 /*
-  GetTags gets extension tags
+	GetTags gets extension tags
 
-  Gets all the extension tags known to this NiFi Registry instance, along with the number of extensions that have the given tag.
+	Gets all the extension tags known to this NiFi Registry instance, along with the number of extensions that have the given tag.
 
 NOTE: This endpoint is subject to change as NiFi Registry and its REST API evolve.
 */

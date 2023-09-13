@@ -52,10 +52,12 @@ func NewImportProcessGroupParamsWithHTTPClient(client *http.Client) *ImportProce
 	}
 }
 
-/* ImportProcessGroupParams contains all the parameters to send to the API endpoint
-   for the import process group operation.
+/*
+ImportProcessGroupParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the import process group operation.
+
+	Typically these are written to a http.Request.
 */
 type ImportProcessGroupParams struct {
 

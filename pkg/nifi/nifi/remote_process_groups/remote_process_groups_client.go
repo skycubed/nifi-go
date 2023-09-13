@@ -52,7 +52,7 @@ type ClientService interface {
 }
 
 /*
-  GetRemoteProcessGroup gets a remote process group
+GetRemoteProcessGroup gets a remote process group
 */
 func (a *Client) GetRemoteProcessGroup(params *GetRemoteProcessGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetRemoteProcessGroupOK, error) {
 	// TODO: Validate the params before sending
@@ -91,7 +91,7 @@ func (a *Client) GetRemoteProcessGroup(params *GetRemoteProcessGroupParams, auth
 }
 
 /*
-  RemoveRemoteProcessGroup deletes a remote process group
+RemoveRemoteProcessGroup deletes a remote process group
 */
 func (a *Client) RemoveRemoteProcessGroup(params *RemoveRemoteProcessGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*RemoveRemoteProcessGroupOK, error) {
 	// TODO: Validate the params before sending
@@ -130,7 +130,7 @@ func (a *Client) RemoveRemoteProcessGroup(params *RemoveRemoteProcessGroupParams
 }
 
 /*
-  UpdateRemoteProcessGroup updates a remote process group
+UpdateRemoteProcessGroup updates a remote process group
 */
 func (a *Client) UpdateRemoteProcessGroup(params *UpdateRemoteProcessGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateRemoteProcessGroupOK, error) {
 	// TODO: Validate the params before sending
@@ -169,9 +169,9 @@ func (a *Client) UpdateRemoteProcessGroup(params *UpdateRemoteProcessGroupParams
 }
 
 /*
-  UpdateRemoteProcessGroupInputPort updates a remote port
+UpdateRemoteProcessGroupInputPort updates a remote port
 
-  Note: This endpoint is subject to change as NiFi and it's REST API evolve.
+Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 */
 func (a *Client) UpdateRemoteProcessGroupInputPort(params *UpdateRemoteProcessGroupInputPortParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateRemoteProcessGroupInputPortOK, error) {
 	// TODO: Validate the params before sending
@@ -210,9 +210,9 @@ func (a *Client) UpdateRemoteProcessGroupInputPort(params *UpdateRemoteProcessGr
 }
 
 /*
-  UpdateRemoteProcessGroupInputPortRunStatus updates run status of a remote port
+UpdateRemoteProcessGroupInputPortRunStatus updates run status of a remote port
 
-  Note: This endpoint is subject to change as NiFi and it's REST API evolve.
+Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 */
 func (a *Client) UpdateRemoteProcessGroupInputPortRunStatus(params *UpdateRemoteProcessGroupInputPortRunStatusParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateRemoteProcessGroupInputPortRunStatusOK, error) {
 	// TODO: Validate the params before sending
@@ -251,9 +251,9 @@ func (a *Client) UpdateRemoteProcessGroupInputPortRunStatus(params *UpdateRemote
 }
 
 /*
-  UpdateRemoteProcessGroupOutputPort updates a remote port
+UpdateRemoteProcessGroupOutputPort updates a remote port
 
-  Note: This endpoint is subject to change as NiFi and it's REST API evolve.
+Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 */
 func (a *Client) UpdateRemoteProcessGroupOutputPort(params *UpdateRemoteProcessGroupOutputPortParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateRemoteProcessGroupOutputPortOK, error) {
 	// TODO: Validate the params before sending
@@ -292,9 +292,9 @@ func (a *Client) UpdateRemoteProcessGroupOutputPort(params *UpdateRemoteProcessG
 }
 
 /*
-  UpdateRemoteProcessGroupOutputPortRunStatus updates run status of a remote port
+UpdateRemoteProcessGroupOutputPortRunStatus updates run status of a remote port
 
-  Note: This endpoint is subject to change as NiFi and it's REST API evolve.
+Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 */
 func (a *Client) UpdateRemoteProcessGroupOutputPortRunStatus(params *UpdateRemoteProcessGroupOutputPortRunStatusParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateRemoteProcessGroupOutputPortRunStatusOK, error) {
 	// TODO: Validate the params before sending
@@ -333,7 +333,7 @@ func (a *Client) UpdateRemoteProcessGroupOutputPortRunStatus(params *UpdateRemot
 }
 
 /*
-  UpdateRemoteProcessGroupRunStatus updates run status of a remote process group
+UpdateRemoteProcessGroupRunStatus updates run status of a remote process group
 */
 func (a *Client) UpdateRemoteProcessGroupRunStatus(params *UpdateRemoteProcessGroupRunStatusParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateRemoteProcessGroupRunStatusOK, error) {
 	// TODO: Validate the params before sending
@@ -372,7 +372,7 @@ func (a *Client) UpdateRemoteProcessGroupRunStatus(params *UpdateRemoteProcessGr
 }
 
 /*
-  UpdateRemoteProcessGroupRunStatuses updates run status of all remote process groups in a process group recursively
+UpdateRemoteProcessGroupRunStatuses updates run status of all remote process groups in a process group recursively
 */
 func (a *Client) UpdateRemoteProcessGroupRunStatuses(params *UpdateRemoteProcessGroupRunStatusesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateRemoteProcessGroupRunStatusesOK, error) {
 	// TODO: Validate the params before sending

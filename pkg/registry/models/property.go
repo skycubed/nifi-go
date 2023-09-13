@@ -194,6 +194,11 @@ func (m *Property) contextValidateAllowableValues(ctx context.Context, formats s
 	for i := 0; i < len(m.AllowableValues); i++ {
 
 		if m.AllowableValues[i] != nil {
+
+			if swag.IsZero(m.AllowableValues[i]) { // not required
+				return nil
+			}
+
 			if err := m.AllowableValues[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("allowableValues" + "." + strconv.Itoa(i))
@@ -212,6 +217,11 @@ func (m *Property) contextValidateAllowableValues(ctx context.Context, formats s
 func (m *Property) contextValidateControllerServiceDefinition(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ControllerServiceDefinition != nil {
+
+		if swag.IsZero(m.ControllerServiceDefinition) { // not required
+			return nil
+		}
+
 		if err := m.ControllerServiceDefinition.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("controllerServiceDefinition")

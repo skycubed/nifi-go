@@ -84,6 +84,11 @@ func (m *VersionedPropertyDescriptor) ContextValidate(ctx context.Context, forma
 func (m *VersionedPropertyDescriptor) contextValidateResourceDefinition(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ResourceDefinition != nil {
+
+		if swag.IsZero(m.ResourceDefinition) { // not required
+			return nil
+		}
+
 		if err := m.ResourceDefinition.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("resourceDefinition")

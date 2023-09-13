@@ -60,9 +60,9 @@ type ClientService interface {
 }
 
 /*
-  CreateFlow creates flow
+CreateFlow creates flow
 
-  Creates a flow in the given bucket. The flow id is created by the server and populated in the returned entity.
+Creates a flow in the given bucket. The flow id is created by the server and populated in the returned entity.
 */
 func (a *Client) CreateFlow(params *CreateFlowParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateFlowOK, error) {
 	// TODO: Validate the params before sending
@@ -101,9 +101,9 @@ func (a *Client) CreateFlow(params *CreateFlowParams, authInfo runtime.ClientAut
 }
 
 /*
-  CreateFlowVersion creates flow version
+CreateFlowVersion creates flow version
 
-  Creates the next version of a flow. The version number of the object being created must be the next available version integer. Flow versions are immutable after they are created.
+Creates the next version of a flow. The version number of the object being created must be the next available version integer. Flow versions are immutable after they are created.
 */
 func (a *Client) CreateFlowVersion(params *CreateFlowVersionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateFlowVersionOK, error) {
 	// TODO: Validate the params before sending
@@ -142,9 +142,9 @@ func (a *Client) CreateFlowVersion(params *CreateFlowVersionParams, authInfo run
 }
 
 /*
-  DeleteFlow deletes bucket flow
+DeleteFlow deletes bucket flow
 
-  Deletes a flow, including all saved versions of that flow.
+Deletes a flow, including all saved versions of that flow.
 */
 func (a *Client) DeleteFlow(params *DeleteFlowParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteFlowOK, error) {
 	// TODO: Validate the params before sending
@@ -183,9 +183,9 @@ func (a *Client) DeleteFlow(params *DeleteFlowParams, authInfo runtime.ClientAut
 }
 
 /*
-  ExportVersionedFlow exports specified bucket flow version content
+ExportVersionedFlow exports specified bucket flow version content
 
-  Exports the specified version of a flow, including the metadata and content of the flow.
+Exports the specified version of a flow, including the metadata and content of the flow.
 */
 func (a *Client) ExportVersionedFlow(params *ExportVersionedFlowParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ExportVersionedFlowOK, error) {
 	// TODO: Validate the params before sending
@@ -224,9 +224,9 @@ func (a *Client) ExportVersionedFlow(params *ExportVersionedFlowParams, authInfo
 }
 
 /*
-  GetFlow gets bucket flow
+GetFlow gets bucket flow
 
-  Retrieves the flow with the given id in the given bucket.
+Retrieves the flow with the given id in the given bucket.
 */
 func (a *Client) GetFlow(params *GetFlowParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetFlowOK, error) {
 	// TODO: Validate the params before sending
@@ -265,9 +265,9 @@ func (a *Client) GetFlow(params *GetFlowParams, authInfo runtime.ClientAuthInfoW
 }
 
 /*
-  GetFlowDiff gets bucket flow diff
+GetFlowDiff gets bucket flow diff
 
-  Computes the differences between two given versions of a flow.
+Computes the differences between two given versions of a flow.
 */
 func (a *Client) GetFlowDiff(params *GetFlowDiffParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetFlowDiffOK, error) {
 	// TODO: Validate the params before sending
@@ -306,9 +306,9 @@ func (a *Client) GetFlowDiff(params *GetFlowDiffParams, authInfo runtime.ClientA
 }
 
 /*
-  GetFlowVersion gets bucket flow version
+GetFlowVersion gets bucket flow version
 
-  Gets the given version of a flow, including the metadata and content for the version.
+Gets the given version of a flow, including the metadata and content for the version.
 */
 func (a *Client) GetFlowVersion(params *GetFlowVersionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetFlowVersionOK, error) {
 	// TODO: Validate the params before sending
@@ -347,9 +347,9 @@ func (a *Client) GetFlowVersion(params *GetFlowVersionParams, authInfo runtime.C
 }
 
 /*
-  GetFlowVersions gets bucket flow versions
+GetFlowVersions gets bucket flow versions
 
-  Gets summary information for all versions of a flow. Versions are ordered newest->oldest.
+Gets summary information for all versions of a flow. Versions are ordered newest->oldest.
 */
 func (a *Client) GetFlowVersions(params *GetFlowVersionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetFlowVersionsOK, error) {
 	// TODO: Validate the params before sending
@@ -388,9 +388,9 @@ func (a *Client) GetFlowVersions(params *GetFlowVersionsParams, authInfo runtime
 }
 
 /*
-  GetFlows gets bucket flows
+GetFlows gets bucket flows
 
-  Retrieves all flows in the given bucket.
+Retrieves all flows in the given bucket.
 */
 func (a *Client) GetFlows(params *GetFlowsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetFlowsOK, error) {
 	// TODO: Validate the params before sending
@@ -429,9 +429,9 @@ func (a *Client) GetFlows(params *GetFlowsParams, authInfo runtime.ClientAuthInf
 }
 
 /*
-  GetLatestFlowVersion gets latest bucket flow version content
+GetLatestFlowVersion gets latest bucket flow version content
 
-  Gets the latest version of a flow, including the metadata and content of the flow.
+Gets the latest version of a flow, including the metadata and content of the flow.
 */
 func (a *Client) GetLatestFlowVersion(params *GetLatestFlowVersionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetLatestFlowVersionOK, error) {
 	// TODO: Validate the params before sending
@@ -470,9 +470,9 @@ func (a *Client) GetLatestFlowVersion(params *GetLatestFlowVersionParams, authIn
 }
 
 /*
-  GetLatestFlowVersionMetadata gets latest bucket flow version metadata
+GetLatestFlowVersionMetadata gets latest bucket flow version metadata
 
-  Gets the metadata for the latest version of a flow.
+Gets the metadata for the latest version of a flow.
 */
 func (a *Client) GetLatestFlowVersionMetadata(params *GetLatestFlowVersionMetadataParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetLatestFlowVersionMetadataOK, error) {
 	// TODO: Validate the params before sending
@@ -511,9 +511,9 @@ func (a *Client) GetLatestFlowVersionMetadata(params *GetLatestFlowVersionMetada
 }
 
 /*
-  ImportVersionedFlow imports flow version
+ImportVersionedFlow imports flow version
 
-  Import the next version of a flow. The version number of the object being created will be the next available version integer. Flow versions are immutable after they are created.
+Import the next version of a flow. The version number of the object being created will be the next available version integer. Flow versions are immutable after they are created.
 */
 func (a *Client) ImportVersionedFlow(params *ImportVersionedFlowParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ImportVersionedFlowOK, *ImportVersionedFlowCreated, error) {
 	// TODO: Validate the params before sending
@@ -553,9 +553,9 @@ func (a *Client) ImportVersionedFlow(params *ImportVersionedFlowParams, authInfo
 }
 
 /*
-  UpdateFlow updates bucket flow
+UpdateFlow updates bucket flow
 
-  Updates the flow with the given id in the given bucket.
+Updates the flow with the given id in the given bucket.
 */
 func (a *Client) UpdateFlow(params *UpdateFlowParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateFlowOK, error) {
 	// TODO: Validate the params before sending

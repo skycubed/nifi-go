@@ -52,7 +52,7 @@ func (o *CreateAccessTokenReader) ReadResponse(response runtime.ClientResponse, 
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /access/token] createAccessToken", response, response.Code())
 	}
 }
 
@@ -61,7 +61,8 @@ func NewCreateAccessTokenCreated() *CreateAccessTokenCreated {
 	return &CreateAccessTokenCreated{}
 }
 
-/* CreateAccessTokenCreated describes a response with status code 201, with default header values.
+/*
+CreateAccessTokenCreated describes a response with status code 201, with default header values.
 
 successful operation
 */
@@ -69,9 +70,44 @@ type CreateAccessTokenCreated struct {
 	Payload string
 }
 
+// IsSuccess returns true when this create access token created response has a 2xx status code
+func (o *CreateAccessTokenCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create access token created response has a 3xx status code
+func (o *CreateAccessTokenCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create access token created response has a 4xx status code
+func (o *CreateAccessTokenCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create access token created response has a 5xx status code
+func (o *CreateAccessTokenCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create access token created response a status code equal to that given
+func (o *CreateAccessTokenCreated) IsCode(code int) bool {
+	return code == 201
+}
+
+// Code gets the status code for the create access token created response
+func (o *CreateAccessTokenCreated) Code() int {
+	return 201
+}
+
 func (o *CreateAccessTokenCreated) Error() string {
 	return fmt.Sprintf("[POST /access/token][%d] createAccessTokenCreated  %+v", 201, o.Payload)
 }
+
+func (o *CreateAccessTokenCreated) String() string {
+	return fmt.Sprintf("[POST /access/token][%d] createAccessTokenCreated  %+v", 201, o.Payload)
+}
+
 func (o *CreateAccessTokenCreated) GetPayload() string {
 	return o.Payload
 }
@@ -91,14 +127,49 @@ func NewCreateAccessTokenBadRequest() *CreateAccessTokenBadRequest {
 	return &CreateAccessTokenBadRequest{}
 }
 
-/* CreateAccessTokenBadRequest describes a response with status code 400, with default header values.
+/*
+CreateAccessTokenBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type CreateAccessTokenBadRequest struct {
 }
 
+// IsSuccess returns true when this create access token bad request response has a 2xx status code
+func (o *CreateAccessTokenBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create access token bad request response has a 3xx status code
+func (o *CreateAccessTokenBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create access token bad request response has a 4xx status code
+func (o *CreateAccessTokenBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create access token bad request response has a 5xx status code
+func (o *CreateAccessTokenBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create access token bad request response a status code equal to that given
+func (o *CreateAccessTokenBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the create access token bad request response
+func (o *CreateAccessTokenBadRequest) Code() int {
+	return 400
+}
+
 func (o *CreateAccessTokenBadRequest) Error() string {
+	return fmt.Sprintf("[POST /access/token][%d] createAccessTokenBadRequest ", 400)
+}
+
+func (o *CreateAccessTokenBadRequest) String() string {
 	return fmt.Sprintf("[POST /access/token][%d] createAccessTokenBadRequest ", 400)
 }
 
@@ -112,14 +183,49 @@ func NewCreateAccessTokenForbidden() *CreateAccessTokenForbidden {
 	return &CreateAccessTokenForbidden{}
 }
 
-/* CreateAccessTokenForbidden describes a response with status code 403, with default header values.
+/*
+CreateAccessTokenForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type CreateAccessTokenForbidden struct {
 }
 
+// IsSuccess returns true when this create access token forbidden response has a 2xx status code
+func (o *CreateAccessTokenForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create access token forbidden response has a 3xx status code
+func (o *CreateAccessTokenForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create access token forbidden response has a 4xx status code
+func (o *CreateAccessTokenForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create access token forbidden response has a 5xx status code
+func (o *CreateAccessTokenForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create access token forbidden response a status code equal to that given
+func (o *CreateAccessTokenForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the create access token forbidden response
+func (o *CreateAccessTokenForbidden) Code() int {
+	return 403
+}
+
 func (o *CreateAccessTokenForbidden) Error() string {
+	return fmt.Sprintf("[POST /access/token][%d] createAccessTokenForbidden ", 403)
+}
+
+func (o *CreateAccessTokenForbidden) String() string {
 	return fmt.Sprintf("[POST /access/token][%d] createAccessTokenForbidden ", 403)
 }
 
@@ -133,14 +239,49 @@ func NewCreateAccessTokenConflict() *CreateAccessTokenConflict {
 	return &CreateAccessTokenConflict{}
 }
 
-/* CreateAccessTokenConflict describes a response with status code 409, with default header values.
+/*
+CreateAccessTokenConflict describes a response with status code 409, with default header values.
 
 Unable to create access token because NiFi is not in the appropriate state. (i.e. may not be configured to support username/password login.
 */
 type CreateAccessTokenConflict struct {
 }
 
+// IsSuccess returns true when this create access token conflict response has a 2xx status code
+func (o *CreateAccessTokenConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create access token conflict response has a 3xx status code
+func (o *CreateAccessTokenConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create access token conflict response has a 4xx status code
+func (o *CreateAccessTokenConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create access token conflict response has a 5xx status code
+func (o *CreateAccessTokenConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create access token conflict response a status code equal to that given
+func (o *CreateAccessTokenConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the create access token conflict response
+func (o *CreateAccessTokenConflict) Code() int {
+	return 409
+}
+
 func (o *CreateAccessTokenConflict) Error() string {
+	return fmt.Sprintf("[POST /access/token][%d] createAccessTokenConflict ", 409)
+}
+
+func (o *CreateAccessTokenConflict) String() string {
 	return fmt.Sprintf("[POST /access/token][%d] createAccessTokenConflict ", 409)
 }
 
@@ -154,14 +295,49 @@ func NewCreateAccessTokenInternalServerError() *CreateAccessTokenInternalServerE
 	return &CreateAccessTokenInternalServerError{}
 }
 
-/* CreateAccessTokenInternalServerError describes a response with status code 500, with default header values.
+/*
+CreateAccessTokenInternalServerError describes a response with status code 500, with default header values.
 
 Unable to create access token because an unexpected error occurred.
 */
 type CreateAccessTokenInternalServerError struct {
 }
 
+// IsSuccess returns true when this create access token internal server error response has a 2xx status code
+func (o *CreateAccessTokenInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create access token internal server error response has a 3xx status code
+func (o *CreateAccessTokenInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create access token internal server error response has a 4xx status code
+func (o *CreateAccessTokenInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create access token internal server error response has a 5xx status code
+func (o *CreateAccessTokenInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this create access token internal server error response a status code equal to that given
+func (o *CreateAccessTokenInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
+// Code gets the status code for the create access token internal server error response
+func (o *CreateAccessTokenInternalServerError) Code() int {
+	return 500
+}
+
 func (o *CreateAccessTokenInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /access/token][%d] createAccessTokenInternalServerError ", 500)
+}
+
+func (o *CreateAccessTokenInternalServerError) String() string {
 	return fmt.Sprintf("[POST /access/token][%d] createAccessTokenInternalServerError ", 500)
 }
 

@@ -54,10 +54,12 @@ func NewUpdateSnippetParamsWithHTTPClient(client *http.Client) *UpdateSnippetPar
 	}
 }
 
-/* UpdateSnippetParams contains all the parameters to send to the API endpoint
-   for the update snippet operation.
+/*
+UpdateSnippetParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update snippet operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateSnippetParams struct {
 

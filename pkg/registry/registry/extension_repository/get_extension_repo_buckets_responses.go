@@ -60,7 +60,7 @@ func (o *GetExtensionRepoBucketsReader) ReadResponse(response runtime.ClientResp
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /extension-repository] getExtensionRepoBuckets", response, response.Code())
 	}
 }
 
@@ -69,7 +69,8 @@ func NewGetExtensionRepoBucketsOK() *GetExtensionRepoBucketsOK {
 	return &GetExtensionRepoBucketsOK{}
 }
 
-/* GetExtensionRepoBucketsOK describes a response with status code 200, with default header values.
+/*
+GetExtensionRepoBucketsOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,44 @@ type GetExtensionRepoBucketsOK struct {
 	Payload []*models.ExtensionRepoBucket
 }
 
+// IsSuccess returns true when this get extension repo buckets o k response has a 2xx status code
+func (o *GetExtensionRepoBucketsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get extension repo buckets o k response has a 3xx status code
+func (o *GetExtensionRepoBucketsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get extension repo buckets o k response has a 4xx status code
+func (o *GetExtensionRepoBucketsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get extension repo buckets o k response has a 5xx status code
+func (o *GetExtensionRepoBucketsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get extension repo buckets o k response a status code equal to that given
+func (o *GetExtensionRepoBucketsOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the get extension repo buckets o k response
+func (o *GetExtensionRepoBucketsOK) Code() int {
+	return 200
+}
+
 func (o *GetExtensionRepoBucketsOK) Error() string {
 	return fmt.Sprintf("[GET /extension-repository][%d] getExtensionRepoBucketsOK  %+v", 200, o.Payload)
 }
+
+func (o *GetExtensionRepoBucketsOK) String() string {
+	return fmt.Sprintf("[GET /extension-repository][%d] getExtensionRepoBucketsOK  %+v", 200, o.Payload)
+}
+
 func (o *GetExtensionRepoBucketsOK) GetPayload() []*models.ExtensionRepoBucket {
 	return o.Payload
 }
@@ -99,14 +135,49 @@ func NewGetExtensionRepoBucketsBadRequest() *GetExtensionRepoBucketsBadRequest {
 	return &GetExtensionRepoBucketsBadRequest{}
 }
 
-/* GetExtensionRepoBucketsBadRequest describes a response with status code 400, with default header values.
+/*
+GetExtensionRepoBucketsBadRequest describes a response with status code 400, with default header values.
 
 NiFi Registry was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type GetExtensionRepoBucketsBadRequest struct {
 }
 
+// IsSuccess returns true when this get extension repo buckets bad request response has a 2xx status code
+func (o *GetExtensionRepoBucketsBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get extension repo buckets bad request response has a 3xx status code
+func (o *GetExtensionRepoBucketsBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get extension repo buckets bad request response has a 4xx status code
+func (o *GetExtensionRepoBucketsBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get extension repo buckets bad request response has a 5xx status code
+func (o *GetExtensionRepoBucketsBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get extension repo buckets bad request response a status code equal to that given
+func (o *GetExtensionRepoBucketsBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the get extension repo buckets bad request response
+func (o *GetExtensionRepoBucketsBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetExtensionRepoBucketsBadRequest) Error() string {
+	return fmt.Sprintf("[GET /extension-repository][%d] getExtensionRepoBucketsBadRequest ", 400)
+}
+
+func (o *GetExtensionRepoBucketsBadRequest) String() string {
 	return fmt.Sprintf("[GET /extension-repository][%d] getExtensionRepoBucketsBadRequest ", 400)
 }
 
@@ -120,14 +191,49 @@ func NewGetExtensionRepoBucketsUnauthorized() *GetExtensionRepoBucketsUnauthoriz
 	return &GetExtensionRepoBucketsUnauthorized{}
 }
 
-/* GetExtensionRepoBucketsUnauthorized describes a response with status code 401, with default header values.
+/*
+GetExtensionRepoBucketsUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type GetExtensionRepoBucketsUnauthorized struct {
 }
 
+// IsSuccess returns true when this get extension repo buckets unauthorized response has a 2xx status code
+func (o *GetExtensionRepoBucketsUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get extension repo buckets unauthorized response has a 3xx status code
+func (o *GetExtensionRepoBucketsUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get extension repo buckets unauthorized response has a 4xx status code
+func (o *GetExtensionRepoBucketsUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get extension repo buckets unauthorized response has a 5xx status code
+func (o *GetExtensionRepoBucketsUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get extension repo buckets unauthorized response a status code equal to that given
+func (o *GetExtensionRepoBucketsUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the get extension repo buckets unauthorized response
+func (o *GetExtensionRepoBucketsUnauthorized) Code() int {
+	return 401
+}
+
 func (o *GetExtensionRepoBucketsUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /extension-repository][%d] getExtensionRepoBucketsUnauthorized ", 401)
+}
+
+func (o *GetExtensionRepoBucketsUnauthorized) String() string {
 	return fmt.Sprintf("[GET /extension-repository][%d] getExtensionRepoBucketsUnauthorized ", 401)
 }
 
@@ -141,14 +247,49 @@ func NewGetExtensionRepoBucketsForbidden() *GetExtensionRepoBucketsForbidden {
 	return &GetExtensionRepoBucketsForbidden{}
 }
 
-/* GetExtensionRepoBucketsForbidden describes a response with status code 403, with default header values.
+/*
+GetExtensionRepoBucketsForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type GetExtensionRepoBucketsForbidden struct {
 }
 
+// IsSuccess returns true when this get extension repo buckets forbidden response has a 2xx status code
+func (o *GetExtensionRepoBucketsForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get extension repo buckets forbidden response has a 3xx status code
+func (o *GetExtensionRepoBucketsForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get extension repo buckets forbidden response has a 4xx status code
+func (o *GetExtensionRepoBucketsForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get extension repo buckets forbidden response has a 5xx status code
+func (o *GetExtensionRepoBucketsForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get extension repo buckets forbidden response a status code equal to that given
+func (o *GetExtensionRepoBucketsForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the get extension repo buckets forbidden response
+func (o *GetExtensionRepoBucketsForbidden) Code() int {
+	return 403
+}
+
 func (o *GetExtensionRepoBucketsForbidden) Error() string {
+	return fmt.Sprintf("[GET /extension-repository][%d] getExtensionRepoBucketsForbidden ", 403)
+}
+
+func (o *GetExtensionRepoBucketsForbidden) String() string {
 	return fmt.Sprintf("[GET /extension-repository][%d] getExtensionRepoBucketsForbidden ", 403)
 }
 
@@ -162,14 +303,49 @@ func NewGetExtensionRepoBucketsNotFound() *GetExtensionRepoBucketsNotFound {
 	return &GetExtensionRepoBucketsNotFound{}
 }
 
-/* GetExtensionRepoBucketsNotFound describes a response with status code 404, with default header values.
+/*
+GetExtensionRepoBucketsNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type GetExtensionRepoBucketsNotFound struct {
 }
 
+// IsSuccess returns true when this get extension repo buckets not found response has a 2xx status code
+func (o *GetExtensionRepoBucketsNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get extension repo buckets not found response has a 3xx status code
+func (o *GetExtensionRepoBucketsNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get extension repo buckets not found response has a 4xx status code
+func (o *GetExtensionRepoBucketsNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get extension repo buckets not found response has a 5xx status code
+func (o *GetExtensionRepoBucketsNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get extension repo buckets not found response a status code equal to that given
+func (o *GetExtensionRepoBucketsNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+// Code gets the status code for the get extension repo buckets not found response
+func (o *GetExtensionRepoBucketsNotFound) Code() int {
+	return 404
+}
+
 func (o *GetExtensionRepoBucketsNotFound) Error() string {
+	return fmt.Sprintf("[GET /extension-repository][%d] getExtensionRepoBucketsNotFound ", 404)
+}
+
+func (o *GetExtensionRepoBucketsNotFound) String() string {
 	return fmt.Sprintf("[GET /extension-repository][%d] getExtensionRepoBucketsNotFound ", 404)
 }
 
@@ -183,14 +359,49 @@ func NewGetExtensionRepoBucketsConflict() *GetExtensionRepoBucketsConflict {
 	return &GetExtensionRepoBucketsConflict{}
 }
 
-/* GetExtensionRepoBucketsConflict describes a response with status code 409, with default header values.
+/*
+GetExtensionRepoBucketsConflict describes a response with status code 409, with default header values.
 
 NiFi Registry was unable to complete the request because it assumes a server state that is not valid.
 */
 type GetExtensionRepoBucketsConflict struct {
 }
 
+// IsSuccess returns true when this get extension repo buckets conflict response has a 2xx status code
+func (o *GetExtensionRepoBucketsConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get extension repo buckets conflict response has a 3xx status code
+func (o *GetExtensionRepoBucketsConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get extension repo buckets conflict response has a 4xx status code
+func (o *GetExtensionRepoBucketsConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get extension repo buckets conflict response has a 5xx status code
+func (o *GetExtensionRepoBucketsConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get extension repo buckets conflict response a status code equal to that given
+func (o *GetExtensionRepoBucketsConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the get extension repo buckets conflict response
+func (o *GetExtensionRepoBucketsConflict) Code() int {
+	return 409
+}
+
 func (o *GetExtensionRepoBucketsConflict) Error() string {
+	return fmt.Sprintf("[GET /extension-repository][%d] getExtensionRepoBucketsConflict ", 409)
+}
+
+func (o *GetExtensionRepoBucketsConflict) String() string {
 	return fmt.Sprintf("[GET /extension-repository][%d] getExtensionRepoBucketsConflict ", 409)
 }
 

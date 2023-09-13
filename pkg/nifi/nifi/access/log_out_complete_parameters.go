@@ -52,10 +52,12 @@ func NewLogOutCompleteParamsWithHTTPClient(client *http.Client) *LogOutCompleteP
 	}
 }
 
-/* LogOutCompleteParams contains all the parameters to send to the API endpoint
-   for the log out complete operation.
+/*
+LogOutCompleteParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the log out complete operation.
+
+	Typically these are written to a http.Request.
 */
 type LogOutCompleteParams struct {
 	timeout    time.Duration

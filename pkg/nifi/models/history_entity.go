@@ -72,6 +72,11 @@ func (m *HistoryEntity) ContextValidate(ctx context.Context, formats strfmt.Regi
 func (m *HistoryEntity) contextValidateHistory(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.History != nil {
+
+		if swag.IsZero(m.History) { // not required
+			return nil
+		}
+
 		if err := m.History.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("history")

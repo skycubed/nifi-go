@@ -36,12 +36,38 @@ func NewSamlLoginRequestDefault(code int) *SamlLoginRequestDefault {
 	}
 }
 
-/* SamlLoginRequestDefault describes a response with status code -1, with default header values.
+/*
+SamlLoginRequestDefault describes a response with status code -1, with default header values.
 
 successful operation
 */
 type SamlLoginRequestDefault struct {
 	_statusCode int
+}
+
+// IsSuccess returns true when this saml login request default response has a 2xx status code
+func (o *SamlLoginRequestDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this saml login request default response has a 3xx status code
+func (o *SamlLoginRequestDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this saml login request default response has a 4xx status code
+func (o *SamlLoginRequestDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this saml login request default response has a 5xx status code
+func (o *SamlLoginRequestDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this saml login request default response a status code equal to that given
+func (o *SamlLoginRequestDefault) IsCode(code int) bool {
+	return o._statusCode == code
 }
 
 // Code gets the status code for the saml login request default response
@@ -50,6 +76,10 @@ func (o *SamlLoginRequestDefault) Code() int {
 }
 
 func (o *SamlLoginRequestDefault) Error() string {
+	return fmt.Sprintf("[GET /access/saml/login/request][%d] samlLoginRequest default ", o._statusCode)
+}
+
+func (o *SamlLoginRequestDefault) String() string {
 	return fmt.Sprintf("[GET /access/saml/login/request][%d] samlLoginRequest default ", o._statusCode)
 }
 

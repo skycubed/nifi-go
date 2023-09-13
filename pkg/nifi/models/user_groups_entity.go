@@ -82,6 +82,11 @@ func (m *UserGroupsEntity) contextValidateUserGroups(ctx context.Context, format
 	for i := 0; i < len(m.UserGroups); i++ {
 
 		if m.UserGroups[i] != nil {
+
+			if swag.IsZero(m.UserGroups[i]) { // not required
+				return nil
+			}
+
 			if err := m.UserGroups[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("userGroups" + "." + strconv.Itoa(i))

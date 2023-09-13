@@ -54,10 +54,12 @@ func NewUpdateReportingTaskParamsWithHTTPClient(client *http.Client) *UpdateRepo
 	}
 }
 
-/* UpdateReportingTaskParams contains all the parameters to send to the API endpoint
-   for the update reporting task operation.
+/*
+UpdateReportingTaskParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update reporting task operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateReportingTaskParams struct {
 

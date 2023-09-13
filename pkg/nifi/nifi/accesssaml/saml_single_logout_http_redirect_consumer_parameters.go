@@ -52,10 +52,12 @@ func NewSamlSingleLogoutHTTPRedirectConsumerParamsWithHTTPClient(client *http.Cl
 	}
 }
 
-/* SamlSingleLogoutHTTPRedirectConsumerParams contains all the parameters to send to the API endpoint
-   for the saml single logout Http redirect consumer operation.
+/*
+SamlSingleLogoutHTTPRedirectConsumerParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the saml single logout Http redirect consumer operation.
+
+	Typically these are written to a http.Request.
 */
 type SamlSingleLogoutHTTPRedirectConsumerParams struct {
 	timeout    time.Duration

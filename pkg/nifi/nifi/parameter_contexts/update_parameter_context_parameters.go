@@ -54,10 +54,12 @@ func NewUpdateParameterContextParamsWithHTTPClient(client *http.Client) *UpdateP
 	}
 }
 
-/* UpdateParameterContextParams contains all the parameters to send to the API endpoint
-   for the update parameter context operation.
+/*
+UpdateParameterContextParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update parameter context operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateParameterContextParams struct {
 

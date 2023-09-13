@@ -337,6 +337,11 @@ func (m *CurrentUserEntity) contextValidateComponentRestrictionPermissions(ctx c
 	for i := 0; i < len(m.ComponentRestrictionPermissions); i++ {
 
 		if m.ComponentRestrictionPermissions[i] != nil {
+
+			if swag.IsZero(m.ComponentRestrictionPermissions[i]) { // not required
+				return nil
+			}
+
 			if err := m.ComponentRestrictionPermissions[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("componentRestrictionPermissions" + "." + strconv.Itoa(i))
@@ -355,6 +360,11 @@ func (m *CurrentUserEntity) contextValidateComponentRestrictionPermissions(ctx c
 func (m *CurrentUserEntity) contextValidateControllerPermissions(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ControllerPermissions != nil {
+
+		if swag.IsZero(m.ControllerPermissions) { // not required
+			return nil
+		}
+
 		if err := m.ControllerPermissions.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("controllerPermissions")
@@ -371,6 +381,11 @@ func (m *CurrentUserEntity) contextValidateControllerPermissions(ctx context.Con
 func (m *CurrentUserEntity) contextValidateCountersPermissions(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.CountersPermissions != nil {
+
+		if swag.IsZero(m.CountersPermissions) { // not required
+			return nil
+		}
+
 		if err := m.CountersPermissions.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("countersPermissions")
@@ -387,6 +402,11 @@ func (m *CurrentUserEntity) contextValidateCountersPermissions(ctx context.Conte
 func (m *CurrentUserEntity) contextValidateParameterContextPermissions(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ParameterContextPermissions != nil {
+
+		if swag.IsZero(m.ParameterContextPermissions) { // not required
+			return nil
+		}
+
 		if err := m.ParameterContextPermissions.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("parameterContextPermissions")
@@ -403,6 +423,11 @@ func (m *CurrentUserEntity) contextValidateParameterContextPermissions(ctx conte
 func (m *CurrentUserEntity) contextValidatePoliciesPermissions(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.PoliciesPermissions != nil {
+
+		if swag.IsZero(m.PoliciesPermissions) { // not required
+			return nil
+		}
+
 		if err := m.PoliciesPermissions.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("policiesPermissions")
@@ -419,6 +444,11 @@ func (m *CurrentUserEntity) contextValidatePoliciesPermissions(ctx context.Conte
 func (m *CurrentUserEntity) contextValidateProvenancePermissions(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ProvenancePermissions != nil {
+
+		if swag.IsZero(m.ProvenancePermissions) { // not required
+			return nil
+		}
+
 		if err := m.ProvenancePermissions.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("provenancePermissions")
@@ -435,6 +465,11 @@ func (m *CurrentUserEntity) contextValidateProvenancePermissions(ctx context.Con
 func (m *CurrentUserEntity) contextValidateRestrictedComponentsPermissions(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.RestrictedComponentsPermissions != nil {
+
+		if swag.IsZero(m.RestrictedComponentsPermissions) { // not required
+			return nil
+		}
+
 		if err := m.RestrictedComponentsPermissions.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("restrictedComponentsPermissions")
@@ -451,6 +486,11 @@ func (m *CurrentUserEntity) contextValidateRestrictedComponentsPermissions(ctx c
 func (m *CurrentUserEntity) contextValidateSystemPermissions(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.SystemPermissions != nil {
+
+		if swag.IsZero(m.SystemPermissions) { // not required
+			return nil
+		}
+
 		if err := m.SystemPermissions.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("systemPermissions")
@@ -467,6 +507,11 @@ func (m *CurrentUserEntity) contextValidateSystemPermissions(ctx context.Context
 func (m *CurrentUserEntity) contextValidateTenantsPermissions(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.TenantsPermissions != nil {
+
+		if swag.IsZero(m.TenantsPermissions) { // not required
+			return nil
+		}
+
 		if err := m.TenantsPermissions.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("tenantsPermissions")

@@ -255,6 +255,11 @@ func (m *VersionedRemoteGroupPort) ContextValidate(ctx context.Context, formats 
 func (m *VersionedRemoteGroupPort) contextValidateBatchSize(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.BatchSize != nil {
+
+		if swag.IsZero(m.BatchSize) { // not required
+			return nil
+		}
+
 		if err := m.BatchSize.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("batchSize")
@@ -271,6 +276,11 @@ func (m *VersionedRemoteGroupPort) contextValidateBatchSize(ctx context.Context,
 func (m *VersionedRemoteGroupPort) contextValidatePosition(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Position != nil {
+
+		if swag.IsZero(m.Position) { // not required
+			return nil
+		}
+
 		if err := m.Position.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("position")

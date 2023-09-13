@@ -52,10 +52,12 @@ func NewExportProcessGroupParamsWithHTTPClient(client *http.Client) *ExportProce
 	}
 }
 
-/* ExportProcessGroupParams contains all the parameters to send to the API endpoint
-   for the export process group operation.
+/*
+ExportProcessGroupParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the export process group operation.
+
+	Typically these are written to a http.Request.
 */
 type ExportProcessGroupParams struct {
 

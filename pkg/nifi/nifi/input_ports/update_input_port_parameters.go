@@ -54,10 +54,12 @@ func NewUpdateInputPortParamsWithHTTPClient(client *http.Client) *UpdateInputPor
 	}
 }
 
-/* UpdateInputPortParams contains all the parameters to send to the API endpoint
-   for the update input port operation.
+/*
+UpdateInputPortParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update input port operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateInputPortParams struct {
 

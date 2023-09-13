@@ -327,6 +327,11 @@ func (m *ProcessorDiagnosticsDTO) ContextValidate(ctx context.Context, formats s
 func (m *ProcessorDiagnosticsDTO) contextValidateClassLoaderDiagnostics(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ClassLoaderDiagnostics != nil {
+
+		if swag.IsZero(m.ClassLoaderDiagnostics) { // not required
+			return nil
+		}
+
 		if err := m.ClassLoaderDiagnostics.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("classLoaderDiagnostics")
@@ -345,6 +350,11 @@ func (m *ProcessorDiagnosticsDTO) contextValidateIncomingConnections(ctx context
 	for i := 0; i < len(m.IncomingConnections); i++ {
 
 		if m.IncomingConnections[i] != nil {
+
+			if swag.IsZero(m.IncomingConnections[i]) { // not required
+				return nil
+			}
+
 			if err := m.IncomingConnections[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("incomingConnections" + "." + strconv.Itoa(i))
@@ -363,6 +373,11 @@ func (m *ProcessorDiagnosticsDTO) contextValidateIncomingConnections(ctx context
 func (m *ProcessorDiagnosticsDTO) contextValidateJvmDiagnostics(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.JvmDiagnostics != nil {
+
+		if swag.IsZero(m.JvmDiagnostics) { // not required
+			return nil
+		}
+
 		if err := m.JvmDiagnostics.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("jvmDiagnostics")
@@ -381,6 +396,11 @@ func (m *ProcessorDiagnosticsDTO) contextValidateOutgoingConnections(ctx context
 	for i := 0; i < len(m.OutgoingConnections); i++ {
 
 		if m.OutgoingConnections[i] != nil {
+
+			if swag.IsZero(m.OutgoingConnections[i]) { // not required
+				return nil
+			}
+
 			if err := m.OutgoingConnections[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("outgoingConnections" + "." + strconv.Itoa(i))
@@ -399,6 +419,11 @@ func (m *ProcessorDiagnosticsDTO) contextValidateOutgoingConnections(ctx context
 func (m *ProcessorDiagnosticsDTO) contextValidateProcessor(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Processor != nil {
+
+		if swag.IsZero(m.Processor) { // not required
+			return nil
+		}
+
 		if err := m.Processor.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("processor")
@@ -415,6 +440,11 @@ func (m *ProcessorDiagnosticsDTO) contextValidateProcessor(ctx context.Context, 
 func (m *ProcessorDiagnosticsDTO) contextValidateProcessorStatus(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ProcessorStatus != nil {
+
+		if swag.IsZero(m.ProcessorStatus) { // not required
+			return nil
+		}
+
 		if err := m.ProcessorStatus.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("processorStatus")
@@ -433,6 +463,11 @@ func (m *ProcessorDiagnosticsDTO) contextValidateReferencedControllerServices(ct
 	for i := 0; i < len(m.ReferencedControllerServices); i++ {
 
 		if m.ReferencedControllerServices[i] != nil {
+
+			if swag.IsZero(m.ReferencedControllerServices[i]) { // not required
+				return nil
+			}
+
 			if err := m.ReferencedControllerServices[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("referencedControllerServices" + "." + strconv.Itoa(i))
@@ -453,6 +488,11 @@ func (m *ProcessorDiagnosticsDTO) contextValidateThreadDumps(ctx context.Context
 	for i := 0; i < len(m.ThreadDumps); i++ {
 
 		if m.ThreadDumps[i] != nil {
+
+			if swag.IsZero(m.ThreadDumps[i]) { // not required
+				return nil
+			}
+
 			if err := m.ThreadDumps[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("threadDumps" + "." + strconv.Itoa(i))

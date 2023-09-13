@@ -52,10 +52,12 @@ func NewSearchFlowParamsWithHTTPClient(client *http.Client) *SearchFlowParams {
 	}
 }
 
-/* SearchFlowParams contains all the parameters to send to the API endpoint
-   for the search flow operation.
+/*
+SearchFlowParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the search flow operation.
+
+	Typically these are written to a http.Request.
 */
 type SearchFlowParams struct {
 

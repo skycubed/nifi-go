@@ -60,7 +60,7 @@ func (o *RemoveRemoteProcessGroupReader) ReadResponse(response runtime.ClientRes
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /remote-process-groups/{id}] removeRemoteProcessGroup", response, response.Code())
 	}
 }
 
@@ -69,7 +69,8 @@ func NewRemoveRemoteProcessGroupOK() *RemoveRemoteProcessGroupOK {
 	return &RemoveRemoteProcessGroupOK{}
 }
 
-/* RemoveRemoteProcessGroupOK describes a response with status code 200, with default header values.
+/*
+RemoveRemoteProcessGroupOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,44 @@ type RemoveRemoteProcessGroupOK struct {
 	Payload *models.RemoteProcessGroupEntity
 }
 
+// IsSuccess returns true when this remove remote process group o k response has a 2xx status code
+func (o *RemoveRemoteProcessGroupOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this remove remote process group o k response has a 3xx status code
+func (o *RemoveRemoteProcessGroupOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this remove remote process group o k response has a 4xx status code
+func (o *RemoveRemoteProcessGroupOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this remove remote process group o k response has a 5xx status code
+func (o *RemoveRemoteProcessGroupOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this remove remote process group o k response a status code equal to that given
+func (o *RemoveRemoteProcessGroupOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the remove remote process group o k response
+func (o *RemoveRemoteProcessGroupOK) Code() int {
+	return 200
+}
+
 func (o *RemoveRemoteProcessGroupOK) Error() string {
 	return fmt.Sprintf("[DELETE /remote-process-groups/{id}][%d] removeRemoteProcessGroupOK  %+v", 200, o.Payload)
 }
+
+func (o *RemoveRemoteProcessGroupOK) String() string {
+	return fmt.Sprintf("[DELETE /remote-process-groups/{id}][%d] removeRemoteProcessGroupOK  %+v", 200, o.Payload)
+}
+
 func (o *RemoveRemoteProcessGroupOK) GetPayload() *models.RemoteProcessGroupEntity {
 	return o.Payload
 }
@@ -101,14 +137,49 @@ func NewRemoveRemoteProcessGroupBadRequest() *RemoveRemoteProcessGroupBadRequest
 	return &RemoveRemoteProcessGroupBadRequest{}
 }
 
-/* RemoveRemoteProcessGroupBadRequest describes a response with status code 400, with default header values.
+/*
+RemoveRemoteProcessGroupBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type RemoveRemoteProcessGroupBadRequest struct {
 }
 
+// IsSuccess returns true when this remove remote process group bad request response has a 2xx status code
+func (o *RemoveRemoteProcessGroupBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this remove remote process group bad request response has a 3xx status code
+func (o *RemoveRemoteProcessGroupBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this remove remote process group bad request response has a 4xx status code
+func (o *RemoveRemoteProcessGroupBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this remove remote process group bad request response has a 5xx status code
+func (o *RemoveRemoteProcessGroupBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this remove remote process group bad request response a status code equal to that given
+func (o *RemoveRemoteProcessGroupBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the remove remote process group bad request response
+func (o *RemoveRemoteProcessGroupBadRequest) Code() int {
+	return 400
+}
+
 func (o *RemoveRemoteProcessGroupBadRequest) Error() string {
+	return fmt.Sprintf("[DELETE /remote-process-groups/{id}][%d] removeRemoteProcessGroupBadRequest ", 400)
+}
+
+func (o *RemoveRemoteProcessGroupBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /remote-process-groups/{id}][%d] removeRemoteProcessGroupBadRequest ", 400)
 }
 
@@ -122,14 +193,49 @@ func NewRemoveRemoteProcessGroupUnauthorized() *RemoveRemoteProcessGroupUnauthor
 	return &RemoveRemoteProcessGroupUnauthorized{}
 }
 
-/* RemoveRemoteProcessGroupUnauthorized describes a response with status code 401, with default header values.
+/*
+RemoveRemoteProcessGroupUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type RemoveRemoteProcessGroupUnauthorized struct {
 }
 
+// IsSuccess returns true when this remove remote process group unauthorized response has a 2xx status code
+func (o *RemoveRemoteProcessGroupUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this remove remote process group unauthorized response has a 3xx status code
+func (o *RemoveRemoteProcessGroupUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this remove remote process group unauthorized response has a 4xx status code
+func (o *RemoveRemoteProcessGroupUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this remove remote process group unauthorized response has a 5xx status code
+func (o *RemoveRemoteProcessGroupUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this remove remote process group unauthorized response a status code equal to that given
+func (o *RemoveRemoteProcessGroupUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the remove remote process group unauthorized response
+func (o *RemoveRemoteProcessGroupUnauthorized) Code() int {
+	return 401
+}
+
 func (o *RemoveRemoteProcessGroupUnauthorized) Error() string {
+	return fmt.Sprintf("[DELETE /remote-process-groups/{id}][%d] removeRemoteProcessGroupUnauthorized ", 401)
+}
+
+func (o *RemoveRemoteProcessGroupUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /remote-process-groups/{id}][%d] removeRemoteProcessGroupUnauthorized ", 401)
 }
 
@@ -143,14 +249,49 @@ func NewRemoveRemoteProcessGroupForbidden() *RemoveRemoteProcessGroupForbidden {
 	return &RemoveRemoteProcessGroupForbidden{}
 }
 
-/* RemoveRemoteProcessGroupForbidden describes a response with status code 403, with default header values.
+/*
+RemoveRemoteProcessGroupForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type RemoveRemoteProcessGroupForbidden struct {
 }
 
+// IsSuccess returns true when this remove remote process group forbidden response has a 2xx status code
+func (o *RemoveRemoteProcessGroupForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this remove remote process group forbidden response has a 3xx status code
+func (o *RemoveRemoteProcessGroupForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this remove remote process group forbidden response has a 4xx status code
+func (o *RemoveRemoteProcessGroupForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this remove remote process group forbidden response has a 5xx status code
+func (o *RemoveRemoteProcessGroupForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this remove remote process group forbidden response a status code equal to that given
+func (o *RemoveRemoteProcessGroupForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the remove remote process group forbidden response
+func (o *RemoveRemoteProcessGroupForbidden) Code() int {
+	return 403
+}
+
 func (o *RemoveRemoteProcessGroupForbidden) Error() string {
+	return fmt.Sprintf("[DELETE /remote-process-groups/{id}][%d] removeRemoteProcessGroupForbidden ", 403)
+}
+
+func (o *RemoveRemoteProcessGroupForbidden) String() string {
 	return fmt.Sprintf("[DELETE /remote-process-groups/{id}][%d] removeRemoteProcessGroupForbidden ", 403)
 }
 
@@ -164,14 +305,49 @@ func NewRemoveRemoteProcessGroupNotFound() *RemoveRemoteProcessGroupNotFound {
 	return &RemoveRemoteProcessGroupNotFound{}
 }
 
-/* RemoveRemoteProcessGroupNotFound describes a response with status code 404, with default header values.
+/*
+RemoveRemoteProcessGroupNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type RemoveRemoteProcessGroupNotFound struct {
 }
 
+// IsSuccess returns true when this remove remote process group not found response has a 2xx status code
+func (o *RemoveRemoteProcessGroupNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this remove remote process group not found response has a 3xx status code
+func (o *RemoveRemoteProcessGroupNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this remove remote process group not found response has a 4xx status code
+func (o *RemoveRemoteProcessGroupNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this remove remote process group not found response has a 5xx status code
+func (o *RemoveRemoteProcessGroupNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this remove remote process group not found response a status code equal to that given
+func (o *RemoveRemoteProcessGroupNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+// Code gets the status code for the remove remote process group not found response
+func (o *RemoveRemoteProcessGroupNotFound) Code() int {
+	return 404
+}
+
 func (o *RemoveRemoteProcessGroupNotFound) Error() string {
+	return fmt.Sprintf("[DELETE /remote-process-groups/{id}][%d] removeRemoteProcessGroupNotFound ", 404)
+}
+
+func (o *RemoveRemoteProcessGroupNotFound) String() string {
 	return fmt.Sprintf("[DELETE /remote-process-groups/{id}][%d] removeRemoteProcessGroupNotFound ", 404)
 }
 
@@ -185,14 +361,49 @@ func NewRemoveRemoteProcessGroupConflict() *RemoveRemoteProcessGroupConflict {
 	return &RemoveRemoteProcessGroupConflict{}
 }
 
-/* RemoveRemoteProcessGroupConflict describes a response with status code 409, with default header values.
+/*
+RemoveRemoteProcessGroupConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type RemoveRemoteProcessGroupConflict struct {
 }
 
+// IsSuccess returns true when this remove remote process group conflict response has a 2xx status code
+func (o *RemoveRemoteProcessGroupConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this remove remote process group conflict response has a 3xx status code
+func (o *RemoveRemoteProcessGroupConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this remove remote process group conflict response has a 4xx status code
+func (o *RemoveRemoteProcessGroupConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this remove remote process group conflict response has a 5xx status code
+func (o *RemoveRemoteProcessGroupConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this remove remote process group conflict response a status code equal to that given
+func (o *RemoveRemoteProcessGroupConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the remove remote process group conflict response
+func (o *RemoveRemoteProcessGroupConflict) Code() int {
+	return 409
+}
+
 func (o *RemoveRemoteProcessGroupConflict) Error() string {
+	return fmt.Sprintf("[DELETE /remote-process-groups/{id}][%d] removeRemoteProcessGroupConflict ", 409)
+}
+
+func (o *RemoveRemoteProcessGroupConflict) String() string {
 	return fmt.Sprintf("[DELETE /remote-process-groups/{id}][%d] removeRemoteProcessGroupConflict ", 409)
 }
 

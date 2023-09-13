@@ -100,6 +100,11 @@ func (m *JVMFlowDiagnosticsSnapshotDTO) contextValidateBundlesLoaded(ctx context
 	for i := 0; i < len(m.BundlesLoaded); i++ {
 
 		if m.BundlesLoaded[i] != nil {
+
+			if swag.IsZero(m.BundlesLoaded[i]) { // not required
+				return nil
+			}
+
 			if err := m.BundlesLoaded[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("bundlesLoaded" + "." + strconv.Itoa(i))

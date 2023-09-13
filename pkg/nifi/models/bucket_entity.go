@@ -105,6 +105,11 @@ func (m *BucketEntity) ContextValidate(ctx context.Context, formats strfmt.Regis
 func (m *BucketEntity) contextValidateBucket(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Bucket != nil {
+
+		if swag.IsZero(m.Bucket) { // not required
+			return nil
+		}
+
 		if err := m.Bucket.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("bucket")
@@ -121,6 +126,11 @@ func (m *BucketEntity) contextValidateBucket(ctx context.Context, formats strfmt
 func (m *BucketEntity) contextValidatePermissions(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Permissions != nil {
+
+		if swag.IsZero(m.Permissions) { // not required
+			return nil
+		}
+
 		if err := m.Permissions.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("permissions")

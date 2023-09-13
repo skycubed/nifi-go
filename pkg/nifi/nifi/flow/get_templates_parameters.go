@@ -52,10 +52,12 @@ func NewGetTemplatesParamsWithHTTPClient(client *http.Client) *GetTemplatesParam
 	}
 }
 
-/* GetTemplatesParams contains all the parameters to send to the API endpoint
-   for the get templates operation.
+/*
+GetTemplatesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get templates operation.
+
+	Typically these are written to a http.Request.
 */
 type GetTemplatesParams struct {
 	timeout    time.Duration

@@ -52,10 +52,12 @@ func NewGetBannersParamsWithHTTPClient(client *http.Client) *GetBannersParams {
 	}
 }
 
-/* GetBannersParams contains all the parameters to send to the API endpoint
-   for the get banners operation.
+/*
+GetBannersParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get banners operation.
+
+	Typically these are written to a http.Request.
 */
 type GetBannersParams struct {
 	timeout    time.Duration

@@ -52,10 +52,12 @@ func NewGetBulletinBoardParamsWithHTTPClient(client *http.Client) *GetBulletinBo
 	}
 }
 
-/* GetBulletinBoardParams contains all the parameters to send to the API endpoint
-   for the get bulletin board operation.
+/*
+GetBulletinBoardParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get bulletin board operation.
+
+	Typically these are written to a http.Request.
 */
 type GetBulletinBoardParams struct {
 

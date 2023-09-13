@@ -54,7 +54,7 @@ func (o *GetSearchOptionsReader) ReadResponse(response runtime.ClientResponse, c
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /provenance/search-options] getSearchOptions", response, response.Code())
 	}
 }
 
@@ -63,7 +63,8 @@ func NewGetSearchOptionsOK() *GetSearchOptionsOK {
 	return &GetSearchOptionsOK{}
 }
 
-/* GetSearchOptionsOK describes a response with status code 200, with default header values.
+/*
+GetSearchOptionsOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -71,9 +72,44 @@ type GetSearchOptionsOK struct {
 	Payload *models.ProvenanceOptionsEntity
 }
 
+// IsSuccess returns true when this get search options o k response has a 2xx status code
+func (o *GetSearchOptionsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get search options o k response has a 3xx status code
+func (o *GetSearchOptionsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get search options o k response has a 4xx status code
+func (o *GetSearchOptionsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get search options o k response has a 5xx status code
+func (o *GetSearchOptionsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get search options o k response a status code equal to that given
+func (o *GetSearchOptionsOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the get search options o k response
+func (o *GetSearchOptionsOK) Code() int {
+	return 200
+}
+
 func (o *GetSearchOptionsOK) Error() string {
 	return fmt.Sprintf("[GET /provenance/search-options][%d] getSearchOptionsOK  %+v", 200, o.Payload)
 }
+
+func (o *GetSearchOptionsOK) String() string {
+	return fmt.Sprintf("[GET /provenance/search-options][%d] getSearchOptionsOK  %+v", 200, o.Payload)
+}
+
 func (o *GetSearchOptionsOK) GetPayload() *models.ProvenanceOptionsEntity {
 	return o.Payload
 }
@@ -95,14 +131,49 @@ func NewGetSearchOptionsBadRequest() *GetSearchOptionsBadRequest {
 	return &GetSearchOptionsBadRequest{}
 }
 
-/* GetSearchOptionsBadRequest describes a response with status code 400, with default header values.
+/*
+GetSearchOptionsBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type GetSearchOptionsBadRequest struct {
 }
 
+// IsSuccess returns true when this get search options bad request response has a 2xx status code
+func (o *GetSearchOptionsBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get search options bad request response has a 3xx status code
+func (o *GetSearchOptionsBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get search options bad request response has a 4xx status code
+func (o *GetSearchOptionsBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get search options bad request response has a 5xx status code
+func (o *GetSearchOptionsBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get search options bad request response a status code equal to that given
+func (o *GetSearchOptionsBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the get search options bad request response
+func (o *GetSearchOptionsBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetSearchOptionsBadRequest) Error() string {
+	return fmt.Sprintf("[GET /provenance/search-options][%d] getSearchOptionsBadRequest ", 400)
+}
+
+func (o *GetSearchOptionsBadRequest) String() string {
 	return fmt.Sprintf("[GET /provenance/search-options][%d] getSearchOptionsBadRequest ", 400)
 }
 
@@ -116,14 +187,49 @@ func NewGetSearchOptionsUnauthorized() *GetSearchOptionsUnauthorized {
 	return &GetSearchOptionsUnauthorized{}
 }
 
-/* GetSearchOptionsUnauthorized describes a response with status code 401, with default header values.
+/*
+GetSearchOptionsUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type GetSearchOptionsUnauthorized struct {
 }
 
+// IsSuccess returns true when this get search options unauthorized response has a 2xx status code
+func (o *GetSearchOptionsUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get search options unauthorized response has a 3xx status code
+func (o *GetSearchOptionsUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get search options unauthorized response has a 4xx status code
+func (o *GetSearchOptionsUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get search options unauthorized response has a 5xx status code
+func (o *GetSearchOptionsUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get search options unauthorized response a status code equal to that given
+func (o *GetSearchOptionsUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the get search options unauthorized response
+func (o *GetSearchOptionsUnauthorized) Code() int {
+	return 401
+}
+
 func (o *GetSearchOptionsUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /provenance/search-options][%d] getSearchOptionsUnauthorized ", 401)
+}
+
+func (o *GetSearchOptionsUnauthorized) String() string {
 	return fmt.Sprintf("[GET /provenance/search-options][%d] getSearchOptionsUnauthorized ", 401)
 }
 
@@ -137,14 +243,49 @@ func NewGetSearchOptionsForbidden() *GetSearchOptionsForbidden {
 	return &GetSearchOptionsForbidden{}
 }
 
-/* GetSearchOptionsForbidden describes a response with status code 403, with default header values.
+/*
+GetSearchOptionsForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type GetSearchOptionsForbidden struct {
 }
 
+// IsSuccess returns true when this get search options forbidden response has a 2xx status code
+func (o *GetSearchOptionsForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get search options forbidden response has a 3xx status code
+func (o *GetSearchOptionsForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get search options forbidden response has a 4xx status code
+func (o *GetSearchOptionsForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get search options forbidden response has a 5xx status code
+func (o *GetSearchOptionsForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get search options forbidden response a status code equal to that given
+func (o *GetSearchOptionsForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the get search options forbidden response
+func (o *GetSearchOptionsForbidden) Code() int {
+	return 403
+}
+
 func (o *GetSearchOptionsForbidden) Error() string {
+	return fmt.Sprintf("[GET /provenance/search-options][%d] getSearchOptionsForbidden ", 403)
+}
+
+func (o *GetSearchOptionsForbidden) String() string {
 	return fmt.Sprintf("[GET /provenance/search-options][%d] getSearchOptionsForbidden ", 403)
 }
 
@@ -158,14 +299,49 @@ func NewGetSearchOptionsConflict() *GetSearchOptionsConflict {
 	return &GetSearchOptionsConflict{}
 }
 
-/* GetSearchOptionsConflict describes a response with status code 409, with default header values.
+/*
+GetSearchOptionsConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type GetSearchOptionsConflict struct {
 }
 
+// IsSuccess returns true when this get search options conflict response has a 2xx status code
+func (o *GetSearchOptionsConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get search options conflict response has a 3xx status code
+func (o *GetSearchOptionsConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get search options conflict response has a 4xx status code
+func (o *GetSearchOptionsConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get search options conflict response has a 5xx status code
+func (o *GetSearchOptionsConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get search options conflict response a status code equal to that given
+func (o *GetSearchOptionsConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the get search options conflict response
+func (o *GetSearchOptionsConflict) Code() int {
+	return 409
+}
+
 func (o *GetSearchOptionsConflict) Error() string {
+	return fmt.Sprintf("[GET /provenance/search-options][%d] getSearchOptionsConflict ", 409)
+}
+
+func (o *GetSearchOptionsConflict) String() string {
 	return fmt.Sprintf("[GET /provenance/search-options][%d] getSearchOptionsConflict ", 409)
 }
 

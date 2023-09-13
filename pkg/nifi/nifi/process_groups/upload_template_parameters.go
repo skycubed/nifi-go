@@ -52,10 +52,12 @@ func NewUploadTemplateParamsWithHTTPClient(client *http.Client) *UploadTemplateP
 	}
 }
 
-/* UploadTemplateParams contains all the parameters to send to the API endpoint
-   for the upload template operation.
+/*
+UploadTemplateParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the upload template operation.
+
+	Typically these are written to a http.Request.
 */
 type UploadTemplateParams struct {
 

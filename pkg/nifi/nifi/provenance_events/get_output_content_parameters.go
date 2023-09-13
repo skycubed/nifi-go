@@ -52,10 +52,12 @@ func NewGetOutputContentParamsWithHTTPClient(client *http.Client) *GetOutputCont
 	}
 }
 
-/* GetOutputContentParams contains all the parameters to send to the API endpoint
-   for the get output content operation.
+/*
+GetOutputContentParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get output content operation.
+
+	Typically these are written to a http.Request.
 */
 type GetOutputContentParams struct {
 

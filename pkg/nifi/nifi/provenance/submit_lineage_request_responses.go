@@ -60,7 +60,7 @@ func (o *SubmitLineageRequestReader) ReadResponse(response runtime.ClientRespons
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /provenance/lineage] submitLineageRequest", response, response.Code())
 	}
 }
 
@@ -69,7 +69,8 @@ func NewSubmitLineageRequestCreated() *SubmitLineageRequestCreated {
 	return &SubmitLineageRequestCreated{}
 }
 
-/* SubmitLineageRequestCreated describes a response with status code 201, with default header values.
+/*
+SubmitLineageRequestCreated describes a response with status code 201, with default header values.
 
 successful operation
 */
@@ -77,9 +78,44 @@ type SubmitLineageRequestCreated struct {
 	Payload *models.LineageEntity
 }
 
+// IsSuccess returns true when this submit lineage request created response has a 2xx status code
+func (o *SubmitLineageRequestCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this submit lineage request created response has a 3xx status code
+func (o *SubmitLineageRequestCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this submit lineage request created response has a 4xx status code
+func (o *SubmitLineageRequestCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this submit lineage request created response has a 5xx status code
+func (o *SubmitLineageRequestCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this submit lineage request created response a status code equal to that given
+func (o *SubmitLineageRequestCreated) IsCode(code int) bool {
+	return code == 201
+}
+
+// Code gets the status code for the submit lineage request created response
+func (o *SubmitLineageRequestCreated) Code() int {
+	return 201
+}
+
 func (o *SubmitLineageRequestCreated) Error() string {
 	return fmt.Sprintf("[POST /provenance/lineage][%d] submitLineageRequestCreated  %+v", 201, o.Payload)
 }
+
+func (o *SubmitLineageRequestCreated) String() string {
+	return fmt.Sprintf("[POST /provenance/lineage][%d] submitLineageRequestCreated  %+v", 201, o.Payload)
+}
+
 func (o *SubmitLineageRequestCreated) GetPayload() *models.LineageEntity {
 	return o.Payload
 }
@@ -101,14 +137,49 @@ func NewSubmitLineageRequestBadRequest() *SubmitLineageRequestBadRequest {
 	return &SubmitLineageRequestBadRequest{}
 }
 
-/* SubmitLineageRequestBadRequest describes a response with status code 400, with default header values.
+/*
+SubmitLineageRequestBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type SubmitLineageRequestBadRequest struct {
 }
 
+// IsSuccess returns true when this submit lineage request bad request response has a 2xx status code
+func (o *SubmitLineageRequestBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this submit lineage request bad request response has a 3xx status code
+func (o *SubmitLineageRequestBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this submit lineage request bad request response has a 4xx status code
+func (o *SubmitLineageRequestBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this submit lineage request bad request response has a 5xx status code
+func (o *SubmitLineageRequestBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this submit lineage request bad request response a status code equal to that given
+func (o *SubmitLineageRequestBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the submit lineage request bad request response
+func (o *SubmitLineageRequestBadRequest) Code() int {
+	return 400
+}
+
 func (o *SubmitLineageRequestBadRequest) Error() string {
+	return fmt.Sprintf("[POST /provenance/lineage][%d] submitLineageRequestBadRequest ", 400)
+}
+
+func (o *SubmitLineageRequestBadRequest) String() string {
 	return fmt.Sprintf("[POST /provenance/lineage][%d] submitLineageRequestBadRequest ", 400)
 }
 
@@ -122,14 +193,49 @@ func NewSubmitLineageRequestUnauthorized() *SubmitLineageRequestUnauthorized {
 	return &SubmitLineageRequestUnauthorized{}
 }
 
-/* SubmitLineageRequestUnauthorized describes a response with status code 401, with default header values.
+/*
+SubmitLineageRequestUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type SubmitLineageRequestUnauthorized struct {
 }
 
+// IsSuccess returns true when this submit lineage request unauthorized response has a 2xx status code
+func (o *SubmitLineageRequestUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this submit lineage request unauthorized response has a 3xx status code
+func (o *SubmitLineageRequestUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this submit lineage request unauthorized response has a 4xx status code
+func (o *SubmitLineageRequestUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this submit lineage request unauthorized response has a 5xx status code
+func (o *SubmitLineageRequestUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this submit lineage request unauthorized response a status code equal to that given
+func (o *SubmitLineageRequestUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the submit lineage request unauthorized response
+func (o *SubmitLineageRequestUnauthorized) Code() int {
+	return 401
+}
+
 func (o *SubmitLineageRequestUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /provenance/lineage][%d] submitLineageRequestUnauthorized ", 401)
+}
+
+func (o *SubmitLineageRequestUnauthorized) String() string {
 	return fmt.Sprintf("[POST /provenance/lineage][%d] submitLineageRequestUnauthorized ", 401)
 }
 
@@ -143,14 +249,49 @@ func NewSubmitLineageRequestForbidden() *SubmitLineageRequestForbidden {
 	return &SubmitLineageRequestForbidden{}
 }
 
-/* SubmitLineageRequestForbidden describes a response with status code 403, with default header values.
+/*
+SubmitLineageRequestForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type SubmitLineageRequestForbidden struct {
 }
 
+// IsSuccess returns true when this submit lineage request forbidden response has a 2xx status code
+func (o *SubmitLineageRequestForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this submit lineage request forbidden response has a 3xx status code
+func (o *SubmitLineageRequestForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this submit lineage request forbidden response has a 4xx status code
+func (o *SubmitLineageRequestForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this submit lineage request forbidden response has a 5xx status code
+func (o *SubmitLineageRequestForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this submit lineage request forbidden response a status code equal to that given
+func (o *SubmitLineageRequestForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the submit lineage request forbidden response
+func (o *SubmitLineageRequestForbidden) Code() int {
+	return 403
+}
+
 func (o *SubmitLineageRequestForbidden) Error() string {
+	return fmt.Sprintf("[POST /provenance/lineage][%d] submitLineageRequestForbidden ", 403)
+}
+
+func (o *SubmitLineageRequestForbidden) String() string {
 	return fmt.Sprintf("[POST /provenance/lineage][%d] submitLineageRequestForbidden ", 403)
 }
 
@@ -164,14 +305,49 @@ func NewSubmitLineageRequestNotFound() *SubmitLineageRequestNotFound {
 	return &SubmitLineageRequestNotFound{}
 }
 
-/* SubmitLineageRequestNotFound describes a response with status code 404, with default header values.
+/*
+SubmitLineageRequestNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type SubmitLineageRequestNotFound struct {
 }
 
+// IsSuccess returns true when this submit lineage request not found response has a 2xx status code
+func (o *SubmitLineageRequestNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this submit lineage request not found response has a 3xx status code
+func (o *SubmitLineageRequestNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this submit lineage request not found response has a 4xx status code
+func (o *SubmitLineageRequestNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this submit lineage request not found response has a 5xx status code
+func (o *SubmitLineageRequestNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this submit lineage request not found response a status code equal to that given
+func (o *SubmitLineageRequestNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+// Code gets the status code for the submit lineage request not found response
+func (o *SubmitLineageRequestNotFound) Code() int {
+	return 404
+}
+
 func (o *SubmitLineageRequestNotFound) Error() string {
+	return fmt.Sprintf("[POST /provenance/lineage][%d] submitLineageRequestNotFound ", 404)
+}
+
+func (o *SubmitLineageRequestNotFound) String() string {
 	return fmt.Sprintf("[POST /provenance/lineage][%d] submitLineageRequestNotFound ", 404)
 }
 
@@ -185,14 +361,49 @@ func NewSubmitLineageRequestConflict() *SubmitLineageRequestConflict {
 	return &SubmitLineageRequestConflict{}
 }
 
-/* SubmitLineageRequestConflict describes a response with status code 409, with default header values.
+/*
+SubmitLineageRequestConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type SubmitLineageRequestConflict struct {
 }
 
+// IsSuccess returns true when this submit lineage request conflict response has a 2xx status code
+func (o *SubmitLineageRequestConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this submit lineage request conflict response has a 3xx status code
+func (o *SubmitLineageRequestConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this submit lineage request conflict response has a 4xx status code
+func (o *SubmitLineageRequestConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this submit lineage request conflict response has a 5xx status code
+func (o *SubmitLineageRequestConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this submit lineage request conflict response a status code equal to that given
+func (o *SubmitLineageRequestConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the submit lineage request conflict response
+func (o *SubmitLineageRequestConflict) Code() int {
+	return 409
+}
+
 func (o *SubmitLineageRequestConflict) Error() string {
+	return fmt.Sprintf("[POST /provenance/lineage][%d] submitLineageRequestConflict ", 409)
+}
+
+func (o *SubmitLineageRequestConflict) String() string {
 	return fmt.Sprintf("[POST /provenance/lineage][%d] submitLineageRequestConflict ", 409)
 }
 

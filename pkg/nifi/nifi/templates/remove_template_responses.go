@@ -60,7 +60,7 @@ func (o *RemoveTemplateReader) ReadResponse(response runtime.ClientResponse, con
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /templates/{id}] removeTemplate", response, response.Code())
 	}
 }
 
@@ -69,7 +69,8 @@ func NewRemoveTemplateOK() *RemoveTemplateOK {
 	return &RemoveTemplateOK{}
 }
 
-/* RemoveTemplateOK describes a response with status code 200, with default header values.
+/*
+RemoveTemplateOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,44 @@ type RemoveTemplateOK struct {
 	Payload *models.TemplateEntity
 }
 
+// IsSuccess returns true when this remove template o k response has a 2xx status code
+func (o *RemoveTemplateOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this remove template o k response has a 3xx status code
+func (o *RemoveTemplateOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this remove template o k response has a 4xx status code
+func (o *RemoveTemplateOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this remove template o k response has a 5xx status code
+func (o *RemoveTemplateOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this remove template o k response a status code equal to that given
+func (o *RemoveTemplateOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the remove template o k response
+func (o *RemoveTemplateOK) Code() int {
+	return 200
+}
+
 func (o *RemoveTemplateOK) Error() string {
 	return fmt.Sprintf("[DELETE /templates/{id}][%d] removeTemplateOK  %+v", 200, o.Payload)
 }
+
+func (o *RemoveTemplateOK) String() string {
+	return fmt.Sprintf("[DELETE /templates/{id}][%d] removeTemplateOK  %+v", 200, o.Payload)
+}
+
 func (o *RemoveTemplateOK) GetPayload() *models.TemplateEntity {
 	return o.Payload
 }
@@ -101,14 +137,49 @@ func NewRemoveTemplateBadRequest() *RemoveTemplateBadRequest {
 	return &RemoveTemplateBadRequest{}
 }
 
-/* RemoveTemplateBadRequest describes a response with status code 400, with default header values.
+/*
+RemoveTemplateBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type RemoveTemplateBadRequest struct {
 }
 
+// IsSuccess returns true when this remove template bad request response has a 2xx status code
+func (o *RemoveTemplateBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this remove template bad request response has a 3xx status code
+func (o *RemoveTemplateBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this remove template bad request response has a 4xx status code
+func (o *RemoveTemplateBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this remove template bad request response has a 5xx status code
+func (o *RemoveTemplateBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this remove template bad request response a status code equal to that given
+func (o *RemoveTemplateBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the remove template bad request response
+func (o *RemoveTemplateBadRequest) Code() int {
+	return 400
+}
+
 func (o *RemoveTemplateBadRequest) Error() string {
+	return fmt.Sprintf("[DELETE /templates/{id}][%d] removeTemplateBadRequest ", 400)
+}
+
+func (o *RemoveTemplateBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /templates/{id}][%d] removeTemplateBadRequest ", 400)
 }
 
@@ -122,14 +193,49 @@ func NewRemoveTemplateUnauthorized() *RemoveTemplateUnauthorized {
 	return &RemoveTemplateUnauthorized{}
 }
 
-/* RemoveTemplateUnauthorized describes a response with status code 401, with default header values.
+/*
+RemoveTemplateUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type RemoveTemplateUnauthorized struct {
 }
 
+// IsSuccess returns true when this remove template unauthorized response has a 2xx status code
+func (o *RemoveTemplateUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this remove template unauthorized response has a 3xx status code
+func (o *RemoveTemplateUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this remove template unauthorized response has a 4xx status code
+func (o *RemoveTemplateUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this remove template unauthorized response has a 5xx status code
+func (o *RemoveTemplateUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this remove template unauthorized response a status code equal to that given
+func (o *RemoveTemplateUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the remove template unauthorized response
+func (o *RemoveTemplateUnauthorized) Code() int {
+	return 401
+}
+
 func (o *RemoveTemplateUnauthorized) Error() string {
+	return fmt.Sprintf("[DELETE /templates/{id}][%d] removeTemplateUnauthorized ", 401)
+}
+
+func (o *RemoveTemplateUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /templates/{id}][%d] removeTemplateUnauthorized ", 401)
 }
 
@@ -143,14 +249,49 @@ func NewRemoveTemplateForbidden() *RemoveTemplateForbidden {
 	return &RemoveTemplateForbidden{}
 }
 
-/* RemoveTemplateForbidden describes a response with status code 403, with default header values.
+/*
+RemoveTemplateForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type RemoveTemplateForbidden struct {
 }
 
+// IsSuccess returns true when this remove template forbidden response has a 2xx status code
+func (o *RemoveTemplateForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this remove template forbidden response has a 3xx status code
+func (o *RemoveTemplateForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this remove template forbidden response has a 4xx status code
+func (o *RemoveTemplateForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this remove template forbidden response has a 5xx status code
+func (o *RemoveTemplateForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this remove template forbidden response a status code equal to that given
+func (o *RemoveTemplateForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the remove template forbidden response
+func (o *RemoveTemplateForbidden) Code() int {
+	return 403
+}
+
 func (o *RemoveTemplateForbidden) Error() string {
+	return fmt.Sprintf("[DELETE /templates/{id}][%d] removeTemplateForbidden ", 403)
+}
+
+func (o *RemoveTemplateForbidden) String() string {
 	return fmt.Sprintf("[DELETE /templates/{id}][%d] removeTemplateForbidden ", 403)
 }
 
@@ -164,14 +305,49 @@ func NewRemoveTemplateNotFound() *RemoveTemplateNotFound {
 	return &RemoveTemplateNotFound{}
 }
 
-/* RemoveTemplateNotFound describes a response with status code 404, with default header values.
+/*
+RemoveTemplateNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type RemoveTemplateNotFound struct {
 }
 
+// IsSuccess returns true when this remove template not found response has a 2xx status code
+func (o *RemoveTemplateNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this remove template not found response has a 3xx status code
+func (o *RemoveTemplateNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this remove template not found response has a 4xx status code
+func (o *RemoveTemplateNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this remove template not found response has a 5xx status code
+func (o *RemoveTemplateNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this remove template not found response a status code equal to that given
+func (o *RemoveTemplateNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+// Code gets the status code for the remove template not found response
+func (o *RemoveTemplateNotFound) Code() int {
+	return 404
+}
+
 func (o *RemoveTemplateNotFound) Error() string {
+	return fmt.Sprintf("[DELETE /templates/{id}][%d] removeTemplateNotFound ", 404)
+}
+
+func (o *RemoveTemplateNotFound) String() string {
 	return fmt.Sprintf("[DELETE /templates/{id}][%d] removeTemplateNotFound ", 404)
 }
 
@@ -185,14 +361,49 @@ func NewRemoveTemplateConflict() *RemoveTemplateConflict {
 	return &RemoveTemplateConflict{}
 }
 
-/* RemoveTemplateConflict describes a response with status code 409, with default header values.
+/*
+RemoveTemplateConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type RemoveTemplateConflict struct {
 }
 
+// IsSuccess returns true when this remove template conflict response has a 2xx status code
+func (o *RemoveTemplateConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this remove template conflict response has a 3xx status code
+func (o *RemoveTemplateConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this remove template conflict response has a 4xx status code
+func (o *RemoveTemplateConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this remove template conflict response has a 5xx status code
+func (o *RemoveTemplateConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this remove template conflict response a status code equal to that given
+func (o *RemoveTemplateConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the remove template conflict response
+func (o *RemoveTemplateConflict) Code() int {
+	return 409
+}
+
 func (o *RemoveTemplateConflict) Error() string {
+	return fmt.Sprintf("[DELETE /templates/{id}][%d] removeTemplateConflict ", 409)
+}
+
+func (o *RemoveTemplateConflict) String() string {
 	return fmt.Sprintf("[DELETE /templates/{id}][%d] removeTemplateConflict ", 409)
 }
 

@@ -52,10 +52,12 @@ func NewGetAccessPoliciesParamsWithHTTPClient(client *http.Client) *GetAccessPol
 	}
 }
 
-/* GetAccessPoliciesParams contains all the parameters to send to the API endpoint
-   for the get access policies operation.
+/*
+GetAccessPoliciesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get access policies operation.
+
+	Typically these are written to a http.Request.
 */
 type GetAccessPoliciesParams struct {
 	timeout    time.Duration

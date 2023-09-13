@@ -78,6 +78,11 @@ func (m *ProcessGroupStatusSnapshotEntity) ContextValidate(ctx context.Context, 
 func (m *ProcessGroupStatusSnapshotEntity) contextValidateProcessGroupStatusSnapshot(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ProcessGroupStatusSnapshot != nil {
+
+		if swag.IsZero(m.ProcessGroupStatusSnapshot) { // not required
+			return nil
+		}
+
 		if err := m.ProcessGroupStatusSnapshot.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("processGroupStatusSnapshot")

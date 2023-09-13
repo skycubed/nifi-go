@@ -54,10 +54,12 @@ func NewSubmitParameterContextUpdateParamsWithHTTPClient(client *http.Client) *S
 	}
 }
 
-/* SubmitParameterContextUpdateParams contains all the parameters to send to the API endpoint
-   for the submit parameter context update operation.
+/*
+SubmitParameterContextUpdateParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the submit parameter context update operation.
+
+	Typically these are written to a http.Request.
 */
 type SubmitParameterContextUpdateParams struct {
 

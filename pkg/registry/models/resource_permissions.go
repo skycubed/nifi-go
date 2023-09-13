@@ -197,6 +197,11 @@ func (m *ResourcePermissions) ContextValidate(ctx context.Context, formats strfm
 func (m *ResourcePermissions) contextValidateAnyTopLevelResource(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.AnyTopLevelResource != nil {
+
+		if swag.IsZero(m.AnyTopLevelResource) { // not required
+			return nil
+		}
+
 		if err := m.AnyTopLevelResource.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("anyTopLevelResource")
@@ -213,6 +218,11 @@ func (m *ResourcePermissions) contextValidateAnyTopLevelResource(ctx context.Con
 func (m *ResourcePermissions) contextValidateBuckets(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Buckets != nil {
+
+		if swag.IsZero(m.Buckets) { // not required
+			return nil
+		}
+
 		if err := m.Buckets.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("buckets")
@@ -229,6 +239,11 @@ func (m *ResourcePermissions) contextValidateBuckets(ctx context.Context, format
 func (m *ResourcePermissions) contextValidatePolicies(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Policies != nil {
+
+		if swag.IsZero(m.Policies) { // not required
+			return nil
+		}
+
 		if err := m.Policies.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("policies")
@@ -245,6 +260,11 @@ func (m *ResourcePermissions) contextValidatePolicies(ctx context.Context, forma
 func (m *ResourcePermissions) contextValidateProxy(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Proxy != nil {
+
+		if swag.IsZero(m.Proxy) { // not required
+			return nil
+		}
+
 		if err := m.Proxy.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("proxy")
@@ -261,6 +281,11 @@ func (m *ResourcePermissions) contextValidateProxy(ctx context.Context, formats 
 func (m *ResourcePermissions) contextValidateTenants(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Tenants != nil {
+
+		if swag.IsZero(m.Tenants) { // not required
+			return nil
+		}
+
 		if err := m.Tenants.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("tenants")

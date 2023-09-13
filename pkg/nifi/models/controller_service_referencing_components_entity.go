@@ -88,6 +88,11 @@ func (m *ControllerServiceReferencingComponentsEntity) contextValidateController
 	for i := 0; i < len(m.ControllerServiceReferencingComponents); i++ {
 
 		if m.ControllerServiceReferencingComponents[i] != nil {
+
+			if swag.IsZero(m.ControllerServiceReferencingComponents[i]) { // not required
+				return nil
+			}
+
 			if err := m.ControllerServiceReferencingComponents[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("controllerServiceReferencingComponents" + "." + strconv.Itoa(i))

@@ -72,6 +72,11 @@ func (m *DropRequestEntity) ContextValidate(ctx context.Context, formats strfmt.
 func (m *DropRequestEntity) contextValidateDropRequest(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.DropRequest != nil {
+
+		if swag.IsZero(m.DropRequest) { // not required
+			return nil
+		}
+
 		if err := m.DropRequest.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("dropRequest")

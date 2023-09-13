@@ -91,6 +91,11 @@ func (m *NodeStatusSnapshotsDTO) contextValidateStatusSnapshots(ctx context.Cont
 	for i := 0; i < len(m.StatusSnapshots); i++ {
 
 		if m.StatusSnapshots[i] != nil {
+
+			if swag.IsZero(m.StatusSnapshots[i]) { // not required
+				return nil
+			}
+
 			if err := m.StatusSnapshots[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("statusSnapshots" + "." + strconv.Itoa(i))

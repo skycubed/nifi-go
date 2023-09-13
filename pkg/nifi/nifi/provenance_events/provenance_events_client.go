@@ -42,7 +42,7 @@ type ClientService interface {
 }
 
 /*
-  GetInputContent gets the input content for a provenance event
+GetInputContent gets the input content for a provenance event
 */
 func (a *Client) GetInputContent(params *GetInputContentParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetInputContentOK, error) {
 	// TODO: Validate the params before sending
@@ -81,7 +81,7 @@ func (a *Client) GetInputContent(params *GetInputContentParams, authInfo runtime
 }
 
 /*
-  GetOutputContent gets the output content for a provenance event
+GetOutputContent gets the output content for a provenance event
 */
 func (a *Client) GetOutputContent(params *GetOutputContentParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetOutputContentOK, error) {
 	// TODO: Validate the params before sending
@@ -120,7 +120,7 @@ func (a *Client) GetOutputContent(params *GetOutputContentParams, authInfo runti
 }
 
 /*
-  GetProvenanceEvent gets a provenance event
+GetProvenanceEvent gets a provenance event
 */
 func (a *Client) GetProvenanceEvent(params *GetProvenanceEventParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetProvenanceEventOK, error) {
 	// TODO: Validate the params before sending
@@ -159,7 +159,7 @@ func (a *Client) GetProvenanceEvent(params *GetProvenanceEventParams, authInfo r
 }
 
 /*
-  SubmitReplay replays content from a provenance event
+SubmitReplay replays content from a provenance event
 */
 func (a *Client) SubmitReplay(params *SubmitReplayParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SubmitReplayCreated, error) {
 	// TODO: Validate the params before sending

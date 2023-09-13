@@ -60,7 +60,7 @@ func (o *GetProcessorRunStatusDetailsReader) ReadResponse(response runtime.Clien
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /processors/run-status-details/queries] getProcessorRunStatusDetails", response, response.Code())
 	}
 }
 
@@ -69,7 +69,8 @@ func NewGetProcessorRunStatusDetailsOK() *GetProcessorRunStatusDetailsOK {
 	return &GetProcessorRunStatusDetailsOK{}
 }
 
-/* GetProcessorRunStatusDetailsOK describes a response with status code 200, with default header values.
+/*
+GetProcessorRunStatusDetailsOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,44 @@ type GetProcessorRunStatusDetailsOK struct {
 	Payload *models.ProcessorsRunStatusDetailsEntity
 }
 
+// IsSuccess returns true when this get processor run status details o k response has a 2xx status code
+func (o *GetProcessorRunStatusDetailsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get processor run status details o k response has a 3xx status code
+func (o *GetProcessorRunStatusDetailsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get processor run status details o k response has a 4xx status code
+func (o *GetProcessorRunStatusDetailsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get processor run status details o k response has a 5xx status code
+func (o *GetProcessorRunStatusDetailsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get processor run status details o k response a status code equal to that given
+func (o *GetProcessorRunStatusDetailsOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the get processor run status details o k response
+func (o *GetProcessorRunStatusDetailsOK) Code() int {
+	return 200
+}
+
 func (o *GetProcessorRunStatusDetailsOK) Error() string {
 	return fmt.Sprintf("[POST /processors/run-status-details/queries][%d] getProcessorRunStatusDetailsOK  %+v", 200, o.Payload)
 }
+
+func (o *GetProcessorRunStatusDetailsOK) String() string {
+	return fmt.Sprintf("[POST /processors/run-status-details/queries][%d] getProcessorRunStatusDetailsOK  %+v", 200, o.Payload)
+}
+
 func (o *GetProcessorRunStatusDetailsOK) GetPayload() *models.ProcessorsRunStatusDetailsEntity {
 	return o.Payload
 }
@@ -101,14 +137,49 @@ func NewGetProcessorRunStatusDetailsBadRequest() *GetProcessorRunStatusDetailsBa
 	return &GetProcessorRunStatusDetailsBadRequest{}
 }
 
-/* GetProcessorRunStatusDetailsBadRequest describes a response with status code 400, with default header values.
+/*
+GetProcessorRunStatusDetailsBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type GetProcessorRunStatusDetailsBadRequest struct {
 }
 
+// IsSuccess returns true when this get processor run status details bad request response has a 2xx status code
+func (o *GetProcessorRunStatusDetailsBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get processor run status details bad request response has a 3xx status code
+func (o *GetProcessorRunStatusDetailsBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get processor run status details bad request response has a 4xx status code
+func (o *GetProcessorRunStatusDetailsBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get processor run status details bad request response has a 5xx status code
+func (o *GetProcessorRunStatusDetailsBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get processor run status details bad request response a status code equal to that given
+func (o *GetProcessorRunStatusDetailsBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the get processor run status details bad request response
+func (o *GetProcessorRunStatusDetailsBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetProcessorRunStatusDetailsBadRequest) Error() string {
+	return fmt.Sprintf("[POST /processors/run-status-details/queries][%d] getProcessorRunStatusDetailsBadRequest ", 400)
+}
+
+func (o *GetProcessorRunStatusDetailsBadRequest) String() string {
 	return fmt.Sprintf("[POST /processors/run-status-details/queries][%d] getProcessorRunStatusDetailsBadRequest ", 400)
 }
 
@@ -122,14 +193,49 @@ func NewGetProcessorRunStatusDetailsUnauthorized() *GetProcessorRunStatusDetails
 	return &GetProcessorRunStatusDetailsUnauthorized{}
 }
 
-/* GetProcessorRunStatusDetailsUnauthorized describes a response with status code 401, with default header values.
+/*
+GetProcessorRunStatusDetailsUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type GetProcessorRunStatusDetailsUnauthorized struct {
 }
 
+// IsSuccess returns true when this get processor run status details unauthorized response has a 2xx status code
+func (o *GetProcessorRunStatusDetailsUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get processor run status details unauthorized response has a 3xx status code
+func (o *GetProcessorRunStatusDetailsUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get processor run status details unauthorized response has a 4xx status code
+func (o *GetProcessorRunStatusDetailsUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get processor run status details unauthorized response has a 5xx status code
+func (o *GetProcessorRunStatusDetailsUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get processor run status details unauthorized response a status code equal to that given
+func (o *GetProcessorRunStatusDetailsUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the get processor run status details unauthorized response
+func (o *GetProcessorRunStatusDetailsUnauthorized) Code() int {
+	return 401
+}
+
 func (o *GetProcessorRunStatusDetailsUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /processors/run-status-details/queries][%d] getProcessorRunStatusDetailsUnauthorized ", 401)
+}
+
+func (o *GetProcessorRunStatusDetailsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /processors/run-status-details/queries][%d] getProcessorRunStatusDetailsUnauthorized ", 401)
 }
 
@@ -143,14 +249,49 @@ func NewGetProcessorRunStatusDetailsForbidden() *GetProcessorRunStatusDetailsFor
 	return &GetProcessorRunStatusDetailsForbidden{}
 }
 
-/* GetProcessorRunStatusDetailsForbidden describes a response with status code 403, with default header values.
+/*
+GetProcessorRunStatusDetailsForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type GetProcessorRunStatusDetailsForbidden struct {
 }
 
+// IsSuccess returns true when this get processor run status details forbidden response has a 2xx status code
+func (o *GetProcessorRunStatusDetailsForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get processor run status details forbidden response has a 3xx status code
+func (o *GetProcessorRunStatusDetailsForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get processor run status details forbidden response has a 4xx status code
+func (o *GetProcessorRunStatusDetailsForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get processor run status details forbidden response has a 5xx status code
+func (o *GetProcessorRunStatusDetailsForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get processor run status details forbidden response a status code equal to that given
+func (o *GetProcessorRunStatusDetailsForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the get processor run status details forbidden response
+func (o *GetProcessorRunStatusDetailsForbidden) Code() int {
+	return 403
+}
+
 func (o *GetProcessorRunStatusDetailsForbidden) Error() string {
+	return fmt.Sprintf("[POST /processors/run-status-details/queries][%d] getProcessorRunStatusDetailsForbidden ", 403)
+}
+
+func (o *GetProcessorRunStatusDetailsForbidden) String() string {
 	return fmt.Sprintf("[POST /processors/run-status-details/queries][%d] getProcessorRunStatusDetailsForbidden ", 403)
 }
 
@@ -164,14 +305,49 @@ func NewGetProcessorRunStatusDetailsNotFound() *GetProcessorRunStatusDetailsNotF
 	return &GetProcessorRunStatusDetailsNotFound{}
 }
 
-/* GetProcessorRunStatusDetailsNotFound describes a response with status code 404, with default header values.
+/*
+GetProcessorRunStatusDetailsNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type GetProcessorRunStatusDetailsNotFound struct {
 }
 
+// IsSuccess returns true when this get processor run status details not found response has a 2xx status code
+func (o *GetProcessorRunStatusDetailsNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get processor run status details not found response has a 3xx status code
+func (o *GetProcessorRunStatusDetailsNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get processor run status details not found response has a 4xx status code
+func (o *GetProcessorRunStatusDetailsNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get processor run status details not found response has a 5xx status code
+func (o *GetProcessorRunStatusDetailsNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get processor run status details not found response a status code equal to that given
+func (o *GetProcessorRunStatusDetailsNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+// Code gets the status code for the get processor run status details not found response
+func (o *GetProcessorRunStatusDetailsNotFound) Code() int {
+	return 404
+}
+
 func (o *GetProcessorRunStatusDetailsNotFound) Error() string {
+	return fmt.Sprintf("[POST /processors/run-status-details/queries][%d] getProcessorRunStatusDetailsNotFound ", 404)
+}
+
+func (o *GetProcessorRunStatusDetailsNotFound) String() string {
 	return fmt.Sprintf("[POST /processors/run-status-details/queries][%d] getProcessorRunStatusDetailsNotFound ", 404)
 }
 
@@ -185,14 +361,49 @@ func NewGetProcessorRunStatusDetailsConflict() *GetProcessorRunStatusDetailsConf
 	return &GetProcessorRunStatusDetailsConflict{}
 }
 
-/* GetProcessorRunStatusDetailsConflict describes a response with status code 409, with default header values.
+/*
+GetProcessorRunStatusDetailsConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type GetProcessorRunStatusDetailsConflict struct {
 }
 
+// IsSuccess returns true when this get processor run status details conflict response has a 2xx status code
+func (o *GetProcessorRunStatusDetailsConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get processor run status details conflict response has a 3xx status code
+func (o *GetProcessorRunStatusDetailsConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get processor run status details conflict response has a 4xx status code
+func (o *GetProcessorRunStatusDetailsConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get processor run status details conflict response has a 5xx status code
+func (o *GetProcessorRunStatusDetailsConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get processor run status details conflict response a status code equal to that given
+func (o *GetProcessorRunStatusDetailsConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the get processor run status details conflict response
+func (o *GetProcessorRunStatusDetailsConflict) Code() int {
+	return 409
+}
+
 func (o *GetProcessorRunStatusDetailsConflict) Error() string {
+	return fmt.Sprintf("[POST /processors/run-status-details/queries][%d] getProcessorRunStatusDetailsConflict ", 409)
+}
+
+func (o *GetProcessorRunStatusDetailsConflict) String() string {
 	return fmt.Sprintf("[POST /processors/run-status-details/queries][%d] getProcessorRunStatusDetailsConflict ", 409)
 }
 

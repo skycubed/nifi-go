@@ -88,6 +88,11 @@ func (m *PrioritizerTypesEntity) contextValidatePrioritizerTypes(ctx context.Con
 	for i := 0; i < len(m.PrioritizerTypes); i++ {
 
 		if m.PrioritizerTypes[i] != nil {
+
+			if swag.IsZero(m.PrioritizerTypes[i]) { // not required
+				return nil
+			}
+
 			if err := m.PrioritizerTypes[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("prioritizerTypes" + "." + strconv.Itoa(i))

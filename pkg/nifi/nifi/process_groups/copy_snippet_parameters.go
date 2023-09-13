@@ -54,10 +54,12 @@ func NewCopySnippetParamsWithHTTPClient(client *http.Client) *CopySnippetParams 
 	}
 }
 
-/* CopySnippetParams contains all the parameters to send to the API endpoint
-   for the copy snippet operation.
+/*
+CopySnippetParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the copy snippet operation.
+
+	Typically these are written to a http.Request.
 */
 type CopySnippetParams struct {
 

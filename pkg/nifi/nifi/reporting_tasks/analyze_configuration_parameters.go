@@ -54,10 +54,12 @@ func NewAnalyzeConfigurationParamsWithHTTPClient(client *http.Client) *AnalyzeCo
 	}
 }
 
-/* AnalyzeConfigurationParams contains all the parameters to send to the API endpoint
-   for the analyze configuration operation.
+/*
+AnalyzeConfigurationParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the analyze configuration operation.
+
+	Typically these are written to a http.Request.
 */
 type AnalyzeConfigurationParams struct {
 

@@ -52,10 +52,12 @@ func NewGetAvailableFlowFieldsParamsWithHTTPClient(client *http.Client) *GetAvai
 	}
 }
 
-/* GetAvailableFlowFieldsParams contains all the parameters to send to the API endpoint
-   for the get available flow fields operation.
+/*
+GetAvailableFlowFieldsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get available flow fields operation.
+
+	Typically these are written to a http.Request.
 */
 type GetAvailableFlowFieldsParams struct {
 	timeout    time.Duration

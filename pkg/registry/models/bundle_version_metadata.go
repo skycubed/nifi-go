@@ -209,6 +209,7 @@ func (m *BundleVersionMetadata) ContextValidate(ctx context.Context, formats str
 func (m *BundleVersionMetadata) contextValidateBuildInfo(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.BuildInfo != nil {
+
 		if err := m.BuildInfo.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("buildInfo")
@@ -225,6 +226,11 @@ func (m *BundleVersionMetadata) contextValidateBuildInfo(ctx context.Context, fo
 func (m *BundleVersionMetadata) contextValidateLink(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Link != nil {
+
+		if swag.IsZero(m.Link) { // not required
+			return nil
+		}
+
 		if err := m.Link.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("link")

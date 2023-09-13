@@ -58,9 +58,9 @@ type ClientService interface {
 }
 
 /*
-  CreateAccessTokenByTryingAllProviders creates token trying all providers
+CreateAccessTokenByTryingAllProviders creates token trying all providers
 
-  Creates a token for accessing the REST API via auto-detected method of verifying client identity claim credentials. The token returned is formatted as a JSON Web Token (JWT). The token is base64 encoded and comprised of three parts. The header, the body, and the signature. The expiration of the token is a contained within the body. The token can be used in the Authorization header in the format 'Authorization: Bearer <token>'.
+Creates a token for accessing the REST API via auto-detected method of verifying client identity claim credentials. The token returned is formatted as a JSON Web Token (JWT). The token is base64 encoded and comprised of three parts. The header, the body, and the signature. The expiration of the token is a contained within the body. The token can be used in the Authorization header in the format 'Authorization: Bearer <token>'.
 */
 func (a *Client) CreateAccessTokenByTryingAllProviders(params *CreateAccessTokenByTryingAllProvidersParams, opts ...ClientOption) (*CreateAccessTokenByTryingAllProvidersOK, error) {
 	// TODO: Validate the params before sending
@@ -98,9 +98,9 @@ func (a *Client) CreateAccessTokenByTryingAllProviders(params *CreateAccessToken
 }
 
 /*
-  CreateAccessTokenUsingBasicAuthCredentials creates token using basic auth
+CreateAccessTokenUsingBasicAuthCredentials creates token using basic auth
 
-  Creates a token for accessing the REST API via username/password. The user credentials must be passed in standard HTTP Basic Auth format. That is: 'Authorization: Basic <credentials>', where <credentials> is the base64 encoded value of '<username>:<password>'. The token returned is formatted as a JSON Web Token (JWT). The token is base64 encoded and comprised of three parts. The header, the body, and the signature. The expiration of the token is a contained within the body. The token can be used in the Authorization header in the format 'Authorization: Bearer <token>'.
+Creates a token for accessing the REST API via username/password. The user credentials must be passed in standard HTTP Basic Auth format. That is: 'Authorization: Basic <credentials>', where <credentials> is the base64 encoded value of '<username>:<password>'. The token returned is formatted as a JSON Web Token (JWT). The token is base64 encoded and comprised of three parts. The header, the body, and the signature. The expiration of the token is a contained within the body. The token can be used in the Authorization header in the format 'Authorization: Bearer <token>'.
 */
 func (a *Client) CreateAccessTokenUsingBasicAuthCredentials(params *CreateAccessTokenUsingBasicAuthCredentialsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateAccessTokenUsingBasicAuthCredentialsOK, error) {
 	// TODO: Validate the params before sending
@@ -139,9 +139,9 @@ func (a *Client) CreateAccessTokenUsingBasicAuthCredentials(params *CreateAccess
 }
 
 /*
-  CreateAccessTokenUsingIdentityProviderCredentials creates token using identity provider
+CreateAccessTokenUsingIdentityProviderCredentials creates token using identity provider
 
-  Creates a token for accessing the REST API via a custom identity provider. The user credentials must be passed in a format understood by the custom identity provider, e.g., a third-party auth token in an HTTP header. The exact format of the user credentials expected by the custom identity provider can be discovered by 'GET /access/token/identity-provider/usage'. The token returned is formatted as a JSON Web Token (JWT). The token is base64 encoded and comprised of three parts. The header, the body, and the signature. The expiration of the token is a contained within the body. The token can be used in the Authorization header in the format 'Authorization: Bearer <token>'.
+Creates a token for accessing the REST API via a custom identity provider. The user credentials must be passed in a format understood by the custom identity provider, e.g., a third-party auth token in an HTTP header. The exact format of the user credentials expected by the custom identity provider can be discovered by 'GET /access/token/identity-provider/usage'. The token returned is formatted as a JSON Web Token (JWT). The token is base64 encoded and comprised of three parts. The header, the body, and the signature. The expiration of the token is a contained within the body. The token can be used in the Authorization header in the format 'Authorization: Bearer <token>'.
 */
 func (a *Client) CreateAccessTokenUsingIdentityProviderCredentials(params *CreateAccessTokenUsingIdentityProviderCredentialsParams, opts ...ClientOption) (*CreateAccessTokenUsingIdentityProviderCredentialsOK, error) {
 	// TODO: Validate the params before sending
@@ -179,9 +179,9 @@ func (a *Client) CreateAccessTokenUsingIdentityProviderCredentials(params *Creat
 }
 
 /*
-  CreateAccessTokenUsingKerberosTicket creates token using kerberos
+CreateAccessTokenUsingKerberosTicket creates token using kerberos
 
-  Creates a token for accessing the REST API via Kerberos Service Tickets or SPNEGO Tokens (which includes Kerberos Service Tickets). The token returned is formatted as a JSON Web Token (JWT). The token is base64 encoded and comprised of three parts. The header, the body, and the signature. The expiration of the token is a contained within the body. The token can be used in the Authorization header in the format 'Authorization: Bearer <token>'.
+Creates a token for accessing the REST API via Kerberos Service Tickets or SPNEGO Tokens (which includes Kerberos Service Tickets). The token returned is formatted as a JSON Web Token (JWT). The token is base64 encoded and comprised of three parts. The header, the body, and the signature. The expiration of the token is a contained within the body. The token can be used in the Authorization header in the format 'Authorization: Bearer <token>'.
 */
 func (a *Client) CreateAccessTokenUsingKerberosTicket(params *CreateAccessTokenUsingKerberosTicketParams, opts ...ClientOption) (*CreateAccessTokenUsingKerberosTicketOK, error) {
 	// TODO: Validate the params before sending
@@ -219,9 +219,9 @@ func (a *Client) CreateAccessTokenUsingKerberosTicket(params *CreateAccessTokenU
 }
 
 /*
-  GetAccessStatus gets access status
+GetAccessStatus gets access status
 
-  Returns the current client's authenticated identity and permissions to top-level resources
+Returns the current client's authenticated identity and permissions to top-level resources
 */
 func (a *Client) GetAccessStatus(params *GetAccessStatusParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetAccessStatusOK, error) {
 	// TODO: Validate the params before sending
@@ -260,9 +260,9 @@ func (a *Client) GetAccessStatus(params *GetAccessStatusParams, authInfo runtime
 }
 
 /*
-  GetIdentityProviderUsageInstructions gets identity provider usage
+GetIdentityProviderUsageInstructions gets identity provider usage
 
-  Provides a description of how the currently configured identity provider expects credentials to be passed to POST /access/token/identity-provider
+Provides a description of how the currently configured identity provider expects credentials to be passed to POST /access/token/identity-provider
 */
 func (a *Client) GetIdentityProviderUsageInstructions(params *GetIdentityProviderUsageInstructionsParams, opts ...ClientOption) (*GetIdentityProviderUsageInstructionsOK, error) {
 	// TODO: Validate the params before sending
@@ -300,9 +300,7 @@ func (a *Client) GetIdentityProviderUsageInstructions(params *GetIdentityProvide
 }
 
 /*
-  LogOut performs a logout for other providers that have been issued a j w t
-
-
+	LogOut performs a logout for other providers that have been issued a j w t
 
 NOTE: This endpoint is subject to change as NiFi Registry and its REST API evolve.
 */
@@ -342,9 +340,7 @@ func (a *Client) LogOut(params *LogOutParams, opts ...ClientOption) (*LogOutOK, 
 }
 
 /*
-  OidcCallback redirects callback URI for processing the result of the open Id connect login sequence
-
-
+	OidcCallback redirects callback URI for processing the result of the open Id connect login sequence
 
 NOTE: This endpoint is subject to change as NiFi Registry and its REST API evolve.
 */
@@ -377,9 +373,7 @@ func (a *Client) OidcCallback(params *OidcCallbackParams, opts ...ClientOption) 
 }
 
 /*
-  OidcExchange retrieves a j w t following a successful login sequence using the configured open Id connect provider
-
-
+	OidcExchange retrieves a j w t following a successful login sequence using the configured open Id connect provider
 
 NOTE: This endpoint is subject to change as NiFi Registry and its REST API evolve.
 */
@@ -419,9 +413,7 @@ func (a *Client) OidcExchange(params *OidcExchangeParams, opts ...ClientOption) 
 }
 
 /*
-  OidcLogout performs a logout in the open Id provider
-
-
+	OidcLogout performs a logout in the open Id provider
 
 NOTE: This endpoint is subject to change as NiFi Registry and its REST API evolve.
 */
@@ -454,9 +446,7 @@ func (a *Client) OidcLogout(params *OidcLogoutParams, opts ...ClientOption) erro
 }
 
 /*
-  OidcRequest initiates a request to authenticate through the configured open Id connect provider
-
-
+	OidcRequest initiates a request to authenticate through the configured open Id connect provider
 
 NOTE: This endpoint is subject to change as NiFi Registry and its REST API evolve.
 */
@@ -489,9 +479,9 @@ func (a *Client) OidcRequest(params *OidcRequestParams, opts ...ClientOption) er
 }
 
 /*
-  TestIdentityProviderRecognizesCredentialsFormat tests identity provider
+TestIdentityProviderRecognizesCredentialsFormat tests identity provider
 
-  Tests the format of the credentials against this identity provider without preforming authentication on the credentials to validate them. The user credentials should be passed in a format understood by the custom identity provider as defined by 'GET /access/token/identity-provider/usage'.
+Tests the format of the credentials against this identity provider without preforming authentication on the credentials to validate them. The user credentials should be passed in a format understood by the custom identity provider as defined by 'GET /access/token/identity-provider/usage'.
 */
 func (a *Client) TestIdentityProviderRecognizesCredentialsFormat(params *TestIdentityProviderRecognizesCredentialsFormatParams, opts ...ClientOption) (*TestIdentityProviderRecognizesCredentialsFormatOK, error) {
 	// TODO: Validate the params before sending

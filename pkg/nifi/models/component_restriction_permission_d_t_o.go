@@ -102,6 +102,11 @@ func (m *ComponentRestrictionPermissionDTO) ContextValidate(ctx context.Context,
 func (m *ComponentRestrictionPermissionDTO) contextValidatePermissions(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Permissions != nil {
+
+		if swag.IsZero(m.Permissions) { // not required
+			return nil
+		}
+
 		if err := m.Permissions.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("permissions")
@@ -118,6 +123,11 @@ func (m *ComponentRestrictionPermissionDTO) contextValidatePermissions(ctx conte
 func (m *ComponentRestrictionPermissionDTO) contextValidateRequiredPermission(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.RequiredPermission != nil {
+
+		if swag.IsZero(m.RequiredPermission) { // not required
+			return nil
+		}
+
 		if err := m.RequiredPermission.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("requiredPermission")

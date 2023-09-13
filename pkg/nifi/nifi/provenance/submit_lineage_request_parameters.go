@@ -54,10 +54,12 @@ func NewSubmitLineageRequestParamsWithHTTPClient(client *http.Client) *SubmitLin
 	}
 }
 
-/* SubmitLineageRequestParams contains all the parameters to send to the API endpoint
-   for the submit lineage request operation.
+/*
+SubmitLineageRequestParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the submit lineage request operation.
+
+	Typically these are written to a http.Request.
 */
 type SubmitLineageRequestParams struct {
 

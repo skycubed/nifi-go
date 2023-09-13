@@ -60,7 +60,7 @@ func (o *SearchTenantsReader) ReadResponse(response runtime.ClientResponse, cons
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /tenants/search-results] searchTenants", response, response.Code())
 	}
 }
 
@@ -69,7 +69,8 @@ func NewSearchTenantsOK() *SearchTenantsOK {
 	return &SearchTenantsOK{}
 }
 
-/* SearchTenantsOK describes a response with status code 200, with default header values.
+/*
+SearchTenantsOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,44 @@ type SearchTenantsOK struct {
 	Payload *models.TenantsEntity
 }
 
+// IsSuccess returns true when this search tenants o k response has a 2xx status code
+func (o *SearchTenantsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this search tenants o k response has a 3xx status code
+func (o *SearchTenantsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this search tenants o k response has a 4xx status code
+func (o *SearchTenantsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this search tenants o k response has a 5xx status code
+func (o *SearchTenantsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this search tenants o k response a status code equal to that given
+func (o *SearchTenantsOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the search tenants o k response
+func (o *SearchTenantsOK) Code() int {
+	return 200
+}
+
 func (o *SearchTenantsOK) Error() string {
 	return fmt.Sprintf("[GET /tenants/search-results][%d] searchTenantsOK  %+v", 200, o.Payload)
 }
+
+func (o *SearchTenantsOK) String() string {
+	return fmt.Sprintf("[GET /tenants/search-results][%d] searchTenantsOK  %+v", 200, o.Payload)
+}
+
 func (o *SearchTenantsOK) GetPayload() *models.TenantsEntity {
 	return o.Payload
 }
@@ -101,14 +137,49 @@ func NewSearchTenantsBadRequest() *SearchTenantsBadRequest {
 	return &SearchTenantsBadRequest{}
 }
 
-/* SearchTenantsBadRequest describes a response with status code 400, with default header values.
+/*
+SearchTenantsBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type SearchTenantsBadRequest struct {
 }
 
+// IsSuccess returns true when this search tenants bad request response has a 2xx status code
+func (o *SearchTenantsBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this search tenants bad request response has a 3xx status code
+func (o *SearchTenantsBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this search tenants bad request response has a 4xx status code
+func (o *SearchTenantsBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this search tenants bad request response has a 5xx status code
+func (o *SearchTenantsBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this search tenants bad request response a status code equal to that given
+func (o *SearchTenantsBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the search tenants bad request response
+func (o *SearchTenantsBadRequest) Code() int {
+	return 400
+}
+
 func (o *SearchTenantsBadRequest) Error() string {
+	return fmt.Sprintf("[GET /tenants/search-results][%d] searchTenantsBadRequest ", 400)
+}
+
+func (o *SearchTenantsBadRequest) String() string {
 	return fmt.Sprintf("[GET /tenants/search-results][%d] searchTenantsBadRequest ", 400)
 }
 
@@ -122,14 +193,49 @@ func NewSearchTenantsUnauthorized() *SearchTenantsUnauthorized {
 	return &SearchTenantsUnauthorized{}
 }
 
-/* SearchTenantsUnauthorized describes a response with status code 401, with default header values.
+/*
+SearchTenantsUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type SearchTenantsUnauthorized struct {
 }
 
+// IsSuccess returns true when this search tenants unauthorized response has a 2xx status code
+func (o *SearchTenantsUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this search tenants unauthorized response has a 3xx status code
+func (o *SearchTenantsUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this search tenants unauthorized response has a 4xx status code
+func (o *SearchTenantsUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this search tenants unauthorized response has a 5xx status code
+func (o *SearchTenantsUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this search tenants unauthorized response a status code equal to that given
+func (o *SearchTenantsUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the search tenants unauthorized response
+func (o *SearchTenantsUnauthorized) Code() int {
+	return 401
+}
+
 func (o *SearchTenantsUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /tenants/search-results][%d] searchTenantsUnauthorized ", 401)
+}
+
+func (o *SearchTenantsUnauthorized) String() string {
 	return fmt.Sprintf("[GET /tenants/search-results][%d] searchTenantsUnauthorized ", 401)
 }
 
@@ -143,14 +249,49 @@ func NewSearchTenantsForbidden() *SearchTenantsForbidden {
 	return &SearchTenantsForbidden{}
 }
 
-/* SearchTenantsForbidden describes a response with status code 403, with default header values.
+/*
+SearchTenantsForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type SearchTenantsForbidden struct {
 }
 
+// IsSuccess returns true when this search tenants forbidden response has a 2xx status code
+func (o *SearchTenantsForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this search tenants forbidden response has a 3xx status code
+func (o *SearchTenantsForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this search tenants forbidden response has a 4xx status code
+func (o *SearchTenantsForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this search tenants forbidden response has a 5xx status code
+func (o *SearchTenantsForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this search tenants forbidden response a status code equal to that given
+func (o *SearchTenantsForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the search tenants forbidden response
+func (o *SearchTenantsForbidden) Code() int {
+	return 403
+}
+
 func (o *SearchTenantsForbidden) Error() string {
+	return fmt.Sprintf("[GET /tenants/search-results][%d] searchTenantsForbidden ", 403)
+}
+
+func (o *SearchTenantsForbidden) String() string {
 	return fmt.Sprintf("[GET /tenants/search-results][%d] searchTenantsForbidden ", 403)
 }
 
@@ -164,14 +305,49 @@ func NewSearchTenantsNotFound() *SearchTenantsNotFound {
 	return &SearchTenantsNotFound{}
 }
 
-/* SearchTenantsNotFound describes a response with status code 404, with default header values.
+/*
+SearchTenantsNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type SearchTenantsNotFound struct {
 }
 
+// IsSuccess returns true when this search tenants not found response has a 2xx status code
+func (o *SearchTenantsNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this search tenants not found response has a 3xx status code
+func (o *SearchTenantsNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this search tenants not found response has a 4xx status code
+func (o *SearchTenantsNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this search tenants not found response has a 5xx status code
+func (o *SearchTenantsNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this search tenants not found response a status code equal to that given
+func (o *SearchTenantsNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+// Code gets the status code for the search tenants not found response
+func (o *SearchTenantsNotFound) Code() int {
+	return 404
+}
+
 func (o *SearchTenantsNotFound) Error() string {
+	return fmt.Sprintf("[GET /tenants/search-results][%d] searchTenantsNotFound ", 404)
+}
+
+func (o *SearchTenantsNotFound) String() string {
 	return fmt.Sprintf("[GET /tenants/search-results][%d] searchTenantsNotFound ", 404)
 }
 
@@ -185,14 +361,49 @@ func NewSearchTenantsConflict() *SearchTenantsConflict {
 	return &SearchTenantsConflict{}
 }
 
-/* SearchTenantsConflict describes a response with status code 409, with default header values.
+/*
+SearchTenantsConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type SearchTenantsConflict struct {
 }
 
+// IsSuccess returns true when this search tenants conflict response has a 2xx status code
+func (o *SearchTenantsConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this search tenants conflict response has a 3xx status code
+func (o *SearchTenantsConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this search tenants conflict response has a 4xx status code
+func (o *SearchTenantsConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this search tenants conflict response has a 5xx status code
+func (o *SearchTenantsConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this search tenants conflict response a status code equal to that given
+func (o *SearchTenantsConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the search tenants conflict response
+func (o *SearchTenantsConflict) Code() int {
+	return 409
+}
+
 func (o *SearchTenantsConflict) Error() string {
+	return fmt.Sprintf("[GET /tenants/search-results][%d] searchTenantsConflict ", 409)
+}
+
+func (o *SearchTenantsConflict) String() string {
 	return fmt.Sprintf("[GET /tenants/search-results][%d] searchTenantsConflict ", 409)
 }
 

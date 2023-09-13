@@ -54,10 +54,12 @@ func NewCreateFlowVersionParamsWithHTTPClient(client *http.Client) *CreateFlowVe
 	}
 }
 
-/* CreateFlowVersionParams contains all the parameters to send to the API endpoint
-   for the create flow version operation.
+/*
+CreateFlowVersionParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create flow version operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateFlowVersionParams struct {
 

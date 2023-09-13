@@ -52,10 +52,12 @@ func NewCreateAccessTokenParamsWithHTTPClient(client *http.Client) *CreateAccess
 	}
 }
 
-/* CreateAccessTokenParams contains all the parameters to send to the API endpoint
-   for the create access token operation.
+/*
+CreateAccessTokenParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create access token operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateAccessTokenParams struct {
 

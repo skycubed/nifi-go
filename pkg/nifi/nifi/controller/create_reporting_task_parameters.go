@@ -54,10 +54,12 @@ func NewCreateReportingTaskParamsWithHTTPClient(client *http.Client) *CreateRepo
 	}
 }
 
-/* CreateReportingTaskParams contains all the parameters to send to the API endpoint
-   for the create reporting task operation.
+/*
+CreateReportingTaskParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create reporting task operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateReportingTaskParams struct {
 

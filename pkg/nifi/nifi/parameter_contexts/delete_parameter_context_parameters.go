@@ -53,10 +53,12 @@ func NewDeleteParameterContextParamsWithHTTPClient(client *http.Client) *DeleteP
 	}
 }
 
-/* DeleteParameterContextParams contains all the parameters to send to the API endpoint
-   for the delete parameter context operation.
+/*
+DeleteParameterContextParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete parameter context operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteParameterContextParams struct {
 

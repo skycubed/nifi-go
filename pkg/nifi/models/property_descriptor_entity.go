@@ -72,6 +72,11 @@ func (m *PropertyDescriptorEntity) ContextValidate(ctx context.Context, formats 
 func (m *PropertyDescriptorEntity) contextValidatePropertyDescriptor(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.PropertyDescriptor != nil {
+
+		if swag.IsZero(m.PropertyDescriptor) { // not required
+			return nil
+		}
+
 		if err := m.PropertyDescriptor.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("propertyDescriptor")

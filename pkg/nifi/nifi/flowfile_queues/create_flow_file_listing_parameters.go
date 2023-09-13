@@ -52,10 +52,12 @@ func NewCreateFlowFileListingParamsWithHTTPClient(client *http.Client) *CreateFl
 	}
 }
 
-/* CreateFlowFileListingParams contains all the parameters to send to the API endpoint
-   for the create flow file listing operation.
+/*
+CreateFlowFileListingParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create flow file listing operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateFlowFileListingParams struct {
 

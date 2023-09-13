@@ -202,6 +202,11 @@ func (m *ProvenanceEventDTO) contextValidateAttributes(ctx context.Context, form
 	for i := 0; i < len(m.Attributes); i++ {
 
 		if m.Attributes[i] != nil {
+
+			if swag.IsZero(m.Attributes[i]) { // not required
+				return nil
+			}
+
 			if err := m.Attributes[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("attributes" + "." + strconv.Itoa(i))

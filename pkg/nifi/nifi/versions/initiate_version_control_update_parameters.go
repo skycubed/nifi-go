@@ -54,10 +54,12 @@ func NewInitiateVersionControlUpdateParamsWithHTTPClient(client *http.Client) *I
 	}
 }
 
-/* InitiateVersionControlUpdateParams contains all the parameters to send to the API endpoint
-   for the initiate version control update operation.
+/*
+InitiateVersionControlUpdateParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the initiate version control update operation.
+
+	Typically these are written to a http.Request.
 */
 type InitiateVersionControlUpdateParams struct {
 

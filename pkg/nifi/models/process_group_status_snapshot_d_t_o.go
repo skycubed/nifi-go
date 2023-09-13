@@ -412,6 +412,11 @@ func (m *ProcessGroupStatusSnapshotDTO) contextValidateConnectionStatusSnapshots
 	for i := 0; i < len(m.ConnectionStatusSnapshots); i++ {
 
 		if m.ConnectionStatusSnapshots[i] != nil {
+
+			if swag.IsZero(m.ConnectionStatusSnapshots[i]) { // not required
+				return nil
+			}
+
 			if err := m.ConnectionStatusSnapshots[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("connectionStatusSnapshots" + "." + strconv.Itoa(i))
@@ -432,6 +437,11 @@ func (m *ProcessGroupStatusSnapshotDTO) contextValidateInputPortStatusSnapshots(
 	for i := 0; i < len(m.InputPortStatusSnapshots); i++ {
 
 		if m.InputPortStatusSnapshots[i] != nil {
+
+			if swag.IsZero(m.InputPortStatusSnapshots[i]) { // not required
+				return nil
+			}
+
 			if err := m.InputPortStatusSnapshots[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("inputPortStatusSnapshots" + "." + strconv.Itoa(i))
@@ -452,6 +462,11 @@ func (m *ProcessGroupStatusSnapshotDTO) contextValidateOutputPortStatusSnapshots
 	for i := 0; i < len(m.OutputPortStatusSnapshots); i++ {
 
 		if m.OutputPortStatusSnapshots[i] != nil {
+
+			if swag.IsZero(m.OutputPortStatusSnapshots[i]) { // not required
+				return nil
+			}
+
 			if err := m.OutputPortStatusSnapshots[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("outputPortStatusSnapshots" + "." + strconv.Itoa(i))
@@ -472,6 +487,11 @@ func (m *ProcessGroupStatusSnapshotDTO) contextValidateProcessGroupStatusSnapsho
 	for i := 0; i < len(m.ProcessGroupStatusSnapshots); i++ {
 
 		if m.ProcessGroupStatusSnapshots[i] != nil {
+
+			if swag.IsZero(m.ProcessGroupStatusSnapshots[i]) { // not required
+				return nil
+			}
+
 			if err := m.ProcessGroupStatusSnapshots[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("processGroupStatusSnapshots" + "." + strconv.Itoa(i))
@@ -492,6 +512,11 @@ func (m *ProcessGroupStatusSnapshotDTO) contextValidateProcessorStatusSnapshots(
 	for i := 0; i < len(m.ProcessorStatusSnapshots); i++ {
 
 		if m.ProcessorStatusSnapshots[i] != nil {
+
+			if swag.IsZero(m.ProcessorStatusSnapshots[i]) { // not required
+				return nil
+			}
+
 			if err := m.ProcessorStatusSnapshots[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("processorStatusSnapshots" + "." + strconv.Itoa(i))
@@ -512,6 +537,11 @@ func (m *ProcessGroupStatusSnapshotDTO) contextValidateRemoteProcessGroupStatusS
 	for i := 0; i < len(m.RemoteProcessGroupStatusSnapshots); i++ {
 
 		if m.RemoteProcessGroupStatusSnapshots[i] != nil {
+
+			if swag.IsZero(m.RemoteProcessGroupStatusSnapshots[i]) { // not required
+				return nil
+			}
+
 			if err := m.RemoteProcessGroupStatusSnapshots[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("remoteProcessGroupStatusSnapshots" + "." + strconv.Itoa(i))

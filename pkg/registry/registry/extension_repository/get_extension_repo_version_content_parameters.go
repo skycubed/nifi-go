@@ -52,10 +52,12 @@ func NewGetExtensionRepoVersionContentParamsWithHTTPClient(client *http.Client) 
 	}
 }
 
-/* GetExtensionRepoVersionContentParams contains all the parameters to send to the API endpoint
-   for the get extension repo version content operation.
+/*
+GetExtensionRepoVersionContentParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get extension repo version content operation.
+
+	Typically these are written to a http.Request.
 */
 type GetExtensionRepoVersionContentParams struct {
 

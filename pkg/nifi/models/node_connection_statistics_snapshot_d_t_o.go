@@ -81,6 +81,11 @@ func (m *NodeConnectionStatisticsSnapshotDTO) ContextValidate(ctx context.Contex
 func (m *NodeConnectionStatisticsSnapshotDTO) contextValidateStatisticsSnapshot(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.StatisticsSnapshot != nil {
+
+		if swag.IsZero(m.StatisticsSnapshot) { // not required
+			return nil
+		}
+
 		if err := m.StatisticsSnapshot.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("statisticsSnapshot")

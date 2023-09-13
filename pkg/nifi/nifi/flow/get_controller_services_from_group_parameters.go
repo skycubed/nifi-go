@@ -53,10 +53,12 @@ func NewGetControllerServicesFromGroupParamsWithHTTPClient(client *http.Client) 
 	}
 }
 
-/* GetControllerServicesFromGroupParams contains all the parameters to send to the API endpoint
-   for the get controller services from group operation.
+/*
+GetControllerServicesFromGroupParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get controller services from group operation.
+
+	Typically these are written to a http.Request.
 */
 type GetControllerServicesFromGroupParams struct {
 

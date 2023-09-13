@@ -53,10 +53,12 @@ func NewRemoveRemoteProcessGroupParamsWithHTTPClient(client *http.Client) *Remov
 	}
 }
 
-/* RemoveRemoteProcessGroupParams contains all the parameters to send to the API endpoint
-   for the remove remote process group operation.
+/*
+RemoveRemoteProcessGroupParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the remove remote process group operation.
+
+	Typically these are written to a http.Request.
 */
 type RemoveRemoteProcessGroupParams struct {
 

@@ -60,7 +60,7 @@ func (o *UpdateLabelReader) ReadResponse(response runtime.ClientResponse, consum
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PUT /labels/{id}] updateLabel", response, response.Code())
 	}
 }
 
@@ -69,7 +69,8 @@ func NewUpdateLabelOK() *UpdateLabelOK {
 	return &UpdateLabelOK{}
 }
 
-/* UpdateLabelOK describes a response with status code 200, with default header values.
+/*
+UpdateLabelOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,44 @@ type UpdateLabelOK struct {
 	Payload *models.LabelEntity
 }
 
+// IsSuccess returns true when this update label o k response has a 2xx status code
+func (o *UpdateLabelOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this update label o k response has a 3xx status code
+func (o *UpdateLabelOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update label o k response has a 4xx status code
+func (o *UpdateLabelOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this update label o k response has a 5xx status code
+func (o *UpdateLabelOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update label o k response a status code equal to that given
+func (o *UpdateLabelOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the update label o k response
+func (o *UpdateLabelOK) Code() int {
+	return 200
+}
+
 func (o *UpdateLabelOK) Error() string {
 	return fmt.Sprintf("[PUT /labels/{id}][%d] updateLabelOK  %+v", 200, o.Payload)
 }
+
+func (o *UpdateLabelOK) String() string {
+	return fmt.Sprintf("[PUT /labels/{id}][%d] updateLabelOK  %+v", 200, o.Payload)
+}
+
 func (o *UpdateLabelOK) GetPayload() *models.LabelEntity {
 	return o.Payload
 }
@@ -101,14 +137,49 @@ func NewUpdateLabelBadRequest() *UpdateLabelBadRequest {
 	return &UpdateLabelBadRequest{}
 }
 
-/* UpdateLabelBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateLabelBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type UpdateLabelBadRequest struct {
 }
 
+// IsSuccess returns true when this update label bad request response has a 2xx status code
+func (o *UpdateLabelBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update label bad request response has a 3xx status code
+func (o *UpdateLabelBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update label bad request response has a 4xx status code
+func (o *UpdateLabelBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update label bad request response has a 5xx status code
+func (o *UpdateLabelBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update label bad request response a status code equal to that given
+func (o *UpdateLabelBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the update label bad request response
+func (o *UpdateLabelBadRequest) Code() int {
+	return 400
+}
+
 func (o *UpdateLabelBadRequest) Error() string {
+	return fmt.Sprintf("[PUT /labels/{id}][%d] updateLabelBadRequest ", 400)
+}
+
+func (o *UpdateLabelBadRequest) String() string {
 	return fmt.Sprintf("[PUT /labels/{id}][%d] updateLabelBadRequest ", 400)
 }
 
@@ -122,14 +193,49 @@ func NewUpdateLabelUnauthorized() *UpdateLabelUnauthorized {
 	return &UpdateLabelUnauthorized{}
 }
 
-/* UpdateLabelUnauthorized describes a response with status code 401, with default header values.
+/*
+UpdateLabelUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type UpdateLabelUnauthorized struct {
 }
 
+// IsSuccess returns true when this update label unauthorized response has a 2xx status code
+func (o *UpdateLabelUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update label unauthorized response has a 3xx status code
+func (o *UpdateLabelUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update label unauthorized response has a 4xx status code
+func (o *UpdateLabelUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update label unauthorized response has a 5xx status code
+func (o *UpdateLabelUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update label unauthorized response a status code equal to that given
+func (o *UpdateLabelUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the update label unauthorized response
+func (o *UpdateLabelUnauthorized) Code() int {
+	return 401
+}
+
 func (o *UpdateLabelUnauthorized) Error() string {
+	return fmt.Sprintf("[PUT /labels/{id}][%d] updateLabelUnauthorized ", 401)
+}
+
+func (o *UpdateLabelUnauthorized) String() string {
 	return fmt.Sprintf("[PUT /labels/{id}][%d] updateLabelUnauthorized ", 401)
 }
 
@@ -143,14 +249,49 @@ func NewUpdateLabelForbidden() *UpdateLabelForbidden {
 	return &UpdateLabelForbidden{}
 }
 
-/* UpdateLabelForbidden describes a response with status code 403, with default header values.
+/*
+UpdateLabelForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type UpdateLabelForbidden struct {
 }
 
+// IsSuccess returns true when this update label forbidden response has a 2xx status code
+func (o *UpdateLabelForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update label forbidden response has a 3xx status code
+func (o *UpdateLabelForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update label forbidden response has a 4xx status code
+func (o *UpdateLabelForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update label forbidden response has a 5xx status code
+func (o *UpdateLabelForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update label forbidden response a status code equal to that given
+func (o *UpdateLabelForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the update label forbidden response
+func (o *UpdateLabelForbidden) Code() int {
+	return 403
+}
+
 func (o *UpdateLabelForbidden) Error() string {
+	return fmt.Sprintf("[PUT /labels/{id}][%d] updateLabelForbidden ", 403)
+}
+
+func (o *UpdateLabelForbidden) String() string {
 	return fmt.Sprintf("[PUT /labels/{id}][%d] updateLabelForbidden ", 403)
 }
 
@@ -164,14 +305,49 @@ func NewUpdateLabelNotFound() *UpdateLabelNotFound {
 	return &UpdateLabelNotFound{}
 }
 
-/* UpdateLabelNotFound describes a response with status code 404, with default header values.
+/*
+UpdateLabelNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type UpdateLabelNotFound struct {
 }
 
+// IsSuccess returns true when this update label not found response has a 2xx status code
+func (o *UpdateLabelNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update label not found response has a 3xx status code
+func (o *UpdateLabelNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update label not found response has a 4xx status code
+func (o *UpdateLabelNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update label not found response has a 5xx status code
+func (o *UpdateLabelNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update label not found response a status code equal to that given
+func (o *UpdateLabelNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+// Code gets the status code for the update label not found response
+func (o *UpdateLabelNotFound) Code() int {
+	return 404
+}
+
 func (o *UpdateLabelNotFound) Error() string {
+	return fmt.Sprintf("[PUT /labels/{id}][%d] updateLabelNotFound ", 404)
+}
+
+func (o *UpdateLabelNotFound) String() string {
 	return fmt.Sprintf("[PUT /labels/{id}][%d] updateLabelNotFound ", 404)
 }
 
@@ -185,14 +361,49 @@ func NewUpdateLabelConflict() *UpdateLabelConflict {
 	return &UpdateLabelConflict{}
 }
 
-/* UpdateLabelConflict describes a response with status code 409, with default header values.
+/*
+UpdateLabelConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type UpdateLabelConflict struct {
 }
 
+// IsSuccess returns true when this update label conflict response has a 2xx status code
+func (o *UpdateLabelConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update label conflict response has a 3xx status code
+func (o *UpdateLabelConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update label conflict response has a 4xx status code
+func (o *UpdateLabelConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update label conflict response has a 5xx status code
+func (o *UpdateLabelConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update label conflict response a status code equal to that given
+func (o *UpdateLabelConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the update label conflict response
+func (o *UpdateLabelConflict) Code() int {
+	return 409
+}
+
 func (o *UpdateLabelConflict) Error() string {
+	return fmt.Sprintf("[PUT /labels/{id}][%d] updateLabelConflict ", 409)
+}
+
+func (o *UpdateLabelConflict) String() string {
 	return fmt.Sprintf("[PUT /labels/{id}][%d] updateLabelConflict ", 409)
 }
 

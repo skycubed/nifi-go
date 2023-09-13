@@ -118,7 +118,7 @@ type ClientService interface {
 }
 
 /*
-  ActivateControllerServices enables or disable controller services in the specified process group
+ActivateControllerServices enables or disable controller services in the specified process group
 */
 func (a *Client) ActivateControllerServices(params *ActivateControllerServicesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ActivateControllerServicesOK, error) {
 	// TODO: Validate the params before sending
@@ -157,7 +157,7 @@ func (a *Client) ActivateControllerServices(params *ActivateControllerServicesPa
 }
 
 /*
-  GenerateClientID generates a client id
+GenerateClientID generates a client id
 */
 func (a *Client) GenerateClientID(params *GenerateClientIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GenerateClientIDOK, error) {
 	// TODO: Validate the params before sending
@@ -196,7 +196,7 @@ func (a *Client) GenerateClientID(params *GenerateClientIDParams, authInfo runti
 }
 
 /*
-  GetAboutInfo retrieves details about this ni fi to put in the about dialog
+GetAboutInfo retrieves details about this ni fi to put in the about dialog
 */
 func (a *Client) GetAboutInfo(params *GetAboutInfoParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetAboutInfoOK, error) {
 	// TODO: Validate the params before sending
@@ -235,9 +235,9 @@ func (a *Client) GetAboutInfo(params *GetAboutInfoParams, authInfo runtime.Clien
 }
 
 /*
-  GetAction gets an action
+GetAction gets an action
 
-  Note: This endpoint is subject to change as NiFi and it's REST API evolve.
+Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 */
 func (a *Client) GetAction(params *GetActionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetActionOK, error) {
 	// TODO: Validate the params before sending
@@ -276,7 +276,7 @@ func (a *Client) GetAction(params *GetActionParams, authInfo runtime.ClientAuthI
 }
 
 /*
-  GetBanners retrieves the banners for this ni fi
+GetBanners retrieves the banners for this ni fi
 */
 func (a *Client) GetBanners(params *GetBannersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetBannersOK, error) {
 	// TODO: Validate the params before sending
@@ -315,7 +315,7 @@ func (a *Client) GetBanners(params *GetBannersParams, authInfo runtime.ClientAut
 }
 
 /*
-  GetBuckets gets the buckets from the specified registry for the current user
+GetBuckets gets the buckets from the specified registry for the current user
 */
 func (a *Client) GetBuckets(params *GetBucketsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetBucketsOK, error) {
 	// TODO: Validate the params before sending
@@ -354,7 +354,7 @@ func (a *Client) GetBuckets(params *GetBucketsParams, authInfo runtime.ClientAut
 }
 
 /*
-  GetBulletinBoard gets current bulletins
+GetBulletinBoard gets current bulletins
 */
 func (a *Client) GetBulletinBoard(params *GetBulletinBoardParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetBulletinBoardOK, error) {
 	// TODO: Validate the params before sending
@@ -393,7 +393,7 @@ func (a *Client) GetBulletinBoard(params *GetBulletinBoardParams, authInfo runti
 }
 
 /*
-  GetBulletins retrieves controller level bulletins
+GetBulletins retrieves controller level bulletins
 */
 func (a *Client) GetBulletins(params *GetBulletinsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetBulletinsOK, error) {
 	// TODO: Validate the params before sending
@@ -432,7 +432,7 @@ func (a *Client) GetBulletins(params *GetBulletinsParams, authInfo runtime.Clien
 }
 
 /*
-  GetClusterSummary thes cluster summary for this ni fi
+GetClusterSummary thes cluster summary for this ni fi
 */
 func (a *Client) GetClusterSummary(params *GetClusterSummaryParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetClusterSummaryOK, error) {
 	// TODO: Validate the params before sending
@@ -471,9 +471,9 @@ func (a *Client) GetClusterSummary(params *GetClusterSummaryParams, authInfo run
 }
 
 /*
-  GetComponentHistory gets configuration history for a component
+GetComponentHistory gets configuration history for a component
 
-  Note: This endpoint is subject to change as NiFi and it's REST API evolve.
+Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 */
 func (a *Client) GetComponentHistory(params *GetComponentHistoryParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetComponentHistoryOK, error) {
 	// TODO: Validate the params before sending
@@ -512,7 +512,7 @@ func (a *Client) GetComponentHistory(params *GetComponentHistoryParams, authInfo
 }
 
 /*
-  GetConnectionStatistics gets statistics for a connection
+GetConnectionStatistics gets statistics for a connection
 */
 func (a *Client) GetConnectionStatistics(params *GetConnectionStatisticsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetConnectionStatisticsOK, error) {
 	// TODO: Validate the params before sending
@@ -551,7 +551,7 @@ func (a *Client) GetConnectionStatistics(params *GetConnectionStatisticsParams, 
 }
 
 /*
-  GetConnectionStatus gets status for a connection
+GetConnectionStatus gets status for a connection
 */
 func (a *Client) GetConnectionStatus(params *GetConnectionStatusParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetConnectionStatusOK, error) {
 	// TODO: Validate the params before sending
@@ -590,7 +590,7 @@ func (a *Client) GetConnectionStatus(params *GetConnectionStatusParams, authInfo
 }
 
 /*
-  GetConnectionStatusHistory gets the status history for a connection
+GetConnectionStatusHistory gets the status history for a connection
 */
 func (a *Client) GetConnectionStatusHistory(params *GetConnectionStatusHistoryParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetConnectionStatusHistoryOK, error) {
 	// TODO: Validate the params before sending
@@ -629,9 +629,9 @@ func (a *Client) GetConnectionStatusHistory(params *GetConnectionStatusHistoryPa
 }
 
 /*
-  GetControllerServiceTypes retrieves the types of controller services that this ni fi supports
+GetControllerServiceTypes retrieves the types of controller services that this ni fi supports
 
-  Note: This endpoint is subject to change as NiFi and it's REST API evolve.
+Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 */
 func (a *Client) GetControllerServiceTypes(params *GetControllerServiceTypesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetControllerServiceTypesOK, error) {
 	// TODO: Validate the params before sending
@@ -670,7 +670,7 @@ func (a *Client) GetControllerServiceTypes(params *GetControllerServiceTypesPara
 }
 
 /*
-  GetControllerServicesFromController gets controller services for reporting tasks
+GetControllerServicesFromController gets controller services for reporting tasks
 */
 func (a *Client) GetControllerServicesFromController(params *GetControllerServicesFromControllerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetControllerServicesFromControllerOK, error) {
 	// TODO: Validate the params before sending
@@ -709,7 +709,7 @@ func (a *Client) GetControllerServicesFromController(params *GetControllerServic
 }
 
 /*
-  GetControllerServicesFromGroup gets all controller services
+GetControllerServicesFromGroup gets all controller services
 */
 func (a *Client) GetControllerServicesFromGroup(params *GetControllerServicesFromGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetControllerServicesFromGroupOK, error) {
 	// TODO: Validate the params before sending
@@ -748,7 +748,7 @@ func (a *Client) GetControllerServicesFromGroup(params *GetControllerServicesFro
 }
 
 /*
-  GetControllerStatus gets the current status of this ni fi
+GetControllerStatus gets the current status of this ni fi
 */
 func (a *Client) GetControllerStatus(params *GetControllerStatusParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetControllerStatusOK, error) {
 	// TODO: Validate the params before sending
@@ -787,7 +787,7 @@ func (a *Client) GetControllerStatus(params *GetControllerStatusParams, authInfo
 }
 
 /*
-  GetCurrentUser retrieves the user identity of the user making the request
+GetCurrentUser retrieves the user identity of the user making the request
 */
 func (a *Client) GetCurrentUser(params *GetCurrentUserParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetCurrentUserOK, error) {
 	// TODO: Validate the params before sending
@@ -826,9 +826,9 @@ func (a *Client) GetCurrentUser(params *GetCurrentUserParams, authInfo runtime.C
 }
 
 /*
-  GetFlow gets a process group
+GetFlow gets a process group
 
-  If the uiOnly query parameter is provided with a value of true, the returned entity may only contain fields that are necessary for rendering the NiFi User Interface. As such, the selected fields may change at any time, even during incremental releases, without warning. As a result, this parameter should not be provided by any client other than the UI.
+If the uiOnly query parameter is provided with a value of true, the returned entity may only contain fields that are necessary for rendering the NiFi User Interface. As such, the selected fields may change at any time, even during incremental releases, without warning. As a result, this parameter should not be provided by any client other than the UI.
 */
 func (a *Client) GetFlow(params *GetFlowParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetFlowOK, error) {
 	// TODO: Validate the params before sending
@@ -867,7 +867,7 @@ func (a *Client) GetFlow(params *GetFlowParams, authInfo runtime.ClientAuthInfoW
 }
 
 /*
-  GetFlowConfig retrieves the configuration for this ni fi flow
+GetFlowConfig retrieves the configuration for this ni fi flow
 */
 func (a *Client) GetFlowConfig(params *GetFlowConfigParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetFlowConfigOK, error) {
 	// TODO: Validate the params before sending
@@ -906,7 +906,7 @@ func (a *Client) GetFlowConfig(params *GetFlowConfigParams, authInfo runtime.Cli
 }
 
 /*
-  GetFlowMetrics gets all metrics for the flow from a particular node
+GetFlowMetrics gets all metrics for the flow from a particular node
 */
 func (a *Client) GetFlowMetrics(params *GetFlowMetricsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetFlowMetricsOK, error) {
 	// TODO: Validate the params before sending
@@ -945,7 +945,7 @@ func (a *Client) GetFlowMetrics(params *GetFlowMetricsParams, authInfo runtime.C
 }
 
 /*
-  GetFlows gets the flows from the specified registry and bucket for the current user
+GetFlows gets the flows from the specified registry and bucket for the current user
 */
 func (a *Client) GetFlows(params *GetFlowsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetFlowsOK, error) {
 	// TODO: Validate the params before sending
@@ -984,7 +984,7 @@ func (a *Client) GetFlows(params *GetFlowsParams, authInfo runtime.ClientAuthInf
 }
 
 /*
-  GetInputPortStatus gets status for an input port
+GetInputPortStatus gets status for an input port
 */
 func (a *Client) GetInputPortStatus(params *GetInputPortStatusParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetInputPortStatusOK, error) {
 	// TODO: Validate the params before sending
@@ -1023,7 +1023,7 @@ func (a *Client) GetInputPortStatus(params *GetInputPortStatusParams, authInfo r
 }
 
 /*
-  GetOutputPortStatus gets status for an output port
+GetOutputPortStatus gets status for an output port
 */
 func (a *Client) GetOutputPortStatus(params *GetOutputPortStatusParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetOutputPortStatusOK, error) {
 	// TODO: Validate the params before sending
@@ -1062,7 +1062,7 @@ func (a *Client) GetOutputPortStatus(params *GetOutputPortStatusParams, authInfo
 }
 
 /*
-  GetParameterContexts gets all parameter contexts
+GetParameterContexts gets all parameter contexts
 */
 func (a *Client) GetParameterContexts(params *GetParameterContextsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetParameterContextsOK, error) {
 	// TODO: Validate the params before sending
@@ -1101,9 +1101,9 @@ func (a *Client) GetParameterContexts(params *GetParameterContextsParams, authIn
 }
 
 /*
-  GetPrioritizers retrieves the types of prioritizers that this ni fi supports
+GetPrioritizers retrieves the types of prioritizers that this ni fi supports
 
-  Note: This endpoint is subject to change as NiFi and it's REST API evolve.
+Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 */
 func (a *Client) GetPrioritizers(params *GetPrioritizersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetPrioritizersOK, error) {
 	// TODO: Validate the params before sending
@@ -1142,9 +1142,9 @@ func (a *Client) GetPrioritizers(params *GetPrioritizersParams, authInfo runtime
 }
 
 /*
-  GetProcessGroupStatus gets the status for a process group
+GetProcessGroupStatus gets the status for a process group
 
-  The status for a process group includes status for all descendent components. When invoked on the root group with recursive set to true, it will return the current status of every component in the flow.
+The status for a process group includes status for all descendent components. When invoked on the root group with recursive set to true, it will return the current status of every component in the flow.
 */
 func (a *Client) GetProcessGroupStatus(params *GetProcessGroupStatusParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetProcessGroupStatusOK, error) {
 	// TODO: Validate the params before sending
@@ -1183,7 +1183,7 @@ func (a *Client) GetProcessGroupStatus(params *GetProcessGroupStatusParams, auth
 }
 
 /*
-  GetProcessGroupStatusHistory gets status history for a remote process group
+GetProcessGroupStatusHistory gets status history for a remote process group
 */
 func (a *Client) GetProcessGroupStatusHistory(params *GetProcessGroupStatusHistoryParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetProcessGroupStatusHistoryOK, error) {
 	// TODO: Validate the params before sending
@@ -1222,7 +1222,7 @@ func (a *Client) GetProcessGroupStatusHistory(params *GetProcessGroupStatusHisto
 }
 
 /*
-  GetProcessorStatus gets status for a processor
+GetProcessorStatus gets status for a processor
 */
 func (a *Client) GetProcessorStatus(params *GetProcessorStatusParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetProcessorStatusOK, error) {
 	// TODO: Validate the params before sending
@@ -1261,7 +1261,7 @@ func (a *Client) GetProcessorStatus(params *GetProcessorStatusParams, authInfo r
 }
 
 /*
-  GetProcessorStatusHistory gets status history for a processor
+GetProcessorStatusHistory gets status history for a processor
 */
 func (a *Client) GetProcessorStatusHistory(params *GetProcessorStatusHistoryParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetProcessorStatusHistoryOK, error) {
 	// TODO: Validate the params before sending
@@ -1300,9 +1300,9 @@ func (a *Client) GetProcessorStatusHistory(params *GetProcessorStatusHistoryPara
 }
 
 /*
-  GetProcessorTypes retrieves the types of processors that this ni fi supports
+GetProcessorTypes retrieves the types of processors that this ni fi supports
 
-  Note: This endpoint is subject to change as NiFi and it's REST API evolve.
+Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 */
 func (a *Client) GetProcessorTypes(params *GetProcessorTypesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetProcessorTypesOK, error) {
 	// TODO: Validate the params before sending
@@ -1341,7 +1341,7 @@ func (a *Client) GetProcessorTypes(params *GetProcessorTypesParams, authInfo run
 }
 
 /*
-  GetRegistries gets the listing of available registries
+GetRegistries gets the listing of available registries
 */
 func (a *Client) GetRegistries(params *GetRegistriesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetRegistriesOK, error) {
 	// TODO: Validate the params before sending
@@ -1380,7 +1380,7 @@ func (a *Client) GetRegistries(params *GetRegistriesParams, authInfo runtime.Cli
 }
 
 /*
-  GetRemoteProcessGroupStatus gets status for a remote process group
+GetRemoteProcessGroupStatus gets status for a remote process group
 */
 func (a *Client) GetRemoteProcessGroupStatus(params *GetRemoteProcessGroupStatusParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetRemoteProcessGroupStatusOK, error) {
 	// TODO: Validate the params before sending
@@ -1419,7 +1419,7 @@ func (a *Client) GetRemoteProcessGroupStatus(params *GetRemoteProcessGroupStatus
 }
 
 /*
-  GetRemoteProcessGroupStatusHistory gets the status history
+GetRemoteProcessGroupStatusHistory gets the status history
 */
 func (a *Client) GetRemoteProcessGroupStatusHistory(params *GetRemoteProcessGroupStatusHistoryParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetRemoteProcessGroupStatusHistoryOK, error) {
 	// TODO: Validate the params before sending
@@ -1458,9 +1458,9 @@ func (a *Client) GetRemoteProcessGroupStatusHistory(params *GetRemoteProcessGrou
 }
 
 /*
-  GetReportingTaskTypes retrieves the types of reporting tasks that this ni fi supports
+GetReportingTaskTypes retrieves the types of reporting tasks that this ni fi supports
 
-  Note: This endpoint is subject to change as NiFi and it's REST API evolve.
+Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 */
 func (a *Client) GetReportingTaskTypes(params *GetReportingTaskTypesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetReportingTaskTypesOK, error) {
 	// TODO: Validate the params before sending
@@ -1499,7 +1499,7 @@ func (a *Client) GetReportingTaskTypes(params *GetReportingTaskTypesParams, auth
 }
 
 /*
-  GetReportingTasks gets all reporting tasks
+GetReportingTasks gets all reporting tasks
 */
 func (a *Client) GetReportingTasks(params *GetReportingTasksParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetReportingTasksOK, error) {
 	// TODO: Validate the params before sending
@@ -1538,7 +1538,7 @@ func (a *Client) GetReportingTasks(params *GetReportingTasksParams, authInfo run
 }
 
 /*
-  GetTemplates gets all templates
+GetTemplates gets all templates
 */
 func (a *Client) GetTemplates(params *GetTemplatesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetTemplatesOK, error) {
 	// TODO: Validate the params before sending
@@ -1577,7 +1577,7 @@ func (a *Client) GetTemplates(params *GetTemplatesParams, authInfo runtime.Clien
 }
 
 /*
-  GetVersions gets the flow versions from the specified registry and bucket for the specified flow for the current user
+GetVersions gets the flow versions from the specified registry and bucket for the specified flow for the current user
 */
 func (a *Client) GetVersions(params *GetVersionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetVersionsOK, error) {
 	// TODO: Validate the params before sending
@@ -1616,9 +1616,9 @@ func (a *Client) GetVersions(params *GetVersionsParams, authInfo runtime.ClientA
 }
 
 /*
-  QueryHistory gets configuration history
+QueryHistory gets configuration history
 
-  Note: This endpoint is subject to change as NiFi and it's REST API evolve.
+Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 */
 func (a *Client) QueryHistory(params *QueryHistoryParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*QueryHistoryOK, error) {
 	// TODO: Validate the params before sending
@@ -1657,7 +1657,7 @@ func (a *Client) QueryHistory(params *QueryHistoryParams, authInfo runtime.Clien
 }
 
 /*
-  ScheduleComponents schedules or unschedule components in the specified process group
+ScheduleComponents schedules or unschedule components in the specified process group
 */
 func (a *Client) ScheduleComponents(params *ScheduleComponentsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ScheduleComponentsOK, error) {
 	// TODO: Validate the params before sending
@@ -1696,9 +1696,9 @@ func (a *Client) ScheduleComponents(params *ScheduleComponentsParams, authInfo r
 }
 
 /*
-  SearchCluster searches the cluster for a node with the specified address
+SearchCluster searches the cluster for a node with the specified address
 
-  Note: This endpoint is subject to change as NiFi and it's REST API evolve.
+Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 */
 func (a *Client) SearchCluster(params *SearchClusterParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SearchClusterOK, error) {
 	// TODO: Validate the params before sending
@@ -1737,9 +1737,9 @@ func (a *Client) SearchCluster(params *SearchClusterParams, authInfo runtime.Cli
 }
 
 /*
-  SearchFlow performs a search against this ni fi using the specified search term
+SearchFlow performs a search against this ni fi using the specified search term
 
-  Only search results from authorized components will be returned.
+Only search results from authorized components will be returned.
 */
 func (a *Client) SearchFlow(params *SearchFlowParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SearchFlowOK, error) {
 	// TODO: Validate the params before sending

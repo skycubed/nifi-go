@@ -52,10 +52,12 @@ func NewGetExtensionRepoVersionSha256ParamsWithHTTPClient(client *http.Client) *
 	}
 }
 
-/* GetExtensionRepoVersionSha256Params contains all the parameters to send to the API endpoint
-   for the get extension repo version sha256 operation.
+/*
+GetExtensionRepoVersionSha256Params contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get extension repo version sha256 operation.
+
+	Typically these are written to a http.Request.
 */
 type GetExtensionRepoVersionSha256Params struct {
 

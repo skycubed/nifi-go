@@ -60,7 +60,7 @@ func (o *GetNodeStatusHistoryReader) ReadResponse(response runtime.ClientRespons
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /controller/status/history] getNodeStatusHistory", response, response.Code())
 	}
 }
 
@@ -69,7 +69,8 @@ func NewGetNodeStatusHistoryOK() *GetNodeStatusHistoryOK {
 	return &GetNodeStatusHistoryOK{}
 }
 
-/* GetNodeStatusHistoryOK describes a response with status code 200, with default header values.
+/*
+GetNodeStatusHistoryOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,44 @@ type GetNodeStatusHistoryOK struct {
 	Payload *models.ComponentHistoryEntity
 }
 
+// IsSuccess returns true when this get node status history o k response has a 2xx status code
+func (o *GetNodeStatusHistoryOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get node status history o k response has a 3xx status code
+func (o *GetNodeStatusHistoryOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get node status history o k response has a 4xx status code
+func (o *GetNodeStatusHistoryOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get node status history o k response has a 5xx status code
+func (o *GetNodeStatusHistoryOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get node status history o k response a status code equal to that given
+func (o *GetNodeStatusHistoryOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the get node status history o k response
+func (o *GetNodeStatusHistoryOK) Code() int {
+	return 200
+}
+
 func (o *GetNodeStatusHistoryOK) Error() string {
 	return fmt.Sprintf("[GET /controller/status/history][%d] getNodeStatusHistoryOK  %+v", 200, o.Payload)
 }
+
+func (o *GetNodeStatusHistoryOK) String() string {
+	return fmt.Sprintf("[GET /controller/status/history][%d] getNodeStatusHistoryOK  %+v", 200, o.Payload)
+}
+
 func (o *GetNodeStatusHistoryOK) GetPayload() *models.ComponentHistoryEntity {
 	return o.Payload
 }
@@ -101,14 +137,49 @@ func NewGetNodeStatusHistoryBadRequest() *GetNodeStatusHistoryBadRequest {
 	return &GetNodeStatusHistoryBadRequest{}
 }
 
-/* GetNodeStatusHistoryBadRequest describes a response with status code 400, with default header values.
+/*
+GetNodeStatusHistoryBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type GetNodeStatusHistoryBadRequest struct {
 }
 
+// IsSuccess returns true when this get node status history bad request response has a 2xx status code
+func (o *GetNodeStatusHistoryBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get node status history bad request response has a 3xx status code
+func (o *GetNodeStatusHistoryBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get node status history bad request response has a 4xx status code
+func (o *GetNodeStatusHistoryBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get node status history bad request response has a 5xx status code
+func (o *GetNodeStatusHistoryBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get node status history bad request response a status code equal to that given
+func (o *GetNodeStatusHistoryBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the get node status history bad request response
+func (o *GetNodeStatusHistoryBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetNodeStatusHistoryBadRequest) Error() string {
+	return fmt.Sprintf("[GET /controller/status/history][%d] getNodeStatusHistoryBadRequest ", 400)
+}
+
+func (o *GetNodeStatusHistoryBadRequest) String() string {
 	return fmt.Sprintf("[GET /controller/status/history][%d] getNodeStatusHistoryBadRequest ", 400)
 }
 
@@ -122,14 +193,49 @@ func NewGetNodeStatusHistoryUnauthorized() *GetNodeStatusHistoryUnauthorized {
 	return &GetNodeStatusHistoryUnauthorized{}
 }
 
-/* GetNodeStatusHistoryUnauthorized describes a response with status code 401, with default header values.
+/*
+GetNodeStatusHistoryUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type GetNodeStatusHistoryUnauthorized struct {
 }
 
+// IsSuccess returns true when this get node status history unauthorized response has a 2xx status code
+func (o *GetNodeStatusHistoryUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get node status history unauthorized response has a 3xx status code
+func (o *GetNodeStatusHistoryUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get node status history unauthorized response has a 4xx status code
+func (o *GetNodeStatusHistoryUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get node status history unauthorized response has a 5xx status code
+func (o *GetNodeStatusHistoryUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get node status history unauthorized response a status code equal to that given
+func (o *GetNodeStatusHistoryUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the get node status history unauthorized response
+func (o *GetNodeStatusHistoryUnauthorized) Code() int {
+	return 401
+}
+
 func (o *GetNodeStatusHistoryUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /controller/status/history][%d] getNodeStatusHistoryUnauthorized ", 401)
+}
+
+func (o *GetNodeStatusHistoryUnauthorized) String() string {
 	return fmt.Sprintf("[GET /controller/status/history][%d] getNodeStatusHistoryUnauthorized ", 401)
 }
 
@@ -143,14 +249,49 @@ func NewGetNodeStatusHistoryForbidden() *GetNodeStatusHistoryForbidden {
 	return &GetNodeStatusHistoryForbidden{}
 }
 
-/* GetNodeStatusHistoryForbidden describes a response with status code 403, with default header values.
+/*
+GetNodeStatusHistoryForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type GetNodeStatusHistoryForbidden struct {
 }
 
+// IsSuccess returns true when this get node status history forbidden response has a 2xx status code
+func (o *GetNodeStatusHistoryForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get node status history forbidden response has a 3xx status code
+func (o *GetNodeStatusHistoryForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get node status history forbidden response has a 4xx status code
+func (o *GetNodeStatusHistoryForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get node status history forbidden response has a 5xx status code
+func (o *GetNodeStatusHistoryForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get node status history forbidden response a status code equal to that given
+func (o *GetNodeStatusHistoryForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the get node status history forbidden response
+func (o *GetNodeStatusHistoryForbidden) Code() int {
+	return 403
+}
+
 func (o *GetNodeStatusHistoryForbidden) Error() string {
+	return fmt.Sprintf("[GET /controller/status/history][%d] getNodeStatusHistoryForbidden ", 403)
+}
+
+func (o *GetNodeStatusHistoryForbidden) String() string {
 	return fmt.Sprintf("[GET /controller/status/history][%d] getNodeStatusHistoryForbidden ", 403)
 }
 
@@ -164,14 +305,49 @@ func NewGetNodeStatusHistoryNotFound() *GetNodeStatusHistoryNotFound {
 	return &GetNodeStatusHistoryNotFound{}
 }
 
-/* GetNodeStatusHistoryNotFound describes a response with status code 404, with default header values.
+/*
+GetNodeStatusHistoryNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type GetNodeStatusHistoryNotFound struct {
 }
 
+// IsSuccess returns true when this get node status history not found response has a 2xx status code
+func (o *GetNodeStatusHistoryNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get node status history not found response has a 3xx status code
+func (o *GetNodeStatusHistoryNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get node status history not found response has a 4xx status code
+func (o *GetNodeStatusHistoryNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get node status history not found response has a 5xx status code
+func (o *GetNodeStatusHistoryNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get node status history not found response a status code equal to that given
+func (o *GetNodeStatusHistoryNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+// Code gets the status code for the get node status history not found response
+func (o *GetNodeStatusHistoryNotFound) Code() int {
+	return 404
+}
+
 func (o *GetNodeStatusHistoryNotFound) Error() string {
+	return fmt.Sprintf("[GET /controller/status/history][%d] getNodeStatusHistoryNotFound ", 404)
+}
+
+func (o *GetNodeStatusHistoryNotFound) String() string {
 	return fmt.Sprintf("[GET /controller/status/history][%d] getNodeStatusHistoryNotFound ", 404)
 }
 
@@ -185,14 +361,49 @@ func NewGetNodeStatusHistoryConflict() *GetNodeStatusHistoryConflict {
 	return &GetNodeStatusHistoryConflict{}
 }
 
-/* GetNodeStatusHistoryConflict describes a response with status code 409, with default header values.
+/*
+GetNodeStatusHistoryConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type GetNodeStatusHistoryConflict struct {
 }
 
+// IsSuccess returns true when this get node status history conflict response has a 2xx status code
+func (o *GetNodeStatusHistoryConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get node status history conflict response has a 3xx status code
+func (o *GetNodeStatusHistoryConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get node status history conflict response has a 4xx status code
+func (o *GetNodeStatusHistoryConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get node status history conflict response has a 5xx status code
+func (o *GetNodeStatusHistoryConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get node status history conflict response a status code equal to that given
+func (o *GetNodeStatusHistoryConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the get node status history conflict response
+func (o *GetNodeStatusHistoryConflict) Code() int {
+	return 409
+}
+
 func (o *GetNodeStatusHistoryConflict) Error() string {
+	return fmt.Sprintf("[GET /controller/status/history][%d] getNodeStatusHistoryConflict ", 409)
+}
+
+func (o *GetNodeStatusHistoryConflict) String() string {
 	return fmt.Sprintf("[GET /controller/status/history][%d] getNodeStatusHistoryConflict ", 409)
 }
 

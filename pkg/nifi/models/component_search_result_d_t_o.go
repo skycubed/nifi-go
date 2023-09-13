@@ -114,6 +114,11 @@ func (m *ComponentSearchResultDTO) ContextValidate(ctx context.Context, formats 
 func (m *ComponentSearchResultDTO) contextValidateParentGroup(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ParentGroup != nil {
+
+		if swag.IsZero(m.ParentGroup) { // not required
+			return nil
+		}
+
 		if err := m.ParentGroup.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("parentGroup")
@@ -130,6 +135,11 @@ func (m *ComponentSearchResultDTO) contextValidateParentGroup(ctx context.Contex
 func (m *ComponentSearchResultDTO) contextValidateVersionedGroup(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.VersionedGroup != nil {
+
+		if swag.IsZero(m.VersionedGroup) { // not required
+			return nil
+		}
+
 		if err := m.VersionedGroup.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("versionedGroup")
