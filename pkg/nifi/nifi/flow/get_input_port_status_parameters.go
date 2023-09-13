@@ -53,10 +53,12 @@ func NewGetInputPortStatusParamsWithHTTPClient(client *http.Client) *GetInputPor
 	}
 }
 
-/* GetInputPortStatusParams contains all the parameters to send to the API endpoint
-   for the get input port status operation.
+/*
+GetInputPortStatusParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get input port status operation.
+
+	Typically these are written to a http.Request.
 */
 type GetInputPortStatusParams struct {
 

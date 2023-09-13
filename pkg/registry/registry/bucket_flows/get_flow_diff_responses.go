@@ -60,7 +60,7 @@ func (o *GetFlowDiffReader) ReadResponse(response runtime.ClientResponse, consum
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /buckets/{bucketId}/flows/{flowId}/diff/{versionA}/{versionB}] getFlowDiff", response, response.Code())
 	}
 }
 
@@ -69,7 +69,8 @@ func NewGetFlowDiffOK() *GetFlowDiffOK {
 	return &GetFlowDiffOK{}
 }
 
-/* GetFlowDiffOK describes a response with status code 200, with default header values.
+/*
+GetFlowDiffOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,44 @@ type GetFlowDiffOK struct {
 	Payload *models.VersionedFlowDifference
 }
 
+// IsSuccess returns true when this get flow diff o k response has a 2xx status code
+func (o *GetFlowDiffOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get flow diff o k response has a 3xx status code
+func (o *GetFlowDiffOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get flow diff o k response has a 4xx status code
+func (o *GetFlowDiffOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get flow diff o k response has a 5xx status code
+func (o *GetFlowDiffOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get flow diff o k response a status code equal to that given
+func (o *GetFlowDiffOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the get flow diff o k response
+func (o *GetFlowDiffOK) Code() int {
+	return 200
+}
+
 func (o *GetFlowDiffOK) Error() string {
 	return fmt.Sprintf("[GET /buckets/{bucketId}/flows/{flowId}/diff/{versionA}/{versionB}][%d] getFlowDiffOK  %+v", 200, o.Payload)
 }
+
+func (o *GetFlowDiffOK) String() string {
+	return fmt.Sprintf("[GET /buckets/{bucketId}/flows/{flowId}/diff/{versionA}/{versionB}][%d] getFlowDiffOK  %+v", 200, o.Payload)
+}
+
 func (o *GetFlowDiffOK) GetPayload() *models.VersionedFlowDifference {
 	return o.Payload
 }
@@ -101,14 +137,49 @@ func NewGetFlowDiffBadRequest() *GetFlowDiffBadRequest {
 	return &GetFlowDiffBadRequest{}
 }
 
-/* GetFlowDiffBadRequest describes a response with status code 400, with default header values.
+/*
+GetFlowDiffBadRequest describes a response with status code 400, with default header values.
 
 NiFi Registry was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type GetFlowDiffBadRequest struct {
 }
 
+// IsSuccess returns true when this get flow diff bad request response has a 2xx status code
+func (o *GetFlowDiffBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get flow diff bad request response has a 3xx status code
+func (o *GetFlowDiffBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get flow diff bad request response has a 4xx status code
+func (o *GetFlowDiffBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get flow diff bad request response has a 5xx status code
+func (o *GetFlowDiffBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get flow diff bad request response a status code equal to that given
+func (o *GetFlowDiffBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the get flow diff bad request response
+func (o *GetFlowDiffBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetFlowDiffBadRequest) Error() string {
+	return fmt.Sprintf("[GET /buckets/{bucketId}/flows/{flowId}/diff/{versionA}/{versionB}][%d] getFlowDiffBadRequest ", 400)
+}
+
+func (o *GetFlowDiffBadRequest) String() string {
 	return fmt.Sprintf("[GET /buckets/{bucketId}/flows/{flowId}/diff/{versionA}/{versionB}][%d] getFlowDiffBadRequest ", 400)
 }
 
@@ -122,14 +193,49 @@ func NewGetFlowDiffUnauthorized() *GetFlowDiffUnauthorized {
 	return &GetFlowDiffUnauthorized{}
 }
 
-/* GetFlowDiffUnauthorized describes a response with status code 401, with default header values.
+/*
+GetFlowDiffUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type GetFlowDiffUnauthorized struct {
 }
 
+// IsSuccess returns true when this get flow diff unauthorized response has a 2xx status code
+func (o *GetFlowDiffUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get flow diff unauthorized response has a 3xx status code
+func (o *GetFlowDiffUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get flow diff unauthorized response has a 4xx status code
+func (o *GetFlowDiffUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get flow diff unauthorized response has a 5xx status code
+func (o *GetFlowDiffUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get flow diff unauthorized response a status code equal to that given
+func (o *GetFlowDiffUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the get flow diff unauthorized response
+func (o *GetFlowDiffUnauthorized) Code() int {
+	return 401
+}
+
 func (o *GetFlowDiffUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /buckets/{bucketId}/flows/{flowId}/diff/{versionA}/{versionB}][%d] getFlowDiffUnauthorized ", 401)
+}
+
+func (o *GetFlowDiffUnauthorized) String() string {
 	return fmt.Sprintf("[GET /buckets/{bucketId}/flows/{flowId}/diff/{versionA}/{versionB}][%d] getFlowDiffUnauthorized ", 401)
 }
 
@@ -143,14 +249,49 @@ func NewGetFlowDiffForbidden() *GetFlowDiffForbidden {
 	return &GetFlowDiffForbidden{}
 }
 
-/* GetFlowDiffForbidden describes a response with status code 403, with default header values.
+/*
+GetFlowDiffForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type GetFlowDiffForbidden struct {
 }
 
+// IsSuccess returns true when this get flow diff forbidden response has a 2xx status code
+func (o *GetFlowDiffForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get flow diff forbidden response has a 3xx status code
+func (o *GetFlowDiffForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get flow diff forbidden response has a 4xx status code
+func (o *GetFlowDiffForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get flow diff forbidden response has a 5xx status code
+func (o *GetFlowDiffForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get flow diff forbidden response a status code equal to that given
+func (o *GetFlowDiffForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the get flow diff forbidden response
+func (o *GetFlowDiffForbidden) Code() int {
+	return 403
+}
+
 func (o *GetFlowDiffForbidden) Error() string {
+	return fmt.Sprintf("[GET /buckets/{bucketId}/flows/{flowId}/diff/{versionA}/{versionB}][%d] getFlowDiffForbidden ", 403)
+}
+
+func (o *GetFlowDiffForbidden) String() string {
 	return fmt.Sprintf("[GET /buckets/{bucketId}/flows/{flowId}/diff/{versionA}/{versionB}][%d] getFlowDiffForbidden ", 403)
 }
 
@@ -164,14 +305,49 @@ func NewGetFlowDiffNotFound() *GetFlowDiffNotFound {
 	return &GetFlowDiffNotFound{}
 }
 
-/* GetFlowDiffNotFound describes a response with status code 404, with default header values.
+/*
+GetFlowDiffNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type GetFlowDiffNotFound struct {
 }
 
+// IsSuccess returns true when this get flow diff not found response has a 2xx status code
+func (o *GetFlowDiffNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get flow diff not found response has a 3xx status code
+func (o *GetFlowDiffNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get flow diff not found response has a 4xx status code
+func (o *GetFlowDiffNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get flow diff not found response has a 5xx status code
+func (o *GetFlowDiffNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get flow diff not found response a status code equal to that given
+func (o *GetFlowDiffNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+// Code gets the status code for the get flow diff not found response
+func (o *GetFlowDiffNotFound) Code() int {
+	return 404
+}
+
 func (o *GetFlowDiffNotFound) Error() string {
+	return fmt.Sprintf("[GET /buckets/{bucketId}/flows/{flowId}/diff/{versionA}/{versionB}][%d] getFlowDiffNotFound ", 404)
+}
+
+func (o *GetFlowDiffNotFound) String() string {
 	return fmt.Sprintf("[GET /buckets/{bucketId}/flows/{flowId}/diff/{versionA}/{versionB}][%d] getFlowDiffNotFound ", 404)
 }
 
@@ -185,14 +361,49 @@ func NewGetFlowDiffConflict() *GetFlowDiffConflict {
 	return &GetFlowDiffConflict{}
 }
 
-/* GetFlowDiffConflict describes a response with status code 409, with default header values.
+/*
+GetFlowDiffConflict describes a response with status code 409, with default header values.
 
 NiFi Registry was unable to complete the request because it assumes a server state that is not valid.
 */
 type GetFlowDiffConflict struct {
 }
 
+// IsSuccess returns true when this get flow diff conflict response has a 2xx status code
+func (o *GetFlowDiffConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get flow diff conflict response has a 3xx status code
+func (o *GetFlowDiffConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get flow diff conflict response has a 4xx status code
+func (o *GetFlowDiffConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get flow diff conflict response has a 5xx status code
+func (o *GetFlowDiffConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get flow diff conflict response a status code equal to that given
+func (o *GetFlowDiffConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the get flow diff conflict response
+func (o *GetFlowDiffConflict) Code() int {
+	return 409
+}
+
 func (o *GetFlowDiffConflict) Error() string {
+	return fmt.Sprintf("[GET /buckets/{bucketId}/flows/{flowId}/diff/{versionA}/{versionB}][%d] getFlowDiffConflict ", 409)
+}
+
+func (o *GetFlowDiffConflict) String() string {
 	return fmt.Sprintf("[GET /buckets/{bucketId}/flows/{flowId}/diff/{versionA}/{versionB}][%d] getFlowDiffConflict ", 409)
 }
 

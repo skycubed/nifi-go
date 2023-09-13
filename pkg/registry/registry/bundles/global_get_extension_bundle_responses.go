@@ -60,7 +60,7 @@ func (o *GlobalGetExtensionBundleReader) ReadResponse(response runtime.ClientRes
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /bundles/{bundleId}] globalGetExtensionBundle", response, response.Code())
 	}
 }
 
@@ -69,7 +69,8 @@ func NewGlobalGetExtensionBundleOK() *GlobalGetExtensionBundleOK {
 	return &GlobalGetExtensionBundleOK{}
 }
 
-/* GlobalGetExtensionBundleOK describes a response with status code 200, with default header values.
+/*
+GlobalGetExtensionBundleOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,44 @@ type GlobalGetExtensionBundleOK struct {
 	Payload *models.ExtensionBundle
 }
 
+// IsSuccess returns true when this global get extension bundle o k response has a 2xx status code
+func (o *GlobalGetExtensionBundleOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this global get extension bundle o k response has a 3xx status code
+func (o *GlobalGetExtensionBundleOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this global get extension bundle o k response has a 4xx status code
+func (o *GlobalGetExtensionBundleOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this global get extension bundle o k response has a 5xx status code
+func (o *GlobalGetExtensionBundleOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this global get extension bundle o k response a status code equal to that given
+func (o *GlobalGetExtensionBundleOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the global get extension bundle o k response
+func (o *GlobalGetExtensionBundleOK) Code() int {
+	return 200
+}
+
 func (o *GlobalGetExtensionBundleOK) Error() string {
 	return fmt.Sprintf("[GET /bundles/{bundleId}][%d] globalGetExtensionBundleOK  %+v", 200, o.Payload)
 }
+
+func (o *GlobalGetExtensionBundleOK) String() string {
+	return fmt.Sprintf("[GET /bundles/{bundleId}][%d] globalGetExtensionBundleOK  %+v", 200, o.Payload)
+}
+
 func (o *GlobalGetExtensionBundleOK) GetPayload() *models.ExtensionBundle {
 	return o.Payload
 }
@@ -101,14 +137,49 @@ func NewGlobalGetExtensionBundleBadRequest() *GlobalGetExtensionBundleBadRequest
 	return &GlobalGetExtensionBundleBadRequest{}
 }
 
-/* GlobalGetExtensionBundleBadRequest describes a response with status code 400, with default header values.
+/*
+GlobalGetExtensionBundleBadRequest describes a response with status code 400, with default header values.
 
 NiFi Registry was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type GlobalGetExtensionBundleBadRequest struct {
 }
 
+// IsSuccess returns true when this global get extension bundle bad request response has a 2xx status code
+func (o *GlobalGetExtensionBundleBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this global get extension bundle bad request response has a 3xx status code
+func (o *GlobalGetExtensionBundleBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this global get extension bundle bad request response has a 4xx status code
+func (o *GlobalGetExtensionBundleBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this global get extension bundle bad request response has a 5xx status code
+func (o *GlobalGetExtensionBundleBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this global get extension bundle bad request response a status code equal to that given
+func (o *GlobalGetExtensionBundleBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the global get extension bundle bad request response
+func (o *GlobalGetExtensionBundleBadRequest) Code() int {
+	return 400
+}
+
 func (o *GlobalGetExtensionBundleBadRequest) Error() string {
+	return fmt.Sprintf("[GET /bundles/{bundleId}][%d] globalGetExtensionBundleBadRequest ", 400)
+}
+
+func (o *GlobalGetExtensionBundleBadRequest) String() string {
 	return fmt.Sprintf("[GET /bundles/{bundleId}][%d] globalGetExtensionBundleBadRequest ", 400)
 }
 
@@ -122,14 +193,49 @@ func NewGlobalGetExtensionBundleUnauthorized() *GlobalGetExtensionBundleUnauthor
 	return &GlobalGetExtensionBundleUnauthorized{}
 }
 
-/* GlobalGetExtensionBundleUnauthorized describes a response with status code 401, with default header values.
+/*
+GlobalGetExtensionBundleUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type GlobalGetExtensionBundleUnauthorized struct {
 }
 
+// IsSuccess returns true when this global get extension bundle unauthorized response has a 2xx status code
+func (o *GlobalGetExtensionBundleUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this global get extension bundle unauthorized response has a 3xx status code
+func (o *GlobalGetExtensionBundleUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this global get extension bundle unauthorized response has a 4xx status code
+func (o *GlobalGetExtensionBundleUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this global get extension bundle unauthorized response has a 5xx status code
+func (o *GlobalGetExtensionBundleUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this global get extension bundle unauthorized response a status code equal to that given
+func (o *GlobalGetExtensionBundleUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the global get extension bundle unauthorized response
+func (o *GlobalGetExtensionBundleUnauthorized) Code() int {
+	return 401
+}
+
 func (o *GlobalGetExtensionBundleUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /bundles/{bundleId}][%d] globalGetExtensionBundleUnauthorized ", 401)
+}
+
+func (o *GlobalGetExtensionBundleUnauthorized) String() string {
 	return fmt.Sprintf("[GET /bundles/{bundleId}][%d] globalGetExtensionBundleUnauthorized ", 401)
 }
 
@@ -143,14 +249,49 @@ func NewGlobalGetExtensionBundleForbidden() *GlobalGetExtensionBundleForbidden {
 	return &GlobalGetExtensionBundleForbidden{}
 }
 
-/* GlobalGetExtensionBundleForbidden describes a response with status code 403, with default header values.
+/*
+GlobalGetExtensionBundleForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type GlobalGetExtensionBundleForbidden struct {
 }
 
+// IsSuccess returns true when this global get extension bundle forbidden response has a 2xx status code
+func (o *GlobalGetExtensionBundleForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this global get extension bundle forbidden response has a 3xx status code
+func (o *GlobalGetExtensionBundleForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this global get extension bundle forbidden response has a 4xx status code
+func (o *GlobalGetExtensionBundleForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this global get extension bundle forbidden response has a 5xx status code
+func (o *GlobalGetExtensionBundleForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this global get extension bundle forbidden response a status code equal to that given
+func (o *GlobalGetExtensionBundleForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the global get extension bundle forbidden response
+func (o *GlobalGetExtensionBundleForbidden) Code() int {
+	return 403
+}
+
 func (o *GlobalGetExtensionBundleForbidden) Error() string {
+	return fmt.Sprintf("[GET /bundles/{bundleId}][%d] globalGetExtensionBundleForbidden ", 403)
+}
+
+func (o *GlobalGetExtensionBundleForbidden) String() string {
 	return fmt.Sprintf("[GET /bundles/{bundleId}][%d] globalGetExtensionBundleForbidden ", 403)
 }
 
@@ -164,14 +305,49 @@ func NewGlobalGetExtensionBundleNotFound() *GlobalGetExtensionBundleNotFound {
 	return &GlobalGetExtensionBundleNotFound{}
 }
 
-/* GlobalGetExtensionBundleNotFound describes a response with status code 404, with default header values.
+/*
+GlobalGetExtensionBundleNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type GlobalGetExtensionBundleNotFound struct {
 }
 
+// IsSuccess returns true when this global get extension bundle not found response has a 2xx status code
+func (o *GlobalGetExtensionBundleNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this global get extension bundle not found response has a 3xx status code
+func (o *GlobalGetExtensionBundleNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this global get extension bundle not found response has a 4xx status code
+func (o *GlobalGetExtensionBundleNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this global get extension bundle not found response has a 5xx status code
+func (o *GlobalGetExtensionBundleNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this global get extension bundle not found response a status code equal to that given
+func (o *GlobalGetExtensionBundleNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+// Code gets the status code for the global get extension bundle not found response
+func (o *GlobalGetExtensionBundleNotFound) Code() int {
+	return 404
+}
+
 func (o *GlobalGetExtensionBundleNotFound) Error() string {
+	return fmt.Sprintf("[GET /bundles/{bundleId}][%d] globalGetExtensionBundleNotFound ", 404)
+}
+
+func (o *GlobalGetExtensionBundleNotFound) String() string {
 	return fmt.Sprintf("[GET /bundles/{bundleId}][%d] globalGetExtensionBundleNotFound ", 404)
 }
 
@@ -185,14 +361,49 @@ func NewGlobalGetExtensionBundleConflict() *GlobalGetExtensionBundleConflict {
 	return &GlobalGetExtensionBundleConflict{}
 }
 
-/* GlobalGetExtensionBundleConflict describes a response with status code 409, with default header values.
+/*
+GlobalGetExtensionBundleConflict describes a response with status code 409, with default header values.
 
 NiFi Registry was unable to complete the request because it assumes a server state that is not valid.
 */
 type GlobalGetExtensionBundleConflict struct {
 }
 
+// IsSuccess returns true when this global get extension bundle conflict response has a 2xx status code
+func (o *GlobalGetExtensionBundleConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this global get extension bundle conflict response has a 3xx status code
+func (o *GlobalGetExtensionBundleConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this global get extension bundle conflict response has a 4xx status code
+func (o *GlobalGetExtensionBundleConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this global get extension bundle conflict response has a 5xx status code
+func (o *GlobalGetExtensionBundleConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this global get extension bundle conflict response a status code equal to that given
+func (o *GlobalGetExtensionBundleConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the global get extension bundle conflict response
+func (o *GlobalGetExtensionBundleConflict) Code() int {
+	return 409
+}
+
 func (o *GlobalGetExtensionBundleConflict) Error() string {
+	return fmt.Sprintf("[GET /bundles/{bundleId}][%d] globalGetExtensionBundleConflict ", 409)
+}
+
+func (o *GlobalGetExtensionBundleConflict) String() string {
 	return fmt.Sprintf("[GET /bundles/{bundleId}][%d] globalGetExtensionBundleConflict ", 409)
 }
 

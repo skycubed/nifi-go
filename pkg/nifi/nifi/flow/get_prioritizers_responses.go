@@ -54,7 +54,7 @@ func (o *GetPrioritizersReader) ReadResponse(response runtime.ClientResponse, co
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /flow/prioritizers] getPrioritizers", response, response.Code())
 	}
 }
 
@@ -63,7 +63,8 @@ func NewGetPrioritizersOK() *GetPrioritizersOK {
 	return &GetPrioritizersOK{}
 }
 
-/* GetPrioritizersOK describes a response with status code 200, with default header values.
+/*
+GetPrioritizersOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -71,9 +72,44 @@ type GetPrioritizersOK struct {
 	Payload *models.PrioritizerTypesEntity
 }
 
+// IsSuccess returns true when this get prioritizers o k response has a 2xx status code
+func (o *GetPrioritizersOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get prioritizers o k response has a 3xx status code
+func (o *GetPrioritizersOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get prioritizers o k response has a 4xx status code
+func (o *GetPrioritizersOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get prioritizers o k response has a 5xx status code
+func (o *GetPrioritizersOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get prioritizers o k response a status code equal to that given
+func (o *GetPrioritizersOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the get prioritizers o k response
+func (o *GetPrioritizersOK) Code() int {
+	return 200
+}
+
 func (o *GetPrioritizersOK) Error() string {
 	return fmt.Sprintf("[GET /flow/prioritizers][%d] getPrioritizersOK  %+v", 200, o.Payload)
 }
+
+func (o *GetPrioritizersOK) String() string {
+	return fmt.Sprintf("[GET /flow/prioritizers][%d] getPrioritizersOK  %+v", 200, o.Payload)
+}
+
 func (o *GetPrioritizersOK) GetPayload() *models.PrioritizerTypesEntity {
 	return o.Payload
 }
@@ -95,14 +131,49 @@ func NewGetPrioritizersBadRequest() *GetPrioritizersBadRequest {
 	return &GetPrioritizersBadRequest{}
 }
 
-/* GetPrioritizersBadRequest describes a response with status code 400, with default header values.
+/*
+GetPrioritizersBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type GetPrioritizersBadRequest struct {
 }
 
+// IsSuccess returns true when this get prioritizers bad request response has a 2xx status code
+func (o *GetPrioritizersBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get prioritizers bad request response has a 3xx status code
+func (o *GetPrioritizersBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get prioritizers bad request response has a 4xx status code
+func (o *GetPrioritizersBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get prioritizers bad request response has a 5xx status code
+func (o *GetPrioritizersBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get prioritizers bad request response a status code equal to that given
+func (o *GetPrioritizersBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the get prioritizers bad request response
+func (o *GetPrioritizersBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetPrioritizersBadRequest) Error() string {
+	return fmt.Sprintf("[GET /flow/prioritizers][%d] getPrioritizersBadRequest ", 400)
+}
+
+func (o *GetPrioritizersBadRequest) String() string {
 	return fmt.Sprintf("[GET /flow/prioritizers][%d] getPrioritizersBadRequest ", 400)
 }
 
@@ -116,14 +187,49 @@ func NewGetPrioritizersUnauthorized() *GetPrioritizersUnauthorized {
 	return &GetPrioritizersUnauthorized{}
 }
 
-/* GetPrioritizersUnauthorized describes a response with status code 401, with default header values.
+/*
+GetPrioritizersUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type GetPrioritizersUnauthorized struct {
 }
 
+// IsSuccess returns true when this get prioritizers unauthorized response has a 2xx status code
+func (o *GetPrioritizersUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get prioritizers unauthorized response has a 3xx status code
+func (o *GetPrioritizersUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get prioritizers unauthorized response has a 4xx status code
+func (o *GetPrioritizersUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get prioritizers unauthorized response has a 5xx status code
+func (o *GetPrioritizersUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get prioritizers unauthorized response a status code equal to that given
+func (o *GetPrioritizersUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the get prioritizers unauthorized response
+func (o *GetPrioritizersUnauthorized) Code() int {
+	return 401
+}
+
 func (o *GetPrioritizersUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /flow/prioritizers][%d] getPrioritizersUnauthorized ", 401)
+}
+
+func (o *GetPrioritizersUnauthorized) String() string {
 	return fmt.Sprintf("[GET /flow/prioritizers][%d] getPrioritizersUnauthorized ", 401)
 }
 
@@ -137,14 +243,49 @@ func NewGetPrioritizersForbidden() *GetPrioritizersForbidden {
 	return &GetPrioritizersForbidden{}
 }
 
-/* GetPrioritizersForbidden describes a response with status code 403, with default header values.
+/*
+GetPrioritizersForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type GetPrioritizersForbidden struct {
 }
 
+// IsSuccess returns true when this get prioritizers forbidden response has a 2xx status code
+func (o *GetPrioritizersForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get prioritizers forbidden response has a 3xx status code
+func (o *GetPrioritizersForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get prioritizers forbidden response has a 4xx status code
+func (o *GetPrioritizersForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get prioritizers forbidden response has a 5xx status code
+func (o *GetPrioritizersForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get prioritizers forbidden response a status code equal to that given
+func (o *GetPrioritizersForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the get prioritizers forbidden response
+func (o *GetPrioritizersForbidden) Code() int {
+	return 403
+}
+
 func (o *GetPrioritizersForbidden) Error() string {
+	return fmt.Sprintf("[GET /flow/prioritizers][%d] getPrioritizersForbidden ", 403)
+}
+
+func (o *GetPrioritizersForbidden) String() string {
 	return fmt.Sprintf("[GET /flow/prioritizers][%d] getPrioritizersForbidden ", 403)
 }
 
@@ -158,14 +299,49 @@ func NewGetPrioritizersConflict() *GetPrioritizersConflict {
 	return &GetPrioritizersConflict{}
 }
 
-/* GetPrioritizersConflict describes a response with status code 409, with default header values.
+/*
+GetPrioritizersConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type GetPrioritizersConflict struct {
 }
 
+// IsSuccess returns true when this get prioritizers conflict response has a 2xx status code
+func (o *GetPrioritizersConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get prioritizers conflict response has a 3xx status code
+func (o *GetPrioritizersConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get prioritizers conflict response has a 4xx status code
+func (o *GetPrioritizersConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get prioritizers conflict response has a 5xx status code
+func (o *GetPrioritizersConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get prioritizers conflict response a status code equal to that given
+func (o *GetPrioritizersConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the get prioritizers conflict response
+func (o *GetPrioritizersConflict) Code() int {
+	return 409
+}
+
 func (o *GetPrioritizersConflict) Error() string {
+	return fmt.Sprintf("[GET /flow/prioritizers][%d] getPrioritizersConflict ", 409)
+}
+
+func (o *GetPrioritizersConflict) String() string {
 	return fmt.Sprintf("[GET /flow/prioritizers][%d] getPrioritizersConflict ", 409)
 }
 

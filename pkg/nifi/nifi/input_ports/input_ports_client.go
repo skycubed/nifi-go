@@ -40,7 +40,7 @@ type ClientService interface {
 }
 
 /*
-  GetInputPort gets an input port
+GetInputPort gets an input port
 */
 func (a *Client) GetInputPort(params *GetInputPortParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetInputPortOK, error) {
 	// TODO: Validate the params before sending
@@ -79,7 +79,7 @@ func (a *Client) GetInputPort(params *GetInputPortParams, authInfo runtime.Clien
 }
 
 /*
-  RemoveInputPort deletes an input port
+RemoveInputPort deletes an input port
 */
 func (a *Client) RemoveInputPort(params *RemoveInputPortParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*RemoveInputPortOK, error) {
 	// TODO: Validate the params before sending
@@ -118,7 +118,7 @@ func (a *Client) RemoveInputPort(params *RemoveInputPortParams, authInfo runtime
 }
 
 /*
-  UpdateInputPort updates an input port
+UpdateInputPort updates an input port
 */
 func (a *Client) UpdateInputPort(params *UpdateInputPortParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateInputPortOK, error) {
 	// TODO: Validate the params before sending

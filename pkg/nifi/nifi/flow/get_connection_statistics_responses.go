@@ -60,7 +60,7 @@ func (o *GetConnectionStatisticsReader) ReadResponse(response runtime.ClientResp
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /flow/connections/{id}/statistics] getConnectionStatistics", response, response.Code())
 	}
 }
 
@@ -69,7 +69,8 @@ func NewGetConnectionStatisticsOK() *GetConnectionStatisticsOK {
 	return &GetConnectionStatisticsOK{}
 }
 
-/* GetConnectionStatisticsOK describes a response with status code 200, with default header values.
+/*
+GetConnectionStatisticsOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,44 @@ type GetConnectionStatisticsOK struct {
 	Payload *models.ConnectionStatisticsEntity
 }
 
+// IsSuccess returns true when this get connection statistics o k response has a 2xx status code
+func (o *GetConnectionStatisticsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get connection statistics o k response has a 3xx status code
+func (o *GetConnectionStatisticsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get connection statistics o k response has a 4xx status code
+func (o *GetConnectionStatisticsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get connection statistics o k response has a 5xx status code
+func (o *GetConnectionStatisticsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get connection statistics o k response a status code equal to that given
+func (o *GetConnectionStatisticsOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the get connection statistics o k response
+func (o *GetConnectionStatisticsOK) Code() int {
+	return 200
+}
+
 func (o *GetConnectionStatisticsOK) Error() string {
 	return fmt.Sprintf("[GET /flow/connections/{id}/statistics][%d] getConnectionStatisticsOK  %+v", 200, o.Payload)
 }
+
+func (o *GetConnectionStatisticsOK) String() string {
+	return fmt.Sprintf("[GET /flow/connections/{id}/statistics][%d] getConnectionStatisticsOK  %+v", 200, o.Payload)
+}
+
 func (o *GetConnectionStatisticsOK) GetPayload() *models.ConnectionStatisticsEntity {
 	return o.Payload
 }
@@ -101,14 +137,49 @@ func NewGetConnectionStatisticsBadRequest() *GetConnectionStatisticsBadRequest {
 	return &GetConnectionStatisticsBadRequest{}
 }
 
-/* GetConnectionStatisticsBadRequest describes a response with status code 400, with default header values.
+/*
+GetConnectionStatisticsBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type GetConnectionStatisticsBadRequest struct {
 }
 
+// IsSuccess returns true when this get connection statistics bad request response has a 2xx status code
+func (o *GetConnectionStatisticsBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get connection statistics bad request response has a 3xx status code
+func (o *GetConnectionStatisticsBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get connection statistics bad request response has a 4xx status code
+func (o *GetConnectionStatisticsBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get connection statistics bad request response has a 5xx status code
+func (o *GetConnectionStatisticsBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get connection statistics bad request response a status code equal to that given
+func (o *GetConnectionStatisticsBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the get connection statistics bad request response
+func (o *GetConnectionStatisticsBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetConnectionStatisticsBadRequest) Error() string {
+	return fmt.Sprintf("[GET /flow/connections/{id}/statistics][%d] getConnectionStatisticsBadRequest ", 400)
+}
+
+func (o *GetConnectionStatisticsBadRequest) String() string {
 	return fmt.Sprintf("[GET /flow/connections/{id}/statistics][%d] getConnectionStatisticsBadRequest ", 400)
 }
 
@@ -122,14 +193,49 @@ func NewGetConnectionStatisticsUnauthorized() *GetConnectionStatisticsUnauthoriz
 	return &GetConnectionStatisticsUnauthorized{}
 }
 
-/* GetConnectionStatisticsUnauthorized describes a response with status code 401, with default header values.
+/*
+GetConnectionStatisticsUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type GetConnectionStatisticsUnauthorized struct {
 }
 
+// IsSuccess returns true when this get connection statistics unauthorized response has a 2xx status code
+func (o *GetConnectionStatisticsUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get connection statistics unauthorized response has a 3xx status code
+func (o *GetConnectionStatisticsUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get connection statistics unauthorized response has a 4xx status code
+func (o *GetConnectionStatisticsUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get connection statistics unauthorized response has a 5xx status code
+func (o *GetConnectionStatisticsUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get connection statistics unauthorized response a status code equal to that given
+func (o *GetConnectionStatisticsUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the get connection statistics unauthorized response
+func (o *GetConnectionStatisticsUnauthorized) Code() int {
+	return 401
+}
+
 func (o *GetConnectionStatisticsUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /flow/connections/{id}/statistics][%d] getConnectionStatisticsUnauthorized ", 401)
+}
+
+func (o *GetConnectionStatisticsUnauthorized) String() string {
 	return fmt.Sprintf("[GET /flow/connections/{id}/statistics][%d] getConnectionStatisticsUnauthorized ", 401)
 }
 
@@ -143,14 +249,49 @@ func NewGetConnectionStatisticsForbidden() *GetConnectionStatisticsForbidden {
 	return &GetConnectionStatisticsForbidden{}
 }
 
-/* GetConnectionStatisticsForbidden describes a response with status code 403, with default header values.
+/*
+GetConnectionStatisticsForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type GetConnectionStatisticsForbidden struct {
 }
 
+// IsSuccess returns true when this get connection statistics forbidden response has a 2xx status code
+func (o *GetConnectionStatisticsForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get connection statistics forbidden response has a 3xx status code
+func (o *GetConnectionStatisticsForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get connection statistics forbidden response has a 4xx status code
+func (o *GetConnectionStatisticsForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get connection statistics forbidden response has a 5xx status code
+func (o *GetConnectionStatisticsForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get connection statistics forbidden response a status code equal to that given
+func (o *GetConnectionStatisticsForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the get connection statistics forbidden response
+func (o *GetConnectionStatisticsForbidden) Code() int {
+	return 403
+}
+
 func (o *GetConnectionStatisticsForbidden) Error() string {
+	return fmt.Sprintf("[GET /flow/connections/{id}/statistics][%d] getConnectionStatisticsForbidden ", 403)
+}
+
+func (o *GetConnectionStatisticsForbidden) String() string {
 	return fmt.Sprintf("[GET /flow/connections/{id}/statistics][%d] getConnectionStatisticsForbidden ", 403)
 }
 
@@ -164,14 +305,49 @@ func NewGetConnectionStatisticsNotFound() *GetConnectionStatisticsNotFound {
 	return &GetConnectionStatisticsNotFound{}
 }
 
-/* GetConnectionStatisticsNotFound describes a response with status code 404, with default header values.
+/*
+GetConnectionStatisticsNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type GetConnectionStatisticsNotFound struct {
 }
 
+// IsSuccess returns true when this get connection statistics not found response has a 2xx status code
+func (o *GetConnectionStatisticsNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get connection statistics not found response has a 3xx status code
+func (o *GetConnectionStatisticsNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get connection statistics not found response has a 4xx status code
+func (o *GetConnectionStatisticsNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get connection statistics not found response has a 5xx status code
+func (o *GetConnectionStatisticsNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get connection statistics not found response a status code equal to that given
+func (o *GetConnectionStatisticsNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+// Code gets the status code for the get connection statistics not found response
+func (o *GetConnectionStatisticsNotFound) Code() int {
+	return 404
+}
+
 func (o *GetConnectionStatisticsNotFound) Error() string {
+	return fmt.Sprintf("[GET /flow/connections/{id}/statistics][%d] getConnectionStatisticsNotFound ", 404)
+}
+
+func (o *GetConnectionStatisticsNotFound) String() string {
 	return fmt.Sprintf("[GET /flow/connections/{id}/statistics][%d] getConnectionStatisticsNotFound ", 404)
 }
 
@@ -185,14 +361,49 @@ func NewGetConnectionStatisticsConflict() *GetConnectionStatisticsConflict {
 	return &GetConnectionStatisticsConflict{}
 }
 
-/* GetConnectionStatisticsConflict describes a response with status code 409, with default header values.
+/*
+GetConnectionStatisticsConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type GetConnectionStatisticsConflict struct {
 }
 
+// IsSuccess returns true when this get connection statistics conflict response has a 2xx status code
+func (o *GetConnectionStatisticsConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get connection statistics conflict response has a 3xx status code
+func (o *GetConnectionStatisticsConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get connection statistics conflict response has a 4xx status code
+func (o *GetConnectionStatisticsConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get connection statistics conflict response has a 5xx status code
+func (o *GetConnectionStatisticsConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get connection statistics conflict response a status code equal to that given
+func (o *GetConnectionStatisticsConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the get connection statistics conflict response
+func (o *GetConnectionStatisticsConflict) Code() int {
+	return 409
+}
+
 func (o *GetConnectionStatisticsConflict) Error() string {
+	return fmt.Sprintf("[GET /flow/connections/{id}/statistics][%d] getConnectionStatisticsConflict ", 409)
+}
+
+func (o *GetConnectionStatisticsConflict) String() string {
 	return fmt.Sprintf("[GET /flow/connections/{id}/statistics][%d] getConnectionStatisticsConflict ", 409)
 }
 

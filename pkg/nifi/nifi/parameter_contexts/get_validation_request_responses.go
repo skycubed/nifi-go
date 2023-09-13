@@ -60,7 +60,7 @@ func (o *GetValidationRequestReader) ReadResponse(response runtime.ClientRespons
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /parameter-contexts/{contextId}/validation-requests/{id}] getValidationRequest", response, response.Code())
 	}
 }
 
@@ -69,7 +69,8 @@ func NewGetValidationRequestOK() *GetValidationRequestOK {
 	return &GetValidationRequestOK{}
 }
 
-/* GetValidationRequestOK describes a response with status code 200, with default header values.
+/*
+GetValidationRequestOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,44 @@ type GetValidationRequestOK struct {
 	Payload *models.ParameterContextValidationRequestEntity
 }
 
+// IsSuccess returns true when this get validation request o k response has a 2xx status code
+func (o *GetValidationRequestOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get validation request o k response has a 3xx status code
+func (o *GetValidationRequestOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get validation request o k response has a 4xx status code
+func (o *GetValidationRequestOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get validation request o k response has a 5xx status code
+func (o *GetValidationRequestOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get validation request o k response a status code equal to that given
+func (o *GetValidationRequestOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the get validation request o k response
+func (o *GetValidationRequestOK) Code() int {
+	return 200
+}
+
 func (o *GetValidationRequestOK) Error() string {
 	return fmt.Sprintf("[GET /parameter-contexts/{contextId}/validation-requests/{id}][%d] getValidationRequestOK  %+v", 200, o.Payload)
 }
+
+func (o *GetValidationRequestOK) String() string {
+	return fmt.Sprintf("[GET /parameter-contexts/{contextId}/validation-requests/{id}][%d] getValidationRequestOK  %+v", 200, o.Payload)
+}
+
 func (o *GetValidationRequestOK) GetPayload() *models.ParameterContextValidationRequestEntity {
 	return o.Payload
 }
@@ -101,14 +137,49 @@ func NewGetValidationRequestBadRequest() *GetValidationRequestBadRequest {
 	return &GetValidationRequestBadRequest{}
 }
 
-/* GetValidationRequestBadRequest describes a response with status code 400, with default header values.
+/*
+GetValidationRequestBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type GetValidationRequestBadRequest struct {
 }
 
+// IsSuccess returns true when this get validation request bad request response has a 2xx status code
+func (o *GetValidationRequestBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get validation request bad request response has a 3xx status code
+func (o *GetValidationRequestBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get validation request bad request response has a 4xx status code
+func (o *GetValidationRequestBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get validation request bad request response has a 5xx status code
+func (o *GetValidationRequestBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get validation request bad request response a status code equal to that given
+func (o *GetValidationRequestBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the get validation request bad request response
+func (o *GetValidationRequestBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetValidationRequestBadRequest) Error() string {
+	return fmt.Sprintf("[GET /parameter-contexts/{contextId}/validation-requests/{id}][%d] getValidationRequestBadRequest ", 400)
+}
+
+func (o *GetValidationRequestBadRequest) String() string {
 	return fmt.Sprintf("[GET /parameter-contexts/{contextId}/validation-requests/{id}][%d] getValidationRequestBadRequest ", 400)
 }
 
@@ -122,14 +193,49 @@ func NewGetValidationRequestUnauthorized() *GetValidationRequestUnauthorized {
 	return &GetValidationRequestUnauthorized{}
 }
 
-/* GetValidationRequestUnauthorized describes a response with status code 401, with default header values.
+/*
+GetValidationRequestUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type GetValidationRequestUnauthorized struct {
 }
 
+// IsSuccess returns true when this get validation request unauthorized response has a 2xx status code
+func (o *GetValidationRequestUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get validation request unauthorized response has a 3xx status code
+func (o *GetValidationRequestUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get validation request unauthorized response has a 4xx status code
+func (o *GetValidationRequestUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get validation request unauthorized response has a 5xx status code
+func (o *GetValidationRequestUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get validation request unauthorized response a status code equal to that given
+func (o *GetValidationRequestUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the get validation request unauthorized response
+func (o *GetValidationRequestUnauthorized) Code() int {
+	return 401
+}
+
 func (o *GetValidationRequestUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /parameter-contexts/{contextId}/validation-requests/{id}][%d] getValidationRequestUnauthorized ", 401)
+}
+
+func (o *GetValidationRequestUnauthorized) String() string {
 	return fmt.Sprintf("[GET /parameter-contexts/{contextId}/validation-requests/{id}][%d] getValidationRequestUnauthorized ", 401)
 }
 
@@ -143,14 +249,49 @@ func NewGetValidationRequestForbidden() *GetValidationRequestForbidden {
 	return &GetValidationRequestForbidden{}
 }
 
-/* GetValidationRequestForbidden describes a response with status code 403, with default header values.
+/*
+GetValidationRequestForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type GetValidationRequestForbidden struct {
 }
 
+// IsSuccess returns true when this get validation request forbidden response has a 2xx status code
+func (o *GetValidationRequestForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get validation request forbidden response has a 3xx status code
+func (o *GetValidationRequestForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get validation request forbidden response has a 4xx status code
+func (o *GetValidationRequestForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get validation request forbidden response has a 5xx status code
+func (o *GetValidationRequestForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get validation request forbidden response a status code equal to that given
+func (o *GetValidationRequestForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the get validation request forbidden response
+func (o *GetValidationRequestForbidden) Code() int {
+	return 403
+}
+
 func (o *GetValidationRequestForbidden) Error() string {
+	return fmt.Sprintf("[GET /parameter-contexts/{contextId}/validation-requests/{id}][%d] getValidationRequestForbidden ", 403)
+}
+
+func (o *GetValidationRequestForbidden) String() string {
 	return fmt.Sprintf("[GET /parameter-contexts/{contextId}/validation-requests/{id}][%d] getValidationRequestForbidden ", 403)
 }
 
@@ -164,14 +305,49 @@ func NewGetValidationRequestNotFound() *GetValidationRequestNotFound {
 	return &GetValidationRequestNotFound{}
 }
 
-/* GetValidationRequestNotFound describes a response with status code 404, with default header values.
+/*
+GetValidationRequestNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type GetValidationRequestNotFound struct {
 }
 
+// IsSuccess returns true when this get validation request not found response has a 2xx status code
+func (o *GetValidationRequestNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get validation request not found response has a 3xx status code
+func (o *GetValidationRequestNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get validation request not found response has a 4xx status code
+func (o *GetValidationRequestNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get validation request not found response has a 5xx status code
+func (o *GetValidationRequestNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get validation request not found response a status code equal to that given
+func (o *GetValidationRequestNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+// Code gets the status code for the get validation request not found response
+func (o *GetValidationRequestNotFound) Code() int {
+	return 404
+}
+
 func (o *GetValidationRequestNotFound) Error() string {
+	return fmt.Sprintf("[GET /parameter-contexts/{contextId}/validation-requests/{id}][%d] getValidationRequestNotFound ", 404)
+}
+
+func (o *GetValidationRequestNotFound) String() string {
 	return fmt.Sprintf("[GET /parameter-contexts/{contextId}/validation-requests/{id}][%d] getValidationRequestNotFound ", 404)
 }
 
@@ -185,14 +361,49 @@ func NewGetValidationRequestConflict() *GetValidationRequestConflict {
 	return &GetValidationRequestConflict{}
 }
 
-/* GetValidationRequestConflict describes a response with status code 409, with default header values.
+/*
+GetValidationRequestConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type GetValidationRequestConflict struct {
 }
 
+// IsSuccess returns true when this get validation request conflict response has a 2xx status code
+func (o *GetValidationRequestConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get validation request conflict response has a 3xx status code
+func (o *GetValidationRequestConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get validation request conflict response has a 4xx status code
+func (o *GetValidationRequestConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get validation request conflict response has a 5xx status code
+func (o *GetValidationRequestConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get validation request conflict response a status code equal to that given
+func (o *GetValidationRequestConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the get validation request conflict response
+func (o *GetValidationRequestConflict) Code() int {
+	return 409
+}
+
 func (o *GetValidationRequestConflict) Error() string {
+	return fmt.Sprintf("[GET /parameter-contexts/{contextId}/validation-requests/{id}][%d] getValidationRequestConflict ", 409)
+}
+
+func (o *GetValidationRequestConflict) String() string {
 	return fmt.Sprintf("[GET /parameter-contexts/{contextId}/validation-requests/{id}][%d] getValidationRequestConflict ", 409)
 }
 

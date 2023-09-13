@@ -48,7 +48,7 @@ type ClientService interface {
 }
 
 /*
-  CreateAccessPolicy creates access policy
+CreateAccessPolicy creates access policy
 */
 func (a *Client) CreateAccessPolicy(params *CreateAccessPolicyParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateAccessPolicyOK, error) {
 	// TODO: Validate the params before sending
@@ -87,7 +87,7 @@ func (a *Client) CreateAccessPolicy(params *CreateAccessPolicyParams, authInfo r
 }
 
 /*
-  GetAccessPolicies gets all access policies
+GetAccessPolicies gets all access policies
 */
 func (a *Client) GetAccessPolicies(params *GetAccessPoliciesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetAccessPoliciesOK, error) {
 	// TODO: Validate the params before sending
@@ -126,7 +126,7 @@ func (a *Client) GetAccessPolicies(params *GetAccessPoliciesParams, authInfo run
 }
 
 /*
-  GetAccessPolicy gets access policy
+GetAccessPolicy gets access policy
 */
 func (a *Client) GetAccessPolicy(params *GetAccessPolicyParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetAccessPolicyOK, error) {
 	// TODO: Validate the params before sending
@@ -165,9 +165,9 @@ func (a *Client) GetAccessPolicy(params *GetAccessPolicyParams, authInfo runtime
 }
 
 /*
-  GetAccessPolicyForResource gets access policy for resource
+GetAccessPolicyForResource gets access policy for resource
 
-  Gets an access policy for the specified action and resource
+Gets an access policy for the specified action and resource
 */
 func (a *Client) GetAccessPolicyForResource(params *GetAccessPolicyForResourceParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetAccessPolicyForResourceOK, error) {
 	// TODO: Validate the params before sending
@@ -206,9 +206,9 @@ func (a *Client) GetAccessPolicyForResource(params *GetAccessPolicyForResourcePa
 }
 
 /*
-  GetResources gets available resources
+GetResources gets available resources
 
-  Gets the available resources that support access/authorization policies
+Gets the available resources that support access/authorization policies
 */
 func (a *Client) GetResources(params *GetResourcesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetResourcesOK, error) {
 	// TODO: Validate the params before sending
@@ -247,7 +247,7 @@ func (a *Client) GetResources(params *GetResourcesParams, authInfo runtime.Clien
 }
 
 /*
-  RemoveAccessPolicy deletes access policy
+RemoveAccessPolicy deletes access policy
 */
 func (a *Client) RemoveAccessPolicy(params *RemoveAccessPolicyParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*RemoveAccessPolicyOK, error) {
 	// TODO: Validate the params before sending
@@ -286,7 +286,7 @@ func (a *Client) RemoveAccessPolicy(params *RemoveAccessPolicyParams, authInfo r
 }
 
 /*
-  UpdateAccessPolicy updates access policy
+UpdateAccessPolicy updates access policy
 */
 func (a *Client) UpdateAccessPolicy(params *UpdateAccessPolicyParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateAccessPolicyOK, error) {
 	// TODO: Validate the params before sending

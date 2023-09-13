@@ -52,10 +52,12 @@ func NewExportTemplateParamsWithHTTPClient(client *http.Client) *ExportTemplateP
 	}
 }
 
-/* ExportTemplateParams contains all the parameters to send to the API endpoint
-   for the export template operation.
+/*
+ExportTemplateParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the export template operation.
+
+	Typically these are written to a http.Request.
 */
 type ExportTemplateParams struct {
 

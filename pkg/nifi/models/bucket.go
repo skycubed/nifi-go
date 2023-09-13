@@ -213,6 +213,11 @@ func (m *Bucket) contextValidateIdentifier(ctx context.Context, formats strfmt.R
 func (m *Bucket) contextValidateLink(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Link != nil {
+
+		if swag.IsZero(m.Link) { // not required
+			return nil
+		}
+
 		if err := m.Link.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("link")
@@ -229,6 +234,11 @@ func (m *Bucket) contextValidateLink(ctx context.Context, formats strfmt.Registr
 func (m *Bucket) contextValidatePermissions(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Permissions != nil {
+
+		if swag.IsZero(m.Permissions) { // not required
+			return nil
+		}
+
 		if err := m.Permissions.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("permissions")
@@ -245,6 +255,11 @@ func (m *Bucket) contextValidatePermissions(ctx context.Context, formats strfmt.
 func (m *Bucket) contextValidateRevision(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Revision != nil {
+
+		if swag.IsZero(m.Revision) { // not required
+			return nil
+		}
+
 		if err := m.Revision.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("revision")

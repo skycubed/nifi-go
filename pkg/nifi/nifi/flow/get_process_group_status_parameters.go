@@ -53,10 +53,12 @@ func NewGetProcessGroupStatusParamsWithHTTPClient(client *http.Client) *GetProce
 	}
 }
 
-/* GetProcessGroupStatusParams contains all the parameters to send to the API endpoint
-   for the get process group status operation.
+/*
+GetProcessGroupStatusParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get process group status operation.
+
+	Typically these are written to a http.Request.
 */
 type GetProcessGroupStatusParams struct {
 

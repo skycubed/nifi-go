@@ -52,10 +52,12 @@ func NewCreateAccessTokenUsingKerberosTicketParamsWithHTTPClient(client *http.Cl
 	}
 }
 
-/* CreateAccessTokenUsingKerberosTicketParams contains all the parameters to send to the API endpoint
-   for the create access token using kerberos ticket operation.
+/*
+CreateAccessTokenUsingKerberosTicketParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create access token using kerberos ticket operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateAccessTokenUsingKerberosTicketParams struct {
 	timeout    time.Duration

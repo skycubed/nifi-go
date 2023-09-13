@@ -52,10 +52,12 @@ func NewCreateAccessTokenByTryingAllProvidersParamsWithHTTPClient(client *http.C
 	}
 }
 
-/* CreateAccessTokenByTryingAllProvidersParams contains all the parameters to send to the API endpoint
-   for the create access token by trying all providers operation.
+/*
+CreateAccessTokenByTryingAllProvidersParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create access token by trying all providers operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateAccessTokenByTryingAllProvidersParams struct {
 	timeout    time.Duration

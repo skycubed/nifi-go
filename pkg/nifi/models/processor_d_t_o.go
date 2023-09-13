@@ -332,6 +332,11 @@ func (m *ProcessorDTO) ContextValidate(ctx context.Context, formats strfmt.Regis
 func (m *ProcessorDTO) contextValidateBundle(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Bundle != nil {
+
+		if swag.IsZero(m.Bundle) { // not required
+			return nil
+		}
+
 		if err := m.Bundle.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("bundle")
@@ -348,6 +353,11 @@ func (m *ProcessorDTO) contextValidateBundle(ctx context.Context, formats strfmt
 func (m *ProcessorDTO) contextValidateConfig(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Config != nil {
+
+		if swag.IsZero(m.Config) { // not required
+			return nil
+		}
+
 		if err := m.Config.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("config")
@@ -364,6 +374,11 @@ func (m *ProcessorDTO) contextValidateConfig(ctx context.Context, formats strfmt
 func (m *ProcessorDTO) contextValidatePosition(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Position != nil {
+
+		if swag.IsZero(m.Position) { // not required
+			return nil
+		}
+
 		if err := m.Position.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("position")
@@ -382,6 +397,11 @@ func (m *ProcessorDTO) contextValidateRelationships(ctx context.Context, formats
 	for i := 0; i < len(m.Relationships); i++ {
 
 		if m.Relationships[i] != nil {
+
+			if swag.IsZero(m.Relationships[i]) { // not required
+				return nil
+			}
+
 			if err := m.Relationships[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("relationships" + "." + strconv.Itoa(i))

@@ -54,10 +54,12 @@ func NewSubmitUpdateVariableRegistryRequestParamsWithHTTPClient(client *http.Cli
 	}
 }
 
-/* SubmitUpdateVariableRegistryRequestParams contains all the parameters to send to the API endpoint
-   for the submit update variable registry request operation.
+/*
+SubmitUpdateVariableRegistryRequestParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the submit update variable registry request operation.
+
+	Typically these are written to a http.Request.
 */
 type SubmitUpdateVariableRegistryRequestParams struct {
 

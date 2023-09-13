@@ -121,6 +121,11 @@ func (m *ExtensionMetadataContainer) contextValidateExtensions(ctx context.Conte
 	for i := 0; i < len(m.Extensions); i++ {
 
 		if m.Extensions[i] != nil {
+
+			if swag.IsZero(m.Extensions[i]) { // not required
+				return nil
+			}
+
 			if err := m.Extensions[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("extensions" + "." + strconv.Itoa(i))
@@ -139,6 +144,11 @@ func (m *ExtensionMetadataContainer) contextValidateExtensions(ctx context.Conte
 func (m *ExtensionMetadataContainer) contextValidateFilterParams(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.FilterParams != nil {
+
+		if swag.IsZero(m.FilterParams) { // not required
+			return nil
+		}
+
 		if err := m.FilterParams.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("filterParams")

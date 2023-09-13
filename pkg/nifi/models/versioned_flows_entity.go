@@ -88,6 +88,11 @@ func (m *VersionedFlowsEntity) contextValidateVersionedFlows(ctx context.Context
 	for i := 0; i < len(m.VersionedFlows); i++ {
 
 		if m.VersionedFlows[i] != nil {
+
+			if swag.IsZero(m.VersionedFlows[i]) { // not required
+				return nil
+			}
+
 			if err := m.VersionedFlows[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("versionedFlows" + "." + strconv.Itoa(i))

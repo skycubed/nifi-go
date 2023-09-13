@@ -40,7 +40,7 @@ type ClientService interface {
 }
 
 /*
-  GetLabel gets a label
+GetLabel gets a label
 */
 func (a *Client) GetLabel(params *GetLabelParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetLabelOK, error) {
 	// TODO: Validate the params before sending
@@ -79,7 +79,7 @@ func (a *Client) GetLabel(params *GetLabelParams, authInfo runtime.ClientAuthInf
 }
 
 /*
-  RemoveLabel deletes a label
+RemoveLabel deletes a label
 */
 func (a *Client) RemoveLabel(params *RemoveLabelParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*RemoveLabelOK, error) {
 	// TODO: Validate the params before sending
@@ -118,7 +118,7 @@ func (a *Client) RemoveLabel(params *RemoveLabelParams, authInfo runtime.ClientA
 }
 
 /*
-  UpdateLabel updates a label
+UpdateLabel updates a label
 */
 func (a *Client) UpdateLabel(params *UpdateLabelParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateLabelOK, error) {
 	// TODO: Validate the params before sending

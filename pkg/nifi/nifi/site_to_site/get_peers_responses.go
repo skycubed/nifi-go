@@ -54,7 +54,7 @@ func (o *GetPeersReader) ReadResponse(response runtime.ClientResponse, consumer 
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /site-to-site/peers] getPeers", response, response.Code())
 	}
 }
 
@@ -63,7 +63,8 @@ func NewGetPeersOK() *GetPeersOK {
 	return &GetPeersOK{}
 }
 
-/* GetPeersOK describes a response with status code 200, with default header values.
+/*
+GetPeersOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -71,9 +72,44 @@ type GetPeersOK struct {
 	Payload *models.PeersEntity
 }
 
+// IsSuccess returns true when this get peers o k response has a 2xx status code
+func (o *GetPeersOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get peers o k response has a 3xx status code
+func (o *GetPeersOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get peers o k response has a 4xx status code
+func (o *GetPeersOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get peers o k response has a 5xx status code
+func (o *GetPeersOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get peers o k response a status code equal to that given
+func (o *GetPeersOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the get peers o k response
+func (o *GetPeersOK) Code() int {
+	return 200
+}
+
 func (o *GetPeersOK) Error() string {
 	return fmt.Sprintf("[GET /site-to-site/peers][%d] getPeersOK  %+v", 200, o.Payload)
 }
+
+func (o *GetPeersOK) String() string {
+	return fmt.Sprintf("[GET /site-to-site/peers][%d] getPeersOK  %+v", 200, o.Payload)
+}
+
 func (o *GetPeersOK) GetPayload() *models.PeersEntity {
 	return o.Payload
 }
@@ -95,14 +131,49 @@ func NewGetPeersBadRequest() *GetPeersBadRequest {
 	return &GetPeersBadRequest{}
 }
 
-/* GetPeersBadRequest describes a response with status code 400, with default header values.
+/*
+GetPeersBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type GetPeersBadRequest struct {
 }
 
+// IsSuccess returns true when this get peers bad request response has a 2xx status code
+func (o *GetPeersBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get peers bad request response has a 3xx status code
+func (o *GetPeersBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get peers bad request response has a 4xx status code
+func (o *GetPeersBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get peers bad request response has a 5xx status code
+func (o *GetPeersBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get peers bad request response a status code equal to that given
+func (o *GetPeersBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the get peers bad request response
+func (o *GetPeersBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetPeersBadRequest) Error() string {
+	return fmt.Sprintf("[GET /site-to-site/peers][%d] getPeersBadRequest ", 400)
+}
+
+func (o *GetPeersBadRequest) String() string {
 	return fmt.Sprintf("[GET /site-to-site/peers][%d] getPeersBadRequest ", 400)
 }
 
@@ -116,14 +187,49 @@ func NewGetPeersUnauthorized() *GetPeersUnauthorized {
 	return &GetPeersUnauthorized{}
 }
 
-/* GetPeersUnauthorized describes a response with status code 401, with default header values.
+/*
+GetPeersUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type GetPeersUnauthorized struct {
 }
 
+// IsSuccess returns true when this get peers unauthorized response has a 2xx status code
+func (o *GetPeersUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get peers unauthorized response has a 3xx status code
+func (o *GetPeersUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get peers unauthorized response has a 4xx status code
+func (o *GetPeersUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get peers unauthorized response has a 5xx status code
+func (o *GetPeersUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get peers unauthorized response a status code equal to that given
+func (o *GetPeersUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the get peers unauthorized response
+func (o *GetPeersUnauthorized) Code() int {
+	return 401
+}
+
 func (o *GetPeersUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /site-to-site/peers][%d] getPeersUnauthorized ", 401)
+}
+
+func (o *GetPeersUnauthorized) String() string {
 	return fmt.Sprintf("[GET /site-to-site/peers][%d] getPeersUnauthorized ", 401)
 }
 
@@ -137,14 +243,49 @@ func NewGetPeersForbidden() *GetPeersForbidden {
 	return &GetPeersForbidden{}
 }
 
-/* GetPeersForbidden describes a response with status code 403, with default header values.
+/*
+GetPeersForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type GetPeersForbidden struct {
 }
 
+// IsSuccess returns true when this get peers forbidden response has a 2xx status code
+func (o *GetPeersForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get peers forbidden response has a 3xx status code
+func (o *GetPeersForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get peers forbidden response has a 4xx status code
+func (o *GetPeersForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get peers forbidden response has a 5xx status code
+func (o *GetPeersForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get peers forbidden response a status code equal to that given
+func (o *GetPeersForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the get peers forbidden response
+func (o *GetPeersForbidden) Code() int {
+	return 403
+}
+
 func (o *GetPeersForbidden) Error() string {
+	return fmt.Sprintf("[GET /site-to-site/peers][%d] getPeersForbidden ", 403)
+}
+
+func (o *GetPeersForbidden) String() string {
 	return fmt.Sprintf("[GET /site-to-site/peers][%d] getPeersForbidden ", 403)
 }
 
@@ -158,14 +299,49 @@ func NewGetPeersConflict() *GetPeersConflict {
 	return &GetPeersConflict{}
 }
 
-/* GetPeersConflict describes a response with status code 409, with default header values.
+/*
+GetPeersConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type GetPeersConflict struct {
 }
 
+// IsSuccess returns true when this get peers conflict response has a 2xx status code
+func (o *GetPeersConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get peers conflict response has a 3xx status code
+func (o *GetPeersConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get peers conflict response has a 4xx status code
+func (o *GetPeersConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get peers conflict response has a 5xx status code
+func (o *GetPeersConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get peers conflict response a status code equal to that given
+func (o *GetPeersConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the get peers conflict response
+func (o *GetPeersConflict) Code() int {
+	return 409
+}
+
 func (o *GetPeersConflict) Error() string {
+	return fmt.Sprintf("[GET /site-to-site/peers][%d] getPeersConflict ", 409)
+}
+
+func (o *GetPeersConflict) String() string {
 	return fmt.Sprintf("[GET /site-to-site/peers][%d] getPeersConflict ", 409)
 }
 

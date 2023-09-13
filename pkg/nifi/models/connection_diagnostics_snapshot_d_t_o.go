@@ -119,6 +119,11 @@ func (m *ConnectionDiagnosticsSnapshotDTO) ContextValidate(ctx context.Context, 
 func (m *ConnectionDiagnosticsSnapshotDTO) contextValidateLocalQueuePartition(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.LocalQueuePartition != nil {
+
+		if swag.IsZero(m.LocalQueuePartition) { // not required
+			return nil
+		}
+
 		if err := m.LocalQueuePartition.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("localQueuePartition")
@@ -137,6 +142,11 @@ func (m *ConnectionDiagnosticsSnapshotDTO) contextValidateRemoteQueuePartitions(
 	for i := 0; i < len(m.RemoteQueuePartitions); i++ {
 
 		if m.RemoteQueuePartitions[i] != nil {
+
+			if swag.IsZero(m.RemoteQueuePartitions[i]) { // not required
+				return nil
+			}
+
 			if err := m.RemoteQueuePartitions[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("remoteQueuePartitions" + "." + strconv.Itoa(i))

@@ -54,10 +54,12 @@ func NewCreateRegistryClientParamsWithHTTPClient(client *http.Client) *CreateReg
 	}
 }
 
-/* CreateRegistryClientParams contains all the parameters to send to the API endpoint
-   for the create registry client operation.
+/*
+CreateRegistryClientParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create registry client operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateRegistryClientParams struct {
 

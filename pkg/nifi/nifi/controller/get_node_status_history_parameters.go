@@ -52,10 +52,12 @@ func NewGetNodeStatusHistoryParamsWithHTTPClient(client *http.Client) *GetNodeSt
 	}
 }
 
-/* GetNodeStatusHistoryParams contains all the parameters to send to the API endpoint
-   for the get node status history operation.
+/*
+GetNodeStatusHistoryParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get node status history operation.
+
+	Typically these are written to a http.Request.
 */
 type GetNodeStatusHistoryParams struct {
 	timeout    time.Duration

@@ -72,6 +72,11 @@ func (m *FlowEntity) ContextValidate(ctx context.Context, formats strfmt.Registr
 func (m *FlowEntity) contextValidateFlow(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Flow != nil {
+
+		if swag.IsZero(m.Flow) { // not required
+			return nil
+		}
+
 		if err := m.Flow.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("flow")

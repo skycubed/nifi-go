@@ -102,6 +102,11 @@ func (m *VariableRegistryUpdateRequestEntity) ContextValidate(ctx context.Contex
 func (m *VariableRegistryUpdateRequestEntity) contextValidateProcessGroupRevision(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ProcessGroupRevision != nil {
+
+		if swag.IsZero(m.ProcessGroupRevision) { // not required
+			return nil
+		}
+
 		if err := m.ProcessGroupRevision.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("processGroupRevision")
@@ -118,6 +123,11 @@ func (m *VariableRegistryUpdateRequestEntity) contextValidateProcessGroupRevisio
 func (m *VariableRegistryUpdateRequestEntity) contextValidateRequest(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Request != nil {
+
+		if swag.IsZero(m.Request) { // not required
+			return nil
+		}
+
 		if err := m.Request.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("request")

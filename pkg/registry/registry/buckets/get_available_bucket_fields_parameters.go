@@ -52,10 +52,12 @@ func NewGetAvailableBucketFieldsParamsWithHTTPClient(client *http.Client) *GetAv
 	}
 }
 
-/* GetAvailableBucketFieldsParams contains all the parameters to send to the API endpoint
-   for the get available bucket fields operation.
+/*
+GetAvailableBucketFieldsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get available bucket fields operation.
+
+	Typically these are written to a http.Request.
 */
 type GetAvailableBucketFieldsParams struct {
 	timeout    time.Duration

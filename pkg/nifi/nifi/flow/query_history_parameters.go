@@ -52,10 +52,12 @@ func NewQueryHistoryParamsWithHTTPClient(client *http.Client) *QueryHistoryParam
 	}
 }
 
-/* QueryHistoryParams contains all the parameters to send to the API endpoint
-   for the query history operation.
+/*
+QueryHistoryParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the query history operation.
+
+	Typically these are written to a http.Request.
 */
 type QueryHistoryParams struct {
 

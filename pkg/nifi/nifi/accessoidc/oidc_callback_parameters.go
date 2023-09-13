@@ -52,10 +52,12 @@ func NewOidcCallbackParamsWithHTTPClient(client *http.Client) *OidcCallbackParam
 	}
 }
 
-/* OidcCallbackParams contains all the parameters to send to the API endpoint
-   for the oidc callback operation.
+/*
+OidcCallbackParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the oidc callback operation.
+
+	Typically these are written to a http.Request.
 */
 type OidcCallbackParams struct {
 	timeout    time.Duration

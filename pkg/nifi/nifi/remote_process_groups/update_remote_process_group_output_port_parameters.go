@@ -54,10 +54,12 @@ func NewUpdateRemoteProcessGroupOutputPortParamsWithHTTPClient(client *http.Clie
 	}
 }
 
-/* UpdateRemoteProcessGroupOutputPortParams contains all the parameters to send to the API endpoint
-   for the update remote process group output port operation.
+/*
+UpdateRemoteProcessGroupOutputPortParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update remote process group output port operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateRemoteProcessGroupOutputPortParams struct {
 

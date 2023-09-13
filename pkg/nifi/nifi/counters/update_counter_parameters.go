@@ -52,10 +52,12 @@ func NewUpdateCounterParamsWithHTTPClient(client *http.Client) *UpdateCounterPar
 	}
 }
 
-/* UpdateCounterParams contains all the parameters to send to the API endpoint
-   for the update counter operation.
+/*
+UpdateCounterParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update counter operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateCounterParams struct {
 

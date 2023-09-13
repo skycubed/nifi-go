@@ -175,6 +175,11 @@ func (m *UserGroupDTO) contextValidateAccessPolicies(ctx context.Context, format
 	for i := 0; i < len(m.AccessPolicies); i++ {
 
 		if m.AccessPolicies[i] != nil {
+
+			if swag.IsZero(m.AccessPolicies[i]) { // not required
+				return nil
+			}
+
 			if err := m.AccessPolicies[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("accessPolicies" + "." + strconv.Itoa(i))
@@ -193,6 +198,11 @@ func (m *UserGroupDTO) contextValidateAccessPolicies(ctx context.Context, format
 func (m *UserGroupDTO) contextValidatePosition(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Position != nil {
+
+		if swag.IsZero(m.Position) { // not required
+			return nil
+		}
+
 		if err := m.Position.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("position")
@@ -211,6 +221,11 @@ func (m *UserGroupDTO) contextValidateUsers(ctx context.Context, formats strfmt.
 	for i := 0; i < len(m.Users); i++ {
 
 		if m.Users[i] != nil {
+
+			if swag.IsZero(m.Users[i]) { // not required
+				return nil
+			}
+
 			if err := m.Users[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("users" + "." + strconv.Itoa(i))

@@ -52,10 +52,12 @@ func NewDeleteVerificationRequestParamsWithHTTPClient(client *http.Client) *Dele
 	}
 }
 
-/* DeleteVerificationRequestParams contains all the parameters to send to the API endpoint
-   for the delete verification request operation.
+/*
+DeleteVerificationRequestParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete verification request operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteVerificationRequestParams struct {
 

@@ -56,7 +56,7 @@ type ClientService interface {
 }
 
 /*
-  AnalyzeConfiguration performs analysis of the component s configuration providing information about which attributes are referenced
+AnalyzeConfiguration performs analysis of the component s configuration providing information about which attributes are referenced
 */
 func (a *Client) AnalyzeConfiguration(params *AnalyzeConfigurationParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AnalyzeConfigurationOK, error) {
 	// TODO: Validate the params before sending
@@ -95,7 +95,7 @@ func (a *Client) AnalyzeConfiguration(params *AnalyzeConfigurationParams, authIn
 }
 
 /*
-  ClearState clears the state for a reporting task
+ClearState clears the state for a reporting task
 */
 func (a *Client) ClearState(params *ClearStateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ClearStateOK, error) {
 	// TODO: Validate the params before sending
@@ -134,9 +134,9 @@ func (a *Client) ClearState(params *ClearStateParams, authInfo runtime.ClientAut
 }
 
 /*
-  DeleteValidationRequest deletes the verification request with the given ID
+DeleteValidationRequest deletes the verification request with the given ID
 
-  Deletes the Verification Request with the given ID. After a request is created, it is expected that the client will properly clean up the request by DELETE'ing it, once the Verification process has completed. If the request is deleted before the request completes, then the Verification request will finish the step that it is currently performing and then will cancel any subsequent steps.
+Deletes the Verification Request with the given ID. After a request is created, it is expected that the client will properly clean up the request by DELETE'ing it, once the Verification process has completed. If the request is deleted before the request completes, then the Verification request will finish the step that it is currently performing and then will cancel any subsequent steps.
 */
 func (a *Client) DeleteValidationRequest(params *DeleteValidationRequestParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteValidationRequestOK, error) {
 	// TODO: Validate the params before sending
@@ -175,7 +175,7 @@ func (a *Client) DeleteValidationRequest(params *DeleteValidationRequestParams, 
 }
 
 /*
-  GetPropertyDescriptor gets a reporting task property descriptor
+GetPropertyDescriptor gets a reporting task property descriptor
 */
 func (a *Client) GetPropertyDescriptor(params *GetPropertyDescriptorParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetPropertyDescriptorOK, error) {
 	// TODO: Validate the params before sending
@@ -214,7 +214,7 @@ func (a *Client) GetPropertyDescriptor(params *GetPropertyDescriptorParams, auth
 }
 
 /*
-  GetReportingTask gets a reporting task
+GetReportingTask gets a reporting task
 */
 func (a *Client) GetReportingTask(params *GetReportingTaskParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetReportingTaskOK, error) {
 	// TODO: Validate the params before sending
@@ -253,7 +253,7 @@ func (a *Client) GetReportingTask(params *GetReportingTaskParams, authInfo runti
 }
 
 /*
-  GetState gets the state for a reporting task
+GetState gets the state for a reporting task
 */
 func (a *Client) GetState(params *GetStateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetStateOK, error) {
 	// TODO: Validate the params before sending
@@ -292,9 +292,9 @@ func (a *Client) GetState(params *GetStateParams, authInfo runtime.ClientAuthInf
 }
 
 /*
-  GetVerificationRequest returns the verification request with the given ID
+GetVerificationRequest returns the verification request with the given ID
 
-  Returns the Verification Request with the given ID. Once an Verification Request has been created, that request can subsequently be retrieved via this endpoint, and the request that is fetched will contain the updated state, such as percent complete, the current state of the request, and any failures.
+Returns the Verification Request with the given ID. Once an Verification Request has been created, that request can subsequently be retrieved via this endpoint, and the request that is fetched will contain the updated state, such as percent complete, the current state of the request, and any failures.
 */
 func (a *Client) GetVerificationRequest(params *GetVerificationRequestParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetVerificationRequestOK, error) {
 	// TODO: Validate the params before sending
@@ -333,7 +333,7 @@ func (a *Client) GetVerificationRequest(params *GetVerificationRequestParams, au
 }
 
 /*
-  RemoveReportingTask deletes a reporting task
+RemoveReportingTask deletes a reporting task
 */
 func (a *Client) RemoveReportingTask(params *RemoveReportingTaskParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*RemoveReportingTaskOK, error) {
 	// TODO: Validate the params before sending
@@ -372,9 +372,9 @@ func (a *Client) RemoveReportingTask(params *RemoveReportingTaskParams, authInfo
 }
 
 /*
-  SubmitConfigVerificationRequest performs verification of the reporting task s configuration
+SubmitConfigVerificationRequest performs verification of the reporting task s configuration
 
-  This will initiate the process of verifying a given Reporting Task configuration. This may be a long-running task. As a result, this endpoint will immediately return a ReportingTaskConfigVerificationRequestEntity, and the process of performing the verification will occur asynchronously in the background. The client may then periodically poll the status of the request by issuing a GET request to /reporting-tasks/{serviceId}/verification-requests/{requestId}. Once the request is completed, the client is expected to issue a DELETE request to /reporting-tasks/{serviceId}/verification-requests/{requestId}.
+This will initiate the process of verifying a given Reporting Task configuration. This may be a long-running task. As a result, this endpoint will immediately return a ReportingTaskConfigVerificationRequestEntity, and the process of performing the verification will occur asynchronously in the background. The client may then periodically poll the status of the request by issuing a GET request to /reporting-tasks/{serviceId}/verification-requests/{requestId}. Once the request is completed, the client is expected to issue a DELETE request to /reporting-tasks/{serviceId}/verification-requests/{requestId}.
 */
 func (a *Client) SubmitConfigVerificationRequest(params *SubmitConfigVerificationRequestParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SubmitConfigVerificationRequestOK, error) {
 	// TODO: Validate the params before sending
@@ -413,7 +413,7 @@ func (a *Client) SubmitConfigVerificationRequest(params *SubmitConfigVerificatio
 }
 
 /*
-  UpdateReportingTask updates a reporting task
+UpdateReportingTask updates a reporting task
 */
 func (a *Client) UpdateReportingTask(params *UpdateReportingTaskParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateReportingTaskOK, error) {
 	// TODO: Validate the params before sending
@@ -452,7 +452,7 @@ func (a *Client) UpdateReportingTask(params *UpdateReportingTaskParams, authInfo
 }
 
 /*
-  UpdateRunStatus updates run status of a reporting task
+UpdateRunStatus updates run status of a reporting task
 */
 func (a *Client) UpdateRunStatus(params *UpdateRunStatusParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateRunStatusOK, error) {
 	// TODO: Validate the params before sending

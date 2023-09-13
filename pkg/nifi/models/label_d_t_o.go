@@ -93,6 +93,11 @@ func (m *LabelDTO) ContextValidate(ctx context.Context, formats strfmt.Registry)
 func (m *LabelDTO) contextValidatePosition(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Position != nil {
+
+		if swag.IsZero(m.Position) { // not required
+			return nil
+		}
+
 		if err := m.Position.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("position")

@@ -88,6 +88,11 @@ func (m *ProcessorTypesEntity) contextValidateProcessorTypes(ctx context.Context
 	for i := 0; i < len(m.ProcessorTypes); i++ {
 
 		if m.ProcessorTypes[i] != nil {
+
+			if swag.IsZero(m.ProcessorTypes[i]) { // not required
+				return nil
+			}
+
 			if err := m.ProcessorTypes[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("processorTypes" + "." + strconv.Itoa(i))

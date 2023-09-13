@@ -58,9 +58,9 @@ type ClientService interface {
 }
 
 /*
-  GetBundleVersionExtensionAdditionalDetailsDocs gets bundle version extension docs details
+	GetBundleVersionExtensionAdditionalDetailsDocs gets bundle version extension docs details
 
-  Gets the additional details documentation for the given extension in the given extension bundle version.
+	Gets the additional details documentation for the given extension in the given extension bundle version.
 
 NOTE: This endpoint is subject to change as NiFi Registry and its REST API evolve.
 */
@@ -101,9 +101,9 @@ func (a *Client) GetBundleVersionExtensionAdditionalDetailsDocs(params *GetBundl
 }
 
 /*
-  GetBundleVersionExtensionDocs gets bundle version extension docs
+	GetBundleVersionExtensionDocs gets bundle version extension docs
 
-  Gets the documentation for the given extension in the given extension bundle version.
+	Gets the documentation for the given extension in the given extension bundle version.
 
 NOTE: This endpoint is subject to change as NiFi Registry and its REST API evolve.
 */
@@ -144,9 +144,9 @@ func (a *Client) GetBundleVersionExtensionDocs(params *GetBundleVersionExtension
 }
 
 /*
-  GetBundleVersions gets all bundle versions
+	GetBundleVersions gets all bundle versions
 
-  Gets the metadata about extension bundle versions across all authorized buckets with optional filters applied. If the user is not authorized to any buckets, an empty list will be returned.
+	Gets the metadata about extension bundle versions across all authorized buckets with optional filters applied. If the user is not authorized to any buckets, an empty list will be returned.
 
 NOTE: This endpoint is subject to change as NiFi Registry and its REST API evolve.
 */
@@ -187,9 +187,9 @@ func (a *Client) GetBundleVersions(params *GetBundleVersionsParams, authInfo run
 }
 
 /*
-  GetBundles gets all bundles
+	GetBundles gets all bundles
 
-  Gets the metadata for all bundles across all authorized buckets with optional filters applied. The returned results will include only items from buckets for which the user is authorized. If the user is not authorized to any buckets, an empty list will be returned.
+	Gets the metadata for all bundles across all authorized buckets with optional filters applied. The returned results will include only items from buckets for which the user is authorized. If the user is not authorized to any buckets, an empty list will be returned.
 
 NOTE: This endpoint is subject to change as NiFi Registry and its REST API evolve.
 */
@@ -230,9 +230,9 @@ func (a *Client) GetBundles(params *GetBundlesParams, authInfo runtime.ClientAut
 }
 
 /*
-  GlobalDeleteBundleVersion deletes bundle version
+	GlobalDeleteBundleVersion deletes bundle version
 
-  Deletes the given extension bundle version and it's associated binary content.
+	Deletes the given extension bundle version and it's associated binary content.
 
 NOTE: This endpoint is subject to change as NiFi Registry and its REST API evolve.
 */
@@ -273,9 +273,9 @@ func (a *Client) GlobalDeleteBundleVersion(params *GlobalDeleteBundleVersionPara
 }
 
 /*
-  GlobalDeleteExtensionBundle deletes bundle
+	GlobalDeleteExtensionBundle deletes bundle
 
-  Deletes the given extension bundle and all of it's versions.
+	Deletes the given extension bundle and all of it's versions.
 
 NOTE: This endpoint is subject to change as NiFi Registry and its REST API evolve.
 */
@@ -316,9 +316,9 @@ func (a *Client) GlobalDeleteExtensionBundle(params *GlobalDeleteExtensionBundle
 }
 
 /*
-  GlobalGetBundleVersion gets bundle version
+	GlobalGetBundleVersion gets bundle version
 
-  Gets the descriptor for the given version of the given extension bundle.
+	Gets the descriptor for the given version of the given extension bundle.
 
 NOTE: This endpoint is subject to change as NiFi Registry and its REST API evolve.
 */
@@ -359,9 +359,9 @@ func (a *Client) GlobalGetBundleVersion(params *GlobalGetBundleVersionParams, au
 }
 
 /*
-  GlobalGetBundleVersionContent gets bundle version content
+	GlobalGetBundleVersionContent gets bundle version content
 
-  Gets the binary content for the given version of the given extension bundle.
+	Gets the binary content for the given version of the given extension bundle.
 
 NOTE: This endpoint is subject to change as NiFi Registry and its REST API evolve.
 */
@@ -402,9 +402,9 @@ func (a *Client) GlobalGetBundleVersionContent(params *GlobalGetBundleVersionCon
 }
 
 /*
-  GlobalGetBundleVersionExtension gets bundle version extension
+	GlobalGetBundleVersionExtension gets bundle version extension
 
-  Gets the metadata about the extension with the given name in the given extension bundle version.
+	Gets the metadata about the extension with the given name in the given extension bundle version.
 
 NOTE: This endpoint is subject to change as NiFi Registry and its REST API evolve.
 */
@@ -445,9 +445,9 @@ func (a *Client) GlobalGetBundleVersionExtension(params *GlobalGetBundleVersionE
 }
 
 /*
-  GlobalGetBundleVersionExtensions gets bundle version extensions
+	GlobalGetBundleVersionExtensions gets bundle version extensions
 
-  Gets the metadata about the extensions in the given extension bundle version.
+	Gets the metadata about the extensions in the given extension bundle version.
 
 NOTE: This endpoint is subject to change as NiFi Registry and its REST API evolve.
 */
@@ -488,9 +488,9 @@ func (a *Client) GlobalGetBundleVersionExtensions(params *GlobalGetBundleVersion
 }
 
 /*
-  GlobalGetBundleVersions gets bundle versions
+	GlobalGetBundleVersions gets bundle versions
 
-  Gets the metadata for the versions of the given extension bundle.
+	Gets the metadata for the versions of the given extension bundle.
 
 NOTE: This endpoint is subject to change as NiFi Registry and its REST API evolve.
 */
@@ -531,9 +531,9 @@ func (a *Client) GlobalGetBundleVersions(params *GlobalGetBundleVersionsParams, 
 }
 
 /*
-  GlobalGetExtensionBundle gets bundle
+	GlobalGetExtensionBundle gets bundle
 
-  Gets the metadata about an extension bundle.
+	Gets the metadata about an extension bundle.
 
 NOTE: This endpoint is subject to change as NiFi Registry and its REST API evolve.
 */

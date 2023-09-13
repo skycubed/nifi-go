@@ -54,7 +54,7 @@ func (o *GetTemplatesReader) ReadResponse(response runtime.ClientResponse, consu
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /flow/templates] getTemplates", response, response.Code())
 	}
 }
 
@@ -63,7 +63,8 @@ func NewGetTemplatesOK() *GetTemplatesOK {
 	return &GetTemplatesOK{}
 }
 
-/* GetTemplatesOK describes a response with status code 200, with default header values.
+/*
+GetTemplatesOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -71,9 +72,44 @@ type GetTemplatesOK struct {
 	Payload *models.TemplatesEntity
 }
 
+// IsSuccess returns true when this get templates o k response has a 2xx status code
+func (o *GetTemplatesOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get templates o k response has a 3xx status code
+func (o *GetTemplatesOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get templates o k response has a 4xx status code
+func (o *GetTemplatesOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get templates o k response has a 5xx status code
+func (o *GetTemplatesOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get templates o k response a status code equal to that given
+func (o *GetTemplatesOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the get templates o k response
+func (o *GetTemplatesOK) Code() int {
+	return 200
+}
+
 func (o *GetTemplatesOK) Error() string {
 	return fmt.Sprintf("[GET /flow/templates][%d] getTemplatesOK  %+v", 200, o.Payload)
 }
+
+func (o *GetTemplatesOK) String() string {
+	return fmt.Sprintf("[GET /flow/templates][%d] getTemplatesOK  %+v", 200, o.Payload)
+}
+
 func (o *GetTemplatesOK) GetPayload() *models.TemplatesEntity {
 	return o.Payload
 }
@@ -95,14 +131,49 @@ func NewGetTemplatesBadRequest() *GetTemplatesBadRequest {
 	return &GetTemplatesBadRequest{}
 }
 
-/* GetTemplatesBadRequest describes a response with status code 400, with default header values.
+/*
+GetTemplatesBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type GetTemplatesBadRequest struct {
 }
 
+// IsSuccess returns true when this get templates bad request response has a 2xx status code
+func (o *GetTemplatesBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get templates bad request response has a 3xx status code
+func (o *GetTemplatesBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get templates bad request response has a 4xx status code
+func (o *GetTemplatesBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get templates bad request response has a 5xx status code
+func (o *GetTemplatesBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get templates bad request response a status code equal to that given
+func (o *GetTemplatesBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the get templates bad request response
+func (o *GetTemplatesBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetTemplatesBadRequest) Error() string {
+	return fmt.Sprintf("[GET /flow/templates][%d] getTemplatesBadRequest ", 400)
+}
+
+func (o *GetTemplatesBadRequest) String() string {
 	return fmt.Sprintf("[GET /flow/templates][%d] getTemplatesBadRequest ", 400)
 }
 
@@ -116,14 +187,49 @@ func NewGetTemplatesUnauthorized() *GetTemplatesUnauthorized {
 	return &GetTemplatesUnauthorized{}
 }
 
-/* GetTemplatesUnauthorized describes a response with status code 401, with default header values.
+/*
+GetTemplatesUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type GetTemplatesUnauthorized struct {
 }
 
+// IsSuccess returns true when this get templates unauthorized response has a 2xx status code
+func (o *GetTemplatesUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get templates unauthorized response has a 3xx status code
+func (o *GetTemplatesUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get templates unauthorized response has a 4xx status code
+func (o *GetTemplatesUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get templates unauthorized response has a 5xx status code
+func (o *GetTemplatesUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get templates unauthorized response a status code equal to that given
+func (o *GetTemplatesUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the get templates unauthorized response
+func (o *GetTemplatesUnauthorized) Code() int {
+	return 401
+}
+
 func (o *GetTemplatesUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /flow/templates][%d] getTemplatesUnauthorized ", 401)
+}
+
+func (o *GetTemplatesUnauthorized) String() string {
 	return fmt.Sprintf("[GET /flow/templates][%d] getTemplatesUnauthorized ", 401)
 }
 
@@ -137,14 +243,49 @@ func NewGetTemplatesForbidden() *GetTemplatesForbidden {
 	return &GetTemplatesForbidden{}
 }
 
-/* GetTemplatesForbidden describes a response with status code 403, with default header values.
+/*
+GetTemplatesForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type GetTemplatesForbidden struct {
 }
 
+// IsSuccess returns true when this get templates forbidden response has a 2xx status code
+func (o *GetTemplatesForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get templates forbidden response has a 3xx status code
+func (o *GetTemplatesForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get templates forbidden response has a 4xx status code
+func (o *GetTemplatesForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get templates forbidden response has a 5xx status code
+func (o *GetTemplatesForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get templates forbidden response a status code equal to that given
+func (o *GetTemplatesForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the get templates forbidden response
+func (o *GetTemplatesForbidden) Code() int {
+	return 403
+}
+
 func (o *GetTemplatesForbidden) Error() string {
+	return fmt.Sprintf("[GET /flow/templates][%d] getTemplatesForbidden ", 403)
+}
+
+func (o *GetTemplatesForbidden) String() string {
 	return fmt.Sprintf("[GET /flow/templates][%d] getTemplatesForbidden ", 403)
 }
 
@@ -158,14 +299,49 @@ func NewGetTemplatesConflict() *GetTemplatesConflict {
 	return &GetTemplatesConflict{}
 }
 
-/* GetTemplatesConflict describes a response with status code 409, with default header values.
+/*
+GetTemplatesConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type GetTemplatesConflict struct {
 }
 
+// IsSuccess returns true when this get templates conflict response has a 2xx status code
+func (o *GetTemplatesConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get templates conflict response has a 3xx status code
+func (o *GetTemplatesConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get templates conflict response has a 4xx status code
+func (o *GetTemplatesConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get templates conflict response has a 5xx status code
+func (o *GetTemplatesConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get templates conflict response a status code equal to that given
+func (o *GetTemplatesConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the get templates conflict response
+func (o *GetTemplatesConflict) Code() int {
+	return 409
+}
+
 func (o *GetTemplatesConflict) Error() string {
+	return fmt.Sprintf("[GET /flow/templates][%d] getTemplatesConflict ", 409)
+}
+
+func (o *GetTemplatesConflict) String() string {
 	return fmt.Sprintf("[GET /flow/templates][%d] getTemplatesConflict ", 409)
 }
 

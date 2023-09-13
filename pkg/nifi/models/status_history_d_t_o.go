@@ -162,6 +162,11 @@ func (m *StatusHistoryDTO) contextValidateAggregateSnapshots(ctx context.Context
 	for i := 0; i < len(m.AggregateSnapshots); i++ {
 
 		if m.AggregateSnapshots[i] != nil {
+
+			if swag.IsZero(m.AggregateSnapshots[i]) { // not required
+				return nil
+			}
+
 			if err := m.AggregateSnapshots[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("aggregateSnapshots" + "." + strconv.Itoa(i))
@@ -182,6 +187,11 @@ func (m *StatusHistoryDTO) contextValidateFieldDescriptors(ctx context.Context, 
 	for i := 0; i < len(m.FieldDescriptors); i++ {
 
 		if m.FieldDescriptors[i] != nil {
+
+			if swag.IsZero(m.FieldDescriptors[i]) { // not required
+				return nil
+			}
+
 			if err := m.FieldDescriptors[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("fieldDescriptors" + "." + strconv.Itoa(i))
@@ -202,6 +212,11 @@ func (m *StatusHistoryDTO) contextValidateNodeSnapshots(ctx context.Context, for
 	for i := 0; i < len(m.NodeSnapshots); i++ {
 
 		if m.NodeSnapshots[i] != nil {
+
+			if swag.IsZero(m.NodeSnapshots[i]) { // not required
+				return nil
+			}
+
 			if err := m.NodeSnapshots[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("nodeSnapshots" + "." + strconv.Itoa(i))

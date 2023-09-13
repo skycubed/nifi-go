@@ -60,7 +60,7 @@ func (o *GetVersionInformationReader) ReadResponse(response runtime.ClientRespon
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /versions/process-groups/{id}] getVersionInformation", response, response.Code())
 	}
 }
 
@@ -69,7 +69,8 @@ func NewGetVersionInformationOK() *GetVersionInformationOK {
 	return &GetVersionInformationOK{}
 }
 
-/* GetVersionInformationOK describes a response with status code 200, with default header values.
+/*
+GetVersionInformationOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,44 @@ type GetVersionInformationOK struct {
 	Payload *models.VersionControlInformationEntity
 }
 
+// IsSuccess returns true when this get version information o k response has a 2xx status code
+func (o *GetVersionInformationOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get version information o k response has a 3xx status code
+func (o *GetVersionInformationOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get version information o k response has a 4xx status code
+func (o *GetVersionInformationOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get version information o k response has a 5xx status code
+func (o *GetVersionInformationOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get version information o k response a status code equal to that given
+func (o *GetVersionInformationOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the get version information o k response
+func (o *GetVersionInformationOK) Code() int {
+	return 200
+}
+
 func (o *GetVersionInformationOK) Error() string {
 	return fmt.Sprintf("[GET /versions/process-groups/{id}][%d] getVersionInformationOK  %+v", 200, o.Payload)
 }
+
+func (o *GetVersionInformationOK) String() string {
+	return fmt.Sprintf("[GET /versions/process-groups/{id}][%d] getVersionInformationOK  %+v", 200, o.Payload)
+}
+
 func (o *GetVersionInformationOK) GetPayload() *models.VersionControlInformationEntity {
 	return o.Payload
 }
@@ -101,14 +137,49 @@ func NewGetVersionInformationBadRequest() *GetVersionInformationBadRequest {
 	return &GetVersionInformationBadRequest{}
 }
 
-/* GetVersionInformationBadRequest describes a response with status code 400, with default header values.
+/*
+GetVersionInformationBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type GetVersionInformationBadRequest struct {
 }
 
+// IsSuccess returns true when this get version information bad request response has a 2xx status code
+func (o *GetVersionInformationBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get version information bad request response has a 3xx status code
+func (o *GetVersionInformationBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get version information bad request response has a 4xx status code
+func (o *GetVersionInformationBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get version information bad request response has a 5xx status code
+func (o *GetVersionInformationBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get version information bad request response a status code equal to that given
+func (o *GetVersionInformationBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the get version information bad request response
+func (o *GetVersionInformationBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetVersionInformationBadRequest) Error() string {
+	return fmt.Sprintf("[GET /versions/process-groups/{id}][%d] getVersionInformationBadRequest ", 400)
+}
+
+func (o *GetVersionInformationBadRequest) String() string {
 	return fmt.Sprintf("[GET /versions/process-groups/{id}][%d] getVersionInformationBadRequest ", 400)
 }
 
@@ -122,14 +193,49 @@ func NewGetVersionInformationUnauthorized() *GetVersionInformationUnauthorized {
 	return &GetVersionInformationUnauthorized{}
 }
 
-/* GetVersionInformationUnauthorized describes a response with status code 401, with default header values.
+/*
+GetVersionInformationUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type GetVersionInformationUnauthorized struct {
 }
 
+// IsSuccess returns true when this get version information unauthorized response has a 2xx status code
+func (o *GetVersionInformationUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get version information unauthorized response has a 3xx status code
+func (o *GetVersionInformationUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get version information unauthorized response has a 4xx status code
+func (o *GetVersionInformationUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get version information unauthorized response has a 5xx status code
+func (o *GetVersionInformationUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get version information unauthorized response a status code equal to that given
+func (o *GetVersionInformationUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the get version information unauthorized response
+func (o *GetVersionInformationUnauthorized) Code() int {
+	return 401
+}
+
 func (o *GetVersionInformationUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /versions/process-groups/{id}][%d] getVersionInformationUnauthorized ", 401)
+}
+
+func (o *GetVersionInformationUnauthorized) String() string {
 	return fmt.Sprintf("[GET /versions/process-groups/{id}][%d] getVersionInformationUnauthorized ", 401)
 }
 
@@ -143,14 +249,49 @@ func NewGetVersionInformationForbidden() *GetVersionInformationForbidden {
 	return &GetVersionInformationForbidden{}
 }
 
-/* GetVersionInformationForbidden describes a response with status code 403, with default header values.
+/*
+GetVersionInformationForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type GetVersionInformationForbidden struct {
 }
 
+// IsSuccess returns true when this get version information forbidden response has a 2xx status code
+func (o *GetVersionInformationForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get version information forbidden response has a 3xx status code
+func (o *GetVersionInformationForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get version information forbidden response has a 4xx status code
+func (o *GetVersionInformationForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get version information forbidden response has a 5xx status code
+func (o *GetVersionInformationForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get version information forbidden response a status code equal to that given
+func (o *GetVersionInformationForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the get version information forbidden response
+func (o *GetVersionInformationForbidden) Code() int {
+	return 403
+}
+
 func (o *GetVersionInformationForbidden) Error() string {
+	return fmt.Sprintf("[GET /versions/process-groups/{id}][%d] getVersionInformationForbidden ", 403)
+}
+
+func (o *GetVersionInformationForbidden) String() string {
 	return fmt.Sprintf("[GET /versions/process-groups/{id}][%d] getVersionInformationForbidden ", 403)
 }
 
@@ -164,14 +305,49 @@ func NewGetVersionInformationNotFound() *GetVersionInformationNotFound {
 	return &GetVersionInformationNotFound{}
 }
 
-/* GetVersionInformationNotFound describes a response with status code 404, with default header values.
+/*
+GetVersionInformationNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type GetVersionInformationNotFound struct {
 }
 
+// IsSuccess returns true when this get version information not found response has a 2xx status code
+func (o *GetVersionInformationNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get version information not found response has a 3xx status code
+func (o *GetVersionInformationNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get version information not found response has a 4xx status code
+func (o *GetVersionInformationNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get version information not found response has a 5xx status code
+func (o *GetVersionInformationNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get version information not found response a status code equal to that given
+func (o *GetVersionInformationNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+// Code gets the status code for the get version information not found response
+func (o *GetVersionInformationNotFound) Code() int {
+	return 404
+}
+
 func (o *GetVersionInformationNotFound) Error() string {
+	return fmt.Sprintf("[GET /versions/process-groups/{id}][%d] getVersionInformationNotFound ", 404)
+}
+
+func (o *GetVersionInformationNotFound) String() string {
 	return fmt.Sprintf("[GET /versions/process-groups/{id}][%d] getVersionInformationNotFound ", 404)
 }
 
@@ -185,14 +361,49 @@ func NewGetVersionInformationConflict() *GetVersionInformationConflict {
 	return &GetVersionInformationConflict{}
 }
 
-/* GetVersionInformationConflict describes a response with status code 409, with default header values.
+/*
+GetVersionInformationConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type GetVersionInformationConflict struct {
 }
 
+// IsSuccess returns true when this get version information conflict response has a 2xx status code
+func (o *GetVersionInformationConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get version information conflict response has a 3xx status code
+func (o *GetVersionInformationConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get version information conflict response has a 4xx status code
+func (o *GetVersionInformationConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get version information conflict response has a 5xx status code
+func (o *GetVersionInformationConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get version information conflict response a status code equal to that given
+func (o *GetVersionInformationConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the get version information conflict response
+func (o *GetVersionInformationConflict) Code() int {
+	return 409
+}
+
 func (o *GetVersionInformationConflict) Error() string {
+	return fmt.Sprintf("[GET /versions/process-groups/{id}][%d] getVersionInformationConflict ", 409)
+}
+
+func (o *GetVersionInformationConflict) String() string {
 	return fmt.Sprintf("[GET /versions/process-groups/{id}][%d] getVersionInformationConflict ", 409)
 }
 

@@ -91,6 +91,11 @@ func (m *TemplatesEntity) contextValidateTemplates(ctx context.Context, formats 
 	for i := 0; i < len(m.Templates); i++ {
 
 		if m.Templates[i] != nil {
+
+			if swag.IsZero(m.Templates[i]) { // not required
+				return nil
+			}
+
 			if err := m.Templates[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("templates" + "." + strconv.Itoa(i))

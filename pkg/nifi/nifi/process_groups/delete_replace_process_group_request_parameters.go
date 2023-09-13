@@ -53,10 +53,12 @@ func NewDeleteReplaceProcessGroupRequestParamsWithHTTPClient(client *http.Client
 	}
 }
 
-/* DeleteReplaceProcessGroupRequestParams contains all the parameters to send to the API endpoint
-   for the delete replace process group request operation.
+/*
+DeleteReplaceProcessGroupRequestParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete replace process group request operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteReplaceProcessGroupRequestParams struct {
 

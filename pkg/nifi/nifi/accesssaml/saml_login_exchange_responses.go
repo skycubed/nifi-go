@@ -28,7 +28,7 @@ func (o *SamlLoginExchangeReader) ReadResponse(response runtime.ClientResponse, 
 		}
 		return result, nil
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /access/saml/login/exchange] samlLoginExchange", response, response.Code())
 	}
 }
 
@@ -37,7 +37,8 @@ func NewSamlLoginExchangeOK() *SamlLoginExchangeOK {
 	return &SamlLoginExchangeOK{}
 }
 
-/* SamlLoginExchangeOK describes a response with status code 200, with default header values.
+/*
+SamlLoginExchangeOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -45,9 +46,44 @@ type SamlLoginExchangeOK struct {
 	Payload string
 }
 
+// IsSuccess returns true when this saml login exchange o k response has a 2xx status code
+func (o *SamlLoginExchangeOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this saml login exchange o k response has a 3xx status code
+func (o *SamlLoginExchangeOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this saml login exchange o k response has a 4xx status code
+func (o *SamlLoginExchangeOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this saml login exchange o k response has a 5xx status code
+func (o *SamlLoginExchangeOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this saml login exchange o k response a status code equal to that given
+func (o *SamlLoginExchangeOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the saml login exchange o k response
+func (o *SamlLoginExchangeOK) Code() int {
+	return 200
+}
+
 func (o *SamlLoginExchangeOK) Error() string {
 	return fmt.Sprintf("[POST /access/saml/login/exchange][%d] samlLoginExchangeOK  %+v", 200, o.Payload)
 }
+
+func (o *SamlLoginExchangeOK) String() string {
+	return fmt.Sprintf("[POST /access/saml/login/exchange][%d] samlLoginExchangeOK  %+v", 200, o.Payload)
+}
+
 func (o *SamlLoginExchangeOK) GetPayload() string {
 	return o.Payload
 }

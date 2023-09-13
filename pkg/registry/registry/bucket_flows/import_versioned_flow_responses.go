@@ -66,7 +66,7 @@ func (o *ImportVersionedFlowReader) ReadResponse(response runtime.ClientResponse
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /buckets/{bucketId}/flows/{flowId}/versions/import] importVersionedFlow", response, response.Code())
 	}
 }
 
@@ -75,7 +75,8 @@ func NewImportVersionedFlowOK() *ImportVersionedFlowOK {
 	return &ImportVersionedFlowOK{}
 }
 
-/* ImportVersionedFlowOK describes a response with status code 200, with default header values.
+/*
+ImportVersionedFlowOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -83,9 +84,44 @@ type ImportVersionedFlowOK struct {
 	Payload *models.VersionedFlowSnapshot
 }
 
+// IsSuccess returns true when this import versioned flow o k response has a 2xx status code
+func (o *ImportVersionedFlowOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this import versioned flow o k response has a 3xx status code
+func (o *ImportVersionedFlowOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this import versioned flow o k response has a 4xx status code
+func (o *ImportVersionedFlowOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this import versioned flow o k response has a 5xx status code
+func (o *ImportVersionedFlowOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this import versioned flow o k response a status code equal to that given
+func (o *ImportVersionedFlowOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the import versioned flow o k response
+func (o *ImportVersionedFlowOK) Code() int {
+	return 200
+}
+
 func (o *ImportVersionedFlowOK) Error() string {
 	return fmt.Sprintf("[POST /buckets/{bucketId}/flows/{flowId}/versions/import][%d] importVersionedFlowOK  %+v", 200, o.Payload)
 }
+
+func (o *ImportVersionedFlowOK) String() string {
+	return fmt.Sprintf("[POST /buckets/{bucketId}/flows/{flowId}/versions/import][%d] importVersionedFlowOK  %+v", 200, o.Payload)
+}
+
 func (o *ImportVersionedFlowOK) GetPayload() *models.VersionedFlowSnapshot {
 	return o.Payload
 }
@@ -107,14 +143,49 @@ func NewImportVersionedFlowCreated() *ImportVersionedFlowCreated {
 	return &ImportVersionedFlowCreated{}
 }
 
-/* ImportVersionedFlowCreated describes a response with status code 201, with default header values.
+/*
+ImportVersionedFlowCreated describes a response with status code 201, with default header values.
 
 The resource has been successfully created.
 */
 type ImportVersionedFlowCreated struct {
 }
 
+// IsSuccess returns true when this import versioned flow created response has a 2xx status code
+func (o *ImportVersionedFlowCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this import versioned flow created response has a 3xx status code
+func (o *ImportVersionedFlowCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this import versioned flow created response has a 4xx status code
+func (o *ImportVersionedFlowCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this import versioned flow created response has a 5xx status code
+func (o *ImportVersionedFlowCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this import versioned flow created response a status code equal to that given
+func (o *ImportVersionedFlowCreated) IsCode(code int) bool {
+	return code == 201
+}
+
+// Code gets the status code for the import versioned flow created response
+func (o *ImportVersionedFlowCreated) Code() int {
+	return 201
+}
+
 func (o *ImportVersionedFlowCreated) Error() string {
+	return fmt.Sprintf("[POST /buckets/{bucketId}/flows/{flowId}/versions/import][%d] importVersionedFlowCreated ", 201)
+}
+
+func (o *ImportVersionedFlowCreated) String() string {
 	return fmt.Sprintf("[POST /buckets/{bucketId}/flows/{flowId}/versions/import][%d] importVersionedFlowCreated ", 201)
 }
 
@@ -128,14 +199,49 @@ func NewImportVersionedFlowBadRequest() *ImportVersionedFlowBadRequest {
 	return &ImportVersionedFlowBadRequest{}
 }
 
-/* ImportVersionedFlowBadRequest describes a response with status code 400, with default header values.
+/*
+ImportVersionedFlowBadRequest describes a response with status code 400, with default header values.
 
 NiFi Registry was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type ImportVersionedFlowBadRequest struct {
 }
 
+// IsSuccess returns true when this import versioned flow bad request response has a 2xx status code
+func (o *ImportVersionedFlowBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this import versioned flow bad request response has a 3xx status code
+func (o *ImportVersionedFlowBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this import versioned flow bad request response has a 4xx status code
+func (o *ImportVersionedFlowBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this import versioned flow bad request response has a 5xx status code
+func (o *ImportVersionedFlowBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this import versioned flow bad request response a status code equal to that given
+func (o *ImportVersionedFlowBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the import versioned flow bad request response
+func (o *ImportVersionedFlowBadRequest) Code() int {
+	return 400
+}
+
 func (o *ImportVersionedFlowBadRequest) Error() string {
+	return fmt.Sprintf("[POST /buckets/{bucketId}/flows/{flowId}/versions/import][%d] importVersionedFlowBadRequest ", 400)
+}
+
+func (o *ImportVersionedFlowBadRequest) String() string {
 	return fmt.Sprintf("[POST /buckets/{bucketId}/flows/{flowId}/versions/import][%d] importVersionedFlowBadRequest ", 400)
 }
 
@@ -149,14 +255,49 @@ func NewImportVersionedFlowUnauthorized() *ImportVersionedFlowUnauthorized {
 	return &ImportVersionedFlowUnauthorized{}
 }
 
-/* ImportVersionedFlowUnauthorized describes a response with status code 401, with default header values.
+/*
+ImportVersionedFlowUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type ImportVersionedFlowUnauthorized struct {
 }
 
+// IsSuccess returns true when this import versioned flow unauthorized response has a 2xx status code
+func (o *ImportVersionedFlowUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this import versioned flow unauthorized response has a 3xx status code
+func (o *ImportVersionedFlowUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this import versioned flow unauthorized response has a 4xx status code
+func (o *ImportVersionedFlowUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this import versioned flow unauthorized response has a 5xx status code
+func (o *ImportVersionedFlowUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this import versioned flow unauthorized response a status code equal to that given
+func (o *ImportVersionedFlowUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the import versioned flow unauthorized response
+func (o *ImportVersionedFlowUnauthorized) Code() int {
+	return 401
+}
+
 func (o *ImportVersionedFlowUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /buckets/{bucketId}/flows/{flowId}/versions/import][%d] importVersionedFlowUnauthorized ", 401)
+}
+
+func (o *ImportVersionedFlowUnauthorized) String() string {
 	return fmt.Sprintf("[POST /buckets/{bucketId}/flows/{flowId}/versions/import][%d] importVersionedFlowUnauthorized ", 401)
 }
 
@@ -170,14 +311,49 @@ func NewImportVersionedFlowForbidden() *ImportVersionedFlowForbidden {
 	return &ImportVersionedFlowForbidden{}
 }
 
-/* ImportVersionedFlowForbidden describes a response with status code 403, with default header values.
+/*
+ImportVersionedFlowForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type ImportVersionedFlowForbidden struct {
 }
 
+// IsSuccess returns true when this import versioned flow forbidden response has a 2xx status code
+func (o *ImportVersionedFlowForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this import versioned flow forbidden response has a 3xx status code
+func (o *ImportVersionedFlowForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this import versioned flow forbidden response has a 4xx status code
+func (o *ImportVersionedFlowForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this import versioned flow forbidden response has a 5xx status code
+func (o *ImportVersionedFlowForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this import versioned flow forbidden response a status code equal to that given
+func (o *ImportVersionedFlowForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the import versioned flow forbidden response
+func (o *ImportVersionedFlowForbidden) Code() int {
+	return 403
+}
+
 func (o *ImportVersionedFlowForbidden) Error() string {
+	return fmt.Sprintf("[POST /buckets/{bucketId}/flows/{flowId}/versions/import][%d] importVersionedFlowForbidden ", 403)
+}
+
+func (o *ImportVersionedFlowForbidden) String() string {
 	return fmt.Sprintf("[POST /buckets/{bucketId}/flows/{flowId}/versions/import][%d] importVersionedFlowForbidden ", 403)
 }
 
@@ -191,14 +367,49 @@ func NewImportVersionedFlowNotFound() *ImportVersionedFlowNotFound {
 	return &ImportVersionedFlowNotFound{}
 }
 
-/* ImportVersionedFlowNotFound describes a response with status code 404, with default header values.
+/*
+ImportVersionedFlowNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type ImportVersionedFlowNotFound struct {
 }
 
+// IsSuccess returns true when this import versioned flow not found response has a 2xx status code
+func (o *ImportVersionedFlowNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this import versioned flow not found response has a 3xx status code
+func (o *ImportVersionedFlowNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this import versioned flow not found response has a 4xx status code
+func (o *ImportVersionedFlowNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this import versioned flow not found response has a 5xx status code
+func (o *ImportVersionedFlowNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this import versioned flow not found response a status code equal to that given
+func (o *ImportVersionedFlowNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+// Code gets the status code for the import versioned flow not found response
+func (o *ImportVersionedFlowNotFound) Code() int {
+	return 404
+}
+
 func (o *ImportVersionedFlowNotFound) Error() string {
+	return fmt.Sprintf("[POST /buckets/{bucketId}/flows/{flowId}/versions/import][%d] importVersionedFlowNotFound ", 404)
+}
+
+func (o *ImportVersionedFlowNotFound) String() string {
 	return fmt.Sprintf("[POST /buckets/{bucketId}/flows/{flowId}/versions/import][%d] importVersionedFlowNotFound ", 404)
 }
 
@@ -212,14 +423,49 @@ func NewImportVersionedFlowConflict() *ImportVersionedFlowConflict {
 	return &ImportVersionedFlowConflict{}
 }
 
-/* ImportVersionedFlowConflict describes a response with status code 409, with default header values.
+/*
+ImportVersionedFlowConflict describes a response with status code 409, with default header values.
 
 NiFi Registry was unable to complete the request because it assumes a server state that is not valid.
 */
 type ImportVersionedFlowConflict struct {
 }
 
+// IsSuccess returns true when this import versioned flow conflict response has a 2xx status code
+func (o *ImportVersionedFlowConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this import versioned flow conflict response has a 3xx status code
+func (o *ImportVersionedFlowConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this import versioned flow conflict response has a 4xx status code
+func (o *ImportVersionedFlowConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this import versioned flow conflict response has a 5xx status code
+func (o *ImportVersionedFlowConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this import versioned flow conflict response a status code equal to that given
+func (o *ImportVersionedFlowConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the import versioned flow conflict response
+func (o *ImportVersionedFlowConflict) Code() int {
+	return 409
+}
+
 func (o *ImportVersionedFlowConflict) Error() string {
+	return fmt.Sprintf("[POST /buckets/{bucketId}/flows/{flowId}/versions/import][%d] importVersionedFlowConflict ", 409)
+}
+
+func (o *ImportVersionedFlowConflict) String() string {
 	return fmt.Sprintf("[POST /buckets/{bucketId}/flows/{flowId}/versions/import][%d] importVersionedFlowConflict ", 409)
 }
 

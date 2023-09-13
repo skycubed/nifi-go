@@ -221,6 +221,11 @@ func (m *JVMSystemDiagnosticsSnapshotDTO) contextValidateContentRepositoryStorag
 	for i := 0; i < len(m.ContentRepositoryStorageUsage); i++ {
 
 		if m.ContentRepositoryStorageUsage[i] != nil {
+
+			if swag.IsZero(m.ContentRepositoryStorageUsage[i]) { // not required
+				return nil
+			}
+
 			if err := m.ContentRepositoryStorageUsage[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("contentRepositoryStorageUsage" + "." + strconv.Itoa(i))
@@ -239,6 +244,11 @@ func (m *JVMSystemDiagnosticsSnapshotDTO) contextValidateContentRepositoryStorag
 func (m *JVMSystemDiagnosticsSnapshotDTO) contextValidateFlowFileRepositoryStorageUsage(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.FlowFileRepositoryStorageUsage != nil {
+
+		if swag.IsZero(m.FlowFileRepositoryStorageUsage) { // not required
+			return nil
+		}
+
 		if err := m.FlowFileRepositoryStorageUsage.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("flowFileRepositoryStorageUsage")
@@ -257,6 +267,11 @@ func (m *JVMSystemDiagnosticsSnapshotDTO) contextValidateGarbageCollectionDiagno
 	for i := 0; i < len(m.GarbageCollectionDiagnostics); i++ {
 
 		if m.GarbageCollectionDiagnostics[i] != nil {
+
+			if swag.IsZero(m.GarbageCollectionDiagnostics[i]) { // not required
+				return nil
+			}
+
 			if err := m.GarbageCollectionDiagnostics[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("garbageCollectionDiagnostics" + "." + strconv.Itoa(i))
@@ -277,6 +292,11 @@ func (m *JVMSystemDiagnosticsSnapshotDTO) contextValidateProvenanceRepositorySto
 	for i := 0; i < len(m.ProvenanceRepositoryStorageUsage); i++ {
 
 		if m.ProvenanceRepositoryStorageUsage[i] != nil {
+
+			if swag.IsZero(m.ProvenanceRepositoryStorageUsage[i]) { // not required
+				return nil
+			}
+
 			if err := m.ProvenanceRepositoryStorageUsage[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("provenanceRepositoryStorageUsage" + "." + strconv.Itoa(i))

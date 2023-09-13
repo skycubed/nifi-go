@@ -344,6 +344,11 @@ func (m *VersionedFlow) contextValidateIdentifier(ctx context.Context, formats s
 func (m *VersionedFlow) contextValidateLink(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Link != nil {
+
+		if swag.IsZero(m.Link) { // not required
+			return nil
+		}
+
 		if err := m.Link.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("link")
@@ -369,6 +374,11 @@ func (m *VersionedFlow) contextValidateModifiedTimestamp(ctx context.Context, fo
 func (m *VersionedFlow) contextValidatePermissions(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Permissions != nil {
+
+		if swag.IsZero(m.Permissions) { // not required
+			return nil
+		}
+
 		if err := m.Permissions.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("permissions")
@@ -385,6 +395,11 @@ func (m *VersionedFlow) contextValidatePermissions(ctx context.Context, formats 
 func (m *VersionedFlow) contextValidateRevision(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Revision != nil {
+
+		if swag.IsZero(m.Revision) { // not required
+			return nil
+		}
+
 		if err := m.Revision.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("revision")

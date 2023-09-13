@@ -44,9 +44,9 @@ type ClientService interface {
 }
 
 /*
-  OidcCallback redirects callback URI for processing the result of the open Id connect login sequence
+OidcCallback redirects callback URI for processing the result of the open Id connect login sequence
 
-  Note: This endpoint is subject to change as NiFi and it's REST API evolve.
+Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 */
 func (a *Client) OidcCallback(params *OidcCallbackParams, opts ...ClientOption) error {
 	// TODO: Validate the params before sending
@@ -77,9 +77,9 @@ func (a *Client) OidcCallback(params *OidcCallbackParams, opts ...ClientOption) 
 }
 
 /*
-  OidcExchange retrieves a j w t following a successful login sequence using the configured open Id connect provider
+OidcExchange retrieves a j w t following a successful login sequence using the configured open Id connect provider
 
-  Note: This endpoint is subject to change as NiFi and it's REST API evolve.
+Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 */
 func (a *Client) OidcExchange(params *OidcExchangeParams, opts ...ClientOption) (*OidcExchangeOK, error) {
 	// TODO: Validate the params before sending
@@ -117,9 +117,9 @@ func (a *Client) OidcExchange(params *OidcExchangeParams, opts ...ClientOption) 
 }
 
 /*
-  OidcLogout performs a logout in the open Id provider
+OidcLogout performs a logout in the open Id provider
 
-  Note: This endpoint is subject to change as NiFi and it's REST API evolve.
+Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 */
 func (a *Client) OidcLogout(params *OidcLogoutParams, opts ...ClientOption) error {
 	// TODO: Validate the params before sending
@@ -150,9 +150,9 @@ func (a *Client) OidcLogout(params *OidcLogoutParams, opts ...ClientOption) erro
 }
 
 /*
-  OidcLogoutCallback redirects callback URI for processing the result of the open Id connect logout sequence
+OidcLogoutCallback redirects callback URI for processing the result of the open Id connect logout sequence
 
-  Note: This endpoint is subject to change as NiFi and it's REST API evolve.
+Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 */
 func (a *Client) OidcLogoutCallback(params *OidcLogoutCallbackParams, opts ...ClientOption) error {
 	// TODO: Validate the params before sending
@@ -183,9 +183,9 @@ func (a *Client) OidcLogoutCallback(params *OidcLogoutCallbackParams, opts ...Cl
 }
 
 /*
-  OidcRequest initiates a request to authenticate through the configured open Id connect provider
+OidcRequest initiates a request to authenticate through the configured open Id connect provider
 
-  Note: This endpoint is subject to change as NiFi and it's REST API evolve.
+Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 */
 func (a *Client) OidcRequest(params *OidcRequestParams, opts ...ClientOption) error {
 	// TODO: Validate the params before sending

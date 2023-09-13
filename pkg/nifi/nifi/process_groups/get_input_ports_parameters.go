@@ -52,10 +52,12 @@ func NewGetInputPortsParamsWithHTTPClient(client *http.Client) *GetInputPortsPar
 	}
 }
 
-/* GetInputPortsParams contains all the parameters to send to the API endpoint
-   for the get input ports operation.
+/*
+GetInputPortsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get input ports operation.
+
+	Typically these are written to a http.Request.
 */
 type GetInputPortsParams struct {
 

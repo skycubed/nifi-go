@@ -52,10 +52,12 @@ func NewGetPeersParamsWithHTTPClient(client *http.Client) *GetPeersParams {
 	}
 }
 
-/* GetPeersParams contains all the parameters to send to the API endpoint
-   for the get peers operation.
+/*
+GetPeersParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get peers operation.
+
+	Typically these are written to a http.Request.
 */
 type GetPeersParams struct {
 	timeout    time.Duration

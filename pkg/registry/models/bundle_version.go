@@ -214,6 +214,11 @@ func (m *BundleVersion) ContextValidate(ctx context.Context, formats strfmt.Regi
 func (m *BundleVersion) contextValidateBucket(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Bucket != nil {
+
+		if swag.IsZero(m.Bucket) { // not required
+			return nil
+		}
+
 		if err := m.Bucket.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("bucket")
@@ -230,6 +235,11 @@ func (m *BundleVersion) contextValidateBucket(ctx context.Context, formats strfm
 func (m *BundleVersion) contextValidateBundle(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Bundle != nil {
+
+		if swag.IsZero(m.Bundle) { // not required
+			return nil
+		}
+
 		if err := m.Bundle.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("bundle")
@@ -252,6 +262,11 @@ func (m *BundleVersion) contextValidateDependencies(ctx context.Context, formats
 	for i := 0; i < len(m.Dependencies); i++ {
 
 		if m.Dependencies[i] != nil {
+
+			if swag.IsZero(m.Dependencies[i]) { // not required
+				return nil
+			}
+
 			if err := m.Dependencies[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("dependencies" + "." + strconv.Itoa(i))
@@ -270,6 +285,11 @@ func (m *BundleVersion) contextValidateDependencies(ctx context.Context, formats
 func (m *BundleVersion) contextValidateLink(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Link != nil {
+
+		if swag.IsZero(m.Link) { // not required
+			return nil
+		}
+
 		if err := m.Link.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("link")
@@ -286,6 +306,7 @@ func (m *BundleVersion) contextValidateLink(ctx context.Context, formats strfmt.
 func (m *BundleVersion) contextValidateVersionMetadata(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.VersionMetadata != nil {
+
 		if err := m.VersionMetadata.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("versionMetadata")

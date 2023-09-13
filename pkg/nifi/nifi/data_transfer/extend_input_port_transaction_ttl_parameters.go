@@ -52,10 +52,12 @@ func NewExtendInputPortTransactionTTLParamsWithHTTPClient(client *http.Client) *
 	}
 }
 
-/* ExtendInputPortTransactionTTLParams contains all the parameters to send to the API endpoint
-   for the extend input port transaction TTL operation.
+/*
+ExtendInputPortTransactionTTLParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the extend input port transaction TTL operation.
+
+	Typically these are written to a http.Request.
 */
 type ExtendInputPortTransactionTTLParams struct {
 

@@ -78,6 +78,11 @@ func (m *ConnectionStatusSnapshotEntity) ContextValidate(ctx context.Context, fo
 func (m *ConnectionStatusSnapshotEntity) contextValidateConnectionStatusSnapshot(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ConnectionStatusSnapshot != nil {
+
+		if swag.IsZero(m.ConnectionStatusSnapshot) { // not required
+			return nil
+		}
+
 		if err := m.ConnectionStatusSnapshot.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("connectionStatusSnapshot")

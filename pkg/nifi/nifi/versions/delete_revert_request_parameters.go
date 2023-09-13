@@ -53,10 +53,12 @@ func NewDeleteRevertRequestParamsWithHTTPClient(client *http.Client) *DeleteReve
 	}
 }
 
-/* DeleteRevertRequestParams contains all the parameters to send to the API endpoint
-   for the delete revert request operation.
+/*
+DeleteRevertRequestParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete revert request operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteRevertRequestParams struct {
 

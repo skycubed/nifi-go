@@ -75,6 +75,11 @@ func (m *ProcessorStatusEntity) ContextValidate(ctx context.Context, formats str
 func (m *ProcessorStatusEntity) contextValidateProcessorStatus(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ProcessorStatus != nil {
+
+		if swag.IsZero(m.ProcessorStatus) { // not required
+			return nil
+		}
+
 		if err := m.ProcessorStatus.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("processorStatus")

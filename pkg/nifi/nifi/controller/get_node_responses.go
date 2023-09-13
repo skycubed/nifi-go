@@ -60,7 +60,7 @@ func (o *GetNodeReader) ReadResponse(response runtime.ClientResponse, consumer r
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /controller/cluster/nodes/{id}] getNode", response, response.Code())
 	}
 }
 
@@ -69,7 +69,8 @@ func NewGetNodeOK() *GetNodeOK {
 	return &GetNodeOK{}
 }
 
-/* GetNodeOK describes a response with status code 200, with default header values.
+/*
+GetNodeOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,44 @@ type GetNodeOK struct {
 	Payload *models.NodeEntity
 }
 
+// IsSuccess returns true when this get node o k response has a 2xx status code
+func (o *GetNodeOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get node o k response has a 3xx status code
+func (o *GetNodeOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get node o k response has a 4xx status code
+func (o *GetNodeOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get node o k response has a 5xx status code
+func (o *GetNodeOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get node o k response a status code equal to that given
+func (o *GetNodeOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the get node o k response
+func (o *GetNodeOK) Code() int {
+	return 200
+}
+
 func (o *GetNodeOK) Error() string {
 	return fmt.Sprintf("[GET /controller/cluster/nodes/{id}][%d] getNodeOK  %+v", 200, o.Payload)
 }
+
+func (o *GetNodeOK) String() string {
+	return fmt.Sprintf("[GET /controller/cluster/nodes/{id}][%d] getNodeOK  %+v", 200, o.Payload)
+}
+
 func (o *GetNodeOK) GetPayload() *models.NodeEntity {
 	return o.Payload
 }
@@ -101,14 +137,49 @@ func NewGetNodeBadRequest() *GetNodeBadRequest {
 	return &GetNodeBadRequest{}
 }
 
-/* GetNodeBadRequest describes a response with status code 400, with default header values.
+/*
+GetNodeBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type GetNodeBadRequest struct {
 }
 
+// IsSuccess returns true when this get node bad request response has a 2xx status code
+func (o *GetNodeBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get node bad request response has a 3xx status code
+func (o *GetNodeBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get node bad request response has a 4xx status code
+func (o *GetNodeBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get node bad request response has a 5xx status code
+func (o *GetNodeBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get node bad request response a status code equal to that given
+func (o *GetNodeBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the get node bad request response
+func (o *GetNodeBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetNodeBadRequest) Error() string {
+	return fmt.Sprintf("[GET /controller/cluster/nodes/{id}][%d] getNodeBadRequest ", 400)
+}
+
+func (o *GetNodeBadRequest) String() string {
 	return fmt.Sprintf("[GET /controller/cluster/nodes/{id}][%d] getNodeBadRequest ", 400)
 }
 
@@ -122,14 +193,49 @@ func NewGetNodeUnauthorized() *GetNodeUnauthorized {
 	return &GetNodeUnauthorized{}
 }
 
-/* GetNodeUnauthorized describes a response with status code 401, with default header values.
+/*
+GetNodeUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type GetNodeUnauthorized struct {
 }
 
+// IsSuccess returns true when this get node unauthorized response has a 2xx status code
+func (o *GetNodeUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get node unauthorized response has a 3xx status code
+func (o *GetNodeUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get node unauthorized response has a 4xx status code
+func (o *GetNodeUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get node unauthorized response has a 5xx status code
+func (o *GetNodeUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get node unauthorized response a status code equal to that given
+func (o *GetNodeUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the get node unauthorized response
+func (o *GetNodeUnauthorized) Code() int {
+	return 401
+}
+
 func (o *GetNodeUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /controller/cluster/nodes/{id}][%d] getNodeUnauthorized ", 401)
+}
+
+func (o *GetNodeUnauthorized) String() string {
 	return fmt.Sprintf("[GET /controller/cluster/nodes/{id}][%d] getNodeUnauthorized ", 401)
 }
 
@@ -143,14 +249,49 @@ func NewGetNodeForbidden() *GetNodeForbidden {
 	return &GetNodeForbidden{}
 }
 
-/* GetNodeForbidden describes a response with status code 403, with default header values.
+/*
+GetNodeForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type GetNodeForbidden struct {
 }
 
+// IsSuccess returns true when this get node forbidden response has a 2xx status code
+func (o *GetNodeForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get node forbidden response has a 3xx status code
+func (o *GetNodeForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get node forbidden response has a 4xx status code
+func (o *GetNodeForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get node forbidden response has a 5xx status code
+func (o *GetNodeForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get node forbidden response a status code equal to that given
+func (o *GetNodeForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the get node forbidden response
+func (o *GetNodeForbidden) Code() int {
+	return 403
+}
+
 func (o *GetNodeForbidden) Error() string {
+	return fmt.Sprintf("[GET /controller/cluster/nodes/{id}][%d] getNodeForbidden ", 403)
+}
+
+func (o *GetNodeForbidden) String() string {
 	return fmt.Sprintf("[GET /controller/cluster/nodes/{id}][%d] getNodeForbidden ", 403)
 }
 
@@ -164,14 +305,49 @@ func NewGetNodeNotFound() *GetNodeNotFound {
 	return &GetNodeNotFound{}
 }
 
-/* GetNodeNotFound describes a response with status code 404, with default header values.
+/*
+GetNodeNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type GetNodeNotFound struct {
 }
 
+// IsSuccess returns true when this get node not found response has a 2xx status code
+func (o *GetNodeNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get node not found response has a 3xx status code
+func (o *GetNodeNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get node not found response has a 4xx status code
+func (o *GetNodeNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get node not found response has a 5xx status code
+func (o *GetNodeNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get node not found response a status code equal to that given
+func (o *GetNodeNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+// Code gets the status code for the get node not found response
+func (o *GetNodeNotFound) Code() int {
+	return 404
+}
+
 func (o *GetNodeNotFound) Error() string {
+	return fmt.Sprintf("[GET /controller/cluster/nodes/{id}][%d] getNodeNotFound ", 404)
+}
+
+func (o *GetNodeNotFound) String() string {
 	return fmt.Sprintf("[GET /controller/cluster/nodes/{id}][%d] getNodeNotFound ", 404)
 }
 
@@ -185,14 +361,49 @@ func NewGetNodeConflict() *GetNodeConflict {
 	return &GetNodeConflict{}
 }
 
-/* GetNodeConflict describes a response with status code 409, with default header values.
+/*
+GetNodeConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type GetNodeConflict struct {
 }
 
+// IsSuccess returns true when this get node conflict response has a 2xx status code
+func (o *GetNodeConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get node conflict response has a 3xx status code
+func (o *GetNodeConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get node conflict response has a 4xx status code
+func (o *GetNodeConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get node conflict response has a 5xx status code
+func (o *GetNodeConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get node conflict response a status code equal to that given
+func (o *GetNodeConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the get node conflict response
+func (o *GetNodeConflict) Code() int {
+	return 409
+}
+
 func (o *GetNodeConflict) Error() string {
+	return fmt.Sprintf("[GET /controller/cluster/nodes/{id}][%d] getNodeConflict ", 409)
+}
+
+func (o *GetNodeConflict) String() string {
 	return fmt.Sprintf("[GET /controller/cluster/nodes/{id}][%d] getNodeConflict ", 409)
 }
 

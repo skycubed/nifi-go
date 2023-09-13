@@ -60,7 +60,7 @@ func (o *GetFlowsReader) ReadResponse(response runtime.ClientResponse, consumer 
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /buckets/{bucketId}/flows] getFlows", response, response.Code())
 	}
 }
 
@@ -69,7 +69,8 @@ func NewGetFlowsOK() *GetFlowsOK {
 	return &GetFlowsOK{}
 }
 
-/* GetFlowsOK describes a response with status code 200, with default header values.
+/*
+GetFlowsOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,44 @@ type GetFlowsOK struct {
 	Payload []*models.VersionedFlow
 }
 
+// IsSuccess returns true when this get flows o k response has a 2xx status code
+func (o *GetFlowsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get flows o k response has a 3xx status code
+func (o *GetFlowsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get flows o k response has a 4xx status code
+func (o *GetFlowsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get flows o k response has a 5xx status code
+func (o *GetFlowsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get flows o k response a status code equal to that given
+func (o *GetFlowsOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the get flows o k response
+func (o *GetFlowsOK) Code() int {
+	return 200
+}
+
 func (o *GetFlowsOK) Error() string {
 	return fmt.Sprintf("[GET /buckets/{bucketId}/flows][%d] getFlowsOK  %+v", 200, o.Payload)
 }
+
+func (o *GetFlowsOK) String() string {
+	return fmt.Sprintf("[GET /buckets/{bucketId}/flows][%d] getFlowsOK  %+v", 200, o.Payload)
+}
+
 func (o *GetFlowsOK) GetPayload() []*models.VersionedFlow {
 	return o.Payload
 }
@@ -99,14 +135,49 @@ func NewGetFlowsBadRequest() *GetFlowsBadRequest {
 	return &GetFlowsBadRequest{}
 }
 
-/* GetFlowsBadRequest describes a response with status code 400, with default header values.
+/*
+GetFlowsBadRequest describes a response with status code 400, with default header values.
 
 NiFi Registry was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type GetFlowsBadRequest struct {
 }
 
+// IsSuccess returns true when this get flows bad request response has a 2xx status code
+func (o *GetFlowsBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get flows bad request response has a 3xx status code
+func (o *GetFlowsBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get flows bad request response has a 4xx status code
+func (o *GetFlowsBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get flows bad request response has a 5xx status code
+func (o *GetFlowsBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get flows bad request response a status code equal to that given
+func (o *GetFlowsBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the get flows bad request response
+func (o *GetFlowsBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetFlowsBadRequest) Error() string {
+	return fmt.Sprintf("[GET /buckets/{bucketId}/flows][%d] getFlowsBadRequest ", 400)
+}
+
+func (o *GetFlowsBadRequest) String() string {
 	return fmt.Sprintf("[GET /buckets/{bucketId}/flows][%d] getFlowsBadRequest ", 400)
 }
 
@@ -120,14 +191,49 @@ func NewGetFlowsUnauthorized() *GetFlowsUnauthorized {
 	return &GetFlowsUnauthorized{}
 }
 
-/* GetFlowsUnauthorized describes a response with status code 401, with default header values.
+/*
+GetFlowsUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type GetFlowsUnauthorized struct {
 }
 
+// IsSuccess returns true when this get flows unauthorized response has a 2xx status code
+func (o *GetFlowsUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get flows unauthorized response has a 3xx status code
+func (o *GetFlowsUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get flows unauthorized response has a 4xx status code
+func (o *GetFlowsUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get flows unauthorized response has a 5xx status code
+func (o *GetFlowsUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get flows unauthorized response a status code equal to that given
+func (o *GetFlowsUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the get flows unauthorized response
+func (o *GetFlowsUnauthorized) Code() int {
+	return 401
+}
+
 func (o *GetFlowsUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /buckets/{bucketId}/flows][%d] getFlowsUnauthorized ", 401)
+}
+
+func (o *GetFlowsUnauthorized) String() string {
 	return fmt.Sprintf("[GET /buckets/{bucketId}/flows][%d] getFlowsUnauthorized ", 401)
 }
 
@@ -141,14 +247,49 @@ func NewGetFlowsForbidden() *GetFlowsForbidden {
 	return &GetFlowsForbidden{}
 }
 
-/* GetFlowsForbidden describes a response with status code 403, with default header values.
+/*
+GetFlowsForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type GetFlowsForbidden struct {
 }
 
+// IsSuccess returns true when this get flows forbidden response has a 2xx status code
+func (o *GetFlowsForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get flows forbidden response has a 3xx status code
+func (o *GetFlowsForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get flows forbidden response has a 4xx status code
+func (o *GetFlowsForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get flows forbidden response has a 5xx status code
+func (o *GetFlowsForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get flows forbidden response a status code equal to that given
+func (o *GetFlowsForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the get flows forbidden response
+func (o *GetFlowsForbidden) Code() int {
+	return 403
+}
+
 func (o *GetFlowsForbidden) Error() string {
+	return fmt.Sprintf("[GET /buckets/{bucketId}/flows][%d] getFlowsForbidden ", 403)
+}
+
+func (o *GetFlowsForbidden) String() string {
 	return fmt.Sprintf("[GET /buckets/{bucketId}/flows][%d] getFlowsForbidden ", 403)
 }
 
@@ -162,14 +303,49 @@ func NewGetFlowsNotFound() *GetFlowsNotFound {
 	return &GetFlowsNotFound{}
 }
 
-/* GetFlowsNotFound describes a response with status code 404, with default header values.
+/*
+GetFlowsNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type GetFlowsNotFound struct {
 }
 
+// IsSuccess returns true when this get flows not found response has a 2xx status code
+func (o *GetFlowsNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get flows not found response has a 3xx status code
+func (o *GetFlowsNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get flows not found response has a 4xx status code
+func (o *GetFlowsNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get flows not found response has a 5xx status code
+func (o *GetFlowsNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get flows not found response a status code equal to that given
+func (o *GetFlowsNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+// Code gets the status code for the get flows not found response
+func (o *GetFlowsNotFound) Code() int {
+	return 404
+}
+
 func (o *GetFlowsNotFound) Error() string {
+	return fmt.Sprintf("[GET /buckets/{bucketId}/flows][%d] getFlowsNotFound ", 404)
+}
+
+func (o *GetFlowsNotFound) String() string {
 	return fmt.Sprintf("[GET /buckets/{bucketId}/flows][%d] getFlowsNotFound ", 404)
 }
 
@@ -183,14 +359,49 @@ func NewGetFlowsConflict() *GetFlowsConflict {
 	return &GetFlowsConflict{}
 }
 
-/* GetFlowsConflict describes a response with status code 409, with default header values.
+/*
+GetFlowsConflict describes a response with status code 409, with default header values.
 
 NiFi Registry was unable to complete the request because it assumes a server state that is not valid.
 */
 type GetFlowsConflict struct {
 }
 
+// IsSuccess returns true when this get flows conflict response has a 2xx status code
+func (o *GetFlowsConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get flows conflict response has a 3xx status code
+func (o *GetFlowsConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get flows conflict response has a 4xx status code
+func (o *GetFlowsConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get flows conflict response has a 5xx status code
+func (o *GetFlowsConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get flows conflict response a status code equal to that given
+func (o *GetFlowsConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the get flows conflict response
+func (o *GetFlowsConflict) Code() int {
+	return 409
+}
+
 func (o *GetFlowsConflict) Error() string {
+	return fmt.Sprintf("[GET /buckets/{bucketId}/flows][%d] getFlowsConflict ", 409)
+}
+
+func (o *GetFlowsConflict) String() string {
 	return fmt.Sprintf("[GET /buckets/{bucketId}/flows][%d] getFlowsConflict ", 409)
 }
 

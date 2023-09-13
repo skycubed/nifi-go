@@ -108,6 +108,11 @@ func (m *RemoteProcessGroupPortDTO) ContextValidate(ctx context.Context, formats
 func (m *RemoteProcessGroupPortDTO) contextValidateBatchSettings(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.BatchSettings != nil {
+
+		if swag.IsZero(m.BatchSettings) { // not required
+			return nil
+		}
+
 		if err := m.BatchSettings.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("batchSettings")

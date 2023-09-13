@@ -72,6 +72,11 @@ func (m *ComponentStateEntity) ContextValidate(ctx context.Context, formats strf
 func (m *ComponentStateEntity) contextValidateComponentState(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ComponentState != nil {
+
+		if swag.IsZero(m.ComponentState) { // not required
+			return nil
+		}
+
 		if err := m.ComponentState.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("componentState")

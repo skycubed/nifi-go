@@ -60,7 +60,7 @@ func (o *InitiateReplaceProcessGroupReader) ReadResponse(response runtime.Client
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /process-groups/{id}/replace-requests] initiateReplaceProcessGroup", response, response.Code())
 	}
 }
 
@@ -69,7 +69,8 @@ func NewInitiateReplaceProcessGroupOK() *InitiateReplaceProcessGroupOK {
 	return &InitiateReplaceProcessGroupOK{}
 }
 
-/* InitiateReplaceProcessGroupOK describes a response with status code 200, with default header values.
+/*
+InitiateReplaceProcessGroupOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -77,9 +78,44 @@ type InitiateReplaceProcessGroupOK struct {
 	Payload *models.ProcessGroupReplaceRequestEntity
 }
 
+// IsSuccess returns true when this initiate replace process group o k response has a 2xx status code
+func (o *InitiateReplaceProcessGroupOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this initiate replace process group o k response has a 3xx status code
+func (o *InitiateReplaceProcessGroupOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this initiate replace process group o k response has a 4xx status code
+func (o *InitiateReplaceProcessGroupOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this initiate replace process group o k response has a 5xx status code
+func (o *InitiateReplaceProcessGroupOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this initiate replace process group o k response a status code equal to that given
+func (o *InitiateReplaceProcessGroupOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the initiate replace process group o k response
+func (o *InitiateReplaceProcessGroupOK) Code() int {
+	return 200
+}
+
 func (o *InitiateReplaceProcessGroupOK) Error() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/replace-requests][%d] initiateReplaceProcessGroupOK  %+v", 200, o.Payload)
 }
+
+func (o *InitiateReplaceProcessGroupOK) String() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/replace-requests][%d] initiateReplaceProcessGroupOK  %+v", 200, o.Payload)
+}
+
 func (o *InitiateReplaceProcessGroupOK) GetPayload() *models.ProcessGroupReplaceRequestEntity {
 	return o.Payload
 }
@@ -101,14 +137,49 @@ func NewInitiateReplaceProcessGroupBadRequest() *InitiateReplaceProcessGroupBadR
 	return &InitiateReplaceProcessGroupBadRequest{}
 }
 
-/* InitiateReplaceProcessGroupBadRequest describes a response with status code 400, with default header values.
+/*
+InitiateReplaceProcessGroupBadRequest describes a response with status code 400, with default header values.
 
 NiFi was unable to complete the request because it was invalid. The request should not be retried without modification.
 */
 type InitiateReplaceProcessGroupBadRequest struct {
 }
 
+// IsSuccess returns true when this initiate replace process group bad request response has a 2xx status code
+func (o *InitiateReplaceProcessGroupBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this initiate replace process group bad request response has a 3xx status code
+func (o *InitiateReplaceProcessGroupBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this initiate replace process group bad request response has a 4xx status code
+func (o *InitiateReplaceProcessGroupBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this initiate replace process group bad request response has a 5xx status code
+func (o *InitiateReplaceProcessGroupBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this initiate replace process group bad request response a status code equal to that given
+func (o *InitiateReplaceProcessGroupBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the initiate replace process group bad request response
+func (o *InitiateReplaceProcessGroupBadRequest) Code() int {
+	return 400
+}
+
 func (o *InitiateReplaceProcessGroupBadRequest) Error() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/replace-requests][%d] initiateReplaceProcessGroupBadRequest ", 400)
+}
+
+func (o *InitiateReplaceProcessGroupBadRequest) String() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/replace-requests][%d] initiateReplaceProcessGroupBadRequest ", 400)
 }
 
@@ -122,14 +193,49 @@ func NewInitiateReplaceProcessGroupUnauthorized() *InitiateReplaceProcessGroupUn
 	return &InitiateReplaceProcessGroupUnauthorized{}
 }
 
-/* InitiateReplaceProcessGroupUnauthorized describes a response with status code 401, with default header values.
+/*
+InitiateReplaceProcessGroupUnauthorized describes a response with status code 401, with default header values.
 
 Client could not be authenticated.
 */
 type InitiateReplaceProcessGroupUnauthorized struct {
 }
 
+// IsSuccess returns true when this initiate replace process group unauthorized response has a 2xx status code
+func (o *InitiateReplaceProcessGroupUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this initiate replace process group unauthorized response has a 3xx status code
+func (o *InitiateReplaceProcessGroupUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this initiate replace process group unauthorized response has a 4xx status code
+func (o *InitiateReplaceProcessGroupUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this initiate replace process group unauthorized response has a 5xx status code
+func (o *InitiateReplaceProcessGroupUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this initiate replace process group unauthorized response a status code equal to that given
+func (o *InitiateReplaceProcessGroupUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+// Code gets the status code for the initiate replace process group unauthorized response
+func (o *InitiateReplaceProcessGroupUnauthorized) Code() int {
+	return 401
+}
+
 func (o *InitiateReplaceProcessGroupUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/replace-requests][%d] initiateReplaceProcessGroupUnauthorized ", 401)
+}
+
+func (o *InitiateReplaceProcessGroupUnauthorized) String() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/replace-requests][%d] initiateReplaceProcessGroupUnauthorized ", 401)
 }
 
@@ -143,14 +249,49 @@ func NewInitiateReplaceProcessGroupForbidden() *InitiateReplaceProcessGroupForbi
 	return &InitiateReplaceProcessGroupForbidden{}
 }
 
-/* InitiateReplaceProcessGroupForbidden describes a response with status code 403, with default header values.
+/*
+InitiateReplaceProcessGroupForbidden describes a response with status code 403, with default header values.
 
 Client is not authorized to make this request.
 */
 type InitiateReplaceProcessGroupForbidden struct {
 }
 
+// IsSuccess returns true when this initiate replace process group forbidden response has a 2xx status code
+func (o *InitiateReplaceProcessGroupForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this initiate replace process group forbidden response has a 3xx status code
+func (o *InitiateReplaceProcessGroupForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this initiate replace process group forbidden response has a 4xx status code
+func (o *InitiateReplaceProcessGroupForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this initiate replace process group forbidden response has a 5xx status code
+func (o *InitiateReplaceProcessGroupForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this initiate replace process group forbidden response a status code equal to that given
+func (o *InitiateReplaceProcessGroupForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the initiate replace process group forbidden response
+func (o *InitiateReplaceProcessGroupForbidden) Code() int {
+	return 403
+}
+
 func (o *InitiateReplaceProcessGroupForbidden) Error() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/replace-requests][%d] initiateReplaceProcessGroupForbidden ", 403)
+}
+
+func (o *InitiateReplaceProcessGroupForbidden) String() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/replace-requests][%d] initiateReplaceProcessGroupForbidden ", 403)
 }
 
@@ -164,14 +305,49 @@ func NewInitiateReplaceProcessGroupNotFound() *InitiateReplaceProcessGroupNotFou
 	return &InitiateReplaceProcessGroupNotFound{}
 }
 
-/* InitiateReplaceProcessGroupNotFound describes a response with status code 404, with default header values.
+/*
+InitiateReplaceProcessGroupNotFound describes a response with status code 404, with default header values.
 
 The specified resource could not be found.
 */
 type InitiateReplaceProcessGroupNotFound struct {
 }
 
+// IsSuccess returns true when this initiate replace process group not found response has a 2xx status code
+func (o *InitiateReplaceProcessGroupNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this initiate replace process group not found response has a 3xx status code
+func (o *InitiateReplaceProcessGroupNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this initiate replace process group not found response has a 4xx status code
+func (o *InitiateReplaceProcessGroupNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this initiate replace process group not found response has a 5xx status code
+func (o *InitiateReplaceProcessGroupNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this initiate replace process group not found response a status code equal to that given
+func (o *InitiateReplaceProcessGroupNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+// Code gets the status code for the initiate replace process group not found response
+func (o *InitiateReplaceProcessGroupNotFound) Code() int {
+	return 404
+}
+
 func (o *InitiateReplaceProcessGroupNotFound) Error() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/replace-requests][%d] initiateReplaceProcessGroupNotFound ", 404)
+}
+
+func (o *InitiateReplaceProcessGroupNotFound) String() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/replace-requests][%d] initiateReplaceProcessGroupNotFound ", 404)
 }
 
@@ -185,14 +361,49 @@ func NewInitiateReplaceProcessGroupConflict() *InitiateReplaceProcessGroupConfli
 	return &InitiateReplaceProcessGroupConflict{}
 }
 
-/* InitiateReplaceProcessGroupConflict describes a response with status code 409, with default header values.
+/*
+InitiateReplaceProcessGroupConflict describes a response with status code 409, with default header values.
 
 The request was valid but NiFi was not in the appropriate state to process it. Retrying the same request later may be successful.
 */
 type InitiateReplaceProcessGroupConflict struct {
 }
 
+// IsSuccess returns true when this initiate replace process group conflict response has a 2xx status code
+func (o *InitiateReplaceProcessGroupConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this initiate replace process group conflict response has a 3xx status code
+func (o *InitiateReplaceProcessGroupConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this initiate replace process group conflict response has a 4xx status code
+func (o *InitiateReplaceProcessGroupConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this initiate replace process group conflict response has a 5xx status code
+func (o *InitiateReplaceProcessGroupConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this initiate replace process group conflict response a status code equal to that given
+func (o *InitiateReplaceProcessGroupConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the initiate replace process group conflict response
+func (o *InitiateReplaceProcessGroupConflict) Code() int {
+	return 409
+}
+
 func (o *InitiateReplaceProcessGroupConflict) Error() string {
+	return fmt.Sprintf("[POST /process-groups/{id}/replace-requests][%d] initiateReplaceProcessGroupConflict ", 409)
+}
+
+func (o *InitiateReplaceProcessGroupConflict) String() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/replace-requests][%d] initiateReplaceProcessGroupConflict ", 409)
 }
 

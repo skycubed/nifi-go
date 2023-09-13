@@ -118,6 +118,11 @@ func (m *ProvenanceResultsDTO) contextValidateProvenanceEvents(ctx context.Conte
 	for i := 0; i < len(m.ProvenanceEvents); i++ {
 
 		if m.ProvenanceEvents[i] != nil {
+
+			if swag.IsZero(m.ProvenanceEvents[i]) { // not required
+				return nil
+			}
+
 			if err := m.ProvenanceEvents[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("provenanceEvents" + "." + strconv.Itoa(i))

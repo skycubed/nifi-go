@@ -375,6 +375,11 @@ func (m *ControllerServiceDTO) ContextValidate(ctx context.Context, formats strf
 func (m *ControllerServiceDTO) contextValidateBundle(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Bundle != nil {
+
+		if swag.IsZero(m.Bundle) { // not required
+			return nil
+		}
+
 		if err := m.Bundle.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("bundle")
@@ -393,6 +398,11 @@ func (m *ControllerServiceDTO) contextValidateControllerServiceApis(ctx context.
 	for i := 0; i < len(m.ControllerServiceApis); i++ {
 
 		if m.ControllerServiceApis[i] != nil {
+
+			if swag.IsZero(m.ControllerServiceApis[i]) { // not required
+				return nil
+			}
+
 			if err := m.ControllerServiceApis[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("controllerServiceApis" + "." + strconv.Itoa(i))
@@ -426,6 +436,11 @@ func (m *ControllerServiceDTO) contextValidateDescriptors(ctx context.Context, f
 func (m *ControllerServiceDTO) contextValidatePosition(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Position != nil {
+
+		if swag.IsZero(m.Position) { // not required
+			return nil
+		}
+
 		if err := m.Position.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("position")
@@ -444,6 +459,11 @@ func (m *ControllerServiceDTO) contextValidateReferencingComponents(ctx context.
 	for i := 0; i < len(m.ReferencingComponents); i++ {
 
 		if m.ReferencingComponents[i] != nil {
+
+			if swag.IsZero(m.ReferencingComponents[i]) { // not required
+				return nil
+			}
+
 			if err := m.ReferencingComponents[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("referencingComponents" + "." + strconv.Itoa(i))

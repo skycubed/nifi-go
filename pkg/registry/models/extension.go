@@ -542,6 +542,11 @@ func (m *Extension) ContextValidate(ctx context.Context, formats strfmt.Registry
 func (m *Extension) contextValidateDeprecationNotice(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.DeprecationNotice != nil {
+
+		if swag.IsZero(m.DeprecationNotice) { // not required
+			return nil
+		}
+
 		if err := m.DeprecationNotice.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("deprecationNotice")
@@ -560,6 +565,11 @@ func (m *Extension) contextValidateDynamicProperties(ctx context.Context, format
 	for i := 0; i < len(m.DynamicProperties); i++ {
 
 		if m.DynamicProperties[i] != nil {
+
+			if swag.IsZero(m.DynamicProperties[i]) { // not required
+				return nil
+			}
+
 			if err := m.DynamicProperties[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("dynamicProperties" + "." + strconv.Itoa(i))
@@ -578,6 +588,11 @@ func (m *Extension) contextValidateDynamicProperties(ctx context.Context, format
 func (m *Extension) contextValidateDynamicRelationship(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.DynamicRelationship != nil {
+
+		if swag.IsZero(m.DynamicRelationship) { // not required
+			return nil
+		}
+
 		if err := m.DynamicRelationship.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("dynamicRelationship")
@@ -596,6 +611,11 @@ func (m *Extension) contextValidateProperties(ctx context.Context, formats strfm
 	for i := 0; i < len(m.Properties); i++ {
 
 		if m.Properties[i] != nil {
+
+			if swag.IsZero(m.Properties[i]) { // not required
+				return nil
+			}
+
 			if err := m.Properties[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("properties" + "." + strconv.Itoa(i))
@@ -616,6 +636,11 @@ func (m *Extension) contextValidateProvidedServiceAPIs(ctx context.Context, form
 	for i := 0; i < len(m.ProvidedServiceAPIs); i++ {
 
 		if m.ProvidedServiceAPIs[i] != nil {
+
+			if swag.IsZero(m.ProvidedServiceAPIs[i]) { // not required
+				return nil
+			}
+
 			if err := m.ProvidedServiceAPIs[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("providedServiceAPIs" + "." + strconv.Itoa(i))
@@ -636,6 +661,11 @@ func (m *Extension) contextValidateReadsAttributes(ctx context.Context, formats 
 	for i := 0; i < len(m.ReadsAttributes); i++ {
 
 		if m.ReadsAttributes[i] != nil {
+
+			if swag.IsZero(m.ReadsAttributes[i]) { // not required
+				return nil
+			}
+
 			if err := m.ReadsAttributes[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("readsAttributes" + "." + strconv.Itoa(i))
@@ -656,6 +686,11 @@ func (m *Extension) contextValidateRelationships(ctx context.Context, formats st
 	for i := 0; i < len(m.Relationships); i++ {
 
 		if m.Relationships[i] != nil {
+
+			if swag.IsZero(m.Relationships[i]) { // not required
+				return nil
+			}
+
 			if err := m.Relationships[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("relationships" + "." + strconv.Itoa(i))
@@ -674,6 +709,11 @@ func (m *Extension) contextValidateRelationships(ctx context.Context, formats st
 func (m *Extension) contextValidateRestricted(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Restricted != nil {
+
+		if swag.IsZero(m.Restricted) { // not required
+			return nil
+		}
+
 		if err := m.Restricted.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("restricted")
@@ -690,6 +730,11 @@ func (m *Extension) contextValidateRestricted(ctx context.Context, formats strfm
 func (m *Extension) contextValidateStateful(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Stateful != nil {
+
+		if swag.IsZero(m.Stateful) { // not required
+			return nil
+		}
+
 		if err := m.Stateful.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("stateful")
@@ -708,6 +753,11 @@ func (m *Extension) contextValidateSystemResourceConsiderations(ctx context.Cont
 	for i := 0; i < len(m.SystemResourceConsiderations); i++ {
 
 		if m.SystemResourceConsiderations[i] != nil {
+
+			if swag.IsZero(m.SystemResourceConsiderations[i]) { // not required
+				return nil
+			}
+
 			if err := m.SystemResourceConsiderations[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("systemResourceConsiderations" + "." + strconv.Itoa(i))
@@ -728,6 +778,11 @@ func (m *Extension) contextValidateWritesAttributes(ctx context.Context, formats
 	for i := 0; i < len(m.WritesAttributes); i++ {
 
 		if m.WritesAttributes[i] != nil {
+
+			if swag.IsZero(m.WritesAttributes[i]) { // not required
+				return nil
+			}
+
 			if err := m.WritesAttributes[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("writesAttributes" + "." + strconv.Itoa(i))

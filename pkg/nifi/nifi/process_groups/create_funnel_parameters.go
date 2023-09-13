@@ -54,10 +54,12 @@ func NewCreateFunnelParamsWithHTTPClient(client *http.Client) *CreateFunnelParam
 	}
 }
 
-/* CreateFunnelParams contains all the parameters to send to the API endpoint
-   for the create funnel operation.
+/*
+CreateFunnelParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create funnel operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateFunnelParams struct {
 
