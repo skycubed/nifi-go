@@ -60,7 +60,7 @@ func (o *ScheduleComponentsReader) ReadResponse(response runtime.ClientResponse,
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PUT /flow/process-groups/{id}] scheduleComponents", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *ScheduleComponentsOK) IsServerError() bool {
 // IsCode returns true when this schedule components o k response a status code equal to that given
 func (o *ScheduleComponentsOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the schedule components o k response
+func (o *ScheduleComponentsOK) Code() int {
+	return 200
 }
 
 func (o *ScheduleComponentsOK) Error() string {
@@ -165,6 +170,11 @@ func (o *ScheduleComponentsBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the schedule components bad request response
+func (o *ScheduleComponentsBadRequest) Code() int {
+	return 400
+}
+
 func (o *ScheduleComponentsBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /flow/process-groups/{id}][%d] scheduleComponentsBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *ScheduleComponentsUnauthorized) IsServerError() bool {
 // IsCode returns true when this schedule components unauthorized response a status code equal to that given
 func (o *ScheduleComponentsUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the schedule components unauthorized response
+func (o *ScheduleComponentsUnauthorized) Code() int {
+	return 401
 }
 
 func (o *ScheduleComponentsUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *ScheduleComponentsForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the schedule components forbidden response
+func (o *ScheduleComponentsForbidden) Code() int {
+	return 403
+}
+
 func (o *ScheduleComponentsForbidden) Error() string {
 	return fmt.Sprintf("[PUT /flow/process-groups/{id}][%d] scheduleComponentsForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *ScheduleComponentsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the schedule components not found response
+func (o *ScheduleComponentsNotFound) Code() int {
+	return 404
+}
+
 func (o *ScheduleComponentsNotFound) Error() string {
 	return fmt.Sprintf("[PUT /flow/process-groups/{id}][%d] scheduleComponentsNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *ScheduleComponentsConflict) IsServerError() bool {
 // IsCode returns true when this schedule components conflict response a status code equal to that given
 func (o *ScheduleComponentsConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the schedule components conflict response
+func (o *ScheduleComponentsConflict) Code() int {
+	return 409
 }
 
 func (o *ScheduleComponentsConflict) Error() string {

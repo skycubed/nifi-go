@@ -54,7 +54,7 @@ func (o *CreateControllerServiceReader) ReadResponse(response runtime.ClientResp
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /process-groups/{id}/controller-services] createControllerService", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *CreateControllerServiceCreated) IsServerError() bool {
 // IsCode returns true when this create controller service created response a status code equal to that given
 func (o *CreateControllerServiceCreated) IsCode(code int) bool {
 	return code == 201
+}
+
+// Code gets the status code for the create controller service created response
+func (o *CreateControllerServiceCreated) Code() int {
+	return 201
 }
 
 func (o *CreateControllerServiceCreated) Error() string {
@@ -159,6 +164,11 @@ func (o *CreateControllerServiceBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the create controller service bad request response
+func (o *CreateControllerServiceBadRequest) Code() int {
+	return 400
+}
+
 func (o *CreateControllerServiceBadRequest) Error() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/controller-services][%d] createControllerServiceBadRequest ", 400)
 }
@@ -208,6 +218,11 @@ func (o *CreateControllerServiceUnauthorized) IsServerError() bool {
 // IsCode returns true when this create controller service unauthorized response a status code equal to that given
 func (o *CreateControllerServiceUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the create controller service unauthorized response
+func (o *CreateControllerServiceUnauthorized) Code() int {
+	return 401
 }
 
 func (o *CreateControllerServiceUnauthorized) Error() string {
@@ -261,6 +276,11 @@ func (o *CreateControllerServiceForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the create controller service forbidden response
+func (o *CreateControllerServiceForbidden) Code() int {
+	return 403
+}
+
 func (o *CreateControllerServiceForbidden) Error() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/controller-services][%d] createControllerServiceForbidden ", 403)
 }
@@ -310,6 +330,11 @@ func (o *CreateControllerServiceConflict) IsServerError() bool {
 // IsCode returns true when this create controller service conflict response a status code equal to that given
 func (o *CreateControllerServiceConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the create controller service conflict response
+func (o *CreateControllerServiceConflict) Code() int {
+	return 409
 }
 
 func (o *CreateControllerServiceConflict) Error() string {

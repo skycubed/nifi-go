@@ -60,7 +60,7 @@ func (o *GetProcessGroupReader) ReadResponse(response runtime.ClientResponse, co
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /process-groups/{id}] getProcessGroup", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *GetProcessGroupOK) IsServerError() bool {
 // IsCode returns true when this get process group o k response a status code equal to that given
 func (o *GetProcessGroupOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get process group o k response
+func (o *GetProcessGroupOK) Code() int {
+	return 200
 }
 
 func (o *GetProcessGroupOK) Error() string {
@@ -165,6 +170,11 @@ func (o *GetProcessGroupBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get process group bad request response
+func (o *GetProcessGroupBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetProcessGroupBadRequest) Error() string {
 	return fmt.Sprintf("[GET /process-groups/{id}][%d] getProcessGroupBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *GetProcessGroupUnauthorized) IsServerError() bool {
 // IsCode returns true when this get process group unauthorized response a status code equal to that given
 func (o *GetProcessGroupUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get process group unauthorized response
+func (o *GetProcessGroupUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetProcessGroupUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *GetProcessGroupForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get process group forbidden response
+func (o *GetProcessGroupForbidden) Code() int {
+	return 403
+}
+
 func (o *GetProcessGroupForbidden) Error() string {
 	return fmt.Sprintf("[GET /process-groups/{id}][%d] getProcessGroupForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *GetProcessGroupNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get process group not found response
+func (o *GetProcessGroupNotFound) Code() int {
+	return 404
+}
+
 func (o *GetProcessGroupNotFound) Error() string {
 	return fmt.Sprintf("[GET /process-groups/{id}][%d] getProcessGroupNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *GetProcessGroupConflict) IsServerError() bool {
 // IsCode returns true when this get process group conflict response a status code equal to that given
 func (o *GetProcessGroupConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get process group conflict response
+func (o *GetProcessGroupConflict) Code() int {
+	return 409
 }
 
 func (o *GetProcessGroupConflict) Error() string {

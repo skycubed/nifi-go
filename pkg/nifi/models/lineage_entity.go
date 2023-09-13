@@ -72,6 +72,11 @@ func (m *LineageEntity) ContextValidate(ctx context.Context, formats strfmt.Regi
 func (m *LineageEntity) contextValidateLineage(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Lineage != nil {
+
+		if swag.IsZero(m.Lineage) { // not required
+			return nil
+		}
+
 		if err := m.Lineage.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("lineage")

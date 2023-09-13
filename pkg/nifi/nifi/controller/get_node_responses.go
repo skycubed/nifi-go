@@ -60,7 +60,7 @@ func (o *GetNodeReader) ReadResponse(response runtime.ClientResponse, consumer r
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /controller/cluster/nodes/{id}] getNode", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *GetNodeOK) IsServerError() bool {
 // IsCode returns true when this get node o k response a status code equal to that given
 func (o *GetNodeOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get node o k response
+func (o *GetNodeOK) Code() int {
+	return 200
 }
 
 func (o *GetNodeOK) Error() string {
@@ -165,6 +170,11 @@ func (o *GetNodeBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get node bad request response
+func (o *GetNodeBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetNodeBadRequest) Error() string {
 	return fmt.Sprintf("[GET /controller/cluster/nodes/{id}][%d] getNodeBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *GetNodeUnauthorized) IsServerError() bool {
 // IsCode returns true when this get node unauthorized response a status code equal to that given
 func (o *GetNodeUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get node unauthorized response
+func (o *GetNodeUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetNodeUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *GetNodeForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get node forbidden response
+func (o *GetNodeForbidden) Code() int {
+	return 403
+}
+
 func (o *GetNodeForbidden) Error() string {
 	return fmt.Sprintf("[GET /controller/cluster/nodes/{id}][%d] getNodeForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *GetNodeNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get node not found response
+func (o *GetNodeNotFound) Code() int {
+	return 404
+}
+
 func (o *GetNodeNotFound) Error() string {
 	return fmt.Sprintf("[GET /controller/cluster/nodes/{id}][%d] getNodeNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *GetNodeConflict) IsServerError() bool {
 // IsCode returns true when this get node conflict response a status code equal to that given
 func (o *GetNodeConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get node conflict response
+func (o *GetNodeConflict) Code() int {
+	return 409
 }
 
 func (o *GetNodeConflict) Error() string {

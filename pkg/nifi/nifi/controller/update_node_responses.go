@@ -60,7 +60,7 @@ func (o *UpdateNodeReader) ReadResponse(response runtime.ClientResponse, consume
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PUT /controller/cluster/nodes/{id}] updateNode", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *UpdateNodeOK) IsServerError() bool {
 // IsCode returns true when this update node o k response a status code equal to that given
 func (o *UpdateNodeOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the update node o k response
+func (o *UpdateNodeOK) Code() int {
+	return 200
 }
 
 func (o *UpdateNodeOK) Error() string {
@@ -165,6 +170,11 @@ func (o *UpdateNodeBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the update node bad request response
+func (o *UpdateNodeBadRequest) Code() int {
+	return 400
+}
+
 func (o *UpdateNodeBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /controller/cluster/nodes/{id}][%d] updateNodeBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *UpdateNodeUnauthorized) IsServerError() bool {
 // IsCode returns true when this update node unauthorized response a status code equal to that given
 func (o *UpdateNodeUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the update node unauthorized response
+func (o *UpdateNodeUnauthorized) Code() int {
+	return 401
 }
 
 func (o *UpdateNodeUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *UpdateNodeForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the update node forbidden response
+func (o *UpdateNodeForbidden) Code() int {
+	return 403
+}
+
 func (o *UpdateNodeForbidden) Error() string {
 	return fmt.Sprintf("[PUT /controller/cluster/nodes/{id}][%d] updateNodeForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *UpdateNodeNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the update node not found response
+func (o *UpdateNodeNotFound) Code() int {
+	return 404
+}
+
 func (o *UpdateNodeNotFound) Error() string {
 	return fmt.Sprintf("[PUT /controller/cluster/nodes/{id}][%d] updateNodeNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *UpdateNodeConflict) IsServerError() bool {
 // IsCode returns true when this update node conflict response a status code equal to that given
 func (o *UpdateNodeConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the update node conflict response
+func (o *UpdateNodeConflict) Code() int {
+	return 409
 }
 
 func (o *UpdateNodeConflict) Error() string {

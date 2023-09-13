@@ -48,7 +48,7 @@ func (o *GetAccessPoliciesReader) ReadResponse(response runtime.ClientResponse, 
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /policies] getAccessPolicies", response, response.Code())
 	}
 }
 
@@ -89,6 +89,11 @@ func (o *GetAccessPoliciesOK) IsServerError() bool {
 // IsCode returns true when this get access policies o k response a status code equal to that given
 func (o *GetAccessPoliciesOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get access policies o k response
+func (o *GetAccessPoliciesOK) Code() int {
+	return 200
 }
 
 func (o *GetAccessPoliciesOK) Error() string {
@@ -151,6 +156,11 @@ func (o *GetAccessPoliciesUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the get access policies unauthorized response
+func (o *GetAccessPoliciesUnauthorized) Code() int {
+	return 401
+}
+
 func (o *GetAccessPoliciesUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /policies][%d] getAccessPoliciesUnauthorized ", 401)
 }
@@ -202,6 +212,11 @@ func (o *GetAccessPoliciesForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get access policies forbidden response
+func (o *GetAccessPoliciesForbidden) Code() int {
+	return 403
+}
+
 func (o *GetAccessPoliciesForbidden) Error() string {
 	return fmt.Sprintf("[GET /policies][%d] getAccessPoliciesForbidden ", 403)
 }
@@ -251,6 +266,11 @@ func (o *GetAccessPoliciesConflict) IsServerError() bool {
 // IsCode returns true when this get access policies conflict response a status code equal to that given
 func (o *GetAccessPoliciesConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get access policies conflict response
+func (o *GetAccessPoliciesConflict) Code() int {
+	return 409
 }
 
 func (o *GetAccessPoliciesConflict) Error() string {

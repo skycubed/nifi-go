@@ -405,6 +405,11 @@ func (m *ParameterProviderDTO) contextValidateAffectedComponents(ctx context.Con
 	for i := 0; i < len(m.AffectedComponents); i++ {
 
 		if m.AffectedComponents[i] != nil {
+
+			if swag.IsZero(m.AffectedComponents[i]) { // not required
+				return nil
+			}
+
 			if err := m.AffectedComponents[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("affectedComponents" + "." + strconv.Itoa(i))
@@ -423,6 +428,11 @@ func (m *ParameterProviderDTO) contextValidateAffectedComponents(ctx context.Con
 func (m *ParameterProviderDTO) contextValidateBundle(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Bundle != nil {
+
+		if swag.IsZero(m.Bundle) { // not required
+			return nil
+		}
+
 		if err := m.Bundle.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("bundle")
@@ -456,6 +466,11 @@ func (m *ParameterProviderDTO) contextValidateParameterGroupConfigurations(ctx c
 	for i := 0; i < len(m.ParameterGroupConfigurations); i++ {
 
 		if m.ParameterGroupConfigurations[i] != nil {
+
+			if swag.IsZero(m.ParameterGroupConfigurations[i]) { // not required
+				return nil
+			}
+
 			if err := m.ParameterGroupConfigurations[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("parameterGroupConfigurations" + "." + strconv.Itoa(i))
@@ -476,6 +491,11 @@ func (m *ParameterProviderDTO) contextValidateParameterStatus(ctx context.Contex
 	for i := 0; i < len(m.ParameterStatus); i++ {
 
 		if m.ParameterStatus[i] != nil {
+
+			if swag.IsZero(m.ParameterStatus[i]) { // not required
+				return nil
+			}
+
 			if err := m.ParameterStatus[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("parameterStatus" + "." + strconv.Itoa(i))
@@ -494,6 +514,11 @@ func (m *ParameterProviderDTO) contextValidateParameterStatus(ctx context.Contex
 func (m *ParameterProviderDTO) contextValidatePosition(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Position != nil {
+
+		if swag.IsZero(m.Position) { // not required
+			return nil
+		}
+
 		if err := m.Position.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("position")
@@ -512,6 +537,11 @@ func (m *ParameterProviderDTO) contextValidateReferencingParameterContexts(ctx c
 	for i := 0; i < len(m.ReferencingParameterContexts); i++ {
 
 		if m.ReferencingParameterContexts[i] != nil {
+
+			if swag.IsZero(m.ReferencingParameterContexts[i]) { // not required
+				return nil
+			}
+
 			if err := m.ReferencingParameterContexts[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("referencingParameterContexts" + "." + strconv.Itoa(i))

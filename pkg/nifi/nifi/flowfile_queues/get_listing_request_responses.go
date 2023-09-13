@@ -60,7 +60,7 @@ func (o *GetListingRequestReader) ReadResponse(response runtime.ClientResponse, 
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /flowfile-queues/{id}/listing-requests/{listing-request-id}] getListingRequest", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *GetListingRequestOK) IsServerError() bool {
 // IsCode returns true when this get listing request o k response a status code equal to that given
 func (o *GetListingRequestOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get listing request o k response
+func (o *GetListingRequestOK) Code() int {
+	return 200
 }
 
 func (o *GetListingRequestOK) Error() string {
@@ -165,6 +170,11 @@ func (o *GetListingRequestBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get listing request bad request response
+func (o *GetListingRequestBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetListingRequestBadRequest) Error() string {
 	return fmt.Sprintf("[GET /flowfile-queues/{id}/listing-requests/{listing-request-id}][%d] getListingRequestBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *GetListingRequestUnauthorized) IsServerError() bool {
 // IsCode returns true when this get listing request unauthorized response a status code equal to that given
 func (o *GetListingRequestUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get listing request unauthorized response
+func (o *GetListingRequestUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetListingRequestUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *GetListingRequestForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get listing request forbidden response
+func (o *GetListingRequestForbidden) Code() int {
+	return 403
+}
+
 func (o *GetListingRequestForbidden) Error() string {
 	return fmt.Sprintf("[GET /flowfile-queues/{id}/listing-requests/{listing-request-id}][%d] getListingRequestForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *GetListingRequestNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get listing request not found response
+func (o *GetListingRequestNotFound) Code() int {
+	return 404
+}
+
 func (o *GetListingRequestNotFound) Error() string {
 	return fmt.Sprintf("[GET /flowfile-queues/{id}/listing-requests/{listing-request-id}][%d] getListingRequestNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *GetListingRequestConflict) IsServerError() bool {
 // IsCode returns true when this get listing request conflict response a status code equal to that given
 func (o *GetListingRequestConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get listing request conflict response
+func (o *GetListingRequestConflict) Code() int {
+	return 409
 }
 
 func (o *GetListingRequestConflict) Error() string {

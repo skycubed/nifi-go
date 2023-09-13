@@ -54,7 +54,7 @@ func (o *ImportTemplateReader) ReadResponse(response runtime.ClientResponse, con
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /process-groups/{id}/templates/import] importTemplate", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *ImportTemplateCreated) IsServerError() bool {
 // IsCode returns true when this import template created response a status code equal to that given
 func (o *ImportTemplateCreated) IsCode(code int) bool {
 	return code == 201
+}
+
+// Code gets the status code for the import template created response
+func (o *ImportTemplateCreated) Code() int {
+	return 201
 }
 
 func (o *ImportTemplateCreated) Error() string {
@@ -159,6 +164,11 @@ func (o *ImportTemplateBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the import template bad request response
+func (o *ImportTemplateBadRequest) Code() int {
+	return 400
+}
+
 func (o *ImportTemplateBadRequest) Error() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/templates/import][%d] importTemplateBadRequest ", 400)
 }
@@ -208,6 +218,11 @@ func (o *ImportTemplateUnauthorized) IsServerError() bool {
 // IsCode returns true when this import template unauthorized response a status code equal to that given
 func (o *ImportTemplateUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the import template unauthorized response
+func (o *ImportTemplateUnauthorized) Code() int {
+	return 401
 }
 
 func (o *ImportTemplateUnauthorized) Error() string {
@@ -261,6 +276,11 @@ func (o *ImportTemplateForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the import template forbidden response
+func (o *ImportTemplateForbidden) Code() int {
+	return 403
+}
+
 func (o *ImportTemplateForbidden) Error() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/templates/import][%d] importTemplateForbidden ", 403)
 }
@@ -310,6 +330,11 @@ func (o *ImportTemplateConflict) IsServerError() bool {
 // IsCode returns true when this import template conflict response a status code equal to that given
 func (o *ImportTemplateConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the import template conflict response
+func (o *ImportTemplateConflict) Code() int {
+	return 409
 }
 
 func (o *ImportTemplateConflict) Error() string {

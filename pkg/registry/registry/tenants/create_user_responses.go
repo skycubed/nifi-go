@@ -60,7 +60,7 @@ func (o *CreateUserReader) ReadResponse(response runtime.ClientResponse, consume
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /tenants/users] createUser", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *CreateUserOK) IsServerError() bool {
 // IsCode returns true when this create user o k response a status code equal to that given
 func (o *CreateUserOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the create user o k response
+func (o *CreateUserOK) Code() int {
+	return 200
 }
 
 func (o *CreateUserOK) Error() string {
@@ -165,6 +170,11 @@ func (o *CreateUserBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the create user bad request response
+func (o *CreateUserBadRequest) Code() int {
+	return 400
+}
+
 func (o *CreateUserBadRequest) Error() string {
 	return fmt.Sprintf("[POST /tenants/users][%d] createUserBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *CreateUserUnauthorized) IsServerError() bool {
 // IsCode returns true when this create user unauthorized response a status code equal to that given
 func (o *CreateUserUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the create user unauthorized response
+func (o *CreateUserUnauthorized) Code() int {
+	return 401
 }
 
 func (o *CreateUserUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *CreateUserForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the create user forbidden response
+func (o *CreateUserForbidden) Code() int {
+	return 403
+}
+
 func (o *CreateUserForbidden) Error() string {
 	return fmt.Sprintf("[POST /tenants/users][%d] createUserForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *CreateUserNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the create user not found response
+func (o *CreateUserNotFound) Code() int {
+	return 404
+}
+
 func (o *CreateUserNotFound) Error() string {
 	return fmt.Sprintf("[POST /tenants/users][%d] createUserNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *CreateUserConflict) IsServerError() bool {
 // IsCode returns true when this create user conflict response a status code equal to that given
 func (o *CreateUserConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the create user conflict response
+func (o *CreateUserConflict) Code() int {
+	return 409
 }
 
 func (o *CreateUserConflict) Error() string {

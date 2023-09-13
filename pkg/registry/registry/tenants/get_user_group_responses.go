@@ -60,7 +60,7 @@ func (o *GetUserGroupReader) ReadResponse(response runtime.ClientResponse, consu
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /tenants/user-groups/{id}] getUserGroup", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *GetUserGroupOK) IsServerError() bool {
 // IsCode returns true when this get user group o k response a status code equal to that given
 func (o *GetUserGroupOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get user group o k response
+func (o *GetUserGroupOK) Code() int {
+	return 200
 }
 
 func (o *GetUserGroupOK) Error() string {
@@ -165,6 +170,11 @@ func (o *GetUserGroupBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get user group bad request response
+func (o *GetUserGroupBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetUserGroupBadRequest) Error() string {
 	return fmt.Sprintf("[GET /tenants/user-groups/{id}][%d] getUserGroupBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *GetUserGroupUnauthorized) IsServerError() bool {
 // IsCode returns true when this get user group unauthorized response a status code equal to that given
 func (o *GetUserGroupUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get user group unauthorized response
+func (o *GetUserGroupUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetUserGroupUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *GetUserGroupForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get user group forbidden response
+func (o *GetUserGroupForbidden) Code() int {
+	return 403
+}
+
 func (o *GetUserGroupForbidden) Error() string {
 	return fmt.Sprintf("[GET /tenants/user-groups/{id}][%d] getUserGroupForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *GetUserGroupNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get user group not found response
+func (o *GetUserGroupNotFound) Code() int {
+	return 404
+}
+
 func (o *GetUserGroupNotFound) Error() string {
 	return fmt.Sprintf("[GET /tenants/user-groups/{id}][%d] getUserGroupNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *GetUserGroupConflict) IsServerError() bool {
 // IsCode returns true when this get user group conflict response a status code equal to that given
 func (o *GetUserGroupConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get user group conflict response
+func (o *GetUserGroupConflict) Code() int {
+	return 409
 }
 
 func (o *GetUserGroupConflict) Error() string {

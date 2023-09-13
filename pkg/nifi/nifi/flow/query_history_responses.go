@@ -54,7 +54,7 @@ func (o *QueryHistoryReader) ReadResponse(response runtime.ClientResponse, consu
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /flow/history] queryHistory", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *QueryHistoryOK) IsServerError() bool {
 // IsCode returns true when this query history o k response a status code equal to that given
 func (o *QueryHistoryOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the query history o k response
+func (o *QueryHistoryOK) Code() int {
+	return 200
 }
 
 func (o *QueryHistoryOK) Error() string {
@@ -159,6 +164,11 @@ func (o *QueryHistoryBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the query history bad request response
+func (o *QueryHistoryBadRequest) Code() int {
+	return 400
+}
+
 func (o *QueryHistoryBadRequest) Error() string {
 	return fmt.Sprintf("[GET /flow/history][%d] queryHistoryBadRequest ", 400)
 }
@@ -208,6 +218,11 @@ func (o *QueryHistoryUnauthorized) IsServerError() bool {
 // IsCode returns true when this query history unauthorized response a status code equal to that given
 func (o *QueryHistoryUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the query history unauthorized response
+func (o *QueryHistoryUnauthorized) Code() int {
+	return 401
 }
 
 func (o *QueryHistoryUnauthorized) Error() string {
@@ -261,6 +276,11 @@ func (o *QueryHistoryForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the query history forbidden response
+func (o *QueryHistoryForbidden) Code() int {
+	return 403
+}
+
 func (o *QueryHistoryForbidden) Error() string {
 	return fmt.Sprintf("[GET /flow/history][%d] queryHistoryForbidden ", 403)
 }
@@ -310,6 +330,11 @@ func (o *QueryHistoryConflict) IsServerError() bool {
 // IsCode returns true when this query history conflict response a status code equal to that given
 func (o *QueryHistoryConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the query history conflict response
+func (o *QueryHistoryConflict) Code() int {
+	return 409
 }
 
 func (o *QueryHistoryConflict) Error() string {

@@ -28,7 +28,7 @@ func (o *OidcExchangeReader) ReadResponse(response runtime.ClientResponse, consu
 		}
 		return result, nil
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /access/oidc/exchange] oidcExchange", response, response.Code())
 	}
 }
 
@@ -69,6 +69,11 @@ func (o *OidcExchangeOK) IsServerError() bool {
 // IsCode returns true when this oidc exchange o k response a status code equal to that given
 func (o *OidcExchangeOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the oidc exchange o k response
+func (o *OidcExchangeOK) Code() int {
+	return 200
 }
 
 func (o *OidcExchangeOK) Error() string {

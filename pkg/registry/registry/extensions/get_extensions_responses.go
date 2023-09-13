@@ -60,7 +60,7 @@ func (o *GetExtensionsReader) ReadResponse(response runtime.ClientResponse, cons
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /extensions] getExtensions", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *GetExtensionsOK) IsServerError() bool {
 // IsCode returns true when this get extensions o k response a status code equal to that given
 func (o *GetExtensionsOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get extensions o k response
+func (o *GetExtensionsOK) Code() int {
+	return 200
 }
 
 func (o *GetExtensionsOK) Error() string {
@@ -165,6 +170,11 @@ func (o *GetExtensionsBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get extensions bad request response
+func (o *GetExtensionsBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetExtensionsBadRequest) Error() string {
 	return fmt.Sprintf("[GET /extensions][%d] getExtensionsBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *GetExtensionsUnauthorized) IsServerError() bool {
 // IsCode returns true when this get extensions unauthorized response a status code equal to that given
 func (o *GetExtensionsUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get extensions unauthorized response
+func (o *GetExtensionsUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetExtensionsUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *GetExtensionsForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get extensions forbidden response
+func (o *GetExtensionsForbidden) Code() int {
+	return 403
+}
+
 func (o *GetExtensionsForbidden) Error() string {
 	return fmt.Sprintf("[GET /extensions][%d] getExtensionsForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *GetExtensionsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get extensions not found response
+func (o *GetExtensionsNotFound) Code() int {
+	return 404
+}
+
 func (o *GetExtensionsNotFound) Error() string {
 	return fmt.Sprintf("[GET /extensions][%d] getExtensionsNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *GetExtensionsConflict) IsServerError() bool {
 // IsCode returns true when this get extensions conflict response a status code equal to that given
 func (o *GetExtensionsConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get extensions conflict response
+func (o *GetExtensionsConflict) Code() int {
+	return 409
 }
 
 func (o *GetExtensionsConflict) Error() string {

@@ -60,7 +60,7 @@ func (o *GetConnectionReader) ReadResponse(response runtime.ClientResponse, cons
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /connections/{id}] getConnection", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *GetConnectionOK) IsServerError() bool {
 // IsCode returns true when this get connection o k response a status code equal to that given
 func (o *GetConnectionOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get connection o k response
+func (o *GetConnectionOK) Code() int {
+	return 200
 }
 
 func (o *GetConnectionOK) Error() string {
@@ -165,6 +170,11 @@ func (o *GetConnectionBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get connection bad request response
+func (o *GetConnectionBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetConnectionBadRequest) Error() string {
 	return fmt.Sprintf("[GET /connections/{id}][%d] getConnectionBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *GetConnectionUnauthorized) IsServerError() bool {
 // IsCode returns true when this get connection unauthorized response a status code equal to that given
 func (o *GetConnectionUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get connection unauthorized response
+func (o *GetConnectionUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetConnectionUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *GetConnectionForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get connection forbidden response
+func (o *GetConnectionForbidden) Code() int {
+	return 403
+}
+
 func (o *GetConnectionForbidden) Error() string {
 	return fmt.Sprintf("[GET /connections/{id}][%d] getConnectionForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *GetConnectionNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get connection not found response
+func (o *GetConnectionNotFound) Code() int {
+	return 404
+}
+
 func (o *GetConnectionNotFound) Error() string {
 	return fmt.Sprintf("[GET /connections/{id}][%d] getConnectionNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *GetConnectionConflict) IsServerError() bool {
 // IsCode returns true when this get connection conflict response a status code equal to that given
 func (o *GetConnectionConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get connection conflict response
+func (o *GetConnectionConflict) Code() int {
+	return 409
 }
 
 func (o *GetConnectionConflict) Error() string {

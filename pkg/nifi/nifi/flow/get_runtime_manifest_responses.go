@@ -54,7 +54,7 @@ func (o *GetRuntimeManifestReader) ReadResponse(response runtime.ClientResponse,
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /flow/runtime-manifest] getRuntimeManifest", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *GetRuntimeManifestOK) IsServerError() bool {
 // IsCode returns true when this get runtime manifest o k response a status code equal to that given
 func (o *GetRuntimeManifestOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get runtime manifest o k response
+func (o *GetRuntimeManifestOK) Code() int {
+	return 200
 }
 
 func (o *GetRuntimeManifestOK) Error() string {
@@ -159,6 +164,11 @@ func (o *GetRuntimeManifestBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get runtime manifest bad request response
+func (o *GetRuntimeManifestBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetRuntimeManifestBadRequest) Error() string {
 	return fmt.Sprintf("[GET /flow/runtime-manifest][%d] getRuntimeManifestBadRequest ", 400)
 }
@@ -208,6 +218,11 @@ func (o *GetRuntimeManifestUnauthorized) IsServerError() bool {
 // IsCode returns true when this get runtime manifest unauthorized response a status code equal to that given
 func (o *GetRuntimeManifestUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get runtime manifest unauthorized response
+func (o *GetRuntimeManifestUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetRuntimeManifestUnauthorized) Error() string {
@@ -261,6 +276,11 @@ func (o *GetRuntimeManifestForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get runtime manifest forbidden response
+func (o *GetRuntimeManifestForbidden) Code() int {
+	return 403
+}
+
 func (o *GetRuntimeManifestForbidden) Error() string {
 	return fmt.Sprintf("[GET /flow/runtime-manifest][%d] getRuntimeManifestForbidden ", 403)
 }
@@ -310,6 +330,11 @@ func (o *GetRuntimeManifestConflict) IsServerError() bool {
 // IsCode returns true when this get runtime manifest conflict response a status code equal to that given
 func (o *GetRuntimeManifestConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get runtime manifest conflict response
+func (o *GetRuntimeManifestConflict) Code() int {
+	return 409
 }
 
 func (o *GetRuntimeManifestConflict) Error() string {

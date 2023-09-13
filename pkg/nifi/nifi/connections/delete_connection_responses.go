@@ -60,7 +60,7 @@ func (o *DeleteConnectionReader) ReadResponse(response runtime.ClientResponse, c
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /connections/{id}] deleteConnection", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *DeleteConnectionOK) IsServerError() bool {
 // IsCode returns true when this delete connection o k response a status code equal to that given
 func (o *DeleteConnectionOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the delete connection o k response
+func (o *DeleteConnectionOK) Code() int {
+	return 200
 }
 
 func (o *DeleteConnectionOK) Error() string {
@@ -165,6 +170,11 @@ func (o *DeleteConnectionBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the delete connection bad request response
+func (o *DeleteConnectionBadRequest) Code() int {
+	return 400
+}
+
 func (o *DeleteConnectionBadRequest) Error() string {
 	return fmt.Sprintf("[DELETE /connections/{id}][%d] deleteConnectionBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *DeleteConnectionUnauthorized) IsServerError() bool {
 // IsCode returns true when this delete connection unauthorized response a status code equal to that given
 func (o *DeleteConnectionUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the delete connection unauthorized response
+func (o *DeleteConnectionUnauthorized) Code() int {
+	return 401
 }
 
 func (o *DeleteConnectionUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *DeleteConnectionForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the delete connection forbidden response
+func (o *DeleteConnectionForbidden) Code() int {
+	return 403
+}
+
 func (o *DeleteConnectionForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /connections/{id}][%d] deleteConnectionForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *DeleteConnectionNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the delete connection not found response
+func (o *DeleteConnectionNotFound) Code() int {
+	return 404
+}
+
 func (o *DeleteConnectionNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /connections/{id}][%d] deleteConnectionNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *DeleteConnectionConflict) IsServerError() bool {
 // IsCode returns true when this delete connection conflict response a status code equal to that given
 func (o *DeleteConnectionConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the delete connection conflict response
+func (o *DeleteConnectionConflict) Code() int {
+	return 409
 }
 
 func (o *DeleteConnectionConflict) Error() string {

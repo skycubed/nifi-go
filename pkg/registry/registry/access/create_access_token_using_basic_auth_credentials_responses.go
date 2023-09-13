@@ -52,7 +52,7 @@ func (o *CreateAccessTokenUsingBasicAuthCredentialsReader) ReadResponse(response
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /access/token/login] createAccessTokenUsingBasicAuthCredentials", response, response.Code())
 	}
 }
 
@@ -93,6 +93,11 @@ func (o *CreateAccessTokenUsingBasicAuthCredentialsOK) IsServerError() bool {
 // IsCode returns true when this create access token using basic auth credentials o k response a status code equal to that given
 func (o *CreateAccessTokenUsingBasicAuthCredentialsOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the create access token using basic auth credentials o k response
+func (o *CreateAccessTokenUsingBasicAuthCredentialsOK) Code() int {
+	return 200
 }
 
 func (o *CreateAccessTokenUsingBasicAuthCredentialsOK) Error() string {
@@ -155,6 +160,11 @@ func (o *CreateAccessTokenUsingBasicAuthCredentialsBadRequest) IsCode(code int) 
 	return code == 400
 }
 
+// Code gets the status code for the create access token using basic auth credentials bad request response
+func (o *CreateAccessTokenUsingBasicAuthCredentialsBadRequest) Code() int {
+	return 400
+}
+
 func (o *CreateAccessTokenUsingBasicAuthCredentialsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /access/token/login][%d] createAccessTokenUsingBasicAuthCredentialsBadRequest ", 400)
 }
@@ -204,6 +214,11 @@ func (o *CreateAccessTokenUsingBasicAuthCredentialsUnauthorized) IsServerError()
 // IsCode returns true when this create access token using basic auth credentials unauthorized response a status code equal to that given
 func (o *CreateAccessTokenUsingBasicAuthCredentialsUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the create access token using basic auth credentials unauthorized response
+func (o *CreateAccessTokenUsingBasicAuthCredentialsUnauthorized) Code() int {
+	return 401
 }
 
 func (o *CreateAccessTokenUsingBasicAuthCredentialsUnauthorized) Error() string {
@@ -257,6 +272,11 @@ func (o *CreateAccessTokenUsingBasicAuthCredentialsConflict) IsCode(code int) bo
 	return code == 409
 }
 
+// Code gets the status code for the create access token using basic auth credentials conflict response
+func (o *CreateAccessTokenUsingBasicAuthCredentialsConflict) Code() int {
+	return 409
+}
+
 func (o *CreateAccessTokenUsingBasicAuthCredentialsConflict) Error() string {
 	return fmt.Sprintf("[POST /access/token/login][%d] createAccessTokenUsingBasicAuthCredentialsConflict ", 409)
 }
@@ -306,6 +326,11 @@ func (o *CreateAccessTokenUsingBasicAuthCredentialsInternalServerError) IsServer
 // IsCode returns true when this create access token using basic auth credentials internal server error response a status code equal to that given
 func (o *CreateAccessTokenUsingBasicAuthCredentialsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the create access token using basic auth credentials internal server error response
+func (o *CreateAccessTokenUsingBasicAuthCredentialsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CreateAccessTokenUsingBasicAuthCredentialsInternalServerError) Error() string {

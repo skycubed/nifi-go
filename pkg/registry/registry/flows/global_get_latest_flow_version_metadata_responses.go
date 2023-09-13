@@ -54,7 +54,7 @@ func (o *GlobalGetLatestFlowVersionMetadataReader) ReadResponse(response runtime
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /flows/{flowId}/versions/latest/metadata] globalGetLatestFlowVersionMetadata", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *GlobalGetLatestFlowVersionMetadataOK) IsServerError() bool {
 // IsCode returns true when this global get latest flow version metadata o k response a status code equal to that given
 func (o *GlobalGetLatestFlowVersionMetadataOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the global get latest flow version metadata o k response
+func (o *GlobalGetLatestFlowVersionMetadataOK) Code() int {
+	return 200
 }
 
 func (o *GlobalGetLatestFlowVersionMetadataOK) Error() string {
@@ -159,6 +164,11 @@ func (o *GlobalGetLatestFlowVersionMetadataUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the global get latest flow version metadata unauthorized response
+func (o *GlobalGetLatestFlowVersionMetadataUnauthorized) Code() int {
+	return 401
+}
+
 func (o *GlobalGetLatestFlowVersionMetadataUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /flows/{flowId}/versions/latest/metadata][%d] globalGetLatestFlowVersionMetadataUnauthorized ", 401)
 }
@@ -208,6 +218,11 @@ func (o *GlobalGetLatestFlowVersionMetadataForbidden) IsServerError() bool {
 // IsCode returns true when this global get latest flow version metadata forbidden response a status code equal to that given
 func (o *GlobalGetLatestFlowVersionMetadataForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the global get latest flow version metadata forbidden response
+func (o *GlobalGetLatestFlowVersionMetadataForbidden) Code() int {
+	return 403
 }
 
 func (o *GlobalGetLatestFlowVersionMetadataForbidden) Error() string {
@@ -261,6 +276,11 @@ func (o *GlobalGetLatestFlowVersionMetadataNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the global get latest flow version metadata not found response
+func (o *GlobalGetLatestFlowVersionMetadataNotFound) Code() int {
+	return 404
+}
+
 func (o *GlobalGetLatestFlowVersionMetadataNotFound) Error() string {
 	return fmt.Sprintf("[GET /flows/{flowId}/versions/latest/metadata][%d] globalGetLatestFlowVersionMetadataNotFound ", 404)
 }
@@ -310,6 +330,11 @@ func (o *GlobalGetLatestFlowVersionMetadataConflict) IsServerError() bool {
 // IsCode returns true when this global get latest flow version metadata conflict response a status code equal to that given
 func (o *GlobalGetLatestFlowVersionMetadataConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the global get latest flow version metadata conflict response
+func (o *GlobalGetLatestFlowVersionMetadataConflict) Code() int {
+	return 409
 }
 
 func (o *GlobalGetLatestFlowVersionMetadataConflict) Error() string {

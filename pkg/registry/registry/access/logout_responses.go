@@ -39,7 +39,7 @@ func (o *LogoutReader) ReadResponse(response runtime.ClientResponse, consumer ru
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /access/logout] logout", response, response.Code())
 	}
 }
 
@@ -79,6 +79,11 @@ func (o *LogoutOK) IsServerError() bool {
 // IsCode returns true when this logout o k response a status code equal to that given
 func (o *LogoutOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the logout o k response
+func (o *LogoutOK) Code() int {
+	return 200
 }
 
 func (o *LogoutOK) Error() string {
@@ -132,6 +137,11 @@ func (o *LogoutUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the logout unauthorized response
+func (o *LogoutUnauthorized) Code() int {
+	return 401
+}
+
 func (o *LogoutUnauthorized) Error() string {
 	return fmt.Sprintf("[DELETE /access/logout][%d] logoutUnauthorized ", 401)
 }
@@ -181,6 +191,11 @@ func (o *LogoutInternalServerError) IsServerError() bool {
 // IsCode returns true when this logout internal server error response a status code equal to that given
 func (o *LogoutInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the logout internal server error response
+func (o *LogoutInternalServerError) Code() int {
+	return 500
 }
 
 func (o *LogoutInternalServerError) Error() string {

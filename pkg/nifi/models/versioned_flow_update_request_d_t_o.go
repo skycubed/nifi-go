@@ -96,6 +96,11 @@ func (m *VersionedFlowUpdateRequestDTO) ContextValidate(ctx context.Context, for
 func (m *VersionedFlowUpdateRequestDTO) contextValidateVersionControlInformation(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.VersionControlInformation != nil {
+
+		if swag.IsZero(m.VersionControlInformation) { // not required
+			return nil
+		}
+
 		if err := m.VersionControlInformation.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("versionControlInformation")

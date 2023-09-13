@@ -60,7 +60,7 @@ func (o *GetActionReader) ReadResponse(response runtime.ClientResponse, consumer
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /flow/history/{id}] getAction", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *GetActionOK) IsServerError() bool {
 // IsCode returns true when this get action o k response a status code equal to that given
 func (o *GetActionOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get action o k response
+func (o *GetActionOK) Code() int {
+	return 200
 }
 
 func (o *GetActionOK) Error() string {
@@ -165,6 +170,11 @@ func (o *GetActionBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get action bad request response
+func (o *GetActionBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetActionBadRequest) Error() string {
 	return fmt.Sprintf("[GET /flow/history/{id}][%d] getActionBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *GetActionUnauthorized) IsServerError() bool {
 // IsCode returns true when this get action unauthorized response a status code equal to that given
 func (o *GetActionUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get action unauthorized response
+func (o *GetActionUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetActionUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *GetActionForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get action forbidden response
+func (o *GetActionForbidden) Code() int {
+	return 403
+}
+
 func (o *GetActionForbidden) Error() string {
 	return fmt.Sprintf("[GET /flow/history/{id}][%d] getActionForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *GetActionNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get action not found response
+func (o *GetActionNotFound) Code() int {
+	return 404
+}
+
 func (o *GetActionNotFound) Error() string {
 	return fmt.Sprintf("[GET /flow/history/{id}][%d] getActionNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *GetActionConflict) IsServerError() bool {
 // IsCode returns true when this get action conflict response a status code equal to that given
 func (o *GetActionConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get action conflict response
+func (o *GetActionConflict) Code() int {
+	return 409
 }
 
 func (o *GetActionConflict) Error() string {

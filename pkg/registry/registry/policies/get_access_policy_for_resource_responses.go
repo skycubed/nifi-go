@@ -60,7 +60,7 @@ func (o *GetAccessPolicyForResourceReader) ReadResponse(response runtime.ClientR
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /policies/{action}/{resource}] getAccessPolicyForResource", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *GetAccessPolicyForResourceOK) IsServerError() bool {
 // IsCode returns true when this get access policy for resource o k response a status code equal to that given
 func (o *GetAccessPolicyForResourceOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get access policy for resource o k response
+func (o *GetAccessPolicyForResourceOK) Code() int {
+	return 200
 }
 
 func (o *GetAccessPolicyForResourceOK) Error() string {
@@ -165,6 +170,11 @@ func (o *GetAccessPolicyForResourceBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get access policy for resource bad request response
+func (o *GetAccessPolicyForResourceBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetAccessPolicyForResourceBadRequest) Error() string {
 	return fmt.Sprintf("[GET /policies/{action}/{resource}][%d] getAccessPolicyForResourceBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *GetAccessPolicyForResourceUnauthorized) IsServerError() bool {
 // IsCode returns true when this get access policy for resource unauthorized response a status code equal to that given
 func (o *GetAccessPolicyForResourceUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get access policy for resource unauthorized response
+func (o *GetAccessPolicyForResourceUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetAccessPolicyForResourceUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *GetAccessPolicyForResourceForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get access policy for resource forbidden response
+func (o *GetAccessPolicyForResourceForbidden) Code() int {
+	return 403
+}
+
 func (o *GetAccessPolicyForResourceForbidden) Error() string {
 	return fmt.Sprintf("[GET /policies/{action}/{resource}][%d] getAccessPolicyForResourceForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *GetAccessPolicyForResourceNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get access policy for resource not found response
+func (o *GetAccessPolicyForResourceNotFound) Code() int {
+	return 404
+}
+
 func (o *GetAccessPolicyForResourceNotFound) Error() string {
 	return fmt.Sprintf("[GET /policies/{action}/{resource}][%d] getAccessPolicyForResourceNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *GetAccessPolicyForResourceConflict) IsServerError() bool {
 // IsCode returns true when this get access policy for resource conflict response a status code equal to that given
 func (o *GetAccessPolicyForResourceConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get access policy for resource conflict response
+func (o *GetAccessPolicyForResourceConflict) Code() int {
+	return 409
 }
 
 func (o *GetAccessPolicyForResourceConflict) Error() string {

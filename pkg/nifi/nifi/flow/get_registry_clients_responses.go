@@ -60,7 +60,7 @@ func (o *GetRegistryClientsReader) ReadResponse(response runtime.ClientResponse,
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /flow/registries] getRegistryClients", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *GetRegistryClientsOK) IsServerError() bool {
 // IsCode returns true when this get registry clients o k response a status code equal to that given
 func (o *GetRegistryClientsOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get registry clients o k response
+func (o *GetRegistryClientsOK) Code() int {
+	return 200
 }
 
 func (o *GetRegistryClientsOK) Error() string {
@@ -165,6 +170,11 @@ func (o *GetRegistryClientsBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get registry clients bad request response
+func (o *GetRegistryClientsBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetRegistryClientsBadRequest) Error() string {
 	return fmt.Sprintf("[GET /flow/registries][%d] getRegistryClientsBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *GetRegistryClientsUnauthorized) IsServerError() bool {
 // IsCode returns true when this get registry clients unauthorized response a status code equal to that given
 func (o *GetRegistryClientsUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get registry clients unauthorized response
+func (o *GetRegistryClientsUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetRegistryClientsUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *GetRegistryClientsForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get registry clients forbidden response
+func (o *GetRegistryClientsForbidden) Code() int {
+	return 403
+}
+
 func (o *GetRegistryClientsForbidden) Error() string {
 	return fmt.Sprintf("[GET /flow/registries][%d] getRegistryClientsForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *GetRegistryClientsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get registry clients not found response
+func (o *GetRegistryClientsNotFound) Code() int {
+	return 404
+}
+
 func (o *GetRegistryClientsNotFound) Error() string {
 	return fmt.Sprintf("[GET /flow/registries][%d] getRegistryClientsNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *GetRegistryClientsConflict) IsServerError() bool {
 // IsCode returns true when this get registry clients conflict response a status code equal to that given
 func (o *GetRegistryClientsConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get registry clients conflict response
+func (o *GetRegistryClientsConflict) Code() int {
+	return 409
 }
 
 func (o *GetRegistryClientsConflict) Error() string {

@@ -60,7 +60,7 @@ func (o *UpdateProcessorReader) ReadResponse(response runtime.ClientResponse, co
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PUT /processors/{id}] updateProcessor", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *UpdateProcessorOK) IsServerError() bool {
 // IsCode returns true when this update processor o k response a status code equal to that given
 func (o *UpdateProcessorOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the update processor o k response
+func (o *UpdateProcessorOK) Code() int {
+	return 200
 }
 
 func (o *UpdateProcessorOK) Error() string {
@@ -165,6 +170,11 @@ func (o *UpdateProcessorBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the update processor bad request response
+func (o *UpdateProcessorBadRequest) Code() int {
+	return 400
+}
+
 func (o *UpdateProcessorBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /processors/{id}][%d] updateProcessorBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *UpdateProcessorUnauthorized) IsServerError() bool {
 // IsCode returns true when this update processor unauthorized response a status code equal to that given
 func (o *UpdateProcessorUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the update processor unauthorized response
+func (o *UpdateProcessorUnauthorized) Code() int {
+	return 401
 }
 
 func (o *UpdateProcessorUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *UpdateProcessorForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the update processor forbidden response
+func (o *UpdateProcessorForbidden) Code() int {
+	return 403
+}
+
 func (o *UpdateProcessorForbidden) Error() string {
 	return fmt.Sprintf("[PUT /processors/{id}][%d] updateProcessorForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *UpdateProcessorNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the update processor not found response
+func (o *UpdateProcessorNotFound) Code() int {
+	return 404
+}
+
 func (o *UpdateProcessorNotFound) Error() string {
 	return fmt.Sprintf("[PUT /processors/{id}][%d] updateProcessorNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *UpdateProcessorConflict) IsServerError() bool {
 // IsCode returns true when this update processor conflict response a status code equal to that given
 func (o *UpdateProcessorConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the update processor conflict response
+func (o *UpdateProcessorConflict) Code() int {
+	return 409
 }
 
 func (o *UpdateProcessorConflict) Error() string {

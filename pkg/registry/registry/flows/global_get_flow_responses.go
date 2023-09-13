@@ -60,7 +60,7 @@ func (o *GlobalGetFlowReader) ReadResponse(response runtime.ClientResponse, cons
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /flows/{flowId}] globalGetFlow", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *GlobalGetFlowOK) IsServerError() bool {
 // IsCode returns true when this global get flow o k response a status code equal to that given
 func (o *GlobalGetFlowOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the global get flow o k response
+func (o *GlobalGetFlowOK) Code() int {
+	return 200
 }
 
 func (o *GlobalGetFlowOK) Error() string {
@@ -165,6 +170,11 @@ func (o *GlobalGetFlowBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the global get flow bad request response
+func (o *GlobalGetFlowBadRequest) Code() int {
+	return 400
+}
+
 func (o *GlobalGetFlowBadRequest) Error() string {
 	return fmt.Sprintf("[GET /flows/{flowId}][%d] globalGetFlowBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *GlobalGetFlowUnauthorized) IsServerError() bool {
 // IsCode returns true when this global get flow unauthorized response a status code equal to that given
 func (o *GlobalGetFlowUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the global get flow unauthorized response
+func (o *GlobalGetFlowUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GlobalGetFlowUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *GlobalGetFlowForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the global get flow forbidden response
+func (o *GlobalGetFlowForbidden) Code() int {
+	return 403
+}
+
 func (o *GlobalGetFlowForbidden) Error() string {
 	return fmt.Sprintf("[GET /flows/{flowId}][%d] globalGetFlowForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *GlobalGetFlowNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the global get flow not found response
+func (o *GlobalGetFlowNotFound) Code() int {
+	return 404
+}
+
 func (o *GlobalGetFlowNotFound) Error() string {
 	return fmt.Sprintf("[GET /flows/{flowId}][%d] globalGetFlowNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *GlobalGetFlowConflict) IsServerError() bool {
 // IsCode returns true when this global get flow conflict response a status code equal to that given
 func (o *GlobalGetFlowConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the global get flow conflict response
+func (o *GlobalGetFlowConflict) Code() int {
+	return 409
 }
 
 func (o *GlobalGetFlowConflict) Error() string {

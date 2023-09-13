@@ -60,7 +60,7 @@ func (o *RemoveFunnelReader) ReadResponse(response runtime.ClientResponse, consu
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /funnels/{id}] removeFunnel", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *RemoveFunnelOK) IsServerError() bool {
 // IsCode returns true when this remove funnel o k response a status code equal to that given
 func (o *RemoveFunnelOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the remove funnel o k response
+func (o *RemoveFunnelOK) Code() int {
+	return 200
 }
 
 func (o *RemoveFunnelOK) Error() string {
@@ -165,6 +170,11 @@ func (o *RemoveFunnelBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the remove funnel bad request response
+func (o *RemoveFunnelBadRequest) Code() int {
+	return 400
+}
+
 func (o *RemoveFunnelBadRequest) Error() string {
 	return fmt.Sprintf("[DELETE /funnels/{id}][%d] removeFunnelBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *RemoveFunnelUnauthorized) IsServerError() bool {
 // IsCode returns true when this remove funnel unauthorized response a status code equal to that given
 func (o *RemoveFunnelUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the remove funnel unauthorized response
+func (o *RemoveFunnelUnauthorized) Code() int {
+	return 401
 }
 
 func (o *RemoveFunnelUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *RemoveFunnelForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the remove funnel forbidden response
+func (o *RemoveFunnelForbidden) Code() int {
+	return 403
+}
+
 func (o *RemoveFunnelForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /funnels/{id}][%d] removeFunnelForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *RemoveFunnelNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the remove funnel not found response
+func (o *RemoveFunnelNotFound) Code() int {
+	return 404
+}
+
 func (o *RemoveFunnelNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /funnels/{id}][%d] removeFunnelNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *RemoveFunnelConflict) IsServerError() bool {
 // IsCode returns true when this remove funnel conflict response a status code equal to that given
 func (o *RemoveFunnelConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the remove funnel conflict response
+func (o *RemoveFunnelConflict) Code() int {
+	return 409
 }
 
 func (o *RemoveFunnelConflict) Error() string {

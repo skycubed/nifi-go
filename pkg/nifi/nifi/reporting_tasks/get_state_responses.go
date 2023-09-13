@@ -60,7 +60,7 @@ func (o *GetStateReader) ReadResponse(response runtime.ClientResponse, consumer 
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /reporting-tasks/{id}/state] getState", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *GetStateOK) IsServerError() bool {
 // IsCode returns true when this get state o k response a status code equal to that given
 func (o *GetStateOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get state o k response
+func (o *GetStateOK) Code() int {
+	return 200
 }
 
 func (o *GetStateOK) Error() string {
@@ -165,6 +170,11 @@ func (o *GetStateBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get state bad request response
+func (o *GetStateBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetStateBadRequest) Error() string {
 	return fmt.Sprintf("[GET /reporting-tasks/{id}/state][%d] getStateBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *GetStateUnauthorized) IsServerError() bool {
 // IsCode returns true when this get state unauthorized response a status code equal to that given
 func (o *GetStateUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get state unauthorized response
+func (o *GetStateUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetStateUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *GetStateForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get state forbidden response
+func (o *GetStateForbidden) Code() int {
+	return 403
+}
+
 func (o *GetStateForbidden) Error() string {
 	return fmt.Sprintf("[GET /reporting-tasks/{id}/state][%d] getStateForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *GetStateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get state not found response
+func (o *GetStateNotFound) Code() int {
+	return 404
+}
+
 func (o *GetStateNotFound) Error() string {
 	return fmt.Sprintf("[GET /reporting-tasks/{id}/state][%d] getStateNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *GetStateConflict) IsServerError() bool {
 // IsCode returns true when this get state conflict response a status code equal to that given
 func (o *GetStateConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get state conflict response
+func (o *GetStateConflict) Code() int {
+	return 409
 }
 
 func (o *GetStateConflict) Error() string {

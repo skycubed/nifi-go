@@ -196,6 +196,11 @@ func (m *FlowBreadcrumbEntity) ContextValidate(ctx context.Context, formats strf
 func (m *FlowBreadcrumbEntity) contextValidateBreadcrumb(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Breadcrumb != nil {
+
+		if swag.IsZero(m.Breadcrumb) { // not required
+			return nil
+		}
+
 		if err := m.Breadcrumb.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("breadcrumb")
@@ -212,6 +217,11 @@ func (m *FlowBreadcrumbEntity) contextValidateBreadcrumb(ctx context.Context, fo
 func (m *FlowBreadcrumbEntity) contextValidateParentBreadcrumb(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ParentBreadcrumb != nil {
+
+		if swag.IsZero(m.ParentBreadcrumb) { // not required
+			return nil
+		}
+
 		if err := m.ParentBreadcrumb.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("parentBreadcrumb")
@@ -228,6 +238,11 @@ func (m *FlowBreadcrumbEntity) contextValidateParentBreadcrumb(ctx context.Conte
 func (m *FlowBreadcrumbEntity) contextValidatePermissions(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Permissions != nil {
+
+		if swag.IsZero(m.Permissions) { // not required
+			return nil
+		}
+
 		if err := m.Permissions.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("permissions")

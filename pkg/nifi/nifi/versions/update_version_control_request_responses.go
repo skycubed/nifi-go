@@ -60,7 +60,7 @@ func (o *UpdateVersionControlRequestReader) ReadResponse(response runtime.Client
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PUT /versions/active-requests/{id}] updateVersionControlRequest", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *UpdateVersionControlRequestOK) IsServerError() bool {
 // IsCode returns true when this update version control request o k response a status code equal to that given
 func (o *UpdateVersionControlRequestOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the update version control request o k response
+func (o *UpdateVersionControlRequestOK) Code() int {
+	return 200
 }
 
 func (o *UpdateVersionControlRequestOK) Error() string {
@@ -165,6 +170,11 @@ func (o *UpdateVersionControlRequestBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the update version control request bad request response
+func (o *UpdateVersionControlRequestBadRequest) Code() int {
+	return 400
+}
+
 func (o *UpdateVersionControlRequestBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /versions/active-requests/{id}][%d] updateVersionControlRequestBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *UpdateVersionControlRequestUnauthorized) IsServerError() bool {
 // IsCode returns true when this update version control request unauthorized response a status code equal to that given
 func (o *UpdateVersionControlRequestUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the update version control request unauthorized response
+func (o *UpdateVersionControlRequestUnauthorized) Code() int {
+	return 401
 }
 
 func (o *UpdateVersionControlRequestUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *UpdateVersionControlRequestForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the update version control request forbidden response
+func (o *UpdateVersionControlRequestForbidden) Code() int {
+	return 403
+}
+
 func (o *UpdateVersionControlRequestForbidden) Error() string {
 	return fmt.Sprintf("[PUT /versions/active-requests/{id}][%d] updateVersionControlRequestForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *UpdateVersionControlRequestNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the update version control request not found response
+func (o *UpdateVersionControlRequestNotFound) Code() int {
+	return 404
+}
+
 func (o *UpdateVersionControlRequestNotFound) Error() string {
 	return fmt.Sprintf("[PUT /versions/active-requests/{id}][%d] updateVersionControlRequestNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *UpdateVersionControlRequestConflict) IsServerError() bool {
 // IsCode returns true when this update version control request conflict response a status code equal to that given
 func (o *UpdateVersionControlRequestConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the update version control request conflict response
+func (o *UpdateVersionControlRequestConflict) Code() int {
+	return 409
 }
 
 func (o *UpdateVersionControlRequestConflict) Error() string {

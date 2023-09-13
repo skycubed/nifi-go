@@ -60,7 +60,7 @@ func (o *GetDetailsReader) ReadResponse(response runtime.ClientResponse, consume
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /flow/registries/{registry-id}/buckets/{bucket-id}/flows/{flow-id}/details] getDetails", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *GetDetailsOK) IsServerError() bool {
 // IsCode returns true when this get details o k response a status code equal to that given
 func (o *GetDetailsOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get details o k response
+func (o *GetDetailsOK) Code() int {
+	return 200
 }
 
 func (o *GetDetailsOK) Error() string {
@@ -165,6 +170,11 @@ func (o *GetDetailsBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get details bad request response
+func (o *GetDetailsBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetDetailsBadRequest) Error() string {
 	return fmt.Sprintf("[GET /flow/registries/{registry-id}/buckets/{bucket-id}/flows/{flow-id}/details][%d] getDetailsBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *GetDetailsUnauthorized) IsServerError() bool {
 // IsCode returns true when this get details unauthorized response a status code equal to that given
 func (o *GetDetailsUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get details unauthorized response
+func (o *GetDetailsUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetDetailsUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *GetDetailsForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get details forbidden response
+func (o *GetDetailsForbidden) Code() int {
+	return 403
+}
+
 func (o *GetDetailsForbidden) Error() string {
 	return fmt.Sprintf("[GET /flow/registries/{registry-id}/buckets/{bucket-id}/flows/{flow-id}/details][%d] getDetailsForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *GetDetailsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get details not found response
+func (o *GetDetailsNotFound) Code() int {
+	return 404
+}
+
 func (o *GetDetailsNotFound) Error() string {
 	return fmt.Sprintf("[GET /flow/registries/{registry-id}/buckets/{bucket-id}/flows/{flow-id}/details][%d] getDetailsNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *GetDetailsConflict) IsServerError() bool {
 // IsCode returns true when this get details conflict response a status code equal to that given
 func (o *GetDetailsConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get details conflict response
+func (o *GetDetailsConflict) Code() int {
+	return 409
 }
 
 func (o *GetDetailsConflict) Error() string {

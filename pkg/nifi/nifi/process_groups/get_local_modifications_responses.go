@@ -60,7 +60,7 @@ func (o *GetLocalModificationsReader) ReadResponse(response runtime.ClientRespon
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /process-groups/{id}/local-modifications] getLocalModifications", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *GetLocalModificationsOK) IsServerError() bool {
 // IsCode returns true when this get local modifications o k response a status code equal to that given
 func (o *GetLocalModificationsOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get local modifications o k response
+func (o *GetLocalModificationsOK) Code() int {
+	return 200
 }
 
 func (o *GetLocalModificationsOK) Error() string {
@@ -165,6 +170,11 @@ func (o *GetLocalModificationsBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get local modifications bad request response
+func (o *GetLocalModificationsBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetLocalModificationsBadRequest) Error() string {
 	return fmt.Sprintf("[GET /process-groups/{id}/local-modifications][%d] getLocalModificationsBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *GetLocalModificationsUnauthorized) IsServerError() bool {
 // IsCode returns true when this get local modifications unauthorized response a status code equal to that given
 func (o *GetLocalModificationsUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get local modifications unauthorized response
+func (o *GetLocalModificationsUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetLocalModificationsUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *GetLocalModificationsForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get local modifications forbidden response
+func (o *GetLocalModificationsForbidden) Code() int {
+	return 403
+}
+
 func (o *GetLocalModificationsForbidden) Error() string {
 	return fmt.Sprintf("[GET /process-groups/{id}/local-modifications][%d] getLocalModificationsForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *GetLocalModificationsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get local modifications not found response
+func (o *GetLocalModificationsNotFound) Code() int {
+	return 404
+}
+
 func (o *GetLocalModificationsNotFound) Error() string {
 	return fmt.Sprintf("[GET /process-groups/{id}/local-modifications][%d] getLocalModificationsNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *GetLocalModificationsConflict) IsServerError() bool {
 // IsCode returns true when this get local modifications conflict response a status code equal to that given
 func (o *GetLocalModificationsConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get local modifications conflict response
+func (o *GetLocalModificationsConflict) Code() int {
+	return 409
 }
 
 func (o *GetLocalModificationsConflict) Error() string {

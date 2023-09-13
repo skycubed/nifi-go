@@ -60,7 +60,7 @@ func (o *DeleteReplaceProcessGroupRequestReader) ReadResponse(response runtime.C
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /process-groups/replace-requests/{id}] deleteReplaceProcessGroupRequest", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *DeleteReplaceProcessGroupRequestOK) IsServerError() bool {
 // IsCode returns true when this delete replace process group request o k response a status code equal to that given
 func (o *DeleteReplaceProcessGroupRequestOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the delete replace process group request o k response
+func (o *DeleteReplaceProcessGroupRequestOK) Code() int {
+	return 200
 }
 
 func (o *DeleteReplaceProcessGroupRequestOK) Error() string {
@@ -165,6 +170,11 @@ func (o *DeleteReplaceProcessGroupRequestBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the delete replace process group request bad request response
+func (o *DeleteReplaceProcessGroupRequestBadRequest) Code() int {
+	return 400
+}
+
 func (o *DeleteReplaceProcessGroupRequestBadRequest) Error() string {
 	return fmt.Sprintf("[DELETE /process-groups/replace-requests/{id}][%d] deleteReplaceProcessGroupRequestBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *DeleteReplaceProcessGroupRequestUnauthorized) IsServerError() bool {
 // IsCode returns true when this delete replace process group request unauthorized response a status code equal to that given
 func (o *DeleteReplaceProcessGroupRequestUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the delete replace process group request unauthorized response
+func (o *DeleteReplaceProcessGroupRequestUnauthorized) Code() int {
+	return 401
 }
 
 func (o *DeleteReplaceProcessGroupRequestUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *DeleteReplaceProcessGroupRequestForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the delete replace process group request forbidden response
+func (o *DeleteReplaceProcessGroupRequestForbidden) Code() int {
+	return 403
+}
+
 func (o *DeleteReplaceProcessGroupRequestForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /process-groups/replace-requests/{id}][%d] deleteReplaceProcessGroupRequestForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *DeleteReplaceProcessGroupRequestNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the delete replace process group request not found response
+func (o *DeleteReplaceProcessGroupRequestNotFound) Code() int {
+	return 404
+}
+
 func (o *DeleteReplaceProcessGroupRequestNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /process-groups/replace-requests/{id}][%d] deleteReplaceProcessGroupRequestNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *DeleteReplaceProcessGroupRequestConflict) IsServerError() bool {
 // IsCode returns true when this delete replace process group request conflict response a status code equal to that given
 func (o *DeleteReplaceProcessGroupRequestConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the delete replace process group request conflict response
+func (o *DeleteReplaceProcessGroupRequestConflict) Code() int {
+	return 409
 }
 
 func (o *DeleteReplaceProcessGroupRequestConflict) Error() string {

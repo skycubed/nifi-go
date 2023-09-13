@@ -60,7 +60,7 @@ func (o *GetAccessStatusReader) ReadResponse(response runtime.ClientResponse, co
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /access] getAccessStatus", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *GetAccessStatusOK) IsServerError() bool {
 // IsCode returns true when this get access status o k response a status code equal to that given
 func (o *GetAccessStatusOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get access status o k response
+func (o *GetAccessStatusOK) Code() int {
+	return 200
 }
 
 func (o *GetAccessStatusOK) Error() string {
@@ -165,6 +170,11 @@ func (o *GetAccessStatusBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get access status bad request response
+func (o *GetAccessStatusBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetAccessStatusBadRequest) Error() string {
 	return fmt.Sprintf("[GET /access][%d] getAccessStatusBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *GetAccessStatusUnauthorized) IsServerError() bool {
 // IsCode returns true when this get access status unauthorized response a status code equal to that given
 func (o *GetAccessStatusUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get access status unauthorized response
+func (o *GetAccessStatusUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetAccessStatusUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *GetAccessStatusForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get access status forbidden response
+func (o *GetAccessStatusForbidden) Code() int {
+	return 403
+}
+
 func (o *GetAccessStatusForbidden) Error() string {
 	return fmt.Sprintf("[GET /access][%d] getAccessStatusForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *GetAccessStatusConflict) IsCode(code int) bool {
 	return code == 409
 }
 
+// Code gets the status code for the get access status conflict response
+func (o *GetAccessStatusConflict) Code() int {
+	return 409
+}
+
 func (o *GetAccessStatusConflict) Error() string {
 	return fmt.Sprintf("[GET /access][%d] getAccessStatusConflict ", 409)
 }
@@ -367,6 +392,11 @@ func (o *GetAccessStatusInternalServerError) IsServerError() bool {
 // IsCode returns true when this get access status internal server error response a status code equal to that given
 func (o *GetAccessStatusInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the get access status internal server error response
+func (o *GetAccessStatusInternalServerError) Code() int {
+	return 500
 }
 
 func (o *GetAccessStatusInternalServerError) Error() string {

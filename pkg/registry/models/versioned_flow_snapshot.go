@@ -286,6 +286,11 @@ func (m *VersionedFlowSnapshot) ContextValidate(ctx context.Context, formats str
 func (m *VersionedFlowSnapshot) contextValidateBucket(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Bucket != nil {
+
+		if swag.IsZero(m.Bucket) { // not required
+			return nil
+		}
+
 		if err := m.Bucket.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("bucket")
@@ -317,6 +322,11 @@ func (m *VersionedFlowSnapshot) contextValidateExternalControllerServices(ctx co
 func (m *VersionedFlowSnapshot) contextValidateFlow(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Flow != nil {
+
+		if swag.IsZero(m.Flow) { // not required
+			return nil
+		}
+
 		if err := m.Flow.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("flow")
@@ -333,6 +343,7 @@ func (m *VersionedFlowSnapshot) contextValidateFlow(ctx context.Context, formats
 func (m *VersionedFlowSnapshot) contextValidateFlowContents(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.FlowContents != nil {
+
 		if err := m.FlowContents.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("flowContents")
@@ -379,6 +390,7 @@ func (m *VersionedFlowSnapshot) contextValidateParameterProviders(ctx context.Co
 func (m *VersionedFlowSnapshot) contextValidateSnapshotMetadata(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.SnapshotMetadata != nil {
+
 		if err := m.SnapshotMetadata.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("snapshotMetadata")

@@ -60,7 +60,7 @@ func (o *GetConnectionsReader) ReadResponse(response runtime.ClientResponse, con
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /process-groups/{id}/connections] getConnections", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *GetConnectionsOK) IsServerError() bool {
 // IsCode returns true when this get connections o k response a status code equal to that given
 func (o *GetConnectionsOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get connections o k response
+func (o *GetConnectionsOK) Code() int {
+	return 200
 }
 
 func (o *GetConnectionsOK) Error() string {
@@ -165,6 +170,11 @@ func (o *GetConnectionsBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get connections bad request response
+func (o *GetConnectionsBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetConnectionsBadRequest) Error() string {
 	return fmt.Sprintf("[GET /process-groups/{id}/connections][%d] getConnectionsBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *GetConnectionsUnauthorized) IsServerError() bool {
 // IsCode returns true when this get connections unauthorized response a status code equal to that given
 func (o *GetConnectionsUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get connections unauthorized response
+func (o *GetConnectionsUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetConnectionsUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *GetConnectionsForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get connections forbidden response
+func (o *GetConnectionsForbidden) Code() int {
+	return 403
+}
+
 func (o *GetConnectionsForbidden) Error() string {
 	return fmt.Sprintf("[GET /process-groups/{id}/connections][%d] getConnectionsForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *GetConnectionsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get connections not found response
+func (o *GetConnectionsNotFound) Code() int {
+	return 404
+}
+
 func (o *GetConnectionsNotFound) Error() string {
 	return fmt.Sprintf("[GET /process-groups/{id}/connections][%d] getConnectionsNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *GetConnectionsConflict) IsServerError() bool {
 // IsCode returns true when this get connections conflict response a status code equal to that given
 func (o *GetConnectionsConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get connections conflict response
+func (o *GetConnectionsConflict) Code() int {
+	return 409
 }
 
 func (o *GetConnectionsConflict) Error() string {

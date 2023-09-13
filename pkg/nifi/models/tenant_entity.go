@@ -211,6 +211,11 @@ func (m *TenantEntity) contextValidateBulletins(ctx context.Context, formats str
 	for i := 0; i < len(m.Bulletins); i++ {
 
 		if m.Bulletins[i] != nil {
+
+			if swag.IsZero(m.Bulletins[i]) { // not required
+				return nil
+			}
+
 			if err := m.Bulletins[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("bulletins" + "." + strconv.Itoa(i))
@@ -229,6 +234,11 @@ func (m *TenantEntity) contextValidateBulletins(ctx context.Context, formats str
 func (m *TenantEntity) contextValidateComponent(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Component != nil {
+
+		if swag.IsZero(m.Component) { // not required
+			return nil
+		}
+
 		if err := m.Component.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("component")
@@ -245,6 +255,11 @@ func (m *TenantEntity) contextValidateComponent(ctx context.Context, formats str
 func (m *TenantEntity) contextValidatePermissions(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Permissions != nil {
+
+		if swag.IsZero(m.Permissions) { // not required
+			return nil
+		}
+
 		if err := m.Permissions.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("permissions")
@@ -261,6 +276,11 @@ func (m *TenantEntity) contextValidatePermissions(ctx context.Context, formats s
 func (m *TenantEntity) contextValidatePosition(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Position != nil {
+
+		if swag.IsZero(m.Position) { // not required
+			return nil
+		}
+
 		if err := m.Position.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("position")
@@ -277,6 +297,11 @@ func (m *TenantEntity) contextValidatePosition(ctx context.Context, formats strf
 func (m *TenantEntity) contextValidateRevision(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Revision != nil {
+
+		if swag.IsZero(m.Revision) { // not required
+			return nil
+		}
+
 		if err := m.Revision.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("revision")

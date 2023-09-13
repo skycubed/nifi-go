@@ -66,7 +66,7 @@ func (o *CreatePortTransactionReader) ReadResponse(response runtime.ClientRespon
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /data-transfer/{portType}/{portId}/transactions] createPortTransaction", response, response.Code())
 	}
 }
 
@@ -107,6 +107,11 @@ func (o *CreatePortTransactionOK) IsServerError() bool {
 // IsCode returns true when this create port transaction o k response a status code equal to that given
 func (o *CreatePortTransactionOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the create port transaction o k response
+func (o *CreatePortTransactionOK) Code() int {
+	return 200
 }
 
 func (o *CreatePortTransactionOK) Error() string {
@@ -171,6 +176,11 @@ func (o *CreatePortTransactionBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the create port transaction bad request response
+func (o *CreatePortTransactionBadRequest) Code() int {
+	return 400
+}
+
 func (o *CreatePortTransactionBadRequest) Error() string {
 	return fmt.Sprintf("[POST /data-transfer/{portType}/{portId}/transactions][%d] createPortTransactionBadRequest ", 400)
 }
@@ -220,6 +230,11 @@ func (o *CreatePortTransactionUnauthorized) IsServerError() bool {
 // IsCode returns true when this create port transaction unauthorized response a status code equal to that given
 func (o *CreatePortTransactionUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the create port transaction unauthorized response
+func (o *CreatePortTransactionUnauthorized) Code() int {
+	return 401
 }
 
 func (o *CreatePortTransactionUnauthorized) Error() string {
@@ -273,6 +288,11 @@ func (o *CreatePortTransactionForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the create port transaction forbidden response
+func (o *CreatePortTransactionForbidden) Code() int {
+	return 403
+}
+
 func (o *CreatePortTransactionForbidden) Error() string {
 	return fmt.Sprintf("[POST /data-transfer/{portType}/{portId}/transactions][%d] createPortTransactionForbidden ", 403)
 }
@@ -322,6 +342,11 @@ func (o *CreatePortTransactionNotFound) IsServerError() bool {
 // IsCode returns true when this create port transaction not found response a status code equal to that given
 func (o *CreatePortTransactionNotFound) IsCode(code int) bool {
 	return code == 404
+}
+
+// Code gets the status code for the create port transaction not found response
+func (o *CreatePortTransactionNotFound) Code() int {
+	return 404
 }
 
 func (o *CreatePortTransactionNotFound) Error() string {
@@ -375,6 +400,11 @@ func (o *CreatePortTransactionConflict) IsCode(code int) bool {
 	return code == 409
 }
 
+// Code gets the status code for the create port transaction conflict response
+func (o *CreatePortTransactionConflict) Code() int {
+	return 409
+}
+
 func (o *CreatePortTransactionConflict) Error() string {
 	return fmt.Sprintf("[POST /data-transfer/{portType}/{portId}/transactions][%d] createPortTransactionConflict ", 409)
 }
@@ -424,6 +454,11 @@ func (o *CreatePortTransactionServiceUnavailable) IsServerError() bool {
 // IsCode returns true when this create port transaction service unavailable response a status code equal to that given
 func (o *CreatePortTransactionServiceUnavailable) IsCode(code int) bool {
 	return code == 503
+}
+
+// Code gets the status code for the create port transaction service unavailable response
+func (o *CreatePortTransactionServiceUnavailable) Code() int {
+	return 503
 }
 
 func (o *CreatePortTransactionServiceUnavailable) Error() string {

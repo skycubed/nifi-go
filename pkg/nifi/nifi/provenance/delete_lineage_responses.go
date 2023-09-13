@@ -60,7 +60,7 @@ func (o *DeleteLineageReader) ReadResponse(response runtime.ClientResponse, cons
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /provenance/lineage/{id}] deleteLineage", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *DeleteLineageOK) IsServerError() bool {
 // IsCode returns true when this delete lineage o k response a status code equal to that given
 func (o *DeleteLineageOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the delete lineage o k response
+func (o *DeleteLineageOK) Code() int {
+	return 200
 }
 
 func (o *DeleteLineageOK) Error() string {
@@ -165,6 +170,11 @@ func (o *DeleteLineageBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the delete lineage bad request response
+func (o *DeleteLineageBadRequest) Code() int {
+	return 400
+}
+
 func (o *DeleteLineageBadRequest) Error() string {
 	return fmt.Sprintf("[DELETE /provenance/lineage/{id}][%d] deleteLineageBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *DeleteLineageUnauthorized) IsServerError() bool {
 // IsCode returns true when this delete lineage unauthorized response a status code equal to that given
 func (o *DeleteLineageUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the delete lineage unauthorized response
+func (o *DeleteLineageUnauthorized) Code() int {
+	return 401
 }
 
 func (o *DeleteLineageUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *DeleteLineageForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the delete lineage forbidden response
+func (o *DeleteLineageForbidden) Code() int {
+	return 403
+}
+
 func (o *DeleteLineageForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /provenance/lineage/{id}][%d] deleteLineageForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *DeleteLineageNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the delete lineage not found response
+func (o *DeleteLineageNotFound) Code() int {
+	return 404
+}
+
 func (o *DeleteLineageNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /provenance/lineage/{id}][%d] deleteLineageNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *DeleteLineageConflict) IsServerError() bool {
 // IsCode returns true when this delete lineage conflict response a status code equal to that given
 func (o *DeleteLineageConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the delete lineage conflict response
+func (o *DeleteLineageConflict) Code() int {
+	return 409
 }
 
 func (o *DeleteLineageConflict) Error() string {

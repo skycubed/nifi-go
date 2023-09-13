@@ -66,7 +66,7 @@ func (o *CommitOutputPortTransactionReader) ReadResponse(response runtime.Client
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /data-transfer/output-ports/{portId}/transactions/{transactionId}] commitOutputPortTransaction", response, response.Code())
 	}
 }
 
@@ -107,6 +107,11 @@ func (o *CommitOutputPortTransactionOK) IsServerError() bool {
 // IsCode returns true when this commit output port transaction o k response a status code equal to that given
 func (o *CommitOutputPortTransactionOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the commit output port transaction o k response
+func (o *CommitOutputPortTransactionOK) Code() int {
+	return 200
 }
 
 func (o *CommitOutputPortTransactionOK) Error() string {
@@ -171,6 +176,11 @@ func (o *CommitOutputPortTransactionBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the commit output port transaction bad request response
+func (o *CommitOutputPortTransactionBadRequest) Code() int {
+	return 400
+}
+
 func (o *CommitOutputPortTransactionBadRequest) Error() string {
 	return fmt.Sprintf("[DELETE /data-transfer/output-ports/{portId}/transactions/{transactionId}][%d] commitOutputPortTransactionBadRequest ", 400)
 }
@@ -220,6 +230,11 @@ func (o *CommitOutputPortTransactionUnauthorized) IsServerError() bool {
 // IsCode returns true when this commit output port transaction unauthorized response a status code equal to that given
 func (o *CommitOutputPortTransactionUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the commit output port transaction unauthorized response
+func (o *CommitOutputPortTransactionUnauthorized) Code() int {
+	return 401
 }
 
 func (o *CommitOutputPortTransactionUnauthorized) Error() string {
@@ -273,6 +288,11 @@ func (o *CommitOutputPortTransactionForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the commit output port transaction forbidden response
+func (o *CommitOutputPortTransactionForbidden) Code() int {
+	return 403
+}
+
 func (o *CommitOutputPortTransactionForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /data-transfer/output-ports/{portId}/transactions/{transactionId}][%d] commitOutputPortTransactionForbidden ", 403)
 }
@@ -322,6 +342,11 @@ func (o *CommitOutputPortTransactionNotFound) IsServerError() bool {
 // IsCode returns true when this commit output port transaction not found response a status code equal to that given
 func (o *CommitOutputPortTransactionNotFound) IsCode(code int) bool {
 	return code == 404
+}
+
+// Code gets the status code for the commit output port transaction not found response
+func (o *CommitOutputPortTransactionNotFound) Code() int {
+	return 404
 }
 
 func (o *CommitOutputPortTransactionNotFound) Error() string {
@@ -375,6 +400,11 @@ func (o *CommitOutputPortTransactionConflict) IsCode(code int) bool {
 	return code == 409
 }
 
+// Code gets the status code for the commit output port transaction conflict response
+func (o *CommitOutputPortTransactionConflict) Code() int {
+	return 409
+}
+
 func (o *CommitOutputPortTransactionConflict) Error() string {
 	return fmt.Sprintf("[DELETE /data-transfer/output-ports/{portId}/transactions/{transactionId}][%d] commitOutputPortTransactionConflict ", 409)
 }
@@ -424,6 +454,11 @@ func (o *CommitOutputPortTransactionServiceUnavailable) IsServerError() bool {
 // IsCode returns true when this commit output port transaction service unavailable response a status code equal to that given
 func (o *CommitOutputPortTransactionServiceUnavailable) IsCode(code int) bool {
 	return code == 503
+}
+
+// Code gets the status code for the commit output port transaction service unavailable response
+func (o *CommitOutputPortTransactionServiceUnavailable) Code() int {
+	return 503
 }
 
 func (o *CommitOutputPortTransactionServiceUnavailable) Error() string {

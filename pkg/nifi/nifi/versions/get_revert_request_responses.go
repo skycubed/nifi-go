@@ -60,7 +60,7 @@ func (o *GetRevertRequestReader) ReadResponse(response runtime.ClientResponse, c
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /versions/revert-requests/{id}] getRevertRequest", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *GetRevertRequestOK) IsServerError() bool {
 // IsCode returns true when this get revert request o k response a status code equal to that given
 func (o *GetRevertRequestOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get revert request o k response
+func (o *GetRevertRequestOK) Code() int {
+	return 200
 }
 
 func (o *GetRevertRequestOK) Error() string {
@@ -165,6 +170,11 @@ func (o *GetRevertRequestBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get revert request bad request response
+func (o *GetRevertRequestBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetRevertRequestBadRequest) Error() string {
 	return fmt.Sprintf("[GET /versions/revert-requests/{id}][%d] getRevertRequestBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *GetRevertRequestUnauthorized) IsServerError() bool {
 // IsCode returns true when this get revert request unauthorized response a status code equal to that given
 func (o *GetRevertRequestUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get revert request unauthorized response
+func (o *GetRevertRequestUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetRevertRequestUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *GetRevertRequestForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get revert request forbidden response
+func (o *GetRevertRequestForbidden) Code() int {
+	return 403
+}
+
 func (o *GetRevertRequestForbidden) Error() string {
 	return fmt.Sprintf("[GET /versions/revert-requests/{id}][%d] getRevertRequestForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *GetRevertRequestNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get revert request not found response
+func (o *GetRevertRequestNotFound) Code() int {
+	return 404
+}
+
 func (o *GetRevertRequestNotFound) Error() string {
 	return fmt.Sprintf("[GET /versions/revert-requests/{id}][%d] getRevertRequestNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *GetRevertRequestConflict) IsServerError() bool {
 // IsCode returns true when this get revert request conflict response a status code equal to that given
 func (o *GetRevertRequestConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get revert request conflict response
+func (o *GetRevertRequestConflict) Code() int {
+	return 409
 }
 
 func (o *GetRevertRequestConflict) Error() string {

@@ -75,6 +75,11 @@ func (m *VersionedFlowSnapshotMetadataEntity) ContextValidate(ctx context.Contex
 func (m *VersionedFlowSnapshotMetadataEntity) contextValidateVersionedFlowSnapshotMetadata(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.VersionedFlowSnapshotMetadata != nil {
+
+		if swag.IsZero(m.VersionedFlowSnapshotMetadata) { // not required
+			return nil
+		}
+
 		if err := m.VersionedFlowSnapshotMetadata.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("versionedFlowSnapshotMetadata")

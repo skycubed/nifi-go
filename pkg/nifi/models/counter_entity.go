@@ -72,6 +72,11 @@ func (m *CounterEntity) ContextValidate(ctx context.Context, formats strfmt.Regi
 func (m *CounterEntity) contextValidateCounter(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Counter != nil {
+
+		if swag.IsZero(m.Counter) { // not required
+			return nil
+		}
+
 		if err := m.Counter.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("counter")

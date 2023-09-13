@@ -60,7 +60,7 @@ func (o *GetFlowMetricsReader) ReadResponse(response runtime.ClientResponse, con
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /flow/metrics/{producer}] getFlowMetrics", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *GetFlowMetricsOK) IsServerError() bool {
 // IsCode returns true when this get flow metrics o k response a status code equal to that given
 func (o *GetFlowMetricsOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get flow metrics o k response
+func (o *GetFlowMetricsOK) Code() int {
+	return 200
 }
 
 func (o *GetFlowMetricsOK) Error() string {
@@ -163,6 +168,11 @@ func (o *GetFlowMetricsBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get flow metrics bad request response
+func (o *GetFlowMetricsBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetFlowMetricsBadRequest) Error() string {
 	return fmt.Sprintf("[GET /flow/metrics/{producer}][%d] getFlowMetricsBadRequest ", 400)
 }
@@ -212,6 +222,11 @@ func (o *GetFlowMetricsUnauthorized) IsServerError() bool {
 // IsCode returns true when this get flow metrics unauthorized response a status code equal to that given
 func (o *GetFlowMetricsUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get flow metrics unauthorized response
+func (o *GetFlowMetricsUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetFlowMetricsUnauthorized) Error() string {
@@ -265,6 +280,11 @@ func (o *GetFlowMetricsForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get flow metrics forbidden response
+func (o *GetFlowMetricsForbidden) Code() int {
+	return 403
+}
+
 func (o *GetFlowMetricsForbidden) Error() string {
 	return fmt.Sprintf("[GET /flow/metrics/{producer}][%d] getFlowMetricsForbidden ", 403)
 }
@@ -316,6 +336,11 @@ func (o *GetFlowMetricsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get flow metrics not found response
+func (o *GetFlowMetricsNotFound) Code() int {
+	return 404
+}
+
 func (o *GetFlowMetricsNotFound) Error() string {
 	return fmt.Sprintf("[GET /flow/metrics/{producer}][%d] getFlowMetricsNotFound ", 404)
 }
@@ -365,6 +390,11 @@ func (o *GetFlowMetricsConflict) IsServerError() bool {
 // IsCode returns true when this get flow metrics conflict response a status code equal to that given
 func (o *GetFlowMetricsConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get flow metrics conflict response
+func (o *GetFlowMetricsConflict) Code() int {
+	return 409
 }
 
 func (o *GetFlowMetricsConflict) Error() string {

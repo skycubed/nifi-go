@@ -60,7 +60,7 @@ func (o *DeleteProvenanceReader) ReadResponse(response runtime.ClientResponse, c
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /provenance/{id}] deleteProvenance", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *DeleteProvenanceOK) IsServerError() bool {
 // IsCode returns true when this delete provenance o k response a status code equal to that given
 func (o *DeleteProvenanceOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the delete provenance o k response
+func (o *DeleteProvenanceOK) Code() int {
+	return 200
 }
 
 func (o *DeleteProvenanceOK) Error() string {
@@ -165,6 +170,11 @@ func (o *DeleteProvenanceBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the delete provenance bad request response
+func (o *DeleteProvenanceBadRequest) Code() int {
+	return 400
+}
+
 func (o *DeleteProvenanceBadRequest) Error() string {
 	return fmt.Sprintf("[DELETE /provenance/{id}][%d] deleteProvenanceBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *DeleteProvenanceUnauthorized) IsServerError() bool {
 // IsCode returns true when this delete provenance unauthorized response a status code equal to that given
 func (o *DeleteProvenanceUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the delete provenance unauthorized response
+func (o *DeleteProvenanceUnauthorized) Code() int {
+	return 401
 }
 
 func (o *DeleteProvenanceUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *DeleteProvenanceForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the delete provenance forbidden response
+func (o *DeleteProvenanceForbidden) Code() int {
+	return 403
+}
+
 func (o *DeleteProvenanceForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /provenance/{id}][%d] deleteProvenanceForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *DeleteProvenanceNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the delete provenance not found response
+func (o *DeleteProvenanceNotFound) Code() int {
+	return 404
+}
+
 func (o *DeleteProvenanceNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /provenance/{id}][%d] deleteProvenanceNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *DeleteProvenanceConflict) IsServerError() bool {
 // IsCode returns true when this delete provenance conflict response a status code equal to that given
 func (o *DeleteProvenanceConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the delete provenance conflict response
+func (o *DeleteProvenanceConflict) Code() int {
+	return 409
 }
 
 func (o *DeleteProvenanceConflict) Error() string {

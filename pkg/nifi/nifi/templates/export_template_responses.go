@@ -58,7 +58,7 @@ func (o *ExportTemplateReader) ReadResponse(response runtime.ClientResponse, con
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /templates/{id}/download] exportTemplate", response, response.Code())
 	}
 }
 
@@ -99,6 +99,11 @@ func (o *ExportTemplateOK) IsServerError() bool {
 // IsCode returns true when this export template o k response a status code equal to that given
 func (o *ExportTemplateOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the export template o k response
+func (o *ExportTemplateOK) Code() int {
+	return 200
 }
 
 func (o *ExportTemplateOK) Error() string {
@@ -161,6 +166,11 @@ func (o *ExportTemplateBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the export template bad request response
+func (o *ExportTemplateBadRequest) Code() int {
+	return 400
+}
+
 func (o *ExportTemplateBadRequest) Error() string {
 	return fmt.Sprintf("[GET /templates/{id}/download][%d] exportTemplateBadRequest ", 400)
 }
@@ -210,6 +220,11 @@ func (o *ExportTemplateUnauthorized) IsServerError() bool {
 // IsCode returns true when this export template unauthorized response a status code equal to that given
 func (o *ExportTemplateUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the export template unauthorized response
+func (o *ExportTemplateUnauthorized) Code() int {
+	return 401
 }
 
 func (o *ExportTemplateUnauthorized) Error() string {
@@ -263,6 +278,11 @@ func (o *ExportTemplateForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the export template forbidden response
+func (o *ExportTemplateForbidden) Code() int {
+	return 403
+}
+
 func (o *ExportTemplateForbidden) Error() string {
 	return fmt.Sprintf("[GET /templates/{id}/download][%d] exportTemplateForbidden ", 403)
 }
@@ -314,6 +334,11 @@ func (o *ExportTemplateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the export template not found response
+func (o *ExportTemplateNotFound) Code() int {
+	return 404
+}
+
 func (o *ExportTemplateNotFound) Error() string {
 	return fmt.Sprintf("[GET /templates/{id}/download][%d] exportTemplateNotFound ", 404)
 }
@@ -363,6 +388,11 @@ func (o *ExportTemplateConflict) IsServerError() bool {
 // IsCode returns true when this export template conflict response a status code equal to that given
 func (o *ExportTemplateConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the export template conflict response
+func (o *ExportTemplateConflict) Code() int {
+	return 409
 }
 
 func (o *ExportTemplateConflict) Error() string {

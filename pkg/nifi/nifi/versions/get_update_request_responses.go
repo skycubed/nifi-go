@@ -60,7 +60,7 @@ func (o *GetUpdateRequestReader) ReadResponse(response runtime.ClientResponse, c
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /versions/update-requests/{id}] getUpdateRequest", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *GetUpdateRequestOK) IsServerError() bool {
 // IsCode returns true when this get update request o k response a status code equal to that given
 func (o *GetUpdateRequestOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get update request o k response
+func (o *GetUpdateRequestOK) Code() int {
+	return 200
 }
 
 func (o *GetUpdateRequestOK) Error() string {
@@ -165,6 +170,11 @@ func (o *GetUpdateRequestBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get update request bad request response
+func (o *GetUpdateRequestBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetUpdateRequestBadRequest) Error() string {
 	return fmt.Sprintf("[GET /versions/update-requests/{id}][%d] getUpdateRequestBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *GetUpdateRequestUnauthorized) IsServerError() bool {
 // IsCode returns true when this get update request unauthorized response a status code equal to that given
 func (o *GetUpdateRequestUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get update request unauthorized response
+func (o *GetUpdateRequestUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetUpdateRequestUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *GetUpdateRequestForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get update request forbidden response
+func (o *GetUpdateRequestForbidden) Code() int {
+	return 403
+}
+
 func (o *GetUpdateRequestForbidden) Error() string {
 	return fmt.Sprintf("[GET /versions/update-requests/{id}][%d] getUpdateRequestForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *GetUpdateRequestNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get update request not found response
+func (o *GetUpdateRequestNotFound) Code() int {
+	return 404
+}
+
 func (o *GetUpdateRequestNotFound) Error() string {
 	return fmt.Sprintf("[GET /versions/update-requests/{id}][%d] getUpdateRequestNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *GetUpdateRequestConflict) IsServerError() bool {
 // IsCode returns true when this get update request conflict response a status code equal to that given
 func (o *GetUpdateRequestConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get update request conflict response
+func (o *GetUpdateRequestConflict) Code() int {
+	return 409
 }
 
 func (o *GetUpdateRequestConflict) Error() string {

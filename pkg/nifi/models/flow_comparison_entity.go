@@ -88,6 +88,11 @@ func (m *FlowComparisonEntity) contextValidateComponentDifferences(ctx context.C
 	for i := 0; i < len(m.ComponentDifferences); i++ {
 
 		if m.ComponentDifferences[i] != nil {
+
+			if swag.IsZero(m.ComponentDifferences[i]) { // not required
+				return nil
+			}
+
 			if err := m.ComponentDifferences[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("componentDifferences" + "." + strconv.Itoa(i))

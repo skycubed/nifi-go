@@ -60,7 +60,7 @@ func (o *GetControllerServiceReader) ReadResponse(response runtime.ClientRespons
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /controller-services/{id}] getControllerService", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *GetControllerServiceOK) IsServerError() bool {
 // IsCode returns true when this get controller service o k response a status code equal to that given
 func (o *GetControllerServiceOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get controller service o k response
+func (o *GetControllerServiceOK) Code() int {
+	return 200
 }
 
 func (o *GetControllerServiceOK) Error() string {
@@ -165,6 +170,11 @@ func (o *GetControllerServiceBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get controller service bad request response
+func (o *GetControllerServiceBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetControllerServiceBadRequest) Error() string {
 	return fmt.Sprintf("[GET /controller-services/{id}][%d] getControllerServiceBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *GetControllerServiceUnauthorized) IsServerError() bool {
 // IsCode returns true when this get controller service unauthorized response a status code equal to that given
 func (o *GetControllerServiceUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get controller service unauthorized response
+func (o *GetControllerServiceUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetControllerServiceUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *GetControllerServiceForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get controller service forbidden response
+func (o *GetControllerServiceForbidden) Code() int {
+	return 403
+}
+
 func (o *GetControllerServiceForbidden) Error() string {
 	return fmt.Sprintf("[GET /controller-services/{id}][%d] getControllerServiceForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *GetControllerServiceNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get controller service not found response
+func (o *GetControllerServiceNotFound) Code() int {
+	return 404
+}
+
 func (o *GetControllerServiceNotFound) Error() string {
 	return fmt.Sprintf("[GET /controller-services/{id}][%d] getControllerServiceNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *GetControllerServiceConflict) IsServerError() bool {
 // IsCode returns true when this get controller service conflict response a status code equal to that given
 func (o *GetControllerServiceConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get controller service conflict response
+func (o *GetControllerServiceConflict) Code() int {
+	return 409
 }
 
 func (o *GetControllerServiceConflict) Error() string {

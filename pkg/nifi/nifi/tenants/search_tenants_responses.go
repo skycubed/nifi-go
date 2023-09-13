@@ -60,7 +60,7 @@ func (o *SearchTenantsReader) ReadResponse(response runtime.ClientResponse, cons
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /tenants/search-results] searchTenants", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *SearchTenantsOK) IsServerError() bool {
 // IsCode returns true when this search tenants o k response a status code equal to that given
 func (o *SearchTenantsOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the search tenants o k response
+func (o *SearchTenantsOK) Code() int {
+	return 200
 }
 
 func (o *SearchTenantsOK) Error() string {
@@ -165,6 +170,11 @@ func (o *SearchTenantsBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the search tenants bad request response
+func (o *SearchTenantsBadRequest) Code() int {
+	return 400
+}
+
 func (o *SearchTenantsBadRequest) Error() string {
 	return fmt.Sprintf("[GET /tenants/search-results][%d] searchTenantsBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *SearchTenantsUnauthorized) IsServerError() bool {
 // IsCode returns true when this search tenants unauthorized response a status code equal to that given
 func (o *SearchTenantsUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the search tenants unauthorized response
+func (o *SearchTenantsUnauthorized) Code() int {
+	return 401
 }
 
 func (o *SearchTenantsUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *SearchTenantsForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the search tenants forbidden response
+func (o *SearchTenantsForbidden) Code() int {
+	return 403
+}
+
 func (o *SearchTenantsForbidden) Error() string {
 	return fmt.Sprintf("[GET /tenants/search-results][%d] searchTenantsForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *SearchTenantsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the search tenants not found response
+func (o *SearchTenantsNotFound) Code() int {
+	return 404
+}
+
 func (o *SearchTenantsNotFound) Error() string {
 	return fmt.Sprintf("[GET /tenants/search-results][%d] searchTenantsNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *SearchTenantsConflict) IsServerError() bool {
 // IsCode returns true when this search tenants conflict response a status code equal to that given
 func (o *SearchTenantsConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the search tenants conflict response
+func (o *SearchTenantsConflict) Code() int {
+	return 409
 }
 
 func (o *SearchTenantsConflict) Error() string {

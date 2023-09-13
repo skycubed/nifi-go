@@ -60,7 +60,7 @@ func (o *UpdateFunnelReader) ReadResponse(response runtime.ClientResponse, consu
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PUT /funnels/{id}] updateFunnel", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *UpdateFunnelOK) IsServerError() bool {
 // IsCode returns true when this update funnel o k response a status code equal to that given
 func (o *UpdateFunnelOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the update funnel o k response
+func (o *UpdateFunnelOK) Code() int {
+	return 200
 }
 
 func (o *UpdateFunnelOK) Error() string {
@@ -165,6 +170,11 @@ func (o *UpdateFunnelBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the update funnel bad request response
+func (o *UpdateFunnelBadRequest) Code() int {
+	return 400
+}
+
 func (o *UpdateFunnelBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /funnels/{id}][%d] updateFunnelBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *UpdateFunnelUnauthorized) IsServerError() bool {
 // IsCode returns true when this update funnel unauthorized response a status code equal to that given
 func (o *UpdateFunnelUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the update funnel unauthorized response
+func (o *UpdateFunnelUnauthorized) Code() int {
+	return 401
 }
 
 func (o *UpdateFunnelUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *UpdateFunnelForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the update funnel forbidden response
+func (o *UpdateFunnelForbidden) Code() int {
+	return 403
+}
+
 func (o *UpdateFunnelForbidden) Error() string {
 	return fmt.Sprintf("[PUT /funnels/{id}][%d] updateFunnelForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *UpdateFunnelNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the update funnel not found response
+func (o *UpdateFunnelNotFound) Code() int {
+	return 404
+}
+
 func (o *UpdateFunnelNotFound) Error() string {
 	return fmt.Sprintf("[PUT /funnels/{id}][%d] updateFunnelNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *UpdateFunnelConflict) IsServerError() bool {
 // IsCode returns true when this update funnel conflict response a status code equal to that given
 func (o *UpdateFunnelConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the update funnel conflict response
+func (o *UpdateFunnelConflict) Code() int {
+	return 409
 }
 
 func (o *UpdateFunnelConflict) Error() string {

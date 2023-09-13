@@ -60,7 +60,7 @@ func (o *RemoveProcessGroupReader) ReadResponse(response runtime.ClientResponse,
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /process-groups/{id}] removeProcessGroup", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *RemoveProcessGroupOK) IsServerError() bool {
 // IsCode returns true when this remove process group o k response a status code equal to that given
 func (o *RemoveProcessGroupOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the remove process group o k response
+func (o *RemoveProcessGroupOK) Code() int {
+	return 200
 }
 
 func (o *RemoveProcessGroupOK) Error() string {
@@ -165,6 +170,11 @@ func (o *RemoveProcessGroupBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the remove process group bad request response
+func (o *RemoveProcessGroupBadRequest) Code() int {
+	return 400
+}
+
 func (o *RemoveProcessGroupBadRequest) Error() string {
 	return fmt.Sprintf("[DELETE /process-groups/{id}][%d] removeProcessGroupBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *RemoveProcessGroupUnauthorized) IsServerError() bool {
 // IsCode returns true when this remove process group unauthorized response a status code equal to that given
 func (o *RemoveProcessGroupUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the remove process group unauthorized response
+func (o *RemoveProcessGroupUnauthorized) Code() int {
+	return 401
 }
 
 func (o *RemoveProcessGroupUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *RemoveProcessGroupForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the remove process group forbidden response
+func (o *RemoveProcessGroupForbidden) Code() int {
+	return 403
+}
+
 func (o *RemoveProcessGroupForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /process-groups/{id}][%d] removeProcessGroupForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *RemoveProcessGroupNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the remove process group not found response
+func (o *RemoveProcessGroupNotFound) Code() int {
+	return 404
+}
+
 func (o *RemoveProcessGroupNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /process-groups/{id}][%d] removeProcessGroupNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *RemoveProcessGroupConflict) IsServerError() bool {
 // IsCode returns true when this remove process group conflict response a status code equal to that given
 func (o *RemoveProcessGroupConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the remove process group conflict response
+func (o *RemoveProcessGroupConflict) Code() int {
+	return 409
 }
 
 func (o *RemoveProcessGroupConflict) Error() string {

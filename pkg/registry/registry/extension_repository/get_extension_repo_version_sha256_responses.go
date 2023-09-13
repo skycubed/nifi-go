@@ -58,7 +58,7 @@ func (o *GetExtensionRepoVersionSha256Reader) ReadResponse(response runtime.Clie
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /extension-repository/{bucketName}/{groupId}/{artifactId}/{version}/sha256] getExtensionRepoVersionSha256", response, response.Code())
 	}
 }
 
@@ -99,6 +99,11 @@ func (o *GetExtensionRepoVersionSha256OK) IsServerError() bool {
 // IsCode returns true when this get extension repo version sha256 o k response a status code equal to that given
 func (o *GetExtensionRepoVersionSha256OK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get extension repo version sha256 o k response
+func (o *GetExtensionRepoVersionSha256OK) Code() int {
+	return 200
 }
 
 func (o *GetExtensionRepoVersionSha256OK) Error() string {
@@ -161,6 +166,11 @@ func (o *GetExtensionRepoVersionSha256BadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get extension repo version sha256 bad request response
+func (o *GetExtensionRepoVersionSha256BadRequest) Code() int {
+	return 400
+}
+
 func (o *GetExtensionRepoVersionSha256BadRequest) Error() string {
 	return fmt.Sprintf("[GET /extension-repository/{bucketName}/{groupId}/{artifactId}/{version}/sha256][%d] getExtensionRepoVersionSha256BadRequest ", 400)
 }
@@ -210,6 +220,11 @@ func (o *GetExtensionRepoVersionSha256Unauthorized) IsServerError() bool {
 // IsCode returns true when this get extension repo version sha256 unauthorized response a status code equal to that given
 func (o *GetExtensionRepoVersionSha256Unauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get extension repo version sha256 unauthorized response
+func (o *GetExtensionRepoVersionSha256Unauthorized) Code() int {
+	return 401
 }
 
 func (o *GetExtensionRepoVersionSha256Unauthorized) Error() string {
@@ -263,6 +278,11 @@ func (o *GetExtensionRepoVersionSha256Forbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get extension repo version sha256 forbidden response
+func (o *GetExtensionRepoVersionSha256Forbidden) Code() int {
+	return 403
+}
+
 func (o *GetExtensionRepoVersionSha256Forbidden) Error() string {
 	return fmt.Sprintf("[GET /extension-repository/{bucketName}/{groupId}/{artifactId}/{version}/sha256][%d] getExtensionRepoVersionSha256Forbidden ", 403)
 }
@@ -314,6 +334,11 @@ func (o *GetExtensionRepoVersionSha256NotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get extension repo version sha256 not found response
+func (o *GetExtensionRepoVersionSha256NotFound) Code() int {
+	return 404
+}
+
 func (o *GetExtensionRepoVersionSha256NotFound) Error() string {
 	return fmt.Sprintf("[GET /extension-repository/{bucketName}/{groupId}/{artifactId}/{version}/sha256][%d] getExtensionRepoVersionSha256NotFound ", 404)
 }
@@ -363,6 +388,11 @@ func (o *GetExtensionRepoVersionSha256Conflict) IsServerError() bool {
 // IsCode returns true when this get extension repo version sha256 conflict response a status code equal to that given
 func (o *GetExtensionRepoVersionSha256Conflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get extension repo version sha256 conflict response
+func (o *GetExtensionRepoVersionSha256Conflict) Code() int {
+	return 409
 }
 
 func (o *GetExtensionRepoVersionSha256Conflict) Error() string {

@@ -135,6 +135,11 @@ func (m *ConnectionStatusSnapshotDTO) ContextValidate(ctx context.Context, forma
 func (m *ConnectionStatusSnapshotDTO) contextValidatePredictions(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Predictions != nil {
+
+		if swag.IsZero(m.Predictions) { // not required
+			return nil
+		}
+
 		if err := m.Predictions.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("predictions")

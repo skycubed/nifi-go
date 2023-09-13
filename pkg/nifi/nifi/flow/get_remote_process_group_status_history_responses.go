@@ -60,7 +60,7 @@ func (o *GetRemoteProcessGroupStatusHistoryReader) ReadResponse(response runtime
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /flow/remote-process-groups/{id}/status/history] getRemoteProcessGroupStatusHistory", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *GetRemoteProcessGroupStatusHistoryOK) IsServerError() bool {
 // IsCode returns true when this get remote process group status history o k response a status code equal to that given
 func (o *GetRemoteProcessGroupStatusHistoryOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get remote process group status history o k response
+func (o *GetRemoteProcessGroupStatusHistoryOK) Code() int {
+	return 200
 }
 
 func (o *GetRemoteProcessGroupStatusHistoryOK) Error() string {
@@ -165,6 +170,11 @@ func (o *GetRemoteProcessGroupStatusHistoryBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get remote process group status history bad request response
+func (o *GetRemoteProcessGroupStatusHistoryBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetRemoteProcessGroupStatusHistoryBadRequest) Error() string {
 	return fmt.Sprintf("[GET /flow/remote-process-groups/{id}/status/history][%d] getRemoteProcessGroupStatusHistoryBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *GetRemoteProcessGroupStatusHistoryUnauthorized) IsServerError() bool {
 // IsCode returns true when this get remote process group status history unauthorized response a status code equal to that given
 func (o *GetRemoteProcessGroupStatusHistoryUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get remote process group status history unauthorized response
+func (o *GetRemoteProcessGroupStatusHistoryUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetRemoteProcessGroupStatusHistoryUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *GetRemoteProcessGroupStatusHistoryForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get remote process group status history forbidden response
+func (o *GetRemoteProcessGroupStatusHistoryForbidden) Code() int {
+	return 403
+}
+
 func (o *GetRemoteProcessGroupStatusHistoryForbidden) Error() string {
 	return fmt.Sprintf("[GET /flow/remote-process-groups/{id}/status/history][%d] getRemoteProcessGroupStatusHistoryForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *GetRemoteProcessGroupStatusHistoryNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get remote process group status history not found response
+func (o *GetRemoteProcessGroupStatusHistoryNotFound) Code() int {
+	return 404
+}
+
 func (o *GetRemoteProcessGroupStatusHistoryNotFound) Error() string {
 	return fmt.Sprintf("[GET /flow/remote-process-groups/{id}/status/history][%d] getRemoteProcessGroupStatusHistoryNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *GetRemoteProcessGroupStatusHistoryConflict) IsServerError() bool {
 // IsCode returns true when this get remote process group status history conflict response a status code equal to that given
 func (o *GetRemoteProcessGroupStatusHistoryConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get remote process group status history conflict response
+func (o *GetRemoteProcessGroupStatusHistoryConflict) Code() int {
+	return 409
 }
 
 func (o *GetRemoteProcessGroupStatusHistoryConflict) Error() string {

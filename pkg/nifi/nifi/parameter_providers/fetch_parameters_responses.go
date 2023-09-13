@@ -60,7 +60,7 @@ func (o *FetchParametersReader) ReadResponse(response runtime.ClientResponse, co
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /parameter-providers/{id}/parameters/fetch-requests] fetchParameters", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *FetchParametersOK) IsServerError() bool {
 // IsCode returns true when this fetch parameters o k response a status code equal to that given
 func (o *FetchParametersOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the fetch parameters o k response
+func (o *FetchParametersOK) Code() int {
+	return 200
 }
 
 func (o *FetchParametersOK) Error() string {
@@ -165,6 +170,11 @@ func (o *FetchParametersBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the fetch parameters bad request response
+func (o *FetchParametersBadRequest) Code() int {
+	return 400
+}
+
 func (o *FetchParametersBadRequest) Error() string {
 	return fmt.Sprintf("[POST /parameter-providers/{id}/parameters/fetch-requests][%d] fetchParametersBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *FetchParametersUnauthorized) IsServerError() bool {
 // IsCode returns true when this fetch parameters unauthorized response a status code equal to that given
 func (o *FetchParametersUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the fetch parameters unauthorized response
+func (o *FetchParametersUnauthorized) Code() int {
+	return 401
 }
 
 func (o *FetchParametersUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *FetchParametersForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the fetch parameters forbidden response
+func (o *FetchParametersForbidden) Code() int {
+	return 403
+}
+
 func (o *FetchParametersForbidden) Error() string {
 	return fmt.Sprintf("[POST /parameter-providers/{id}/parameters/fetch-requests][%d] fetchParametersForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *FetchParametersNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the fetch parameters not found response
+func (o *FetchParametersNotFound) Code() int {
+	return 404
+}
+
 func (o *FetchParametersNotFound) Error() string {
 	return fmt.Sprintf("[POST /parameter-providers/{id}/parameters/fetch-requests][%d] fetchParametersNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *FetchParametersConflict) IsServerError() bool {
 // IsCode returns true when this fetch parameters conflict response a status code equal to that given
 func (o *FetchParametersConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the fetch parameters conflict response
+func (o *FetchParametersConflict) Code() int {
+	return 409
 }
 
 func (o *FetchParametersConflict) Error() string {

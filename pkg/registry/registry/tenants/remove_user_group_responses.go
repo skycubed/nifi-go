@@ -60,7 +60,7 @@ func (o *RemoveUserGroupReader) ReadResponse(response runtime.ClientResponse, co
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /tenants/user-groups/{id}] removeUserGroup", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *RemoveUserGroupOK) IsServerError() bool {
 // IsCode returns true when this remove user group o k response a status code equal to that given
 func (o *RemoveUserGroupOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the remove user group o k response
+func (o *RemoveUserGroupOK) Code() int {
+	return 200
 }
 
 func (o *RemoveUserGroupOK) Error() string {
@@ -165,6 +170,11 @@ func (o *RemoveUserGroupBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the remove user group bad request response
+func (o *RemoveUserGroupBadRequest) Code() int {
+	return 400
+}
+
 func (o *RemoveUserGroupBadRequest) Error() string {
 	return fmt.Sprintf("[DELETE /tenants/user-groups/{id}][%d] removeUserGroupBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *RemoveUserGroupUnauthorized) IsServerError() bool {
 // IsCode returns true when this remove user group unauthorized response a status code equal to that given
 func (o *RemoveUserGroupUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the remove user group unauthorized response
+func (o *RemoveUserGroupUnauthorized) Code() int {
+	return 401
 }
 
 func (o *RemoveUserGroupUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *RemoveUserGroupForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the remove user group forbidden response
+func (o *RemoveUserGroupForbidden) Code() int {
+	return 403
+}
+
 func (o *RemoveUserGroupForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /tenants/user-groups/{id}][%d] removeUserGroupForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *RemoveUserGroupNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the remove user group not found response
+func (o *RemoveUserGroupNotFound) Code() int {
+	return 404
+}
+
 func (o *RemoveUserGroupNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /tenants/user-groups/{id}][%d] removeUserGroupNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *RemoveUserGroupConflict) IsServerError() bool {
 // IsCode returns true when this remove user group conflict response a status code equal to that given
 func (o *RemoveUserGroupConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the remove user group conflict response
+func (o *RemoveUserGroupConflict) Code() int {
+	return 409
 }
 
 func (o *RemoveUserGroupConflict) Error() string {

@@ -60,7 +60,7 @@ func (o *GetFlowFileReader) ReadResponse(response runtime.ClientResponse, consum
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /flowfile-queues/{id}/flowfiles/{flowfile-uuid}] getFlowFile", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *GetFlowFileOK) IsServerError() bool {
 // IsCode returns true when this get flow file o k response a status code equal to that given
 func (o *GetFlowFileOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get flow file o k response
+func (o *GetFlowFileOK) Code() int {
+	return 200
 }
 
 func (o *GetFlowFileOK) Error() string {
@@ -165,6 +170,11 @@ func (o *GetFlowFileBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get flow file bad request response
+func (o *GetFlowFileBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetFlowFileBadRequest) Error() string {
 	return fmt.Sprintf("[GET /flowfile-queues/{id}/flowfiles/{flowfile-uuid}][%d] getFlowFileBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *GetFlowFileUnauthorized) IsServerError() bool {
 // IsCode returns true when this get flow file unauthorized response a status code equal to that given
 func (o *GetFlowFileUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get flow file unauthorized response
+func (o *GetFlowFileUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetFlowFileUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *GetFlowFileForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get flow file forbidden response
+func (o *GetFlowFileForbidden) Code() int {
+	return 403
+}
+
 func (o *GetFlowFileForbidden) Error() string {
 	return fmt.Sprintf("[GET /flowfile-queues/{id}/flowfiles/{flowfile-uuid}][%d] getFlowFileForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *GetFlowFileNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get flow file not found response
+func (o *GetFlowFileNotFound) Code() int {
+	return 404
+}
+
 func (o *GetFlowFileNotFound) Error() string {
 	return fmt.Sprintf("[GET /flowfile-queues/{id}/flowfiles/{flowfile-uuid}][%d] getFlowFileNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *GetFlowFileConflict) IsServerError() bool {
 // IsCode returns true when this get flow file conflict response a status code equal to that given
 func (o *GetFlowFileConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get flow file conflict response
+func (o *GetFlowFileConflict) Code() int {
+	return 409
 }
 
 func (o *GetFlowFileConflict) Error() string {

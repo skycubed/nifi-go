@@ -60,7 +60,7 @@ func (o *UpdateRemoteProcessGroupInputPortRunStatusReader) ReadResponse(response
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PUT /remote-process-groups/{id}/input-ports/{port-id}/run-status] updateRemoteProcessGroupInputPortRunStatus", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *UpdateRemoteProcessGroupInputPortRunStatusOK) IsServerError() bool {
 // IsCode returns true when this update remote process group input port run status o k response a status code equal to that given
 func (o *UpdateRemoteProcessGroupInputPortRunStatusOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the update remote process group input port run status o k response
+func (o *UpdateRemoteProcessGroupInputPortRunStatusOK) Code() int {
+	return 200
 }
 
 func (o *UpdateRemoteProcessGroupInputPortRunStatusOK) Error() string {
@@ -165,6 +170,11 @@ func (o *UpdateRemoteProcessGroupInputPortRunStatusBadRequest) IsCode(code int) 
 	return code == 400
 }
 
+// Code gets the status code for the update remote process group input port run status bad request response
+func (o *UpdateRemoteProcessGroupInputPortRunStatusBadRequest) Code() int {
+	return 400
+}
+
 func (o *UpdateRemoteProcessGroupInputPortRunStatusBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /remote-process-groups/{id}/input-ports/{port-id}/run-status][%d] updateRemoteProcessGroupInputPortRunStatusBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *UpdateRemoteProcessGroupInputPortRunStatusUnauthorized) IsServerError()
 // IsCode returns true when this update remote process group input port run status unauthorized response a status code equal to that given
 func (o *UpdateRemoteProcessGroupInputPortRunStatusUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the update remote process group input port run status unauthorized response
+func (o *UpdateRemoteProcessGroupInputPortRunStatusUnauthorized) Code() int {
+	return 401
 }
 
 func (o *UpdateRemoteProcessGroupInputPortRunStatusUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *UpdateRemoteProcessGroupInputPortRunStatusForbidden) IsCode(code int) b
 	return code == 403
 }
 
+// Code gets the status code for the update remote process group input port run status forbidden response
+func (o *UpdateRemoteProcessGroupInputPortRunStatusForbidden) Code() int {
+	return 403
+}
+
 func (o *UpdateRemoteProcessGroupInputPortRunStatusForbidden) Error() string {
 	return fmt.Sprintf("[PUT /remote-process-groups/{id}/input-ports/{port-id}/run-status][%d] updateRemoteProcessGroupInputPortRunStatusForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *UpdateRemoteProcessGroupInputPortRunStatusNotFound) IsCode(code int) bo
 	return code == 404
 }
 
+// Code gets the status code for the update remote process group input port run status not found response
+func (o *UpdateRemoteProcessGroupInputPortRunStatusNotFound) Code() int {
+	return 404
+}
+
 func (o *UpdateRemoteProcessGroupInputPortRunStatusNotFound) Error() string {
 	return fmt.Sprintf("[PUT /remote-process-groups/{id}/input-ports/{port-id}/run-status][%d] updateRemoteProcessGroupInputPortRunStatusNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *UpdateRemoteProcessGroupInputPortRunStatusConflict) IsServerError() boo
 // IsCode returns true when this update remote process group input port run status conflict response a status code equal to that given
 func (o *UpdateRemoteProcessGroupInputPortRunStatusConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the update remote process group input port run status conflict response
+func (o *UpdateRemoteProcessGroupInputPortRunStatusConflict) Code() int {
+	return 409
 }
 
 func (o *UpdateRemoteProcessGroupInputPortRunStatusConflict) Error() string {

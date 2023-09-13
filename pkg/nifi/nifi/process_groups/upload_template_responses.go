@@ -54,7 +54,7 @@ func (o *UploadTemplateReader) ReadResponse(response runtime.ClientResponse, con
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /process-groups/{id}/templates/upload] uploadTemplate", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *UploadTemplateOK) IsServerError() bool {
 // IsCode returns true when this upload template o k response a status code equal to that given
 func (o *UploadTemplateOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the upload template o k response
+func (o *UploadTemplateOK) Code() int {
+	return 200
 }
 
 func (o *UploadTemplateOK) Error() string {
@@ -159,6 +164,11 @@ func (o *UploadTemplateBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the upload template bad request response
+func (o *UploadTemplateBadRequest) Code() int {
+	return 400
+}
+
 func (o *UploadTemplateBadRequest) Error() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/templates/upload][%d] uploadTemplateBadRequest ", 400)
 }
@@ -208,6 +218,11 @@ func (o *UploadTemplateUnauthorized) IsServerError() bool {
 // IsCode returns true when this upload template unauthorized response a status code equal to that given
 func (o *UploadTemplateUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the upload template unauthorized response
+func (o *UploadTemplateUnauthorized) Code() int {
+	return 401
 }
 
 func (o *UploadTemplateUnauthorized) Error() string {
@@ -261,6 +276,11 @@ func (o *UploadTemplateForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the upload template forbidden response
+func (o *UploadTemplateForbidden) Code() int {
+	return 403
+}
+
 func (o *UploadTemplateForbidden) Error() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/templates/upload][%d] uploadTemplateForbidden ", 403)
 }
@@ -310,6 +330,11 @@ func (o *UploadTemplateConflict) IsServerError() bool {
 // IsCode returns true when this upload template conflict response a status code equal to that given
 func (o *UploadTemplateConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the upload template conflict response
+func (o *UploadTemplateConflict) Code() int {
+	return 409
 }
 
 func (o *UploadTemplateConflict) Error() string {

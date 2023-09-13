@@ -60,7 +60,7 @@ func (o *SubmitReplayLatestEventReader) ReadResponse(response runtime.ClientResp
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /provenance-events/latest/replays] submitReplayLatestEvent", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *SubmitReplayLatestEventOK) IsServerError() bool {
 // IsCode returns true when this submit replay latest event o k response a status code equal to that given
 func (o *SubmitReplayLatestEventOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the submit replay latest event o k response
+func (o *SubmitReplayLatestEventOK) Code() int {
+	return 200
 }
 
 func (o *SubmitReplayLatestEventOK) Error() string {
@@ -165,6 +170,11 @@ func (o *SubmitReplayLatestEventBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the submit replay latest event bad request response
+func (o *SubmitReplayLatestEventBadRequest) Code() int {
+	return 400
+}
+
 func (o *SubmitReplayLatestEventBadRequest) Error() string {
 	return fmt.Sprintf("[POST /provenance-events/latest/replays][%d] submitReplayLatestEventBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *SubmitReplayLatestEventUnauthorized) IsServerError() bool {
 // IsCode returns true when this submit replay latest event unauthorized response a status code equal to that given
 func (o *SubmitReplayLatestEventUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the submit replay latest event unauthorized response
+func (o *SubmitReplayLatestEventUnauthorized) Code() int {
+	return 401
 }
 
 func (o *SubmitReplayLatestEventUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *SubmitReplayLatestEventForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the submit replay latest event forbidden response
+func (o *SubmitReplayLatestEventForbidden) Code() int {
+	return 403
+}
+
 func (o *SubmitReplayLatestEventForbidden) Error() string {
 	return fmt.Sprintf("[POST /provenance-events/latest/replays][%d] submitReplayLatestEventForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *SubmitReplayLatestEventNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the submit replay latest event not found response
+func (o *SubmitReplayLatestEventNotFound) Code() int {
+	return 404
+}
+
 func (o *SubmitReplayLatestEventNotFound) Error() string {
 	return fmt.Sprintf("[POST /provenance-events/latest/replays][%d] submitReplayLatestEventNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *SubmitReplayLatestEventConflict) IsServerError() bool {
 // IsCode returns true when this submit replay latest event conflict response a status code equal to that given
 func (o *SubmitReplayLatestEventConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the submit replay latest event conflict response
+func (o *SubmitReplayLatestEventConflict) Code() int {
+	return 409
 }
 
 func (o *SubmitReplayLatestEventConflict) Error() string {

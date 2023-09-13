@@ -52,7 +52,7 @@ func (o *GenerateClientIDReader) ReadResponse(response runtime.ClientResponse, c
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /flow/client-id] generateClientId", response, response.Code())
 	}
 }
 
@@ -93,6 +93,11 @@ func (o *GenerateClientIDOK) IsServerError() bool {
 // IsCode returns true when this generate client Id o k response a status code equal to that given
 func (o *GenerateClientIDOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the generate client Id o k response
+func (o *GenerateClientIDOK) Code() int {
+	return 200
 }
 
 func (o *GenerateClientIDOK) Error() string {
@@ -155,6 +160,11 @@ func (o *GenerateClientIDBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the generate client Id bad request response
+func (o *GenerateClientIDBadRequest) Code() int {
+	return 400
+}
+
 func (o *GenerateClientIDBadRequest) Error() string {
 	return fmt.Sprintf("[GET /flow/client-id][%d] generateClientIdBadRequest ", 400)
 }
@@ -204,6 +214,11 @@ func (o *GenerateClientIDUnauthorized) IsServerError() bool {
 // IsCode returns true when this generate client Id unauthorized response a status code equal to that given
 func (o *GenerateClientIDUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the generate client Id unauthorized response
+func (o *GenerateClientIDUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GenerateClientIDUnauthorized) Error() string {
@@ -257,6 +272,11 @@ func (o *GenerateClientIDForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the generate client Id forbidden response
+func (o *GenerateClientIDForbidden) Code() int {
+	return 403
+}
+
 func (o *GenerateClientIDForbidden) Error() string {
 	return fmt.Sprintf("[GET /flow/client-id][%d] generateClientIdForbidden ", 403)
 }
@@ -306,6 +326,11 @@ func (o *GenerateClientIDConflict) IsServerError() bool {
 // IsCode returns true when this generate client Id conflict response a status code equal to that given
 func (o *GenerateClientIDConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the generate client Id conflict response
+func (o *GenerateClientIDConflict) Code() int {
+	return 409
 }
 
 func (o *GenerateClientIDConflict) Error() string {

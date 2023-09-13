@@ -153,6 +153,11 @@ func (m *Throwable) ContextValidate(ctx context.Context, formats strfmt.Registry
 func (m *Throwable) contextValidateCause(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Cause != nil {
+
+		if swag.IsZero(m.Cause) { // not required
+			return nil
+		}
+
 		if err := m.Cause.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("cause")
@@ -171,6 +176,11 @@ func (m *Throwable) contextValidateStackTrace(ctx context.Context, formats strfm
 	for i := 0; i < len(m.StackTrace); i++ {
 
 		if m.StackTrace[i] != nil {
+
+			if swag.IsZero(m.StackTrace[i]) { // not required
+				return nil
+			}
+
 			if err := m.StackTrace[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("stackTrace" + "." + strconv.Itoa(i))
@@ -191,6 +201,11 @@ func (m *Throwable) contextValidateSuppressed(ctx context.Context, formats strfm
 	for i := 0; i < len(m.Suppressed); i++ {
 
 		if m.Suppressed[i] != nil {
+
+			if swag.IsZero(m.Suppressed[i]) { // not required
+				return nil
+			}
+
 			if err := m.Suppressed[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("suppressed" + "." + strconv.Itoa(i))

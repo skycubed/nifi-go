@@ -88,6 +88,11 @@ func (m *FlowRegistryClientTypesEntity) contextValidateFlowRegistryClientTypes(c
 	for i := 0; i < len(m.FlowRegistryClientTypes); i++ {
 
 		if m.FlowRegistryClientTypes[i] != nil {
+
+			if swag.IsZero(m.FlowRegistryClientTypes[i]) { // not required
+				return nil
+			}
+
 			if err := m.FlowRegistryClientTypes[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("flowRegistryClientTypes" + "." + strconv.Itoa(i))

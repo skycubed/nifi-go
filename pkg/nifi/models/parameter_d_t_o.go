@@ -137,6 +137,11 @@ func (m *ParameterDTO) ContextValidate(ctx context.Context, formats strfmt.Regis
 func (m *ParameterDTO) contextValidateParameterContext(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ParameterContext != nil {
+
+		if swag.IsZero(m.ParameterContext) { // not required
+			return nil
+		}
+
 		if err := m.ParameterContext.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("parameterContext")
@@ -155,6 +160,11 @@ func (m *ParameterDTO) contextValidateReferencingComponents(ctx context.Context,
 	for i := 0; i < len(m.ReferencingComponents); i++ {
 
 		if m.ReferencingComponents[i] != nil {
+
+			if swag.IsZero(m.ReferencingComponents[i]) { // not required
+				return nil
+			}
+
 			if err := m.ReferencingComponents[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("referencingComponents" + "." + strconv.Itoa(i))

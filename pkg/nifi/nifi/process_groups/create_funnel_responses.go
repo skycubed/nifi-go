@@ -60,7 +60,7 @@ func (o *CreateFunnelReader) ReadResponse(response runtime.ClientResponse, consu
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /process-groups/{id}/funnels] createFunnel", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *CreateFunnelCreated) IsServerError() bool {
 // IsCode returns true when this create funnel created response a status code equal to that given
 func (o *CreateFunnelCreated) IsCode(code int) bool {
 	return code == 201
+}
+
+// Code gets the status code for the create funnel created response
+func (o *CreateFunnelCreated) Code() int {
+	return 201
 }
 
 func (o *CreateFunnelCreated) Error() string {
@@ -165,6 +170,11 @@ func (o *CreateFunnelBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the create funnel bad request response
+func (o *CreateFunnelBadRequest) Code() int {
+	return 400
+}
+
 func (o *CreateFunnelBadRequest) Error() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/funnels][%d] createFunnelBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *CreateFunnelUnauthorized) IsServerError() bool {
 // IsCode returns true when this create funnel unauthorized response a status code equal to that given
 func (o *CreateFunnelUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the create funnel unauthorized response
+func (o *CreateFunnelUnauthorized) Code() int {
+	return 401
 }
 
 func (o *CreateFunnelUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *CreateFunnelForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the create funnel forbidden response
+func (o *CreateFunnelForbidden) Code() int {
+	return 403
+}
+
 func (o *CreateFunnelForbidden) Error() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/funnels][%d] createFunnelForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *CreateFunnelNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the create funnel not found response
+func (o *CreateFunnelNotFound) Code() int {
+	return 404
+}
+
 func (o *CreateFunnelNotFound) Error() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/funnels][%d] createFunnelNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *CreateFunnelConflict) IsServerError() bool {
 // IsCode returns true when this create funnel conflict response a status code equal to that given
 func (o *CreateFunnelConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the create funnel conflict response
+func (o *CreateFunnelConflict) Code() int {
+	return 409
 }
 
 func (o *CreateFunnelConflict) Error() string {

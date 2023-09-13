@@ -60,7 +60,7 @@ func (o *GetConnectionStatusHistoryReader) ReadResponse(response runtime.ClientR
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /flow/connections/{id}/status/history] getConnectionStatusHistory", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *GetConnectionStatusHistoryOK) IsServerError() bool {
 // IsCode returns true when this get connection status history o k response a status code equal to that given
 func (o *GetConnectionStatusHistoryOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get connection status history o k response
+func (o *GetConnectionStatusHistoryOK) Code() int {
+	return 200
 }
 
 func (o *GetConnectionStatusHistoryOK) Error() string {
@@ -165,6 +170,11 @@ func (o *GetConnectionStatusHistoryBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get connection status history bad request response
+func (o *GetConnectionStatusHistoryBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetConnectionStatusHistoryBadRequest) Error() string {
 	return fmt.Sprintf("[GET /flow/connections/{id}/status/history][%d] getConnectionStatusHistoryBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *GetConnectionStatusHistoryUnauthorized) IsServerError() bool {
 // IsCode returns true when this get connection status history unauthorized response a status code equal to that given
 func (o *GetConnectionStatusHistoryUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get connection status history unauthorized response
+func (o *GetConnectionStatusHistoryUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetConnectionStatusHistoryUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *GetConnectionStatusHistoryForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get connection status history forbidden response
+func (o *GetConnectionStatusHistoryForbidden) Code() int {
+	return 403
+}
+
 func (o *GetConnectionStatusHistoryForbidden) Error() string {
 	return fmt.Sprintf("[GET /flow/connections/{id}/status/history][%d] getConnectionStatusHistoryForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *GetConnectionStatusHistoryNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get connection status history not found response
+func (o *GetConnectionStatusHistoryNotFound) Code() int {
+	return 404
+}
+
 func (o *GetConnectionStatusHistoryNotFound) Error() string {
 	return fmt.Sprintf("[GET /flow/connections/{id}/status/history][%d] getConnectionStatusHistoryNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *GetConnectionStatusHistoryConflict) IsServerError() bool {
 // IsCode returns true when this get connection status history conflict response a status code equal to that given
 func (o *GetConnectionStatusHistoryConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get connection status history conflict response
+func (o *GetConnectionStatusHistoryConflict) Code() int {
+	return 409
 }
 
 func (o *GetConnectionStatusHistoryConflict) Error() string {

@@ -60,7 +60,7 @@ func (o *AnalyzeConfigurationReader) ReadResponse(response runtime.ClientRespons
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /reporting-tasks/{id}/config/analysis] analyzeConfiguration", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *AnalyzeConfigurationOK) IsServerError() bool {
 // IsCode returns true when this analyze configuration o k response a status code equal to that given
 func (o *AnalyzeConfigurationOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the analyze configuration o k response
+func (o *AnalyzeConfigurationOK) Code() int {
+	return 200
 }
 
 func (o *AnalyzeConfigurationOK) Error() string {
@@ -165,6 +170,11 @@ func (o *AnalyzeConfigurationBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the analyze configuration bad request response
+func (o *AnalyzeConfigurationBadRequest) Code() int {
+	return 400
+}
+
 func (o *AnalyzeConfigurationBadRequest) Error() string {
 	return fmt.Sprintf("[POST /reporting-tasks/{id}/config/analysis][%d] analyzeConfigurationBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *AnalyzeConfigurationUnauthorized) IsServerError() bool {
 // IsCode returns true when this analyze configuration unauthorized response a status code equal to that given
 func (o *AnalyzeConfigurationUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the analyze configuration unauthorized response
+func (o *AnalyzeConfigurationUnauthorized) Code() int {
+	return 401
 }
 
 func (o *AnalyzeConfigurationUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *AnalyzeConfigurationForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the analyze configuration forbidden response
+func (o *AnalyzeConfigurationForbidden) Code() int {
+	return 403
+}
+
 func (o *AnalyzeConfigurationForbidden) Error() string {
 	return fmt.Sprintf("[POST /reporting-tasks/{id}/config/analysis][%d] analyzeConfigurationForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *AnalyzeConfigurationNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the analyze configuration not found response
+func (o *AnalyzeConfigurationNotFound) Code() int {
+	return 404
+}
+
 func (o *AnalyzeConfigurationNotFound) Error() string {
 	return fmt.Sprintf("[POST /reporting-tasks/{id}/config/analysis][%d] analyzeConfigurationNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *AnalyzeConfigurationConflict) IsServerError() bool {
 // IsCode returns true when this analyze configuration conflict response a status code equal to that given
 func (o *AnalyzeConfigurationConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the analyze configuration conflict response
+func (o *AnalyzeConfigurationConflict) Code() int {
+	return 409
 }
 
 func (o *AnalyzeConfigurationConflict) Error() string {

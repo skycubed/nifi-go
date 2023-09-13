@@ -54,7 +54,7 @@ func (o *DeleteFlowReader) ReadResponse(response runtime.ClientResponse, consume
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /buckets/{bucketId}/flows/{flowId}] deleteFlow", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *DeleteFlowOK) IsServerError() bool {
 // IsCode returns true when this delete flow o k response a status code equal to that given
 func (o *DeleteFlowOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the delete flow o k response
+func (o *DeleteFlowOK) Code() int {
+	return 200
 }
 
 func (o *DeleteFlowOK) Error() string {
@@ -159,6 +164,11 @@ func (o *DeleteFlowUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the delete flow unauthorized response
+func (o *DeleteFlowUnauthorized) Code() int {
+	return 401
+}
+
 func (o *DeleteFlowUnauthorized) Error() string {
 	return fmt.Sprintf("[DELETE /buckets/{bucketId}/flows/{flowId}][%d] deleteFlowUnauthorized ", 401)
 }
@@ -208,6 +218,11 @@ func (o *DeleteFlowForbidden) IsServerError() bool {
 // IsCode returns true when this delete flow forbidden response a status code equal to that given
 func (o *DeleteFlowForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the delete flow forbidden response
+func (o *DeleteFlowForbidden) Code() int {
+	return 403
 }
 
 func (o *DeleteFlowForbidden) Error() string {
@@ -261,6 +276,11 @@ func (o *DeleteFlowNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the delete flow not found response
+func (o *DeleteFlowNotFound) Code() int {
+	return 404
+}
+
 func (o *DeleteFlowNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /buckets/{bucketId}/flows/{flowId}][%d] deleteFlowNotFound ", 404)
 }
@@ -310,6 +330,11 @@ func (o *DeleteFlowConflict) IsServerError() bool {
 // IsCode returns true when this delete flow conflict response a status code equal to that given
 func (o *DeleteFlowConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the delete flow conflict response
+func (o *DeleteFlowConflict) Code() int {
+	return 409
 }
 
 func (o *DeleteFlowConflict) Error() string {

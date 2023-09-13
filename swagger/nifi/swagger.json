@@ -26372,6 +26372,10 @@
     "Response": {
       "type": "object",
       "properties": {
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        },
         "metadata": {
           "type": "object",
           "additionalProperties": {
@@ -26380,10 +26384,6 @@
               "type": "object"
             }
           }
-        },
-        "status": {
-          "type": "integer",
-          "format": "int32"
         },
         "entity": {
           "type": "object"

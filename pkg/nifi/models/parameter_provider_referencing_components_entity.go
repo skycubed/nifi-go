@@ -88,6 +88,11 @@ func (m *ParameterProviderReferencingComponentsEntity) contextValidateParameterP
 	for i := 0; i < len(m.ParameterProviderReferencingComponents); i++ {
 
 		if m.ParameterProviderReferencingComponents[i] != nil {
+
+			if swag.IsZero(m.ParameterProviderReferencingComponents[i]) { // not required
+				return nil
+			}
+
 			if err := m.ParameterProviderReferencingComponents[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("parameterProviderReferencingComponents" + "." + strconv.Itoa(i))

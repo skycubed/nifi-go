@@ -72,6 +72,11 @@ func (m *ParameterProviderApplyParametersRequestEntity) ContextValidate(ctx cont
 func (m *ParameterProviderApplyParametersRequestEntity) contextValidateRequest(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Request != nil {
+
+		if swag.IsZero(m.Request) { // not required
+			return nil
+		}
+
 		if err := m.Request.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("request")

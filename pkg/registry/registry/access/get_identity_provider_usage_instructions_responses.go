@@ -46,7 +46,7 @@ func (o *GetIdentityProviderUsageInstructionsReader) ReadResponse(response runti
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /access/token/identity-provider/usage] getIdentityProviderUsageInstructions", response, response.Code())
 	}
 }
 
@@ -87,6 +87,11 @@ func (o *GetIdentityProviderUsageInstructionsOK) IsServerError() bool {
 // IsCode returns true when this get identity provider usage instructions o k response a status code equal to that given
 func (o *GetIdentityProviderUsageInstructionsOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get identity provider usage instructions o k response
+func (o *GetIdentityProviderUsageInstructionsOK) Code() int {
+	return 200
 }
 
 func (o *GetIdentityProviderUsageInstructionsOK) Error() string {
@@ -149,6 +154,11 @@ func (o *GetIdentityProviderUsageInstructionsBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get identity provider usage instructions bad request response
+func (o *GetIdentityProviderUsageInstructionsBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetIdentityProviderUsageInstructionsBadRequest) Error() string {
 	return fmt.Sprintf("[GET /access/token/identity-provider/usage][%d] getIdentityProviderUsageInstructionsBadRequest ", 400)
 }
@@ -200,6 +210,11 @@ func (o *GetIdentityProviderUsageInstructionsConflict) IsCode(code int) bool {
 	return code == 409
 }
 
+// Code gets the status code for the get identity provider usage instructions conflict response
+func (o *GetIdentityProviderUsageInstructionsConflict) Code() int {
+	return 409
+}
+
 func (o *GetIdentityProviderUsageInstructionsConflict) Error() string {
 	return fmt.Sprintf("[GET /access/token/identity-provider/usage][%d] getIdentityProviderUsageInstructionsConflict ", 409)
 }
@@ -249,6 +264,11 @@ func (o *GetIdentityProviderUsageInstructionsInternalServerError) IsServerError(
 // IsCode returns true when this get identity provider usage instructions internal server error response a status code equal to that given
 func (o *GetIdentityProviderUsageInstructionsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the get identity provider usage instructions internal server error response
+func (o *GetIdentityProviderUsageInstructionsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *GetIdentityProviderUsageInstructionsInternalServerError) Error() string {

@@ -58,7 +58,7 @@ func (o *ExportProcessGroupReader) ReadResponse(response runtime.ClientResponse,
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /process-groups/{id}/download] exportProcessGroup", response, response.Code())
 	}
 }
 
@@ -99,6 +99,11 @@ func (o *ExportProcessGroupOK) IsServerError() bool {
 // IsCode returns true when this export process group o k response a status code equal to that given
 func (o *ExportProcessGroupOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the export process group o k response
+func (o *ExportProcessGroupOK) Code() int {
+	return 200
 }
 
 func (o *ExportProcessGroupOK) Error() string {
@@ -161,6 +166,11 @@ func (o *ExportProcessGroupBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the export process group bad request response
+func (o *ExportProcessGroupBadRequest) Code() int {
+	return 400
+}
+
 func (o *ExportProcessGroupBadRequest) Error() string {
 	return fmt.Sprintf("[GET /process-groups/{id}/download][%d] exportProcessGroupBadRequest ", 400)
 }
@@ -210,6 +220,11 @@ func (o *ExportProcessGroupUnauthorized) IsServerError() bool {
 // IsCode returns true when this export process group unauthorized response a status code equal to that given
 func (o *ExportProcessGroupUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the export process group unauthorized response
+func (o *ExportProcessGroupUnauthorized) Code() int {
+	return 401
 }
 
 func (o *ExportProcessGroupUnauthorized) Error() string {
@@ -263,6 +278,11 @@ func (o *ExportProcessGroupForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the export process group forbidden response
+func (o *ExportProcessGroupForbidden) Code() int {
+	return 403
+}
+
 func (o *ExportProcessGroupForbidden) Error() string {
 	return fmt.Sprintf("[GET /process-groups/{id}/download][%d] exportProcessGroupForbidden ", 403)
 }
@@ -314,6 +334,11 @@ func (o *ExportProcessGroupNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the export process group not found response
+func (o *ExportProcessGroupNotFound) Code() int {
+	return 404
+}
+
 func (o *ExportProcessGroupNotFound) Error() string {
 	return fmt.Sprintf("[GET /process-groups/{id}/download][%d] exportProcessGroupNotFound ", 404)
 }
@@ -363,6 +388,11 @@ func (o *ExportProcessGroupConflict) IsServerError() bool {
 // IsCode returns true when this export process group conflict response a status code equal to that given
 func (o *ExportProcessGroupConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the export process group conflict response
+func (o *ExportProcessGroupConflict) Code() int {
+	return 409
 }
 
 func (o *ExportProcessGroupConflict) Error() string {

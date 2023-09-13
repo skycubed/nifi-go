@@ -60,7 +60,7 @@ func (o *ReplaceProcessGroupReader) ReadResponse(response runtime.ClientResponse
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PUT /process-groups/{id}/flow-contents] replaceProcessGroup", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *ReplaceProcessGroupOK) IsServerError() bool {
 // IsCode returns true when this replace process group o k response a status code equal to that given
 func (o *ReplaceProcessGroupOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the replace process group o k response
+func (o *ReplaceProcessGroupOK) Code() int {
+	return 200
 }
 
 func (o *ReplaceProcessGroupOK) Error() string {
@@ -165,6 +170,11 @@ func (o *ReplaceProcessGroupBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the replace process group bad request response
+func (o *ReplaceProcessGroupBadRequest) Code() int {
+	return 400
+}
+
 func (o *ReplaceProcessGroupBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /process-groups/{id}/flow-contents][%d] replaceProcessGroupBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *ReplaceProcessGroupUnauthorized) IsServerError() bool {
 // IsCode returns true when this replace process group unauthorized response a status code equal to that given
 func (o *ReplaceProcessGroupUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the replace process group unauthorized response
+func (o *ReplaceProcessGroupUnauthorized) Code() int {
+	return 401
 }
 
 func (o *ReplaceProcessGroupUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *ReplaceProcessGroupForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the replace process group forbidden response
+func (o *ReplaceProcessGroupForbidden) Code() int {
+	return 403
+}
+
 func (o *ReplaceProcessGroupForbidden) Error() string {
 	return fmt.Sprintf("[PUT /process-groups/{id}/flow-contents][%d] replaceProcessGroupForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *ReplaceProcessGroupNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the replace process group not found response
+func (o *ReplaceProcessGroupNotFound) Code() int {
+	return 404
+}
+
 func (o *ReplaceProcessGroupNotFound) Error() string {
 	return fmt.Sprintf("[PUT /process-groups/{id}/flow-contents][%d] replaceProcessGroupNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *ReplaceProcessGroupConflict) IsServerError() bool {
 // IsCode returns true when this replace process group conflict response a status code equal to that given
 func (o *ReplaceProcessGroupConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the replace process group conflict response
+func (o *ReplaceProcessGroupConflict) Code() int {
+	return 409
 }
 
 func (o *ReplaceProcessGroupConflict) Error() string {

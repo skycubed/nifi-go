@@ -75,6 +75,11 @@ func (m *VariableEntity) ContextValidate(ctx context.Context, formats strfmt.Reg
 func (m *VariableEntity) contextValidateVariable(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Variable != nil {
+
+		if swag.IsZero(m.Variable) { // not required
+			return nil
+		}
+
 		if err := m.Variable.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("variable")

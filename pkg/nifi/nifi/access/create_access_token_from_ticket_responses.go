@@ -52,7 +52,7 @@ func (o *CreateAccessTokenFromTicketReader) ReadResponse(response runtime.Client
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /access/kerberos] createAccessTokenFromTicket", response, response.Code())
 	}
 }
 
@@ -93,6 +93,11 @@ func (o *CreateAccessTokenFromTicketCreated) IsServerError() bool {
 // IsCode returns true when this create access token from ticket created response a status code equal to that given
 func (o *CreateAccessTokenFromTicketCreated) IsCode(code int) bool {
 	return code == 201
+}
+
+// Code gets the status code for the create access token from ticket created response
+func (o *CreateAccessTokenFromTicketCreated) Code() int {
+	return 201
 }
 
 func (o *CreateAccessTokenFromTicketCreated) Error() string {
@@ -155,6 +160,11 @@ func (o *CreateAccessTokenFromTicketBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the create access token from ticket bad request response
+func (o *CreateAccessTokenFromTicketBadRequest) Code() int {
+	return 400
+}
+
 func (o *CreateAccessTokenFromTicketBadRequest) Error() string {
 	return fmt.Sprintf("[POST /access/kerberos][%d] createAccessTokenFromTicketBadRequest ", 400)
 }
@@ -204,6 +214,11 @@ func (o *CreateAccessTokenFromTicketUnauthorized) IsServerError() bool {
 // IsCode returns true when this create access token from ticket unauthorized response a status code equal to that given
 func (o *CreateAccessTokenFromTicketUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the create access token from ticket unauthorized response
+func (o *CreateAccessTokenFromTicketUnauthorized) Code() int {
+	return 401
 }
 
 func (o *CreateAccessTokenFromTicketUnauthorized) Error() string {
@@ -257,6 +272,11 @@ func (o *CreateAccessTokenFromTicketConflict) IsCode(code int) bool {
 	return code == 409
 }
 
+// Code gets the status code for the create access token from ticket conflict response
+func (o *CreateAccessTokenFromTicketConflict) Code() int {
+	return 409
+}
+
 func (o *CreateAccessTokenFromTicketConflict) Error() string {
 	return fmt.Sprintf("[POST /access/kerberos][%d] createAccessTokenFromTicketConflict ", 409)
 }
@@ -306,6 +326,11 @@ func (o *CreateAccessTokenFromTicketInternalServerError) IsServerError() bool {
 // IsCode returns true when this create access token from ticket internal server error response a status code equal to that given
 func (o *CreateAccessTokenFromTicketInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the create access token from ticket internal server error response
+func (o *CreateAccessTokenFromTicketInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CreateAccessTokenFromTicketInternalServerError) Error() string {

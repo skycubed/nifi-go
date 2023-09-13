@@ -54,7 +54,7 @@ func (o *GetBulletinBoardReader) ReadResponse(response runtime.ClientResponse, c
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /flow/bulletin-board] getBulletinBoard", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *GetBulletinBoardOK) IsServerError() bool {
 // IsCode returns true when this get bulletin board o k response a status code equal to that given
 func (o *GetBulletinBoardOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get bulletin board o k response
+func (o *GetBulletinBoardOK) Code() int {
+	return 200
 }
 
 func (o *GetBulletinBoardOK) Error() string {
@@ -159,6 +164,11 @@ func (o *GetBulletinBoardBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get bulletin board bad request response
+func (o *GetBulletinBoardBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetBulletinBoardBadRequest) Error() string {
 	return fmt.Sprintf("[GET /flow/bulletin-board][%d] getBulletinBoardBadRequest ", 400)
 }
@@ -208,6 +218,11 @@ func (o *GetBulletinBoardUnauthorized) IsServerError() bool {
 // IsCode returns true when this get bulletin board unauthorized response a status code equal to that given
 func (o *GetBulletinBoardUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get bulletin board unauthorized response
+func (o *GetBulletinBoardUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetBulletinBoardUnauthorized) Error() string {
@@ -261,6 +276,11 @@ func (o *GetBulletinBoardForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get bulletin board forbidden response
+func (o *GetBulletinBoardForbidden) Code() int {
+	return 403
+}
+
 func (o *GetBulletinBoardForbidden) Error() string {
 	return fmt.Sprintf("[GET /flow/bulletin-board][%d] getBulletinBoardForbidden ", 403)
 }
@@ -310,6 +330,11 @@ func (o *GetBulletinBoardConflict) IsServerError() bool {
 // IsCode returns true when this get bulletin board conflict response a status code equal to that given
 func (o *GetBulletinBoardConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get bulletin board conflict response
+func (o *GetBulletinBoardConflict) Code() int {
+	return 409
 }
 
 func (o *GetBulletinBoardConflict) Error() string {

@@ -60,7 +60,7 @@ func (o *GetFlowReader) ReadResponse(response runtime.ClientResponse, consumer r
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /flow/process-groups/{id}] getFlow", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *GetFlowOK) IsServerError() bool {
 // IsCode returns true when this get flow o k response a status code equal to that given
 func (o *GetFlowOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get flow o k response
+func (o *GetFlowOK) Code() int {
+	return 200
 }
 
 func (o *GetFlowOK) Error() string {
@@ -165,6 +170,11 @@ func (o *GetFlowBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get flow bad request response
+func (o *GetFlowBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetFlowBadRequest) Error() string {
 	return fmt.Sprintf("[GET /flow/process-groups/{id}][%d] getFlowBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *GetFlowUnauthorized) IsServerError() bool {
 // IsCode returns true when this get flow unauthorized response a status code equal to that given
 func (o *GetFlowUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get flow unauthorized response
+func (o *GetFlowUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetFlowUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *GetFlowForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get flow forbidden response
+func (o *GetFlowForbidden) Code() int {
+	return 403
+}
+
 func (o *GetFlowForbidden) Error() string {
 	return fmt.Sprintf("[GET /flow/process-groups/{id}][%d] getFlowForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *GetFlowNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get flow not found response
+func (o *GetFlowNotFound) Code() int {
+	return 404
+}
+
 func (o *GetFlowNotFound) Error() string {
 	return fmt.Sprintf("[GET /flow/process-groups/{id}][%d] getFlowNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *GetFlowConflict) IsServerError() bool {
 // IsCode returns true when this get flow conflict response a status code equal to that given
 func (o *GetFlowConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get flow conflict response
+func (o *GetFlowConflict) Code() int {
+	return 409
 }
 
 func (o *GetFlowConflict) Error() string {

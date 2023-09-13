@@ -60,7 +60,7 @@ func (o *GetProcessorRunStatusDetailsReader) ReadResponse(response runtime.Clien
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /processors/run-status-details/queries] getProcessorRunStatusDetails", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *GetProcessorRunStatusDetailsOK) IsServerError() bool {
 // IsCode returns true when this get processor run status details o k response a status code equal to that given
 func (o *GetProcessorRunStatusDetailsOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get processor run status details o k response
+func (o *GetProcessorRunStatusDetailsOK) Code() int {
+	return 200
 }
 
 func (o *GetProcessorRunStatusDetailsOK) Error() string {
@@ -165,6 +170,11 @@ func (o *GetProcessorRunStatusDetailsBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get processor run status details bad request response
+func (o *GetProcessorRunStatusDetailsBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetProcessorRunStatusDetailsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /processors/run-status-details/queries][%d] getProcessorRunStatusDetailsBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *GetProcessorRunStatusDetailsUnauthorized) IsServerError() bool {
 // IsCode returns true when this get processor run status details unauthorized response a status code equal to that given
 func (o *GetProcessorRunStatusDetailsUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get processor run status details unauthorized response
+func (o *GetProcessorRunStatusDetailsUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetProcessorRunStatusDetailsUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *GetProcessorRunStatusDetailsForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get processor run status details forbidden response
+func (o *GetProcessorRunStatusDetailsForbidden) Code() int {
+	return 403
+}
+
 func (o *GetProcessorRunStatusDetailsForbidden) Error() string {
 	return fmt.Sprintf("[POST /processors/run-status-details/queries][%d] getProcessorRunStatusDetailsForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *GetProcessorRunStatusDetailsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get processor run status details not found response
+func (o *GetProcessorRunStatusDetailsNotFound) Code() int {
+	return 404
+}
+
 func (o *GetProcessorRunStatusDetailsNotFound) Error() string {
 	return fmt.Sprintf("[POST /processors/run-status-details/queries][%d] getProcessorRunStatusDetailsNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *GetProcessorRunStatusDetailsConflict) IsServerError() bool {
 // IsCode returns true when this get processor run status details conflict response a status code equal to that given
 func (o *GetProcessorRunStatusDetailsConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get processor run status details conflict response
+func (o *GetProcessorRunStatusDetailsConflict) Code() int {
+	return 409
 }
 
 func (o *GetProcessorRunStatusDetailsConflict) Error() string {

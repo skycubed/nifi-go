@@ -36,7 +36,7 @@ func (o *GetAccessStatusReader) ReadResponse(response runtime.ClientResponse, co
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /access] getAccessStatus", response, response.Code())
 	}
 }
 
@@ -77,6 +77,11 @@ func (o *GetAccessStatusOK) IsServerError() bool {
 // IsCode returns true when this get access status o k response a status code equal to that given
 func (o *GetAccessStatusOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get access status o k response
+func (o *GetAccessStatusOK) Code() int {
+	return 200
 }
 
 func (o *GetAccessStatusOK) Error() string {
@@ -139,6 +144,11 @@ func (o *GetAccessStatusConflict) IsServerError() bool {
 // IsCode returns true when this get access status conflict response a status code equal to that given
 func (o *GetAccessStatusConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get access status conflict response
+func (o *GetAccessStatusConflict) Code() int {
+	return 409
 }
 
 func (o *GetAccessStatusConflict) Error() string {

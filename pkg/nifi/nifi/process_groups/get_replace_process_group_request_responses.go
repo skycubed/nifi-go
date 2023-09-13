@@ -60,7 +60,7 @@ func (o *GetReplaceProcessGroupRequestReader) ReadResponse(response runtime.Clie
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /process-groups/replace-requests/{id}] getReplaceProcessGroupRequest", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *GetReplaceProcessGroupRequestOK) IsServerError() bool {
 // IsCode returns true when this get replace process group request o k response a status code equal to that given
 func (o *GetReplaceProcessGroupRequestOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get replace process group request o k response
+func (o *GetReplaceProcessGroupRequestOK) Code() int {
+	return 200
 }
 
 func (o *GetReplaceProcessGroupRequestOK) Error() string {
@@ -165,6 +170,11 @@ func (o *GetReplaceProcessGroupRequestBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get replace process group request bad request response
+func (o *GetReplaceProcessGroupRequestBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetReplaceProcessGroupRequestBadRequest) Error() string {
 	return fmt.Sprintf("[GET /process-groups/replace-requests/{id}][%d] getReplaceProcessGroupRequestBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *GetReplaceProcessGroupRequestUnauthorized) IsServerError() bool {
 // IsCode returns true when this get replace process group request unauthorized response a status code equal to that given
 func (o *GetReplaceProcessGroupRequestUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get replace process group request unauthorized response
+func (o *GetReplaceProcessGroupRequestUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetReplaceProcessGroupRequestUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *GetReplaceProcessGroupRequestForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get replace process group request forbidden response
+func (o *GetReplaceProcessGroupRequestForbidden) Code() int {
+	return 403
+}
+
 func (o *GetReplaceProcessGroupRequestForbidden) Error() string {
 	return fmt.Sprintf("[GET /process-groups/replace-requests/{id}][%d] getReplaceProcessGroupRequestForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *GetReplaceProcessGroupRequestNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get replace process group request not found response
+func (o *GetReplaceProcessGroupRequestNotFound) Code() int {
+	return 404
+}
+
 func (o *GetReplaceProcessGroupRequestNotFound) Error() string {
 	return fmt.Sprintf("[GET /process-groups/replace-requests/{id}][%d] getReplaceProcessGroupRequestNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *GetReplaceProcessGroupRequestConflict) IsServerError() bool {
 // IsCode returns true when this get replace process group request conflict response a status code equal to that given
 func (o *GetReplaceProcessGroupRequestConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get replace process group request conflict response
+func (o *GetReplaceProcessGroupRequestConflict) Code() int {
+	return 409
 }
 
 func (o *GetReplaceProcessGroupRequestConflict) Error() string {

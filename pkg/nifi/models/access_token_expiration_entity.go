@@ -72,6 +72,11 @@ func (m *AccessTokenExpirationEntity) ContextValidate(ctx context.Context, forma
 func (m *AccessTokenExpirationEntity) contextValidateAccessTokenExpiration(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.AccessTokenExpiration != nil {
+
+		if swag.IsZero(m.AccessTokenExpiration) { // not required
+			return nil
+		}
+
 		if err := m.AccessTokenExpiration.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("accessTokenExpiration")

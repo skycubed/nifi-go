@@ -54,7 +54,7 @@ func (o *GetControllerConfigReader) ReadResponse(response runtime.ClientResponse
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /controller/config] getControllerConfig", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *GetControllerConfigOK) IsServerError() bool {
 // IsCode returns true when this get controller config o k response a status code equal to that given
 func (o *GetControllerConfigOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get controller config o k response
+func (o *GetControllerConfigOK) Code() int {
+	return 200
 }
 
 func (o *GetControllerConfigOK) Error() string {
@@ -159,6 +164,11 @@ func (o *GetControllerConfigBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get controller config bad request response
+func (o *GetControllerConfigBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetControllerConfigBadRequest) Error() string {
 	return fmt.Sprintf("[GET /controller/config][%d] getControllerConfigBadRequest ", 400)
 }
@@ -208,6 +218,11 @@ func (o *GetControllerConfigUnauthorized) IsServerError() bool {
 // IsCode returns true when this get controller config unauthorized response a status code equal to that given
 func (o *GetControllerConfigUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get controller config unauthorized response
+func (o *GetControllerConfigUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetControllerConfigUnauthorized) Error() string {
@@ -261,6 +276,11 @@ func (o *GetControllerConfigForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get controller config forbidden response
+func (o *GetControllerConfigForbidden) Code() int {
+	return 403
+}
+
 func (o *GetControllerConfigForbidden) Error() string {
 	return fmt.Sprintf("[GET /controller/config][%d] getControllerConfigForbidden ", 403)
 }
@@ -310,6 +330,11 @@ func (o *GetControllerConfigConflict) IsServerError() bool {
 // IsCode returns true when this get controller config conflict response a status code equal to that given
 func (o *GetControllerConfigConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get controller config conflict response
+func (o *GetControllerConfigConflict) Code() int {
+	return 409
 }
 
 func (o *GetControllerConfigConflict) Error() string {

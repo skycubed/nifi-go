@@ -60,7 +60,7 @@ func (o *GetVerificationRequestReader) ReadResponse(response runtime.ClientRespo
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /reporting-tasks/{id}/config/verification-requests/{requestId}] getVerificationRequest", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *GetVerificationRequestOK) IsServerError() bool {
 // IsCode returns true when this get verification request o k response a status code equal to that given
 func (o *GetVerificationRequestOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get verification request o k response
+func (o *GetVerificationRequestOK) Code() int {
+	return 200
 }
 
 func (o *GetVerificationRequestOK) Error() string {
@@ -165,6 +170,11 @@ func (o *GetVerificationRequestBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get verification request bad request response
+func (o *GetVerificationRequestBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetVerificationRequestBadRequest) Error() string {
 	return fmt.Sprintf("[GET /reporting-tasks/{id}/config/verification-requests/{requestId}][%d] getVerificationRequestBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *GetVerificationRequestUnauthorized) IsServerError() bool {
 // IsCode returns true when this get verification request unauthorized response a status code equal to that given
 func (o *GetVerificationRequestUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get verification request unauthorized response
+func (o *GetVerificationRequestUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetVerificationRequestUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *GetVerificationRequestForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get verification request forbidden response
+func (o *GetVerificationRequestForbidden) Code() int {
+	return 403
+}
+
 func (o *GetVerificationRequestForbidden) Error() string {
 	return fmt.Sprintf("[GET /reporting-tasks/{id}/config/verification-requests/{requestId}][%d] getVerificationRequestForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *GetVerificationRequestNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get verification request not found response
+func (o *GetVerificationRequestNotFound) Code() int {
+	return 404
+}
+
 func (o *GetVerificationRequestNotFound) Error() string {
 	return fmt.Sprintf("[GET /reporting-tasks/{id}/config/verification-requests/{requestId}][%d] getVerificationRequestNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *GetVerificationRequestConflict) IsServerError() bool {
 // IsCode returns true when this get verification request conflict response a status code equal to that given
 func (o *GetVerificationRequestConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get verification request conflict response
+func (o *GetVerificationRequestConflict) Code() int {
+	return 409
 }
 
 func (o *GetVerificationRequestConflict) Error() string {

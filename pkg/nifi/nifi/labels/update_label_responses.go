@@ -60,7 +60,7 @@ func (o *UpdateLabelReader) ReadResponse(response runtime.ClientResponse, consum
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PUT /labels/{id}] updateLabel", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *UpdateLabelOK) IsServerError() bool {
 // IsCode returns true when this update label o k response a status code equal to that given
 func (o *UpdateLabelOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the update label o k response
+func (o *UpdateLabelOK) Code() int {
+	return 200
 }
 
 func (o *UpdateLabelOK) Error() string {
@@ -165,6 +170,11 @@ func (o *UpdateLabelBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the update label bad request response
+func (o *UpdateLabelBadRequest) Code() int {
+	return 400
+}
+
 func (o *UpdateLabelBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /labels/{id}][%d] updateLabelBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *UpdateLabelUnauthorized) IsServerError() bool {
 // IsCode returns true when this update label unauthorized response a status code equal to that given
 func (o *UpdateLabelUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the update label unauthorized response
+func (o *UpdateLabelUnauthorized) Code() int {
+	return 401
 }
 
 func (o *UpdateLabelUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *UpdateLabelForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the update label forbidden response
+func (o *UpdateLabelForbidden) Code() int {
+	return 403
+}
+
 func (o *UpdateLabelForbidden) Error() string {
 	return fmt.Sprintf("[PUT /labels/{id}][%d] updateLabelForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *UpdateLabelNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the update label not found response
+func (o *UpdateLabelNotFound) Code() int {
+	return 404
+}
+
 func (o *UpdateLabelNotFound) Error() string {
 	return fmt.Sprintf("[PUT /labels/{id}][%d] updateLabelNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *UpdateLabelConflict) IsServerError() bool {
 // IsCode returns true when this update label conflict response a status code equal to that given
 func (o *UpdateLabelConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the update label conflict response
+func (o *UpdateLabelConflict) Code() int {
+	return 409
 }
 
 func (o *UpdateLabelConflict) Error() string {

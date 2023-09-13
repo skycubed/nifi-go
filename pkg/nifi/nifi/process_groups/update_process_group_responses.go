@@ -60,7 +60,7 @@ func (o *UpdateProcessGroupReader) ReadResponse(response runtime.ClientResponse,
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PUT /process-groups/{id}] updateProcessGroup", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *UpdateProcessGroupOK) IsServerError() bool {
 // IsCode returns true when this update process group o k response a status code equal to that given
 func (o *UpdateProcessGroupOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the update process group o k response
+func (o *UpdateProcessGroupOK) Code() int {
+	return 200
 }
 
 func (o *UpdateProcessGroupOK) Error() string {
@@ -165,6 +170,11 @@ func (o *UpdateProcessGroupBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the update process group bad request response
+func (o *UpdateProcessGroupBadRequest) Code() int {
+	return 400
+}
+
 func (o *UpdateProcessGroupBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /process-groups/{id}][%d] updateProcessGroupBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *UpdateProcessGroupUnauthorized) IsServerError() bool {
 // IsCode returns true when this update process group unauthorized response a status code equal to that given
 func (o *UpdateProcessGroupUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the update process group unauthorized response
+func (o *UpdateProcessGroupUnauthorized) Code() int {
+	return 401
 }
 
 func (o *UpdateProcessGroupUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *UpdateProcessGroupForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the update process group forbidden response
+func (o *UpdateProcessGroupForbidden) Code() int {
+	return 403
+}
+
 func (o *UpdateProcessGroupForbidden) Error() string {
 	return fmt.Sprintf("[PUT /process-groups/{id}][%d] updateProcessGroupForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *UpdateProcessGroupNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the update process group not found response
+func (o *UpdateProcessGroupNotFound) Code() int {
+	return 404
+}
+
 func (o *UpdateProcessGroupNotFound) Error() string {
 	return fmt.Sprintf("[PUT /process-groups/{id}][%d] updateProcessGroupNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *UpdateProcessGroupConflict) IsServerError() bool {
 // IsCode returns true when this update process group conflict response a status code equal to that given
 func (o *UpdateProcessGroupConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the update process group conflict response
+func (o *UpdateProcessGroupConflict) Code() int {
+	return 409
 }
 
 func (o *UpdateProcessGroupConflict) Error() string {

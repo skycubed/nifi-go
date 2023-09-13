@@ -60,7 +60,7 @@ func (o *DeleteSnippetReader) ReadResponse(response runtime.ClientResponse, cons
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /snippets/{id}] deleteSnippet", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *DeleteSnippetOK) IsServerError() bool {
 // IsCode returns true when this delete snippet o k response a status code equal to that given
 func (o *DeleteSnippetOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the delete snippet o k response
+func (o *DeleteSnippetOK) Code() int {
+	return 200
 }
 
 func (o *DeleteSnippetOK) Error() string {
@@ -165,6 +170,11 @@ func (o *DeleteSnippetBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the delete snippet bad request response
+func (o *DeleteSnippetBadRequest) Code() int {
+	return 400
+}
+
 func (o *DeleteSnippetBadRequest) Error() string {
 	return fmt.Sprintf("[DELETE /snippets/{id}][%d] deleteSnippetBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *DeleteSnippetUnauthorized) IsServerError() bool {
 // IsCode returns true when this delete snippet unauthorized response a status code equal to that given
 func (o *DeleteSnippetUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the delete snippet unauthorized response
+func (o *DeleteSnippetUnauthorized) Code() int {
+	return 401
 }
 
 func (o *DeleteSnippetUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *DeleteSnippetForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the delete snippet forbidden response
+func (o *DeleteSnippetForbidden) Code() int {
+	return 403
+}
+
 func (o *DeleteSnippetForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /snippets/{id}][%d] deleteSnippetForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *DeleteSnippetNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the delete snippet not found response
+func (o *DeleteSnippetNotFound) Code() int {
+	return 404
+}
+
 func (o *DeleteSnippetNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /snippets/{id}][%d] deleteSnippetNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *DeleteSnippetConflict) IsServerError() bool {
 // IsCode returns true when this delete snippet conflict response a status code equal to that given
 func (o *DeleteSnippetConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the delete snippet conflict response
+func (o *DeleteSnippetConflict) Code() int {
+	return 409
 }
 
 func (o *DeleteSnippetConflict) Error() string {

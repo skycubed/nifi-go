@@ -60,7 +60,7 @@ func (o *GetExtensionBundlesReader) ReadResponse(response runtime.ClientResponse
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /buckets/{bucketId}/bundles] getExtensionBundles", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *GetExtensionBundlesOK) IsServerError() bool {
 // IsCode returns true when this get extension bundles o k response a status code equal to that given
 func (o *GetExtensionBundlesOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get extension bundles o k response
+func (o *GetExtensionBundlesOK) Code() int {
+	return 200
 }
 
 func (o *GetExtensionBundlesOK) Error() string {
@@ -163,6 +168,11 @@ func (o *GetExtensionBundlesBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get extension bundles bad request response
+func (o *GetExtensionBundlesBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetExtensionBundlesBadRequest) Error() string {
 	return fmt.Sprintf("[GET /buckets/{bucketId}/bundles][%d] getExtensionBundlesBadRequest ", 400)
 }
@@ -212,6 +222,11 @@ func (o *GetExtensionBundlesUnauthorized) IsServerError() bool {
 // IsCode returns true when this get extension bundles unauthorized response a status code equal to that given
 func (o *GetExtensionBundlesUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get extension bundles unauthorized response
+func (o *GetExtensionBundlesUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetExtensionBundlesUnauthorized) Error() string {
@@ -265,6 +280,11 @@ func (o *GetExtensionBundlesForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get extension bundles forbidden response
+func (o *GetExtensionBundlesForbidden) Code() int {
+	return 403
+}
+
 func (o *GetExtensionBundlesForbidden) Error() string {
 	return fmt.Sprintf("[GET /buckets/{bucketId}/bundles][%d] getExtensionBundlesForbidden ", 403)
 }
@@ -316,6 +336,11 @@ func (o *GetExtensionBundlesNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get extension bundles not found response
+func (o *GetExtensionBundlesNotFound) Code() int {
+	return 404
+}
+
 func (o *GetExtensionBundlesNotFound) Error() string {
 	return fmt.Sprintf("[GET /buckets/{bucketId}/bundles][%d] getExtensionBundlesNotFound ", 404)
 }
@@ -365,6 +390,11 @@ func (o *GetExtensionBundlesConflict) IsServerError() bool {
 // IsCode returns true when this get extension bundles conflict response a status code equal to that given
 func (o *GetExtensionBundlesConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get extension bundles conflict response
+func (o *GetExtensionBundlesConflict) Code() int {
+	return 409
 }
 
 func (o *GetExtensionBundlesConflict) Error() string {

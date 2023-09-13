@@ -60,7 +60,7 @@ func (o *UpdateConnectionReader) ReadResponse(response runtime.ClientResponse, c
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PUT /connections/{id}] updateConnection", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *UpdateConnectionOK) IsServerError() bool {
 // IsCode returns true when this update connection o k response a status code equal to that given
 func (o *UpdateConnectionOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the update connection o k response
+func (o *UpdateConnectionOK) Code() int {
+	return 200
 }
 
 func (o *UpdateConnectionOK) Error() string {
@@ -165,6 +170,11 @@ func (o *UpdateConnectionBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the update connection bad request response
+func (o *UpdateConnectionBadRequest) Code() int {
+	return 400
+}
+
 func (o *UpdateConnectionBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /connections/{id}][%d] updateConnectionBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *UpdateConnectionUnauthorized) IsServerError() bool {
 // IsCode returns true when this update connection unauthorized response a status code equal to that given
 func (o *UpdateConnectionUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the update connection unauthorized response
+func (o *UpdateConnectionUnauthorized) Code() int {
+	return 401
 }
 
 func (o *UpdateConnectionUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *UpdateConnectionForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the update connection forbidden response
+func (o *UpdateConnectionForbidden) Code() int {
+	return 403
+}
+
 func (o *UpdateConnectionForbidden) Error() string {
 	return fmt.Sprintf("[PUT /connections/{id}][%d] updateConnectionForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *UpdateConnectionNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the update connection not found response
+func (o *UpdateConnectionNotFound) Code() int {
+	return 404
+}
+
 func (o *UpdateConnectionNotFound) Error() string {
 	return fmt.Sprintf("[PUT /connections/{id}][%d] updateConnectionNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *UpdateConnectionConflict) IsServerError() bool {
 // IsCode returns true when this update connection conflict response a status code equal to that given
 func (o *UpdateConnectionConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the update connection conflict response
+func (o *UpdateConnectionConflict) Code() int {
+	return 409
 }
 
 func (o *UpdateConnectionConflict) Error() string {

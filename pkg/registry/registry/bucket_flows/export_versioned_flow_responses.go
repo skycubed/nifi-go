@@ -54,7 +54,7 @@ func (o *ExportVersionedFlowReader) ReadResponse(response runtime.ClientResponse
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /buckets/{bucketId}/flows/{flowId}/versions/{versionNumber}/export] exportVersionedFlow", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *ExportVersionedFlowOK) IsServerError() bool {
 // IsCode returns true when this export versioned flow o k response a status code equal to that given
 func (o *ExportVersionedFlowOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the export versioned flow o k response
+func (o *ExportVersionedFlowOK) Code() int {
+	return 200
 }
 
 func (o *ExportVersionedFlowOK) Error() string {
@@ -159,6 +164,11 @@ func (o *ExportVersionedFlowUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the export versioned flow unauthorized response
+func (o *ExportVersionedFlowUnauthorized) Code() int {
+	return 401
+}
+
 func (o *ExportVersionedFlowUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /buckets/{bucketId}/flows/{flowId}/versions/{versionNumber}/export][%d] exportVersionedFlowUnauthorized ", 401)
 }
@@ -208,6 +218,11 @@ func (o *ExportVersionedFlowForbidden) IsServerError() bool {
 // IsCode returns true when this export versioned flow forbidden response a status code equal to that given
 func (o *ExportVersionedFlowForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the export versioned flow forbidden response
+func (o *ExportVersionedFlowForbidden) Code() int {
+	return 403
 }
 
 func (o *ExportVersionedFlowForbidden) Error() string {
@@ -261,6 +276,11 @@ func (o *ExportVersionedFlowNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the export versioned flow not found response
+func (o *ExportVersionedFlowNotFound) Code() int {
+	return 404
+}
+
 func (o *ExportVersionedFlowNotFound) Error() string {
 	return fmt.Sprintf("[GET /buckets/{bucketId}/flows/{flowId}/versions/{versionNumber}/export][%d] exportVersionedFlowNotFound ", 404)
 }
@@ -310,6 +330,11 @@ func (o *ExportVersionedFlowConflict) IsServerError() bool {
 // IsCode returns true when this export versioned flow conflict response a status code equal to that given
 func (o *ExportVersionedFlowConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the export versioned flow conflict response
+func (o *ExportVersionedFlowConflict) Code() int {
+	return 409
 }
 
 func (o *ExportVersionedFlowConflict) Error() string {

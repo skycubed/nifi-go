@@ -60,7 +60,7 @@ func (o *GetParameterProviderReferencesReader) ReadResponse(response runtime.Cli
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /parameter-providers/{id}/references] getParameterProviderReferences", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *GetParameterProviderReferencesOK) IsServerError() bool {
 // IsCode returns true when this get parameter provider references o k response a status code equal to that given
 func (o *GetParameterProviderReferencesOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get parameter provider references o k response
+func (o *GetParameterProviderReferencesOK) Code() int {
+	return 200
 }
 
 func (o *GetParameterProviderReferencesOK) Error() string {
@@ -165,6 +170,11 @@ func (o *GetParameterProviderReferencesBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get parameter provider references bad request response
+func (o *GetParameterProviderReferencesBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetParameterProviderReferencesBadRequest) Error() string {
 	return fmt.Sprintf("[GET /parameter-providers/{id}/references][%d] getParameterProviderReferencesBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *GetParameterProviderReferencesUnauthorized) IsServerError() bool {
 // IsCode returns true when this get parameter provider references unauthorized response a status code equal to that given
 func (o *GetParameterProviderReferencesUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get parameter provider references unauthorized response
+func (o *GetParameterProviderReferencesUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetParameterProviderReferencesUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *GetParameterProviderReferencesForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get parameter provider references forbidden response
+func (o *GetParameterProviderReferencesForbidden) Code() int {
+	return 403
+}
+
 func (o *GetParameterProviderReferencesForbidden) Error() string {
 	return fmt.Sprintf("[GET /parameter-providers/{id}/references][%d] getParameterProviderReferencesForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *GetParameterProviderReferencesNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get parameter provider references not found response
+func (o *GetParameterProviderReferencesNotFound) Code() int {
+	return 404
+}
+
 func (o *GetParameterProviderReferencesNotFound) Error() string {
 	return fmt.Sprintf("[GET /parameter-providers/{id}/references][%d] getParameterProviderReferencesNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *GetParameterProviderReferencesConflict) IsServerError() bool {
 // IsCode returns true when this get parameter provider references conflict response a status code equal to that given
 func (o *GetParameterProviderReferencesConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get parameter provider references conflict response
+func (o *GetParameterProviderReferencesConflict) Code() int {
+	return 409
 }
 
 func (o *GetParameterProviderReferencesConflict) Error() string {

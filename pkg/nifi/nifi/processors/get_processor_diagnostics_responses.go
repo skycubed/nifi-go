@@ -60,7 +60,7 @@ func (o *GetProcessorDiagnosticsReader) ReadResponse(response runtime.ClientResp
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /processors/{id}/diagnostics] getProcessorDiagnostics", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *GetProcessorDiagnosticsOK) IsServerError() bool {
 // IsCode returns true when this get processor diagnostics o k response a status code equal to that given
 func (o *GetProcessorDiagnosticsOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get processor diagnostics o k response
+func (o *GetProcessorDiagnosticsOK) Code() int {
+	return 200
 }
 
 func (o *GetProcessorDiagnosticsOK) Error() string {
@@ -165,6 +170,11 @@ func (o *GetProcessorDiagnosticsBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get processor diagnostics bad request response
+func (o *GetProcessorDiagnosticsBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetProcessorDiagnosticsBadRequest) Error() string {
 	return fmt.Sprintf("[GET /processors/{id}/diagnostics][%d] getProcessorDiagnosticsBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *GetProcessorDiagnosticsUnauthorized) IsServerError() bool {
 // IsCode returns true when this get processor diagnostics unauthorized response a status code equal to that given
 func (o *GetProcessorDiagnosticsUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get processor diagnostics unauthorized response
+func (o *GetProcessorDiagnosticsUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetProcessorDiagnosticsUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *GetProcessorDiagnosticsForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get processor diagnostics forbidden response
+func (o *GetProcessorDiagnosticsForbidden) Code() int {
+	return 403
+}
+
 func (o *GetProcessorDiagnosticsForbidden) Error() string {
 	return fmt.Sprintf("[GET /processors/{id}/diagnostics][%d] getProcessorDiagnosticsForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *GetProcessorDiagnosticsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get processor diagnostics not found response
+func (o *GetProcessorDiagnosticsNotFound) Code() int {
+	return 404
+}
+
 func (o *GetProcessorDiagnosticsNotFound) Error() string {
 	return fmt.Sprintf("[GET /processors/{id}/diagnostics][%d] getProcessorDiagnosticsNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *GetProcessorDiagnosticsConflict) IsServerError() bool {
 // IsCode returns true when this get processor diagnostics conflict response a status code equal to that given
 func (o *GetProcessorDiagnosticsConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get processor diagnostics conflict response
+func (o *GetProcessorDiagnosticsConflict) Code() int {
+	return 409
 }
 
 func (o *GetProcessorDiagnosticsConflict) Error() string {

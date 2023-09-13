@@ -52,7 +52,7 @@ func (o *CreateAccessTokenByTryingAllProvidersReader) ReadResponse(response runt
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /access/token] createAccessTokenByTryingAllProviders", response, response.Code())
 	}
 }
 
@@ -93,6 +93,11 @@ func (o *CreateAccessTokenByTryingAllProvidersOK) IsServerError() bool {
 // IsCode returns true when this create access token by trying all providers o k response a status code equal to that given
 func (o *CreateAccessTokenByTryingAllProvidersOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the create access token by trying all providers o k response
+func (o *CreateAccessTokenByTryingAllProvidersOK) Code() int {
+	return 200
 }
 
 func (o *CreateAccessTokenByTryingAllProvidersOK) Error() string {
@@ -155,6 +160,11 @@ func (o *CreateAccessTokenByTryingAllProvidersBadRequest) IsCode(code int) bool 
 	return code == 400
 }
 
+// Code gets the status code for the create access token by trying all providers bad request response
+func (o *CreateAccessTokenByTryingAllProvidersBadRequest) Code() int {
+	return 400
+}
+
 func (o *CreateAccessTokenByTryingAllProvidersBadRequest) Error() string {
 	return fmt.Sprintf("[POST /access/token][%d] createAccessTokenByTryingAllProvidersBadRequest ", 400)
 }
@@ -204,6 +214,11 @@ func (o *CreateAccessTokenByTryingAllProvidersUnauthorized) IsServerError() bool
 // IsCode returns true when this create access token by trying all providers unauthorized response a status code equal to that given
 func (o *CreateAccessTokenByTryingAllProvidersUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the create access token by trying all providers unauthorized response
+func (o *CreateAccessTokenByTryingAllProvidersUnauthorized) Code() int {
+	return 401
 }
 
 func (o *CreateAccessTokenByTryingAllProvidersUnauthorized) Error() string {
@@ -257,6 +272,11 @@ func (o *CreateAccessTokenByTryingAllProvidersConflict) IsCode(code int) bool {
 	return code == 409
 }
 
+// Code gets the status code for the create access token by trying all providers conflict response
+func (o *CreateAccessTokenByTryingAllProvidersConflict) Code() int {
+	return 409
+}
+
 func (o *CreateAccessTokenByTryingAllProvidersConflict) Error() string {
 	return fmt.Sprintf("[POST /access/token][%d] createAccessTokenByTryingAllProvidersConflict ", 409)
 }
@@ -306,6 +326,11 @@ func (o *CreateAccessTokenByTryingAllProvidersInternalServerError) IsServerError
 // IsCode returns true when this create access token by trying all providers internal server error response a status code equal to that given
 func (o *CreateAccessTokenByTryingAllProvidersInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the create access token by trying all providers internal server error response
+func (o *CreateAccessTokenByTryingAllProvidersInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CreateAccessTokenByTryingAllProvidersInternalServerError) Error() string {

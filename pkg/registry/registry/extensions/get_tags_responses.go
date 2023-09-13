@@ -60,7 +60,7 @@ func (o *GetTagsReader) ReadResponse(response runtime.ClientResponse, consumer r
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /extensions/tags] getTags", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *GetTagsOK) IsServerError() bool {
 // IsCode returns true when this get tags o k response a status code equal to that given
 func (o *GetTagsOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get tags o k response
+func (o *GetTagsOK) Code() int {
+	return 200
 }
 
 func (o *GetTagsOK) Error() string {
@@ -163,6 +168,11 @@ func (o *GetTagsBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get tags bad request response
+func (o *GetTagsBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetTagsBadRequest) Error() string {
 	return fmt.Sprintf("[GET /extensions/tags][%d] getTagsBadRequest ", 400)
 }
@@ -212,6 +222,11 @@ func (o *GetTagsUnauthorized) IsServerError() bool {
 // IsCode returns true when this get tags unauthorized response a status code equal to that given
 func (o *GetTagsUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get tags unauthorized response
+func (o *GetTagsUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetTagsUnauthorized) Error() string {
@@ -265,6 +280,11 @@ func (o *GetTagsForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get tags forbidden response
+func (o *GetTagsForbidden) Code() int {
+	return 403
+}
+
 func (o *GetTagsForbidden) Error() string {
 	return fmt.Sprintf("[GET /extensions/tags][%d] getTagsForbidden ", 403)
 }
@@ -316,6 +336,11 @@ func (o *GetTagsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get tags not found response
+func (o *GetTagsNotFound) Code() int {
+	return 404
+}
+
 func (o *GetTagsNotFound) Error() string {
 	return fmt.Sprintf("[GET /extensions/tags][%d] getTagsNotFound ", 404)
 }
@@ -365,6 +390,11 @@ func (o *GetTagsConflict) IsServerError() bool {
 // IsCode returns true when this get tags conflict response a status code equal to that given
 func (o *GetTagsConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get tags conflict response
+func (o *GetTagsConflict) Code() int {
+	return 409
 }
 
 func (o *GetTagsConflict) Error() string {

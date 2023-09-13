@@ -54,7 +54,7 @@ func (o *GetItemsInBucketReader) ReadResponse(response runtime.ClientResponse, c
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /items/{bucketId}] getItemsInBucket", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *GetItemsInBucketOK) IsServerError() bool {
 // IsCode returns true when this get items in bucket o k response a status code equal to that given
 func (o *GetItemsInBucketOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get items in bucket o k response
+func (o *GetItemsInBucketOK) Code() int {
+	return 200
 }
 
 func (o *GetItemsInBucketOK) Error() string {
@@ -157,6 +162,11 @@ func (o *GetItemsInBucketBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get items in bucket bad request response
+func (o *GetItemsInBucketBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetItemsInBucketBadRequest) Error() string {
 	return fmt.Sprintf("[GET /items/{bucketId}][%d] getItemsInBucketBadRequest ", 400)
 }
@@ -206,6 +216,11 @@ func (o *GetItemsInBucketUnauthorized) IsServerError() bool {
 // IsCode returns true when this get items in bucket unauthorized response a status code equal to that given
 func (o *GetItemsInBucketUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get items in bucket unauthorized response
+func (o *GetItemsInBucketUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetItemsInBucketUnauthorized) Error() string {
@@ -259,6 +274,11 @@ func (o *GetItemsInBucketForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get items in bucket forbidden response
+func (o *GetItemsInBucketForbidden) Code() int {
+	return 403
+}
+
 func (o *GetItemsInBucketForbidden) Error() string {
 	return fmt.Sprintf("[GET /items/{bucketId}][%d] getItemsInBucketForbidden ", 403)
 }
@@ -308,6 +328,11 @@ func (o *GetItemsInBucketNotFound) IsServerError() bool {
 // IsCode returns true when this get items in bucket not found response a status code equal to that given
 func (o *GetItemsInBucketNotFound) IsCode(code int) bool {
 	return code == 404
+}
+
+// Code gets the status code for the get items in bucket not found response
+func (o *GetItemsInBucketNotFound) Code() int {
+	return 404
 }
 
 func (o *GetItemsInBucketNotFound) Error() string {

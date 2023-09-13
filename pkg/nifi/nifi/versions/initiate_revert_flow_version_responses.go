@@ -60,7 +60,7 @@ func (o *InitiateRevertFlowVersionReader) ReadResponse(response runtime.ClientRe
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /versions/revert-requests/process-groups/{id}] initiateRevertFlowVersion", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *InitiateRevertFlowVersionOK) IsServerError() bool {
 // IsCode returns true when this initiate revert flow version o k response a status code equal to that given
 func (o *InitiateRevertFlowVersionOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the initiate revert flow version o k response
+func (o *InitiateRevertFlowVersionOK) Code() int {
+	return 200
 }
 
 func (o *InitiateRevertFlowVersionOK) Error() string {
@@ -165,6 +170,11 @@ func (o *InitiateRevertFlowVersionBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the initiate revert flow version bad request response
+func (o *InitiateRevertFlowVersionBadRequest) Code() int {
+	return 400
+}
+
 func (o *InitiateRevertFlowVersionBadRequest) Error() string {
 	return fmt.Sprintf("[POST /versions/revert-requests/process-groups/{id}][%d] initiateRevertFlowVersionBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *InitiateRevertFlowVersionUnauthorized) IsServerError() bool {
 // IsCode returns true when this initiate revert flow version unauthorized response a status code equal to that given
 func (o *InitiateRevertFlowVersionUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the initiate revert flow version unauthorized response
+func (o *InitiateRevertFlowVersionUnauthorized) Code() int {
+	return 401
 }
 
 func (o *InitiateRevertFlowVersionUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *InitiateRevertFlowVersionForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the initiate revert flow version forbidden response
+func (o *InitiateRevertFlowVersionForbidden) Code() int {
+	return 403
+}
+
 func (o *InitiateRevertFlowVersionForbidden) Error() string {
 	return fmt.Sprintf("[POST /versions/revert-requests/process-groups/{id}][%d] initiateRevertFlowVersionForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *InitiateRevertFlowVersionNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the initiate revert flow version not found response
+func (o *InitiateRevertFlowVersionNotFound) Code() int {
+	return 404
+}
+
 func (o *InitiateRevertFlowVersionNotFound) Error() string {
 	return fmt.Sprintf("[POST /versions/revert-requests/process-groups/{id}][%d] initiateRevertFlowVersionNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *InitiateRevertFlowVersionConflict) IsServerError() bool {
 // IsCode returns true when this initiate revert flow version conflict response a status code equal to that given
 func (o *InitiateRevertFlowVersionConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the initiate revert flow version conflict response
+func (o *InitiateRevertFlowVersionConflict) Code() int {
+	return 409
 }
 
 func (o *InitiateRevertFlowVersionConflict) Error() string {

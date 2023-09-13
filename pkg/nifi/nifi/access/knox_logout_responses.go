@@ -45,11 +45,6 @@ type KnoxLogoutDefault struct {
 	_statusCode int
 }
 
-// Code gets the status code for the knox logout default response
-func (o *KnoxLogoutDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this knox logout default response has a 2xx status code
 func (o *KnoxLogoutDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -73,6 +68,11 @@ func (o *KnoxLogoutDefault) IsServerError() bool {
 // IsCode returns true when this knox logout default response a status code equal to that given
 func (o *KnoxLogoutDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the knox logout default response
+func (o *KnoxLogoutDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *KnoxLogoutDefault) Error() string {

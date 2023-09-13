@@ -280,6 +280,11 @@ func (m *RegisteredFlowSnapshot) ContextValidate(ctx context.Context, formats st
 func (m *RegisteredFlowSnapshot) contextValidateBucket(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Bucket != nil {
+
+		if swag.IsZero(m.Bucket) { // not required
+			return nil
+		}
+
 		if err := m.Bucket.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("bucket")
@@ -311,6 +316,11 @@ func (m *RegisteredFlowSnapshot) contextValidateExternalControllerServices(ctx c
 func (m *RegisteredFlowSnapshot) contextValidateFlow(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Flow != nil {
+
+		if swag.IsZero(m.Flow) { // not required
+			return nil
+		}
+
 		if err := m.Flow.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("flow")
@@ -327,6 +337,11 @@ func (m *RegisteredFlowSnapshot) contextValidateFlow(ctx context.Context, format
 func (m *RegisteredFlowSnapshot) contextValidateFlowContents(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.FlowContents != nil {
+
+		if swag.IsZero(m.FlowContents) { // not required
+			return nil
+		}
+
 		if err := m.FlowContents.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("flowContents")
@@ -373,6 +388,11 @@ func (m *RegisteredFlowSnapshot) contextValidateParameterProviders(ctx context.C
 func (m *RegisteredFlowSnapshot) contextValidateSnapshotMetadata(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.SnapshotMetadata != nil {
+
+		if swag.IsZero(m.SnapshotMetadata) { // not required
+			return nil
+		}
+
 		if err := m.SnapshotMetadata.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("snapshotMetadata")

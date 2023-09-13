@@ -36,7 +36,7 @@ func (o *GetBundleVersionsReader) ReadResponse(response runtime.ClientResponse, 
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /bundles/versions] getBundleVersions", response, response.Code())
 	}
 }
 
@@ -77,6 +77,11 @@ func (o *GetBundleVersionsOK) IsServerError() bool {
 // IsCode returns true when this get bundle versions o k response a status code equal to that given
 func (o *GetBundleVersionsOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get bundle versions o k response
+func (o *GetBundleVersionsOK) Code() int {
+	return 200
 }
 
 func (o *GetBundleVersionsOK) Error() string {
@@ -137,6 +142,11 @@ func (o *GetBundleVersionsUnauthorized) IsServerError() bool {
 // IsCode returns true when this get bundle versions unauthorized response a status code equal to that given
 func (o *GetBundleVersionsUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get bundle versions unauthorized response
+func (o *GetBundleVersionsUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetBundleVersionsUnauthorized) Error() string {

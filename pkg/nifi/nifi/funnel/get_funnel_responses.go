@@ -60,7 +60,7 @@ func (o *GetFunnelReader) ReadResponse(response runtime.ClientResponse, consumer
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /funnels/{id}] getFunnel", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *GetFunnelOK) IsServerError() bool {
 // IsCode returns true when this get funnel o k response a status code equal to that given
 func (o *GetFunnelOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get funnel o k response
+func (o *GetFunnelOK) Code() int {
+	return 200
 }
 
 func (o *GetFunnelOK) Error() string {
@@ -165,6 +170,11 @@ func (o *GetFunnelBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get funnel bad request response
+func (o *GetFunnelBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetFunnelBadRequest) Error() string {
 	return fmt.Sprintf("[GET /funnels/{id}][%d] getFunnelBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *GetFunnelUnauthorized) IsServerError() bool {
 // IsCode returns true when this get funnel unauthorized response a status code equal to that given
 func (o *GetFunnelUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get funnel unauthorized response
+func (o *GetFunnelUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetFunnelUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *GetFunnelForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get funnel forbidden response
+func (o *GetFunnelForbidden) Code() int {
+	return 403
+}
+
 func (o *GetFunnelForbidden) Error() string {
 	return fmt.Sprintf("[GET /funnels/{id}][%d] getFunnelForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *GetFunnelNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get funnel not found response
+func (o *GetFunnelNotFound) Code() int {
+	return 404
+}
+
 func (o *GetFunnelNotFound) Error() string {
 	return fmt.Sprintf("[GET /funnels/{id}][%d] getFunnelNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *GetFunnelConflict) IsServerError() bool {
 // IsCode returns true when this get funnel conflict response a status code equal to that given
 func (o *GetFunnelConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get funnel conflict response
+func (o *GetFunnelConflict) Code() int {
+	return 409
 }
 
 func (o *GetFunnelConflict) Error() string {

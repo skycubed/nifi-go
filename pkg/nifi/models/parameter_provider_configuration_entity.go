@@ -105,6 +105,11 @@ func (m *ParameterProviderConfigurationEntity) ContextValidate(ctx context.Conte
 func (m *ParameterProviderConfigurationEntity) contextValidateComponent(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Component != nil {
+
+		if swag.IsZero(m.Component) { // not required
+			return nil
+		}
+
 		if err := m.Component.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("component")
@@ -121,6 +126,11 @@ func (m *ParameterProviderConfigurationEntity) contextValidateComponent(ctx cont
 func (m *ParameterProviderConfigurationEntity) contextValidatePermissions(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Permissions != nil {
+
+		if swag.IsZero(m.Permissions) { // not required
+			return nil
+		}
+
 		if err := m.Permissions.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("permissions")

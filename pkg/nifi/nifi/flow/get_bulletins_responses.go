@@ -60,7 +60,7 @@ func (o *GetBulletinsReader) ReadResponse(response runtime.ClientResponse, consu
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /flow/controller/bulletins] getBulletins", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *GetBulletinsOK) IsServerError() bool {
 // IsCode returns true when this get bulletins o k response a status code equal to that given
 func (o *GetBulletinsOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get bulletins o k response
+func (o *GetBulletinsOK) Code() int {
+	return 200
 }
 
 func (o *GetBulletinsOK) Error() string {
@@ -165,6 +170,11 @@ func (o *GetBulletinsBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get bulletins bad request response
+func (o *GetBulletinsBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetBulletinsBadRequest) Error() string {
 	return fmt.Sprintf("[GET /flow/controller/bulletins][%d] getBulletinsBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *GetBulletinsUnauthorized) IsServerError() bool {
 // IsCode returns true when this get bulletins unauthorized response a status code equal to that given
 func (o *GetBulletinsUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get bulletins unauthorized response
+func (o *GetBulletinsUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetBulletinsUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *GetBulletinsForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get bulletins forbidden response
+func (o *GetBulletinsForbidden) Code() int {
+	return 403
+}
+
 func (o *GetBulletinsForbidden) Error() string {
 	return fmt.Sprintf("[GET /flow/controller/bulletins][%d] getBulletinsForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *GetBulletinsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get bulletins not found response
+func (o *GetBulletinsNotFound) Code() int {
+	return 404
+}
+
 func (o *GetBulletinsNotFound) Error() string {
 	return fmt.Sprintf("[GET /flow/controller/bulletins][%d] getBulletinsNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *GetBulletinsConflict) IsServerError() bool {
 // IsCode returns true when this get bulletins conflict response a status code equal to that given
 func (o *GetBulletinsConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get bulletins conflict response
+func (o *GetBulletinsConflict) Code() int {
+	return 409
 }
 
 func (o *GetBulletinsConflict) Error() string {

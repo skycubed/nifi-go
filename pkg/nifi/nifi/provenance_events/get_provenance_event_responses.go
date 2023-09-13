@@ -60,7 +60,7 @@ func (o *GetProvenanceEventReader) ReadResponse(response runtime.ClientResponse,
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /provenance-events/{id}] getProvenanceEvent", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *GetProvenanceEventOK) IsServerError() bool {
 // IsCode returns true when this get provenance event o k response a status code equal to that given
 func (o *GetProvenanceEventOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get provenance event o k response
+func (o *GetProvenanceEventOK) Code() int {
+	return 200
 }
 
 func (o *GetProvenanceEventOK) Error() string {
@@ -165,6 +170,11 @@ func (o *GetProvenanceEventBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get provenance event bad request response
+func (o *GetProvenanceEventBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetProvenanceEventBadRequest) Error() string {
 	return fmt.Sprintf("[GET /provenance-events/{id}][%d] getProvenanceEventBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *GetProvenanceEventUnauthorized) IsServerError() bool {
 // IsCode returns true when this get provenance event unauthorized response a status code equal to that given
 func (o *GetProvenanceEventUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get provenance event unauthorized response
+func (o *GetProvenanceEventUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetProvenanceEventUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *GetProvenanceEventForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get provenance event forbidden response
+func (o *GetProvenanceEventForbidden) Code() int {
+	return 403
+}
+
 func (o *GetProvenanceEventForbidden) Error() string {
 	return fmt.Sprintf("[GET /provenance-events/{id}][%d] getProvenanceEventForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *GetProvenanceEventNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get provenance event not found response
+func (o *GetProvenanceEventNotFound) Code() int {
+	return 404
+}
+
 func (o *GetProvenanceEventNotFound) Error() string {
 	return fmt.Sprintf("[GET /provenance-events/{id}][%d] getProvenanceEventNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *GetProvenanceEventConflict) IsServerError() bool {
 // IsCode returns true when this get provenance event conflict response a status code equal to that given
 func (o *GetProvenanceEventConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get provenance event conflict response
+func (o *GetProvenanceEventConflict) Code() int {
+	return 409
 }
 
 func (o *GetProvenanceEventConflict) Error() string {

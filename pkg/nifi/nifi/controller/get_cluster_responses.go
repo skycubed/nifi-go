@@ -54,7 +54,7 @@ func (o *GetClusterReader) ReadResponse(response runtime.ClientResponse, consume
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /controller/cluster] getCluster", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *GetClusterOK) IsServerError() bool {
 // IsCode returns true when this get cluster o k response a status code equal to that given
 func (o *GetClusterOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get cluster o k response
+func (o *GetClusterOK) Code() int {
+	return 200
 }
 
 func (o *GetClusterOK) Error() string {
@@ -159,6 +164,11 @@ func (o *GetClusterBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get cluster bad request response
+func (o *GetClusterBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetClusterBadRequest) Error() string {
 	return fmt.Sprintf("[GET /controller/cluster][%d] getClusterBadRequest ", 400)
 }
@@ -208,6 +218,11 @@ func (o *GetClusterUnauthorized) IsServerError() bool {
 // IsCode returns true when this get cluster unauthorized response a status code equal to that given
 func (o *GetClusterUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get cluster unauthorized response
+func (o *GetClusterUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetClusterUnauthorized) Error() string {
@@ -261,6 +276,11 @@ func (o *GetClusterForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get cluster forbidden response
+func (o *GetClusterForbidden) Code() int {
+	return 403
+}
+
 func (o *GetClusterForbidden) Error() string {
 	return fmt.Sprintf("[GET /controller/cluster][%d] getClusterForbidden ", 403)
 }
@@ -310,6 +330,11 @@ func (o *GetClusterConflict) IsServerError() bool {
 // IsCode returns true when this get cluster conflict response a status code equal to that given
 func (o *GetClusterConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get cluster conflict response
+func (o *GetClusterConflict) Code() int {
+	return 409
 }
 
 func (o *GetClusterConflict) Error() string {

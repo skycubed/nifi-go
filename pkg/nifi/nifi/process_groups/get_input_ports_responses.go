@@ -60,7 +60,7 @@ func (o *GetInputPortsReader) ReadResponse(response runtime.ClientResponse, cons
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /process-groups/{id}/input-ports] getInputPorts", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *GetInputPortsOK) IsServerError() bool {
 // IsCode returns true when this get input ports o k response a status code equal to that given
 func (o *GetInputPortsOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get input ports o k response
+func (o *GetInputPortsOK) Code() int {
+	return 200
 }
 
 func (o *GetInputPortsOK) Error() string {
@@ -165,6 +170,11 @@ func (o *GetInputPortsBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get input ports bad request response
+func (o *GetInputPortsBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetInputPortsBadRequest) Error() string {
 	return fmt.Sprintf("[GET /process-groups/{id}/input-ports][%d] getInputPortsBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *GetInputPortsUnauthorized) IsServerError() bool {
 // IsCode returns true when this get input ports unauthorized response a status code equal to that given
 func (o *GetInputPortsUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get input ports unauthorized response
+func (o *GetInputPortsUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetInputPortsUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *GetInputPortsForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get input ports forbidden response
+func (o *GetInputPortsForbidden) Code() int {
+	return 403
+}
+
 func (o *GetInputPortsForbidden) Error() string {
 	return fmt.Sprintf("[GET /process-groups/{id}/input-ports][%d] getInputPortsForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *GetInputPortsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get input ports not found response
+func (o *GetInputPortsNotFound) Code() int {
+	return 404
+}
+
 func (o *GetInputPortsNotFound) Error() string {
 	return fmt.Sprintf("[GET /process-groups/{id}/input-ports][%d] getInputPortsNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *GetInputPortsConflict) IsServerError() bool {
 // IsCode returns true when this get input ports conflict response a status code equal to that given
 func (o *GetInputPortsConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get input ports conflict response
+func (o *GetInputPortsConflict) Code() int {
+	return 409
 }
 
 func (o *GetInputPortsConflict) Error() string {

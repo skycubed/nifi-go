@@ -60,7 +60,7 @@ func (o *TerminateProcessorReader) ReadResponse(response runtime.ClientResponse,
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /processors/{id}/threads] terminateProcessor", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *TerminateProcessorOK) IsServerError() bool {
 // IsCode returns true when this terminate processor o k response a status code equal to that given
 func (o *TerminateProcessorOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the terminate processor o k response
+func (o *TerminateProcessorOK) Code() int {
+	return 200
 }
 
 func (o *TerminateProcessorOK) Error() string {
@@ -165,6 +170,11 @@ func (o *TerminateProcessorBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the terminate processor bad request response
+func (o *TerminateProcessorBadRequest) Code() int {
+	return 400
+}
+
 func (o *TerminateProcessorBadRequest) Error() string {
 	return fmt.Sprintf("[DELETE /processors/{id}/threads][%d] terminateProcessorBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *TerminateProcessorUnauthorized) IsServerError() bool {
 // IsCode returns true when this terminate processor unauthorized response a status code equal to that given
 func (o *TerminateProcessorUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the terminate processor unauthorized response
+func (o *TerminateProcessorUnauthorized) Code() int {
+	return 401
 }
 
 func (o *TerminateProcessorUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *TerminateProcessorForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the terminate processor forbidden response
+func (o *TerminateProcessorForbidden) Code() int {
+	return 403
+}
+
 func (o *TerminateProcessorForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /processors/{id}/threads][%d] terminateProcessorForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *TerminateProcessorNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the terminate processor not found response
+func (o *TerminateProcessorNotFound) Code() int {
+	return 404
+}
+
 func (o *TerminateProcessorNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /processors/{id}/threads][%d] terminateProcessorNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *TerminateProcessorConflict) IsServerError() bool {
 // IsCode returns true when this terminate processor conflict response a status code equal to that given
 func (o *TerminateProcessorConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the terminate processor conflict response
+func (o *TerminateProcessorConflict) Code() int {
+	return 409
 }
 
 func (o *TerminateProcessorConflict) Error() string {

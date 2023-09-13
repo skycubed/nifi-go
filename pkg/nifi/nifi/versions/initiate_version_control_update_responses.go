@@ -60,7 +60,7 @@ func (o *InitiateVersionControlUpdateReader) ReadResponse(response runtime.Clien
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /versions/update-requests/process-groups/{id}] initiateVersionControlUpdate", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *InitiateVersionControlUpdateOK) IsServerError() bool {
 // IsCode returns true when this initiate version control update o k response a status code equal to that given
 func (o *InitiateVersionControlUpdateOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the initiate version control update o k response
+func (o *InitiateVersionControlUpdateOK) Code() int {
+	return 200
 }
 
 func (o *InitiateVersionControlUpdateOK) Error() string {
@@ -165,6 +170,11 @@ func (o *InitiateVersionControlUpdateBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the initiate version control update bad request response
+func (o *InitiateVersionControlUpdateBadRequest) Code() int {
+	return 400
+}
+
 func (o *InitiateVersionControlUpdateBadRequest) Error() string {
 	return fmt.Sprintf("[POST /versions/update-requests/process-groups/{id}][%d] initiateVersionControlUpdateBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *InitiateVersionControlUpdateUnauthorized) IsServerError() bool {
 // IsCode returns true when this initiate version control update unauthorized response a status code equal to that given
 func (o *InitiateVersionControlUpdateUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the initiate version control update unauthorized response
+func (o *InitiateVersionControlUpdateUnauthorized) Code() int {
+	return 401
 }
 
 func (o *InitiateVersionControlUpdateUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *InitiateVersionControlUpdateForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the initiate version control update forbidden response
+func (o *InitiateVersionControlUpdateForbidden) Code() int {
+	return 403
+}
+
 func (o *InitiateVersionControlUpdateForbidden) Error() string {
 	return fmt.Sprintf("[POST /versions/update-requests/process-groups/{id}][%d] initiateVersionControlUpdateForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *InitiateVersionControlUpdateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the initiate version control update not found response
+func (o *InitiateVersionControlUpdateNotFound) Code() int {
+	return 404
+}
+
 func (o *InitiateVersionControlUpdateNotFound) Error() string {
 	return fmt.Sprintf("[POST /versions/update-requests/process-groups/{id}][%d] initiateVersionControlUpdateNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *InitiateVersionControlUpdateConflict) IsServerError() bool {
 // IsCode returns true when this initiate version control update conflict response a status code equal to that given
 func (o *InitiateVersionControlUpdateConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the initiate version control update conflict response
+func (o *InitiateVersionControlUpdateConflict) Code() int {
+	return 409
 }
 
 func (o *InitiateVersionControlUpdateConflict) Error() string {

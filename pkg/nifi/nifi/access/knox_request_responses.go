@@ -45,11 +45,6 @@ type KnoxRequestDefault struct {
 	_statusCode int
 }
 
-// Code gets the status code for the knox request default response
-func (o *KnoxRequestDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this knox request default response has a 2xx status code
 func (o *KnoxRequestDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -73,6 +68,11 @@ func (o *KnoxRequestDefault) IsServerError() bool {
 // IsCode returns true when this knox request default response a status code equal to that given
 func (o *KnoxRequestDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the knox request default response
+func (o *KnoxRequestDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *KnoxRequestDefault) Error() string {

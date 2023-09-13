@@ -36,7 +36,7 @@ func (o *GetBucketsReader) ReadResponse(response runtime.ClientResponse, consume
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /buckets] getBuckets", response, response.Code())
 	}
 }
 
@@ -77,6 +77,11 @@ func (o *GetBucketsOK) IsServerError() bool {
 // IsCode returns true when this get buckets o k response a status code equal to that given
 func (o *GetBucketsOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get buckets o k response
+func (o *GetBucketsOK) Code() int {
+	return 200
 }
 
 func (o *GetBucketsOK) Error() string {
@@ -137,6 +142,11 @@ func (o *GetBucketsUnauthorized) IsServerError() bool {
 // IsCode returns true when this get buckets unauthorized response a status code equal to that given
 func (o *GetBucketsUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get buckets unauthorized response
+func (o *GetBucketsUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetBucketsUnauthorized) Error() string {

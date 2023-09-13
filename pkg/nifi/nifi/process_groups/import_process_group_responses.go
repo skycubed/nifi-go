@@ -54,7 +54,7 @@ func (o *ImportProcessGroupReader) ReadResponse(response runtime.ClientResponse,
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /process-groups/{id}/process-groups/import] importProcessGroup", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *ImportProcessGroupCreated) IsServerError() bool {
 // IsCode returns true when this import process group created response a status code equal to that given
 func (o *ImportProcessGroupCreated) IsCode(code int) bool {
 	return code == 201
+}
+
+// Code gets the status code for the import process group created response
+func (o *ImportProcessGroupCreated) Code() int {
+	return 201
 }
 
 func (o *ImportProcessGroupCreated) Error() string {
@@ -159,6 +164,11 @@ func (o *ImportProcessGroupBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the import process group bad request response
+func (o *ImportProcessGroupBadRequest) Code() int {
+	return 400
+}
+
 func (o *ImportProcessGroupBadRequest) Error() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/process-groups/import][%d] importProcessGroupBadRequest ", 400)
 }
@@ -208,6 +218,11 @@ func (o *ImportProcessGroupUnauthorized) IsServerError() bool {
 // IsCode returns true when this import process group unauthorized response a status code equal to that given
 func (o *ImportProcessGroupUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the import process group unauthorized response
+func (o *ImportProcessGroupUnauthorized) Code() int {
+	return 401
 }
 
 func (o *ImportProcessGroupUnauthorized) Error() string {
@@ -261,6 +276,11 @@ func (o *ImportProcessGroupForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the import process group forbidden response
+func (o *ImportProcessGroupForbidden) Code() int {
+	return 403
+}
+
 func (o *ImportProcessGroupForbidden) Error() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/process-groups/import][%d] importProcessGroupForbidden ", 403)
 }
@@ -310,6 +330,11 @@ func (o *ImportProcessGroupConflict) IsServerError() bool {
 // IsCode returns true when this import process group conflict response a status code equal to that given
 func (o *ImportProcessGroupConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the import process group conflict response
+func (o *ImportProcessGroupConflict) Code() int {
+	return 409
 }
 
 func (o *ImportProcessGroupConflict) Error() string {

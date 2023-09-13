@@ -241,6 +241,11 @@ func (m *VersionedParameterContext) contextValidateParameters(ctx context.Contex
 	for i := 0; i < len(m.Parameters); i++ {
 
 		if m.Parameters[i] != nil {
+
+			if swag.IsZero(m.Parameters[i]) { // not required
+				return nil
+			}
+
 			if err := m.Parameters[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("parameters" + "." + strconv.Itoa(i))
@@ -259,6 +264,11 @@ func (m *VersionedParameterContext) contextValidateParameters(ctx context.Contex
 func (m *VersionedParameterContext) contextValidatePosition(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Position != nil {
+
+		if swag.IsZero(m.Position) { // not required
+			return nil
+		}
+
 		if err := m.Position.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("position")

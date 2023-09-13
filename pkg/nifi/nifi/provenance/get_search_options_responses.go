@@ -54,7 +54,7 @@ func (o *GetSearchOptionsReader) ReadResponse(response runtime.ClientResponse, c
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /provenance/search-options] getSearchOptions", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *GetSearchOptionsOK) IsServerError() bool {
 // IsCode returns true when this get search options o k response a status code equal to that given
 func (o *GetSearchOptionsOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get search options o k response
+func (o *GetSearchOptionsOK) Code() int {
+	return 200
 }
 
 func (o *GetSearchOptionsOK) Error() string {
@@ -159,6 +164,11 @@ func (o *GetSearchOptionsBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get search options bad request response
+func (o *GetSearchOptionsBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetSearchOptionsBadRequest) Error() string {
 	return fmt.Sprintf("[GET /provenance/search-options][%d] getSearchOptionsBadRequest ", 400)
 }
@@ -208,6 +218,11 @@ func (o *GetSearchOptionsUnauthorized) IsServerError() bool {
 // IsCode returns true when this get search options unauthorized response a status code equal to that given
 func (o *GetSearchOptionsUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get search options unauthorized response
+func (o *GetSearchOptionsUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetSearchOptionsUnauthorized) Error() string {
@@ -261,6 +276,11 @@ func (o *GetSearchOptionsForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get search options forbidden response
+func (o *GetSearchOptionsForbidden) Code() int {
+	return 403
+}
+
 func (o *GetSearchOptionsForbidden) Error() string {
 	return fmt.Sprintf("[GET /provenance/search-options][%d] getSearchOptionsForbidden ", 403)
 }
@@ -310,6 +330,11 @@ func (o *GetSearchOptionsConflict) IsServerError() bool {
 // IsCode returns true when this get search options conflict response a status code equal to that given
 func (o *GetSearchOptionsConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get search options conflict response
+func (o *GetSearchOptionsConflict) Code() int {
+	return 409
 }
 
 func (o *GetSearchOptionsConflict) Error() string {

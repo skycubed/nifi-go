@@ -60,7 +60,7 @@ func (o *GetVariableRegistryReader) ReadResponse(response runtime.ClientResponse
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /process-groups/{id}/variable-registry] getVariableRegistry", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *GetVariableRegistryOK) IsServerError() bool {
 // IsCode returns true when this get variable registry o k response a status code equal to that given
 func (o *GetVariableRegistryOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get variable registry o k response
+func (o *GetVariableRegistryOK) Code() int {
+	return 200
 }
 
 func (o *GetVariableRegistryOK) Error() string {
@@ -165,6 +170,11 @@ func (o *GetVariableRegistryBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get variable registry bad request response
+func (o *GetVariableRegistryBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetVariableRegistryBadRequest) Error() string {
 	return fmt.Sprintf("[GET /process-groups/{id}/variable-registry][%d] getVariableRegistryBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *GetVariableRegistryUnauthorized) IsServerError() bool {
 // IsCode returns true when this get variable registry unauthorized response a status code equal to that given
 func (o *GetVariableRegistryUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get variable registry unauthorized response
+func (o *GetVariableRegistryUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetVariableRegistryUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *GetVariableRegistryForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get variable registry forbidden response
+func (o *GetVariableRegistryForbidden) Code() int {
+	return 403
+}
+
 func (o *GetVariableRegistryForbidden) Error() string {
 	return fmt.Sprintf("[GET /process-groups/{id}/variable-registry][%d] getVariableRegistryForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *GetVariableRegistryNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get variable registry not found response
+func (o *GetVariableRegistryNotFound) Code() int {
+	return 404
+}
+
 func (o *GetVariableRegistryNotFound) Error() string {
 	return fmt.Sprintf("[GET /process-groups/{id}/variable-registry][%d] getVariableRegistryNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *GetVariableRegistryConflict) IsServerError() bool {
 // IsCode returns true when this get variable registry conflict response a status code equal to that given
 func (o *GetVariableRegistryConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get variable registry conflict response
+func (o *GetVariableRegistryConflict) Code() int {
+	return 409
 }
 
 func (o *GetVariableRegistryConflict) Error() string {

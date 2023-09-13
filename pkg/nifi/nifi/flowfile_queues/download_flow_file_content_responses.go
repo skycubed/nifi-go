@@ -60,7 +60,7 @@ func (o *DownloadFlowFileContentReader) ReadResponse(response runtime.ClientResp
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /flowfile-queues/{id}/flowfiles/{flowfile-uuid}/content] downloadFlowFileContent", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *DownloadFlowFileContentOK) IsServerError() bool {
 // IsCode returns true when this download flow file content o k response a status code equal to that given
 func (o *DownloadFlowFileContentOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the download flow file content o k response
+func (o *DownloadFlowFileContentOK) Code() int {
+	return 200
 }
 
 func (o *DownloadFlowFileContentOK) Error() string {
@@ -163,6 +168,11 @@ func (o *DownloadFlowFileContentBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the download flow file content bad request response
+func (o *DownloadFlowFileContentBadRequest) Code() int {
+	return 400
+}
+
 func (o *DownloadFlowFileContentBadRequest) Error() string {
 	return fmt.Sprintf("[GET /flowfile-queues/{id}/flowfiles/{flowfile-uuid}/content][%d] downloadFlowFileContentBadRequest ", 400)
 }
@@ -212,6 +222,11 @@ func (o *DownloadFlowFileContentUnauthorized) IsServerError() bool {
 // IsCode returns true when this download flow file content unauthorized response a status code equal to that given
 func (o *DownloadFlowFileContentUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the download flow file content unauthorized response
+func (o *DownloadFlowFileContentUnauthorized) Code() int {
+	return 401
 }
 
 func (o *DownloadFlowFileContentUnauthorized) Error() string {
@@ -265,6 +280,11 @@ func (o *DownloadFlowFileContentForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the download flow file content forbidden response
+func (o *DownloadFlowFileContentForbidden) Code() int {
+	return 403
+}
+
 func (o *DownloadFlowFileContentForbidden) Error() string {
 	return fmt.Sprintf("[GET /flowfile-queues/{id}/flowfiles/{flowfile-uuid}/content][%d] downloadFlowFileContentForbidden ", 403)
 }
@@ -316,6 +336,11 @@ func (o *DownloadFlowFileContentNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the download flow file content not found response
+func (o *DownloadFlowFileContentNotFound) Code() int {
+	return 404
+}
+
 func (o *DownloadFlowFileContentNotFound) Error() string {
 	return fmt.Sprintf("[GET /flowfile-queues/{id}/flowfiles/{flowfile-uuid}/content][%d] downloadFlowFileContentNotFound ", 404)
 }
@@ -365,6 +390,11 @@ func (o *DownloadFlowFileContentConflict) IsServerError() bool {
 // IsCode returns true when this download flow file content conflict response a status code equal to that given
 func (o *DownloadFlowFileContentConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the download flow file content conflict response
+func (o *DownloadFlowFileContentConflict) Code() int {
+	return 409
 }
 
 func (o *DownloadFlowFileContentConflict) Error() string {

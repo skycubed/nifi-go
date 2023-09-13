@@ -42,7 +42,7 @@ func (o *GetResourcesReader) ReadResponse(response runtime.ClientResponse, consu
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /policies/resources] getResources", response, response.Code())
 	}
 }
 
@@ -83,6 +83,11 @@ func (o *GetResourcesOK) IsServerError() bool {
 // IsCode returns true when this get resources o k response a status code equal to that given
 func (o *GetResourcesOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get resources o k response
+func (o *GetResourcesOK) Code() int {
+	return 200
 }
 
 func (o *GetResourcesOK) Error() string {
@@ -145,6 +150,11 @@ func (o *GetResourcesUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the get resources unauthorized response
+func (o *GetResourcesUnauthorized) Code() int {
+	return 401
+}
+
 func (o *GetResourcesUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /policies/resources][%d] getResourcesUnauthorized ", 401)
 }
@@ -194,6 +204,11 @@ func (o *GetResourcesForbidden) IsServerError() bool {
 // IsCode returns true when this get resources forbidden response a status code equal to that given
 func (o *GetResourcesForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the get resources forbidden response
+func (o *GetResourcesForbidden) Code() int {
+	return 403
 }
 
 func (o *GetResourcesForbidden) Error() string {

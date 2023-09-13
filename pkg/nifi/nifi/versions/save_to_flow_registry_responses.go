@@ -60,7 +60,7 @@ func (o *SaveToFlowRegistryReader) ReadResponse(response runtime.ClientResponse,
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /versions/process-groups/{id}] saveToFlowRegistry", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *SaveToFlowRegistryOK) IsServerError() bool {
 // IsCode returns true when this save to flow registry o k response a status code equal to that given
 func (o *SaveToFlowRegistryOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the save to flow registry o k response
+func (o *SaveToFlowRegistryOK) Code() int {
+	return 200
 }
 
 func (o *SaveToFlowRegistryOK) Error() string {
@@ -165,6 +170,11 @@ func (o *SaveToFlowRegistryBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the save to flow registry bad request response
+func (o *SaveToFlowRegistryBadRequest) Code() int {
+	return 400
+}
+
 func (o *SaveToFlowRegistryBadRequest) Error() string {
 	return fmt.Sprintf("[POST /versions/process-groups/{id}][%d] saveToFlowRegistryBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *SaveToFlowRegistryUnauthorized) IsServerError() bool {
 // IsCode returns true when this save to flow registry unauthorized response a status code equal to that given
 func (o *SaveToFlowRegistryUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the save to flow registry unauthorized response
+func (o *SaveToFlowRegistryUnauthorized) Code() int {
+	return 401
 }
 
 func (o *SaveToFlowRegistryUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *SaveToFlowRegistryForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the save to flow registry forbidden response
+func (o *SaveToFlowRegistryForbidden) Code() int {
+	return 403
+}
+
 func (o *SaveToFlowRegistryForbidden) Error() string {
 	return fmt.Sprintf("[POST /versions/process-groups/{id}][%d] saveToFlowRegistryForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *SaveToFlowRegistryNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the save to flow registry not found response
+func (o *SaveToFlowRegistryNotFound) Code() int {
+	return 404
+}
+
 func (o *SaveToFlowRegistryNotFound) Error() string {
 	return fmt.Sprintf("[POST /versions/process-groups/{id}][%d] saveToFlowRegistryNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *SaveToFlowRegistryConflict) IsServerError() bool {
 // IsCode returns true when this save to flow registry conflict response a status code equal to that given
 func (o *SaveToFlowRegistryConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the save to flow registry conflict response
+func (o *SaveToFlowRegistryConflict) Code() int {
+	return 409
 }
 
 func (o *SaveToFlowRegistryConflict) Error() string {

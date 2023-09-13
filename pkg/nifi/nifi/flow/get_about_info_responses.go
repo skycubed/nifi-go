@@ -54,7 +54,7 @@ func (o *GetAboutInfoReader) ReadResponse(response runtime.ClientResponse, consu
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /flow/about] getAboutInfo", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *GetAboutInfoOK) IsServerError() bool {
 // IsCode returns true when this get about info o k response a status code equal to that given
 func (o *GetAboutInfoOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get about info o k response
+func (o *GetAboutInfoOK) Code() int {
+	return 200
 }
 
 func (o *GetAboutInfoOK) Error() string {
@@ -159,6 +164,11 @@ func (o *GetAboutInfoBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get about info bad request response
+func (o *GetAboutInfoBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetAboutInfoBadRequest) Error() string {
 	return fmt.Sprintf("[GET /flow/about][%d] getAboutInfoBadRequest ", 400)
 }
@@ -208,6 +218,11 @@ func (o *GetAboutInfoUnauthorized) IsServerError() bool {
 // IsCode returns true when this get about info unauthorized response a status code equal to that given
 func (o *GetAboutInfoUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get about info unauthorized response
+func (o *GetAboutInfoUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetAboutInfoUnauthorized) Error() string {
@@ -261,6 +276,11 @@ func (o *GetAboutInfoForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get about info forbidden response
+func (o *GetAboutInfoForbidden) Code() int {
+	return 403
+}
+
 func (o *GetAboutInfoForbidden) Error() string {
 	return fmt.Sprintf("[GET /flow/about][%d] getAboutInfoForbidden ", 403)
 }
@@ -310,6 +330,11 @@ func (o *GetAboutInfoConflict) IsServerError() bool {
 // IsCode returns true when this get about info conflict response a status code equal to that given
 func (o *GetAboutInfoConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get about info conflict response
+func (o *GetAboutInfoConflict) Code() int {
+	return 409
 }
 
 func (o *GetAboutInfoConflict) Error() string {

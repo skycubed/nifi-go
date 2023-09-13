@@ -149,6 +149,11 @@ func (m *RuntimeManifest) ContextValidate(ctx context.Context, formats strfmt.Re
 func (m *RuntimeManifest) contextValidateBuildInfo(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.BuildInfo != nil {
+
+		if swag.IsZero(m.BuildInfo) { // not required
+			return nil
+		}
+
 		if err := m.BuildInfo.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("buildInfo")
@@ -167,6 +172,11 @@ func (m *RuntimeManifest) contextValidateBundles(ctx context.Context, formats st
 	for i := 0; i < len(m.Bundles); i++ {
 
 		if m.Bundles[i] != nil {
+
+			if swag.IsZero(m.Bundles[i]) { // not required
+				return nil
+			}
+
 			if err := m.Bundles[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("bundles" + "." + strconv.Itoa(i))
@@ -185,6 +195,11 @@ func (m *RuntimeManifest) contextValidateBundles(ctx context.Context, formats st
 func (m *RuntimeManifest) contextValidateSchedulingDefaults(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.SchedulingDefaults != nil {
+
+		if swag.IsZero(m.SchedulingDefaults) { // not required
+			return nil
+		}
+
 		if err := m.SchedulingDefaults.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("schedulingDefaults")

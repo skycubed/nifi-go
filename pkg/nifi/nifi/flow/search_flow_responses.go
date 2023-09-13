@@ -54,7 +54,7 @@ func (o *SearchFlowReader) ReadResponse(response runtime.ClientResponse, consume
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /flow/search-results] searchFlow", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *SearchFlowOK) IsServerError() bool {
 // IsCode returns true when this search flow o k response a status code equal to that given
 func (o *SearchFlowOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the search flow o k response
+func (o *SearchFlowOK) Code() int {
+	return 200
 }
 
 func (o *SearchFlowOK) Error() string {
@@ -159,6 +164,11 @@ func (o *SearchFlowBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the search flow bad request response
+func (o *SearchFlowBadRequest) Code() int {
+	return 400
+}
+
 func (o *SearchFlowBadRequest) Error() string {
 	return fmt.Sprintf("[GET /flow/search-results][%d] searchFlowBadRequest ", 400)
 }
@@ -208,6 +218,11 @@ func (o *SearchFlowUnauthorized) IsServerError() bool {
 // IsCode returns true when this search flow unauthorized response a status code equal to that given
 func (o *SearchFlowUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the search flow unauthorized response
+func (o *SearchFlowUnauthorized) Code() int {
+	return 401
 }
 
 func (o *SearchFlowUnauthorized) Error() string {
@@ -261,6 +276,11 @@ func (o *SearchFlowForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the search flow forbidden response
+func (o *SearchFlowForbidden) Code() int {
+	return 403
+}
+
 func (o *SearchFlowForbidden) Error() string {
 	return fmt.Sprintf("[GET /flow/search-results][%d] searchFlowForbidden ", 403)
 }
@@ -310,6 +330,11 @@ func (o *SearchFlowConflict) IsServerError() bool {
 // IsCode returns true when this search flow conflict response a status code equal to that given
 func (o *SearchFlowConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the search flow conflict response
+func (o *SearchFlowConflict) Code() int {
+	return 409
 }
 
 func (o *SearchFlowConflict) Error() string {

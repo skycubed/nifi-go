@@ -204,6 +204,11 @@ func (m *NodeResponse) ContextValidate(ctx context.Context, formats strfmt.Regis
 func (m *NodeResponse) contextValidateClientResponse(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ClientResponse != nil {
+
+		if swag.IsZero(m.ClientResponse) { // not required
+			return nil
+		}
+
 		if err := m.ClientResponse.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("clientResponse")
@@ -220,6 +225,11 @@ func (m *NodeResponse) contextValidateClientResponse(ctx context.Context, format
 func (m *NodeResponse) contextValidateNodeID(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.NodeID != nil {
+
+		if swag.IsZero(m.NodeID) { // not required
+			return nil
+		}
+
 		if err := m.NodeID.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("nodeId")
@@ -236,6 +246,11 @@ func (m *NodeResponse) contextValidateNodeID(ctx context.Context, formats strfmt
 func (m *NodeResponse) contextValidateResponse(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Response != nil {
+
+		if swag.IsZero(m.Response) { // not required
+			return nil
+		}
+
 		if err := m.Response.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("response")
@@ -252,6 +267,11 @@ func (m *NodeResponse) contextValidateResponse(ctx context.Context, formats strf
 func (m *NodeResponse) contextValidateThrowable(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Throwable != nil {
+
+		if swag.IsZero(m.Throwable) { // not required
+			return nil
+		}
+
 		if err := m.Throwable.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("throwable")

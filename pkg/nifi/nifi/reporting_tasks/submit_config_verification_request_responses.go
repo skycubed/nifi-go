@@ -60,7 +60,7 @@ func (o *SubmitConfigVerificationRequestReader) ReadResponse(response runtime.Cl
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /reporting-tasks/{id}/config/verification-requests] submitConfigVerificationRequest", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *SubmitConfigVerificationRequestOK) IsServerError() bool {
 // IsCode returns true when this submit config verification request o k response a status code equal to that given
 func (o *SubmitConfigVerificationRequestOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the submit config verification request o k response
+func (o *SubmitConfigVerificationRequestOK) Code() int {
+	return 200
 }
 
 func (o *SubmitConfigVerificationRequestOK) Error() string {
@@ -165,6 +170,11 @@ func (o *SubmitConfigVerificationRequestBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the submit config verification request bad request response
+func (o *SubmitConfigVerificationRequestBadRequest) Code() int {
+	return 400
+}
+
 func (o *SubmitConfigVerificationRequestBadRequest) Error() string {
 	return fmt.Sprintf("[POST /reporting-tasks/{id}/config/verification-requests][%d] submitConfigVerificationRequestBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *SubmitConfigVerificationRequestUnauthorized) IsServerError() bool {
 // IsCode returns true when this submit config verification request unauthorized response a status code equal to that given
 func (o *SubmitConfigVerificationRequestUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the submit config verification request unauthorized response
+func (o *SubmitConfigVerificationRequestUnauthorized) Code() int {
+	return 401
 }
 
 func (o *SubmitConfigVerificationRequestUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *SubmitConfigVerificationRequestForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the submit config verification request forbidden response
+func (o *SubmitConfigVerificationRequestForbidden) Code() int {
+	return 403
+}
+
 func (o *SubmitConfigVerificationRequestForbidden) Error() string {
 	return fmt.Sprintf("[POST /reporting-tasks/{id}/config/verification-requests][%d] submitConfigVerificationRequestForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *SubmitConfigVerificationRequestNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the submit config verification request not found response
+func (o *SubmitConfigVerificationRequestNotFound) Code() int {
+	return 404
+}
+
 func (o *SubmitConfigVerificationRequestNotFound) Error() string {
 	return fmt.Sprintf("[POST /reporting-tasks/{id}/config/verification-requests][%d] submitConfigVerificationRequestNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *SubmitConfigVerificationRequestConflict) IsServerError() bool {
 // IsCode returns true when this submit config verification request conflict response a status code equal to that given
 func (o *SubmitConfigVerificationRequestConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the submit config verification request conflict response
+func (o *SubmitConfigVerificationRequestConflict) Code() int {
+	return 409
 }
 
 func (o *SubmitConfigVerificationRequestConflict) Error() string {

@@ -60,7 +60,7 @@ func (o *GetParameterContextUpdateReader) ReadResponse(response runtime.ClientRe
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /parameter-contexts/{contextId}/update-requests/{requestId}] getParameterContextUpdate", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *GetParameterContextUpdateOK) IsServerError() bool {
 // IsCode returns true when this get parameter context update o k response a status code equal to that given
 func (o *GetParameterContextUpdateOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get parameter context update o k response
+func (o *GetParameterContextUpdateOK) Code() int {
+	return 200
 }
 
 func (o *GetParameterContextUpdateOK) Error() string {
@@ -165,6 +170,11 @@ func (o *GetParameterContextUpdateBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get parameter context update bad request response
+func (o *GetParameterContextUpdateBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetParameterContextUpdateBadRequest) Error() string {
 	return fmt.Sprintf("[GET /parameter-contexts/{contextId}/update-requests/{requestId}][%d] getParameterContextUpdateBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *GetParameterContextUpdateUnauthorized) IsServerError() bool {
 // IsCode returns true when this get parameter context update unauthorized response a status code equal to that given
 func (o *GetParameterContextUpdateUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get parameter context update unauthorized response
+func (o *GetParameterContextUpdateUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetParameterContextUpdateUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *GetParameterContextUpdateForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get parameter context update forbidden response
+func (o *GetParameterContextUpdateForbidden) Code() int {
+	return 403
+}
+
 func (o *GetParameterContextUpdateForbidden) Error() string {
 	return fmt.Sprintf("[GET /parameter-contexts/{contextId}/update-requests/{requestId}][%d] getParameterContextUpdateForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *GetParameterContextUpdateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get parameter context update not found response
+func (o *GetParameterContextUpdateNotFound) Code() int {
+	return 404
+}
+
 func (o *GetParameterContextUpdateNotFound) Error() string {
 	return fmt.Sprintf("[GET /parameter-contexts/{contextId}/update-requests/{requestId}][%d] getParameterContextUpdateNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *GetParameterContextUpdateConflict) IsServerError() bool {
 // IsCode returns true when this get parameter context update conflict response a status code equal to that given
 func (o *GetParameterContextUpdateConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get parameter context update conflict response
+func (o *GetParameterContextUpdateConflict) Code() int {
+	return 409
 }
 
 func (o *GetParameterContextUpdateConflict) Error() string {

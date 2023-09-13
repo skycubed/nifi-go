@@ -51,7 +51,7 @@ func (o *DeleteVersionControlRequestReader) ReadResponse(response runtime.Client
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /versions/active-requests/{id}] deleteVersionControlRequest", response, response.Code())
 	}
 }
 
@@ -91,6 +91,11 @@ func (o *DeleteVersionControlRequestBadRequest) IsServerError() bool {
 // IsCode returns true when this delete version control request bad request response a status code equal to that given
 func (o *DeleteVersionControlRequestBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the delete version control request bad request response
+func (o *DeleteVersionControlRequestBadRequest) Code() int {
+	return 400
 }
 
 func (o *DeleteVersionControlRequestBadRequest) Error() string {
@@ -144,6 +149,11 @@ func (o *DeleteVersionControlRequestUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the delete version control request unauthorized response
+func (o *DeleteVersionControlRequestUnauthorized) Code() int {
+	return 401
+}
+
 func (o *DeleteVersionControlRequestUnauthorized) Error() string {
 	return fmt.Sprintf("[DELETE /versions/active-requests/{id}][%d] deleteVersionControlRequestUnauthorized ", 401)
 }
@@ -193,6 +203,11 @@ func (o *DeleteVersionControlRequestForbidden) IsServerError() bool {
 // IsCode returns true when this delete version control request forbidden response a status code equal to that given
 func (o *DeleteVersionControlRequestForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the delete version control request forbidden response
+func (o *DeleteVersionControlRequestForbidden) Code() int {
+	return 403
 }
 
 func (o *DeleteVersionControlRequestForbidden) Error() string {
@@ -246,6 +261,11 @@ func (o *DeleteVersionControlRequestNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the delete version control request not found response
+func (o *DeleteVersionControlRequestNotFound) Code() int {
+	return 404
+}
+
 func (o *DeleteVersionControlRequestNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /versions/active-requests/{id}][%d] deleteVersionControlRequestNotFound ", 404)
 }
@@ -295,6 +315,11 @@ func (o *DeleteVersionControlRequestConflict) IsServerError() bool {
 // IsCode returns true when this delete version control request conflict response a status code equal to that given
 func (o *DeleteVersionControlRequestConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the delete version control request conflict response
+func (o *DeleteVersionControlRequestConflict) Code() int {
+	return 409
 }
 
 func (o *DeleteVersionControlRequestConflict) Error() string {

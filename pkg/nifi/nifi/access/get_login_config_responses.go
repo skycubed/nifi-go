@@ -30,7 +30,7 @@ func (o *GetLoginConfigReader) ReadResponse(response runtime.ClientResponse, con
 		}
 		return result, nil
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /access/config] getLoginConfig", response, response.Code())
 	}
 }
 
@@ -71,6 +71,11 @@ func (o *GetLoginConfigOK) IsServerError() bool {
 // IsCode returns true when this get login config o k response a status code equal to that given
 func (o *GetLoginConfigOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get login config o k response
+func (o *GetLoginConfigOK) Code() int {
+	return 200
 }
 
 func (o *GetLoginConfigOK) Error() string {

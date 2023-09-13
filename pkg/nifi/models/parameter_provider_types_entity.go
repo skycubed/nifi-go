@@ -88,6 +88,11 @@ func (m *ParameterProviderTypesEntity) contextValidateParameterProviderTypes(ctx
 	for i := 0; i < len(m.ParameterProviderTypes); i++ {
 
 		if m.ParameterProviderTypes[i] != nil {
+
+			if swag.IsZero(m.ParameterProviderTypes[i]) { // not required
+				return nil
+			}
+
 			if err := m.ParameterProviderTypes[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("parameterProviderTypes" + "." + strconv.Itoa(i))

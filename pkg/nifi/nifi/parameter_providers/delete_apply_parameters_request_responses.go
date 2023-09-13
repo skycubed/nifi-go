@@ -60,7 +60,7 @@ func (o *DeleteApplyParametersRequestReader) ReadResponse(response runtime.Clien
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /parameter-providers/{providerId}/apply-parameters-requests/{requestId}] deleteApplyParametersRequest", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *DeleteApplyParametersRequestOK) IsServerError() bool {
 // IsCode returns true when this delete apply parameters request o k response a status code equal to that given
 func (o *DeleteApplyParametersRequestOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the delete apply parameters request o k response
+func (o *DeleteApplyParametersRequestOK) Code() int {
+	return 200
 }
 
 func (o *DeleteApplyParametersRequestOK) Error() string {
@@ -165,6 +170,11 @@ func (o *DeleteApplyParametersRequestBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the delete apply parameters request bad request response
+func (o *DeleteApplyParametersRequestBadRequest) Code() int {
+	return 400
+}
+
 func (o *DeleteApplyParametersRequestBadRequest) Error() string {
 	return fmt.Sprintf("[DELETE /parameter-providers/{providerId}/apply-parameters-requests/{requestId}][%d] deleteApplyParametersRequestBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *DeleteApplyParametersRequestUnauthorized) IsServerError() bool {
 // IsCode returns true when this delete apply parameters request unauthorized response a status code equal to that given
 func (o *DeleteApplyParametersRequestUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the delete apply parameters request unauthorized response
+func (o *DeleteApplyParametersRequestUnauthorized) Code() int {
+	return 401
 }
 
 func (o *DeleteApplyParametersRequestUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *DeleteApplyParametersRequestForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the delete apply parameters request forbidden response
+func (o *DeleteApplyParametersRequestForbidden) Code() int {
+	return 403
+}
+
 func (o *DeleteApplyParametersRequestForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /parameter-providers/{providerId}/apply-parameters-requests/{requestId}][%d] deleteApplyParametersRequestForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *DeleteApplyParametersRequestNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the delete apply parameters request not found response
+func (o *DeleteApplyParametersRequestNotFound) Code() int {
+	return 404
+}
+
 func (o *DeleteApplyParametersRequestNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /parameter-providers/{providerId}/apply-parameters-requests/{requestId}][%d] deleteApplyParametersRequestNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *DeleteApplyParametersRequestConflict) IsServerError() bool {
 // IsCode returns true when this delete apply parameters request conflict response a status code equal to that given
 func (o *DeleteApplyParametersRequestConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the delete apply parameters request conflict response
+func (o *DeleteApplyParametersRequestConflict) Code() int {
+	return 409
 }
 
 func (o *DeleteApplyParametersRequestConflict) Error() string {

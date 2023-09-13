@@ -60,7 +60,7 @@ func (o *SubmitApplyParametersReader) ReadResponse(response runtime.ClientRespon
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /parameter-providers/{providerId}/apply-parameters-requests] submitApplyParameters", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *SubmitApplyParametersOK) IsServerError() bool {
 // IsCode returns true when this submit apply parameters o k response a status code equal to that given
 func (o *SubmitApplyParametersOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the submit apply parameters o k response
+func (o *SubmitApplyParametersOK) Code() int {
+	return 200
 }
 
 func (o *SubmitApplyParametersOK) Error() string {
@@ -165,6 +170,11 @@ func (o *SubmitApplyParametersBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the submit apply parameters bad request response
+func (o *SubmitApplyParametersBadRequest) Code() int {
+	return 400
+}
+
 func (o *SubmitApplyParametersBadRequest) Error() string {
 	return fmt.Sprintf("[POST /parameter-providers/{providerId}/apply-parameters-requests][%d] submitApplyParametersBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *SubmitApplyParametersUnauthorized) IsServerError() bool {
 // IsCode returns true when this submit apply parameters unauthorized response a status code equal to that given
 func (o *SubmitApplyParametersUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the submit apply parameters unauthorized response
+func (o *SubmitApplyParametersUnauthorized) Code() int {
+	return 401
 }
 
 func (o *SubmitApplyParametersUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *SubmitApplyParametersForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the submit apply parameters forbidden response
+func (o *SubmitApplyParametersForbidden) Code() int {
+	return 403
+}
+
 func (o *SubmitApplyParametersForbidden) Error() string {
 	return fmt.Sprintf("[POST /parameter-providers/{providerId}/apply-parameters-requests][%d] submitApplyParametersForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *SubmitApplyParametersNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the submit apply parameters not found response
+func (o *SubmitApplyParametersNotFound) Code() int {
+	return 404
+}
+
 func (o *SubmitApplyParametersNotFound) Error() string {
 	return fmt.Sprintf("[POST /parameter-providers/{providerId}/apply-parameters-requests][%d] submitApplyParametersNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *SubmitApplyParametersConflict) IsServerError() bool {
 // IsCode returns true when this submit apply parameters conflict response a status code equal to that given
 func (o *SubmitApplyParametersConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the submit apply parameters conflict response
+func (o *SubmitApplyParametersConflict) Code() int {
+	return 409
 }
 
 func (o *SubmitApplyParametersConflict) Error() string {

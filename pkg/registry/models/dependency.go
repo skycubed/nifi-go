@@ -78,6 +78,11 @@ func (m *Dependency) ContextValidate(ctx context.Context, formats strfmt.Registr
 func (m *Dependency) contextValidateDependentValues(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.DependentValues != nil {
+
+		if swag.IsZero(m.DependentValues) { // not required
+			return nil
+		}
+
 		if err := m.DependentValues.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("dependentValues")

@@ -54,7 +54,7 @@ func (o *GetPrioritizersReader) ReadResponse(response runtime.ClientResponse, co
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /flow/prioritizers] getPrioritizers", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *GetPrioritizersOK) IsServerError() bool {
 // IsCode returns true when this get prioritizers o k response a status code equal to that given
 func (o *GetPrioritizersOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get prioritizers o k response
+func (o *GetPrioritizersOK) Code() int {
+	return 200
 }
 
 func (o *GetPrioritizersOK) Error() string {
@@ -159,6 +164,11 @@ func (o *GetPrioritizersBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get prioritizers bad request response
+func (o *GetPrioritizersBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetPrioritizersBadRequest) Error() string {
 	return fmt.Sprintf("[GET /flow/prioritizers][%d] getPrioritizersBadRequest ", 400)
 }
@@ -208,6 +218,11 @@ func (o *GetPrioritizersUnauthorized) IsServerError() bool {
 // IsCode returns true when this get prioritizers unauthorized response a status code equal to that given
 func (o *GetPrioritizersUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get prioritizers unauthorized response
+func (o *GetPrioritizersUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetPrioritizersUnauthorized) Error() string {
@@ -261,6 +276,11 @@ func (o *GetPrioritizersForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get prioritizers forbidden response
+func (o *GetPrioritizersForbidden) Code() int {
+	return 403
+}
+
 func (o *GetPrioritizersForbidden) Error() string {
 	return fmt.Sprintf("[GET /flow/prioritizers][%d] getPrioritizersForbidden ", 403)
 }
@@ -310,6 +330,11 @@ func (o *GetPrioritizersConflict) IsServerError() bool {
 // IsCode returns true when this get prioritizers conflict response a status code equal to that given
 func (o *GetPrioritizersConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get prioritizers conflict response
+func (o *GetPrioritizersConflict) Code() int {
+	return 409
 }
 
 func (o *GetPrioritizersConflict) Error() string {

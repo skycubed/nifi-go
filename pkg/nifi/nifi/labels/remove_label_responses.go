@@ -60,7 +60,7 @@ func (o *RemoveLabelReader) ReadResponse(response runtime.ClientResponse, consum
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /labels/{id}] removeLabel", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *RemoveLabelOK) IsServerError() bool {
 // IsCode returns true when this remove label o k response a status code equal to that given
 func (o *RemoveLabelOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the remove label o k response
+func (o *RemoveLabelOK) Code() int {
+	return 200
 }
 
 func (o *RemoveLabelOK) Error() string {
@@ -165,6 +170,11 @@ func (o *RemoveLabelBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the remove label bad request response
+func (o *RemoveLabelBadRequest) Code() int {
+	return 400
+}
+
 func (o *RemoveLabelBadRequest) Error() string {
 	return fmt.Sprintf("[DELETE /labels/{id}][%d] removeLabelBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *RemoveLabelUnauthorized) IsServerError() bool {
 // IsCode returns true when this remove label unauthorized response a status code equal to that given
 func (o *RemoveLabelUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the remove label unauthorized response
+func (o *RemoveLabelUnauthorized) Code() int {
+	return 401
 }
 
 func (o *RemoveLabelUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *RemoveLabelForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the remove label forbidden response
+func (o *RemoveLabelForbidden) Code() int {
+	return 403
+}
+
 func (o *RemoveLabelForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /labels/{id}][%d] removeLabelForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *RemoveLabelNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the remove label not found response
+func (o *RemoveLabelNotFound) Code() int {
+	return 404
+}
+
 func (o *RemoveLabelNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /labels/{id}][%d] removeLabelNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *RemoveLabelConflict) IsServerError() bool {
 // IsCode returns true when this remove label conflict response a status code equal to that given
 func (o *RemoveLabelConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the remove label conflict response
+func (o *RemoveLabelConflict) Code() int {
+	return 409
 }
 
 func (o *RemoveLabelConflict) Error() string {

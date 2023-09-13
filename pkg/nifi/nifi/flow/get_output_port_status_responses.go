@@ -60,7 +60,7 @@ func (o *GetOutputPortStatusReader) ReadResponse(response runtime.ClientResponse
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /flow/output-ports/{id}/status] getOutputPortStatus", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *GetOutputPortStatusOK) IsServerError() bool {
 // IsCode returns true when this get output port status o k response a status code equal to that given
 func (o *GetOutputPortStatusOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get output port status o k response
+func (o *GetOutputPortStatusOK) Code() int {
+	return 200
 }
 
 func (o *GetOutputPortStatusOK) Error() string {
@@ -165,6 +170,11 @@ func (o *GetOutputPortStatusBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get output port status bad request response
+func (o *GetOutputPortStatusBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetOutputPortStatusBadRequest) Error() string {
 	return fmt.Sprintf("[GET /flow/output-ports/{id}/status][%d] getOutputPortStatusBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *GetOutputPortStatusUnauthorized) IsServerError() bool {
 // IsCode returns true when this get output port status unauthorized response a status code equal to that given
 func (o *GetOutputPortStatusUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get output port status unauthorized response
+func (o *GetOutputPortStatusUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetOutputPortStatusUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *GetOutputPortStatusForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get output port status forbidden response
+func (o *GetOutputPortStatusForbidden) Code() int {
+	return 403
+}
+
 func (o *GetOutputPortStatusForbidden) Error() string {
 	return fmt.Sprintf("[GET /flow/output-ports/{id}/status][%d] getOutputPortStatusForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *GetOutputPortStatusNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get output port status not found response
+func (o *GetOutputPortStatusNotFound) Code() int {
+	return 404
+}
+
 func (o *GetOutputPortStatusNotFound) Error() string {
 	return fmt.Sprintf("[GET /flow/output-ports/{id}/status][%d] getOutputPortStatusNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *GetOutputPortStatusConflict) IsServerError() bool {
 // IsCode returns true when this get output port status conflict response a status code equal to that given
 func (o *GetOutputPortStatusConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get output port status conflict response
+func (o *GetOutputPortStatusConflict) Code() int {
+	return 409
 }
 
 func (o *GetOutputPortStatusConflict) Error() string {

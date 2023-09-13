@@ -60,7 +60,7 @@ func (o *GlobalGetBundleVersionReader) ReadResponse(response runtime.ClientRespo
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /bundles/{bundleId}/versions/{version}] globalGetBundleVersion", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *GlobalGetBundleVersionOK) IsServerError() bool {
 // IsCode returns true when this global get bundle version o k response a status code equal to that given
 func (o *GlobalGetBundleVersionOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the global get bundle version o k response
+func (o *GlobalGetBundleVersionOK) Code() int {
+	return 200
 }
 
 func (o *GlobalGetBundleVersionOK) Error() string {
@@ -165,6 +170,11 @@ func (o *GlobalGetBundleVersionBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the global get bundle version bad request response
+func (o *GlobalGetBundleVersionBadRequest) Code() int {
+	return 400
+}
+
 func (o *GlobalGetBundleVersionBadRequest) Error() string {
 	return fmt.Sprintf("[GET /bundles/{bundleId}/versions/{version}][%d] globalGetBundleVersionBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *GlobalGetBundleVersionUnauthorized) IsServerError() bool {
 // IsCode returns true when this global get bundle version unauthorized response a status code equal to that given
 func (o *GlobalGetBundleVersionUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the global get bundle version unauthorized response
+func (o *GlobalGetBundleVersionUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GlobalGetBundleVersionUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *GlobalGetBundleVersionForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the global get bundle version forbidden response
+func (o *GlobalGetBundleVersionForbidden) Code() int {
+	return 403
+}
+
 func (o *GlobalGetBundleVersionForbidden) Error() string {
 	return fmt.Sprintf("[GET /bundles/{bundleId}/versions/{version}][%d] globalGetBundleVersionForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *GlobalGetBundleVersionNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the global get bundle version not found response
+func (o *GlobalGetBundleVersionNotFound) Code() int {
+	return 404
+}
+
 func (o *GlobalGetBundleVersionNotFound) Error() string {
 	return fmt.Sprintf("[GET /bundles/{bundleId}/versions/{version}][%d] globalGetBundleVersionNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *GlobalGetBundleVersionConflict) IsServerError() bool {
 // IsCode returns true when this global get bundle version conflict response a status code equal to that given
 func (o *GlobalGetBundleVersionConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the global get bundle version conflict response
+func (o *GlobalGetBundleVersionConflict) Code() int {
+	return 409
 }
 
 func (o *GlobalGetBundleVersionConflict) Error() string {

@@ -489,6 +489,11 @@ func (m *SearchResultsDTO) contextValidateConnectionResults(ctx context.Context,
 	for i := 0; i < len(m.ConnectionResults); i++ {
 
 		if m.ConnectionResults[i] != nil {
+
+			if swag.IsZero(m.ConnectionResults[i]) { // not required
+				return nil
+			}
+
 			if err := m.ConnectionResults[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("connectionResults" + "." + strconv.Itoa(i))
@@ -509,6 +514,11 @@ func (m *SearchResultsDTO) contextValidateControllerServiceNodeResults(ctx conte
 	for i := 0; i < len(m.ControllerServiceNodeResults); i++ {
 
 		if m.ControllerServiceNodeResults[i] != nil {
+
+			if swag.IsZero(m.ControllerServiceNodeResults[i]) { // not required
+				return nil
+			}
+
 			if err := m.ControllerServiceNodeResults[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("controllerServiceNodeResults" + "." + strconv.Itoa(i))
@@ -529,6 +539,11 @@ func (m *SearchResultsDTO) contextValidateFunnelResults(ctx context.Context, for
 	for i := 0; i < len(m.FunnelResults); i++ {
 
 		if m.FunnelResults[i] != nil {
+
+			if swag.IsZero(m.FunnelResults[i]) { // not required
+				return nil
+			}
+
 			if err := m.FunnelResults[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("funnelResults" + "." + strconv.Itoa(i))
@@ -549,6 +564,11 @@ func (m *SearchResultsDTO) contextValidateInputPortResults(ctx context.Context, 
 	for i := 0; i < len(m.InputPortResults); i++ {
 
 		if m.InputPortResults[i] != nil {
+
+			if swag.IsZero(m.InputPortResults[i]) { // not required
+				return nil
+			}
+
 			if err := m.InputPortResults[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("inputPortResults" + "." + strconv.Itoa(i))
@@ -569,6 +589,11 @@ func (m *SearchResultsDTO) contextValidateLabelResults(ctx context.Context, form
 	for i := 0; i < len(m.LabelResults); i++ {
 
 		if m.LabelResults[i] != nil {
+
+			if swag.IsZero(m.LabelResults[i]) { // not required
+				return nil
+			}
+
 			if err := m.LabelResults[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("labelResults" + "." + strconv.Itoa(i))
@@ -589,6 +614,11 @@ func (m *SearchResultsDTO) contextValidateOutputPortResults(ctx context.Context,
 	for i := 0; i < len(m.OutputPortResults); i++ {
 
 		if m.OutputPortResults[i] != nil {
+
+			if swag.IsZero(m.OutputPortResults[i]) { // not required
+				return nil
+			}
+
 			if err := m.OutputPortResults[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("outputPortResults" + "." + strconv.Itoa(i))
@@ -609,6 +639,11 @@ func (m *SearchResultsDTO) contextValidateParameterContextResults(ctx context.Co
 	for i := 0; i < len(m.ParameterContextResults); i++ {
 
 		if m.ParameterContextResults[i] != nil {
+
+			if swag.IsZero(m.ParameterContextResults[i]) { // not required
+				return nil
+			}
+
 			if err := m.ParameterContextResults[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("parameterContextResults" + "." + strconv.Itoa(i))
@@ -629,6 +664,11 @@ func (m *SearchResultsDTO) contextValidateParameterProviderNodeResults(ctx conte
 	for i := 0; i < len(m.ParameterProviderNodeResults); i++ {
 
 		if m.ParameterProviderNodeResults[i] != nil {
+
+			if swag.IsZero(m.ParameterProviderNodeResults[i]) { // not required
+				return nil
+			}
+
 			if err := m.ParameterProviderNodeResults[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("parameterProviderNodeResults" + "." + strconv.Itoa(i))
@@ -649,6 +689,11 @@ func (m *SearchResultsDTO) contextValidateParameterResults(ctx context.Context, 
 	for i := 0; i < len(m.ParameterResults); i++ {
 
 		if m.ParameterResults[i] != nil {
+
+			if swag.IsZero(m.ParameterResults[i]) { // not required
+				return nil
+			}
+
 			if err := m.ParameterResults[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("parameterResults" + "." + strconv.Itoa(i))
@@ -669,6 +714,11 @@ func (m *SearchResultsDTO) contextValidateProcessGroupResults(ctx context.Contex
 	for i := 0; i < len(m.ProcessGroupResults); i++ {
 
 		if m.ProcessGroupResults[i] != nil {
+
+			if swag.IsZero(m.ProcessGroupResults[i]) { // not required
+				return nil
+			}
+
 			if err := m.ProcessGroupResults[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("processGroupResults" + "." + strconv.Itoa(i))
@@ -689,6 +739,11 @@ func (m *SearchResultsDTO) contextValidateProcessorResults(ctx context.Context, 
 	for i := 0; i < len(m.ProcessorResults); i++ {
 
 		if m.ProcessorResults[i] != nil {
+
+			if swag.IsZero(m.ProcessorResults[i]) { // not required
+				return nil
+			}
+
 			if err := m.ProcessorResults[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("processorResults" + "." + strconv.Itoa(i))
@@ -709,6 +764,11 @@ func (m *SearchResultsDTO) contextValidateRemoteProcessGroupResults(ctx context.
 	for i := 0; i < len(m.RemoteProcessGroupResults); i++ {
 
 		if m.RemoteProcessGroupResults[i] != nil {
+
+			if swag.IsZero(m.RemoteProcessGroupResults[i]) { // not required
+				return nil
+			}
+
 			if err := m.RemoteProcessGroupResults[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("remoteProcessGroupResults" + "." + strconv.Itoa(i))

@@ -54,7 +54,7 @@ func (o *DeleteBucketReader) ReadResponse(response runtime.ClientResponse, consu
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /buckets/{bucketId}] deleteBucket", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *DeleteBucketOK) IsServerError() bool {
 // IsCode returns true when this delete bucket o k response a status code equal to that given
 func (o *DeleteBucketOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the delete bucket o k response
+func (o *DeleteBucketOK) Code() int {
+	return 200
 }
 
 func (o *DeleteBucketOK) Error() string {
@@ -159,6 +164,11 @@ func (o *DeleteBucketBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the delete bucket bad request response
+func (o *DeleteBucketBadRequest) Code() int {
+	return 400
+}
+
 func (o *DeleteBucketBadRequest) Error() string {
 	return fmt.Sprintf("[DELETE /buckets/{bucketId}][%d] deleteBucketBadRequest ", 400)
 }
@@ -208,6 +218,11 @@ func (o *DeleteBucketUnauthorized) IsServerError() bool {
 // IsCode returns true when this delete bucket unauthorized response a status code equal to that given
 func (o *DeleteBucketUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the delete bucket unauthorized response
+func (o *DeleteBucketUnauthorized) Code() int {
+	return 401
 }
 
 func (o *DeleteBucketUnauthorized) Error() string {
@@ -261,6 +276,11 @@ func (o *DeleteBucketForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the delete bucket forbidden response
+func (o *DeleteBucketForbidden) Code() int {
+	return 403
+}
+
 func (o *DeleteBucketForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /buckets/{bucketId}][%d] deleteBucketForbidden ", 403)
 }
@@ -310,6 +330,11 @@ func (o *DeleteBucketNotFound) IsServerError() bool {
 // IsCode returns true when this delete bucket not found response a status code equal to that given
 func (o *DeleteBucketNotFound) IsCode(code int) bool {
 	return code == 404
+}
+
+// Code gets the status code for the delete bucket not found response
+func (o *DeleteBucketNotFound) Code() int {
+	return 404
 }
 
 func (o *DeleteBucketNotFound) Error() string {

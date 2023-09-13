@@ -60,7 +60,7 @@ func (o *GetProcessorReader) ReadResponse(response runtime.ClientResponse, consu
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /processors/{id}] getProcessor", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *GetProcessorOK) IsServerError() bool {
 // IsCode returns true when this get processor o k response a status code equal to that given
 func (o *GetProcessorOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get processor o k response
+func (o *GetProcessorOK) Code() int {
+	return 200
 }
 
 func (o *GetProcessorOK) Error() string {
@@ -165,6 +170,11 @@ func (o *GetProcessorBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get processor bad request response
+func (o *GetProcessorBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetProcessorBadRequest) Error() string {
 	return fmt.Sprintf("[GET /processors/{id}][%d] getProcessorBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *GetProcessorUnauthorized) IsServerError() bool {
 // IsCode returns true when this get processor unauthorized response a status code equal to that given
 func (o *GetProcessorUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get processor unauthorized response
+func (o *GetProcessorUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetProcessorUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *GetProcessorForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get processor forbidden response
+func (o *GetProcessorForbidden) Code() int {
+	return 403
+}
+
 func (o *GetProcessorForbidden) Error() string {
 	return fmt.Sprintf("[GET /processors/{id}][%d] getProcessorForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *GetProcessorNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get processor not found response
+func (o *GetProcessorNotFound) Code() int {
+	return 404
+}
+
 func (o *GetProcessorNotFound) Error() string {
 	return fmt.Sprintf("[GET /processors/{id}][%d] getProcessorNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *GetProcessorConflict) IsServerError() bool {
 // IsCode returns true when this get processor conflict response a status code equal to that given
 func (o *GetProcessorConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get processor conflict response
+func (o *GetProcessorConflict) Code() int {
+	return 409
 }
 
 func (o *GetProcessorConflict) Error() string {

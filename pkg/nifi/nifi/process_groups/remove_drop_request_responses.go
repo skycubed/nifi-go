@@ -60,7 +60,7 @@ func (o *RemoveDropRequestReader) ReadResponse(response runtime.ClientResponse, 
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /process-groups/{id}/empty-all-connections-requests/{drop-request-id}] removeDropRequest", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *RemoveDropRequestOK) IsServerError() bool {
 // IsCode returns true when this remove drop request o k response a status code equal to that given
 func (o *RemoveDropRequestOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the remove drop request o k response
+func (o *RemoveDropRequestOK) Code() int {
+	return 200
 }
 
 func (o *RemoveDropRequestOK) Error() string {
@@ -165,6 +170,11 @@ func (o *RemoveDropRequestBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the remove drop request bad request response
+func (o *RemoveDropRequestBadRequest) Code() int {
+	return 400
+}
+
 func (o *RemoveDropRequestBadRequest) Error() string {
 	return fmt.Sprintf("[DELETE /process-groups/{id}/empty-all-connections-requests/{drop-request-id}][%d] removeDropRequestBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *RemoveDropRequestUnauthorized) IsServerError() bool {
 // IsCode returns true when this remove drop request unauthorized response a status code equal to that given
 func (o *RemoveDropRequestUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the remove drop request unauthorized response
+func (o *RemoveDropRequestUnauthorized) Code() int {
+	return 401
 }
 
 func (o *RemoveDropRequestUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *RemoveDropRequestForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the remove drop request forbidden response
+func (o *RemoveDropRequestForbidden) Code() int {
+	return 403
+}
+
 func (o *RemoveDropRequestForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /process-groups/{id}/empty-all-connections-requests/{drop-request-id}][%d] removeDropRequestForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *RemoveDropRequestNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the remove drop request not found response
+func (o *RemoveDropRequestNotFound) Code() int {
+	return 404
+}
+
 func (o *RemoveDropRequestNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /process-groups/{id}/empty-all-connections-requests/{drop-request-id}][%d] removeDropRequestNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *RemoveDropRequestConflict) IsServerError() bool {
 // IsCode returns true when this remove drop request conflict response a status code equal to that given
 func (o *RemoveDropRequestConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the remove drop request conflict response
+func (o *RemoveDropRequestConflict) Code() int {
+	return 409
 }
 
 func (o *RemoveDropRequestConflict) Error() string {

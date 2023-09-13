@@ -60,7 +60,7 @@ func (o *DeleteParameterContextReader) ReadResponse(response runtime.ClientRespo
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /parameter-contexts/{id}] deleteParameterContext", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *DeleteParameterContextOK) IsServerError() bool {
 // IsCode returns true when this delete parameter context o k response a status code equal to that given
 func (o *DeleteParameterContextOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the delete parameter context o k response
+func (o *DeleteParameterContextOK) Code() int {
+	return 200
 }
 
 func (o *DeleteParameterContextOK) Error() string {
@@ -165,6 +170,11 @@ func (o *DeleteParameterContextBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the delete parameter context bad request response
+func (o *DeleteParameterContextBadRequest) Code() int {
+	return 400
+}
+
 func (o *DeleteParameterContextBadRequest) Error() string {
 	return fmt.Sprintf("[DELETE /parameter-contexts/{id}][%d] deleteParameterContextBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *DeleteParameterContextUnauthorized) IsServerError() bool {
 // IsCode returns true when this delete parameter context unauthorized response a status code equal to that given
 func (o *DeleteParameterContextUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the delete parameter context unauthorized response
+func (o *DeleteParameterContextUnauthorized) Code() int {
+	return 401
 }
 
 func (o *DeleteParameterContextUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *DeleteParameterContextForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the delete parameter context forbidden response
+func (o *DeleteParameterContextForbidden) Code() int {
+	return 403
+}
+
 func (o *DeleteParameterContextForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /parameter-contexts/{id}][%d] deleteParameterContextForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *DeleteParameterContextNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the delete parameter context not found response
+func (o *DeleteParameterContextNotFound) Code() int {
+	return 404
+}
+
 func (o *DeleteParameterContextNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /parameter-contexts/{id}][%d] deleteParameterContextNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *DeleteParameterContextConflict) IsServerError() bool {
 // IsCode returns true when this delete parameter context conflict response a status code equal to that given
 func (o *DeleteParameterContextConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the delete parameter context conflict response
+func (o *DeleteParameterContextConflict) Code() int {
+	return 409
 }
 
 func (o *DeleteParameterContextConflict) Error() string {

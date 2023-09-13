@@ -54,7 +54,7 @@ func (o *GetBannersReader) ReadResponse(response runtime.ClientResponse, consume
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /flow/banners] getBanners", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *GetBannersOK) IsServerError() bool {
 // IsCode returns true when this get banners o k response a status code equal to that given
 func (o *GetBannersOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get banners o k response
+func (o *GetBannersOK) Code() int {
+	return 200
 }
 
 func (o *GetBannersOK) Error() string {
@@ -159,6 +164,11 @@ func (o *GetBannersBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get banners bad request response
+func (o *GetBannersBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetBannersBadRequest) Error() string {
 	return fmt.Sprintf("[GET /flow/banners][%d] getBannersBadRequest ", 400)
 }
@@ -208,6 +218,11 @@ func (o *GetBannersUnauthorized) IsServerError() bool {
 // IsCode returns true when this get banners unauthorized response a status code equal to that given
 func (o *GetBannersUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get banners unauthorized response
+func (o *GetBannersUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetBannersUnauthorized) Error() string {
@@ -261,6 +276,11 @@ func (o *GetBannersForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get banners forbidden response
+func (o *GetBannersForbidden) Code() int {
+	return 403
+}
+
 func (o *GetBannersForbidden) Error() string {
 	return fmt.Sprintf("[GET /flow/banners][%d] getBannersForbidden ", 403)
 }
@@ -310,6 +330,11 @@ func (o *GetBannersConflict) IsServerError() bool {
 // IsCode returns true when this get banners conflict response a status code equal to that given
 func (o *GetBannersConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get banners conflict response
+func (o *GetBannersConflict) Code() int {
+	return 409
 }
 
 func (o *GetBannersConflict) Error() string {

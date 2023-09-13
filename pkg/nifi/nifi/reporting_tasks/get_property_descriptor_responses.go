@@ -60,7 +60,7 @@ func (o *GetPropertyDescriptorReader) ReadResponse(response runtime.ClientRespon
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /reporting-tasks/{id}/descriptors] getPropertyDescriptor", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *GetPropertyDescriptorOK) IsServerError() bool {
 // IsCode returns true when this get property descriptor o k response a status code equal to that given
 func (o *GetPropertyDescriptorOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get property descriptor o k response
+func (o *GetPropertyDescriptorOK) Code() int {
+	return 200
 }
 
 func (o *GetPropertyDescriptorOK) Error() string {
@@ -165,6 +170,11 @@ func (o *GetPropertyDescriptorBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get property descriptor bad request response
+func (o *GetPropertyDescriptorBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetPropertyDescriptorBadRequest) Error() string {
 	return fmt.Sprintf("[GET /reporting-tasks/{id}/descriptors][%d] getPropertyDescriptorBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *GetPropertyDescriptorUnauthorized) IsServerError() bool {
 // IsCode returns true when this get property descriptor unauthorized response a status code equal to that given
 func (o *GetPropertyDescriptorUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get property descriptor unauthorized response
+func (o *GetPropertyDescriptorUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetPropertyDescriptorUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *GetPropertyDescriptorForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get property descriptor forbidden response
+func (o *GetPropertyDescriptorForbidden) Code() int {
+	return 403
+}
+
 func (o *GetPropertyDescriptorForbidden) Error() string {
 	return fmt.Sprintf("[GET /reporting-tasks/{id}/descriptors][%d] getPropertyDescriptorForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *GetPropertyDescriptorNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get property descriptor not found response
+func (o *GetPropertyDescriptorNotFound) Code() int {
+	return 404
+}
+
 func (o *GetPropertyDescriptorNotFound) Error() string {
 	return fmt.Sprintf("[GET /reporting-tasks/{id}/descriptors][%d] getPropertyDescriptorNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *GetPropertyDescriptorConflict) IsServerError() bool {
 // IsCode returns true when this get property descriptor conflict response a status code equal to that given
 func (o *GetPropertyDescriptorConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get property descriptor conflict response
+func (o *GetPropertyDescriptorConflict) Code() int {
+	return 409
 }
 
 func (o *GetPropertyDescriptorConflict) Error() string {

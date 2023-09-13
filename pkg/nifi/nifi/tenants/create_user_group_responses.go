@@ -60,7 +60,7 @@ func (o *CreateUserGroupReader) ReadResponse(response runtime.ClientResponse, co
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /tenants/user-groups] createUserGroup", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *CreateUserGroupCreated) IsServerError() bool {
 // IsCode returns true when this create user group created response a status code equal to that given
 func (o *CreateUserGroupCreated) IsCode(code int) bool {
 	return code == 201
+}
+
+// Code gets the status code for the create user group created response
+func (o *CreateUserGroupCreated) Code() int {
+	return 201
 }
 
 func (o *CreateUserGroupCreated) Error() string {
@@ -165,6 +170,11 @@ func (o *CreateUserGroupBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the create user group bad request response
+func (o *CreateUserGroupBadRequest) Code() int {
+	return 400
+}
+
 func (o *CreateUserGroupBadRequest) Error() string {
 	return fmt.Sprintf("[POST /tenants/user-groups][%d] createUserGroupBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *CreateUserGroupUnauthorized) IsServerError() bool {
 // IsCode returns true when this create user group unauthorized response a status code equal to that given
 func (o *CreateUserGroupUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the create user group unauthorized response
+func (o *CreateUserGroupUnauthorized) Code() int {
+	return 401
 }
 
 func (o *CreateUserGroupUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *CreateUserGroupForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the create user group forbidden response
+func (o *CreateUserGroupForbidden) Code() int {
+	return 403
+}
+
 func (o *CreateUserGroupForbidden) Error() string {
 	return fmt.Sprintf("[POST /tenants/user-groups][%d] createUserGroupForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *CreateUserGroupNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the create user group not found response
+func (o *CreateUserGroupNotFound) Code() int {
+	return 404
+}
+
 func (o *CreateUserGroupNotFound) Error() string {
 	return fmt.Sprintf("[POST /tenants/user-groups][%d] createUserGroupNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *CreateUserGroupConflict) IsServerError() bool {
 // IsCode returns true when this create user group conflict response a status code equal to that given
 func (o *CreateUserGroupConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the create user group conflict response
+func (o *CreateUserGroupConflict) Code() int {
+	return 409
 }
 
 func (o *CreateUserGroupConflict) Error() string {

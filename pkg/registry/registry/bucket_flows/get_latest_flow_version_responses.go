@@ -54,7 +54,7 @@ func (o *GetLatestFlowVersionReader) ReadResponse(response runtime.ClientRespons
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /buckets/{bucketId}/flows/{flowId}/versions/latest] getLatestFlowVersion", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *GetLatestFlowVersionOK) IsServerError() bool {
 // IsCode returns true when this get latest flow version o k response a status code equal to that given
 func (o *GetLatestFlowVersionOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get latest flow version o k response
+func (o *GetLatestFlowVersionOK) Code() int {
+	return 200
 }
 
 func (o *GetLatestFlowVersionOK) Error() string {
@@ -159,6 +164,11 @@ func (o *GetLatestFlowVersionUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the get latest flow version unauthorized response
+func (o *GetLatestFlowVersionUnauthorized) Code() int {
+	return 401
+}
+
 func (o *GetLatestFlowVersionUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /buckets/{bucketId}/flows/{flowId}/versions/latest][%d] getLatestFlowVersionUnauthorized ", 401)
 }
@@ -208,6 +218,11 @@ func (o *GetLatestFlowVersionForbidden) IsServerError() bool {
 // IsCode returns true when this get latest flow version forbidden response a status code equal to that given
 func (o *GetLatestFlowVersionForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the get latest flow version forbidden response
+func (o *GetLatestFlowVersionForbidden) Code() int {
+	return 403
 }
 
 func (o *GetLatestFlowVersionForbidden) Error() string {
@@ -261,6 +276,11 @@ func (o *GetLatestFlowVersionNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get latest flow version not found response
+func (o *GetLatestFlowVersionNotFound) Code() int {
+	return 404
+}
+
 func (o *GetLatestFlowVersionNotFound) Error() string {
 	return fmt.Sprintf("[GET /buckets/{bucketId}/flows/{flowId}/versions/latest][%d] getLatestFlowVersionNotFound ", 404)
 }
@@ -310,6 +330,11 @@ func (o *GetLatestFlowVersionConflict) IsServerError() bool {
 // IsCode returns true when this get latest flow version conflict response a status code equal to that given
 func (o *GetLatestFlowVersionConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get latest flow version conflict response
+func (o *GetLatestFlowVersionConflict) Code() int {
+	return 409
 }
 
 func (o *GetLatestFlowVersionConflict) Error() string {

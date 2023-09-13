@@ -60,7 +60,7 @@ func (o *RemoveParameterProviderReader) ReadResponse(response runtime.ClientResp
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /parameter-providers/{id}] removeParameterProvider", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *RemoveParameterProviderOK) IsServerError() bool {
 // IsCode returns true when this remove parameter provider o k response a status code equal to that given
 func (o *RemoveParameterProviderOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the remove parameter provider o k response
+func (o *RemoveParameterProviderOK) Code() int {
+	return 200
 }
 
 func (o *RemoveParameterProviderOK) Error() string {
@@ -165,6 +170,11 @@ func (o *RemoveParameterProviderBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the remove parameter provider bad request response
+func (o *RemoveParameterProviderBadRequest) Code() int {
+	return 400
+}
+
 func (o *RemoveParameterProviderBadRequest) Error() string {
 	return fmt.Sprintf("[DELETE /parameter-providers/{id}][%d] removeParameterProviderBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *RemoveParameterProviderUnauthorized) IsServerError() bool {
 // IsCode returns true when this remove parameter provider unauthorized response a status code equal to that given
 func (o *RemoveParameterProviderUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the remove parameter provider unauthorized response
+func (o *RemoveParameterProviderUnauthorized) Code() int {
+	return 401
 }
 
 func (o *RemoveParameterProviderUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *RemoveParameterProviderForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the remove parameter provider forbidden response
+func (o *RemoveParameterProviderForbidden) Code() int {
+	return 403
+}
+
 func (o *RemoveParameterProviderForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /parameter-providers/{id}][%d] removeParameterProviderForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *RemoveParameterProviderNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the remove parameter provider not found response
+func (o *RemoveParameterProviderNotFound) Code() int {
+	return 404
+}
+
 func (o *RemoveParameterProviderNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /parameter-providers/{id}][%d] removeParameterProviderNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *RemoveParameterProviderConflict) IsServerError() bool {
 // IsCode returns true when this remove parameter provider conflict response a status code equal to that given
 func (o *RemoveParameterProviderConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the remove parameter provider conflict response
+func (o *RemoveParameterProviderConflict) Code() int {
+	return 409
 }
 
 func (o *RemoveParameterProviderConflict) Error() string {

@@ -345,6 +345,11 @@ func (m *ProcessGroupDTO) ContextValidate(ctx context.Context, formats strfmt.Re
 func (m *ProcessGroupDTO) contextValidateContents(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Contents != nil {
+
+		if swag.IsZero(m.Contents) { // not required
+			return nil
+		}
+
 		if err := m.Contents.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("contents")
@@ -361,6 +366,11 @@ func (m *ProcessGroupDTO) contextValidateContents(ctx context.Context, formats s
 func (m *ProcessGroupDTO) contextValidateParameterContext(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ParameterContext != nil {
+
+		if swag.IsZero(m.ParameterContext) { // not required
+			return nil
+		}
+
 		if err := m.ParameterContext.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("parameterContext")
@@ -377,6 +387,11 @@ func (m *ProcessGroupDTO) contextValidateParameterContext(ctx context.Context, f
 func (m *ProcessGroupDTO) contextValidatePosition(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Position != nil {
+
+		if swag.IsZero(m.Position) { // not required
+			return nil
+		}
+
 		if err := m.Position.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("position")
@@ -393,6 +408,11 @@ func (m *ProcessGroupDTO) contextValidatePosition(ctx context.Context, formats s
 func (m *ProcessGroupDTO) contextValidateVersionControlInformation(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.VersionControlInformation != nil {
+
+		if swag.IsZero(m.VersionControlInformation) { // not required
+			return nil
+		}
+
 		if err := m.VersionControlInformation.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("versionControlInformation")

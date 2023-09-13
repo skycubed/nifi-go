@@ -45,11 +45,6 @@ type OidcLogoutDefault struct {
 	_statusCode int
 }
 
-// Code gets the status code for the oidc logout default response
-func (o *OidcLogoutDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this oidc logout default response has a 2xx status code
 func (o *OidcLogoutDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -73,6 +68,11 @@ func (o *OidcLogoutDefault) IsServerError() bool {
 // IsCode returns true when this oidc logout default response a status code equal to that given
 func (o *OidcLogoutDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the oidc logout default response
+func (o *OidcLogoutDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *OidcLogoutDefault) Error() string {

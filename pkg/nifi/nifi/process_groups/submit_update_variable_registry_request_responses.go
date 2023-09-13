@@ -60,7 +60,7 @@ func (o *SubmitUpdateVariableRegistryRequestReader) ReadResponse(response runtim
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /process-groups/{id}/variable-registry/update-requests] submitUpdateVariableRegistryRequest", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *SubmitUpdateVariableRegistryRequestOK) IsServerError() bool {
 // IsCode returns true when this submit update variable registry request o k response a status code equal to that given
 func (o *SubmitUpdateVariableRegistryRequestOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the submit update variable registry request o k response
+func (o *SubmitUpdateVariableRegistryRequestOK) Code() int {
+	return 200
 }
 
 func (o *SubmitUpdateVariableRegistryRequestOK) Error() string {
@@ -165,6 +170,11 @@ func (o *SubmitUpdateVariableRegistryRequestBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the submit update variable registry request bad request response
+func (o *SubmitUpdateVariableRegistryRequestBadRequest) Code() int {
+	return 400
+}
+
 func (o *SubmitUpdateVariableRegistryRequestBadRequest) Error() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/variable-registry/update-requests][%d] submitUpdateVariableRegistryRequestBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *SubmitUpdateVariableRegistryRequestUnauthorized) IsServerError() bool {
 // IsCode returns true when this submit update variable registry request unauthorized response a status code equal to that given
 func (o *SubmitUpdateVariableRegistryRequestUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the submit update variable registry request unauthorized response
+func (o *SubmitUpdateVariableRegistryRequestUnauthorized) Code() int {
+	return 401
 }
 
 func (o *SubmitUpdateVariableRegistryRequestUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *SubmitUpdateVariableRegistryRequestForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the submit update variable registry request forbidden response
+func (o *SubmitUpdateVariableRegistryRequestForbidden) Code() int {
+	return 403
+}
+
 func (o *SubmitUpdateVariableRegistryRequestForbidden) Error() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/variable-registry/update-requests][%d] submitUpdateVariableRegistryRequestForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *SubmitUpdateVariableRegistryRequestNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the submit update variable registry request not found response
+func (o *SubmitUpdateVariableRegistryRequestNotFound) Code() int {
+	return 404
+}
+
 func (o *SubmitUpdateVariableRegistryRequestNotFound) Error() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/variable-registry/update-requests][%d] submitUpdateVariableRegistryRequestNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *SubmitUpdateVariableRegistryRequestConflict) IsServerError() bool {
 // IsCode returns true when this submit update variable registry request conflict response a status code equal to that given
 func (o *SubmitUpdateVariableRegistryRequestConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the submit update variable registry request conflict response
+func (o *SubmitUpdateVariableRegistryRequestConflict) Code() int {
+	return 409
 }
 
 func (o *SubmitUpdateVariableRegistryRequestConflict) Error() string {

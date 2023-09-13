@@ -60,7 +60,7 @@ func (o *GetExtensionsProvidingServiceAPIReader) ReadResponse(response runtime.C
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /extensions/provided-service-api] getExtensionsProvidingServiceAPI", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *GetExtensionsProvidingServiceAPIOK) IsServerError() bool {
 // IsCode returns true when this get extensions providing service Api o k response a status code equal to that given
 func (o *GetExtensionsProvidingServiceAPIOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get extensions providing service Api o k response
+func (o *GetExtensionsProvidingServiceAPIOK) Code() int {
+	return 200
 }
 
 func (o *GetExtensionsProvidingServiceAPIOK) Error() string {
@@ -165,6 +170,11 @@ func (o *GetExtensionsProvidingServiceAPIBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get extensions providing service Api bad request response
+func (o *GetExtensionsProvidingServiceAPIBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetExtensionsProvidingServiceAPIBadRequest) Error() string {
 	return fmt.Sprintf("[GET /extensions/provided-service-api][%d] getExtensionsProvidingServiceApiBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *GetExtensionsProvidingServiceAPIUnauthorized) IsServerError() bool {
 // IsCode returns true when this get extensions providing service Api unauthorized response a status code equal to that given
 func (o *GetExtensionsProvidingServiceAPIUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get extensions providing service Api unauthorized response
+func (o *GetExtensionsProvidingServiceAPIUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetExtensionsProvidingServiceAPIUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *GetExtensionsProvidingServiceAPIForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get extensions providing service Api forbidden response
+func (o *GetExtensionsProvidingServiceAPIForbidden) Code() int {
+	return 403
+}
+
 func (o *GetExtensionsProvidingServiceAPIForbidden) Error() string {
 	return fmt.Sprintf("[GET /extensions/provided-service-api][%d] getExtensionsProvidingServiceApiForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *GetExtensionsProvidingServiceAPINotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get extensions providing service Api not found response
+func (o *GetExtensionsProvidingServiceAPINotFound) Code() int {
+	return 404
+}
+
 func (o *GetExtensionsProvidingServiceAPINotFound) Error() string {
 	return fmt.Sprintf("[GET /extensions/provided-service-api][%d] getExtensionsProvidingServiceApiNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *GetExtensionsProvidingServiceAPIConflict) IsServerError() bool {
 // IsCode returns true when this get extensions providing service Api conflict response a status code equal to that given
 func (o *GetExtensionsProvidingServiceAPIConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get extensions providing service Api conflict response
+func (o *GetExtensionsProvidingServiceAPIConflict) Code() int {
+	return 409
 }
 
 func (o *GetExtensionsProvidingServiceAPIConflict) Error() string {

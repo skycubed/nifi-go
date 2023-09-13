@@ -60,7 +60,7 @@ func (o *CopySnippetReader) ReadResponse(response runtime.ClientResponse, consum
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /process-groups/{id}/snippet-instance] copySnippet", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *CopySnippetCreated) IsServerError() bool {
 // IsCode returns true when this copy snippet created response a status code equal to that given
 func (o *CopySnippetCreated) IsCode(code int) bool {
 	return code == 201
+}
+
+// Code gets the status code for the copy snippet created response
+func (o *CopySnippetCreated) Code() int {
+	return 201
 }
 
 func (o *CopySnippetCreated) Error() string {
@@ -165,6 +170,11 @@ func (o *CopySnippetBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the copy snippet bad request response
+func (o *CopySnippetBadRequest) Code() int {
+	return 400
+}
+
 func (o *CopySnippetBadRequest) Error() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/snippet-instance][%d] copySnippetBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *CopySnippetUnauthorized) IsServerError() bool {
 // IsCode returns true when this copy snippet unauthorized response a status code equal to that given
 func (o *CopySnippetUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the copy snippet unauthorized response
+func (o *CopySnippetUnauthorized) Code() int {
+	return 401
 }
 
 func (o *CopySnippetUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *CopySnippetForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the copy snippet forbidden response
+func (o *CopySnippetForbidden) Code() int {
+	return 403
+}
+
 func (o *CopySnippetForbidden) Error() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/snippet-instance][%d] copySnippetForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *CopySnippetNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the copy snippet not found response
+func (o *CopySnippetNotFound) Code() int {
+	return 404
+}
+
 func (o *CopySnippetNotFound) Error() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/snippet-instance][%d] copySnippetNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *CopySnippetConflict) IsServerError() bool {
 // IsCode returns true when this copy snippet conflict response a status code equal to that given
 func (o *CopySnippetConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the copy snippet conflict response
+func (o *CopySnippetConflict) Code() int {
+	return 409
 }
 
 func (o *CopySnippetConflict) Error() string {

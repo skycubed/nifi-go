@@ -60,7 +60,7 @@ func (o *DeleteProcessorReader) ReadResponse(response runtime.ClientResponse, co
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /processors/{id}] deleteProcessor", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *DeleteProcessorOK) IsServerError() bool {
 // IsCode returns true when this delete processor o k response a status code equal to that given
 func (o *DeleteProcessorOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the delete processor o k response
+func (o *DeleteProcessorOK) Code() int {
+	return 200
 }
 
 func (o *DeleteProcessorOK) Error() string {
@@ -165,6 +170,11 @@ func (o *DeleteProcessorBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the delete processor bad request response
+func (o *DeleteProcessorBadRequest) Code() int {
+	return 400
+}
+
 func (o *DeleteProcessorBadRequest) Error() string {
 	return fmt.Sprintf("[DELETE /processors/{id}][%d] deleteProcessorBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *DeleteProcessorUnauthorized) IsServerError() bool {
 // IsCode returns true when this delete processor unauthorized response a status code equal to that given
 func (o *DeleteProcessorUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the delete processor unauthorized response
+func (o *DeleteProcessorUnauthorized) Code() int {
+	return 401
 }
 
 func (o *DeleteProcessorUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *DeleteProcessorForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the delete processor forbidden response
+func (o *DeleteProcessorForbidden) Code() int {
+	return 403
+}
+
 func (o *DeleteProcessorForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /processors/{id}][%d] deleteProcessorForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *DeleteProcessorNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the delete processor not found response
+func (o *DeleteProcessorNotFound) Code() int {
+	return 404
+}
+
 func (o *DeleteProcessorNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /processors/{id}][%d] deleteProcessorNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *DeleteProcessorConflict) IsServerError() bool {
 // IsCode returns true when this delete processor conflict response a status code equal to that given
 func (o *DeleteProcessorConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the delete processor conflict response
+func (o *DeleteProcessorConflict) Code() int {
+	return 409
 }
 
 func (o *DeleteProcessorConflict) Error() string {

@@ -60,7 +60,7 @@ func (o *GetLabelReader) ReadResponse(response runtime.ClientResponse, consumer 
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /labels/{id}] getLabel", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *GetLabelOK) IsServerError() bool {
 // IsCode returns true when this get label o k response a status code equal to that given
 func (o *GetLabelOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get label o k response
+func (o *GetLabelOK) Code() int {
+	return 200
 }
 
 func (o *GetLabelOK) Error() string {
@@ -165,6 +170,11 @@ func (o *GetLabelBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get label bad request response
+func (o *GetLabelBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetLabelBadRequest) Error() string {
 	return fmt.Sprintf("[GET /labels/{id}][%d] getLabelBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *GetLabelUnauthorized) IsServerError() bool {
 // IsCode returns true when this get label unauthorized response a status code equal to that given
 func (o *GetLabelUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get label unauthorized response
+func (o *GetLabelUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetLabelUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *GetLabelForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get label forbidden response
+func (o *GetLabelForbidden) Code() int {
+	return 403
+}
+
 func (o *GetLabelForbidden) Error() string {
 	return fmt.Sprintf("[GET /labels/{id}][%d] getLabelForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *GetLabelNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get label not found response
+func (o *GetLabelNotFound) Code() int {
+	return 404
+}
+
 func (o *GetLabelNotFound) Error() string {
 	return fmt.Sprintf("[GET /labels/{id}][%d] getLabelNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *GetLabelConflict) IsServerError() bool {
 // IsCode returns true when this get label conflict response a status code equal to that given
 func (o *GetLabelConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get label conflict response
+func (o *GetLabelConflict) Code() int {
+	return 409
 }
 
 func (o *GetLabelConflict) Error() string {

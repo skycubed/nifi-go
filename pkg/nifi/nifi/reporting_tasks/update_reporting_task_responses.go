@@ -60,7 +60,7 @@ func (o *UpdateReportingTaskReader) ReadResponse(response runtime.ClientResponse
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PUT /reporting-tasks/{id}] updateReportingTask", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *UpdateReportingTaskOK) IsServerError() bool {
 // IsCode returns true when this update reporting task o k response a status code equal to that given
 func (o *UpdateReportingTaskOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the update reporting task o k response
+func (o *UpdateReportingTaskOK) Code() int {
+	return 200
 }
 
 func (o *UpdateReportingTaskOK) Error() string {
@@ -165,6 +170,11 @@ func (o *UpdateReportingTaskBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the update reporting task bad request response
+func (o *UpdateReportingTaskBadRequest) Code() int {
+	return 400
+}
+
 func (o *UpdateReportingTaskBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /reporting-tasks/{id}][%d] updateReportingTaskBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *UpdateReportingTaskUnauthorized) IsServerError() bool {
 // IsCode returns true when this update reporting task unauthorized response a status code equal to that given
 func (o *UpdateReportingTaskUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the update reporting task unauthorized response
+func (o *UpdateReportingTaskUnauthorized) Code() int {
+	return 401
 }
 
 func (o *UpdateReportingTaskUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *UpdateReportingTaskForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the update reporting task forbidden response
+func (o *UpdateReportingTaskForbidden) Code() int {
+	return 403
+}
+
 func (o *UpdateReportingTaskForbidden) Error() string {
 	return fmt.Sprintf("[PUT /reporting-tasks/{id}][%d] updateReportingTaskForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *UpdateReportingTaskNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the update reporting task not found response
+func (o *UpdateReportingTaskNotFound) Code() int {
+	return 404
+}
+
 func (o *UpdateReportingTaskNotFound) Error() string {
 	return fmt.Sprintf("[PUT /reporting-tasks/{id}][%d] updateReportingTaskNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *UpdateReportingTaskConflict) IsServerError() bool {
 // IsCode returns true when this update reporting task conflict response a status code equal to that given
 func (o *UpdateReportingTaskConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the update reporting task conflict response
+func (o *UpdateReportingTaskConflict) Code() int {
+	return 409
 }
 
 func (o *UpdateReportingTaskConflict) Error() string {

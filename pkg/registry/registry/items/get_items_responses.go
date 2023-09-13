@@ -36,7 +36,7 @@ func (o *GetItemsReader) ReadResponse(response runtime.ClientResponse, consumer 
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /items] getItems", response, response.Code())
 	}
 }
 
@@ -77,6 +77,11 @@ func (o *GetItemsOK) IsServerError() bool {
 // IsCode returns true when this get items o k response a status code equal to that given
 func (o *GetItemsOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get items o k response
+func (o *GetItemsOK) Code() int {
+	return 200
 }
 
 func (o *GetItemsOK) Error() string {
@@ -137,6 +142,11 @@ func (o *GetItemsUnauthorized) IsServerError() bool {
 // IsCode returns true when this get items unauthorized response a status code equal to that given
 func (o *GetItemsUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get items unauthorized response
+func (o *GetItemsUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetItemsUnauthorized) Error() string {

@@ -52,7 +52,7 @@ func (o *CreateAccessTokenUsingIdentityProviderCredentialsReader) ReadResponse(r
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /access/token/identity-provider] createAccessTokenUsingIdentityProviderCredentials", response, response.Code())
 	}
 }
 
@@ -93,6 +93,11 @@ func (o *CreateAccessTokenUsingIdentityProviderCredentialsOK) IsServerError() bo
 // IsCode returns true when this create access token using identity provider credentials o k response a status code equal to that given
 func (o *CreateAccessTokenUsingIdentityProviderCredentialsOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the create access token using identity provider credentials o k response
+func (o *CreateAccessTokenUsingIdentityProviderCredentialsOK) Code() int {
+	return 200
 }
 
 func (o *CreateAccessTokenUsingIdentityProviderCredentialsOK) Error() string {
@@ -155,6 +160,11 @@ func (o *CreateAccessTokenUsingIdentityProviderCredentialsBadRequest) IsCode(cod
 	return code == 400
 }
 
+// Code gets the status code for the create access token using identity provider credentials bad request response
+func (o *CreateAccessTokenUsingIdentityProviderCredentialsBadRequest) Code() int {
+	return 400
+}
+
 func (o *CreateAccessTokenUsingIdentityProviderCredentialsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /access/token/identity-provider][%d] createAccessTokenUsingIdentityProviderCredentialsBadRequest ", 400)
 }
@@ -204,6 +214,11 @@ func (o *CreateAccessTokenUsingIdentityProviderCredentialsUnauthorized) IsServer
 // IsCode returns true when this create access token using identity provider credentials unauthorized response a status code equal to that given
 func (o *CreateAccessTokenUsingIdentityProviderCredentialsUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the create access token using identity provider credentials unauthorized response
+func (o *CreateAccessTokenUsingIdentityProviderCredentialsUnauthorized) Code() int {
+	return 401
 }
 
 func (o *CreateAccessTokenUsingIdentityProviderCredentialsUnauthorized) Error() string {
@@ -257,6 +272,11 @@ func (o *CreateAccessTokenUsingIdentityProviderCredentialsConflict) IsCode(code 
 	return code == 409
 }
 
+// Code gets the status code for the create access token using identity provider credentials conflict response
+func (o *CreateAccessTokenUsingIdentityProviderCredentialsConflict) Code() int {
+	return 409
+}
+
 func (o *CreateAccessTokenUsingIdentityProviderCredentialsConflict) Error() string {
 	return fmt.Sprintf("[POST /access/token/identity-provider][%d] createAccessTokenUsingIdentityProviderCredentialsConflict ", 409)
 }
@@ -306,6 +326,11 @@ func (o *CreateAccessTokenUsingIdentityProviderCredentialsInternalServerError) I
 // IsCode returns true when this create access token using identity provider credentials internal server error response a status code equal to that given
 func (o *CreateAccessTokenUsingIdentityProviderCredentialsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the create access token using identity provider credentials internal server error response
+func (o *CreateAccessTokenUsingIdentityProviderCredentialsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CreateAccessTokenUsingIdentityProviderCredentialsInternalServerError) Error() string {

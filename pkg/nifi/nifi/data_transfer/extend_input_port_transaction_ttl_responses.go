@@ -60,7 +60,7 @@ func (o *ExtendInputPortTransactionTTLReader) ReadResponse(response runtime.Clie
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PUT /data-transfer/input-ports/{portId}/transactions/{transactionId}] extendInputPortTransactionTTL", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *ExtendInputPortTransactionTTLOK) IsServerError() bool {
 // IsCode returns true when this extend input port transaction Ttl o k response a status code equal to that given
 func (o *ExtendInputPortTransactionTTLOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the extend input port transaction Ttl o k response
+func (o *ExtendInputPortTransactionTTLOK) Code() int {
+	return 200
 }
 
 func (o *ExtendInputPortTransactionTTLOK) Error() string {
@@ -165,6 +170,11 @@ func (o *ExtendInputPortTransactionTTLBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the extend input port transaction Ttl bad request response
+func (o *ExtendInputPortTransactionTTLBadRequest) Code() int {
+	return 400
+}
+
 func (o *ExtendInputPortTransactionTTLBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /data-transfer/input-ports/{portId}/transactions/{transactionId}][%d] extendInputPortTransactionTtlBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *ExtendInputPortTransactionTTLUnauthorized) IsServerError() bool {
 // IsCode returns true when this extend input port transaction Ttl unauthorized response a status code equal to that given
 func (o *ExtendInputPortTransactionTTLUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the extend input port transaction Ttl unauthorized response
+func (o *ExtendInputPortTransactionTTLUnauthorized) Code() int {
+	return 401
 }
 
 func (o *ExtendInputPortTransactionTTLUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *ExtendInputPortTransactionTTLForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the extend input port transaction Ttl forbidden response
+func (o *ExtendInputPortTransactionTTLForbidden) Code() int {
+	return 403
+}
+
 func (o *ExtendInputPortTransactionTTLForbidden) Error() string {
 	return fmt.Sprintf("[PUT /data-transfer/input-ports/{portId}/transactions/{transactionId}][%d] extendInputPortTransactionTtlForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *ExtendInputPortTransactionTTLNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the extend input port transaction Ttl not found response
+func (o *ExtendInputPortTransactionTTLNotFound) Code() int {
+	return 404
+}
+
 func (o *ExtendInputPortTransactionTTLNotFound) Error() string {
 	return fmt.Sprintf("[PUT /data-transfer/input-ports/{portId}/transactions/{transactionId}][%d] extendInputPortTransactionTtlNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *ExtendInputPortTransactionTTLConflict) IsServerError() bool {
 // IsCode returns true when this extend input port transaction Ttl conflict response a status code equal to that given
 func (o *ExtendInputPortTransactionTTLConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the extend input port transaction Ttl conflict response
+func (o *ExtendInputPortTransactionTTLConflict) Code() int {
+	return 409
 }
 
 func (o *ExtendInputPortTransactionTTLConflict) Error() string {

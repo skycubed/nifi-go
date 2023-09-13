@@ -60,7 +60,7 @@ func (o *GetProcessorStatusHistoryReader) ReadResponse(response runtime.ClientRe
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /flow/processors/{id}/status/history] getProcessorStatusHistory", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *GetProcessorStatusHistoryOK) IsServerError() bool {
 // IsCode returns true when this get processor status history o k response a status code equal to that given
 func (o *GetProcessorStatusHistoryOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get processor status history o k response
+func (o *GetProcessorStatusHistoryOK) Code() int {
+	return 200
 }
 
 func (o *GetProcessorStatusHistoryOK) Error() string {
@@ -165,6 +170,11 @@ func (o *GetProcessorStatusHistoryBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get processor status history bad request response
+func (o *GetProcessorStatusHistoryBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetProcessorStatusHistoryBadRequest) Error() string {
 	return fmt.Sprintf("[GET /flow/processors/{id}/status/history][%d] getProcessorStatusHistoryBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *GetProcessorStatusHistoryUnauthorized) IsServerError() bool {
 // IsCode returns true when this get processor status history unauthorized response a status code equal to that given
 func (o *GetProcessorStatusHistoryUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get processor status history unauthorized response
+func (o *GetProcessorStatusHistoryUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetProcessorStatusHistoryUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *GetProcessorStatusHistoryForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get processor status history forbidden response
+func (o *GetProcessorStatusHistoryForbidden) Code() int {
+	return 403
+}
+
 func (o *GetProcessorStatusHistoryForbidden) Error() string {
 	return fmt.Sprintf("[GET /flow/processors/{id}/status/history][%d] getProcessorStatusHistoryForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *GetProcessorStatusHistoryNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get processor status history not found response
+func (o *GetProcessorStatusHistoryNotFound) Code() int {
+	return 404
+}
+
 func (o *GetProcessorStatusHistoryNotFound) Error() string {
 	return fmt.Sprintf("[GET /flow/processors/{id}/status/history][%d] getProcessorStatusHistoryNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *GetProcessorStatusHistoryConflict) IsServerError() bool {
 // IsCode returns true when this get processor status history conflict response a status code equal to that given
 func (o *GetProcessorStatusHistoryConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get processor status history conflict response
+func (o *GetProcessorStatusHistoryConflict) Code() int {
+	return 409
 }
 
 func (o *GetProcessorStatusHistoryConflict) Error() string {

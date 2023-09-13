@@ -58,7 +58,7 @@ func (o *ExportFlowVersionReader) ReadResponse(response runtime.ClientResponse, 
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /versions/process-groups/{id}/download] exportFlowVersion", response, response.Code())
 	}
 }
 
@@ -99,6 +99,11 @@ func (o *ExportFlowVersionOK) IsServerError() bool {
 // IsCode returns true when this export flow version o k response a status code equal to that given
 func (o *ExportFlowVersionOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the export flow version o k response
+func (o *ExportFlowVersionOK) Code() int {
+	return 200
 }
 
 func (o *ExportFlowVersionOK) Error() string {
@@ -161,6 +166,11 @@ func (o *ExportFlowVersionBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the export flow version bad request response
+func (o *ExportFlowVersionBadRequest) Code() int {
+	return 400
+}
+
 func (o *ExportFlowVersionBadRequest) Error() string {
 	return fmt.Sprintf("[GET /versions/process-groups/{id}/download][%d] exportFlowVersionBadRequest ", 400)
 }
@@ -210,6 +220,11 @@ func (o *ExportFlowVersionUnauthorized) IsServerError() bool {
 // IsCode returns true when this export flow version unauthorized response a status code equal to that given
 func (o *ExportFlowVersionUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the export flow version unauthorized response
+func (o *ExportFlowVersionUnauthorized) Code() int {
+	return 401
 }
 
 func (o *ExportFlowVersionUnauthorized) Error() string {
@@ -263,6 +278,11 @@ func (o *ExportFlowVersionForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the export flow version forbidden response
+func (o *ExportFlowVersionForbidden) Code() int {
+	return 403
+}
+
 func (o *ExportFlowVersionForbidden) Error() string {
 	return fmt.Sprintf("[GET /versions/process-groups/{id}/download][%d] exportFlowVersionForbidden ", 403)
 }
@@ -314,6 +334,11 @@ func (o *ExportFlowVersionNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the export flow version not found response
+func (o *ExportFlowVersionNotFound) Code() int {
+	return 404
+}
+
 func (o *ExportFlowVersionNotFound) Error() string {
 	return fmt.Sprintf("[GET /versions/process-groups/{id}/download][%d] exportFlowVersionNotFound ", 404)
 }
@@ -363,6 +388,11 @@ func (o *ExportFlowVersionConflict) IsServerError() bool {
 // IsCode returns true when this export flow version conflict response a status code equal to that given
 func (o *ExportFlowVersionConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the export flow version conflict response
+func (o *ExportFlowVersionConflict) Code() int {
+	return 409
 }
 
 func (o *ExportFlowVersionConflict) Error() string {

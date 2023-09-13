@@ -60,7 +60,7 @@ func (o *UpdateParameterProviderReader) ReadResponse(response runtime.ClientResp
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PUT /parameter-providers/{id}] updateParameterProvider", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *UpdateParameterProviderOK) IsServerError() bool {
 // IsCode returns true when this update parameter provider o k response a status code equal to that given
 func (o *UpdateParameterProviderOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the update parameter provider o k response
+func (o *UpdateParameterProviderOK) Code() int {
+	return 200
 }
 
 func (o *UpdateParameterProviderOK) Error() string {
@@ -165,6 +170,11 @@ func (o *UpdateParameterProviderBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the update parameter provider bad request response
+func (o *UpdateParameterProviderBadRequest) Code() int {
+	return 400
+}
+
 func (o *UpdateParameterProviderBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /parameter-providers/{id}][%d] updateParameterProviderBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *UpdateParameterProviderUnauthorized) IsServerError() bool {
 // IsCode returns true when this update parameter provider unauthorized response a status code equal to that given
 func (o *UpdateParameterProviderUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the update parameter provider unauthorized response
+func (o *UpdateParameterProviderUnauthorized) Code() int {
+	return 401
 }
 
 func (o *UpdateParameterProviderUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *UpdateParameterProviderForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the update parameter provider forbidden response
+func (o *UpdateParameterProviderForbidden) Code() int {
+	return 403
+}
+
 func (o *UpdateParameterProviderForbidden) Error() string {
 	return fmt.Sprintf("[PUT /parameter-providers/{id}][%d] updateParameterProviderForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *UpdateParameterProviderNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the update parameter provider not found response
+func (o *UpdateParameterProviderNotFound) Code() int {
+	return 404
+}
+
 func (o *UpdateParameterProviderNotFound) Error() string {
 	return fmt.Sprintf("[PUT /parameter-providers/{id}][%d] updateParameterProviderNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *UpdateParameterProviderConflict) IsServerError() bool {
 // IsCode returns true when this update parameter provider conflict response a status code equal to that given
 func (o *UpdateParameterProviderConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the update parameter provider conflict response
+func (o *UpdateParameterProviderConflict) Code() int {
+	return 409
 }
 
 func (o *UpdateParameterProviderConflict) Error() string {

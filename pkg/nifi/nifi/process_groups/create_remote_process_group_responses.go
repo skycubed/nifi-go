@@ -60,7 +60,7 @@ func (o *CreateRemoteProcessGroupReader) ReadResponse(response runtime.ClientRes
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /process-groups/{id}/remote-process-groups] createRemoteProcessGroup", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *CreateRemoteProcessGroupCreated) IsServerError() bool {
 // IsCode returns true when this create remote process group created response a status code equal to that given
 func (o *CreateRemoteProcessGroupCreated) IsCode(code int) bool {
 	return code == 201
+}
+
+// Code gets the status code for the create remote process group created response
+func (o *CreateRemoteProcessGroupCreated) Code() int {
+	return 201
 }
 
 func (o *CreateRemoteProcessGroupCreated) Error() string {
@@ -165,6 +170,11 @@ func (o *CreateRemoteProcessGroupBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the create remote process group bad request response
+func (o *CreateRemoteProcessGroupBadRequest) Code() int {
+	return 400
+}
+
 func (o *CreateRemoteProcessGroupBadRequest) Error() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/remote-process-groups][%d] createRemoteProcessGroupBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *CreateRemoteProcessGroupUnauthorized) IsServerError() bool {
 // IsCode returns true when this create remote process group unauthorized response a status code equal to that given
 func (o *CreateRemoteProcessGroupUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the create remote process group unauthorized response
+func (o *CreateRemoteProcessGroupUnauthorized) Code() int {
+	return 401
 }
 
 func (o *CreateRemoteProcessGroupUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *CreateRemoteProcessGroupForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the create remote process group forbidden response
+func (o *CreateRemoteProcessGroupForbidden) Code() int {
+	return 403
+}
+
 func (o *CreateRemoteProcessGroupForbidden) Error() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/remote-process-groups][%d] createRemoteProcessGroupForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *CreateRemoteProcessGroupNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the create remote process group not found response
+func (o *CreateRemoteProcessGroupNotFound) Code() int {
+	return 404
+}
+
 func (o *CreateRemoteProcessGroupNotFound) Error() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/remote-process-groups][%d] createRemoteProcessGroupNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *CreateRemoteProcessGroupConflict) IsServerError() bool {
 // IsCode returns true when this create remote process group conflict response a status code equal to that given
 func (o *CreateRemoteProcessGroupConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the create remote process group conflict response
+func (o *CreateRemoteProcessGroupConflict) Code() int {
+	return 409
 }
 
 func (o *CreateRemoteProcessGroupConflict) Error() string {

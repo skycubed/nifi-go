@@ -60,7 +60,7 @@ func (o *CreateOutputPortReader) ReadResponse(response runtime.ClientResponse, c
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /process-groups/{id}/output-ports] createOutputPort", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *CreateOutputPortCreated) IsServerError() bool {
 // IsCode returns true when this create output port created response a status code equal to that given
 func (o *CreateOutputPortCreated) IsCode(code int) bool {
 	return code == 201
+}
+
+// Code gets the status code for the create output port created response
+func (o *CreateOutputPortCreated) Code() int {
+	return 201
 }
 
 func (o *CreateOutputPortCreated) Error() string {
@@ -165,6 +170,11 @@ func (o *CreateOutputPortBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the create output port bad request response
+func (o *CreateOutputPortBadRequest) Code() int {
+	return 400
+}
+
 func (o *CreateOutputPortBadRequest) Error() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/output-ports][%d] createOutputPortBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *CreateOutputPortUnauthorized) IsServerError() bool {
 // IsCode returns true when this create output port unauthorized response a status code equal to that given
 func (o *CreateOutputPortUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the create output port unauthorized response
+func (o *CreateOutputPortUnauthorized) Code() int {
+	return 401
 }
 
 func (o *CreateOutputPortUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *CreateOutputPortForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the create output port forbidden response
+func (o *CreateOutputPortForbidden) Code() int {
+	return 403
+}
+
 func (o *CreateOutputPortForbidden) Error() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/output-ports][%d] createOutputPortForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *CreateOutputPortNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the create output port not found response
+func (o *CreateOutputPortNotFound) Code() int {
+	return 404
+}
+
 func (o *CreateOutputPortNotFound) Error() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/output-ports][%d] createOutputPortNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *CreateOutputPortConflict) IsServerError() bool {
 // IsCode returns true when this create output port conflict response a status code equal to that given
 func (o *CreateOutputPortConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the create output port conflict response
+func (o *CreateOutputPortConflict) Code() int {
+	return 409
 }
 
 func (o *CreateOutputPortConflict) Error() string {

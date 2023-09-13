@@ -45,11 +45,6 @@ type OidcCallbackDefault struct {
 	_statusCode int
 }
 
-// Code gets the status code for the oidc callback default response
-func (o *OidcCallbackDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this oidc callback default response has a 2xx status code
 func (o *OidcCallbackDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -73,6 +68,11 @@ func (o *OidcCallbackDefault) IsServerError() bool {
 // IsCode returns true when this oidc callback default response a status code equal to that given
 func (o *OidcCallbackDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the oidc callback default response
+func (o *OidcCallbackDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *OidcCallbackDefault) Error() string {

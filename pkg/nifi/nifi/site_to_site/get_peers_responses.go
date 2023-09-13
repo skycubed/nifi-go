@@ -54,7 +54,7 @@ func (o *GetPeersReader) ReadResponse(response runtime.ClientResponse, consumer 
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /site-to-site/peers] getPeers", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *GetPeersOK) IsServerError() bool {
 // IsCode returns true when this get peers o k response a status code equal to that given
 func (o *GetPeersOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get peers o k response
+func (o *GetPeersOK) Code() int {
+	return 200
 }
 
 func (o *GetPeersOK) Error() string {
@@ -159,6 +164,11 @@ func (o *GetPeersBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get peers bad request response
+func (o *GetPeersBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetPeersBadRequest) Error() string {
 	return fmt.Sprintf("[GET /site-to-site/peers][%d] getPeersBadRequest ", 400)
 }
@@ -208,6 +218,11 @@ func (o *GetPeersUnauthorized) IsServerError() bool {
 // IsCode returns true when this get peers unauthorized response a status code equal to that given
 func (o *GetPeersUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get peers unauthorized response
+func (o *GetPeersUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetPeersUnauthorized) Error() string {
@@ -261,6 +276,11 @@ func (o *GetPeersForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get peers forbidden response
+func (o *GetPeersForbidden) Code() int {
+	return 403
+}
+
 func (o *GetPeersForbidden) Error() string {
 	return fmt.Sprintf("[GET /site-to-site/peers][%d] getPeersForbidden ", 403)
 }
@@ -310,6 +330,11 @@ func (o *GetPeersConflict) IsServerError() bool {
 // IsCode returns true when this get peers conflict response a status code equal to that given
 func (o *GetPeersConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get peers conflict response
+func (o *GetPeersConflict) Code() int {
+	return 409
 }
 
 func (o *GetPeersConflict) Error() string {

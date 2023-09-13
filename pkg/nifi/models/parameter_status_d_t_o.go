@@ -133,6 +133,11 @@ func (m *ParameterStatusDTO) ContextValidate(ctx context.Context, formats strfmt
 func (m *ParameterStatusDTO) contextValidateParameter(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Parameter != nil {
+
+		if swag.IsZero(m.Parameter) { // not required
+			return nil
+		}
+
 		if err := m.Parameter.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("parameter")

@@ -54,7 +54,7 @@ func (o *GetAccessPolicyReader) ReadResponse(response runtime.ClientResponse, co
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /policies/{id}] getAccessPolicy", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *GetAccessPolicyOK) IsServerError() bool {
 // IsCode returns true when this get access policy o k response a status code equal to that given
 func (o *GetAccessPolicyOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get access policy o k response
+func (o *GetAccessPolicyOK) Code() int {
+	return 200
 }
 
 func (o *GetAccessPolicyOK) Error() string {
@@ -159,6 +164,11 @@ func (o *GetAccessPolicyUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the get access policy unauthorized response
+func (o *GetAccessPolicyUnauthorized) Code() int {
+	return 401
+}
+
 func (o *GetAccessPolicyUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /policies/{id}][%d] getAccessPolicyUnauthorized ", 401)
 }
@@ -208,6 +218,11 @@ func (o *GetAccessPolicyForbidden) IsServerError() bool {
 // IsCode returns true when this get access policy forbidden response a status code equal to that given
 func (o *GetAccessPolicyForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the get access policy forbidden response
+func (o *GetAccessPolicyForbidden) Code() int {
+	return 403
 }
 
 func (o *GetAccessPolicyForbidden) Error() string {
@@ -261,6 +276,11 @@ func (o *GetAccessPolicyNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get access policy not found response
+func (o *GetAccessPolicyNotFound) Code() int {
+	return 404
+}
+
 func (o *GetAccessPolicyNotFound) Error() string {
 	return fmt.Sprintf("[GET /policies/{id}][%d] getAccessPolicyNotFound ", 404)
 }
@@ -310,6 +330,11 @@ func (o *GetAccessPolicyConflict) IsServerError() bool {
 // IsCode returns true when this get access policy conflict response a status code equal to that given
 func (o *GetAccessPolicyConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get access policy conflict response
+func (o *GetAccessPolicyConflict) Code() int {
+	return 409
 }
 
 func (o *GetAccessPolicyConflict) Error() string {

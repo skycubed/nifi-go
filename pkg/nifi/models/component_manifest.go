@@ -193,6 +193,11 @@ func (m *ComponentManifest) contextValidateApis(ctx context.Context, formats str
 	for i := 0; i < len(m.Apis); i++ {
 
 		if m.Apis[i] != nil {
+
+			if swag.IsZero(m.Apis[i]) { // not required
+				return nil
+			}
+
 			if err := m.Apis[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("apis" + "." + strconv.Itoa(i))
@@ -213,6 +218,11 @@ func (m *ComponentManifest) contextValidateControllerServices(ctx context.Contex
 	for i := 0; i < len(m.ControllerServices); i++ {
 
 		if m.ControllerServices[i] != nil {
+
+			if swag.IsZero(m.ControllerServices[i]) { // not required
+				return nil
+			}
+
 			if err := m.ControllerServices[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("controllerServices" + "." + strconv.Itoa(i))
@@ -233,6 +243,11 @@ func (m *ComponentManifest) contextValidateProcessors(ctx context.Context, forma
 	for i := 0; i < len(m.Processors); i++ {
 
 		if m.Processors[i] != nil {
+
+			if swag.IsZero(m.Processors[i]) { // not required
+				return nil
+			}
+
 			if err := m.Processors[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("processors" + "." + strconv.Itoa(i))
@@ -253,6 +268,11 @@ func (m *ComponentManifest) contextValidateReportingTasks(ctx context.Context, f
 	for i := 0; i < len(m.ReportingTasks); i++ {
 
 		if m.ReportingTasks[i] != nil {
+
+			if swag.IsZero(m.ReportingTasks[i]) { // not required
+				return nil
+			}
+
 			if err := m.ReportingTasks[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("reportingTasks" + "." + strconv.Itoa(i))

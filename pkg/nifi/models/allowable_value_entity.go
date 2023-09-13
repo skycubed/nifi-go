@@ -75,6 +75,11 @@ func (m *AllowableValueEntity) ContextValidate(ctx context.Context, formats strf
 func (m *AllowableValueEntity) contextValidateAllowableValue(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.AllowableValue != nil {
+
+		if swag.IsZero(m.AllowableValue) { // not required
+			return nil
+		}
+
 		if err := m.AllowableValue.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("allowableValue")

@@ -45,11 +45,6 @@ type OidcRequestDefault struct {
 	_statusCode int
 }
 
-// Code gets the status code for the oidc request default response
-func (o *OidcRequestDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this oidc request default response has a 2xx status code
 func (o *OidcRequestDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -73,6 +68,11 @@ func (o *OidcRequestDefault) IsServerError() bool {
 // IsCode returns true when this oidc request default response a status code equal to that given
 func (o *OidcRequestDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the oidc request default response
+func (o *OidcRequestDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *OidcRequestDefault) Error() string {

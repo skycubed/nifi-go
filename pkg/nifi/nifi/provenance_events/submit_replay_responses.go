@@ -60,7 +60,7 @@ func (o *SubmitReplayReader) ReadResponse(response runtime.ClientResponse, consu
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /provenance-events/replays] submitReplay", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *SubmitReplayCreated) IsServerError() bool {
 // IsCode returns true when this submit replay created response a status code equal to that given
 func (o *SubmitReplayCreated) IsCode(code int) bool {
 	return code == 201
+}
+
+// Code gets the status code for the submit replay created response
+func (o *SubmitReplayCreated) Code() int {
+	return 201
 }
 
 func (o *SubmitReplayCreated) Error() string {
@@ -165,6 +170,11 @@ func (o *SubmitReplayBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the submit replay bad request response
+func (o *SubmitReplayBadRequest) Code() int {
+	return 400
+}
+
 func (o *SubmitReplayBadRequest) Error() string {
 	return fmt.Sprintf("[POST /provenance-events/replays][%d] submitReplayBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *SubmitReplayUnauthorized) IsServerError() bool {
 // IsCode returns true when this submit replay unauthorized response a status code equal to that given
 func (o *SubmitReplayUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the submit replay unauthorized response
+func (o *SubmitReplayUnauthorized) Code() int {
+	return 401
 }
 
 func (o *SubmitReplayUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *SubmitReplayForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the submit replay forbidden response
+func (o *SubmitReplayForbidden) Code() int {
+	return 403
+}
+
 func (o *SubmitReplayForbidden) Error() string {
 	return fmt.Sprintf("[POST /provenance-events/replays][%d] submitReplayForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *SubmitReplayNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the submit replay not found response
+func (o *SubmitReplayNotFound) Code() int {
+	return 404
+}
+
 func (o *SubmitReplayNotFound) Error() string {
 	return fmt.Sprintf("[POST /provenance-events/replays][%d] submitReplayNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *SubmitReplayConflict) IsServerError() bool {
 // IsCode returns true when this submit replay conflict response a status code equal to that given
 func (o *SubmitReplayConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the submit replay conflict response
+func (o *SubmitReplayConflict) Code() int {
+	return 409
 }
 
 func (o *SubmitReplayConflict) Error() string {

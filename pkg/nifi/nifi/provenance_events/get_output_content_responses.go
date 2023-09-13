@@ -60,7 +60,7 @@ func (o *GetOutputContentReader) ReadResponse(response runtime.ClientResponse, c
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /provenance-events/{id}/content/output] getOutputContent", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *GetOutputContentOK) IsServerError() bool {
 // IsCode returns true when this get output content o k response a status code equal to that given
 func (o *GetOutputContentOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get output content o k response
+func (o *GetOutputContentOK) Code() int {
+	return 200
 }
 
 func (o *GetOutputContentOK) Error() string {
@@ -163,6 +168,11 @@ func (o *GetOutputContentBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get output content bad request response
+func (o *GetOutputContentBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetOutputContentBadRequest) Error() string {
 	return fmt.Sprintf("[GET /provenance-events/{id}/content/output][%d] getOutputContentBadRequest ", 400)
 }
@@ -212,6 +222,11 @@ func (o *GetOutputContentUnauthorized) IsServerError() bool {
 // IsCode returns true when this get output content unauthorized response a status code equal to that given
 func (o *GetOutputContentUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get output content unauthorized response
+func (o *GetOutputContentUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetOutputContentUnauthorized) Error() string {
@@ -265,6 +280,11 @@ func (o *GetOutputContentForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get output content forbidden response
+func (o *GetOutputContentForbidden) Code() int {
+	return 403
+}
+
 func (o *GetOutputContentForbidden) Error() string {
 	return fmt.Sprintf("[GET /provenance-events/{id}/content/output][%d] getOutputContentForbidden ", 403)
 }
@@ -316,6 +336,11 @@ func (o *GetOutputContentNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get output content not found response
+func (o *GetOutputContentNotFound) Code() int {
+	return 404
+}
+
 func (o *GetOutputContentNotFound) Error() string {
 	return fmt.Sprintf("[GET /provenance-events/{id}/content/output][%d] getOutputContentNotFound ", 404)
 }
@@ -365,6 +390,11 @@ func (o *GetOutputContentConflict) IsServerError() bool {
 // IsCode returns true when this get output content conflict response a status code equal to that given
 func (o *GetOutputContentConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get output content conflict response
+func (o *GetOutputContentConflict) Code() int {
+	return 409
 }
 
 func (o *GetOutputContentConflict) Error() string {

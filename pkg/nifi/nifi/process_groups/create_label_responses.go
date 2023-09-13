@@ -60,7 +60,7 @@ func (o *CreateLabelReader) ReadResponse(response runtime.ClientResponse, consum
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /process-groups/{id}/labels] createLabel", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *CreateLabelCreated) IsServerError() bool {
 // IsCode returns true when this create label created response a status code equal to that given
 func (o *CreateLabelCreated) IsCode(code int) bool {
 	return code == 201
+}
+
+// Code gets the status code for the create label created response
+func (o *CreateLabelCreated) Code() int {
+	return 201
 }
 
 func (o *CreateLabelCreated) Error() string {
@@ -165,6 +170,11 @@ func (o *CreateLabelBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the create label bad request response
+func (o *CreateLabelBadRequest) Code() int {
+	return 400
+}
+
 func (o *CreateLabelBadRequest) Error() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/labels][%d] createLabelBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *CreateLabelUnauthorized) IsServerError() bool {
 // IsCode returns true when this create label unauthorized response a status code equal to that given
 func (o *CreateLabelUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the create label unauthorized response
+func (o *CreateLabelUnauthorized) Code() int {
+	return 401
 }
 
 func (o *CreateLabelUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *CreateLabelForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the create label forbidden response
+func (o *CreateLabelForbidden) Code() int {
+	return 403
+}
+
 func (o *CreateLabelForbidden) Error() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/labels][%d] createLabelForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *CreateLabelNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the create label not found response
+func (o *CreateLabelNotFound) Code() int {
+	return 404
+}
+
 func (o *CreateLabelNotFound) Error() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/labels][%d] createLabelNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *CreateLabelConflict) IsServerError() bool {
 // IsCode returns true when this create label conflict response a status code equal to that given
 func (o *CreateLabelConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the create label conflict response
+func (o *CreateLabelConflict) Code() int {
+	return 409
 }
 
 func (o *CreateLabelConflict) Error() string {

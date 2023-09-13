@@ -54,7 +54,7 @@ func (o *GetProcessorTypesReader) ReadResponse(response runtime.ClientResponse, 
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /flow/processor-types] getProcessorTypes", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *GetProcessorTypesOK) IsServerError() bool {
 // IsCode returns true when this get processor types o k response a status code equal to that given
 func (o *GetProcessorTypesOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get processor types o k response
+func (o *GetProcessorTypesOK) Code() int {
+	return 200
 }
 
 func (o *GetProcessorTypesOK) Error() string {
@@ -159,6 +164,11 @@ func (o *GetProcessorTypesBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get processor types bad request response
+func (o *GetProcessorTypesBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetProcessorTypesBadRequest) Error() string {
 	return fmt.Sprintf("[GET /flow/processor-types][%d] getProcessorTypesBadRequest ", 400)
 }
@@ -208,6 +218,11 @@ func (o *GetProcessorTypesUnauthorized) IsServerError() bool {
 // IsCode returns true when this get processor types unauthorized response a status code equal to that given
 func (o *GetProcessorTypesUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get processor types unauthorized response
+func (o *GetProcessorTypesUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetProcessorTypesUnauthorized) Error() string {
@@ -261,6 +276,11 @@ func (o *GetProcessorTypesForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get processor types forbidden response
+func (o *GetProcessorTypesForbidden) Code() int {
+	return 403
+}
+
 func (o *GetProcessorTypesForbidden) Error() string {
 	return fmt.Sprintf("[GET /flow/processor-types][%d] getProcessorTypesForbidden ", 403)
 }
@@ -310,6 +330,11 @@ func (o *GetProcessorTypesConflict) IsServerError() bool {
 // IsCode returns true when this get processor types conflict response a status code equal to that given
 func (o *GetProcessorTypesConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get processor types conflict response
+func (o *GetProcessorTypesConflict) Code() int {
+	return 409
 }
 
 func (o *GetProcessorTypesConflict) Error() string {

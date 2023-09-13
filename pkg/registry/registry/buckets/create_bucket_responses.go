@@ -48,7 +48,7 @@ func (o *CreateBucketReader) ReadResponse(response runtime.ClientResponse, consu
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /buckets] createBucket", response, response.Code())
 	}
 }
 
@@ -89,6 +89,11 @@ func (o *CreateBucketOK) IsServerError() bool {
 // IsCode returns true when this create bucket o k response a status code equal to that given
 func (o *CreateBucketOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the create bucket o k response
+func (o *CreateBucketOK) Code() int {
+	return 200
 }
 
 func (o *CreateBucketOK) Error() string {
@@ -153,6 +158,11 @@ func (o *CreateBucketBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the create bucket bad request response
+func (o *CreateBucketBadRequest) Code() int {
+	return 400
+}
+
 func (o *CreateBucketBadRequest) Error() string {
 	return fmt.Sprintf("[POST /buckets][%d] createBucketBadRequest ", 400)
 }
@@ -204,6 +214,11 @@ func (o *CreateBucketUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the create bucket unauthorized response
+func (o *CreateBucketUnauthorized) Code() int {
+	return 401
+}
+
 func (o *CreateBucketUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /buckets][%d] createBucketUnauthorized ", 401)
 }
@@ -253,6 +268,11 @@ func (o *CreateBucketForbidden) IsServerError() bool {
 // IsCode returns true when this create bucket forbidden response a status code equal to that given
 func (o *CreateBucketForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the create bucket forbidden response
+func (o *CreateBucketForbidden) Code() int {
+	return 403
 }
 
 func (o *CreateBucketForbidden) Error() string {

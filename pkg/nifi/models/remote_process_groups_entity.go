@@ -88,6 +88,11 @@ func (m *RemoteProcessGroupsEntity) contextValidateRemoteProcessGroups(ctx conte
 	for i := 0; i < len(m.RemoteProcessGroups); i++ {
 
 		if m.RemoteProcessGroups[i] != nil {
+
+			if swag.IsZero(m.RemoteProcessGroups[i]) { // not required
+				return nil
+			}
+
 			if err := m.RemoteProcessGroups[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("remoteProcessGroups" + "." + strconv.Itoa(i))

@@ -66,7 +66,7 @@ func (o *CreateDropRequestReader) ReadResponse(response runtime.ClientResponse, 
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /flowfile-queues/{id}/drop-requests] createDropRequest", response, response.Code())
 	}
 }
 
@@ -107,6 +107,11 @@ func (o *CreateDropRequestOK) IsServerError() bool {
 // IsCode returns true when this create drop request o k response a status code equal to that given
 func (o *CreateDropRequestOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the create drop request o k response
+func (o *CreateDropRequestOK) Code() int {
+	return 200
 }
 
 func (o *CreateDropRequestOK) Error() string {
@@ -171,6 +176,11 @@ func (o *CreateDropRequestAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
+// Code gets the status code for the create drop request accepted response
+func (o *CreateDropRequestAccepted) Code() int {
+	return 202
+}
+
 func (o *CreateDropRequestAccepted) Error() string {
 	return fmt.Sprintf("[POST /flowfile-queues/{id}/drop-requests][%d] createDropRequestAccepted ", 202)
 }
@@ -220,6 +230,11 @@ func (o *CreateDropRequestBadRequest) IsServerError() bool {
 // IsCode returns true when this create drop request bad request response a status code equal to that given
 func (o *CreateDropRequestBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the create drop request bad request response
+func (o *CreateDropRequestBadRequest) Code() int {
+	return 400
 }
 
 func (o *CreateDropRequestBadRequest) Error() string {
@@ -273,6 +288,11 @@ func (o *CreateDropRequestUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the create drop request unauthorized response
+func (o *CreateDropRequestUnauthorized) Code() int {
+	return 401
+}
+
 func (o *CreateDropRequestUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /flowfile-queues/{id}/drop-requests][%d] createDropRequestUnauthorized ", 401)
 }
@@ -322,6 +342,11 @@ func (o *CreateDropRequestForbidden) IsServerError() bool {
 // IsCode returns true when this create drop request forbidden response a status code equal to that given
 func (o *CreateDropRequestForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the create drop request forbidden response
+func (o *CreateDropRequestForbidden) Code() int {
+	return 403
 }
 
 func (o *CreateDropRequestForbidden) Error() string {
@@ -375,6 +400,11 @@ func (o *CreateDropRequestNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the create drop request not found response
+func (o *CreateDropRequestNotFound) Code() int {
+	return 404
+}
+
 func (o *CreateDropRequestNotFound) Error() string {
 	return fmt.Sprintf("[POST /flowfile-queues/{id}/drop-requests][%d] createDropRequestNotFound ", 404)
 }
@@ -424,6 +454,11 @@ func (o *CreateDropRequestConflict) IsServerError() bool {
 // IsCode returns true when this create drop request conflict response a status code equal to that given
 func (o *CreateDropRequestConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the create drop request conflict response
+func (o *CreateDropRequestConflict) Code() int {
+	return 409
 }
 
 func (o *CreateDropRequestConflict) Error() string {

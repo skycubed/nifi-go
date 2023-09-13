@@ -54,7 +54,7 @@ func (o *GetReportingTaskTypesReader) ReadResponse(response runtime.ClientRespon
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /flow/reporting-task-types] getReportingTaskTypes", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *GetReportingTaskTypesOK) IsServerError() bool {
 // IsCode returns true when this get reporting task types o k response a status code equal to that given
 func (o *GetReportingTaskTypesOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get reporting task types o k response
+func (o *GetReportingTaskTypesOK) Code() int {
+	return 200
 }
 
 func (o *GetReportingTaskTypesOK) Error() string {
@@ -159,6 +164,11 @@ func (o *GetReportingTaskTypesBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get reporting task types bad request response
+func (o *GetReportingTaskTypesBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetReportingTaskTypesBadRequest) Error() string {
 	return fmt.Sprintf("[GET /flow/reporting-task-types][%d] getReportingTaskTypesBadRequest ", 400)
 }
@@ -208,6 +218,11 @@ func (o *GetReportingTaskTypesUnauthorized) IsServerError() bool {
 // IsCode returns true when this get reporting task types unauthorized response a status code equal to that given
 func (o *GetReportingTaskTypesUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get reporting task types unauthorized response
+func (o *GetReportingTaskTypesUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetReportingTaskTypesUnauthorized) Error() string {
@@ -261,6 +276,11 @@ func (o *GetReportingTaskTypesForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get reporting task types forbidden response
+func (o *GetReportingTaskTypesForbidden) Code() int {
+	return 403
+}
+
 func (o *GetReportingTaskTypesForbidden) Error() string {
 	return fmt.Sprintf("[GET /flow/reporting-task-types][%d] getReportingTaskTypesForbidden ", 403)
 }
@@ -310,6 +330,11 @@ func (o *GetReportingTaskTypesConflict) IsServerError() bool {
 // IsCode returns true when this get reporting task types conflict response a status code equal to that given
 func (o *GetReportingTaskTypesConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get reporting task types conflict response
+func (o *GetReportingTaskTypesConflict) Code() int {
+	return 409
 }
 
 func (o *GetReportingTaskTypesConflict) Error() string {

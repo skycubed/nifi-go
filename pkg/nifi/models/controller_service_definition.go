@@ -284,6 +284,11 @@ func (m *ControllerServiceDefinition) ContextValidate(ctx context.Context, forma
 func (m *ControllerServiceDefinition) contextValidateBuildInfo(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.BuildInfo != nil {
+
+		if swag.IsZero(m.BuildInfo) { // not required
+			return nil
+		}
+
 		if err := m.BuildInfo.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("buildInfo")
@@ -302,6 +307,11 @@ func (m *ControllerServiceDefinition) contextValidateExplicitRestrictions(ctx co
 	for i := 0; i < len(m.ExplicitRestrictions); i++ {
 
 		if m.ExplicitRestrictions[i] != nil {
+
+			if swag.IsZero(m.ExplicitRestrictions[i]) { // not required
+				return nil
+			}
+
 			if err := m.ExplicitRestrictions[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("explicitRestrictions" + "." + strconv.Itoa(i))
@@ -337,6 +347,11 @@ func (m *ControllerServiceDefinition) contextValidateProvidedAPIImplementations(
 	for i := 0; i < len(m.ProvidedAPIImplementations); i++ {
 
 		if m.ProvidedAPIImplementations[i] != nil {
+
+			if swag.IsZero(m.ProvidedAPIImplementations[i]) { // not required
+				return nil
+			}
+
 			if err := m.ProvidedAPIImplementations[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("providedApiImplementations" + "." + strconv.Itoa(i))
@@ -355,6 +370,11 @@ func (m *ControllerServiceDefinition) contextValidateProvidedAPIImplementations(
 func (m *ControllerServiceDefinition) contextValidateStateful(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Stateful != nil {
+
+		if swag.IsZero(m.Stateful) { // not required
+			return nil
+		}
+
 		if err := m.Stateful.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("stateful")

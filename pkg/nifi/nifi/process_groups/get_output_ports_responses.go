@@ -60,7 +60,7 @@ func (o *GetOutputPortsReader) ReadResponse(response runtime.ClientResponse, con
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /process-groups/{id}/output-ports] getOutputPorts", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *GetOutputPortsOK) IsServerError() bool {
 // IsCode returns true when this get output ports o k response a status code equal to that given
 func (o *GetOutputPortsOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get output ports o k response
+func (o *GetOutputPortsOK) Code() int {
+	return 200
 }
 
 func (o *GetOutputPortsOK) Error() string {
@@ -165,6 +170,11 @@ func (o *GetOutputPortsBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get output ports bad request response
+func (o *GetOutputPortsBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetOutputPortsBadRequest) Error() string {
 	return fmt.Sprintf("[GET /process-groups/{id}/output-ports][%d] getOutputPortsBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *GetOutputPortsUnauthorized) IsServerError() bool {
 // IsCode returns true when this get output ports unauthorized response a status code equal to that given
 func (o *GetOutputPortsUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get output ports unauthorized response
+func (o *GetOutputPortsUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetOutputPortsUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *GetOutputPortsForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get output ports forbidden response
+func (o *GetOutputPortsForbidden) Code() int {
+	return 403
+}
+
 func (o *GetOutputPortsForbidden) Error() string {
 	return fmt.Sprintf("[GET /process-groups/{id}/output-ports][%d] getOutputPortsForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *GetOutputPortsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get output ports not found response
+func (o *GetOutputPortsNotFound) Code() int {
+	return 404
+}
+
 func (o *GetOutputPortsNotFound) Error() string {
 	return fmt.Sprintf("[GET /process-groups/{id}/output-ports][%d] getOutputPortsNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *GetOutputPortsConflict) IsServerError() bool {
 // IsCode returns true when this get output ports conflict response a status code equal to that given
 func (o *GetOutputPortsConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get output ports conflict response
+func (o *GetOutputPortsConflict) Code() int {
+	return 409
 }
 
 func (o *GetOutputPortsConflict) Error() string {

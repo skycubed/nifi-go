@@ -60,7 +60,7 @@ func (o *UpdateControllerServiceReader) ReadResponse(response runtime.ClientResp
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PUT /controller-services/{id}] updateControllerService", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *UpdateControllerServiceOK) IsServerError() bool {
 // IsCode returns true when this update controller service o k response a status code equal to that given
 func (o *UpdateControllerServiceOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the update controller service o k response
+func (o *UpdateControllerServiceOK) Code() int {
+	return 200
 }
 
 func (o *UpdateControllerServiceOK) Error() string {
@@ -165,6 +170,11 @@ func (o *UpdateControllerServiceBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the update controller service bad request response
+func (o *UpdateControllerServiceBadRequest) Code() int {
+	return 400
+}
+
 func (o *UpdateControllerServiceBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /controller-services/{id}][%d] updateControllerServiceBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *UpdateControllerServiceUnauthorized) IsServerError() bool {
 // IsCode returns true when this update controller service unauthorized response a status code equal to that given
 func (o *UpdateControllerServiceUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the update controller service unauthorized response
+func (o *UpdateControllerServiceUnauthorized) Code() int {
+	return 401
 }
 
 func (o *UpdateControllerServiceUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *UpdateControllerServiceForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the update controller service forbidden response
+func (o *UpdateControllerServiceForbidden) Code() int {
+	return 403
+}
+
 func (o *UpdateControllerServiceForbidden) Error() string {
 	return fmt.Sprintf("[PUT /controller-services/{id}][%d] updateControllerServiceForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *UpdateControllerServiceNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the update controller service not found response
+func (o *UpdateControllerServiceNotFound) Code() int {
+	return 404
+}
+
 func (o *UpdateControllerServiceNotFound) Error() string {
 	return fmt.Sprintf("[PUT /controller-services/{id}][%d] updateControllerServiceNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *UpdateControllerServiceConflict) IsServerError() bool {
 // IsCode returns true when this update controller service conflict response a status code equal to that given
 func (o *UpdateControllerServiceConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the update controller service conflict response
+func (o *UpdateControllerServiceConflict) Code() int {
+	return 409
 }
 
 func (o *UpdateControllerServiceConflict) Error() string {

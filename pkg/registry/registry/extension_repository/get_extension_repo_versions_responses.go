@@ -60,7 +60,7 @@ func (o *GetExtensionRepoVersionsReader) ReadResponse(response runtime.ClientRes
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /extension-repository/{bucketName}/{groupId}/{artifactId}] getExtensionRepoVersions", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *GetExtensionRepoVersionsOK) IsServerError() bool {
 // IsCode returns true when this get extension repo versions o k response a status code equal to that given
 func (o *GetExtensionRepoVersionsOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get extension repo versions o k response
+func (o *GetExtensionRepoVersionsOK) Code() int {
+	return 200
 }
 
 func (o *GetExtensionRepoVersionsOK) Error() string {
@@ -163,6 +168,11 @@ func (o *GetExtensionRepoVersionsBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get extension repo versions bad request response
+func (o *GetExtensionRepoVersionsBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetExtensionRepoVersionsBadRequest) Error() string {
 	return fmt.Sprintf("[GET /extension-repository/{bucketName}/{groupId}/{artifactId}][%d] getExtensionRepoVersionsBadRequest ", 400)
 }
@@ -212,6 +222,11 @@ func (o *GetExtensionRepoVersionsUnauthorized) IsServerError() bool {
 // IsCode returns true when this get extension repo versions unauthorized response a status code equal to that given
 func (o *GetExtensionRepoVersionsUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get extension repo versions unauthorized response
+func (o *GetExtensionRepoVersionsUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetExtensionRepoVersionsUnauthorized) Error() string {
@@ -265,6 +280,11 @@ func (o *GetExtensionRepoVersionsForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get extension repo versions forbidden response
+func (o *GetExtensionRepoVersionsForbidden) Code() int {
+	return 403
+}
+
 func (o *GetExtensionRepoVersionsForbidden) Error() string {
 	return fmt.Sprintf("[GET /extension-repository/{bucketName}/{groupId}/{artifactId}][%d] getExtensionRepoVersionsForbidden ", 403)
 }
@@ -316,6 +336,11 @@ func (o *GetExtensionRepoVersionsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get extension repo versions not found response
+func (o *GetExtensionRepoVersionsNotFound) Code() int {
+	return 404
+}
+
 func (o *GetExtensionRepoVersionsNotFound) Error() string {
 	return fmt.Sprintf("[GET /extension-repository/{bucketName}/{groupId}/{artifactId}][%d] getExtensionRepoVersionsNotFound ", 404)
 }
@@ -365,6 +390,11 @@ func (o *GetExtensionRepoVersionsConflict) IsServerError() bool {
 // IsCode returns true when this get extension repo versions conflict response a status code equal to that given
 func (o *GetExtensionRepoVersionsConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get extension repo versions conflict response
+func (o *GetExtensionRepoVersionsConflict) Code() int {
+	return 409
 }
 
 func (o *GetExtensionRepoVersionsConflict) Error() string {

@@ -72,6 +72,11 @@ func (m *RuntimeManifestEntity) ContextValidate(ctx context.Context, formats str
 func (m *RuntimeManifestEntity) contextValidateRuntimeManifest(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.RuntimeManifest != nil {
+
+		if swag.IsZero(m.RuntimeManifest) { // not required
+			return nil
+		}
+
 		if err := m.RuntimeManifest.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("runtimeManifest")

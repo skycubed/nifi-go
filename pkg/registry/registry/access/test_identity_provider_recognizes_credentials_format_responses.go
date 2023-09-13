@@ -52,7 +52,7 @@ func (o *TestIdentityProviderRecognizesCredentialsFormatReader) ReadResponse(res
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /access/token/identity-provider/test] testIdentityProviderRecognizesCredentialsFormat", response, response.Code())
 	}
 }
 
@@ -93,6 +93,11 @@ func (o *TestIdentityProviderRecognizesCredentialsFormatOK) IsServerError() bool
 // IsCode returns true when this test identity provider recognizes credentials format o k response a status code equal to that given
 func (o *TestIdentityProviderRecognizesCredentialsFormatOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the test identity provider recognizes credentials format o k response
+func (o *TestIdentityProviderRecognizesCredentialsFormatOK) Code() int {
+	return 200
 }
 
 func (o *TestIdentityProviderRecognizesCredentialsFormatOK) Error() string {
@@ -155,6 +160,11 @@ func (o *TestIdentityProviderRecognizesCredentialsFormatBadRequest) IsCode(code 
 	return code == 400
 }
 
+// Code gets the status code for the test identity provider recognizes credentials format bad request response
+func (o *TestIdentityProviderRecognizesCredentialsFormatBadRequest) Code() int {
+	return 400
+}
+
 func (o *TestIdentityProviderRecognizesCredentialsFormatBadRequest) Error() string {
 	return fmt.Sprintf("[POST /access/token/identity-provider/test][%d] testIdentityProviderRecognizesCredentialsFormatBadRequest ", 400)
 }
@@ -204,6 +214,11 @@ func (o *TestIdentityProviderRecognizesCredentialsFormatUnauthorized) IsServerEr
 // IsCode returns true when this test identity provider recognizes credentials format unauthorized response a status code equal to that given
 func (o *TestIdentityProviderRecognizesCredentialsFormatUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the test identity provider recognizes credentials format unauthorized response
+func (o *TestIdentityProviderRecognizesCredentialsFormatUnauthorized) Code() int {
+	return 401
 }
 
 func (o *TestIdentityProviderRecognizesCredentialsFormatUnauthorized) Error() string {
@@ -257,6 +272,11 @@ func (o *TestIdentityProviderRecognizesCredentialsFormatConflict) IsCode(code in
 	return code == 409
 }
 
+// Code gets the status code for the test identity provider recognizes credentials format conflict response
+func (o *TestIdentityProviderRecognizesCredentialsFormatConflict) Code() int {
+	return 409
+}
+
 func (o *TestIdentityProviderRecognizesCredentialsFormatConflict) Error() string {
 	return fmt.Sprintf("[POST /access/token/identity-provider/test][%d] testIdentityProviderRecognizesCredentialsFormatConflict ", 409)
 }
@@ -306,6 +326,11 @@ func (o *TestIdentityProviderRecognizesCredentialsFormatInternalServerError) IsS
 // IsCode returns true when this test identity provider recognizes credentials format internal server error response a status code equal to that given
 func (o *TestIdentityProviderRecognizesCredentialsFormatInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the test identity provider recognizes credentials format internal server error response
+func (o *TestIdentityProviderRecognizesCredentialsFormatInternalServerError) Code() int {
+	return 500
 }
 
 func (o *TestIdentityProviderRecognizesCredentialsFormatInternalServerError) Error() string {

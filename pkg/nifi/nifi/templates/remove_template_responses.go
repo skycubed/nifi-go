@@ -60,7 +60,7 @@ func (o *RemoveTemplateReader) ReadResponse(response runtime.ClientResponse, con
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /templates/{id}] removeTemplate", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *RemoveTemplateOK) IsServerError() bool {
 // IsCode returns true when this remove template o k response a status code equal to that given
 func (o *RemoveTemplateOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the remove template o k response
+func (o *RemoveTemplateOK) Code() int {
+	return 200
 }
 
 func (o *RemoveTemplateOK) Error() string {
@@ -165,6 +170,11 @@ func (o *RemoveTemplateBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the remove template bad request response
+func (o *RemoveTemplateBadRequest) Code() int {
+	return 400
+}
+
 func (o *RemoveTemplateBadRequest) Error() string {
 	return fmt.Sprintf("[DELETE /templates/{id}][%d] removeTemplateBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *RemoveTemplateUnauthorized) IsServerError() bool {
 // IsCode returns true when this remove template unauthorized response a status code equal to that given
 func (o *RemoveTemplateUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the remove template unauthorized response
+func (o *RemoveTemplateUnauthorized) Code() int {
+	return 401
 }
 
 func (o *RemoveTemplateUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *RemoveTemplateForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the remove template forbidden response
+func (o *RemoveTemplateForbidden) Code() int {
+	return 403
+}
+
 func (o *RemoveTemplateForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /templates/{id}][%d] removeTemplateForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *RemoveTemplateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the remove template not found response
+func (o *RemoveTemplateNotFound) Code() int {
+	return 404
+}
+
 func (o *RemoveTemplateNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /templates/{id}][%d] removeTemplateNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *RemoveTemplateConflict) IsServerError() bool {
 // IsCode returns true when this remove template conflict response a status code equal to that given
 func (o *RemoveTemplateConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the remove template conflict response
+func (o *RemoveTemplateConflict) Code() int {
+	return 409
 }
 
 func (o *RemoveTemplateConflict) Error() string {

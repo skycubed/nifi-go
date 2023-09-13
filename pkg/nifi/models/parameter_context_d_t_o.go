@@ -206,6 +206,11 @@ func (m *ParameterContextDTO) contextValidateBoundProcessGroups(ctx context.Cont
 	for i := 0; i < len(m.BoundProcessGroups); i++ {
 
 		if m.BoundProcessGroups[i] != nil {
+
+			if swag.IsZero(m.BoundProcessGroups[i]) { // not required
+				return nil
+			}
+
 			if err := m.BoundProcessGroups[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("boundProcessGroups" + "." + strconv.Itoa(i))
@@ -226,6 +231,11 @@ func (m *ParameterContextDTO) contextValidateInheritedParameterContexts(ctx cont
 	for i := 0; i < len(m.InheritedParameterContexts); i++ {
 
 		if m.InheritedParameterContexts[i] != nil {
+
+			if swag.IsZero(m.InheritedParameterContexts[i]) { // not required
+				return nil
+			}
+
 			if err := m.InheritedParameterContexts[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("inheritedParameterContexts" + "." + strconv.Itoa(i))
@@ -244,6 +254,11 @@ func (m *ParameterContextDTO) contextValidateInheritedParameterContexts(ctx cont
 func (m *ParameterContextDTO) contextValidateParameterProviderConfiguration(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ParameterProviderConfiguration != nil {
+
+		if swag.IsZero(m.ParameterProviderConfiguration) { // not required
+			return nil
+		}
+
 		if err := m.ParameterProviderConfiguration.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("parameterProviderConfiguration")
@@ -262,6 +277,11 @@ func (m *ParameterContextDTO) contextValidateParameters(ctx context.Context, for
 	for i := 0; i < len(m.Parameters); i++ {
 
 		if m.Parameters[i] != nil {
+
+			if swag.IsZero(m.Parameters[i]) { // not required
+				return nil
+			}
+
 			if err := m.Parameters[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("parameters" + "." + strconv.Itoa(i))

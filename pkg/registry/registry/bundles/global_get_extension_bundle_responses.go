@@ -60,7 +60,7 @@ func (o *GlobalGetExtensionBundleReader) ReadResponse(response runtime.ClientRes
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /bundles/{bundleId}] globalGetExtensionBundle", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *GlobalGetExtensionBundleOK) IsServerError() bool {
 // IsCode returns true when this global get extension bundle o k response a status code equal to that given
 func (o *GlobalGetExtensionBundleOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the global get extension bundle o k response
+func (o *GlobalGetExtensionBundleOK) Code() int {
+	return 200
 }
 
 func (o *GlobalGetExtensionBundleOK) Error() string {
@@ -165,6 +170,11 @@ func (o *GlobalGetExtensionBundleBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the global get extension bundle bad request response
+func (o *GlobalGetExtensionBundleBadRequest) Code() int {
+	return 400
+}
+
 func (o *GlobalGetExtensionBundleBadRequest) Error() string {
 	return fmt.Sprintf("[GET /bundles/{bundleId}][%d] globalGetExtensionBundleBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *GlobalGetExtensionBundleUnauthorized) IsServerError() bool {
 // IsCode returns true when this global get extension bundle unauthorized response a status code equal to that given
 func (o *GlobalGetExtensionBundleUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the global get extension bundle unauthorized response
+func (o *GlobalGetExtensionBundleUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GlobalGetExtensionBundleUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *GlobalGetExtensionBundleForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the global get extension bundle forbidden response
+func (o *GlobalGetExtensionBundleForbidden) Code() int {
+	return 403
+}
+
 func (o *GlobalGetExtensionBundleForbidden) Error() string {
 	return fmt.Sprintf("[GET /bundles/{bundleId}][%d] globalGetExtensionBundleForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *GlobalGetExtensionBundleNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the global get extension bundle not found response
+func (o *GlobalGetExtensionBundleNotFound) Code() int {
+	return 404
+}
+
 func (o *GlobalGetExtensionBundleNotFound) Error() string {
 	return fmt.Sprintf("[GET /bundles/{bundleId}][%d] globalGetExtensionBundleNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *GlobalGetExtensionBundleConflict) IsServerError() bool {
 // IsCode returns true when this global get extension bundle conflict response a status code equal to that given
 func (o *GlobalGetExtensionBundleConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the global get extension bundle conflict response
+func (o *GlobalGetExtensionBundleConflict) Code() int {
+	return 409
 }
 
 func (o *GlobalGetExtensionBundleConflict) Error() string {

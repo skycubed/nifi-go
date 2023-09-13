@@ -60,7 +60,7 @@ func (o *UpdateSnippetReader) ReadResponse(response runtime.ClientResponse, cons
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PUT /snippets/{id}] updateSnippet", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *UpdateSnippetOK) IsServerError() bool {
 // IsCode returns true when this update snippet o k response a status code equal to that given
 func (o *UpdateSnippetOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the update snippet o k response
+func (o *UpdateSnippetOK) Code() int {
+	return 200
 }
 
 func (o *UpdateSnippetOK) Error() string {
@@ -165,6 +170,11 @@ func (o *UpdateSnippetBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the update snippet bad request response
+func (o *UpdateSnippetBadRequest) Code() int {
+	return 400
+}
+
 func (o *UpdateSnippetBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /snippets/{id}][%d] updateSnippetBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *UpdateSnippetUnauthorized) IsServerError() bool {
 // IsCode returns true when this update snippet unauthorized response a status code equal to that given
 func (o *UpdateSnippetUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the update snippet unauthorized response
+func (o *UpdateSnippetUnauthorized) Code() int {
+	return 401
 }
 
 func (o *UpdateSnippetUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *UpdateSnippetForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the update snippet forbidden response
+func (o *UpdateSnippetForbidden) Code() int {
+	return 403
+}
+
 func (o *UpdateSnippetForbidden) Error() string {
 	return fmt.Sprintf("[PUT /snippets/{id}][%d] updateSnippetForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *UpdateSnippetNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the update snippet not found response
+func (o *UpdateSnippetNotFound) Code() int {
+	return 404
+}
+
 func (o *UpdateSnippetNotFound) Error() string {
 	return fmt.Sprintf("[PUT /snippets/{id}][%d] updateSnippetNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *UpdateSnippetConflict) IsServerError() bool {
 // IsCode returns true when this update snippet conflict response a status code equal to that given
 func (o *UpdateSnippetConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the update snippet conflict response
+func (o *UpdateSnippetConflict) Code() int {
+	return 409
 }
 
 func (o *UpdateSnippetConflict) Error() string {

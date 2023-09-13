@@ -60,7 +60,7 @@ func (o *GetComponentHistoryReader) ReadResponse(response runtime.ClientResponse
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /flow/history/components/{componentId}] getComponentHistory", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *GetComponentHistoryOK) IsServerError() bool {
 // IsCode returns true when this get component history o k response a status code equal to that given
 func (o *GetComponentHistoryOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get component history o k response
+func (o *GetComponentHistoryOK) Code() int {
+	return 200
 }
 
 func (o *GetComponentHistoryOK) Error() string {
@@ -165,6 +170,11 @@ func (o *GetComponentHistoryBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get component history bad request response
+func (o *GetComponentHistoryBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetComponentHistoryBadRequest) Error() string {
 	return fmt.Sprintf("[GET /flow/history/components/{componentId}][%d] getComponentHistoryBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *GetComponentHistoryUnauthorized) IsServerError() bool {
 // IsCode returns true when this get component history unauthorized response a status code equal to that given
 func (o *GetComponentHistoryUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get component history unauthorized response
+func (o *GetComponentHistoryUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetComponentHistoryUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *GetComponentHistoryForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get component history forbidden response
+func (o *GetComponentHistoryForbidden) Code() int {
+	return 403
+}
+
 func (o *GetComponentHistoryForbidden) Error() string {
 	return fmt.Sprintf("[GET /flow/history/components/{componentId}][%d] getComponentHistoryForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *GetComponentHistoryNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get component history not found response
+func (o *GetComponentHistoryNotFound) Code() int {
+	return 404
+}
+
 func (o *GetComponentHistoryNotFound) Error() string {
 	return fmt.Sprintf("[GET /flow/history/components/{componentId}][%d] getComponentHistoryNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *GetComponentHistoryConflict) IsServerError() bool {
 // IsCode returns true when this get component history conflict response a status code equal to that given
 func (o *GetComponentHistoryConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get component history conflict response
+func (o *GetComponentHistoryConflict) Code() int {
+	return 409
 }
 
 func (o *GetComponentHistoryConflict) Error() string {

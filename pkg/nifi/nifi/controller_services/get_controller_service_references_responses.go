@@ -60,7 +60,7 @@ func (o *GetControllerServiceReferencesReader) ReadResponse(response runtime.Cli
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /controller-services/{id}/references] getControllerServiceReferences", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *GetControllerServiceReferencesOK) IsServerError() bool {
 // IsCode returns true when this get controller service references o k response a status code equal to that given
 func (o *GetControllerServiceReferencesOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get controller service references o k response
+func (o *GetControllerServiceReferencesOK) Code() int {
+	return 200
 }
 
 func (o *GetControllerServiceReferencesOK) Error() string {
@@ -165,6 +170,11 @@ func (o *GetControllerServiceReferencesBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get controller service references bad request response
+func (o *GetControllerServiceReferencesBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetControllerServiceReferencesBadRequest) Error() string {
 	return fmt.Sprintf("[GET /controller-services/{id}/references][%d] getControllerServiceReferencesBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *GetControllerServiceReferencesUnauthorized) IsServerError() bool {
 // IsCode returns true when this get controller service references unauthorized response a status code equal to that given
 func (o *GetControllerServiceReferencesUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get controller service references unauthorized response
+func (o *GetControllerServiceReferencesUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetControllerServiceReferencesUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *GetControllerServiceReferencesForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get controller service references forbidden response
+func (o *GetControllerServiceReferencesForbidden) Code() int {
+	return 403
+}
+
 func (o *GetControllerServiceReferencesForbidden) Error() string {
 	return fmt.Sprintf("[GET /controller-services/{id}/references][%d] getControllerServiceReferencesForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *GetControllerServiceReferencesNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get controller service references not found response
+func (o *GetControllerServiceReferencesNotFound) Code() int {
+	return 404
+}
+
 func (o *GetControllerServiceReferencesNotFound) Error() string {
 	return fmt.Sprintf("[GET /controller-services/{id}/references][%d] getControllerServiceReferencesNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *GetControllerServiceReferencesConflict) IsServerError() bool {
 // IsCode returns true when this get controller service references conflict response a status code equal to that given
 func (o *GetControllerServiceReferencesConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get controller service references conflict response
+func (o *GetControllerServiceReferencesConflict) Code() int {
+	return 409
 }
 
 func (o *GetControllerServiceReferencesConflict) Error() string {

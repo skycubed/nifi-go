@@ -58,7 +58,7 @@ func (o *CreateVersionControlRequestReader) ReadResponse(response runtime.Client
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /versions/active-requests] createVersionControlRequest", response, response.Code())
 	}
 }
 
@@ -99,6 +99,11 @@ func (o *CreateVersionControlRequestOK) IsServerError() bool {
 // IsCode returns true when this create version control request o k response a status code equal to that given
 func (o *CreateVersionControlRequestOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the create version control request o k response
+func (o *CreateVersionControlRequestOK) Code() int {
+	return 200
 }
 
 func (o *CreateVersionControlRequestOK) Error() string {
@@ -161,6 +166,11 @@ func (o *CreateVersionControlRequestBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the create version control request bad request response
+func (o *CreateVersionControlRequestBadRequest) Code() int {
+	return 400
+}
+
 func (o *CreateVersionControlRequestBadRequest) Error() string {
 	return fmt.Sprintf("[POST /versions/active-requests][%d] createVersionControlRequestBadRequest ", 400)
 }
@@ -210,6 +220,11 @@ func (o *CreateVersionControlRequestUnauthorized) IsServerError() bool {
 // IsCode returns true when this create version control request unauthorized response a status code equal to that given
 func (o *CreateVersionControlRequestUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the create version control request unauthorized response
+func (o *CreateVersionControlRequestUnauthorized) Code() int {
+	return 401
 }
 
 func (o *CreateVersionControlRequestUnauthorized) Error() string {
@@ -263,6 +278,11 @@ func (o *CreateVersionControlRequestForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the create version control request forbidden response
+func (o *CreateVersionControlRequestForbidden) Code() int {
+	return 403
+}
+
 func (o *CreateVersionControlRequestForbidden) Error() string {
 	return fmt.Sprintf("[POST /versions/active-requests][%d] createVersionControlRequestForbidden ", 403)
 }
@@ -314,6 +334,11 @@ func (o *CreateVersionControlRequestNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the create version control request not found response
+func (o *CreateVersionControlRequestNotFound) Code() int {
+	return 404
+}
+
 func (o *CreateVersionControlRequestNotFound) Error() string {
 	return fmt.Sprintf("[POST /versions/active-requests][%d] createVersionControlRequestNotFound ", 404)
 }
@@ -363,6 +388,11 @@ func (o *CreateVersionControlRequestConflict) IsServerError() bool {
 // IsCode returns true when this create version control request conflict response a status code equal to that given
 func (o *CreateVersionControlRequestConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the create version control request conflict response
+func (o *CreateVersionControlRequestConflict) Code() int {
+	return 409
 }
 
 func (o *CreateVersionControlRequestConflict) Error() string {

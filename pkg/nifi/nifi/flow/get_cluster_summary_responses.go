@@ -54,7 +54,7 @@ func (o *GetClusterSummaryReader) ReadResponse(response runtime.ClientResponse, 
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /flow/cluster/summary] getClusterSummary", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *GetClusterSummaryOK) IsServerError() bool {
 // IsCode returns true when this get cluster summary o k response a status code equal to that given
 func (o *GetClusterSummaryOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get cluster summary o k response
+func (o *GetClusterSummaryOK) Code() int {
+	return 200
 }
 
 func (o *GetClusterSummaryOK) Error() string {
@@ -159,6 +164,11 @@ func (o *GetClusterSummaryBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get cluster summary bad request response
+func (o *GetClusterSummaryBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetClusterSummaryBadRequest) Error() string {
 	return fmt.Sprintf("[GET /flow/cluster/summary][%d] getClusterSummaryBadRequest ", 400)
 }
@@ -208,6 +218,11 @@ func (o *GetClusterSummaryUnauthorized) IsServerError() bool {
 // IsCode returns true when this get cluster summary unauthorized response a status code equal to that given
 func (o *GetClusterSummaryUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get cluster summary unauthorized response
+func (o *GetClusterSummaryUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetClusterSummaryUnauthorized) Error() string {
@@ -261,6 +276,11 @@ func (o *GetClusterSummaryForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get cluster summary forbidden response
+func (o *GetClusterSummaryForbidden) Code() int {
+	return 403
+}
+
 func (o *GetClusterSummaryForbidden) Error() string {
 	return fmt.Sprintf("[GET /flow/cluster/summary][%d] getClusterSummaryForbidden ", 403)
 }
@@ -310,6 +330,11 @@ func (o *GetClusterSummaryConflict) IsServerError() bool {
 // IsCode returns true when this get cluster summary conflict response a status code equal to that given
 func (o *GetClusterSummaryConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get cluster summary conflict response
+func (o *GetClusterSummaryConflict) Code() int {
+	return 409
 }
 
 func (o *GetClusterSummaryConflict) Error() string {

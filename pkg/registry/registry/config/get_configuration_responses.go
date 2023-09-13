@@ -36,7 +36,7 @@ func (o *GetConfigurationReader) ReadResponse(response runtime.ClientResponse, c
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /config] getConfiguration", response, response.Code())
 	}
 }
 
@@ -77,6 +77,11 @@ func (o *GetConfigurationOK) IsServerError() bool {
 // IsCode returns true when this get configuration o k response a status code equal to that given
 func (o *GetConfigurationOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get configuration o k response
+func (o *GetConfigurationOK) Code() int {
+	return 200
 }
 
 func (o *GetConfigurationOK) Error() string {
@@ -139,6 +144,11 @@ func (o *GetConfigurationUnauthorized) IsServerError() bool {
 // IsCode returns true when this get configuration unauthorized response a status code equal to that given
 func (o *GetConfigurationUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get configuration unauthorized response
+func (o *GetConfigurationUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetConfigurationUnauthorized) Error() string {

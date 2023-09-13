@@ -60,7 +60,7 @@ func (o *UpdateOutputPortReader) ReadResponse(response runtime.ClientResponse, c
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PUT /output-ports/{id}] updateOutputPort", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *UpdateOutputPortOK) IsServerError() bool {
 // IsCode returns true when this update output port o k response a status code equal to that given
 func (o *UpdateOutputPortOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the update output port o k response
+func (o *UpdateOutputPortOK) Code() int {
+	return 200
 }
 
 func (o *UpdateOutputPortOK) Error() string {
@@ -165,6 +170,11 @@ func (o *UpdateOutputPortBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the update output port bad request response
+func (o *UpdateOutputPortBadRequest) Code() int {
+	return 400
+}
+
 func (o *UpdateOutputPortBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /output-ports/{id}][%d] updateOutputPortBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *UpdateOutputPortUnauthorized) IsServerError() bool {
 // IsCode returns true when this update output port unauthorized response a status code equal to that given
 func (o *UpdateOutputPortUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the update output port unauthorized response
+func (o *UpdateOutputPortUnauthorized) Code() int {
+	return 401
 }
 
 func (o *UpdateOutputPortUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *UpdateOutputPortForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the update output port forbidden response
+func (o *UpdateOutputPortForbidden) Code() int {
+	return 403
+}
+
 func (o *UpdateOutputPortForbidden) Error() string {
 	return fmt.Sprintf("[PUT /output-ports/{id}][%d] updateOutputPortForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *UpdateOutputPortNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the update output port not found response
+func (o *UpdateOutputPortNotFound) Code() int {
+	return 404
+}
+
 func (o *UpdateOutputPortNotFound) Error() string {
 	return fmt.Sprintf("[PUT /output-ports/{id}][%d] updateOutputPortNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *UpdateOutputPortConflict) IsServerError() bool {
 // IsCode returns true when this update output port conflict response a status code equal to that given
 func (o *UpdateOutputPortConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the update output port conflict response
+func (o *UpdateOutputPortConflict) Code() int {
+	return 409
 }
 
 func (o *UpdateOutputPortConflict) Error() string {

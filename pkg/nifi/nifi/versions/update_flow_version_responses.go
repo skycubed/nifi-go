@@ -60,7 +60,7 @@ func (o *UpdateFlowVersionReader) ReadResponse(response runtime.ClientResponse, 
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PUT /versions/process-groups/{id}] updateFlowVersion", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *UpdateFlowVersionOK) IsServerError() bool {
 // IsCode returns true when this update flow version o k response a status code equal to that given
 func (o *UpdateFlowVersionOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the update flow version o k response
+func (o *UpdateFlowVersionOK) Code() int {
+	return 200
 }
 
 func (o *UpdateFlowVersionOK) Error() string {
@@ -165,6 +170,11 @@ func (o *UpdateFlowVersionBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the update flow version bad request response
+func (o *UpdateFlowVersionBadRequest) Code() int {
+	return 400
+}
+
 func (o *UpdateFlowVersionBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /versions/process-groups/{id}][%d] updateFlowVersionBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *UpdateFlowVersionUnauthorized) IsServerError() bool {
 // IsCode returns true when this update flow version unauthorized response a status code equal to that given
 func (o *UpdateFlowVersionUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the update flow version unauthorized response
+func (o *UpdateFlowVersionUnauthorized) Code() int {
+	return 401
 }
 
 func (o *UpdateFlowVersionUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *UpdateFlowVersionForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the update flow version forbidden response
+func (o *UpdateFlowVersionForbidden) Code() int {
+	return 403
+}
+
 func (o *UpdateFlowVersionForbidden) Error() string {
 	return fmt.Sprintf("[PUT /versions/process-groups/{id}][%d] updateFlowVersionForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *UpdateFlowVersionNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the update flow version not found response
+func (o *UpdateFlowVersionNotFound) Code() int {
+	return 404
+}
+
 func (o *UpdateFlowVersionNotFound) Error() string {
 	return fmt.Sprintf("[PUT /versions/process-groups/{id}][%d] updateFlowVersionNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *UpdateFlowVersionConflict) IsServerError() bool {
 // IsCode returns true when this update flow version conflict response a status code equal to that given
 func (o *UpdateFlowVersionConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the update flow version conflict response
+func (o *UpdateFlowVersionConflict) Code() int {
+	return 409
 }
 
 func (o *UpdateFlowVersionConflict) Error() string {

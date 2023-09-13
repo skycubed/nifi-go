@@ -66,7 +66,7 @@ func (o *CommitInputPortTransactionReader) ReadResponse(response runtime.ClientR
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /data-transfer/input-ports/{portId}/transactions/{transactionId}] commitInputPortTransaction", response, response.Code())
 	}
 }
 
@@ -107,6 +107,11 @@ func (o *CommitInputPortTransactionOK) IsServerError() bool {
 // IsCode returns true when this commit input port transaction o k response a status code equal to that given
 func (o *CommitInputPortTransactionOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the commit input port transaction o k response
+func (o *CommitInputPortTransactionOK) Code() int {
+	return 200
 }
 
 func (o *CommitInputPortTransactionOK) Error() string {
@@ -171,6 +176,11 @@ func (o *CommitInputPortTransactionBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the commit input port transaction bad request response
+func (o *CommitInputPortTransactionBadRequest) Code() int {
+	return 400
+}
+
 func (o *CommitInputPortTransactionBadRequest) Error() string {
 	return fmt.Sprintf("[DELETE /data-transfer/input-ports/{portId}/transactions/{transactionId}][%d] commitInputPortTransactionBadRequest ", 400)
 }
@@ -220,6 +230,11 @@ func (o *CommitInputPortTransactionUnauthorized) IsServerError() bool {
 // IsCode returns true when this commit input port transaction unauthorized response a status code equal to that given
 func (o *CommitInputPortTransactionUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the commit input port transaction unauthorized response
+func (o *CommitInputPortTransactionUnauthorized) Code() int {
+	return 401
 }
 
 func (o *CommitInputPortTransactionUnauthorized) Error() string {
@@ -273,6 +288,11 @@ func (o *CommitInputPortTransactionForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the commit input port transaction forbidden response
+func (o *CommitInputPortTransactionForbidden) Code() int {
+	return 403
+}
+
 func (o *CommitInputPortTransactionForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /data-transfer/input-ports/{portId}/transactions/{transactionId}][%d] commitInputPortTransactionForbidden ", 403)
 }
@@ -322,6 +342,11 @@ func (o *CommitInputPortTransactionNotFound) IsServerError() bool {
 // IsCode returns true when this commit input port transaction not found response a status code equal to that given
 func (o *CommitInputPortTransactionNotFound) IsCode(code int) bool {
 	return code == 404
+}
+
+// Code gets the status code for the commit input port transaction not found response
+func (o *CommitInputPortTransactionNotFound) Code() int {
+	return 404
 }
 
 func (o *CommitInputPortTransactionNotFound) Error() string {
@@ -375,6 +400,11 @@ func (o *CommitInputPortTransactionConflict) IsCode(code int) bool {
 	return code == 409
 }
 
+// Code gets the status code for the commit input port transaction conflict response
+func (o *CommitInputPortTransactionConflict) Code() int {
+	return 409
+}
+
 func (o *CommitInputPortTransactionConflict) Error() string {
 	return fmt.Sprintf("[DELETE /data-transfer/input-ports/{portId}/transactions/{transactionId}][%d] commitInputPortTransactionConflict ", 409)
 }
@@ -424,6 +454,11 @@ func (o *CommitInputPortTransactionServiceUnavailable) IsServerError() bool {
 // IsCode returns true when this commit input port transaction service unavailable response a status code equal to that given
 func (o *CommitInputPortTransactionServiceUnavailable) IsCode(code int) bool {
 	return code == 503
+}
+
+// Code gets the status code for the commit input port transaction service unavailable response
+func (o *CommitInputPortTransactionServiceUnavailable) Code() int {
+	return 503
 }
 
 func (o *CommitInputPortTransactionServiceUnavailable) Error() string {

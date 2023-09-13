@@ -60,7 +60,7 @@ func (o *DeleteFlowRegistryClientReader) ReadResponse(response runtime.ClientRes
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /controller/registry-clients/{id}] deleteFlowRegistryClient", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *DeleteFlowRegistryClientOK) IsServerError() bool {
 // IsCode returns true when this delete flow registry client o k response a status code equal to that given
 func (o *DeleteFlowRegistryClientOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the delete flow registry client o k response
+func (o *DeleteFlowRegistryClientOK) Code() int {
+	return 200
 }
 
 func (o *DeleteFlowRegistryClientOK) Error() string {
@@ -165,6 +170,11 @@ func (o *DeleteFlowRegistryClientBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the delete flow registry client bad request response
+func (o *DeleteFlowRegistryClientBadRequest) Code() int {
+	return 400
+}
+
 func (o *DeleteFlowRegistryClientBadRequest) Error() string {
 	return fmt.Sprintf("[DELETE /controller/registry-clients/{id}][%d] deleteFlowRegistryClientBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *DeleteFlowRegistryClientUnauthorized) IsServerError() bool {
 // IsCode returns true when this delete flow registry client unauthorized response a status code equal to that given
 func (o *DeleteFlowRegistryClientUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the delete flow registry client unauthorized response
+func (o *DeleteFlowRegistryClientUnauthorized) Code() int {
+	return 401
 }
 
 func (o *DeleteFlowRegistryClientUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *DeleteFlowRegistryClientForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the delete flow registry client forbidden response
+func (o *DeleteFlowRegistryClientForbidden) Code() int {
+	return 403
+}
+
 func (o *DeleteFlowRegistryClientForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /controller/registry-clients/{id}][%d] deleteFlowRegistryClientForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *DeleteFlowRegistryClientNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the delete flow registry client not found response
+func (o *DeleteFlowRegistryClientNotFound) Code() int {
+	return 404
+}
+
 func (o *DeleteFlowRegistryClientNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /controller/registry-clients/{id}][%d] deleteFlowRegistryClientNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *DeleteFlowRegistryClientConflict) IsServerError() bool {
 // IsCode returns true when this delete flow registry client conflict response a status code equal to that given
 func (o *DeleteFlowRegistryClientConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the delete flow registry client conflict response
+func (o *DeleteFlowRegistryClientConflict) Code() int {
+	return 409
 }
 
 func (o *DeleteFlowRegistryClientConflict) Error() string {

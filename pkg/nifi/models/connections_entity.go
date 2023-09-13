@@ -88,6 +88,11 @@ func (m *ConnectionsEntity) contextValidateConnections(ctx context.Context, form
 	for i := 0; i < len(m.Connections); i++ {
 
 		if m.Connections[i] != nil {
+
+			if swag.IsZero(m.Connections[i]) { // not required
+				return nil
+			}
+
 			if err := m.Connections[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("connections" + "." + strconv.Itoa(i))

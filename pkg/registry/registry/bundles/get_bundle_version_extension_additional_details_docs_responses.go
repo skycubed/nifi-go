@@ -58,7 +58,7 @@ func (o *GetBundleVersionExtensionAdditionalDetailsDocsReader) ReadResponse(resp
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /bundles/{bundleId}/versions/{version}/extensions/{name}/docs/additional-details] getBundleVersionExtensionAdditionalDetailsDocs", response, response.Code())
 	}
 }
 
@@ -99,6 +99,11 @@ func (o *GetBundleVersionExtensionAdditionalDetailsDocsOK) IsServerError() bool 
 // IsCode returns true when this get bundle version extension additional details docs o k response a status code equal to that given
 func (o *GetBundleVersionExtensionAdditionalDetailsDocsOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get bundle version extension additional details docs o k response
+func (o *GetBundleVersionExtensionAdditionalDetailsDocsOK) Code() int {
+	return 200
 }
 
 func (o *GetBundleVersionExtensionAdditionalDetailsDocsOK) Error() string {
@@ -161,6 +166,11 @@ func (o *GetBundleVersionExtensionAdditionalDetailsDocsBadRequest) IsCode(code i
 	return code == 400
 }
 
+// Code gets the status code for the get bundle version extension additional details docs bad request response
+func (o *GetBundleVersionExtensionAdditionalDetailsDocsBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetBundleVersionExtensionAdditionalDetailsDocsBadRequest) Error() string {
 	return fmt.Sprintf("[GET /bundles/{bundleId}/versions/{version}/extensions/{name}/docs/additional-details][%d] getBundleVersionExtensionAdditionalDetailsDocsBadRequest ", 400)
 }
@@ -210,6 +220,11 @@ func (o *GetBundleVersionExtensionAdditionalDetailsDocsUnauthorized) IsServerErr
 // IsCode returns true when this get bundle version extension additional details docs unauthorized response a status code equal to that given
 func (o *GetBundleVersionExtensionAdditionalDetailsDocsUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get bundle version extension additional details docs unauthorized response
+func (o *GetBundleVersionExtensionAdditionalDetailsDocsUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetBundleVersionExtensionAdditionalDetailsDocsUnauthorized) Error() string {
@@ -263,6 +278,11 @@ func (o *GetBundleVersionExtensionAdditionalDetailsDocsForbidden) IsCode(code in
 	return code == 403
 }
 
+// Code gets the status code for the get bundle version extension additional details docs forbidden response
+func (o *GetBundleVersionExtensionAdditionalDetailsDocsForbidden) Code() int {
+	return 403
+}
+
 func (o *GetBundleVersionExtensionAdditionalDetailsDocsForbidden) Error() string {
 	return fmt.Sprintf("[GET /bundles/{bundleId}/versions/{version}/extensions/{name}/docs/additional-details][%d] getBundleVersionExtensionAdditionalDetailsDocsForbidden ", 403)
 }
@@ -314,6 +334,11 @@ func (o *GetBundleVersionExtensionAdditionalDetailsDocsNotFound) IsCode(code int
 	return code == 404
 }
 
+// Code gets the status code for the get bundle version extension additional details docs not found response
+func (o *GetBundleVersionExtensionAdditionalDetailsDocsNotFound) Code() int {
+	return 404
+}
+
 func (o *GetBundleVersionExtensionAdditionalDetailsDocsNotFound) Error() string {
 	return fmt.Sprintf("[GET /bundles/{bundleId}/versions/{version}/extensions/{name}/docs/additional-details][%d] getBundleVersionExtensionAdditionalDetailsDocsNotFound ", 404)
 }
@@ -363,6 +388,11 @@ func (o *GetBundleVersionExtensionAdditionalDetailsDocsConflict) IsServerError()
 // IsCode returns true when this get bundle version extension additional details docs conflict response a status code equal to that given
 func (o *GetBundleVersionExtensionAdditionalDetailsDocsConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get bundle version extension additional details docs conflict response
+func (o *GetBundleVersionExtensionAdditionalDetailsDocsConflict) Code() int {
+	return 409
 }
 
 func (o *GetBundleVersionExtensionAdditionalDetailsDocsConflict) Error() string {

@@ -60,7 +60,7 @@ func (o *ClearStateReader) ReadResponse(response runtime.ClientResponse, consume
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /reporting-tasks/{id}/state/clear-requests] clearState", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *ClearStateOK) IsServerError() bool {
 // IsCode returns true when this clear state o k response a status code equal to that given
 func (o *ClearStateOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the clear state o k response
+func (o *ClearStateOK) Code() int {
+	return 200
 }
 
 func (o *ClearStateOK) Error() string {
@@ -165,6 +170,11 @@ func (o *ClearStateBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the clear state bad request response
+func (o *ClearStateBadRequest) Code() int {
+	return 400
+}
+
 func (o *ClearStateBadRequest) Error() string {
 	return fmt.Sprintf("[POST /reporting-tasks/{id}/state/clear-requests][%d] clearStateBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *ClearStateUnauthorized) IsServerError() bool {
 // IsCode returns true when this clear state unauthorized response a status code equal to that given
 func (o *ClearStateUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the clear state unauthorized response
+func (o *ClearStateUnauthorized) Code() int {
+	return 401
 }
 
 func (o *ClearStateUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *ClearStateForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the clear state forbidden response
+func (o *ClearStateForbidden) Code() int {
+	return 403
+}
+
 func (o *ClearStateForbidden) Error() string {
 	return fmt.Sprintf("[POST /reporting-tasks/{id}/state/clear-requests][%d] clearStateForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *ClearStateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the clear state not found response
+func (o *ClearStateNotFound) Code() int {
+	return 404
+}
+
 func (o *ClearStateNotFound) Error() string {
 	return fmt.Sprintf("[POST /reporting-tasks/{id}/state/clear-requests][%d] clearStateNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *ClearStateConflict) IsServerError() bool {
 // IsCode returns true when this clear state conflict response a status code equal to that given
 func (o *ClearStateConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the clear state conflict response
+func (o *ClearStateConflict) Code() int {
+	return 409
 }
 
 func (o *ClearStateConflict) Error() string {

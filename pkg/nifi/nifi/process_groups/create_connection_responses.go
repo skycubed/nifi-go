@@ -60,7 +60,7 @@ func (o *CreateConnectionReader) ReadResponse(response runtime.ClientResponse, c
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /process-groups/{id}/connections] createConnection", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *CreateConnectionCreated) IsServerError() bool {
 // IsCode returns true when this create connection created response a status code equal to that given
 func (o *CreateConnectionCreated) IsCode(code int) bool {
 	return code == 201
+}
+
+// Code gets the status code for the create connection created response
+func (o *CreateConnectionCreated) Code() int {
+	return 201
 }
 
 func (o *CreateConnectionCreated) Error() string {
@@ -165,6 +170,11 @@ func (o *CreateConnectionBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the create connection bad request response
+func (o *CreateConnectionBadRequest) Code() int {
+	return 400
+}
+
 func (o *CreateConnectionBadRequest) Error() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/connections][%d] createConnectionBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *CreateConnectionUnauthorized) IsServerError() bool {
 // IsCode returns true when this create connection unauthorized response a status code equal to that given
 func (o *CreateConnectionUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the create connection unauthorized response
+func (o *CreateConnectionUnauthorized) Code() int {
+	return 401
 }
 
 func (o *CreateConnectionUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *CreateConnectionForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the create connection forbidden response
+func (o *CreateConnectionForbidden) Code() int {
+	return 403
+}
+
 func (o *CreateConnectionForbidden) Error() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/connections][%d] createConnectionForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *CreateConnectionNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the create connection not found response
+func (o *CreateConnectionNotFound) Code() int {
+	return 404
+}
+
 func (o *CreateConnectionNotFound) Error() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/connections][%d] createConnectionNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *CreateConnectionConflict) IsServerError() bool {
 // IsCode returns true when this create connection conflict response a status code equal to that given
 func (o *CreateConnectionConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the create connection conflict response
+func (o *CreateConnectionConflict) Code() int {
+	return 409
 }
 
 func (o *CreateConnectionConflict) Error() string {

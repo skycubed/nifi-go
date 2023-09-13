@@ -60,7 +60,7 @@ func (o *UpdateFlowRegistryClientReader) ReadResponse(response runtime.ClientRes
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PUT /controller/registry-clients/{id}] updateFlowRegistryClient", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *UpdateFlowRegistryClientOK) IsServerError() bool {
 // IsCode returns true when this update flow registry client o k response a status code equal to that given
 func (o *UpdateFlowRegistryClientOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the update flow registry client o k response
+func (o *UpdateFlowRegistryClientOK) Code() int {
+	return 200
 }
 
 func (o *UpdateFlowRegistryClientOK) Error() string {
@@ -165,6 +170,11 @@ func (o *UpdateFlowRegistryClientBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the update flow registry client bad request response
+func (o *UpdateFlowRegistryClientBadRequest) Code() int {
+	return 400
+}
+
 func (o *UpdateFlowRegistryClientBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /controller/registry-clients/{id}][%d] updateFlowRegistryClientBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *UpdateFlowRegistryClientUnauthorized) IsServerError() bool {
 // IsCode returns true when this update flow registry client unauthorized response a status code equal to that given
 func (o *UpdateFlowRegistryClientUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the update flow registry client unauthorized response
+func (o *UpdateFlowRegistryClientUnauthorized) Code() int {
+	return 401
 }
 
 func (o *UpdateFlowRegistryClientUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *UpdateFlowRegistryClientForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the update flow registry client forbidden response
+func (o *UpdateFlowRegistryClientForbidden) Code() int {
+	return 403
+}
+
 func (o *UpdateFlowRegistryClientForbidden) Error() string {
 	return fmt.Sprintf("[PUT /controller/registry-clients/{id}][%d] updateFlowRegistryClientForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *UpdateFlowRegistryClientNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the update flow registry client not found response
+func (o *UpdateFlowRegistryClientNotFound) Code() int {
+	return 404
+}
+
 func (o *UpdateFlowRegistryClientNotFound) Error() string {
 	return fmt.Sprintf("[PUT /controller/registry-clients/{id}][%d] updateFlowRegistryClientNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *UpdateFlowRegistryClientConflict) IsServerError() bool {
 // IsCode returns true when this update flow registry client conflict response a status code equal to that given
 func (o *UpdateFlowRegistryClientConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the update flow registry client conflict response
+func (o *UpdateFlowRegistryClientConflict) Code() int {
+	return 409
 }
 
 func (o *UpdateFlowRegistryClientConflict) Error() string {

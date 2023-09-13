@@ -60,7 +60,7 @@ func (o *SubmitProcessorVerificationRequestReader) ReadResponse(response runtime
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /processors/{id}/config/verification-requests] submitProcessorVerificationRequest", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *SubmitProcessorVerificationRequestOK) IsServerError() bool {
 // IsCode returns true when this submit processor verification request o k response a status code equal to that given
 func (o *SubmitProcessorVerificationRequestOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the submit processor verification request o k response
+func (o *SubmitProcessorVerificationRequestOK) Code() int {
+	return 200
 }
 
 func (o *SubmitProcessorVerificationRequestOK) Error() string {
@@ -165,6 +170,11 @@ func (o *SubmitProcessorVerificationRequestBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the submit processor verification request bad request response
+func (o *SubmitProcessorVerificationRequestBadRequest) Code() int {
+	return 400
+}
+
 func (o *SubmitProcessorVerificationRequestBadRequest) Error() string {
 	return fmt.Sprintf("[POST /processors/{id}/config/verification-requests][%d] submitProcessorVerificationRequestBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *SubmitProcessorVerificationRequestUnauthorized) IsServerError() bool {
 // IsCode returns true when this submit processor verification request unauthorized response a status code equal to that given
 func (o *SubmitProcessorVerificationRequestUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the submit processor verification request unauthorized response
+func (o *SubmitProcessorVerificationRequestUnauthorized) Code() int {
+	return 401
 }
 
 func (o *SubmitProcessorVerificationRequestUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *SubmitProcessorVerificationRequestForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the submit processor verification request forbidden response
+func (o *SubmitProcessorVerificationRequestForbidden) Code() int {
+	return 403
+}
+
 func (o *SubmitProcessorVerificationRequestForbidden) Error() string {
 	return fmt.Sprintf("[POST /processors/{id}/config/verification-requests][%d] submitProcessorVerificationRequestForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *SubmitProcessorVerificationRequestNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the submit processor verification request not found response
+func (o *SubmitProcessorVerificationRequestNotFound) Code() int {
+	return 404
+}
+
 func (o *SubmitProcessorVerificationRequestNotFound) Error() string {
 	return fmt.Sprintf("[POST /processors/{id}/config/verification-requests][%d] submitProcessorVerificationRequestNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *SubmitProcessorVerificationRequestConflict) IsServerError() bool {
 // IsCode returns true when this submit processor verification request conflict response a status code equal to that given
 func (o *SubmitProcessorVerificationRequestConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the submit processor verification request conflict response
+func (o *SubmitProcessorVerificationRequestConflict) Code() int {
+	return 409
 }
 
 func (o *SubmitProcessorVerificationRequestConflict) Error() string {

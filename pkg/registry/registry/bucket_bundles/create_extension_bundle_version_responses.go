@@ -60,7 +60,7 @@ func (o *CreateExtensionBundleVersionReader) ReadResponse(response runtime.Clien
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /buckets/{bucketId}/bundles/{bundleType}] createExtensionBundleVersion", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *CreateExtensionBundleVersionOK) IsServerError() bool {
 // IsCode returns true when this create extension bundle version o k response a status code equal to that given
 func (o *CreateExtensionBundleVersionOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the create extension bundle version o k response
+func (o *CreateExtensionBundleVersionOK) Code() int {
+	return 200
 }
 
 func (o *CreateExtensionBundleVersionOK) Error() string {
@@ -165,6 +170,11 @@ func (o *CreateExtensionBundleVersionBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the create extension bundle version bad request response
+func (o *CreateExtensionBundleVersionBadRequest) Code() int {
+	return 400
+}
+
 func (o *CreateExtensionBundleVersionBadRequest) Error() string {
 	return fmt.Sprintf("[POST /buckets/{bucketId}/bundles/{bundleType}][%d] createExtensionBundleVersionBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *CreateExtensionBundleVersionUnauthorized) IsServerError() bool {
 // IsCode returns true when this create extension bundle version unauthorized response a status code equal to that given
 func (o *CreateExtensionBundleVersionUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the create extension bundle version unauthorized response
+func (o *CreateExtensionBundleVersionUnauthorized) Code() int {
+	return 401
 }
 
 func (o *CreateExtensionBundleVersionUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *CreateExtensionBundleVersionForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the create extension bundle version forbidden response
+func (o *CreateExtensionBundleVersionForbidden) Code() int {
+	return 403
+}
+
 func (o *CreateExtensionBundleVersionForbidden) Error() string {
 	return fmt.Sprintf("[POST /buckets/{bucketId}/bundles/{bundleType}][%d] createExtensionBundleVersionForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *CreateExtensionBundleVersionNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the create extension bundle version not found response
+func (o *CreateExtensionBundleVersionNotFound) Code() int {
+	return 404
+}
+
 func (o *CreateExtensionBundleVersionNotFound) Error() string {
 	return fmt.Sprintf("[POST /buckets/{bucketId}/bundles/{bundleType}][%d] createExtensionBundleVersionNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *CreateExtensionBundleVersionConflict) IsServerError() bool {
 // IsCode returns true when this create extension bundle version conflict response a status code equal to that given
 func (o *CreateExtensionBundleVersionConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the create extension bundle version conflict response
+func (o *CreateExtensionBundleVersionConflict) Code() int {
+	return 409
 }
 
 func (o *CreateExtensionBundleVersionConflict) Error() string {

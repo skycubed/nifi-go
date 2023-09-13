@@ -60,7 +60,7 @@ func (o *DeleteVariableRegistryUpdateRequestReader) ReadResponse(response runtim
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /process-groups/{groupId}/variable-registry/update-requests/{updateId}] deleteVariableRegistryUpdateRequest", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *DeleteVariableRegistryUpdateRequestOK) IsServerError() bool {
 // IsCode returns true when this delete variable registry update request o k response a status code equal to that given
 func (o *DeleteVariableRegistryUpdateRequestOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the delete variable registry update request o k response
+func (o *DeleteVariableRegistryUpdateRequestOK) Code() int {
+	return 200
 }
 
 func (o *DeleteVariableRegistryUpdateRequestOK) Error() string {
@@ -165,6 +170,11 @@ func (o *DeleteVariableRegistryUpdateRequestBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the delete variable registry update request bad request response
+func (o *DeleteVariableRegistryUpdateRequestBadRequest) Code() int {
+	return 400
+}
+
 func (o *DeleteVariableRegistryUpdateRequestBadRequest) Error() string {
 	return fmt.Sprintf("[DELETE /process-groups/{groupId}/variable-registry/update-requests/{updateId}][%d] deleteVariableRegistryUpdateRequestBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *DeleteVariableRegistryUpdateRequestUnauthorized) IsServerError() bool {
 // IsCode returns true when this delete variable registry update request unauthorized response a status code equal to that given
 func (o *DeleteVariableRegistryUpdateRequestUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the delete variable registry update request unauthorized response
+func (o *DeleteVariableRegistryUpdateRequestUnauthorized) Code() int {
+	return 401
 }
 
 func (o *DeleteVariableRegistryUpdateRequestUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *DeleteVariableRegistryUpdateRequestForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the delete variable registry update request forbidden response
+func (o *DeleteVariableRegistryUpdateRequestForbidden) Code() int {
+	return 403
+}
+
 func (o *DeleteVariableRegistryUpdateRequestForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /process-groups/{groupId}/variable-registry/update-requests/{updateId}][%d] deleteVariableRegistryUpdateRequestForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *DeleteVariableRegistryUpdateRequestNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the delete variable registry update request not found response
+func (o *DeleteVariableRegistryUpdateRequestNotFound) Code() int {
+	return 404
+}
+
 func (o *DeleteVariableRegistryUpdateRequestNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /process-groups/{groupId}/variable-registry/update-requests/{updateId}][%d] deleteVariableRegistryUpdateRequestNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *DeleteVariableRegistryUpdateRequestConflict) IsServerError() bool {
 // IsCode returns true when this delete variable registry update request conflict response a status code equal to that given
 func (o *DeleteVariableRegistryUpdateRequestConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the delete variable registry update request conflict response
+func (o *DeleteVariableRegistryUpdateRequestConflict) Code() int {
+	return 409
 }
 
 func (o *DeleteVariableRegistryUpdateRequestConflict) Error() string {

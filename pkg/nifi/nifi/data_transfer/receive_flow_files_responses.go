@@ -64,7 +64,7 @@ func (o *ReceiveFlowFilesReader) ReadResponse(response runtime.ClientResponse, c
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /data-transfer/input-ports/{portId}/transactions/{transactionId}/flow-files] receiveFlowFiles", response, response.Code())
 	}
 }
 
@@ -105,6 +105,11 @@ func (o *ReceiveFlowFilesOK) IsServerError() bool {
 // IsCode returns true when this receive flow files o k response a status code equal to that given
 func (o *ReceiveFlowFilesOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the receive flow files o k response
+func (o *ReceiveFlowFilesOK) Code() int {
+	return 200
 }
 
 func (o *ReceiveFlowFilesOK) Error() string {
@@ -167,6 +172,11 @@ func (o *ReceiveFlowFilesBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the receive flow files bad request response
+func (o *ReceiveFlowFilesBadRequest) Code() int {
+	return 400
+}
+
 func (o *ReceiveFlowFilesBadRequest) Error() string {
 	return fmt.Sprintf("[POST /data-transfer/input-ports/{portId}/transactions/{transactionId}/flow-files][%d] receiveFlowFilesBadRequest ", 400)
 }
@@ -216,6 +226,11 @@ func (o *ReceiveFlowFilesUnauthorized) IsServerError() bool {
 // IsCode returns true when this receive flow files unauthorized response a status code equal to that given
 func (o *ReceiveFlowFilesUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the receive flow files unauthorized response
+func (o *ReceiveFlowFilesUnauthorized) Code() int {
+	return 401
 }
 
 func (o *ReceiveFlowFilesUnauthorized) Error() string {
@@ -269,6 +284,11 @@ func (o *ReceiveFlowFilesForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the receive flow files forbidden response
+func (o *ReceiveFlowFilesForbidden) Code() int {
+	return 403
+}
+
 func (o *ReceiveFlowFilesForbidden) Error() string {
 	return fmt.Sprintf("[POST /data-transfer/input-ports/{portId}/transactions/{transactionId}/flow-files][%d] receiveFlowFilesForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *ReceiveFlowFilesNotFound) IsServerError() bool {
 // IsCode returns true when this receive flow files not found response a status code equal to that given
 func (o *ReceiveFlowFilesNotFound) IsCode(code int) bool {
 	return code == 404
+}
+
+// Code gets the status code for the receive flow files not found response
+func (o *ReceiveFlowFilesNotFound) Code() int {
+	return 404
 }
 
 func (o *ReceiveFlowFilesNotFound) Error() string {
@@ -371,6 +396,11 @@ func (o *ReceiveFlowFilesConflict) IsCode(code int) bool {
 	return code == 409
 }
 
+// Code gets the status code for the receive flow files conflict response
+func (o *ReceiveFlowFilesConflict) Code() int {
+	return 409
+}
+
 func (o *ReceiveFlowFilesConflict) Error() string {
 	return fmt.Sprintf("[POST /data-transfer/input-ports/{portId}/transactions/{transactionId}/flow-files][%d] receiveFlowFilesConflict ", 409)
 }
@@ -420,6 +450,11 @@ func (o *ReceiveFlowFilesServiceUnavailable) IsServerError() bool {
 // IsCode returns true when this receive flow files service unavailable response a status code equal to that given
 func (o *ReceiveFlowFilesServiceUnavailable) IsCode(code int) bool {
 	return code == 503
+}
+
+// Code gets the status code for the receive flow files service unavailable response
+func (o *ReceiveFlowFilesServiceUnavailable) Code() int {
+	return 503
 }
 
 func (o *ReceiveFlowFilesServiceUnavailable) Error() string {

@@ -48,7 +48,7 @@ func (o *GetBucketReader) ReadResponse(response runtime.ClientResponse, consumer
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /buckets/{bucketId}] getBucket", response, response.Code())
 	}
 }
 
@@ -89,6 +89,11 @@ func (o *GetBucketOK) IsServerError() bool {
 // IsCode returns true when this get bucket o k response a status code equal to that given
 func (o *GetBucketOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get bucket o k response
+func (o *GetBucketOK) Code() int {
+	return 200
 }
 
 func (o *GetBucketOK) Error() string {
@@ -153,6 +158,11 @@ func (o *GetBucketUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the get bucket unauthorized response
+func (o *GetBucketUnauthorized) Code() int {
+	return 401
+}
+
 func (o *GetBucketUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /buckets/{bucketId}][%d] getBucketUnauthorized ", 401)
 }
@@ -204,6 +214,11 @@ func (o *GetBucketForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get bucket forbidden response
+func (o *GetBucketForbidden) Code() int {
+	return 403
+}
+
 func (o *GetBucketForbidden) Error() string {
 	return fmt.Sprintf("[GET /buckets/{bucketId}][%d] getBucketForbidden ", 403)
 }
@@ -253,6 +268,11 @@ func (o *GetBucketNotFound) IsServerError() bool {
 // IsCode returns true when this get bucket not found response a status code equal to that given
 func (o *GetBucketNotFound) IsCode(code int) bool {
 	return code == 404
+}
+
+// Code gets the status code for the get bucket not found response
+func (o *GetBucketNotFound) Code() int {
+	return 404
 }
 
 func (o *GetBucketNotFound) Error() string {

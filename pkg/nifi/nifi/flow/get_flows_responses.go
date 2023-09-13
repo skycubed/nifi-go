@@ -60,7 +60,7 @@ func (o *GetFlowsReader) ReadResponse(response runtime.ClientResponse, consumer 
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /flow/registries/{registry-id}/buckets/{bucket-id}/flows] getFlows", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *GetFlowsOK) IsServerError() bool {
 // IsCode returns true when this get flows o k response a status code equal to that given
 func (o *GetFlowsOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get flows o k response
+func (o *GetFlowsOK) Code() int {
+	return 200
 }
 
 func (o *GetFlowsOK) Error() string {
@@ -165,6 +170,11 @@ func (o *GetFlowsBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get flows bad request response
+func (o *GetFlowsBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetFlowsBadRequest) Error() string {
 	return fmt.Sprintf("[GET /flow/registries/{registry-id}/buckets/{bucket-id}/flows][%d] getFlowsBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *GetFlowsUnauthorized) IsServerError() bool {
 // IsCode returns true when this get flows unauthorized response a status code equal to that given
 func (o *GetFlowsUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get flows unauthorized response
+func (o *GetFlowsUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetFlowsUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *GetFlowsForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get flows forbidden response
+func (o *GetFlowsForbidden) Code() int {
+	return 403
+}
+
 func (o *GetFlowsForbidden) Error() string {
 	return fmt.Sprintf("[GET /flow/registries/{registry-id}/buckets/{bucket-id}/flows][%d] getFlowsForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *GetFlowsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get flows not found response
+func (o *GetFlowsNotFound) Code() int {
+	return 404
+}
+
 func (o *GetFlowsNotFound) Error() string {
 	return fmt.Sprintf("[GET /flow/registries/{registry-id}/buckets/{bucket-id}/flows][%d] getFlowsNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *GetFlowsConflict) IsServerError() bool {
 // IsCode returns true when this get flows conflict response a status code equal to that given
 func (o *GetFlowsConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get flows conflict response
+func (o *GetFlowsConflict) Code() int {
+	return 409
 }
 
 func (o *GetFlowsConflict) Error() string {

@@ -126,6 +126,11 @@ func (m *RegisteredFlow) ContextValidate(ctx context.Context, formats strfmt.Reg
 func (m *RegisteredFlow) contextValidatePermissions(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Permissions != nil {
+
+		if swag.IsZero(m.Permissions) { // not required
+			return nil
+		}
+
 		if err := m.Permissions.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("permissions")
@@ -142,6 +147,11 @@ func (m *RegisteredFlow) contextValidatePermissions(ctx context.Context, formats
 func (m *RegisteredFlow) contextValidateVersionInfo(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.VersionInfo != nil {
+
+		if swag.IsZero(m.VersionInfo) { // not required
+			return nil
+		}
+
 		if err := m.VersionInfo.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("versionInfo")

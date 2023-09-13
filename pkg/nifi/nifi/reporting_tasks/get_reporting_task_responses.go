@@ -60,7 +60,7 @@ func (o *GetReportingTaskReader) ReadResponse(response runtime.ClientResponse, c
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /reporting-tasks/{id}] getReportingTask", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *GetReportingTaskOK) IsServerError() bool {
 // IsCode returns true when this get reporting task o k response a status code equal to that given
 func (o *GetReportingTaskOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get reporting task o k response
+func (o *GetReportingTaskOK) Code() int {
+	return 200
 }
 
 func (o *GetReportingTaskOK) Error() string {
@@ -165,6 +170,11 @@ func (o *GetReportingTaskBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get reporting task bad request response
+func (o *GetReportingTaskBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetReportingTaskBadRequest) Error() string {
 	return fmt.Sprintf("[GET /reporting-tasks/{id}][%d] getReportingTaskBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *GetReportingTaskUnauthorized) IsServerError() bool {
 // IsCode returns true when this get reporting task unauthorized response a status code equal to that given
 func (o *GetReportingTaskUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get reporting task unauthorized response
+func (o *GetReportingTaskUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetReportingTaskUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *GetReportingTaskForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get reporting task forbidden response
+func (o *GetReportingTaskForbidden) Code() int {
+	return 403
+}
+
 func (o *GetReportingTaskForbidden) Error() string {
 	return fmt.Sprintf("[GET /reporting-tasks/{id}][%d] getReportingTaskForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *GetReportingTaskNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get reporting task not found response
+func (o *GetReportingTaskNotFound) Code() int {
+	return 404
+}
+
 func (o *GetReportingTaskNotFound) Error() string {
 	return fmt.Sprintf("[GET /reporting-tasks/{id}][%d] getReportingTaskNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *GetReportingTaskConflict) IsServerError() bool {
 // IsCode returns true when this get reporting task conflict response a status code equal to that given
 func (o *GetReportingTaskConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get reporting task conflict response
+func (o *GetReportingTaskConflict) Code() int {
+	return 409
 }
 
 func (o *GetReportingTaskConflict) Error() string {

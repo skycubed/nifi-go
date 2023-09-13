@@ -613,6 +613,11 @@ func (m *VersionedProcessGroup) contextValidateConnections(ctx context.Context, 
 	for i := 0; i < len(m.Connections); i++ {
 
 		if m.Connections[i] != nil {
+
+			if swag.IsZero(m.Connections[i]) { // not required
+				return nil
+			}
+
 			if err := m.Connections[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("connections" + "." + strconv.Itoa(i))
@@ -633,6 +638,11 @@ func (m *VersionedProcessGroup) contextValidateControllerServices(ctx context.Co
 	for i := 0; i < len(m.ControllerServices); i++ {
 
 		if m.ControllerServices[i] != nil {
+
+			if swag.IsZero(m.ControllerServices[i]) { // not required
+				return nil
+			}
+
 			if err := m.ControllerServices[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("controllerServices" + "." + strconv.Itoa(i))
@@ -653,6 +663,11 @@ func (m *VersionedProcessGroup) contextValidateFunnels(ctx context.Context, form
 	for i := 0; i < len(m.Funnels); i++ {
 
 		if m.Funnels[i] != nil {
+
+			if swag.IsZero(m.Funnels[i]) { // not required
+				return nil
+			}
+
 			if err := m.Funnels[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("funnels" + "." + strconv.Itoa(i))
@@ -673,6 +688,11 @@ func (m *VersionedProcessGroup) contextValidateInputPorts(ctx context.Context, f
 	for i := 0; i < len(m.InputPorts); i++ {
 
 		if m.InputPorts[i] != nil {
+
+			if swag.IsZero(m.InputPorts[i]) { // not required
+				return nil
+			}
+
 			if err := m.InputPorts[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("inputPorts" + "." + strconv.Itoa(i))
@@ -693,6 +713,11 @@ func (m *VersionedProcessGroup) contextValidateLabels(ctx context.Context, forma
 	for i := 0; i < len(m.Labels); i++ {
 
 		if m.Labels[i] != nil {
+
+			if swag.IsZero(m.Labels[i]) { // not required
+				return nil
+			}
+
 			if err := m.Labels[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("labels" + "." + strconv.Itoa(i))
@@ -713,6 +738,11 @@ func (m *VersionedProcessGroup) contextValidateOutputPorts(ctx context.Context, 
 	for i := 0; i < len(m.OutputPorts); i++ {
 
 		if m.OutputPorts[i] != nil {
+
+			if swag.IsZero(m.OutputPorts[i]) { // not required
+				return nil
+			}
+
 			if err := m.OutputPorts[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("outputPorts" + "." + strconv.Itoa(i))
@@ -731,6 +761,11 @@ func (m *VersionedProcessGroup) contextValidateOutputPorts(ctx context.Context, 
 func (m *VersionedProcessGroup) contextValidatePosition(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Position != nil {
+
+		if swag.IsZero(m.Position) { // not required
+			return nil
+		}
+
 		if err := m.Position.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("position")
@@ -749,6 +784,11 @@ func (m *VersionedProcessGroup) contextValidateProcessGroups(ctx context.Context
 	for i := 0; i < len(m.ProcessGroups); i++ {
 
 		if m.ProcessGroups[i] != nil {
+
+			if swag.IsZero(m.ProcessGroups[i]) { // not required
+				return nil
+			}
+
 			if err := m.ProcessGroups[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("processGroups" + "." + strconv.Itoa(i))
@@ -769,6 +809,11 @@ func (m *VersionedProcessGroup) contextValidateProcessors(ctx context.Context, f
 	for i := 0; i < len(m.Processors); i++ {
 
 		if m.Processors[i] != nil {
+
+			if swag.IsZero(m.Processors[i]) { // not required
+				return nil
+			}
+
 			if err := m.Processors[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("processors" + "." + strconv.Itoa(i))
@@ -789,6 +834,11 @@ func (m *VersionedProcessGroup) contextValidateRemoteProcessGroups(ctx context.C
 	for i := 0; i < len(m.RemoteProcessGroups); i++ {
 
 		if m.RemoteProcessGroups[i] != nil {
+
+			if swag.IsZero(m.RemoteProcessGroups[i]) { // not required
+				return nil
+			}
+
 			if err := m.RemoteProcessGroups[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("remoteProcessGroups" + "." + strconv.Itoa(i))
@@ -807,6 +857,11 @@ func (m *VersionedProcessGroup) contextValidateRemoteProcessGroups(ctx context.C
 func (m *VersionedProcessGroup) contextValidateVersionedFlowCoordinates(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.VersionedFlowCoordinates != nil {
+
+		if swag.IsZero(m.VersionedFlowCoordinates) { // not required
+			return nil
+		}
+
 		if err := m.VersionedFlowCoordinates.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("versionedFlowCoordinates")

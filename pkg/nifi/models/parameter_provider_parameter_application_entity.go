@@ -118,6 +118,11 @@ func (m *ParameterProviderParameterApplicationEntity) contextValidateParameterGr
 	for i := 0; i < len(m.ParameterGroupConfigurations); i++ {
 
 		if m.ParameterGroupConfigurations[i] != nil {
+
+			if swag.IsZero(m.ParameterGroupConfigurations[i]) { // not required
+				return nil
+			}
+
 			if err := m.ParameterGroupConfigurations[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("parameterGroupConfigurations" + "." + strconv.Itoa(i))
@@ -136,6 +141,11 @@ func (m *ParameterProviderParameterApplicationEntity) contextValidateParameterGr
 func (m *ParameterProviderParameterApplicationEntity) contextValidateRevision(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Revision != nil {
+
+		if swag.IsZero(m.Revision) { // not required
+			return nil
+		}
+
 		if err := m.Revision.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("revision")

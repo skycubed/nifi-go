@@ -60,7 +60,7 @@ func (o *GetNodeStatusHistoryReader) ReadResponse(response runtime.ClientRespons
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /controller/status/history] getNodeStatusHistory", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *GetNodeStatusHistoryOK) IsServerError() bool {
 // IsCode returns true when this get node status history o k response a status code equal to that given
 func (o *GetNodeStatusHistoryOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get node status history o k response
+func (o *GetNodeStatusHistoryOK) Code() int {
+	return 200
 }
 
 func (o *GetNodeStatusHistoryOK) Error() string {
@@ -165,6 +170,11 @@ func (o *GetNodeStatusHistoryBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get node status history bad request response
+func (o *GetNodeStatusHistoryBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetNodeStatusHistoryBadRequest) Error() string {
 	return fmt.Sprintf("[GET /controller/status/history][%d] getNodeStatusHistoryBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *GetNodeStatusHistoryUnauthorized) IsServerError() bool {
 // IsCode returns true when this get node status history unauthorized response a status code equal to that given
 func (o *GetNodeStatusHistoryUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get node status history unauthorized response
+func (o *GetNodeStatusHistoryUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetNodeStatusHistoryUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *GetNodeStatusHistoryForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get node status history forbidden response
+func (o *GetNodeStatusHistoryForbidden) Code() int {
+	return 403
+}
+
 func (o *GetNodeStatusHistoryForbidden) Error() string {
 	return fmt.Sprintf("[GET /controller/status/history][%d] getNodeStatusHistoryForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *GetNodeStatusHistoryNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get node status history not found response
+func (o *GetNodeStatusHistoryNotFound) Code() int {
+	return 404
+}
+
 func (o *GetNodeStatusHistoryNotFound) Error() string {
 	return fmt.Sprintf("[GET /controller/status/history][%d] getNodeStatusHistoryNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *GetNodeStatusHistoryConflict) IsServerError() bool {
 // IsCode returns true when this get node status history conflict response a status code equal to that given
 func (o *GetNodeStatusHistoryConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get node status history conflict response
+func (o *GetNodeStatusHistoryConflict) Code() int {
+	return 409
 }
 
 func (o *GetNodeStatusHistoryConflict) Error() string {

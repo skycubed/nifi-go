@@ -60,7 +60,7 @@ func (o *DeleteRevertRequestReader) ReadResponse(response runtime.ClientResponse
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /versions/revert-requests/{id}] deleteRevertRequest", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *DeleteRevertRequestOK) IsServerError() bool {
 // IsCode returns true when this delete revert request o k response a status code equal to that given
 func (o *DeleteRevertRequestOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the delete revert request o k response
+func (o *DeleteRevertRequestOK) Code() int {
+	return 200
 }
 
 func (o *DeleteRevertRequestOK) Error() string {
@@ -165,6 +170,11 @@ func (o *DeleteRevertRequestBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the delete revert request bad request response
+func (o *DeleteRevertRequestBadRequest) Code() int {
+	return 400
+}
+
 func (o *DeleteRevertRequestBadRequest) Error() string {
 	return fmt.Sprintf("[DELETE /versions/revert-requests/{id}][%d] deleteRevertRequestBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *DeleteRevertRequestUnauthorized) IsServerError() bool {
 // IsCode returns true when this delete revert request unauthorized response a status code equal to that given
 func (o *DeleteRevertRequestUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the delete revert request unauthorized response
+func (o *DeleteRevertRequestUnauthorized) Code() int {
+	return 401
 }
 
 func (o *DeleteRevertRequestUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *DeleteRevertRequestForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the delete revert request forbidden response
+func (o *DeleteRevertRequestForbidden) Code() int {
+	return 403
+}
+
 func (o *DeleteRevertRequestForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /versions/revert-requests/{id}][%d] deleteRevertRequestForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *DeleteRevertRequestNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the delete revert request not found response
+func (o *DeleteRevertRequestNotFound) Code() int {
+	return 404
+}
+
 func (o *DeleteRevertRequestNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /versions/revert-requests/{id}][%d] deleteRevertRequestNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *DeleteRevertRequestConflict) IsServerError() bool {
 // IsCode returns true when this delete revert request conflict response a status code equal to that given
 func (o *DeleteRevertRequestConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the delete revert request conflict response
+func (o *DeleteRevertRequestConflict) Code() int {
+	return 409
 }
 
 func (o *DeleteRevertRequestConflict) Error() string {

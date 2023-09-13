@@ -66,7 +66,7 @@ func (o *ImportVersionedFlowReader) ReadResponse(response runtime.ClientResponse
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /buckets/{bucketId}/flows/{flowId}/versions/import] importVersionedFlow", response, response.Code())
 	}
 }
 
@@ -107,6 +107,11 @@ func (o *ImportVersionedFlowOK) IsServerError() bool {
 // IsCode returns true when this import versioned flow o k response a status code equal to that given
 func (o *ImportVersionedFlowOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the import versioned flow o k response
+func (o *ImportVersionedFlowOK) Code() int {
+	return 200
 }
 
 func (o *ImportVersionedFlowOK) Error() string {
@@ -171,6 +176,11 @@ func (o *ImportVersionedFlowCreated) IsCode(code int) bool {
 	return code == 201
 }
 
+// Code gets the status code for the import versioned flow created response
+func (o *ImportVersionedFlowCreated) Code() int {
+	return 201
+}
+
 func (o *ImportVersionedFlowCreated) Error() string {
 	return fmt.Sprintf("[POST /buckets/{bucketId}/flows/{flowId}/versions/import][%d] importVersionedFlowCreated ", 201)
 }
@@ -220,6 +230,11 @@ func (o *ImportVersionedFlowBadRequest) IsServerError() bool {
 // IsCode returns true when this import versioned flow bad request response a status code equal to that given
 func (o *ImportVersionedFlowBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the import versioned flow bad request response
+func (o *ImportVersionedFlowBadRequest) Code() int {
+	return 400
 }
 
 func (o *ImportVersionedFlowBadRequest) Error() string {
@@ -273,6 +288,11 @@ func (o *ImportVersionedFlowUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the import versioned flow unauthorized response
+func (o *ImportVersionedFlowUnauthorized) Code() int {
+	return 401
+}
+
 func (o *ImportVersionedFlowUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /buckets/{bucketId}/flows/{flowId}/versions/import][%d] importVersionedFlowUnauthorized ", 401)
 }
@@ -322,6 +342,11 @@ func (o *ImportVersionedFlowForbidden) IsServerError() bool {
 // IsCode returns true when this import versioned flow forbidden response a status code equal to that given
 func (o *ImportVersionedFlowForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the import versioned flow forbidden response
+func (o *ImportVersionedFlowForbidden) Code() int {
+	return 403
 }
 
 func (o *ImportVersionedFlowForbidden) Error() string {
@@ -375,6 +400,11 @@ func (o *ImportVersionedFlowNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the import versioned flow not found response
+func (o *ImportVersionedFlowNotFound) Code() int {
+	return 404
+}
+
 func (o *ImportVersionedFlowNotFound) Error() string {
 	return fmt.Sprintf("[POST /buckets/{bucketId}/flows/{flowId}/versions/import][%d] importVersionedFlowNotFound ", 404)
 }
@@ -424,6 +454,11 @@ func (o *ImportVersionedFlowConflict) IsServerError() bool {
 // IsCode returns true when this import versioned flow conflict response a status code equal to that given
 func (o *ImportVersionedFlowConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the import versioned flow conflict response
+func (o *ImportVersionedFlowConflict) Code() int {
+	return 409
 }
 
 func (o *ImportVersionedFlowConflict) Error() string {

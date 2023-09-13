@@ -42,7 +42,7 @@ func (o *GetAccessTokenExpirationReader) ReadResponse(response runtime.ClientRes
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /access/token/expiration] getAccessTokenExpiration", response, response.Code())
 	}
 }
 
@@ -83,6 +83,11 @@ func (o *GetAccessTokenExpirationOK) IsServerError() bool {
 // IsCode returns true when this get access token expiration o k response a status code equal to that given
 func (o *GetAccessTokenExpirationOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get access token expiration o k response
+func (o *GetAccessTokenExpirationOK) Code() int {
+	return 200
 }
 
 func (o *GetAccessTokenExpirationOK) Error() string {
@@ -147,6 +152,11 @@ func (o *GetAccessTokenExpirationUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the get access token expiration unauthorized response
+func (o *GetAccessTokenExpirationUnauthorized) Code() int {
+	return 401
+}
+
 func (o *GetAccessTokenExpirationUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /access/token/expiration][%d] getAccessTokenExpirationUnauthorized ", 401)
 }
@@ -196,6 +206,11 @@ func (o *GetAccessTokenExpirationConflict) IsServerError() bool {
 // IsCode returns true when this get access token expiration conflict response a status code equal to that given
 func (o *GetAccessTokenExpirationConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get access token expiration conflict response
+func (o *GetAccessTokenExpirationConflict) Code() int {
+	return 409
 }
 
 func (o *GetAccessTokenExpirationConflict) Error() string {

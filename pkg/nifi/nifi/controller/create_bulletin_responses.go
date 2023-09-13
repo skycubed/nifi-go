@@ -54,7 +54,7 @@ func (o *CreateBulletinReader) ReadResponse(response runtime.ClientResponse, con
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /controller/bulletin] createBulletin", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *CreateBulletinOK) IsServerError() bool {
 // IsCode returns true when this create bulletin o k response a status code equal to that given
 func (o *CreateBulletinOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the create bulletin o k response
+func (o *CreateBulletinOK) Code() int {
+	return 200
 }
 
 func (o *CreateBulletinOK) Error() string {
@@ -159,6 +164,11 @@ func (o *CreateBulletinBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the create bulletin bad request response
+func (o *CreateBulletinBadRequest) Code() int {
+	return 400
+}
+
 func (o *CreateBulletinBadRequest) Error() string {
 	return fmt.Sprintf("[POST /controller/bulletin][%d] createBulletinBadRequest ", 400)
 }
@@ -208,6 +218,11 @@ func (o *CreateBulletinUnauthorized) IsServerError() bool {
 // IsCode returns true when this create bulletin unauthorized response a status code equal to that given
 func (o *CreateBulletinUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the create bulletin unauthorized response
+func (o *CreateBulletinUnauthorized) Code() int {
+	return 401
 }
 
 func (o *CreateBulletinUnauthorized) Error() string {
@@ -261,6 +276,11 @@ func (o *CreateBulletinForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the create bulletin forbidden response
+func (o *CreateBulletinForbidden) Code() int {
+	return 403
+}
+
 func (o *CreateBulletinForbidden) Error() string {
 	return fmt.Sprintf("[POST /controller/bulletin][%d] createBulletinForbidden ", 403)
 }
@@ -310,6 +330,11 @@ func (o *CreateBulletinConflict) IsServerError() bool {
 // IsCode returns true when this create bulletin conflict response a status code equal to that given
 func (o *CreateBulletinConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the create bulletin conflict response
+func (o *CreateBulletinConflict) Code() int {
+	return 409
 }
 
 func (o *CreateBulletinConflict) Error() string {

@@ -60,7 +60,7 @@ func (o *CreateFlowVersionReader) ReadResponse(response runtime.ClientResponse, 
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /buckets/{bucketId}/flows/{flowId}/versions] createFlowVersion", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *CreateFlowVersionOK) IsServerError() bool {
 // IsCode returns true when this create flow version o k response a status code equal to that given
 func (o *CreateFlowVersionOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the create flow version o k response
+func (o *CreateFlowVersionOK) Code() int {
+	return 200
 }
 
 func (o *CreateFlowVersionOK) Error() string {
@@ -165,6 +170,11 @@ func (o *CreateFlowVersionBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the create flow version bad request response
+func (o *CreateFlowVersionBadRequest) Code() int {
+	return 400
+}
+
 func (o *CreateFlowVersionBadRequest) Error() string {
 	return fmt.Sprintf("[POST /buckets/{bucketId}/flows/{flowId}/versions][%d] createFlowVersionBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *CreateFlowVersionUnauthorized) IsServerError() bool {
 // IsCode returns true when this create flow version unauthorized response a status code equal to that given
 func (o *CreateFlowVersionUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the create flow version unauthorized response
+func (o *CreateFlowVersionUnauthorized) Code() int {
+	return 401
 }
 
 func (o *CreateFlowVersionUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *CreateFlowVersionForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the create flow version forbidden response
+func (o *CreateFlowVersionForbidden) Code() int {
+	return 403
+}
+
 func (o *CreateFlowVersionForbidden) Error() string {
 	return fmt.Sprintf("[POST /buckets/{bucketId}/flows/{flowId}/versions][%d] createFlowVersionForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *CreateFlowVersionNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the create flow version not found response
+func (o *CreateFlowVersionNotFound) Code() int {
+	return 404
+}
+
 func (o *CreateFlowVersionNotFound) Error() string {
 	return fmt.Sprintf("[POST /buckets/{bucketId}/flows/{flowId}/versions][%d] createFlowVersionNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *CreateFlowVersionConflict) IsServerError() bool {
 // IsCode returns true when this create flow version conflict response a status code equal to that given
 func (o *CreateFlowVersionConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the create flow version conflict response
+func (o *CreateFlowVersionConflict) Code() int {
+	return 409
 }
 
 func (o *CreateFlowVersionConflict) Error() string {

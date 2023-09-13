@@ -60,7 +60,7 @@ func (o *InitiateReplaceProcessGroupReader) ReadResponse(response runtime.Client
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /process-groups/{id}/replace-requests] initiateReplaceProcessGroup", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *InitiateReplaceProcessGroupOK) IsServerError() bool {
 // IsCode returns true when this initiate replace process group o k response a status code equal to that given
 func (o *InitiateReplaceProcessGroupOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the initiate replace process group o k response
+func (o *InitiateReplaceProcessGroupOK) Code() int {
+	return 200
 }
 
 func (o *InitiateReplaceProcessGroupOK) Error() string {
@@ -165,6 +170,11 @@ func (o *InitiateReplaceProcessGroupBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the initiate replace process group bad request response
+func (o *InitiateReplaceProcessGroupBadRequest) Code() int {
+	return 400
+}
+
 func (o *InitiateReplaceProcessGroupBadRequest) Error() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/replace-requests][%d] initiateReplaceProcessGroupBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *InitiateReplaceProcessGroupUnauthorized) IsServerError() bool {
 // IsCode returns true when this initiate replace process group unauthorized response a status code equal to that given
 func (o *InitiateReplaceProcessGroupUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the initiate replace process group unauthorized response
+func (o *InitiateReplaceProcessGroupUnauthorized) Code() int {
+	return 401
 }
 
 func (o *InitiateReplaceProcessGroupUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *InitiateReplaceProcessGroupForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the initiate replace process group forbidden response
+func (o *InitiateReplaceProcessGroupForbidden) Code() int {
+	return 403
+}
+
 func (o *InitiateReplaceProcessGroupForbidden) Error() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/replace-requests][%d] initiateReplaceProcessGroupForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *InitiateReplaceProcessGroupNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the initiate replace process group not found response
+func (o *InitiateReplaceProcessGroupNotFound) Code() int {
+	return 404
+}
+
 func (o *InitiateReplaceProcessGroupNotFound) Error() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/replace-requests][%d] initiateReplaceProcessGroupNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *InitiateReplaceProcessGroupConflict) IsServerError() bool {
 // IsCode returns true when this initiate replace process group conflict response a status code equal to that given
 func (o *InitiateReplaceProcessGroupConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the initiate replace process group conflict response
+func (o *InitiateReplaceProcessGroupConflict) Code() int {
+	return 409
 }
 
 func (o *InitiateReplaceProcessGroupConflict) Error() string {

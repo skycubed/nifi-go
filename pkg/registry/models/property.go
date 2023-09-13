@@ -261,6 +261,11 @@ func (m *Property) contextValidateAllowableValues(ctx context.Context, formats s
 	for i := 0; i < len(m.AllowableValues); i++ {
 
 		if m.AllowableValues[i] != nil {
+
+			if swag.IsZero(m.AllowableValues[i]) { // not required
+				return nil
+			}
+
 			if err := m.AllowableValues[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("allowableValues" + "." + strconv.Itoa(i))
@@ -279,6 +284,11 @@ func (m *Property) contextValidateAllowableValues(ctx context.Context, formats s
 func (m *Property) contextValidateControllerServiceDefinition(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ControllerServiceDefinition != nil {
+
+		if swag.IsZero(m.ControllerServiceDefinition) { // not required
+			return nil
+		}
+
 		if err := m.ControllerServiceDefinition.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("controllerServiceDefinition")
@@ -297,6 +307,11 @@ func (m *Property) contextValidateDependencies(ctx context.Context, formats strf
 	for i := 0; i < len(m.Dependencies); i++ {
 
 		if m.Dependencies[i] != nil {
+
+			if swag.IsZero(m.Dependencies[i]) { // not required
+				return nil
+			}
+
 			if err := m.Dependencies[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("dependencies" + "." + strconv.Itoa(i))
@@ -315,6 +330,11 @@ func (m *Property) contextValidateDependencies(ctx context.Context, formats strf
 func (m *Property) contextValidateResourceDefinition(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ResourceDefinition != nil {
+
+		if swag.IsZero(m.ResourceDefinition) { // not required
+			return nil
+		}
+
 		if err := m.ResourceDefinition.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("resourceDefinition")

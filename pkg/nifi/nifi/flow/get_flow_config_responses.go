@@ -54,7 +54,7 @@ func (o *GetFlowConfigReader) ReadResponse(response runtime.ClientResponse, cons
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /flow/config] getFlowConfig", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *GetFlowConfigOK) IsServerError() bool {
 // IsCode returns true when this get flow config o k response a status code equal to that given
 func (o *GetFlowConfigOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get flow config o k response
+func (o *GetFlowConfigOK) Code() int {
+	return 200
 }
 
 func (o *GetFlowConfigOK) Error() string {
@@ -159,6 +164,11 @@ func (o *GetFlowConfigBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get flow config bad request response
+func (o *GetFlowConfigBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetFlowConfigBadRequest) Error() string {
 	return fmt.Sprintf("[GET /flow/config][%d] getFlowConfigBadRequest ", 400)
 }
@@ -208,6 +218,11 @@ func (o *GetFlowConfigUnauthorized) IsServerError() bool {
 // IsCode returns true when this get flow config unauthorized response a status code equal to that given
 func (o *GetFlowConfigUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get flow config unauthorized response
+func (o *GetFlowConfigUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetFlowConfigUnauthorized) Error() string {
@@ -261,6 +276,11 @@ func (o *GetFlowConfigForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get flow config forbidden response
+func (o *GetFlowConfigForbidden) Code() int {
+	return 403
+}
+
 func (o *GetFlowConfigForbidden) Error() string {
 	return fmt.Sprintf("[GET /flow/config][%d] getFlowConfigForbidden ", 403)
 }
@@ -310,6 +330,11 @@ func (o *GetFlowConfigConflict) IsServerError() bool {
 // IsCode returns true when this get flow config conflict response a status code equal to that given
 func (o *GetFlowConfigConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get flow config conflict response
+func (o *GetFlowConfigConflict) Code() int {
+	return 409
 }
 
 func (o *GetFlowConfigConflict) Error() string {

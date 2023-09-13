@@ -60,7 +60,7 @@ func (o *GlobalDeleteExtensionBundleReader) ReadResponse(response runtime.Client
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /bundles/{bundleId}] globalDeleteExtensionBundle", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *GlobalDeleteExtensionBundleOK) IsServerError() bool {
 // IsCode returns true when this global delete extension bundle o k response a status code equal to that given
 func (o *GlobalDeleteExtensionBundleOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the global delete extension bundle o k response
+func (o *GlobalDeleteExtensionBundleOK) Code() int {
+	return 200
 }
 
 func (o *GlobalDeleteExtensionBundleOK) Error() string {
@@ -165,6 +170,11 @@ func (o *GlobalDeleteExtensionBundleBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the global delete extension bundle bad request response
+func (o *GlobalDeleteExtensionBundleBadRequest) Code() int {
+	return 400
+}
+
 func (o *GlobalDeleteExtensionBundleBadRequest) Error() string {
 	return fmt.Sprintf("[DELETE /bundles/{bundleId}][%d] globalDeleteExtensionBundleBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *GlobalDeleteExtensionBundleUnauthorized) IsServerError() bool {
 // IsCode returns true when this global delete extension bundle unauthorized response a status code equal to that given
 func (o *GlobalDeleteExtensionBundleUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the global delete extension bundle unauthorized response
+func (o *GlobalDeleteExtensionBundleUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GlobalDeleteExtensionBundleUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *GlobalDeleteExtensionBundleForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the global delete extension bundle forbidden response
+func (o *GlobalDeleteExtensionBundleForbidden) Code() int {
+	return 403
+}
+
 func (o *GlobalDeleteExtensionBundleForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /bundles/{bundleId}][%d] globalDeleteExtensionBundleForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *GlobalDeleteExtensionBundleNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the global delete extension bundle not found response
+func (o *GlobalDeleteExtensionBundleNotFound) Code() int {
+	return 404
+}
+
 func (o *GlobalDeleteExtensionBundleNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /bundles/{bundleId}][%d] globalDeleteExtensionBundleNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *GlobalDeleteExtensionBundleConflict) IsServerError() bool {
 // IsCode returns true when this global delete extension bundle conflict response a status code equal to that given
 func (o *GlobalDeleteExtensionBundleConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the global delete extension bundle conflict response
+func (o *GlobalDeleteExtensionBundleConflict) Code() int {
+	return 409
 }
 
 func (o *GlobalDeleteExtensionBundleConflict) Error() string {

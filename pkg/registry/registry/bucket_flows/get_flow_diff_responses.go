@@ -60,7 +60,7 @@ func (o *GetFlowDiffReader) ReadResponse(response runtime.ClientResponse, consum
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /buckets/{bucketId}/flows/{flowId}/diff/{versionA}/{versionB}] getFlowDiff", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *GetFlowDiffOK) IsServerError() bool {
 // IsCode returns true when this get flow diff o k response a status code equal to that given
 func (o *GetFlowDiffOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get flow diff o k response
+func (o *GetFlowDiffOK) Code() int {
+	return 200
 }
 
 func (o *GetFlowDiffOK) Error() string {
@@ -165,6 +170,11 @@ func (o *GetFlowDiffBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get flow diff bad request response
+func (o *GetFlowDiffBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetFlowDiffBadRequest) Error() string {
 	return fmt.Sprintf("[GET /buckets/{bucketId}/flows/{flowId}/diff/{versionA}/{versionB}][%d] getFlowDiffBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *GetFlowDiffUnauthorized) IsServerError() bool {
 // IsCode returns true when this get flow diff unauthorized response a status code equal to that given
 func (o *GetFlowDiffUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get flow diff unauthorized response
+func (o *GetFlowDiffUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetFlowDiffUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *GetFlowDiffForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get flow diff forbidden response
+func (o *GetFlowDiffForbidden) Code() int {
+	return 403
+}
+
 func (o *GetFlowDiffForbidden) Error() string {
 	return fmt.Sprintf("[GET /buckets/{bucketId}/flows/{flowId}/diff/{versionA}/{versionB}][%d] getFlowDiffForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *GetFlowDiffNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get flow diff not found response
+func (o *GetFlowDiffNotFound) Code() int {
+	return 404
+}
+
 func (o *GetFlowDiffNotFound) Error() string {
 	return fmt.Sprintf("[GET /buckets/{bucketId}/flows/{flowId}/diff/{versionA}/{versionB}][%d] getFlowDiffNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *GetFlowDiffConflict) IsServerError() bool {
 // IsCode returns true when this get flow diff conflict response a status code equal to that given
 func (o *GetFlowDiffConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get flow diff conflict response
+func (o *GetFlowDiffConflict) Code() int {
+	return 409
 }
 
 func (o *GetFlowDiffConflict) Error() string {

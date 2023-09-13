@@ -420,6 +420,11 @@ func (m *ProcessorDefinition) ContextValidate(ctx context.Context, formats strfm
 func (m *ProcessorDefinition) contextValidateBuildInfo(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.BuildInfo != nil {
+
+		if swag.IsZero(m.BuildInfo) { // not required
+			return nil
+		}
+
 		if err := m.BuildInfo.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("buildInfo")
@@ -438,6 +443,11 @@ func (m *ProcessorDefinition) contextValidateExplicitRestrictions(ctx context.Co
 	for i := 0; i < len(m.ExplicitRestrictions); i++ {
 
 		if m.ExplicitRestrictions[i] != nil {
+
+			if swag.IsZero(m.ExplicitRestrictions[i]) { // not required
+				return nil
+			}
+
 			if err := m.ExplicitRestrictions[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("explicitRestrictions" + "." + strconv.Itoa(i))
@@ -473,6 +483,11 @@ func (m *ProcessorDefinition) contextValidateProvidedAPIImplementations(ctx cont
 	for i := 0; i < len(m.ProvidedAPIImplementations); i++ {
 
 		if m.ProvidedAPIImplementations[i] != nil {
+
+			if swag.IsZero(m.ProvidedAPIImplementations[i]) { // not required
+				return nil
+			}
+
 			if err := m.ProvidedAPIImplementations[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("providedApiImplementations" + "." + strconv.Itoa(i))
@@ -491,6 +506,11 @@ func (m *ProcessorDefinition) contextValidateProvidedAPIImplementations(ctx cont
 func (m *ProcessorDefinition) contextValidateStateful(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Stateful != nil {
+
+		if swag.IsZero(m.Stateful) { // not required
+			return nil
+		}
+
 		if err := m.Stateful.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("stateful")
@@ -509,6 +529,11 @@ func (m *ProcessorDefinition) contextValidateSupportedRelationships(ctx context.
 	for i := 0; i < len(m.SupportedRelationships); i++ {
 
 		if m.SupportedRelationships[i] != nil {
+
+			if swag.IsZero(m.SupportedRelationships[i]) { // not required
+				return nil
+			}
+
 			if err := m.SupportedRelationships[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("supportedRelationships" + "." + strconv.Itoa(i))

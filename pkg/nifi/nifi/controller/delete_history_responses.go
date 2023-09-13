@@ -54,7 +54,7 @@ func (o *DeleteHistoryReader) ReadResponse(response runtime.ClientResponse, cons
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /controller/history] deleteHistory", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *DeleteHistoryOK) IsServerError() bool {
 // IsCode returns true when this delete history o k response a status code equal to that given
 func (o *DeleteHistoryOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the delete history o k response
+func (o *DeleteHistoryOK) Code() int {
+	return 200
 }
 
 func (o *DeleteHistoryOK) Error() string {
@@ -159,6 +164,11 @@ func (o *DeleteHistoryBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the delete history bad request response
+func (o *DeleteHistoryBadRequest) Code() int {
+	return 400
+}
+
 func (o *DeleteHistoryBadRequest) Error() string {
 	return fmt.Sprintf("[DELETE /controller/history][%d] deleteHistoryBadRequest ", 400)
 }
@@ -208,6 +218,11 @@ func (o *DeleteHistoryUnauthorized) IsServerError() bool {
 // IsCode returns true when this delete history unauthorized response a status code equal to that given
 func (o *DeleteHistoryUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the delete history unauthorized response
+func (o *DeleteHistoryUnauthorized) Code() int {
+	return 401
 }
 
 func (o *DeleteHistoryUnauthorized) Error() string {
@@ -261,6 +276,11 @@ func (o *DeleteHistoryForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the delete history forbidden response
+func (o *DeleteHistoryForbidden) Code() int {
+	return 403
+}
+
 func (o *DeleteHistoryForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /controller/history][%d] deleteHistoryForbidden ", 403)
 }
@@ -310,6 +330,11 @@ func (o *DeleteHistoryConflict) IsServerError() bool {
 // IsCode returns true when this delete history conflict response a status code equal to that given
 func (o *DeleteHistoryConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the delete history conflict response
+func (o *DeleteHistoryConflict) Code() int {
+	return 409
 }
 
 func (o *DeleteHistoryConflict) Error() string {

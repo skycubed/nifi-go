@@ -54,7 +54,7 @@ func (o *GetRegistryClientTypesReader) ReadResponse(response runtime.ClientRespo
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /controller/registry-types] getRegistryClientTypes", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *GetRegistryClientTypesOK) IsServerError() bool {
 // IsCode returns true when this get registry client types o k response a status code equal to that given
 func (o *GetRegistryClientTypesOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get registry client types o k response
+func (o *GetRegistryClientTypesOK) Code() int {
+	return 200
 }
 
 func (o *GetRegistryClientTypesOK) Error() string {
@@ -159,6 +164,11 @@ func (o *GetRegistryClientTypesBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get registry client types bad request response
+func (o *GetRegistryClientTypesBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetRegistryClientTypesBadRequest) Error() string {
 	return fmt.Sprintf("[GET /controller/registry-types][%d] getRegistryClientTypesBadRequest ", 400)
 }
@@ -208,6 +218,11 @@ func (o *GetRegistryClientTypesUnauthorized) IsServerError() bool {
 // IsCode returns true when this get registry client types unauthorized response a status code equal to that given
 func (o *GetRegistryClientTypesUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get registry client types unauthorized response
+func (o *GetRegistryClientTypesUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetRegistryClientTypesUnauthorized) Error() string {
@@ -261,6 +276,11 @@ func (o *GetRegistryClientTypesForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get registry client types forbidden response
+func (o *GetRegistryClientTypesForbidden) Code() int {
+	return 403
+}
+
 func (o *GetRegistryClientTypesForbidden) Error() string {
 	return fmt.Sprintf("[GET /controller/registry-types][%d] getRegistryClientTypesForbidden ", 403)
 }
@@ -310,6 +330,11 @@ func (o *GetRegistryClientTypesConflict) IsServerError() bool {
 // IsCode returns true when this get registry client types conflict response a status code equal to that given
 func (o *GetRegistryClientTypesConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get registry client types conflict response
+func (o *GetRegistryClientTypesConflict) Code() int {
+	return 409
 }
 
 func (o *GetRegistryClientTypesConflict) Error() string {

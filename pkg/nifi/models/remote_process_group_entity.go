@@ -277,6 +277,11 @@ func (m *RemoteProcessGroupEntity) contextValidateBulletins(ctx context.Context,
 	for i := 0; i < len(m.Bulletins); i++ {
 
 		if m.Bulletins[i] != nil {
+
+			if swag.IsZero(m.Bulletins[i]) { // not required
+				return nil
+			}
+
 			if err := m.Bulletins[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("bulletins" + "." + strconv.Itoa(i))
@@ -295,6 +300,11 @@ func (m *RemoteProcessGroupEntity) contextValidateBulletins(ctx context.Context,
 func (m *RemoteProcessGroupEntity) contextValidateComponent(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Component != nil {
+
+		if swag.IsZero(m.Component) { // not required
+			return nil
+		}
+
 		if err := m.Component.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("component")
@@ -311,6 +321,11 @@ func (m *RemoteProcessGroupEntity) contextValidateComponent(ctx context.Context,
 func (m *RemoteProcessGroupEntity) contextValidateOperatePermissions(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.OperatePermissions != nil {
+
+		if swag.IsZero(m.OperatePermissions) { // not required
+			return nil
+		}
+
 		if err := m.OperatePermissions.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("operatePermissions")
@@ -327,6 +342,11 @@ func (m *RemoteProcessGroupEntity) contextValidateOperatePermissions(ctx context
 func (m *RemoteProcessGroupEntity) contextValidatePermissions(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Permissions != nil {
+
+		if swag.IsZero(m.Permissions) { // not required
+			return nil
+		}
+
 		if err := m.Permissions.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("permissions")
@@ -343,6 +363,11 @@ func (m *RemoteProcessGroupEntity) contextValidatePermissions(ctx context.Contex
 func (m *RemoteProcessGroupEntity) contextValidatePosition(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Position != nil {
+
+		if swag.IsZero(m.Position) { // not required
+			return nil
+		}
+
 		if err := m.Position.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("position")
@@ -359,6 +384,11 @@ func (m *RemoteProcessGroupEntity) contextValidatePosition(ctx context.Context, 
 func (m *RemoteProcessGroupEntity) contextValidateRevision(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Revision != nil {
+
+		if swag.IsZero(m.Revision) { // not required
+			return nil
+		}
+
 		if err := m.Revision.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("revision")
@@ -375,6 +405,11 @@ func (m *RemoteProcessGroupEntity) contextValidateRevision(ctx context.Context, 
 func (m *RemoteProcessGroupEntity) contextValidateStatus(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Status != nil {
+
+		if swag.IsZero(m.Status) { // not required
+			return nil
+		}
+
 		if err := m.Status.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("status")

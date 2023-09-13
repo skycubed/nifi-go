@@ -60,7 +60,7 @@ func (o *GetExtensionRepoGroupsReader) ReadResponse(response runtime.ClientRespo
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /extension-repository/{bucketName}] getExtensionRepoGroups", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *GetExtensionRepoGroupsOK) IsServerError() bool {
 // IsCode returns true when this get extension repo groups o k response a status code equal to that given
 func (o *GetExtensionRepoGroupsOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get extension repo groups o k response
+func (o *GetExtensionRepoGroupsOK) Code() int {
+	return 200
 }
 
 func (o *GetExtensionRepoGroupsOK) Error() string {
@@ -163,6 +168,11 @@ func (o *GetExtensionRepoGroupsBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get extension repo groups bad request response
+func (o *GetExtensionRepoGroupsBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetExtensionRepoGroupsBadRequest) Error() string {
 	return fmt.Sprintf("[GET /extension-repository/{bucketName}][%d] getExtensionRepoGroupsBadRequest ", 400)
 }
@@ -212,6 +222,11 @@ func (o *GetExtensionRepoGroupsUnauthorized) IsServerError() bool {
 // IsCode returns true when this get extension repo groups unauthorized response a status code equal to that given
 func (o *GetExtensionRepoGroupsUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get extension repo groups unauthorized response
+func (o *GetExtensionRepoGroupsUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetExtensionRepoGroupsUnauthorized) Error() string {
@@ -265,6 +280,11 @@ func (o *GetExtensionRepoGroupsForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get extension repo groups forbidden response
+func (o *GetExtensionRepoGroupsForbidden) Code() int {
+	return 403
+}
+
 func (o *GetExtensionRepoGroupsForbidden) Error() string {
 	return fmt.Sprintf("[GET /extension-repository/{bucketName}][%d] getExtensionRepoGroupsForbidden ", 403)
 }
@@ -316,6 +336,11 @@ func (o *GetExtensionRepoGroupsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get extension repo groups not found response
+func (o *GetExtensionRepoGroupsNotFound) Code() int {
+	return 404
+}
+
 func (o *GetExtensionRepoGroupsNotFound) Error() string {
 	return fmt.Sprintf("[GET /extension-repository/{bucketName}][%d] getExtensionRepoGroupsNotFound ", 404)
 }
@@ -365,6 +390,11 @@ func (o *GetExtensionRepoGroupsConflict) IsServerError() bool {
 // IsCode returns true when this get extension repo groups conflict response a status code equal to that given
 func (o *GetExtensionRepoGroupsConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get extension repo groups conflict response
+func (o *GetExtensionRepoGroupsConflict) Code() int {
+	return 409
 }
 
 func (o *GetExtensionRepoGroupsConflict) Error() string {

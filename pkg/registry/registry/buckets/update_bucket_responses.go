@@ -60,7 +60,7 @@ func (o *UpdateBucketReader) ReadResponse(response runtime.ClientResponse, consu
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PUT /buckets/{bucketId}] updateBucket", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *UpdateBucketOK) IsServerError() bool {
 // IsCode returns true when this update bucket o k response a status code equal to that given
 func (o *UpdateBucketOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the update bucket o k response
+func (o *UpdateBucketOK) Code() int {
+	return 200
 }
 
 func (o *UpdateBucketOK) Error() string {
@@ -165,6 +170,11 @@ func (o *UpdateBucketBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the update bucket bad request response
+func (o *UpdateBucketBadRequest) Code() int {
+	return 400
+}
+
 func (o *UpdateBucketBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /buckets/{bucketId}][%d] updateBucketBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *UpdateBucketUnauthorized) IsServerError() bool {
 // IsCode returns true when this update bucket unauthorized response a status code equal to that given
 func (o *UpdateBucketUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the update bucket unauthorized response
+func (o *UpdateBucketUnauthorized) Code() int {
+	return 401
 }
 
 func (o *UpdateBucketUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *UpdateBucketForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the update bucket forbidden response
+func (o *UpdateBucketForbidden) Code() int {
+	return 403
+}
+
 func (o *UpdateBucketForbidden) Error() string {
 	return fmt.Sprintf("[PUT /buckets/{bucketId}][%d] updateBucketForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *UpdateBucketNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the update bucket not found response
+func (o *UpdateBucketNotFound) Code() int {
+	return 404
+}
+
 func (o *UpdateBucketNotFound) Error() string {
 	return fmt.Sprintf("[PUT /buckets/{bucketId}][%d] updateBucketNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *UpdateBucketConflict) IsServerError() bool {
 // IsCode returns true when this update bucket conflict response a status code equal to that given
 func (o *UpdateBucketConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the update bucket conflict response
+func (o *UpdateBucketConflict) Code() int {
+	return 409
 }
 
 func (o *UpdateBucketConflict) Error() string {

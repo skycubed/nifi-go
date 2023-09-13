@@ -54,7 +54,7 @@ func (o *GetCountersReader) ReadResponse(response runtime.ClientResponse, consum
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /counters] getCounters", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *GetCountersOK) IsServerError() bool {
 // IsCode returns true when this get counters o k response a status code equal to that given
 func (o *GetCountersOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get counters o k response
+func (o *GetCountersOK) Code() int {
+	return 200
 }
 
 func (o *GetCountersOK) Error() string {
@@ -159,6 +164,11 @@ func (o *GetCountersBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get counters bad request response
+func (o *GetCountersBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetCountersBadRequest) Error() string {
 	return fmt.Sprintf("[GET /counters][%d] getCountersBadRequest ", 400)
 }
@@ -208,6 +218,11 @@ func (o *GetCountersUnauthorized) IsServerError() bool {
 // IsCode returns true when this get counters unauthorized response a status code equal to that given
 func (o *GetCountersUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get counters unauthorized response
+func (o *GetCountersUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetCountersUnauthorized) Error() string {
@@ -261,6 +276,11 @@ func (o *GetCountersForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get counters forbidden response
+func (o *GetCountersForbidden) Code() int {
+	return 403
+}
+
 func (o *GetCountersForbidden) Error() string {
 	return fmt.Sprintf("[GET /counters][%d] getCountersForbidden ", 403)
 }
@@ -310,6 +330,11 @@ func (o *GetCountersConflict) IsServerError() bool {
 // IsCode returns true when this get counters conflict response a status code equal to that given
 func (o *GetCountersConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get counters conflict response
+func (o *GetCountersConflict) Code() int {
+	return 409
 }
 
 func (o *GetCountersConflict) Error() string {

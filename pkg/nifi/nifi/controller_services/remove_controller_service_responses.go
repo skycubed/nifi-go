@@ -60,7 +60,7 @@ func (o *RemoveControllerServiceReader) ReadResponse(response runtime.ClientResp
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /controller-services/{id}] removeControllerService", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *RemoveControllerServiceOK) IsServerError() bool {
 // IsCode returns true when this remove controller service o k response a status code equal to that given
 func (o *RemoveControllerServiceOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the remove controller service o k response
+func (o *RemoveControllerServiceOK) Code() int {
+	return 200
 }
 
 func (o *RemoveControllerServiceOK) Error() string {
@@ -165,6 +170,11 @@ func (o *RemoveControllerServiceBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the remove controller service bad request response
+func (o *RemoveControllerServiceBadRequest) Code() int {
+	return 400
+}
+
 func (o *RemoveControllerServiceBadRequest) Error() string {
 	return fmt.Sprintf("[DELETE /controller-services/{id}][%d] removeControllerServiceBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *RemoveControllerServiceUnauthorized) IsServerError() bool {
 // IsCode returns true when this remove controller service unauthorized response a status code equal to that given
 func (o *RemoveControllerServiceUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the remove controller service unauthorized response
+func (o *RemoveControllerServiceUnauthorized) Code() int {
+	return 401
 }
 
 func (o *RemoveControllerServiceUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *RemoveControllerServiceForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the remove controller service forbidden response
+func (o *RemoveControllerServiceForbidden) Code() int {
+	return 403
+}
+
 func (o *RemoveControllerServiceForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /controller-services/{id}][%d] removeControllerServiceForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *RemoveControllerServiceNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the remove controller service not found response
+func (o *RemoveControllerServiceNotFound) Code() int {
+	return 404
+}
+
 func (o *RemoveControllerServiceNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /controller-services/{id}][%d] removeControllerServiceNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *RemoveControllerServiceConflict) IsServerError() bool {
 // IsCode returns true when this remove controller service conflict response a status code equal to that given
 func (o *RemoveControllerServiceConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the remove controller service conflict response
+func (o *RemoveControllerServiceConflict) Code() int {
+	return 409
 }
 
 func (o *RemoveControllerServiceConflict) Error() string {

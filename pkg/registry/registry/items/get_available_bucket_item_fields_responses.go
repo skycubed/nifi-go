@@ -30,7 +30,7 @@ func (o *GetAvailableBucketItemFieldsReader) ReadResponse(response runtime.Clien
 		}
 		return result, nil
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /items/fields] getAvailableBucketItemFields", response, response.Code())
 	}
 }
 
@@ -71,6 +71,11 @@ func (o *GetAvailableBucketItemFieldsOK) IsServerError() bool {
 // IsCode returns true when this get available bucket item fields o k response a status code equal to that given
 func (o *GetAvailableBucketItemFieldsOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get available bucket item fields o k response
+func (o *GetAvailableBucketItemFieldsOK) Code() int {
+	return 200
 }
 
 func (o *GetAvailableBucketItemFieldsOK) Error() string {

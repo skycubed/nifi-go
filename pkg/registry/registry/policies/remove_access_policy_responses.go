@@ -54,7 +54,7 @@ func (o *RemoveAccessPolicyReader) ReadResponse(response runtime.ClientResponse,
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /policies/{id}] removeAccessPolicy", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *RemoveAccessPolicyOK) IsServerError() bool {
 // IsCode returns true when this remove access policy o k response a status code equal to that given
 func (o *RemoveAccessPolicyOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the remove access policy o k response
+func (o *RemoveAccessPolicyOK) Code() int {
+	return 200
 }
 
 func (o *RemoveAccessPolicyOK) Error() string {
@@ -159,6 +164,11 @@ func (o *RemoveAccessPolicyUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the remove access policy unauthorized response
+func (o *RemoveAccessPolicyUnauthorized) Code() int {
+	return 401
+}
+
 func (o *RemoveAccessPolicyUnauthorized) Error() string {
 	return fmt.Sprintf("[DELETE /policies/{id}][%d] removeAccessPolicyUnauthorized ", 401)
 }
@@ -208,6 +218,11 @@ func (o *RemoveAccessPolicyForbidden) IsServerError() bool {
 // IsCode returns true when this remove access policy forbidden response a status code equal to that given
 func (o *RemoveAccessPolicyForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the remove access policy forbidden response
+func (o *RemoveAccessPolicyForbidden) Code() int {
+	return 403
 }
 
 func (o *RemoveAccessPolicyForbidden) Error() string {
@@ -261,6 +276,11 @@ func (o *RemoveAccessPolicyNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the remove access policy not found response
+func (o *RemoveAccessPolicyNotFound) Code() int {
+	return 404
+}
+
 func (o *RemoveAccessPolicyNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /policies/{id}][%d] removeAccessPolicyNotFound ", 404)
 }
@@ -310,6 +330,11 @@ func (o *RemoveAccessPolicyConflict) IsServerError() bool {
 // IsCode returns true when this remove access policy conflict response a status code equal to that given
 func (o *RemoveAccessPolicyConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the remove access policy conflict response
+func (o *RemoveAccessPolicyConflict) Code() int {
+	return 409
 }
 
 func (o *RemoveAccessPolicyConflict) Error() string {

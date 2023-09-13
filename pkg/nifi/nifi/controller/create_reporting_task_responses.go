@@ -54,7 +54,7 @@ func (o *CreateReportingTaskReader) ReadResponse(response runtime.ClientResponse
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /controller/reporting-tasks] createReportingTask", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *CreateReportingTaskCreated) IsServerError() bool {
 // IsCode returns true when this create reporting task created response a status code equal to that given
 func (o *CreateReportingTaskCreated) IsCode(code int) bool {
 	return code == 201
+}
+
+// Code gets the status code for the create reporting task created response
+func (o *CreateReportingTaskCreated) Code() int {
+	return 201
 }
 
 func (o *CreateReportingTaskCreated) Error() string {
@@ -159,6 +164,11 @@ func (o *CreateReportingTaskBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the create reporting task bad request response
+func (o *CreateReportingTaskBadRequest) Code() int {
+	return 400
+}
+
 func (o *CreateReportingTaskBadRequest) Error() string {
 	return fmt.Sprintf("[POST /controller/reporting-tasks][%d] createReportingTaskBadRequest ", 400)
 }
@@ -208,6 +218,11 @@ func (o *CreateReportingTaskUnauthorized) IsServerError() bool {
 // IsCode returns true when this create reporting task unauthorized response a status code equal to that given
 func (o *CreateReportingTaskUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the create reporting task unauthorized response
+func (o *CreateReportingTaskUnauthorized) Code() int {
+	return 401
 }
 
 func (o *CreateReportingTaskUnauthorized) Error() string {
@@ -261,6 +276,11 @@ func (o *CreateReportingTaskForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the create reporting task forbidden response
+func (o *CreateReportingTaskForbidden) Code() int {
+	return 403
+}
+
 func (o *CreateReportingTaskForbidden) Error() string {
 	return fmt.Sprintf("[POST /controller/reporting-tasks][%d] createReportingTaskForbidden ", 403)
 }
@@ -310,6 +330,11 @@ func (o *CreateReportingTaskConflict) IsServerError() bool {
 // IsCode returns true when this create reporting task conflict response a status code equal to that given
 func (o *CreateReportingTaskConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the create reporting task conflict response
+func (o *CreateReportingTaskConflict) Code() int {
+	return 409
 }
 
 func (o *CreateReportingTaskConflict) Error() string {

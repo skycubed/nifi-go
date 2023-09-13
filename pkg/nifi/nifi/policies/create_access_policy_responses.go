@@ -60,7 +60,7 @@ func (o *CreateAccessPolicyReader) ReadResponse(response runtime.ClientResponse,
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /policies] createAccessPolicy", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *CreateAccessPolicyCreated) IsServerError() bool {
 // IsCode returns true when this create access policy created response a status code equal to that given
 func (o *CreateAccessPolicyCreated) IsCode(code int) bool {
 	return code == 201
+}
+
+// Code gets the status code for the create access policy created response
+func (o *CreateAccessPolicyCreated) Code() int {
+	return 201
 }
 
 func (o *CreateAccessPolicyCreated) Error() string {
@@ -165,6 +170,11 @@ func (o *CreateAccessPolicyBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the create access policy bad request response
+func (o *CreateAccessPolicyBadRequest) Code() int {
+	return 400
+}
+
 func (o *CreateAccessPolicyBadRequest) Error() string {
 	return fmt.Sprintf("[POST /policies][%d] createAccessPolicyBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *CreateAccessPolicyUnauthorized) IsServerError() bool {
 // IsCode returns true when this create access policy unauthorized response a status code equal to that given
 func (o *CreateAccessPolicyUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the create access policy unauthorized response
+func (o *CreateAccessPolicyUnauthorized) Code() int {
+	return 401
 }
 
 func (o *CreateAccessPolicyUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *CreateAccessPolicyForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the create access policy forbidden response
+func (o *CreateAccessPolicyForbidden) Code() int {
+	return 403
+}
+
 func (o *CreateAccessPolicyForbidden) Error() string {
 	return fmt.Sprintf("[POST /policies][%d] createAccessPolicyForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *CreateAccessPolicyNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the create access policy not found response
+func (o *CreateAccessPolicyNotFound) Code() int {
+	return 404
+}
+
 func (o *CreateAccessPolicyNotFound) Error() string {
 	return fmt.Sprintf("[POST /policies][%d] createAccessPolicyNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *CreateAccessPolicyConflict) IsServerError() bool {
 // IsCode returns true when this create access policy conflict response a status code equal to that given
 func (o *CreateAccessPolicyConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the create access policy conflict response
+func (o *CreateAccessPolicyConflict) Code() int {
+	return 409
 }
 
 func (o *CreateAccessPolicyConflict) Error() string {

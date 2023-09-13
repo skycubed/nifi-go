@@ -180,6 +180,11 @@ func (m *RemoteProcessGroupDTO) ContextValidate(ctx context.Context, formats str
 func (m *RemoteProcessGroupDTO) contextValidateContents(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Contents != nil {
+
+		if swag.IsZero(m.Contents) { // not required
+			return nil
+		}
+
 		if err := m.Contents.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("contents")
@@ -196,6 +201,11 @@ func (m *RemoteProcessGroupDTO) contextValidateContents(ctx context.Context, for
 func (m *RemoteProcessGroupDTO) contextValidatePosition(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Position != nil {
+
+		if swag.IsZero(m.Position) { // not required
+			return nil
+		}
+
 		if err := m.Position.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("position")

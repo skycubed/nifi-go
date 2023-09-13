@@ -60,7 +60,7 @@ func (o *CreateProcessGroupReader) ReadResponse(response runtime.ClientResponse,
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /process-groups/{id}/process-groups] createProcessGroup", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *CreateProcessGroupCreated) IsServerError() bool {
 // IsCode returns true when this create process group created response a status code equal to that given
 func (o *CreateProcessGroupCreated) IsCode(code int) bool {
 	return code == 201
+}
+
+// Code gets the status code for the create process group created response
+func (o *CreateProcessGroupCreated) Code() int {
+	return 201
 }
 
 func (o *CreateProcessGroupCreated) Error() string {
@@ -165,6 +170,11 @@ func (o *CreateProcessGroupBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the create process group bad request response
+func (o *CreateProcessGroupBadRequest) Code() int {
+	return 400
+}
+
 func (o *CreateProcessGroupBadRequest) Error() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/process-groups][%d] createProcessGroupBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *CreateProcessGroupUnauthorized) IsServerError() bool {
 // IsCode returns true when this create process group unauthorized response a status code equal to that given
 func (o *CreateProcessGroupUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the create process group unauthorized response
+func (o *CreateProcessGroupUnauthorized) Code() int {
+	return 401
 }
 
 func (o *CreateProcessGroupUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *CreateProcessGroupForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the create process group forbidden response
+func (o *CreateProcessGroupForbidden) Code() int {
+	return 403
+}
+
 func (o *CreateProcessGroupForbidden) Error() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/process-groups][%d] createProcessGroupForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *CreateProcessGroupNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the create process group not found response
+func (o *CreateProcessGroupNotFound) Code() int {
+	return 404
+}
+
 func (o *CreateProcessGroupNotFound) Error() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/process-groups][%d] createProcessGroupNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *CreateProcessGroupConflict) IsServerError() bool {
 // IsCode returns true when this create process group conflict response a status code equal to that given
 func (o *CreateProcessGroupConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the create process group conflict response
+func (o *CreateProcessGroupConflict) Code() int {
+	return 409
 }
 
 func (o *CreateProcessGroupConflict) Error() string {

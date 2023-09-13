@@ -60,7 +60,7 @@ func (o *CreateFlowReader) ReadResponse(response runtime.ClientResponse, consume
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /buckets/{bucketId}/flows] createFlow", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *CreateFlowOK) IsServerError() bool {
 // IsCode returns true when this create flow o k response a status code equal to that given
 func (o *CreateFlowOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the create flow o k response
+func (o *CreateFlowOK) Code() int {
+	return 200
 }
 
 func (o *CreateFlowOK) Error() string {
@@ -165,6 +170,11 @@ func (o *CreateFlowBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the create flow bad request response
+func (o *CreateFlowBadRequest) Code() int {
+	return 400
+}
+
 func (o *CreateFlowBadRequest) Error() string {
 	return fmt.Sprintf("[POST /buckets/{bucketId}/flows][%d] createFlowBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *CreateFlowUnauthorized) IsServerError() bool {
 // IsCode returns true when this create flow unauthorized response a status code equal to that given
 func (o *CreateFlowUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the create flow unauthorized response
+func (o *CreateFlowUnauthorized) Code() int {
+	return 401
 }
 
 func (o *CreateFlowUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *CreateFlowForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the create flow forbidden response
+func (o *CreateFlowForbidden) Code() int {
+	return 403
+}
+
 func (o *CreateFlowForbidden) Error() string {
 	return fmt.Sprintf("[POST /buckets/{bucketId}/flows][%d] createFlowForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *CreateFlowNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the create flow not found response
+func (o *CreateFlowNotFound) Code() int {
+	return 404
+}
+
 func (o *CreateFlowNotFound) Error() string {
 	return fmt.Sprintf("[POST /buckets/{bucketId}/flows][%d] createFlowNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *CreateFlowConflict) IsServerError() bool {
 // IsCode returns true when this create flow conflict response a status code equal to that given
 func (o *CreateFlowConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the create flow conflict response
+func (o *CreateFlowConflict) Code() int {
+	return 409
 }
 
 func (o *CreateFlowConflict) Error() string {

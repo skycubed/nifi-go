@@ -60,7 +60,7 @@ func (o *CreateProcessorReader) ReadResponse(response runtime.ClientResponse, co
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /process-groups/{id}/processors] createProcessor", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *CreateProcessorCreated) IsServerError() bool {
 // IsCode returns true when this create processor created response a status code equal to that given
 func (o *CreateProcessorCreated) IsCode(code int) bool {
 	return code == 201
+}
+
+// Code gets the status code for the create processor created response
+func (o *CreateProcessorCreated) Code() int {
+	return 201
 }
 
 func (o *CreateProcessorCreated) Error() string {
@@ -165,6 +170,11 @@ func (o *CreateProcessorBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the create processor bad request response
+func (o *CreateProcessorBadRequest) Code() int {
+	return 400
+}
+
 func (o *CreateProcessorBadRequest) Error() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/processors][%d] createProcessorBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *CreateProcessorUnauthorized) IsServerError() bool {
 // IsCode returns true when this create processor unauthorized response a status code equal to that given
 func (o *CreateProcessorUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the create processor unauthorized response
+func (o *CreateProcessorUnauthorized) Code() int {
+	return 401
 }
 
 func (o *CreateProcessorUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *CreateProcessorForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the create processor forbidden response
+func (o *CreateProcessorForbidden) Code() int {
+	return 403
+}
+
 func (o *CreateProcessorForbidden) Error() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/processors][%d] createProcessorForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *CreateProcessorNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the create processor not found response
+func (o *CreateProcessorNotFound) Code() int {
+	return 404
+}
+
 func (o *CreateProcessorNotFound) Error() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/processors][%d] createProcessorNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *CreateProcessorConflict) IsServerError() bool {
 // IsCode returns true when this create processor conflict response a status code equal to that given
 func (o *CreateProcessorConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the create processor conflict response
+func (o *CreateProcessorConflict) Code() int {
+	return 409
 }
 
 func (o *CreateProcessorConflict) Error() string {

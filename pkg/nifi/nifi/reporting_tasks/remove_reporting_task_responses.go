@@ -60,7 +60,7 @@ func (o *RemoveReportingTaskReader) ReadResponse(response runtime.ClientResponse
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /reporting-tasks/{id}] removeReportingTask", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *RemoveReportingTaskOK) IsServerError() bool {
 // IsCode returns true when this remove reporting task o k response a status code equal to that given
 func (o *RemoveReportingTaskOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the remove reporting task o k response
+func (o *RemoveReportingTaskOK) Code() int {
+	return 200
 }
 
 func (o *RemoveReportingTaskOK) Error() string {
@@ -165,6 +170,11 @@ func (o *RemoveReportingTaskBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the remove reporting task bad request response
+func (o *RemoveReportingTaskBadRequest) Code() int {
+	return 400
+}
+
 func (o *RemoveReportingTaskBadRequest) Error() string {
 	return fmt.Sprintf("[DELETE /reporting-tasks/{id}][%d] removeReportingTaskBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *RemoveReportingTaskUnauthorized) IsServerError() bool {
 // IsCode returns true when this remove reporting task unauthorized response a status code equal to that given
 func (o *RemoveReportingTaskUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the remove reporting task unauthorized response
+func (o *RemoveReportingTaskUnauthorized) Code() int {
+	return 401
 }
 
 func (o *RemoveReportingTaskUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *RemoveReportingTaskForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the remove reporting task forbidden response
+func (o *RemoveReportingTaskForbidden) Code() int {
+	return 403
+}
+
 func (o *RemoveReportingTaskForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /reporting-tasks/{id}][%d] removeReportingTaskForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *RemoveReportingTaskNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the remove reporting task not found response
+func (o *RemoveReportingTaskNotFound) Code() int {
+	return 404
+}
+
 func (o *RemoveReportingTaskNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /reporting-tasks/{id}][%d] removeReportingTaskNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *RemoveReportingTaskConflict) IsServerError() bool {
 // IsCode returns true when this remove reporting task conflict response a status code equal to that given
 func (o *RemoveReportingTaskConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the remove reporting task conflict response
+func (o *RemoveReportingTaskConflict) Code() int {
+	return 409
 }
 
 func (o *RemoveReportingTaskConflict) Error() string {

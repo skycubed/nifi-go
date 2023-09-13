@@ -72,6 +72,11 @@ func (m *SearchResultsEntity) ContextValidate(ctx context.Context, formats strfm
 func (m *SearchResultsEntity) contextValidateSearchResultsDTO(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.SearchResultsDTO != nil {
+
+		if swag.IsZero(m.SearchResultsDTO) { // not required
+			return nil
+		}
+
 		if err := m.SearchResultsDTO.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("searchResultsDTO")

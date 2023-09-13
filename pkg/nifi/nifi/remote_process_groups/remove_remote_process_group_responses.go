@@ -60,7 +60,7 @@ func (o *RemoveRemoteProcessGroupReader) ReadResponse(response runtime.ClientRes
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /remote-process-groups/{id}] removeRemoteProcessGroup", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *RemoveRemoteProcessGroupOK) IsServerError() bool {
 // IsCode returns true when this remove remote process group o k response a status code equal to that given
 func (o *RemoveRemoteProcessGroupOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the remove remote process group o k response
+func (o *RemoveRemoteProcessGroupOK) Code() int {
+	return 200
 }
 
 func (o *RemoveRemoteProcessGroupOK) Error() string {
@@ -165,6 +170,11 @@ func (o *RemoveRemoteProcessGroupBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the remove remote process group bad request response
+func (o *RemoveRemoteProcessGroupBadRequest) Code() int {
+	return 400
+}
+
 func (o *RemoveRemoteProcessGroupBadRequest) Error() string {
 	return fmt.Sprintf("[DELETE /remote-process-groups/{id}][%d] removeRemoteProcessGroupBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *RemoveRemoteProcessGroupUnauthorized) IsServerError() bool {
 // IsCode returns true when this remove remote process group unauthorized response a status code equal to that given
 func (o *RemoveRemoteProcessGroupUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the remove remote process group unauthorized response
+func (o *RemoveRemoteProcessGroupUnauthorized) Code() int {
+	return 401
 }
 
 func (o *RemoveRemoteProcessGroupUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *RemoveRemoteProcessGroupForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the remove remote process group forbidden response
+func (o *RemoveRemoteProcessGroupForbidden) Code() int {
+	return 403
+}
+
 func (o *RemoveRemoteProcessGroupForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /remote-process-groups/{id}][%d] removeRemoteProcessGroupForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *RemoveRemoteProcessGroupNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the remove remote process group not found response
+func (o *RemoveRemoteProcessGroupNotFound) Code() int {
+	return 404
+}
+
 func (o *RemoveRemoteProcessGroupNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /remote-process-groups/{id}][%d] removeRemoteProcessGroupNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *RemoveRemoteProcessGroupConflict) IsServerError() bool {
 // IsCode returns true when this remove remote process group conflict response a status code equal to that given
 func (o *RemoveRemoteProcessGroupConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the remove remote process group conflict response
+func (o *RemoveRemoteProcessGroupConflict) Code() int {
+	return 409
 }
 
 func (o *RemoveRemoteProcessGroupConflict) Error() string {

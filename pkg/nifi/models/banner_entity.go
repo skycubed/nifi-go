@@ -72,6 +72,11 @@ func (m *BannerEntity) ContextValidate(ctx context.Context, formats strfmt.Regis
 func (m *BannerEntity) contextValidateBanners(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Banners != nil {
+
+		if swag.IsZero(m.Banners) { // not required
+			return nil
+		}
+
 		if err := m.Banners.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("banners")

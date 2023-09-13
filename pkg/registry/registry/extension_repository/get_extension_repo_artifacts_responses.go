@@ -60,7 +60,7 @@ func (o *GetExtensionRepoArtifactsReader) ReadResponse(response runtime.ClientRe
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /extension-repository/{bucketName}/{groupId}] getExtensionRepoArtifacts", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *GetExtensionRepoArtifactsOK) IsServerError() bool {
 // IsCode returns true when this get extension repo artifacts o k response a status code equal to that given
 func (o *GetExtensionRepoArtifactsOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get extension repo artifacts o k response
+func (o *GetExtensionRepoArtifactsOK) Code() int {
+	return 200
 }
 
 func (o *GetExtensionRepoArtifactsOK) Error() string {
@@ -163,6 +168,11 @@ func (o *GetExtensionRepoArtifactsBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get extension repo artifacts bad request response
+func (o *GetExtensionRepoArtifactsBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetExtensionRepoArtifactsBadRequest) Error() string {
 	return fmt.Sprintf("[GET /extension-repository/{bucketName}/{groupId}][%d] getExtensionRepoArtifactsBadRequest ", 400)
 }
@@ -212,6 +222,11 @@ func (o *GetExtensionRepoArtifactsUnauthorized) IsServerError() bool {
 // IsCode returns true when this get extension repo artifacts unauthorized response a status code equal to that given
 func (o *GetExtensionRepoArtifactsUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get extension repo artifacts unauthorized response
+func (o *GetExtensionRepoArtifactsUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetExtensionRepoArtifactsUnauthorized) Error() string {
@@ -265,6 +280,11 @@ func (o *GetExtensionRepoArtifactsForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get extension repo artifacts forbidden response
+func (o *GetExtensionRepoArtifactsForbidden) Code() int {
+	return 403
+}
+
 func (o *GetExtensionRepoArtifactsForbidden) Error() string {
 	return fmt.Sprintf("[GET /extension-repository/{bucketName}/{groupId}][%d] getExtensionRepoArtifactsForbidden ", 403)
 }
@@ -316,6 +336,11 @@ func (o *GetExtensionRepoArtifactsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get extension repo artifacts not found response
+func (o *GetExtensionRepoArtifactsNotFound) Code() int {
+	return 404
+}
+
 func (o *GetExtensionRepoArtifactsNotFound) Error() string {
 	return fmt.Sprintf("[GET /extension-repository/{bucketName}/{groupId}][%d] getExtensionRepoArtifactsNotFound ", 404)
 }
@@ -365,6 +390,11 @@ func (o *GetExtensionRepoArtifactsConflict) IsServerError() bool {
 // IsCode returns true when this get extension repo artifacts conflict response a status code equal to that given
 func (o *GetExtensionRepoArtifactsConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get extension repo artifacts conflict response
+func (o *GetExtensionRepoArtifactsConflict) Code() int {
+	return 409
 }
 
 func (o *GetExtensionRepoArtifactsConflict) Error() string {

@@ -39,7 +39,7 @@ func (o *LogOutCompleteReader) ReadResponse(response runtime.ClientResponse, con
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /access/logout/complete] logOutComplete", response, response.Code())
 	}
 }
 
@@ -79,6 +79,11 @@ func (o *LogOutCompleteOK) IsServerError() bool {
 // IsCode returns true when this log out complete o k response a status code equal to that given
 func (o *LogOutCompleteOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the log out complete o k response
+func (o *LogOutCompleteOK) Code() int {
+	return 200
 }
 
 func (o *LogOutCompleteOK) Error() string {
@@ -132,6 +137,11 @@ func (o *LogOutCompleteUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the log out complete unauthorized response
+func (o *LogOutCompleteUnauthorized) Code() int {
+	return 401
+}
+
 func (o *LogOutCompleteUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /access/logout/complete][%d] logOutCompleteUnauthorized ", 401)
 }
@@ -181,6 +191,11 @@ func (o *LogOutCompleteInternalServerError) IsServerError() bool {
 // IsCode returns true when this log out complete internal server error response a status code equal to that given
 func (o *LogOutCompleteInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the log out complete internal server error response
+func (o *LogOutCompleteInternalServerError) Code() int {
+	return 500
 }
 
 func (o *LogOutCompleteInternalServerError) Error() string {

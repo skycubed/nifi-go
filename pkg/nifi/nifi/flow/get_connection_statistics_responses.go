@@ -60,7 +60,7 @@ func (o *GetConnectionStatisticsReader) ReadResponse(response runtime.ClientResp
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /flow/connections/{id}/statistics] getConnectionStatistics", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *GetConnectionStatisticsOK) IsServerError() bool {
 // IsCode returns true when this get connection statistics o k response a status code equal to that given
 func (o *GetConnectionStatisticsOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get connection statistics o k response
+func (o *GetConnectionStatisticsOK) Code() int {
+	return 200
 }
 
 func (o *GetConnectionStatisticsOK) Error() string {
@@ -165,6 +170,11 @@ func (o *GetConnectionStatisticsBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get connection statistics bad request response
+func (o *GetConnectionStatisticsBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetConnectionStatisticsBadRequest) Error() string {
 	return fmt.Sprintf("[GET /flow/connections/{id}/statistics][%d] getConnectionStatisticsBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *GetConnectionStatisticsUnauthorized) IsServerError() bool {
 // IsCode returns true when this get connection statistics unauthorized response a status code equal to that given
 func (o *GetConnectionStatisticsUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get connection statistics unauthorized response
+func (o *GetConnectionStatisticsUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetConnectionStatisticsUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *GetConnectionStatisticsForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get connection statistics forbidden response
+func (o *GetConnectionStatisticsForbidden) Code() int {
+	return 403
+}
+
 func (o *GetConnectionStatisticsForbidden) Error() string {
 	return fmt.Sprintf("[GET /flow/connections/{id}/statistics][%d] getConnectionStatisticsForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *GetConnectionStatisticsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get connection statistics not found response
+func (o *GetConnectionStatisticsNotFound) Code() int {
+	return 404
+}
+
 func (o *GetConnectionStatisticsNotFound) Error() string {
 	return fmt.Sprintf("[GET /flow/connections/{id}/statistics][%d] getConnectionStatisticsNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *GetConnectionStatisticsConflict) IsServerError() bool {
 // IsCode returns true when this get connection statistics conflict response a status code equal to that given
 func (o *GetConnectionStatisticsConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get connection statistics conflict response
+func (o *GetConnectionStatisticsConflict) Code() int {
+	return 409
 }
 
 func (o *GetConnectionStatisticsConflict) Error() string {

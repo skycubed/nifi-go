@@ -283,6 +283,11 @@ func (m *PropertyDescriptor) contextValidateAllowableValues(ctx context.Context,
 	for i := 0; i < len(m.AllowableValues); i++ {
 
 		if m.AllowableValues[i] != nil {
+
+			if swag.IsZero(m.AllowableValues[i]) { // not required
+				return nil
+			}
+
 			if err := m.AllowableValues[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("allowableValues" + "." + strconv.Itoa(i))
@@ -303,6 +308,11 @@ func (m *PropertyDescriptor) contextValidateDependencies(ctx context.Context, fo
 	for i := 0; i < len(m.Dependencies); i++ {
 
 		if m.Dependencies[i] != nil {
+
+			if swag.IsZero(m.Dependencies[i]) { // not required
+				return nil
+			}
+
 			if err := m.Dependencies[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("dependencies" + "." + strconv.Itoa(i))
@@ -330,6 +340,11 @@ func (m *PropertyDescriptor) contextValidateExpressionLanguageScopeDescription(c
 func (m *PropertyDescriptor) contextValidateResourceDefinition(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ResourceDefinition != nil {
+
+		if swag.IsZero(m.ResourceDefinition) { // not required
+			return nil
+		}
+
 		if err := m.ResourceDefinition.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("resourceDefinition")
@@ -346,6 +361,11 @@ func (m *PropertyDescriptor) contextValidateResourceDefinition(ctx context.Conte
 func (m *PropertyDescriptor) contextValidateTypeProvidedByValue(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.TypeProvidedByValue != nil {
+
+		if swag.IsZero(m.TypeProvidedByValue) { // not required
+			return nil
+		}
+
 		if err := m.TypeProvidedByValue.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("typeProvidedByValue")

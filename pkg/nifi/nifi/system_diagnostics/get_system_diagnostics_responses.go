@@ -42,7 +42,7 @@ func (o *GetSystemDiagnosticsReader) ReadResponse(response runtime.ClientRespons
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /system-diagnostics] getSystemDiagnostics", response, response.Code())
 	}
 }
 
@@ -83,6 +83,11 @@ func (o *GetSystemDiagnosticsOK) IsServerError() bool {
 // IsCode returns true when this get system diagnostics o k response a status code equal to that given
 func (o *GetSystemDiagnosticsOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get system diagnostics o k response
+func (o *GetSystemDiagnosticsOK) Code() int {
+	return 200
 }
 
 func (o *GetSystemDiagnosticsOK) Error() string {
@@ -147,6 +152,11 @@ func (o *GetSystemDiagnosticsUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the get system diagnostics unauthorized response
+func (o *GetSystemDiagnosticsUnauthorized) Code() int {
+	return 401
+}
+
 func (o *GetSystemDiagnosticsUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /system-diagnostics][%d] getSystemDiagnosticsUnauthorized ", 401)
 }
@@ -196,6 +206,11 @@ func (o *GetSystemDiagnosticsForbidden) IsServerError() bool {
 // IsCode returns true when this get system diagnostics forbidden response a status code equal to that given
 func (o *GetSystemDiagnosticsForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the get system diagnostics forbidden response
+func (o *GetSystemDiagnosticsForbidden) Code() int {
+	return 403
 }
 
 func (o *GetSystemDiagnosticsForbidden) Error() string {

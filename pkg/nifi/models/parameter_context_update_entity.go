@@ -146,6 +146,11 @@ func (m *ParameterContextUpdateEntity) ContextValidate(ctx context.Context, form
 func (m *ParameterContextUpdateEntity) contextValidateParameterContext(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ParameterContext != nil {
+
+		if swag.IsZero(m.ParameterContext) { // not required
+			return nil
+		}
+
 		if err := m.ParameterContext.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("parameterContext")
@@ -162,6 +167,11 @@ func (m *ParameterContextUpdateEntity) contextValidateParameterContext(ctx conte
 func (m *ParameterContextUpdateEntity) contextValidateParameterContextRevision(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ParameterContextRevision != nil {
+
+		if swag.IsZero(m.ParameterContextRevision) { // not required
+			return nil
+		}
+
 		if err := m.ParameterContextRevision.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("parameterContextRevision")
@@ -180,6 +190,11 @@ func (m *ParameterContextUpdateEntity) contextValidateReferencingComponents(ctx 
 	for i := 0; i < len(m.ReferencingComponents); i++ {
 
 		if m.ReferencingComponents[i] != nil {
+
+			if swag.IsZero(m.ReferencingComponents[i]) { // not required
+				return nil
+			}
+
 			if err := m.ReferencingComponents[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("referencingComponents" + "." + strconv.Itoa(i))

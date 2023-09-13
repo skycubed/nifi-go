@@ -114,6 +114,11 @@ func (m *CurrentUser) contextValidateIdentity(ctx context.Context, formats strfm
 func (m *CurrentUser) contextValidateResourcePermissions(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ResourcePermissions != nil {
+
+		if swag.IsZero(m.ResourcePermissions) { // not required
+			return nil
+		}
+
 		if err := m.ResourcePermissions.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("resourcePermissions")

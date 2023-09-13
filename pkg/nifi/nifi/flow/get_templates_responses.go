@@ -54,7 +54,7 @@ func (o *GetTemplatesReader) ReadResponse(response runtime.ClientResponse, consu
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /flow/templates] getTemplates", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *GetTemplatesOK) IsServerError() bool {
 // IsCode returns true when this get templates o k response a status code equal to that given
 func (o *GetTemplatesOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get templates o k response
+func (o *GetTemplatesOK) Code() int {
+	return 200
 }
 
 func (o *GetTemplatesOK) Error() string {
@@ -159,6 +164,11 @@ func (o *GetTemplatesBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get templates bad request response
+func (o *GetTemplatesBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetTemplatesBadRequest) Error() string {
 	return fmt.Sprintf("[GET /flow/templates][%d] getTemplatesBadRequest ", 400)
 }
@@ -208,6 +218,11 @@ func (o *GetTemplatesUnauthorized) IsServerError() bool {
 // IsCode returns true when this get templates unauthorized response a status code equal to that given
 func (o *GetTemplatesUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get templates unauthorized response
+func (o *GetTemplatesUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetTemplatesUnauthorized) Error() string {
@@ -261,6 +276,11 @@ func (o *GetTemplatesForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get templates forbidden response
+func (o *GetTemplatesForbidden) Code() int {
+	return 403
+}
+
 func (o *GetTemplatesForbidden) Error() string {
 	return fmt.Sprintf("[GET /flow/templates][%d] getTemplatesForbidden ", 403)
 }
@@ -310,6 +330,11 @@ func (o *GetTemplatesConflict) IsServerError() bool {
 // IsCode returns true when this get templates conflict response a status code equal to that given
 func (o *GetTemplatesConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get templates conflict response
+func (o *GetTemplatesConflict) Code() int {
+	return 409
 }
 
 func (o *GetTemplatesConflict) Error() string {

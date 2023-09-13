@@ -54,7 +54,7 @@ func (o *CreateFlowRegistryClientReader) ReadResponse(response runtime.ClientRes
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /controller/registry-clients] createFlowRegistryClient", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *CreateFlowRegistryClientCreated) IsServerError() bool {
 // IsCode returns true when this create flow registry client created response a status code equal to that given
 func (o *CreateFlowRegistryClientCreated) IsCode(code int) bool {
 	return code == 201
+}
+
+// Code gets the status code for the create flow registry client created response
+func (o *CreateFlowRegistryClientCreated) Code() int {
+	return 201
 }
 
 func (o *CreateFlowRegistryClientCreated) Error() string {
@@ -159,6 +164,11 @@ func (o *CreateFlowRegistryClientBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the create flow registry client bad request response
+func (o *CreateFlowRegistryClientBadRequest) Code() int {
+	return 400
+}
+
 func (o *CreateFlowRegistryClientBadRequest) Error() string {
 	return fmt.Sprintf("[POST /controller/registry-clients][%d] createFlowRegistryClientBadRequest ", 400)
 }
@@ -208,6 +218,11 @@ func (o *CreateFlowRegistryClientUnauthorized) IsServerError() bool {
 // IsCode returns true when this create flow registry client unauthorized response a status code equal to that given
 func (o *CreateFlowRegistryClientUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the create flow registry client unauthorized response
+func (o *CreateFlowRegistryClientUnauthorized) Code() int {
+	return 401
 }
 
 func (o *CreateFlowRegistryClientUnauthorized) Error() string {
@@ -261,6 +276,11 @@ func (o *CreateFlowRegistryClientForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the create flow registry client forbidden response
+func (o *CreateFlowRegistryClientForbidden) Code() int {
+	return 403
+}
+
 func (o *CreateFlowRegistryClientForbidden) Error() string {
 	return fmt.Sprintf("[POST /controller/registry-clients][%d] createFlowRegistryClientForbidden ", 403)
 }
@@ -310,6 +330,11 @@ func (o *CreateFlowRegistryClientConflict) IsServerError() bool {
 // IsCode returns true when this create flow registry client conflict response a status code equal to that given
 func (o *CreateFlowRegistryClientConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the create flow registry client conflict response
+func (o *CreateFlowRegistryClientConflict) Code() int {
+	return 409
 }
 
 func (o *CreateFlowRegistryClientConflict) Error() string {

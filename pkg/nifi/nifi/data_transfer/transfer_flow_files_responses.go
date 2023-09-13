@@ -66,7 +66,7 @@ func (o *TransferFlowFilesReader) ReadResponse(response runtime.ClientResponse, 
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /data-transfer/output-ports/{portId}/transactions/{transactionId}/flow-files] transferFlowFiles", response, response.Code())
 	}
 }
 
@@ -107,6 +107,11 @@ func (o *TransferFlowFilesOK) IsServerError() bool {
 // IsCode returns true when this transfer flow files o k response a status code equal to that given
 func (o *TransferFlowFilesOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the transfer flow files o k response
+func (o *TransferFlowFilesOK) Code() int {
+	return 200
 }
 
 func (o *TransferFlowFilesOK) Error() string {
@@ -169,6 +174,11 @@ func (o *TransferFlowFilesBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the transfer flow files bad request response
+func (o *TransferFlowFilesBadRequest) Code() int {
+	return 400
+}
+
 func (o *TransferFlowFilesBadRequest) Error() string {
 	return fmt.Sprintf("[GET /data-transfer/output-ports/{portId}/transactions/{transactionId}/flow-files][%d] transferFlowFilesBadRequest ", 400)
 }
@@ -218,6 +228,11 @@ func (o *TransferFlowFilesUnauthorized) IsServerError() bool {
 // IsCode returns true when this transfer flow files unauthorized response a status code equal to that given
 func (o *TransferFlowFilesUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the transfer flow files unauthorized response
+func (o *TransferFlowFilesUnauthorized) Code() int {
+	return 401
 }
 
 func (o *TransferFlowFilesUnauthorized) Error() string {
@@ -271,6 +286,11 @@ func (o *TransferFlowFilesForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the transfer flow files forbidden response
+func (o *TransferFlowFilesForbidden) Code() int {
+	return 403
+}
+
 func (o *TransferFlowFilesForbidden) Error() string {
 	return fmt.Sprintf("[GET /data-transfer/output-ports/{portId}/transactions/{transactionId}/flow-files][%d] transferFlowFilesForbidden ", 403)
 }
@@ -320,6 +340,11 @@ func (o *TransferFlowFilesNotFound) IsServerError() bool {
 // IsCode returns true when this transfer flow files not found response a status code equal to that given
 func (o *TransferFlowFilesNotFound) IsCode(code int) bool {
 	return code == 404
+}
+
+// Code gets the status code for the transfer flow files not found response
+func (o *TransferFlowFilesNotFound) Code() int {
+	return 404
 }
 
 func (o *TransferFlowFilesNotFound) Error() string {
@@ -373,6 +398,11 @@ func (o *TransferFlowFilesConflict) IsCode(code int) bool {
 	return code == 409
 }
 
+// Code gets the status code for the transfer flow files conflict response
+func (o *TransferFlowFilesConflict) Code() int {
+	return 409
+}
+
 func (o *TransferFlowFilesConflict) Error() string {
 	return fmt.Sprintf("[GET /data-transfer/output-ports/{portId}/transactions/{transactionId}/flow-files][%d] transferFlowFilesConflict ", 409)
 }
@@ -422,6 +452,11 @@ func (o *TransferFlowFilesServiceUnavailable) IsServerError() bool {
 // IsCode returns true when this transfer flow files service unavailable response a status code equal to that given
 func (o *TransferFlowFilesServiceUnavailable) IsCode(code int) bool {
 	return code == 503
+}
+
+// Code gets the status code for the transfer flow files service unavailable response
+func (o *TransferFlowFilesServiceUnavailable) Code() int {
+	return 503
 }
 
 func (o *TransferFlowFilesServiceUnavailable) Error() string {

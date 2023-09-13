@@ -60,7 +60,7 @@ func (o *CreateTemplateReader) ReadResponse(response runtime.ClientResponse, con
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /process-groups/{id}/templates] createTemplate", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *CreateTemplateCreated) IsServerError() bool {
 // IsCode returns true when this create template created response a status code equal to that given
 func (o *CreateTemplateCreated) IsCode(code int) bool {
 	return code == 201
+}
+
+// Code gets the status code for the create template created response
+func (o *CreateTemplateCreated) Code() int {
+	return 201
 }
 
 func (o *CreateTemplateCreated) Error() string {
@@ -165,6 +170,11 @@ func (o *CreateTemplateBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the create template bad request response
+func (o *CreateTemplateBadRequest) Code() int {
+	return 400
+}
+
 func (o *CreateTemplateBadRequest) Error() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/templates][%d] createTemplateBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *CreateTemplateUnauthorized) IsServerError() bool {
 // IsCode returns true when this create template unauthorized response a status code equal to that given
 func (o *CreateTemplateUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the create template unauthorized response
+func (o *CreateTemplateUnauthorized) Code() int {
+	return 401
 }
 
 func (o *CreateTemplateUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *CreateTemplateForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the create template forbidden response
+func (o *CreateTemplateForbidden) Code() int {
+	return 403
+}
+
 func (o *CreateTemplateForbidden) Error() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/templates][%d] createTemplateForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *CreateTemplateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the create template not found response
+func (o *CreateTemplateNotFound) Code() int {
+	return 404
+}
+
 func (o *CreateTemplateNotFound) Error() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/templates][%d] createTemplateNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *CreateTemplateConflict) IsServerError() bool {
 // IsCode returns true when this create template conflict response a status code equal to that given
 func (o *CreateTemplateConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the create template conflict response
+func (o *CreateTemplateConflict) Code() int {
+	return 409
 }
 
 func (o *CreateTemplateConflict) Error() string {

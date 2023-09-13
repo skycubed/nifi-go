@@ -60,7 +60,7 @@ func (o *InstantiateTemplateReader) ReadResponse(response runtime.ClientResponse
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /process-groups/{id}/template-instance] instantiateTemplate", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *InstantiateTemplateCreated) IsServerError() bool {
 // IsCode returns true when this instantiate template created response a status code equal to that given
 func (o *InstantiateTemplateCreated) IsCode(code int) bool {
 	return code == 201
+}
+
+// Code gets the status code for the instantiate template created response
+func (o *InstantiateTemplateCreated) Code() int {
+	return 201
 }
 
 func (o *InstantiateTemplateCreated) Error() string {
@@ -165,6 +170,11 @@ func (o *InstantiateTemplateBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the instantiate template bad request response
+func (o *InstantiateTemplateBadRequest) Code() int {
+	return 400
+}
+
 func (o *InstantiateTemplateBadRequest) Error() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/template-instance][%d] instantiateTemplateBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *InstantiateTemplateUnauthorized) IsServerError() bool {
 // IsCode returns true when this instantiate template unauthorized response a status code equal to that given
 func (o *InstantiateTemplateUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the instantiate template unauthorized response
+func (o *InstantiateTemplateUnauthorized) Code() int {
+	return 401
 }
 
 func (o *InstantiateTemplateUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *InstantiateTemplateForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the instantiate template forbidden response
+func (o *InstantiateTemplateForbidden) Code() int {
+	return 403
+}
+
 func (o *InstantiateTemplateForbidden) Error() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/template-instance][%d] instantiateTemplateForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *InstantiateTemplateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the instantiate template not found response
+func (o *InstantiateTemplateNotFound) Code() int {
+	return 404
+}
+
 func (o *InstantiateTemplateNotFound) Error() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/template-instance][%d] instantiateTemplateNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *InstantiateTemplateConflict) IsServerError() bool {
 // IsCode returns true when this instantiate template conflict response a status code equal to that given
 func (o *InstantiateTemplateConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the instantiate template conflict response
+func (o *InstantiateTemplateConflict) Code() int {
+	return 409
 }
 
 func (o *InstantiateTemplateConflict) Error() string {

@@ -54,7 +54,7 @@ func (o *GetParameterProviderTypesReader) ReadResponse(response runtime.ClientRe
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /flow/parameter-provider-types] getParameterProviderTypes", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *GetParameterProviderTypesOK) IsServerError() bool {
 // IsCode returns true when this get parameter provider types o k response a status code equal to that given
 func (o *GetParameterProviderTypesOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get parameter provider types o k response
+func (o *GetParameterProviderTypesOK) Code() int {
+	return 200
 }
 
 func (o *GetParameterProviderTypesOK) Error() string {
@@ -159,6 +164,11 @@ func (o *GetParameterProviderTypesBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get parameter provider types bad request response
+func (o *GetParameterProviderTypesBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetParameterProviderTypesBadRequest) Error() string {
 	return fmt.Sprintf("[GET /flow/parameter-provider-types][%d] getParameterProviderTypesBadRequest ", 400)
 }
@@ -208,6 +218,11 @@ func (o *GetParameterProviderTypesUnauthorized) IsServerError() bool {
 // IsCode returns true when this get parameter provider types unauthorized response a status code equal to that given
 func (o *GetParameterProviderTypesUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get parameter provider types unauthorized response
+func (o *GetParameterProviderTypesUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetParameterProviderTypesUnauthorized) Error() string {
@@ -261,6 +276,11 @@ func (o *GetParameterProviderTypesForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get parameter provider types forbidden response
+func (o *GetParameterProviderTypesForbidden) Code() int {
+	return 403
+}
+
 func (o *GetParameterProviderTypesForbidden) Error() string {
 	return fmt.Sprintf("[GET /flow/parameter-provider-types][%d] getParameterProviderTypesForbidden ", 403)
 }
@@ -310,6 +330,11 @@ func (o *GetParameterProviderTypesConflict) IsServerError() bool {
 // IsCode returns true when this get parameter provider types conflict response a status code equal to that given
 func (o *GetParameterProviderTypesConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get parameter provider types conflict response
+func (o *GetParameterProviderTypesConflict) Code() int {
+	return 409
 }
 
 func (o *GetParameterProviderTypesConflict) Error() string {

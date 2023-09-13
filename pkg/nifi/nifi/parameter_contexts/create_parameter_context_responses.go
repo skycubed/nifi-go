@@ -60,7 +60,7 @@ func (o *CreateParameterContextReader) ReadResponse(response runtime.ClientRespo
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /parameter-contexts] createParameterContext", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *CreateParameterContextCreated) IsServerError() bool {
 // IsCode returns true when this create parameter context created response a status code equal to that given
 func (o *CreateParameterContextCreated) IsCode(code int) bool {
 	return code == 201
+}
+
+// Code gets the status code for the create parameter context created response
+func (o *CreateParameterContextCreated) Code() int {
+	return 201
 }
 
 func (o *CreateParameterContextCreated) Error() string {
@@ -165,6 +170,11 @@ func (o *CreateParameterContextBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the create parameter context bad request response
+func (o *CreateParameterContextBadRequest) Code() int {
+	return 400
+}
+
 func (o *CreateParameterContextBadRequest) Error() string {
 	return fmt.Sprintf("[POST /parameter-contexts][%d] createParameterContextBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *CreateParameterContextUnauthorized) IsServerError() bool {
 // IsCode returns true when this create parameter context unauthorized response a status code equal to that given
 func (o *CreateParameterContextUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the create parameter context unauthorized response
+func (o *CreateParameterContextUnauthorized) Code() int {
+	return 401
 }
 
 func (o *CreateParameterContextUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *CreateParameterContextForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the create parameter context forbidden response
+func (o *CreateParameterContextForbidden) Code() int {
+	return 403
+}
+
 func (o *CreateParameterContextForbidden) Error() string {
 	return fmt.Sprintf("[POST /parameter-contexts][%d] createParameterContextForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *CreateParameterContextNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the create parameter context not found response
+func (o *CreateParameterContextNotFound) Code() int {
+	return 404
+}
+
 func (o *CreateParameterContextNotFound) Error() string {
 	return fmt.Sprintf("[POST /parameter-contexts][%d] createParameterContextNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *CreateParameterContextConflict) IsServerError() bool {
 // IsCode returns true when this create parameter context conflict response a status code equal to that given
 func (o *CreateParameterContextConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the create parameter context conflict response
+func (o *CreateParameterContextConflict) Code() int {
+	return 409
 }
 
 func (o *CreateParameterContextConflict) Error() string {

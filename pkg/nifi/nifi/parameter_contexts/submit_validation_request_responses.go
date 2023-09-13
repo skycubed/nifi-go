@@ -60,7 +60,7 @@ func (o *SubmitValidationRequestReader) ReadResponse(response runtime.ClientResp
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /parameter-contexts/{contextId}/validation-requests] submitValidationRequest", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *SubmitValidationRequestOK) IsServerError() bool {
 // IsCode returns true when this submit validation request o k response a status code equal to that given
 func (o *SubmitValidationRequestOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the submit validation request o k response
+func (o *SubmitValidationRequestOK) Code() int {
+	return 200
 }
 
 func (o *SubmitValidationRequestOK) Error() string {
@@ -165,6 +170,11 @@ func (o *SubmitValidationRequestBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the submit validation request bad request response
+func (o *SubmitValidationRequestBadRequest) Code() int {
+	return 400
+}
+
 func (o *SubmitValidationRequestBadRequest) Error() string {
 	return fmt.Sprintf("[POST /parameter-contexts/{contextId}/validation-requests][%d] submitValidationRequestBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *SubmitValidationRequestUnauthorized) IsServerError() bool {
 // IsCode returns true when this submit validation request unauthorized response a status code equal to that given
 func (o *SubmitValidationRequestUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the submit validation request unauthorized response
+func (o *SubmitValidationRequestUnauthorized) Code() int {
+	return 401
 }
 
 func (o *SubmitValidationRequestUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *SubmitValidationRequestForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the submit validation request forbidden response
+func (o *SubmitValidationRequestForbidden) Code() int {
+	return 403
+}
+
 func (o *SubmitValidationRequestForbidden) Error() string {
 	return fmt.Sprintf("[POST /parameter-contexts/{contextId}/validation-requests][%d] submitValidationRequestForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *SubmitValidationRequestNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the submit validation request not found response
+func (o *SubmitValidationRequestNotFound) Code() int {
+	return 404
+}
+
 func (o *SubmitValidationRequestNotFound) Error() string {
 	return fmt.Sprintf("[POST /parameter-contexts/{contextId}/validation-requests][%d] submitValidationRequestNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *SubmitValidationRequestConflict) IsServerError() bool {
 // IsCode returns true when this submit validation request conflict response a status code equal to that given
 func (o *SubmitValidationRequestConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the submit validation request conflict response
+func (o *SubmitValidationRequestConflict) Code() int {
+	return 409
 }
 
 func (o *SubmitValidationRequestConflict) Error() string {

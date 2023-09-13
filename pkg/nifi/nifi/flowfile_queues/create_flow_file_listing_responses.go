@@ -66,7 +66,7 @@ func (o *CreateFlowFileListingReader) ReadResponse(response runtime.ClientRespon
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /flowfile-queues/{id}/listing-requests] createFlowFileListing", response, response.Code())
 	}
 }
 
@@ -107,6 +107,11 @@ func (o *CreateFlowFileListingOK) IsServerError() bool {
 // IsCode returns true when this create flow file listing o k response a status code equal to that given
 func (o *CreateFlowFileListingOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the create flow file listing o k response
+func (o *CreateFlowFileListingOK) Code() int {
+	return 200
 }
 
 func (o *CreateFlowFileListingOK) Error() string {
@@ -171,6 +176,11 @@ func (o *CreateFlowFileListingAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
+// Code gets the status code for the create flow file listing accepted response
+func (o *CreateFlowFileListingAccepted) Code() int {
+	return 202
+}
+
 func (o *CreateFlowFileListingAccepted) Error() string {
 	return fmt.Sprintf("[POST /flowfile-queues/{id}/listing-requests][%d] createFlowFileListingAccepted ", 202)
 }
@@ -220,6 +230,11 @@ func (o *CreateFlowFileListingBadRequest) IsServerError() bool {
 // IsCode returns true when this create flow file listing bad request response a status code equal to that given
 func (o *CreateFlowFileListingBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the create flow file listing bad request response
+func (o *CreateFlowFileListingBadRequest) Code() int {
+	return 400
 }
 
 func (o *CreateFlowFileListingBadRequest) Error() string {
@@ -273,6 +288,11 @@ func (o *CreateFlowFileListingUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the create flow file listing unauthorized response
+func (o *CreateFlowFileListingUnauthorized) Code() int {
+	return 401
+}
+
 func (o *CreateFlowFileListingUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /flowfile-queues/{id}/listing-requests][%d] createFlowFileListingUnauthorized ", 401)
 }
@@ -322,6 +342,11 @@ func (o *CreateFlowFileListingForbidden) IsServerError() bool {
 // IsCode returns true when this create flow file listing forbidden response a status code equal to that given
 func (o *CreateFlowFileListingForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the create flow file listing forbidden response
+func (o *CreateFlowFileListingForbidden) Code() int {
+	return 403
 }
 
 func (o *CreateFlowFileListingForbidden) Error() string {
@@ -375,6 +400,11 @@ func (o *CreateFlowFileListingNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the create flow file listing not found response
+func (o *CreateFlowFileListingNotFound) Code() int {
+	return 404
+}
+
 func (o *CreateFlowFileListingNotFound) Error() string {
 	return fmt.Sprintf("[POST /flowfile-queues/{id}/listing-requests][%d] createFlowFileListingNotFound ", 404)
 }
@@ -424,6 +454,11 @@ func (o *CreateFlowFileListingConflict) IsServerError() bool {
 // IsCode returns true when this create flow file listing conflict response a status code equal to that given
 func (o *CreateFlowFileListingConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the create flow file listing conflict response
+func (o *CreateFlowFileListingConflict) Code() int {
+	return 409
 }
 
 func (o *CreateFlowFileListingConflict) Error() string {

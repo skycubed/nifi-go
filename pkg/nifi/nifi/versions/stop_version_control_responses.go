@@ -60,7 +60,7 @@ func (o *StopVersionControlReader) ReadResponse(response runtime.ClientResponse,
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /versions/process-groups/{id}] stopVersionControl", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *StopVersionControlOK) IsServerError() bool {
 // IsCode returns true when this stop version control o k response a status code equal to that given
 func (o *StopVersionControlOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the stop version control o k response
+func (o *StopVersionControlOK) Code() int {
+	return 200
 }
 
 func (o *StopVersionControlOK) Error() string {
@@ -165,6 +170,11 @@ func (o *StopVersionControlBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the stop version control bad request response
+func (o *StopVersionControlBadRequest) Code() int {
+	return 400
+}
+
 func (o *StopVersionControlBadRequest) Error() string {
 	return fmt.Sprintf("[DELETE /versions/process-groups/{id}][%d] stopVersionControlBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *StopVersionControlUnauthorized) IsServerError() bool {
 // IsCode returns true when this stop version control unauthorized response a status code equal to that given
 func (o *StopVersionControlUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the stop version control unauthorized response
+func (o *StopVersionControlUnauthorized) Code() int {
+	return 401
 }
 
 func (o *StopVersionControlUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *StopVersionControlForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the stop version control forbidden response
+func (o *StopVersionControlForbidden) Code() int {
+	return 403
+}
+
 func (o *StopVersionControlForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /versions/process-groups/{id}][%d] stopVersionControlForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *StopVersionControlNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the stop version control not found response
+func (o *StopVersionControlNotFound) Code() int {
+	return 404
+}
+
 func (o *StopVersionControlNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /versions/process-groups/{id}][%d] stopVersionControlNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *StopVersionControlConflict) IsServerError() bool {
 // IsCode returns true when this stop version control conflict response a status code equal to that given
 func (o *StopVersionControlConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the stop version control conflict response
+func (o *StopVersionControlConflict) Code() int {
+	return 409
 }
 
 func (o *StopVersionControlConflict) Error() string {

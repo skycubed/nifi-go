@@ -105,6 +105,11 @@ func (m *ProcessGroupImportEntity) ContextValidate(ctx context.Context, formats 
 func (m *ProcessGroupImportEntity) contextValidateProcessGroupRevision(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ProcessGroupRevision != nil {
+
+		if swag.IsZero(m.ProcessGroupRevision) { // not required
+			return nil
+		}
+
 		if err := m.ProcessGroupRevision.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("processGroupRevision")
@@ -121,6 +126,11 @@ func (m *ProcessGroupImportEntity) contextValidateProcessGroupRevision(ctx conte
 func (m *ProcessGroupImportEntity) contextValidateVersionedFlowSnapshot(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.VersionedFlowSnapshot != nil {
+
+		if swag.IsZero(m.VersionedFlowSnapshot) { // not required
+			return nil
+		}
+
 		if err := m.VersionedFlowSnapshot.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("versionedFlowSnapshot")

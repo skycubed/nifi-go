@@ -66,7 +66,7 @@ func (o *CreateEmptyAllConnectionsRequestReader) ReadResponse(response runtime.C
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /process-groups/{id}/empty-all-connections-requests] createEmptyAllConnectionsRequest", response, response.Code())
 	}
 }
 
@@ -107,6 +107,11 @@ func (o *CreateEmptyAllConnectionsRequestOK) IsServerError() bool {
 // IsCode returns true when this create empty all connections request o k response a status code equal to that given
 func (o *CreateEmptyAllConnectionsRequestOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the create empty all connections request o k response
+func (o *CreateEmptyAllConnectionsRequestOK) Code() int {
+	return 200
 }
 
 func (o *CreateEmptyAllConnectionsRequestOK) Error() string {
@@ -171,6 +176,11 @@ func (o *CreateEmptyAllConnectionsRequestAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
+// Code gets the status code for the create empty all connections request accepted response
+func (o *CreateEmptyAllConnectionsRequestAccepted) Code() int {
+	return 202
+}
+
 func (o *CreateEmptyAllConnectionsRequestAccepted) Error() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/empty-all-connections-requests][%d] createEmptyAllConnectionsRequestAccepted ", 202)
 }
@@ -220,6 +230,11 @@ func (o *CreateEmptyAllConnectionsRequestBadRequest) IsServerError() bool {
 // IsCode returns true when this create empty all connections request bad request response a status code equal to that given
 func (o *CreateEmptyAllConnectionsRequestBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the create empty all connections request bad request response
+func (o *CreateEmptyAllConnectionsRequestBadRequest) Code() int {
+	return 400
 }
 
 func (o *CreateEmptyAllConnectionsRequestBadRequest) Error() string {
@@ -273,6 +288,11 @@ func (o *CreateEmptyAllConnectionsRequestUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the create empty all connections request unauthorized response
+func (o *CreateEmptyAllConnectionsRequestUnauthorized) Code() int {
+	return 401
+}
+
 func (o *CreateEmptyAllConnectionsRequestUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/empty-all-connections-requests][%d] createEmptyAllConnectionsRequestUnauthorized ", 401)
 }
@@ -322,6 +342,11 @@ func (o *CreateEmptyAllConnectionsRequestForbidden) IsServerError() bool {
 // IsCode returns true when this create empty all connections request forbidden response a status code equal to that given
 func (o *CreateEmptyAllConnectionsRequestForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the create empty all connections request forbidden response
+func (o *CreateEmptyAllConnectionsRequestForbidden) Code() int {
+	return 403
 }
 
 func (o *CreateEmptyAllConnectionsRequestForbidden) Error() string {
@@ -375,6 +400,11 @@ func (o *CreateEmptyAllConnectionsRequestNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the create empty all connections request not found response
+func (o *CreateEmptyAllConnectionsRequestNotFound) Code() int {
+	return 404
+}
+
 func (o *CreateEmptyAllConnectionsRequestNotFound) Error() string {
 	return fmt.Sprintf("[POST /process-groups/{id}/empty-all-connections-requests][%d] createEmptyAllConnectionsRequestNotFound ", 404)
 }
@@ -424,6 +454,11 @@ func (o *CreateEmptyAllConnectionsRequestConflict) IsServerError() bool {
 // IsCode returns true when this create empty all connections request conflict response a status code equal to that given
 func (o *CreateEmptyAllConnectionsRequestConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the create empty all connections request conflict response
+func (o *CreateEmptyAllConnectionsRequestConflict) Code() int {
+	return 409
 }
 
 func (o *CreateEmptyAllConnectionsRequestConflict) Error() string {

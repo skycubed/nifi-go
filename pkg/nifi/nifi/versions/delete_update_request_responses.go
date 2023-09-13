@@ -60,7 +60,7 @@ func (o *DeleteUpdateRequestReader) ReadResponse(response runtime.ClientResponse
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /versions/update-requests/{id}] deleteUpdateRequest", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *DeleteUpdateRequestOK) IsServerError() bool {
 // IsCode returns true when this delete update request o k response a status code equal to that given
 func (o *DeleteUpdateRequestOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the delete update request o k response
+func (o *DeleteUpdateRequestOK) Code() int {
+	return 200
 }
 
 func (o *DeleteUpdateRequestOK) Error() string {
@@ -165,6 +170,11 @@ func (o *DeleteUpdateRequestBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the delete update request bad request response
+func (o *DeleteUpdateRequestBadRequest) Code() int {
+	return 400
+}
+
 func (o *DeleteUpdateRequestBadRequest) Error() string {
 	return fmt.Sprintf("[DELETE /versions/update-requests/{id}][%d] deleteUpdateRequestBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *DeleteUpdateRequestUnauthorized) IsServerError() bool {
 // IsCode returns true when this delete update request unauthorized response a status code equal to that given
 func (o *DeleteUpdateRequestUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the delete update request unauthorized response
+func (o *DeleteUpdateRequestUnauthorized) Code() int {
+	return 401
 }
 
 func (o *DeleteUpdateRequestUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *DeleteUpdateRequestForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the delete update request forbidden response
+func (o *DeleteUpdateRequestForbidden) Code() int {
+	return 403
+}
+
 func (o *DeleteUpdateRequestForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /versions/update-requests/{id}][%d] deleteUpdateRequestForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *DeleteUpdateRequestNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the delete update request not found response
+func (o *DeleteUpdateRequestNotFound) Code() int {
+	return 404
+}
+
 func (o *DeleteUpdateRequestNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /versions/update-requests/{id}][%d] deleteUpdateRequestNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *DeleteUpdateRequestConflict) IsServerError() bool {
 // IsCode returns true when this delete update request conflict response a status code equal to that given
 func (o *DeleteUpdateRequestConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the delete update request conflict response
+func (o *DeleteUpdateRequestConflict) Code() int {
+	return 409
 }
 
 func (o *DeleteUpdateRequestConflict) Error() string {

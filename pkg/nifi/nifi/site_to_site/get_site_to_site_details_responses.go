@@ -54,7 +54,7 @@ func (o *GetSiteToSiteDetailsReader) ReadResponse(response runtime.ClientRespons
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /site-to-site] getSiteToSiteDetails", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *GetSiteToSiteDetailsOK) IsServerError() bool {
 // IsCode returns true when this get site to site details o k response a status code equal to that given
 func (o *GetSiteToSiteDetailsOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get site to site details o k response
+func (o *GetSiteToSiteDetailsOK) Code() int {
+	return 200
 }
 
 func (o *GetSiteToSiteDetailsOK) Error() string {
@@ -159,6 +164,11 @@ func (o *GetSiteToSiteDetailsBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get site to site details bad request response
+func (o *GetSiteToSiteDetailsBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetSiteToSiteDetailsBadRequest) Error() string {
 	return fmt.Sprintf("[GET /site-to-site][%d] getSiteToSiteDetailsBadRequest ", 400)
 }
@@ -208,6 +218,11 @@ func (o *GetSiteToSiteDetailsUnauthorized) IsServerError() bool {
 // IsCode returns true when this get site to site details unauthorized response a status code equal to that given
 func (o *GetSiteToSiteDetailsUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get site to site details unauthorized response
+func (o *GetSiteToSiteDetailsUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetSiteToSiteDetailsUnauthorized) Error() string {
@@ -261,6 +276,11 @@ func (o *GetSiteToSiteDetailsForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get site to site details forbidden response
+func (o *GetSiteToSiteDetailsForbidden) Code() int {
+	return 403
+}
+
 func (o *GetSiteToSiteDetailsForbidden) Error() string {
 	return fmt.Sprintf("[GET /site-to-site][%d] getSiteToSiteDetailsForbidden ", 403)
 }
@@ -310,6 +330,11 @@ func (o *GetSiteToSiteDetailsConflict) IsServerError() bool {
 // IsCode returns true when this get site to site details conflict response a status code equal to that given
 func (o *GetSiteToSiteDetailsConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get site to site details conflict response
+func (o *GetSiteToSiteDetailsConflict) Code() int {
+	return 409
 }
 
 func (o *GetSiteToSiteDetailsConflict) Error() string {

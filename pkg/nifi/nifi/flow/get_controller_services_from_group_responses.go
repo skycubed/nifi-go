@@ -54,7 +54,7 @@ func (o *GetControllerServicesFromGroupReader) ReadResponse(response runtime.Cli
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /flow/process-groups/{id}/controller-services] getControllerServicesFromGroup", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *GetControllerServicesFromGroupOK) IsServerError() bool {
 // IsCode returns true when this get controller services from group o k response a status code equal to that given
 func (o *GetControllerServicesFromGroupOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get controller services from group o k response
+func (o *GetControllerServicesFromGroupOK) Code() int {
+	return 200
 }
 
 func (o *GetControllerServicesFromGroupOK) Error() string {
@@ -159,6 +164,11 @@ func (o *GetControllerServicesFromGroupBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get controller services from group bad request response
+func (o *GetControllerServicesFromGroupBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetControllerServicesFromGroupBadRequest) Error() string {
 	return fmt.Sprintf("[GET /flow/process-groups/{id}/controller-services][%d] getControllerServicesFromGroupBadRequest ", 400)
 }
@@ -208,6 +218,11 @@ func (o *GetControllerServicesFromGroupUnauthorized) IsServerError() bool {
 // IsCode returns true when this get controller services from group unauthorized response a status code equal to that given
 func (o *GetControllerServicesFromGroupUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get controller services from group unauthorized response
+func (o *GetControllerServicesFromGroupUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetControllerServicesFromGroupUnauthorized) Error() string {
@@ -261,6 +276,11 @@ func (o *GetControllerServicesFromGroupForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get controller services from group forbidden response
+func (o *GetControllerServicesFromGroupForbidden) Code() int {
+	return 403
+}
+
 func (o *GetControllerServicesFromGroupForbidden) Error() string {
 	return fmt.Sprintf("[GET /flow/process-groups/{id}/controller-services][%d] getControllerServicesFromGroupForbidden ", 403)
 }
@@ -310,6 +330,11 @@ func (o *GetControllerServicesFromGroupConflict) IsServerError() bool {
 // IsCode returns true when this get controller services from group conflict response a status code equal to that given
 func (o *GetControllerServicesFromGroupConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get controller services from group conflict response
+func (o *GetControllerServicesFromGroupConflict) Code() int {
+	return 409
 }
 
 func (o *GetControllerServicesFromGroupConflict) Error() string {

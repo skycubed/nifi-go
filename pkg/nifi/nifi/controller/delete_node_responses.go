@@ -60,7 +60,7 @@ func (o *DeleteNodeReader) ReadResponse(response runtime.ClientResponse, consume
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /controller/cluster/nodes/{id}] deleteNode", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *DeleteNodeOK) IsServerError() bool {
 // IsCode returns true when this delete node o k response a status code equal to that given
 func (o *DeleteNodeOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the delete node o k response
+func (o *DeleteNodeOK) Code() int {
+	return 200
 }
 
 func (o *DeleteNodeOK) Error() string {
@@ -165,6 +170,11 @@ func (o *DeleteNodeBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the delete node bad request response
+func (o *DeleteNodeBadRequest) Code() int {
+	return 400
+}
+
 func (o *DeleteNodeBadRequest) Error() string {
 	return fmt.Sprintf("[DELETE /controller/cluster/nodes/{id}][%d] deleteNodeBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *DeleteNodeUnauthorized) IsServerError() bool {
 // IsCode returns true when this delete node unauthorized response a status code equal to that given
 func (o *DeleteNodeUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the delete node unauthorized response
+func (o *DeleteNodeUnauthorized) Code() int {
+	return 401
 }
 
 func (o *DeleteNodeUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *DeleteNodeForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the delete node forbidden response
+func (o *DeleteNodeForbidden) Code() int {
+	return 403
+}
+
 func (o *DeleteNodeForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /controller/cluster/nodes/{id}][%d] deleteNodeForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *DeleteNodeNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the delete node not found response
+func (o *DeleteNodeNotFound) Code() int {
+	return 404
+}
+
 func (o *DeleteNodeNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /controller/cluster/nodes/{id}][%d] deleteNodeNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *DeleteNodeConflict) IsServerError() bool {
 // IsCode returns true when this delete node conflict response a status code equal to that given
 func (o *DeleteNodeConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the delete node conflict response
+func (o *DeleteNodeConflict) Code() int {
+	return 409
 }
 
 func (o *DeleteNodeConflict) Error() string {

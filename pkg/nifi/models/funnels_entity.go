@@ -88,6 +88,11 @@ func (m *FunnelsEntity) contextValidateFunnels(ctx context.Context, formats strf
 	for i := 0; i < len(m.Funnels); i++ {
 
 		if m.Funnels[i] != nil {
+
+			if swag.IsZero(m.Funnels[i]) { // not required
+				return nil
+			}
+
 			if err := m.Funnels[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("funnels" + "." + strconv.Itoa(i))

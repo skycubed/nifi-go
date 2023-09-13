@@ -60,7 +60,7 @@ func (o *GetLineageReader) ReadResponse(response runtime.ClientResponse, consume
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /provenance/lineage/{id}] getLineage", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *GetLineageOK) IsServerError() bool {
 // IsCode returns true when this get lineage o k response a status code equal to that given
 func (o *GetLineageOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get lineage o k response
+func (o *GetLineageOK) Code() int {
+	return 200
 }
 
 func (o *GetLineageOK) Error() string {
@@ -165,6 +170,11 @@ func (o *GetLineageBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get lineage bad request response
+func (o *GetLineageBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetLineageBadRequest) Error() string {
 	return fmt.Sprintf("[GET /provenance/lineage/{id}][%d] getLineageBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *GetLineageUnauthorized) IsServerError() bool {
 // IsCode returns true when this get lineage unauthorized response a status code equal to that given
 func (o *GetLineageUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get lineage unauthorized response
+func (o *GetLineageUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetLineageUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *GetLineageForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get lineage forbidden response
+func (o *GetLineageForbidden) Code() int {
+	return 403
+}
+
 func (o *GetLineageForbidden) Error() string {
 	return fmt.Sprintf("[GET /provenance/lineage/{id}][%d] getLineageForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *GetLineageNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get lineage not found response
+func (o *GetLineageNotFound) Code() int {
+	return 404
+}
+
 func (o *GetLineageNotFound) Error() string {
 	return fmt.Sprintf("[GET /provenance/lineage/{id}][%d] getLineageNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *GetLineageConflict) IsServerError() bool {
 // IsCode returns true when this get lineage conflict response a status code equal to that given
 func (o *GetLineageConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get lineage conflict response
+func (o *GetLineageConflict) Code() int {
+	return 409
 }
 
 func (o *GetLineageConflict) Error() string {

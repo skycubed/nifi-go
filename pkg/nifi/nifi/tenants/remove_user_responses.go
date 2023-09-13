@@ -60,7 +60,7 @@ func (o *RemoveUserReader) ReadResponse(response runtime.ClientResponse, consume
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /tenants/users/{id}] removeUser", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *RemoveUserOK) IsServerError() bool {
 // IsCode returns true when this remove user o k response a status code equal to that given
 func (o *RemoveUserOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the remove user o k response
+func (o *RemoveUserOK) Code() int {
+	return 200
 }
 
 func (o *RemoveUserOK) Error() string {
@@ -165,6 +170,11 @@ func (o *RemoveUserBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the remove user bad request response
+func (o *RemoveUserBadRequest) Code() int {
+	return 400
+}
+
 func (o *RemoveUserBadRequest) Error() string {
 	return fmt.Sprintf("[DELETE /tenants/users/{id}][%d] removeUserBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *RemoveUserUnauthorized) IsServerError() bool {
 // IsCode returns true when this remove user unauthorized response a status code equal to that given
 func (o *RemoveUserUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the remove user unauthorized response
+func (o *RemoveUserUnauthorized) Code() int {
+	return 401
 }
 
 func (o *RemoveUserUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *RemoveUserForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the remove user forbidden response
+func (o *RemoveUserForbidden) Code() int {
+	return 403
+}
+
 func (o *RemoveUserForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /tenants/users/{id}][%d] removeUserForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *RemoveUserNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the remove user not found response
+func (o *RemoveUserNotFound) Code() int {
+	return 404
+}
+
 func (o *RemoveUserNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /tenants/users/{id}][%d] removeUserNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *RemoveUserConflict) IsServerError() bool {
 // IsCode returns true when this remove user conflict response a status code equal to that given
 func (o *RemoveUserConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the remove user conflict response
+func (o *RemoveUserConflict) Code() int {
+	return 409
 }
 
 func (o *RemoveUserConflict) Error() string {

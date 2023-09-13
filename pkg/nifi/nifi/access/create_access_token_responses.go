@@ -52,7 +52,7 @@ func (o *CreateAccessTokenReader) ReadResponse(response runtime.ClientResponse, 
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /access/token] createAccessToken", response, response.Code())
 	}
 }
 
@@ -93,6 +93,11 @@ func (o *CreateAccessTokenCreated) IsServerError() bool {
 // IsCode returns true when this create access token created response a status code equal to that given
 func (o *CreateAccessTokenCreated) IsCode(code int) bool {
 	return code == 201
+}
+
+// Code gets the status code for the create access token created response
+func (o *CreateAccessTokenCreated) Code() int {
+	return 201
 }
 
 func (o *CreateAccessTokenCreated) Error() string {
@@ -155,6 +160,11 @@ func (o *CreateAccessTokenBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the create access token bad request response
+func (o *CreateAccessTokenBadRequest) Code() int {
+	return 400
+}
+
 func (o *CreateAccessTokenBadRequest) Error() string {
 	return fmt.Sprintf("[POST /access/token][%d] createAccessTokenBadRequest ", 400)
 }
@@ -204,6 +214,11 @@ func (o *CreateAccessTokenForbidden) IsServerError() bool {
 // IsCode returns true when this create access token forbidden response a status code equal to that given
 func (o *CreateAccessTokenForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the create access token forbidden response
+func (o *CreateAccessTokenForbidden) Code() int {
+	return 403
 }
 
 func (o *CreateAccessTokenForbidden) Error() string {
@@ -257,6 +272,11 @@ func (o *CreateAccessTokenConflict) IsCode(code int) bool {
 	return code == 409
 }
 
+// Code gets the status code for the create access token conflict response
+func (o *CreateAccessTokenConflict) Code() int {
+	return 409
+}
+
 func (o *CreateAccessTokenConflict) Error() string {
 	return fmt.Sprintf("[POST /access/token][%d] createAccessTokenConflict ", 409)
 }
@@ -306,6 +326,11 @@ func (o *CreateAccessTokenInternalServerError) IsServerError() bool {
 // IsCode returns true when this create access token internal server error response a status code equal to that given
 func (o *CreateAccessTokenInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the create access token internal server error response
+func (o *CreateAccessTokenInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CreateAccessTokenInternalServerError) Error() string {

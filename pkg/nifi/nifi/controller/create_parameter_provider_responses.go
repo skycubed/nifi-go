@@ -54,7 +54,7 @@ func (o *CreateParameterProviderReader) ReadResponse(response runtime.ClientResp
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /controller/parameter-providers] createParameterProvider", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *CreateParameterProviderCreated) IsServerError() bool {
 // IsCode returns true when this create parameter provider created response a status code equal to that given
 func (o *CreateParameterProviderCreated) IsCode(code int) bool {
 	return code == 201
+}
+
+// Code gets the status code for the create parameter provider created response
+func (o *CreateParameterProviderCreated) Code() int {
+	return 201
 }
 
 func (o *CreateParameterProviderCreated) Error() string {
@@ -159,6 +164,11 @@ func (o *CreateParameterProviderBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the create parameter provider bad request response
+func (o *CreateParameterProviderBadRequest) Code() int {
+	return 400
+}
+
 func (o *CreateParameterProviderBadRequest) Error() string {
 	return fmt.Sprintf("[POST /controller/parameter-providers][%d] createParameterProviderBadRequest ", 400)
 }
@@ -208,6 +218,11 @@ func (o *CreateParameterProviderUnauthorized) IsServerError() bool {
 // IsCode returns true when this create parameter provider unauthorized response a status code equal to that given
 func (o *CreateParameterProviderUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the create parameter provider unauthorized response
+func (o *CreateParameterProviderUnauthorized) Code() int {
+	return 401
 }
 
 func (o *CreateParameterProviderUnauthorized) Error() string {
@@ -261,6 +276,11 @@ func (o *CreateParameterProviderForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the create parameter provider forbidden response
+func (o *CreateParameterProviderForbidden) Code() int {
+	return 403
+}
+
 func (o *CreateParameterProviderForbidden) Error() string {
 	return fmt.Sprintf("[POST /controller/parameter-providers][%d] createParameterProviderForbidden ", 403)
 }
@@ -310,6 +330,11 @@ func (o *CreateParameterProviderConflict) IsServerError() bool {
 // IsCode returns true when this create parameter provider conflict response a status code equal to that given
 func (o *CreateParameterProviderConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the create parameter provider conflict response
+func (o *CreateParameterProviderConflict) Code() int {
+	return 409
 }
 
 func (o *CreateParameterProviderConflict) Error() string {

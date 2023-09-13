@@ -60,7 +60,7 @@ func (o *SearchClusterReader) ReadResponse(response runtime.ClientResponse, cons
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /flow/cluster/search-results] searchCluster", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *SearchClusterOK) IsServerError() bool {
 // IsCode returns true when this search cluster o k response a status code equal to that given
 func (o *SearchClusterOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the search cluster o k response
+func (o *SearchClusterOK) Code() int {
+	return 200
 }
 
 func (o *SearchClusterOK) Error() string {
@@ -165,6 +170,11 @@ func (o *SearchClusterBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the search cluster bad request response
+func (o *SearchClusterBadRequest) Code() int {
+	return 400
+}
+
 func (o *SearchClusterBadRequest) Error() string {
 	return fmt.Sprintf("[GET /flow/cluster/search-results][%d] searchClusterBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *SearchClusterUnauthorized) IsServerError() bool {
 // IsCode returns true when this search cluster unauthorized response a status code equal to that given
 func (o *SearchClusterUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the search cluster unauthorized response
+func (o *SearchClusterUnauthorized) Code() int {
+	return 401
 }
 
 func (o *SearchClusterUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *SearchClusterForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the search cluster forbidden response
+func (o *SearchClusterForbidden) Code() int {
+	return 403
+}
+
 func (o *SearchClusterForbidden) Error() string {
 	return fmt.Sprintf("[GET /flow/cluster/search-results][%d] searchClusterForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *SearchClusterNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the search cluster not found response
+func (o *SearchClusterNotFound) Code() int {
+	return 404
+}
+
 func (o *SearchClusterNotFound) Error() string {
 	return fmt.Sprintf("[GET /flow/cluster/search-results][%d] searchClusterNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *SearchClusterConflict) IsServerError() bool {
 // IsCode returns true when this search cluster conflict response a status code equal to that given
 func (o *SearchClusterConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the search cluster conflict response
+func (o *SearchClusterConflict) Code() int {
+	return 409
 }
 
 func (o *SearchClusterConflict) Error() string {

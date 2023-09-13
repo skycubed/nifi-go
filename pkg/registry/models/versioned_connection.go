@@ -431,6 +431,11 @@ func (m *VersionedConnection) contextValidateBends(ctx context.Context, formats 
 	for i := 0; i < len(m.Bends); i++ {
 
 		if m.Bends[i] != nil {
+
+			if swag.IsZero(m.Bends[i]) { // not required
+				return nil
+			}
+
 			if err := m.Bends[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("bends" + "." + strconv.Itoa(i))
@@ -449,6 +454,11 @@ func (m *VersionedConnection) contextValidateBends(ctx context.Context, formats 
 func (m *VersionedConnection) contextValidateDestination(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Destination != nil {
+
+		if swag.IsZero(m.Destination) { // not required
+			return nil
+		}
+
 		if err := m.Destination.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("destination")
@@ -465,6 +475,11 @@ func (m *VersionedConnection) contextValidateDestination(ctx context.Context, fo
 func (m *VersionedConnection) contextValidatePosition(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Position != nil {
+
+		if swag.IsZero(m.Position) { // not required
+			return nil
+		}
+
 		if err := m.Position.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("position")
@@ -481,6 +496,11 @@ func (m *VersionedConnection) contextValidatePosition(ctx context.Context, forma
 func (m *VersionedConnection) contextValidateSource(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Source != nil {
+
+		if swag.IsZero(m.Source) { // not required
+			return nil
+		}
+
 		if err := m.Source.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("source")

@@ -66,7 +66,7 @@ func (o *ExtendOutputPortTransactionTTLReader) ReadResponse(response runtime.Cli
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PUT /data-transfer/output-ports/{portId}/transactions/{transactionId}] extendOutputPortTransactionTTL", response, response.Code())
 	}
 }
 
@@ -107,6 +107,11 @@ func (o *ExtendOutputPortTransactionTTLOK) IsServerError() bool {
 // IsCode returns true when this extend output port transaction Ttl o k response a status code equal to that given
 func (o *ExtendOutputPortTransactionTTLOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the extend output port transaction Ttl o k response
+func (o *ExtendOutputPortTransactionTTLOK) Code() int {
+	return 200
 }
 
 func (o *ExtendOutputPortTransactionTTLOK) Error() string {
@@ -171,6 +176,11 @@ func (o *ExtendOutputPortTransactionTTLBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the extend output port transaction Ttl bad request response
+func (o *ExtendOutputPortTransactionTTLBadRequest) Code() int {
+	return 400
+}
+
 func (o *ExtendOutputPortTransactionTTLBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /data-transfer/output-ports/{portId}/transactions/{transactionId}][%d] extendOutputPortTransactionTtlBadRequest ", 400)
 }
@@ -220,6 +230,11 @@ func (o *ExtendOutputPortTransactionTTLUnauthorized) IsServerError() bool {
 // IsCode returns true when this extend output port transaction Ttl unauthorized response a status code equal to that given
 func (o *ExtendOutputPortTransactionTTLUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the extend output port transaction Ttl unauthorized response
+func (o *ExtendOutputPortTransactionTTLUnauthorized) Code() int {
+	return 401
 }
 
 func (o *ExtendOutputPortTransactionTTLUnauthorized) Error() string {
@@ -273,6 +288,11 @@ func (o *ExtendOutputPortTransactionTTLForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the extend output port transaction Ttl forbidden response
+func (o *ExtendOutputPortTransactionTTLForbidden) Code() int {
+	return 403
+}
+
 func (o *ExtendOutputPortTransactionTTLForbidden) Error() string {
 	return fmt.Sprintf("[PUT /data-transfer/output-ports/{portId}/transactions/{transactionId}][%d] extendOutputPortTransactionTtlForbidden ", 403)
 }
@@ -322,6 +342,11 @@ func (o *ExtendOutputPortTransactionTTLNotFound) IsServerError() bool {
 // IsCode returns true when this extend output port transaction Ttl not found response a status code equal to that given
 func (o *ExtendOutputPortTransactionTTLNotFound) IsCode(code int) bool {
 	return code == 404
+}
+
+// Code gets the status code for the extend output port transaction Ttl not found response
+func (o *ExtendOutputPortTransactionTTLNotFound) Code() int {
+	return 404
 }
 
 func (o *ExtendOutputPortTransactionTTLNotFound) Error() string {
@@ -375,6 +400,11 @@ func (o *ExtendOutputPortTransactionTTLConflict) IsCode(code int) bool {
 	return code == 409
 }
 
+// Code gets the status code for the extend output port transaction Ttl conflict response
+func (o *ExtendOutputPortTransactionTTLConflict) Code() int {
+	return 409
+}
+
 func (o *ExtendOutputPortTransactionTTLConflict) Error() string {
 	return fmt.Sprintf("[PUT /data-transfer/output-ports/{portId}/transactions/{transactionId}][%d] extendOutputPortTransactionTtlConflict ", 409)
 }
@@ -424,6 +454,11 @@ func (o *ExtendOutputPortTransactionTTLServiceUnavailable) IsServerError() bool 
 // IsCode returns true when this extend output port transaction Ttl service unavailable response a status code equal to that given
 func (o *ExtendOutputPortTransactionTTLServiceUnavailable) IsCode(code int) bool {
 	return code == 503
+}
+
+// Code gets the status code for the extend output port transaction Ttl service unavailable response
+func (o *ExtendOutputPortTransactionTTLServiceUnavailable) Code() int {
+	return 503
 }
 
 func (o *ExtendOutputPortTransactionTTLServiceUnavailable) Error() string {

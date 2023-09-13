@@ -60,7 +60,7 @@ func (o *DeleteValidationRequestReader) ReadResponse(response runtime.ClientResp
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /parameter-contexts/{contextId}/validation-requests/{id}] deleteValidationRequest", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *DeleteValidationRequestOK) IsServerError() bool {
 // IsCode returns true when this delete validation request o k response a status code equal to that given
 func (o *DeleteValidationRequestOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the delete validation request o k response
+func (o *DeleteValidationRequestOK) Code() int {
+	return 200
 }
 
 func (o *DeleteValidationRequestOK) Error() string {
@@ -165,6 +170,11 @@ func (o *DeleteValidationRequestBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the delete validation request bad request response
+func (o *DeleteValidationRequestBadRequest) Code() int {
+	return 400
+}
+
 func (o *DeleteValidationRequestBadRequest) Error() string {
 	return fmt.Sprintf("[DELETE /parameter-contexts/{contextId}/validation-requests/{id}][%d] deleteValidationRequestBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *DeleteValidationRequestUnauthorized) IsServerError() bool {
 // IsCode returns true when this delete validation request unauthorized response a status code equal to that given
 func (o *DeleteValidationRequestUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the delete validation request unauthorized response
+func (o *DeleteValidationRequestUnauthorized) Code() int {
+	return 401
 }
 
 func (o *DeleteValidationRequestUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *DeleteValidationRequestForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the delete validation request forbidden response
+func (o *DeleteValidationRequestForbidden) Code() int {
+	return 403
+}
+
 func (o *DeleteValidationRequestForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /parameter-contexts/{contextId}/validation-requests/{id}][%d] deleteValidationRequestForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *DeleteValidationRequestNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the delete validation request not found response
+func (o *DeleteValidationRequestNotFound) Code() int {
+	return 404
+}
+
 func (o *DeleteValidationRequestNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /parameter-contexts/{contextId}/validation-requests/{id}][%d] deleteValidationRequestNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *DeleteValidationRequestConflict) IsServerError() bool {
 // IsCode returns true when this delete validation request conflict response a status code equal to that given
 func (o *DeleteValidationRequestConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the delete validation request conflict response
+func (o *DeleteValidationRequestConflict) Code() int {
+	return 409
 }
 
 func (o *DeleteValidationRequestConflict) Error() string {

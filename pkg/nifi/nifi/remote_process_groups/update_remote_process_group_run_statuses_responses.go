@@ -60,7 +60,7 @@ func (o *UpdateRemoteProcessGroupRunStatusesReader) ReadResponse(response runtim
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PUT /remote-process-groups/process-group/{id}/run-status] updateRemoteProcessGroupRunStatuses", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *UpdateRemoteProcessGroupRunStatusesOK) IsServerError() bool {
 // IsCode returns true when this update remote process group run statuses o k response a status code equal to that given
 func (o *UpdateRemoteProcessGroupRunStatusesOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the update remote process group run statuses o k response
+func (o *UpdateRemoteProcessGroupRunStatusesOK) Code() int {
+	return 200
 }
 
 func (o *UpdateRemoteProcessGroupRunStatusesOK) Error() string {
@@ -165,6 +170,11 @@ func (o *UpdateRemoteProcessGroupRunStatusesBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the update remote process group run statuses bad request response
+func (o *UpdateRemoteProcessGroupRunStatusesBadRequest) Code() int {
+	return 400
+}
+
 func (o *UpdateRemoteProcessGroupRunStatusesBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /remote-process-groups/process-group/{id}/run-status][%d] updateRemoteProcessGroupRunStatusesBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *UpdateRemoteProcessGroupRunStatusesUnauthorized) IsServerError() bool {
 // IsCode returns true when this update remote process group run statuses unauthorized response a status code equal to that given
 func (o *UpdateRemoteProcessGroupRunStatusesUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the update remote process group run statuses unauthorized response
+func (o *UpdateRemoteProcessGroupRunStatusesUnauthorized) Code() int {
+	return 401
 }
 
 func (o *UpdateRemoteProcessGroupRunStatusesUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *UpdateRemoteProcessGroupRunStatusesForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the update remote process group run statuses forbidden response
+func (o *UpdateRemoteProcessGroupRunStatusesForbidden) Code() int {
+	return 403
+}
+
 func (o *UpdateRemoteProcessGroupRunStatusesForbidden) Error() string {
 	return fmt.Sprintf("[PUT /remote-process-groups/process-group/{id}/run-status][%d] updateRemoteProcessGroupRunStatusesForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *UpdateRemoteProcessGroupRunStatusesNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the update remote process group run statuses not found response
+func (o *UpdateRemoteProcessGroupRunStatusesNotFound) Code() int {
+	return 404
+}
+
 func (o *UpdateRemoteProcessGroupRunStatusesNotFound) Error() string {
 	return fmt.Sprintf("[PUT /remote-process-groups/process-group/{id}/run-status][%d] updateRemoteProcessGroupRunStatusesNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *UpdateRemoteProcessGroupRunStatusesConflict) IsServerError() bool {
 // IsCode returns true when this update remote process group run statuses conflict response a status code equal to that given
 func (o *UpdateRemoteProcessGroupRunStatusesConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the update remote process group run statuses conflict response
+func (o *UpdateRemoteProcessGroupRunStatusesConflict) Code() int {
+	return 409
 }
 
 func (o *UpdateRemoteProcessGroupRunStatusesConflict) Error() string {

@@ -424,6 +424,11 @@ func (m *FlowSnippetDTO) contextValidateConnections(ctx context.Context, formats
 	for i := 0; i < len(m.Connections); i++ {
 
 		if m.Connections[i] != nil {
+
+			if swag.IsZero(m.Connections[i]) { // not required
+				return nil
+			}
+
 			if err := m.Connections[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("connections" + "." + strconv.Itoa(i))
@@ -444,6 +449,11 @@ func (m *FlowSnippetDTO) contextValidateControllerServices(ctx context.Context, 
 	for i := 0; i < len(m.ControllerServices); i++ {
 
 		if m.ControllerServices[i] != nil {
+
+			if swag.IsZero(m.ControllerServices[i]) { // not required
+				return nil
+			}
+
 			if err := m.ControllerServices[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("controllerServices" + "." + strconv.Itoa(i))
@@ -464,6 +474,11 @@ func (m *FlowSnippetDTO) contextValidateFunnels(ctx context.Context, formats str
 	for i := 0; i < len(m.Funnels); i++ {
 
 		if m.Funnels[i] != nil {
+
+			if swag.IsZero(m.Funnels[i]) { // not required
+				return nil
+			}
+
 			if err := m.Funnels[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("funnels" + "." + strconv.Itoa(i))
@@ -484,6 +499,11 @@ func (m *FlowSnippetDTO) contextValidateInputPorts(ctx context.Context, formats 
 	for i := 0; i < len(m.InputPorts); i++ {
 
 		if m.InputPorts[i] != nil {
+
+			if swag.IsZero(m.InputPorts[i]) { // not required
+				return nil
+			}
+
 			if err := m.InputPorts[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("inputPorts" + "." + strconv.Itoa(i))
@@ -504,6 +524,11 @@ func (m *FlowSnippetDTO) contextValidateLabels(ctx context.Context, formats strf
 	for i := 0; i < len(m.Labels); i++ {
 
 		if m.Labels[i] != nil {
+
+			if swag.IsZero(m.Labels[i]) { // not required
+				return nil
+			}
+
 			if err := m.Labels[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("labels" + "." + strconv.Itoa(i))
@@ -524,6 +549,11 @@ func (m *FlowSnippetDTO) contextValidateOutputPorts(ctx context.Context, formats
 	for i := 0; i < len(m.OutputPorts); i++ {
 
 		if m.OutputPorts[i] != nil {
+
+			if swag.IsZero(m.OutputPorts[i]) { // not required
+				return nil
+			}
+
 			if err := m.OutputPorts[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("outputPorts" + "." + strconv.Itoa(i))
@@ -544,6 +574,11 @@ func (m *FlowSnippetDTO) contextValidateProcessGroups(ctx context.Context, forma
 	for i := 0; i < len(m.ProcessGroups); i++ {
 
 		if m.ProcessGroups[i] != nil {
+
+			if swag.IsZero(m.ProcessGroups[i]) { // not required
+				return nil
+			}
+
 			if err := m.ProcessGroups[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("processGroups" + "." + strconv.Itoa(i))
@@ -564,6 +599,11 @@ func (m *FlowSnippetDTO) contextValidateProcessors(ctx context.Context, formats 
 	for i := 0; i < len(m.Processors); i++ {
 
 		if m.Processors[i] != nil {
+
+			if swag.IsZero(m.Processors[i]) { // not required
+				return nil
+			}
+
 			if err := m.Processors[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("processors" + "." + strconv.Itoa(i))
@@ -584,6 +624,11 @@ func (m *FlowSnippetDTO) contextValidateRemoteProcessGroups(ctx context.Context,
 	for i := 0; i < len(m.RemoteProcessGroups); i++ {
 
 		if m.RemoteProcessGroups[i] != nil {
+
+			if swag.IsZero(m.RemoteProcessGroups[i]) { // not required
+				return nil
+			}
+
 			if err := m.RemoteProcessGroups[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("remoteProcessGroups" + "." + strconv.Itoa(i))

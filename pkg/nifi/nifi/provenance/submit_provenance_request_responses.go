@@ -54,7 +54,7 @@ func (o *SubmitProvenanceRequestReader) ReadResponse(response runtime.ClientResp
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /provenance] submitProvenanceRequest", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *SubmitProvenanceRequestCreated) IsServerError() bool {
 // IsCode returns true when this submit provenance request created response a status code equal to that given
 func (o *SubmitProvenanceRequestCreated) IsCode(code int) bool {
 	return code == 201
+}
+
+// Code gets the status code for the submit provenance request created response
+func (o *SubmitProvenanceRequestCreated) Code() int {
+	return 201
 }
 
 func (o *SubmitProvenanceRequestCreated) Error() string {
@@ -159,6 +164,11 @@ func (o *SubmitProvenanceRequestBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the submit provenance request bad request response
+func (o *SubmitProvenanceRequestBadRequest) Code() int {
+	return 400
+}
+
 func (o *SubmitProvenanceRequestBadRequest) Error() string {
 	return fmt.Sprintf("[POST /provenance][%d] submitProvenanceRequestBadRequest ", 400)
 }
@@ -208,6 +218,11 @@ func (o *SubmitProvenanceRequestUnauthorized) IsServerError() bool {
 // IsCode returns true when this submit provenance request unauthorized response a status code equal to that given
 func (o *SubmitProvenanceRequestUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the submit provenance request unauthorized response
+func (o *SubmitProvenanceRequestUnauthorized) Code() int {
+	return 401
 }
 
 func (o *SubmitProvenanceRequestUnauthorized) Error() string {
@@ -261,6 +276,11 @@ func (o *SubmitProvenanceRequestForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the submit provenance request forbidden response
+func (o *SubmitProvenanceRequestForbidden) Code() int {
+	return 403
+}
+
 func (o *SubmitProvenanceRequestForbidden) Error() string {
 	return fmt.Sprintf("[POST /provenance][%d] submitProvenanceRequestForbidden ", 403)
 }
@@ -310,6 +330,11 @@ func (o *SubmitProvenanceRequestConflict) IsServerError() bool {
 // IsCode returns true when this submit provenance request conflict response a status code equal to that given
 func (o *SubmitProvenanceRequestConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the submit provenance request conflict response
+func (o *SubmitProvenanceRequestConflict) Code() int {
+	return 409
 }
 
 func (o *SubmitProvenanceRequestConflict) Error() string {

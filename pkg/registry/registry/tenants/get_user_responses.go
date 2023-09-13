@@ -60,7 +60,7 @@ func (o *GetUserReader) ReadResponse(response runtime.ClientResponse, consumer r
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /tenants/users/{id}] getUser", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *GetUserOK) IsServerError() bool {
 // IsCode returns true when this get user o k response a status code equal to that given
 func (o *GetUserOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get user o k response
+func (o *GetUserOK) Code() int {
+	return 200
 }
 
 func (o *GetUserOK) Error() string {
@@ -165,6 +170,11 @@ func (o *GetUserBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get user bad request response
+func (o *GetUserBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetUserBadRequest) Error() string {
 	return fmt.Sprintf("[GET /tenants/users/{id}][%d] getUserBadRequest ", 400)
 }
@@ -214,6 +224,11 @@ func (o *GetUserUnauthorized) IsServerError() bool {
 // IsCode returns true when this get user unauthorized response a status code equal to that given
 func (o *GetUserUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get user unauthorized response
+func (o *GetUserUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetUserUnauthorized) Error() string {
@@ -267,6 +282,11 @@ func (o *GetUserForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get user forbidden response
+func (o *GetUserForbidden) Code() int {
+	return 403
+}
+
 func (o *GetUserForbidden) Error() string {
 	return fmt.Sprintf("[GET /tenants/users/{id}][%d] getUserForbidden ", 403)
 }
@@ -318,6 +338,11 @@ func (o *GetUserNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get user not found response
+func (o *GetUserNotFound) Code() int {
+	return 404
+}
+
 func (o *GetUserNotFound) Error() string {
 	return fmt.Sprintf("[GET /tenants/users/{id}][%d] getUserNotFound ", 404)
 }
@@ -367,6 +392,11 @@ func (o *GetUserConflict) IsServerError() bool {
 // IsCode returns true when this get user conflict response a status code equal to that given
 func (o *GetUserConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the get user conflict response
+func (o *GetUserConflict) Code() int {
+	return 409
 }
 
 func (o *GetUserConflict) Error() string {

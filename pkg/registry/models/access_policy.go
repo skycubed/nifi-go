@@ -266,6 +266,11 @@ func (m *AccessPolicy) contextValidateIdentifier(ctx context.Context, formats st
 func (m *AccessPolicy) contextValidateRevision(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Revision != nil {
+
+		if swag.IsZero(m.Revision) { // not required
+			return nil
+		}
+
 		if err := m.Revision.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("revision")
@@ -284,6 +289,11 @@ func (m *AccessPolicy) contextValidateUserGroups(ctx context.Context, formats st
 	for i := 0; i < len(m.UserGroups); i++ {
 
 		if m.UserGroups[i] != nil {
+
+			if swag.IsZero(m.UserGroups[i]) { // not required
+				return nil
+			}
+
 			if err := m.UserGroups[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("userGroups" + "." + strconv.Itoa(i))
@@ -304,6 +314,11 @@ func (m *AccessPolicy) contextValidateUsers(ctx context.Context, formats strfmt.
 	for i := 0; i < len(m.Users); i++ {
 
 		if m.Users[i] != nil {
+
+			if swag.IsZero(m.Users[i]) { // not required
+				return nil
+			}
+
 			if err := m.Users[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("users" + "." + strconv.Itoa(i))

@@ -345,6 +345,11 @@ func (m *VersionedRemoteProcessGroup) contextValidateInputPorts(ctx context.Cont
 	for i := 0; i < len(m.InputPorts); i++ {
 
 		if m.InputPorts[i] != nil {
+
+			if swag.IsZero(m.InputPorts[i]) { // not required
+				return nil
+			}
+
 			if err := m.InputPorts[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("inputPorts" + "." + strconv.Itoa(i))
@@ -365,6 +370,11 @@ func (m *VersionedRemoteProcessGroup) contextValidateOutputPorts(ctx context.Con
 	for i := 0; i < len(m.OutputPorts); i++ {
 
 		if m.OutputPorts[i] != nil {
+
+			if swag.IsZero(m.OutputPorts[i]) { // not required
+				return nil
+			}
+
 			if err := m.OutputPorts[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("outputPorts" + "." + strconv.Itoa(i))
@@ -383,6 +393,11 @@ func (m *VersionedRemoteProcessGroup) contextValidateOutputPorts(ctx context.Con
 func (m *VersionedRemoteProcessGroup) contextValidatePosition(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Position != nil {
+
+		if swag.IsZero(m.Position) { // not required
+			return nil
+		}
+
 		if err := m.Position.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("position")
