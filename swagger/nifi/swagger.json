@@ -17084,18 +17084,26 @@
     },
     "Bundle": {
       "type": "object",
+      "required": [
+        "artifact",
+        "group"
+      ],
       "properties": {
         "group": {
           "type": "string",
-          "description": "The group of the bundle"
+          "description": "The group id of the bundle"
         },
         "artifact": {
           "type": "string",
-          "description": "The artifact of the bundle"
+          "description": "The artifact id of the bundle"
         },
         "version": {
           "type": "string",
-          "description": "The version of the bundle"
+          "description": "The version of the bundle artifact"
+        },
+        "componentManifest": {
+          "description": "The full specification of the bundle contents",
+          "$ref": "#/definitions/ComponentManifest"
         }
       }
     },
@@ -17198,13 +17206,13 @@
           "format": "int32",
           "description": "The number of nodes in the cluster, regardless of whether or not they are connected"
         },
-        "clustered": {
-          "type": "boolean",
-          "description": "Whether this NiFi instance is clustered."
-        },
         "connectedToCluster": {
           "type": "boolean",
           "description": "Whether this NiFi instance is connected to a cluster."
+        },
+        "clustered": {
+          "type": "boolean",
+          "description": "Whether this NiFi instance is clustered."
         }
       }
     },
@@ -20163,13 +20171,13 @@
           "type": "string",
           "description": "The annotation data for the repoting task. This is how the custom UI relays configuration to the reporting task."
         },
-        "extensionMissing": {
-          "type": "boolean",
-          "description": "Whether the underlying extension is missing."
-        },
         "multipleVersionsAvailable": {
           "type": "boolean",
           "description": "Whether the flow registry client has multiple versions available."
+        },
+        "extensionMissing": {
+          "type": "boolean",
+          "description": "Whether the underlying extension is missing."
         }
       }
     },
@@ -21470,6 +21478,9 @@
         "requestId": {
           "type": "string"
         },
+        "inputStream": {
+          "$ref": "#/definitions/InputStream"
+        },
         "status": {
           "type": "integer",
           "format": "int32"
@@ -21482,9 +21493,6 @@
         },
         "is5xx": {
           "type": "boolean"
-        },
-        "inputStream": {
-          "$ref": "#/definitions/InputStream"
         }
       }
     },
@@ -26568,10 +26576,6 @@
     "Response": {
       "type": "object",
       "properties": {
-        "status": {
-          "type": "integer",
-          "format": "int32"
-        },
         "metadata": {
           "type": "object",
           "additionalProperties": {
@@ -26580,6 +26584,10 @@
               "type": "object"
             }
           }
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
         },
         "entity": {
           "type": "object"
@@ -28991,10 +28999,6 @@
           "type": "string",
           "description": "The corresponding parameter group name fetched from the parameter provider, if applicable"
         },
-        "synchronized": {
-          "type": "boolean",
-          "description": "True if the parameter provider is set and the context should receive updates when its parameters are next fetched"
-        },
         "componentType": {
           "type": "string",
           "enum": [
@@ -29015,6 +29019,10 @@
             "TEMPLATE",
             "FLOW_REGISTRY_CLIENT"
           ]
+        },
+        "synchronized": {
+          "type": "boolean",
+          "description": "True if the parameter provider is set and the context should receive updates when its parameters are next fetched"
         },
         "groupIdentifier": {
           "type": "string",
@@ -29225,14 +29233,6 @@
           "type": "string",
           "description": "The log file suffix for this Process Group for dedicated logging."
         },
-        "flowFileConcurrency": {
-          "type": "string",
-          "description": "The configured FlowFile Concurrency for the Process Group"
-        },
-        "flowFileOutboundPolicy": {
-          "type": "string",
-          "description": "The FlowFile Outbound Policy for the Process Group"
-        },
         "componentType": {
           "type": "string",
           "enum": [
@@ -29253,6 +29253,14 @@
             "TEMPLATE",
             "FLOW_REGISTRY_CLIENT"
           ]
+        },
+        "flowFileConcurrency": {
+          "type": "string",
+          "description": "The configured FlowFile Concurrency for the Process Group"
+        },
+        "flowFileOutboundPolicy": {
+          "type": "string",
+          "description": "The FlowFile Outbound Policy for the Process Group"
         },
         "groupIdentifier": {
           "type": "string",

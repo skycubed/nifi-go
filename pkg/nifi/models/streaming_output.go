@@ -8,4 +8,4 @@ package models
 // StreamingOutput streaming output
 //
 // swagger:model StreamingOutput
-type StreamingOutput interface{}
+type StreamingOutput *interface{}

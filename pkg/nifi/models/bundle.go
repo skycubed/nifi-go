@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // Bundle bundle
@@ -17,23 +19,112 @@ import (
 // swagger:model Bundle
 type Bundle struct {
 
-	// The artifact of the bundle
-	Artifact string `json:"artifact,omitempty"`
+	// The artifact id of the bundle
+	// Required: true
+	Artifact *string `json:"artifact"`
 
-	// The group of the bundle
-	Group string `json:"group,omitempty"`
+	// The full specification of the bundle contents
+	ComponentManifest *ComponentManifest `json:"componentManifest,omitempty"`
 
-	// The version of the bundle
+	// The group id of the bundle
+	// Required: true
+	Group *string `json:"group"`
+
+	// The version of the bundle artifact
 	Version string `json:"version,omitempty"`
 }
 
 // Validate validates this bundle
 func (m *Bundle) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateArtifact(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateComponentManifest(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateGroup(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
 	return nil
 }
 
-// ContextValidate validates this bundle based on context it is used
+func (m *Bundle) validateArtifact(formats strfmt.Registry) error {
+
+	if err := validate.Required("artifact", "body", m.Artifact); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *Bundle) validateComponentManifest(formats strfmt.Registry) error {
+	if swag.IsZero(m.ComponentManifest) { // not required
+		return nil
+	}
+
+	if m.ComponentManifest != nil {
+		if err := m.ComponentManifest.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("componentManifest")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("componentManifest")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *Bundle) validateGroup(formats strfmt.Registry) error {
+
+	if err := validate.Required("group", "body", m.Group); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validate this bundle based on the context it is used
 func (m *Bundle) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateComponentManifest(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *Bundle) contextValidateComponentManifest(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ComponentManifest != nil {
+
+		if swag.IsZero(m.ComponentManifest) { // not required
+			return nil
+		}
+
+		if err := m.ComponentManifest.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("componentManifest")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("componentManifest")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 
