@@ -15,7 +15,6 @@ RUN mkdir -p /go/src/github.com/skycubed/nifi-go/pkg/nifi && mkdir -p /go/src/gi
 
 WORKDIR /go/src/github.com/skycubed/nifi-go/pkg/nifi
 RUN swagger generate client --skip-validation -f /swagger/nifi/swagger.json -A nifi -m models -c nifi
-RUN sed -i 's/interface{}/*interface{}/' models/streaming_output.go
 
 WORKDIR /go/src/github.com/skycubed/nifi-go/pkg/registry
 RUN swagger generate client --skip-validation -f /swagger/registry/swagger.json -A registry -m models -c registry
