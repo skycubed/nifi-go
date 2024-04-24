@@ -9607,14 +9607,11 @@
           }
         ],
         "responses": {
-          "200": {
+          "202": {
             "description": "successful operation",
             "schema": {
               "$ref": "#/definitions/DropRequestEntity"
             }
-          },
-          "202": {
-            "description": "The request has been accepted. An HTTP response header will contain the URI where the status can be polled."
           },
           "400": {
             "description": "NiFi was unable to complete the request because it was invalid. The request should not be retried without modification."

@@ -2,6 +2,10 @@
 
 set -euo pipefail
 
+paths202=(
+  "/process-groups/{id}/empty-all-connections-requests"
+)
+
 paths201=(
   "/access/kerberos"
   "/access/token"
@@ -51,6 +55,12 @@ sf=$1
 for path in "${paths201[@]}"
 do
   jq --arg p "$path" '(.paths[$p].post.responses |= (. + {"201":."200"}|del(."200")))' "${sf}" > "${sf}".tmp
+  mv "${sf}".tmp "${sf}"
+done
+
+for path in "${paths202[@]}"
+do
+  jq --arg p "$path" '(.paths[$p].post.responses |= (. + {"202":."200"}|del(."200")))' "${sf}" > "${sf}".tmp
   mv "${sf}".tmp "${sf}"
 done
 

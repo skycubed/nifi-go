@@ -36,7 +36,7 @@ type ClientService interface {
 
 	CreateControllerService(params *CreateControllerServiceParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateControllerServiceCreated, error)
 
-	CreateEmptyAllConnectionsRequest(params *CreateEmptyAllConnectionsRequestParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateEmptyAllConnectionsRequestOK, *CreateEmptyAllConnectionsRequestAccepted, error)
+	CreateEmptyAllConnectionsRequest(params *CreateEmptyAllConnectionsRequestParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateEmptyAllConnectionsRequestAccepted, error)
 
 	CreateFunnel(params *CreateFunnelParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateFunnelCreated, error)
 
@@ -235,7 +235,7 @@ func (a *Client) CreateControllerService(params *CreateControllerServiceParams, 
 /*
 CreateEmptyAllConnectionsRequest creates a request to drop all flowfiles of all connection queues in this process group
 */
-func (a *Client) CreateEmptyAllConnectionsRequest(params *CreateEmptyAllConnectionsRequestParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateEmptyAllConnectionsRequestOK, *CreateEmptyAllConnectionsRequestAccepted, error) {
+func (a *Client) CreateEmptyAllConnectionsRequest(params *CreateEmptyAllConnectionsRequestParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateEmptyAllConnectionsRequestAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateEmptyAllConnectionsRequestParams()
@@ -259,16 +259,15 @@ func (a *Client) CreateEmptyAllConnectionsRequest(params *CreateEmptyAllConnecti
 
 	result, err := a.transport.Submit(op)
 	if err != nil {
-		return nil, nil, err
+		return nil, err
 	}
-	switch value := result.(type) {
-	case *CreateEmptyAllConnectionsRequestOK:
-		return value, nil, nil
-	case *CreateEmptyAllConnectionsRequestAccepted:
-		return nil, value, nil
+	success, ok := result.(*CreateEmptyAllConnectionsRequestAccepted)
+	if ok {
+		return success, nil
 	}
+	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for process_groups: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for createEmptyAllConnectionsRequest: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

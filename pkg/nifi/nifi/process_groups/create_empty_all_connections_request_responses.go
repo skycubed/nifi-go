@@ -23,12 +23,6 @@ type CreateEmptyAllConnectionsRequestReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *CreateEmptyAllConnectionsRequestReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-	case 200:
-		result := NewCreateEmptyAllConnectionsRequestOK()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return result, nil
 	case 202:
 		result := NewCreateEmptyAllConnectionsRequestAccepted()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -70,74 +64,6 @@ func (o *CreateEmptyAllConnectionsRequestReader) ReadResponse(response runtime.C
 	}
 }
 
-// NewCreateEmptyAllConnectionsRequestOK creates a CreateEmptyAllConnectionsRequestOK with default headers values
-func NewCreateEmptyAllConnectionsRequestOK() *CreateEmptyAllConnectionsRequestOK {
-	return &CreateEmptyAllConnectionsRequestOK{}
-}
-
-/*
-CreateEmptyAllConnectionsRequestOK describes a response with status code 200, with default header values.
-
-successful operation
-*/
-type CreateEmptyAllConnectionsRequestOK struct {
-	Payload *models.DropRequestEntity
-}
-
-// IsSuccess returns true when this create empty all connections request o k response has a 2xx status code
-func (o *CreateEmptyAllConnectionsRequestOK) IsSuccess() bool {
-	return true
-}
-
-// IsRedirect returns true when this create empty all connections request o k response has a 3xx status code
-func (o *CreateEmptyAllConnectionsRequestOK) IsRedirect() bool {
-	return false
-}
-
-// IsClientError returns true when this create empty all connections request o k response has a 4xx status code
-func (o *CreateEmptyAllConnectionsRequestOK) IsClientError() bool {
-	return false
-}
-
-// IsServerError returns true when this create empty all connections request o k response has a 5xx status code
-func (o *CreateEmptyAllConnectionsRequestOK) IsServerError() bool {
-	return false
-}
-
-// IsCode returns true when this create empty all connections request o k response a status code equal to that given
-func (o *CreateEmptyAllConnectionsRequestOK) IsCode(code int) bool {
-	return code == 200
-}
-
-// Code gets the status code for the create empty all connections request o k response
-func (o *CreateEmptyAllConnectionsRequestOK) Code() int {
-	return 200
-}
-
-func (o *CreateEmptyAllConnectionsRequestOK) Error() string {
-	return fmt.Sprintf("[POST /process-groups/{id}/empty-all-connections-requests][%d] createEmptyAllConnectionsRequestOK  %+v", 200, o.Payload)
-}
-
-func (o *CreateEmptyAllConnectionsRequestOK) String() string {
-	return fmt.Sprintf("[POST /process-groups/{id}/empty-all-connections-requests][%d] createEmptyAllConnectionsRequestOK  %+v", 200, o.Payload)
-}
-
-func (o *CreateEmptyAllConnectionsRequestOK) GetPayload() *models.DropRequestEntity {
-	return o.Payload
-}
-
-func (o *CreateEmptyAllConnectionsRequestOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.DropRequestEntity)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
 // NewCreateEmptyAllConnectionsRequestAccepted creates a CreateEmptyAllConnectionsRequestAccepted with default headers values
 func NewCreateEmptyAllConnectionsRequestAccepted() *CreateEmptyAllConnectionsRequestAccepted {
 	return &CreateEmptyAllConnectionsRequestAccepted{}
@@ -146,9 +72,10 @@ func NewCreateEmptyAllConnectionsRequestAccepted() *CreateEmptyAllConnectionsReq
 /*
 CreateEmptyAllConnectionsRequestAccepted describes a response with status code 202, with default header values.
 
-The request has been accepted. An HTTP response header will contain the URI where the status can be polled.
+successful operation
 */
 type CreateEmptyAllConnectionsRequestAccepted struct {
+	Payload *models.DropRequestEntity
 }
 
 // IsSuccess returns true when this create empty all connections request accepted response has a 2xx status code
@@ -182,14 +109,25 @@ func (o *CreateEmptyAllConnectionsRequestAccepted) Code() int {
 }
 
 func (o *CreateEmptyAllConnectionsRequestAccepted) Error() string {
-	return fmt.Sprintf("[POST /process-groups/{id}/empty-all-connections-requests][%d] createEmptyAllConnectionsRequestAccepted ", 202)
+	return fmt.Sprintf("[POST /process-groups/{id}/empty-all-connections-requests][%d] createEmptyAllConnectionsRequestAccepted  %+v", 202, o.Payload)
 }
 
 func (o *CreateEmptyAllConnectionsRequestAccepted) String() string {
-	return fmt.Sprintf("[POST /process-groups/{id}/empty-all-connections-requests][%d] createEmptyAllConnectionsRequestAccepted ", 202)
+	return fmt.Sprintf("[POST /process-groups/{id}/empty-all-connections-requests][%d] createEmptyAllConnectionsRequestAccepted  %+v", 202, o.Payload)
+}
+
+func (o *CreateEmptyAllConnectionsRequestAccepted) GetPayload() *models.DropRequestEntity {
+	return o.Payload
 }
 
 func (o *CreateEmptyAllConnectionsRequestAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.DropRequestEntity)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }
