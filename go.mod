@@ -1,4 +1,4 @@
-module github.com/skycubed/nifi-go
+module github.com/skycubed/nifi-go/v2
 
 go 1.22.5
 
