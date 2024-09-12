@@ -1,19 +1,21 @@
-FROM openjdk:8u322-jdk
+FROM maven:3.9.8-amazoncorretto-21-debian
 
 ARG NIFI_VER
-
+RUN uname | tr '[:upper:]' '[:lower:]'
+RUN arch
 RUN mkdir /nifi && \
     mkdir /registry && \
     apt update && \
-    apt -y install git maven jq && \
+    apt -y install git curl jq && \
+     download_url=$(curl -s https://api.github.com/repos/mikefarah/yq/releases/latest | \
+          jq -r --arg f "$(uname | tr '[:upper:]' '[:lower:]')_$(arch | sed -e 's/aarch64/arm64/' -e 's/x86_64/amd64/')" \
+          '.assets[] | select(.name | endswith($f)) | .browser_download_url') && \
+        curl -o /usr/bin/yq -L'#' "$download_url" && \
+        chmod +x /usr/bin/yq && \
     git clone --depth 1 --branch rel/nifi-${NIFI_VER} https://github.com/apache/nifi.git && \
-    cd /nifi/nifi-nar-bundles/nifi-framework-bundle/nifi-framework/nifi-web/nifi-web-api/ && \
+    cd /nifi/nifi-framework-bundle/nifi-framework/nifi-web/nifi-web-api/ && \
     mvn install && \
-    mv target/swagger-ui/swagger.json /nifi/ && \
+    mv target/nifi-web-api-${NIFI_VER}/docs/rest-api/swagger.json /nifi/ && \
     cd /nifi/nifi-registry/nifi-registry-core/nifi-registry-web-api && \
     mvn install && \
-    mv target/swagger/swagger.json /registry/
-
-COPY bin/swagger.sh /
-
-RUN chmod +x /swagger.sh && ./swagger.sh /nifi/swagger.json
+    mv target/nifi-registry-web-api-${NIFI_VER}/docs/rest-api/swagger.json /registry/
