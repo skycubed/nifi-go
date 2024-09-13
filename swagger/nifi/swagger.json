@@ -14728,7 +14728,7 @@
           "action" : {
             "type" : "string",
             "description" : "The action associated with this access policy.",
-            "enum" : [ "read, write" ]
+            "enum" : [ "read", "write" ]
           },
           "componentReference" : {
             "$ref" : "#/components/schemas/ComponentReferenceEntity"
@@ -15179,7 +15179,7 @@
           "type" : {
             "type" : "string",
             "description" : "The type of component the connectable is.",
-            "enum" : [ "PROCESSOR, REMOTE_INPUT_PORT, REMOTE_OUTPUT_PORT, INPUT_PORT, OUTPUT_PORT, FUNNEL" ]
+            "enum" : [ "PROCESSOR", "REMOTE_INPUT_PORT", "REMOTE_OUTPUT_PORT", "INPUT_PORT", "OUTPUT_PORT", "FUNNEL" ]
           },
           "groupId" : {
             "type" : "string",
@@ -15297,7 +15297,7 @@
           "loadBalanceStrategy" : {
             "type" : "string",
             "description" : "How to load balance the data in this Connection across the nodes in the cluster.",
-            "enum" : [ "DO_NOT_LOAD_BALANCE, PARTITION_BY_ATTRIBUTE, ROUND_ROBIN, SINGLE_NODE" ]
+            "enum" : [ "DO_NOT_LOAD_BALANCE", "PARTITION_BY_ATTRIBUTE", "ROUND_ROBIN", "SINGLE_NODE" ]
           },
           "loadBalancePartitionAttribute" : {
             "type" : "string",
@@ -15306,13 +15306,13 @@
           "loadBalanceCompression" : {
             "type" : "string",
             "description" : "Whether or not data should be compressed when being transferred between nodes in the cluster.",
-            "enum" : [ "DO_NOT_COMPRESS, COMPRESS_ATTRIBUTES_ONLY, COMPRESS_ATTRIBUTES_AND_CONTENT" ]
+            "enum" : [ "DO_NOT_COMPRESS", "COMPRESS_ATTRIBUTES_ONLY", "COMPRESS_ATTRIBUTES_AND_CONTENT" ]
           },
           "loadBalanceStatus" : {
             "type" : "string",
             "description" : "The current status of the Connection's Load Balancing Activities. Status can indicate that Load Balancing is not configured for the connection, that Load Balancing is configured but inactive (not currently transferring data to another node), or that Load Balancing is configured and actively transferring data to another node.",
             "readOnly" : true,
-            "enum" : [ "LOAD_BALANCE_NOT_CONFIGURED, LOAD_BALANCE_INACTIVE, LOAD_BALANCE_ACTIVE" ]
+            "enum" : [ "LOAD_BALANCE_NOT_CONFIGURED", "LOAD_BALANCE_INACTIVE", "LOAD_BALANCE_ACTIVE" ]
           }
         },
         "description" : "The connections in this flow snippet."
@@ -15383,7 +15383,7 @@
           "sourceType" : {
             "type" : "string",
             "description" : "The type of component the source connectable is.",
-            "enum" : [ "PROCESSOR, REMOTE_INPUT_PORT, REMOTE_OUTPUT_PORT, INPUT_PORT, OUTPUT_PORT, FUNNEL" ]
+            "enum" : [ "PROCESSOR", "REMOTE_INPUT_PORT", "REMOTE_OUTPUT_PORT", "INPUT_PORT", "OUTPUT_PORT, FUNNEL" ]
           },
           "destinationId" : {
             "type" : "string",
@@ -15396,7 +15396,7 @@
           "destinationType" : {
             "type" : "string",
             "description" : "The type of component the destination connectable is.",
-            "enum" : [ "PROCESSOR, REMOTE_INPUT_PORT, REMOTE_OUTPUT_PORT, INPUT_PORT, OUTPUT_PORT, FUNNEL" ]
+            "enum" : [ "PROCESSOR", "REMOTE_INPUT_PORT", "REMOTE_OUTPUT_PORT", "INPUT_PORT", "OUTPUT_PORT", "FUNNEL" ]
           }
         },
         "xml" : {
@@ -15838,7 +15838,7 @@
           "state" : {
             "type" : "string",
             "description" : "The state of the controller service.",
-            "enum" : [ "ENABLED, ENABLING, DISABLED, DISABLING" ]
+            "enum" : [ "ENABLED", "ENABLING", "DISABLED", "DISABLING" ]
           },
           "persistsState" : {
             "type" : "boolean",
@@ -15912,7 +15912,7 @@
             "type" : "string",
             "description" : "Indicates whether the ControllerService is valid, invalid, or still in the process of validating (i.e., it is unknown whether or not the ControllerService is valid)",
             "readOnly" : true,
-            "enum" : [ "VALID, INVALID, VALIDATING" ]
+            "enum" : [ "VALID", "INVALID", "VALIDATING" ]
           },
           "bulletinLevel" : {
             "type" : "string",
@@ -16023,7 +16023,7 @@
           "referenceType" : {
             "type" : "string",
             "description" : "The type of reference this is.",
-            "enum" : [ "Processor, ControllerService, ReportingTask, FlowRegistryClient" ]
+            "enum" : [ "Processor", "ControllerService", "ReportingTask", "FlowRegistryClient" ]
           },
           "activeThreadCount" : {
             "type" : "integer",
@@ -16094,13 +16094,13 @@
             "type" : "string",
             "description" : "The run status of this ControllerService",
             "readOnly" : true,
-            "enum" : [ "ENABLED, ENABLING, DISABLED, DISABLING" ]
+            "enum" : [ "ENABLED", "ENABLING", "DISABLED", "DISABLING" ]
           },
           "validationStatus" : {
             "type" : "string",
             "description" : "Indicates whether the component is valid, invalid, or still in the process of validating (i.e., it is unknown whether or not the component is valid)",
             "readOnly" : true,
-            "enum" : [ "VALID, INVALID, VALIDATING" ]
+            "enum" : [ "VALID", "INVALID", "VALIDATING" ]
           },
           "activeThreadCount" : {
             "type" : "integer",
@@ -16225,7 +16225,7 @@
           "state" : {
             "type" : "string",
             "description" : "The state of the flow analysis rule.",
-            "enum" : [ "ENABLED, DISABLED" ]
+            "enum" : [ "ENABLED", "DISABLED" ]
           },
           "comments" : {
             "type" : "string",
@@ -16291,7 +16291,7 @@
             "type" : "string",
             "description" : "Indicates whether the Flow Analysis Rule is valid, invalid, or still in the process of validating (i.e., it is unknown whether or not the Flow Analysis Rule is valid)",
             "readOnly" : true,
-            "enum" : [ "VALID, INVALID, VALIDATING" ]
+            "enum" : [ "VALID", "INVALID", "VALIDATING" ]
           },
           "extensionMissing" : {
             "type" : "boolean",
@@ -16351,13 +16351,13 @@
             "type" : "string",
             "description" : "The run status of this FlowAnalysisRule",
             "readOnly" : true,
-            "enum" : [ "ENABLED, DISABLED" ]
+            "enum" : [ "ENABLED", "DISABLED" ]
           },
           "validationStatus" : {
             "type" : "string",
             "description" : "Indicates whether the component is valid, invalid, or still in the process of validating (i.e., it is unknown whether or not the component is valid)",
             "readOnly" : true,
-            "enum" : [ "VALID, INVALID, VALIDATING" ]
+            "enum" : [ "VALID", "INVALID", "VALIDATING" ]
           },
           "activeThreadCount" : {
             "type" : "integer",
@@ -16442,7 +16442,7 @@
             "type" : "string",
             "description" : "Indicates whether the Registry Client is valid, invalid, or still in the process of validating (i.e., it is unknown whether or not the Registry Client is valid)",
             "readOnly" : true,
-            "enum" : [ "VALID, INVALID, VALIDATING" ]
+            "enum" : [ "VALID", "INVALID", "VALIDATING" ]
           },
           "annotationData" : {
             "type" : "string",
@@ -16514,7 +16514,7 @@
           "referenceType" : {
             "type" : "string",
             "description" : "The type of this component",
-            "enum" : [ "PROCESSOR,CONTROLLER_SERVICE, INPUT_PORT, OUTPUT_PORT, REMOTE_INPUT_PORT, REMOTE_OUTPUT_PORT, STATELESS_GROUP" ]
+            "enum" : [ "PROCESSOR", "CONTROLLER_SERVICE", "INPUT_PORT", "OUTPUT_PORT", "REMOTE_INPUT_PORT", "REMOTE_OUTPUT_PORT", "STATELESS_GROUP" ]
           },
           "name" : {
             "type" : "string",
@@ -16579,7 +16579,7 @@
           "referenceType" : {
             "type" : "string",
             "description" : "The type of component referenced",
-            "enum" : [ "PROCESSOR,CONTROLLER_SERVICE, INPUT_PORT, OUTPUT_PORT, REMOTE_INPUT_PORT, REMOTE_OUTPUT_PORT" ]
+            "enum" : [ "PROCESSOR", "CONTROLLER_SERVICE", "INPUT_PORT", "OUTPUT_PORT", "REMOTE_INPUT_PORT", "REMOTE_OUTPUT_PORT" ]
           }
         },
         "description" : "The set of all components in the flow that are referencing this Parameter",
@@ -16828,7 +16828,7 @@
             "type" : "string",
             "description" : "Indicates whether the Parameter Provider is valid, invalid, or still in the process of validating (i.e., it is unknown whether or not the Parameter Provider is valid)",
             "readOnly" : true,
-            "enum" : [ "VALID, INVALID, VALIDATING" ]
+            "enum" : [ "VALID", "INVALID", "VALIDATING" ]
           },
           "extensionMissing" : {
             "type" : "boolean",
@@ -16989,7 +16989,7 @@
           "state" : {
             "type" : "string",
             "description" : "The state of the reporting task.",
-            "enum" : [ "RUNNING, STOPPED, DISABLED" ]
+            "enum" : [ "RUNNING", "STOPPED", "DISABLED" ]
           },
           "comments" : {
             "type" : "string",
@@ -17075,7 +17075,7 @@
             "type" : "string",
             "description" : "Indicates whether the Reporting Task is valid, invalid, or still in the process of validating (i.e., it is unknown whether or not the Reporting Task is valid)",
             "readOnly" : true,
-            "enum" : [ "VALID, INVALID, VALIDATING" ]
+            "enum" : [ "VALID", "INVALID", "VALIDATING" ]
           },
           "activeThreadCount" : {
             "type" : "integer",
@@ -17140,13 +17140,13 @@
             "type" : "string",
             "description" : "The run status of this ReportingTask",
             "readOnly" : true,
-            "enum" : [ "RUNNING, STOPPED, DISABLED" ]
+            "enum" : [ "RUNNING", "STOPPED", "DISABLED" ]
           },
           "validationStatus" : {
             "type" : "string",
             "description" : "Indicates whether the component is valid, invalid, or still in the process of validating (i.e., it is unknown whether or not the component is valid)",
             "readOnly" : true,
-            "enum" : [ "VALID, INVALID, VALIDATING" ]
+            "enum" : [ "VALID", "INVALID", "VALIDATING" ]
           },
           "activeThreadCount" : {
             "type" : "integer",
@@ -17163,7 +17163,7 @@
           "outcome" : {
             "type" : "string",
             "description" : "The outcome of the verification",
-            "enum" : [ "SUCCESSFUL, FAILED, SKIPPED" ]
+            "enum" : [ "SUCCESSFUL", "FAILED", "SKIPPED" ]
           },
           "verificationStepName" : {
             "type" : "string",
@@ -18100,7 +18100,7 @@
           "state" : {
             "type" : "string",
             "description" : "The state of the FlowAnalysisRule.",
-            "enum" : [ "ENABLED, DISABLED" ]
+            "enum" : [ "ENABLED", "DISABLED" ]
           },
           "disconnectedNodeAcknowledged" : {
             "type" : "boolean",
@@ -18136,7 +18136,7 @@
           "state" : {
             "type" : "string",
             "description" : "The new state of the references for the controller service.",
-            "enum" : [ "ENABLED, DISABLED, RUNNING, STOPPED" ]
+            "enum" : [ "ENABLED", "DISABLED", "RUNNING", "STOPPED" ]
           },
           "referencingComponentRevisions" : {
             "type" : "object",
@@ -18167,7 +18167,7 @@
           "state" : {
             "type" : "string",
             "description" : "The run status of the ControllerService.",
-            "enum" : [ "ENABLED, DISABLED" ]
+            "enum" : [ "ENABLED", "DISABLED" ]
           },
           "disconnectedNodeAcknowledged" : {
             "type" : "boolean",
@@ -18649,7 +18649,7 @@
           "state" : {
             "type" : "string",
             "description" : "The desired state of the descendant components",
-            "enum" : [ "ENABLED, DISABLED" ]
+            "enum" : [ "ENABLED", "DISABLED" ]
           },
           "components" : {
             "type" : "object",
@@ -18880,7 +18880,7 @@
             "type" : "string",
             "description" : "The current state of the Process Group, as it relates to the Versioned Flow",
             "readOnly" : true,
-            "enum" : [ "LOCALLY_MODIFIED, STALE, LOCALLY_MODIFIED_AND_STALE, UP_TO_DATE, SYNC_FAILURE" ]
+            "enum" : [ "LOCALLY_MODIFIED", "STALE", "LOCALLY_MODIFIED_AND_STALE", "UP_TO_DATE", "SYNC_FAILURE" ]
           },
           "breadcrumb" : {
             "$ref" : "#/components/schemas/FlowBreadcrumbDTO"
@@ -18947,7 +18947,7 @@
             "type" : "string",
             "description" : "The current state of the Process Group, as it relates to the Versioned Flow",
             "readOnly" : true,
-            "enum" : [ "LOCALLY_MODIFIED, STALE, LOCALLY_MODIFIED_AND_STALE, UP_TO_DATE, SYNC_FAILURE" ]
+            "enum" : [ "LOCALLY_MODIFIED", "STALE", "LOCALLY_MODIFIED_AND_STALE", "UP_TO_DATE", "SYNC_FAILURE" ]
           },
           "stateExplanation" : {
             "type" : "string",
@@ -19613,7 +19613,7 @@
           "action" : {
             "type" : "string",
             "description" : "The action being performed",
-            "enum" : [ "COMMIT, FORCE_COMMIT" ]
+            "enum" : [ "COMMIT", "FORCE_COMMIT" ]
           }
         },
         "description" : "The versioned flow"
@@ -20221,12 +20221,12 @@
           "state" : {
             "type" : "string",
             "description" : "The state of the port.",
-            "enum" : [ "RUNNING, STOPPED, DISABLED" ]
+            "enum" : [ "RUNNING", "STOPPED", "DISABLED" ]
           },
           "type" : {
             "type" : "string",
             "description" : "The type of port.",
-            "enum" : [ "INPUT_PORT, OUTPUT_PORT" ]
+            "enum" : [ "INPUT_PORT", "OUTPUT_PORT" ]
           },
           "transmitting" : {
             "type" : "boolean",
@@ -20244,7 +20244,7 @@
           "portFunction" : {
             "type" : "string",
             "description" : "Specifies how the Port functions",
-            "enum" : [ "STANDARD, FAILURE" ]
+            "enum" : [ "STANDARD", "FAILURE" ]
           },
           "validationErrors" : {
             "type" : "array",
@@ -20331,7 +20331,7 @@
           "runStatus" : {
             "type" : "string",
             "description" : "The run status of the port.",
-            "enum" : [ "Running, Stopped, Validating, Disabled, Invalid" ]
+            "enum" : [ "Running", "Stopped", "Validating", "Disabled", "Invalid" ]
           },
           "statsLastRefreshed" : {
             "type" : "string",
@@ -20405,7 +20405,7 @@
           "runStatus" : {
             "type" : "string",
             "description" : "The run status of the port.",
-            "enum" : [ "Running, Stopped, Validating, Disabled, Invalid" ]
+            "enum" : [ "Running", "Stopped", "Validating", "Disabled", "Invalid" ]
           }
         }
       },
@@ -20465,12 +20465,12 @@
           "flowfileConcurrency" : {
             "type" : "string",
             "description" : "The FlowFile Concurrency for this Process Group.",
-            "enum" : [ "UNBOUNDED, SINGLE_FLOWFILE_PER_NODE, SINGLE_BATCH_PER_NODE" ]
+            "enum" : [ "UNBOUNDED", "SINGLE_FLOWFILE_PER_NODE", "SINGLE_BATCH_PER_NODE" ]
           },
           "flowfileOutboundPolicy" : {
             "type" : "string",
             "description" : "The Outbound Policy that is used for determining how FlowFiles should be transferred out of the Process Group.",
-            "enum" : [ "STREAM_WHEN_AVAILABLE, BATCH_OUTPUT" ]
+            "enum" : [ "STREAM_WHEN_AVAILABLE", "BATCH_OUTPUT" ]
           },
           "defaultFlowFileExpiration" : {
             "type" : "string",
@@ -20492,7 +20492,7 @@
           "executionEngine" : {
             "type" : "string",
             "description" : "The Execution Engine that should be used to run the flow represented by this Process Group.",
-            "enum" : [ "STATELESS, STANDARD, INHERITED" ]
+            "enum" : [ "STATELESS", "STANDARD", "INHERITED" ]
           },
           "maxConcurrentTasks" : {
             "type" : "integer",
@@ -20581,7 +20581,7 @@
           "statelessGroupScheduledState" : {
             "type" : "string",
             "description" : "If the Process Group is configured to run in using the Stateless Engine, represents the current state. Otherwise, will be STOPPED.",
-            "enum" : [ "STOPPED, RUNNING" ]
+            "enum" : [ "STOPPED", "RUNNING" ]
           },
           "contents" : {
             "$ref" : "#/components/schemas/FlowSnippetDTO"
@@ -20674,7 +20674,7 @@
             "type" : "string",
             "description" : "The current state of the Process Group, as it relates to the Versioned Flow",
             "readOnly" : true,
-            "enum" : [ "LOCALLY_MODIFIED, STALE, LOCALLY_MODIFIED_AND_STALE, UP_TO_DATE, SYNC_FAILURE" ]
+            "enum" : [ "LOCALLY_MODIFIED", "STALE", "LOCALLY_MODIFIED_AND_STALE", "UP_TO_DATE", "SYNC_FAILURE" ]
           },
           "upToDateCount" : {
             "type" : "integer",
@@ -20727,7 +20727,7 @@
           "processGroupUpdateStrategy" : {
             "type" : "string",
             "description" : "Determines the process group update strategy",
-            "enum" : [ "CURRENT_GROUP, CURRENT_GROUP_WITH_CHILDREN" ]
+            "enum" : [ "CURRENT_GROUP", "CURRENT_GROUP_WITH_CHILDREN" ]
           },
           "inputPortCount" : {
             "type" : "integer",
@@ -20875,7 +20875,7 @@
             "type" : "string",
             "description" : "The current state of the Process Group, as it relates to the Versioned Flow",
             "readOnly" : true,
-            "enum" : [ "LOCALLY_MODIFIED, STALE, LOCALLY_MODIFIED_AND_STALE, UP_TO_DATE, SYNC_FAILURE" ]
+            "enum" : [ "LOCALLY_MODIFIED", "STALE", "LOCALLY_MODIFIED_AND_STALE", "UP_TO_DATE", "SYNC_FAILURE" ]
           },
           "statelessActiveThreadCount" : {
             "type" : "integer",
@@ -21150,7 +21150,7 @@
           "backoffMechanism" : {
             "type" : "string",
             "description" : "Determines whether the FlowFile should be penalized or the processor should be yielded between retries.",
-            "enum" : [ "PENALIZE_FLOWFILE, YIELD_PROCESSOR" ]
+            "enum" : [ "PENALIZE_FLOWFILE", "YIELD_PROCESSOR" ]
           },
           "maxBackoffPeriod" : {
             "type" : "string",
@@ -21191,7 +21191,7 @@
           "state" : {
             "type" : "string",
             "description" : "The state of the processor",
-            "enum" : [ "RUNNING, STOPPED, DISABLED" ]
+            "enum" : [ "RUNNING", "STOPPED", "DISABLED" ]
           },
           "style" : {
             "type" : "object",
@@ -21264,7 +21264,7 @@
             "type" : "string",
             "description" : "Indicates whether the Processor is valid, invalid, or still in the process of validating (i.e., it is unknown whether or not the Processor is valid)",
             "readOnly" : true,
-            "enum" : [ "VALID, INVALID, VALIDATING" ]
+            "enum" : [ "VALID", "INVALID", "VALIDATING" ]
           },
           "extensionMissing" : {
             "type" : "boolean",
@@ -21343,7 +21343,7 @@
           "runStatus" : {
             "type" : "string",
             "description" : "The run status of the Processor",
-            "enum" : [ "Running, Stopped, Validating, Disabled, Invalid" ]
+            "enum" : [ "Running", "Stopped", "Validating", "Disabled", "Invalid" ]
           },
           "statsLastRefreshed" : {
             "type" : "string",
@@ -21383,12 +21383,12 @@
           "runStatus" : {
             "type" : "string",
             "description" : "The state of the processor.",
-            "enum" : [ "Running, Stopped, Validating, Disabled, Invalid" ]
+            "enum" : [ "Running", "Stopped", "Validating", "Disabled", "Invalid" ]
           },
           "executionNode" : {
             "type" : "string",
             "description" : "Indicates the node where the process will execute.",
-            "enum" : [ "ALL, PRIMARY" ]
+            "enum" : [ "ALL", "PRIMARY" ]
           },
           "bytesRead" : {
             "type" : "integer",
@@ -21920,7 +21920,7 @@
             "type" : "string",
             "description" : "Indicates whether the component is valid, invalid, or still in the process of validating (i.e., it is unknown whether or not the component is valid)",
             "readOnly" : true,
-            "enum" : [ "VALID, INVALID, VALIDATING" ]
+            "enum" : [ "VALID", "INVALID", "VALIDATING" ]
           },
           "aggregateSnapshot" : {
             "$ref" : "#/components/schemas/RemoteProcessGroupStatusSnapshotDTO"
@@ -24576,7 +24576,7 @@
           "state" : {
             "type" : "string",
             "description" : "The desired state of the descendant components",
-            "enum" : [ "RUNNING, STOPPED, ENABLED, DISABLED" ]
+            "enum" : [ "RUNNING", "STOPPED", "ENABLED", "DISABLED" ]
           },
           "components" : {
             "type" : "object",
@@ -24777,7 +24777,7 @@
           "state" : {
             "type" : "string",
             "description" : "The run status of the Port.",
-            "enum" : [ "RUNNING, STOPPED, DISABLED" ]
+            "enum" : [ "RUNNING", "STOPPED", "DISABLED" ]
           },
           "disconnectedNodeAcknowledged" : {
             "type" : "boolean",
@@ -24907,7 +24907,7 @@
           "referenceType" : {
             "type" : "string",
             "description" : "The type of this component",
-            "enum" : [ "PROCESSOR,CONTROLLER_SERVICE, INPUT_PORT, OUTPUT_PORT, REMOTE_INPUT_PORT, REMOTE_OUTPUT_PORT, STATELESS_GROUP" ]
+            "enum" : [ "PROCESSOR", "CONTROLLER_SERVICE", "INPUT_PORT", "OUTPUT_PORT", "REMOTE_INPUT_PORT", "REMOTE_OUTPUT_PORT", "STATELESS_GROUP" ]
           },
           "name" : {
             "type" : "string",
@@ -25578,7 +25578,7 @@
           "runStatus" : {
             "type" : "string",
             "description" : "The run status of the processor",
-            "enum" : [ "Running, Stopped, Invalid, Validating, Disabled" ]
+            "enum" : [ "Running", "Stopped", "Invalid", "Validating", "Disabled" ]
           },
           "validationErrors" : {
             "uniqueItems" : true,
@@ -25654,7 +25654,7 @@
           "state" : {
             "type" : "string",
             "description" : "The run status of the Processor.",
-            "enum" : [ "RUNNING, STOPPED, DISABLED, RUN_ONCE" ]
+            "enum" : [ "RUNNING", "STOPPED", "DISABLED", "RUN_ONCE" ]
           },
           "disconnectedNodeAcknowledged" : {
             "type" : "boolean",
@@ -25935,7 +25935,7 @@
           "nodes" : {
             "type" : "string",
             "description" : "Which nodes were requested to replay their last provenance event.",
-            "enum" : [ "ALL, PRIMARY" ]
+            "enum" : [ "ALL", "PRIMARY" ]
           },
           "aggregateSnapshot" : {
             "$ref" : "#/components/schemas/ReplayLastEventSnapshotDTO"
@@ -25988,7 +25988,7 @@
           "nodes" : {
             "type" : "string",
             "description" : "Which nodes are to replay their last provenance event.",
-            "enum" : [ "ALL, PRIMARY" ]
+            "enum" : [ "ALL", "PRIMARY" ]
           }
         },
         "xml" : {
@@ -26053,7 +26053,7 @@
           "lineageRequestType" : {
             "type" : "string",
             "description" : "The type of lineage request. PARENTS will return the lineage for the flowfiles that are parents of the specified event. CHILDREN will return the lineage for the flowfiles that are children of the specified event. FLOWFILE will return the lineage for the specified flowfile.",
-            "enum" : [ "PARENTS", "CHILDREN", "FLOWFILE", "PARENTS, CHILDREN, and FLOWFILE" ]
+            "enum" : [ "PARENTS", "CHILDREN", "FLOWFILE", "PARENTS", "CHILDREN", "FLOWFILE" ]
           },
           "uuid" : {
             "type" : "string",
@@ -26156,7 +26156,7 @@
           "type" : {
             "type" : "string",
             "description" : "The type of the node.",
-            "enum" : [ "FLOWFILE, EVENT" ]
+            "enum" : [ "FLOWFILE", "EVENT" ]
           },
           "eventType" : {
             "type" : "string",
@@ -26421,7 +26421,7 @@
           "state" : {
             "type" : "string",
             "description" : "The run status of the RemotePort.",
-            "enum" : [ "TRANSMITTING, STOPPED" ]
+            "enum" : [ "TRANSMITTING", "STOPPED" ]
           },
           "disconnectedNodeAcknowledged" : {
             "type" : "boolean",
@@ -26441,7 +26441,7 @@
           "state" : {
             "type" : "string",
             "description" : "The run status of the ReportingTask.",
-            "enum" : [ "RUNNING, STOPPED" ]
+            "enum" : [ "RUNNING", "STOPPED" ]
           },
           "disconnectedNodeAcknowledged" : {
             "type" : "boolean",
@@ -27107,7 +27107,7 @@
           "action" : {
             "type" : "string",
             "description" : "The action associated with this access policy.",
-            "enum" : [ "read, write" ]
+            "enum" : [ "read", "write" ]
           },
           "componentReference" : {
             "$ref" : "#/components/schemas/ComponentReferenceEntity"

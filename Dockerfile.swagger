@@ -1,8 +1,7 @@
 FROM maven:3.9.8-amazoncorretto-21-debian
 
 ARG NIFI_VER
-RUN uname | tr '[:upper:]' '[:lower:]'
-RUN arch
+COPY 0001-swagger-enums.patch /
 RUN mkdir /nifi && \
     mkdir /registry && \
     apt update && \
@@ -13,6 +12,9 @@ RUN mkdir /nifi && \
         curl -o /usr/bin/yq -L'#' "$download_url" && \
         chmod +x /usr/bin/yq && \
     git clone --depth 1 --branch rel/nifi-${NIFI_VER} https://github.com/apache/nifi.git && \
+    cd /nifi && git apply --verbose /0001-swagger-enums.patch && \
+    cd /nifi/nifi-framework-bundle/nifi-framework/nifi-client-dto && \
+    mvn install && \
     cd /nifi/nifi-framework-bundle/nifi-framework/nifi-web/nifi-web-api/ && \
     mvn install && \
     mv target/nifi-web-api-${NIFI_VER}/docs/rest-api/swagger.json /nifi/ && \
