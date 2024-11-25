@@ -11,7 +11,7 @@
       "name" : "Apache 2.0",
       "url" : "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "version" : "2.0.0-M4"
+    "version" : "2.0.0"
   },
   "paths" : {
     "/policies" : {
@@ -330,86 +330,6 @@
         }
       }
     },
-    "/access" : {
-      "get" : {
-        "tags" : [ "Access" ],
-        "summary" : "Gets the status the client's access",
-        "description" : "Note: This endpoint is subject to change as NiFi and it's REST API evolve.",
-        "operationId" : "getAccessStatus",
-        "responses" : {
-          "default" : {
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/AccessStatusEntity"
-                }
-              }
-            }
-          },
-          "400" : {
-            "description" : "NiFi was unable to complete the request because it was invalid. The request should not be retried without modification."
-          },
-          "401" : {
-            "description" : "Unable to determine access status because the client could not be authenticated."
-          },
-          "403" : {
-            "description" : "Unable to determine access status because the client is not authorized to make this request."
-          },
-          "409" : {
-            "description" : "The request was valid but NiFi was not in the appropriate state to process it."
-          },
-          "500" : {
-            "description" : "Unable to determine access status because an unexpected error occurred."
-          }
-        }
-      }
-    },
-    "/access/token/expiration" : {
-      "get" : {
-        "tags" : [ "Access" ],
-        "summary" : "Get expiration for current Access Token",
-        "description" : "Note: This endpoint is subject to change as NiFi and it's REST API evolve.",
-        "operationId" : "getAccessTokenExpiration",
-        "responses" : {
-          "default" : {
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/AccessTokenExpirationEntity"
-                }
-              }
-            }
-          },
-          "200" : {
-            "description" : "Access Token Expiration found"
-          },
-          "401" : {
-            "description" : "Access Token not authorized"
-          },
-          "409" : {
-            "description" : "The request was valid but NiFi was not in the appropriate state to process it."
-          }
-        }
-      }
-    },
-    "/access/config" : {
-      "get" : {
-        "tags" : [ "Access" ],
-        "summary" : "Retrieves the access configuration for this NiFi",
-        "operationId" : "getLoginConfig",
-        "responses" : {
-          "default" : {
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/AccessConfigurationEntity"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/access/logout" : {
       "delete" : {
         "tags" : [ "Access" ],
@@ -458,7 +378,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/AccessConfigurationEntity"
+                  "$ref" : "#/components/schemas/AuthenticationConfigurationEntity"
                 }
               }
             }
@@ -1400,6 +1320,105 @@
         } ]
       }
     },
+    "/controller/nar-manager/nars/{id}" : {
+      "get" : {
+        "tags" : [ "Controller" ],
+        "summary" : "Retrieves the summary information for the NAR with the given identifier",
+        "operationId" : "getNarSummary",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "The id of the NAR.",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "default" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/NarDetailsEntity"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "NiFi was unable to complete the request because it was invalid. The request should not be retried without modification."
+          },
+          "401" : {
+            "description" : "Client could not be authenticated."
+          },
+          "403" : {
+            "description" : "Client is not authorized to make this request."
+          },
+          "409" : {
+            "description" : "The request was valid but NiFi was not in the appropriate state to process it."
+          }
+        },
+        "security" : [ {
+          "Read - /controller" : [ ]
+        } ]
+      },
+      "delete" : {
+        "tags" : [ "Controller" ],
+        "summary" : "Deletes an installed NAR",
+        "operationId" : "deleteNar",
+        "parameters" : [ {
+          "name" : "disconnectedNodeAcknowledged",
+          "in" : "query",
+          "schema" : {
+            "type" : "boolean",
+            "default" : false
+          }
+        }, {
+          "name" : "force",
+          "in" : "query",
+          "schema" : {
+            "type" : "boolean",
+            "default" : false
+          }
+        }, {
+          "name" : "id",
+          "in" : "path",
+          "description" : "The id of the NAR.",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "default" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/NarSummaryEntity"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "NiFi was unable to complete the request because it was invalid. The request should not be retried without modification."
+          },
+          "401" : {
+            "description" : "Client could not be authenticated."
+          },
+          "403" : {
+            "description" : "Client is not authorized to make this request."
+          },
+          "404" : {
+            "description" : "The specified resource could not be found."
+          },
+          "409" : {
+            "description" : "The request was valid but NiFi was not in the appropriate state to process it."
+          }
+        },
+        "security" : [ {
+          "Write - /controller" : [ ]
+        } ]
+      }
+    },
     "/controller/cluster/nodes/{id}" : {
       "get" : {
         "tags" : [ "Controller" ],
@@ -1539,6 +1558,49 @@
         },
         "security" : [ {
           "Write - /controller" : [ ]
+        } ]
+      }
+    },
+    "/controller/nar-manager/nars/{id}/content" : {
+      "get" : {
+        "tags" : [ "Controller" ],
+        "summary" : "Retrieves the content of the NAR with the given id",
+        "operationId" : "downloadNar",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "The id of the NAR.",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "default" : {
+            "content" : {
+              "application/octet-stream" : {
+                "schema" : {
+                  "type" : "string",
+                  "format" : "byte"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "NiFi was unable to complete the request because it was invalid. The request should not be retried without modification."
+          },
+          "401" : {
+            "description" : "Client could not be authenticated."
+          },
+          "403" : {
+            "description" : "Client is not authorized to make this request."
+          },
+          "409" : {
+            "description" : "The request was valid but NiFi was not in the appropriate state to process it."
+          }
+        },
+        "security" : [ {
+          "Read - /controller" : [ ]
         } ]
       }
     },
@@ -1926,6 +1988,81 @@
         } ]
       }
     },
+    "/controller/nar-manager/nars/{id}/details" : {
+      "get" : {
+        "tags" : [ "Controller" ],
+        "summary" : "Retrieves the component types available from the installed NARs",
+        "operationId" : "getNarDetails",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "The id of the NAR.",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "default" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/NarDetailsEntity"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "NiFi was unable to complete the request because it was invalid. The request should not be retried without modification."
+          },
+          "401" : {
+            "description" : "Client could not be authenticated."
+          },
+          "403" : {
+            "description" : "Client is not authorized to make this request."
+          },
+          "409" : {
+            "description" : "The request was valid but NiFi was not in the appropriate state to process it."
+          }
+        },
+        "security" : [ {
+          "Read - /controller" : [ ]
+        } ]
+      }
+    },
+    "/controller/nar-manager/nars" : {
+      "get" : {
+        "tags" : [ "Controller" ],
+        "summary" : "Retrieves summary information for installed NARs",
+        "operationId" : "getNarSummaries",
+        "responses" : {
+          "default" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/NarSummariesEntity"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "NiFi was unable to complete the request because it was invalid. The request should not be retried without modification."
+          },
+          "401" : {
+            "description" : "Client could not be authenticated."
+          },
+          "403" : {
+            "description" : "Client is not authorized to make this request."
+          },
+          "409" : {
+            "description" : "The request was valid but NiFi was not in the appropriate state to process it."
+          }
+        },
+        "security" : [ {
+          "Read - /controller" : [ ]
+        } ]
+      }
+    },
     "/controller/status/history" : {
       "get" : {
         "tags" : [ "Controller" ],
@@ -2211,6 +2348,57 @@
         },
         "security" : [ {
           "Write - /flow-analysis-rules/{uuid} or  or /operation/flow-analysis-rules/{uuid}" : [ ]
+        } ]
+      }
+    },
+    "/controller/nar-manager/nars/content" : {
+      "post" : {
+        "tags" : [ "Controller" ],
+        "summary" : "Uploads a NAR and requests for it to be installed",
+        "operationId" : "uploadNar",
+        "parameters" : [ {
+          "name" : "Filename",
+          "in" : "header",
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "requestBody" : {
+          "description" : "The contents of the NAR file.",
+          "content" : {
+            "application/octet-stream" : {
+              "schema" : {
+                "type" : "object"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "default" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/NarSummaryEntity"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "NiFi was unable to complete the request because it was invalid. The request should not be retried without modification."
+          },
+          "401" : {
+            "description" : "Client could not be authenticated."
+          },
+          "403" : {
+            "description" : "Client is not authorized to make this request."
+          },
+          "409" : {
+            "description" : "The request was valid but NiFi was not in the appropriate state to process it."
+          }
+        },
+        "security" : [ {
+          "Write - /controller" : [ ]
         } ]
       }
     },
@@ -3691,6 +3879,13 @@
         "summary" : "Gets the content for a FlowFile in a Connection.",
         "operationId" : "downloadFlowFileContent",
         "parameters" : [ {
+          "name" : "Range",
+          "in" : "header",
+          "description" : "Range of bytes requested",
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
           "name" : "clientId",
           "in" : "query",
           "description" : "If the client id is not specified, new one will be generated. This value (whether specified or generated) is included in the response.",
@@ -3731,6 +3926,9 @@
               }
             }
           },
+          "206" : {
+            "description" : "Partial Content with range of bytes requested"
+          },
           "400" : {
             "description" : "NiFi was unable to complete the request because it was invalid. The request should not be retried without modification."
           },
@@ -3745,6 +3943,9 @@
           },
           "409" : {
             "description" : "The request was valid but NiFi was not in the appropriate state to process it."
+          },
+          "416" : {
+            "description" : "Requested Range Not Satisfiable based on bytes requested"
           }
         },
         "security" : [ {
@@ -4064,7 +4265,8 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "type" : "string"
+                  "type" : "string",
+                  "format" : "byte"
                 }
               }
             }
@@ -4189,6 +4391,73 @@
           },
           "409" : {
             "description" : "The request was valid but NiFi was not in the appropriate state to process it."
+          }
+        },
+        "security" : [ {
+          "Read - /flow" : [ ]
+        } ]
+      }
+    },
+    "/flow/additional-details/{group}/{artifact}/{version}/{type}" : {
+      "get" : {
+        "tags" : [ "Flow" ],
+        "summary" : "Retrieves the additional details for the specified component type.",
+        "description" : "Note: This endpoint is subject to change as NiFi and it's REST API evolve.",
+        "operationId" : "getAdditionalDetails",
+        "parameters" : [ {
+          "name" : "group",
+          "in" : "path",
+          "description" : "The bundle group",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "artifact",
+          "in" : "path",
+          "description" : "The bundle artifact",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "version",
+          "in" : "path",
+          "description" : "The bundle version",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "type",
+          "in" : "path",
+          "description" : "The processor type",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "default" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/AdditionalDetailsEntity"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "NiFi was unable to complete the request because it was invalid. The request should not be retried without modification."
+          },
+          "401" : {
+            "description" : "Client could not be authenticated."
+          },
+          "403" : {
+            "description" : "Client is not authorized to make this request."
+          },
+          "404" : {
+            "description" : "The additional details for the coordinates could not be located."
           }
         },
         "security" : [ {
@@ -4773,6 +5042,106 @@
         } ]
       }
     },
+    "/flow/content-viewers" : {
+      "get" : {
+        "tags" : [ "Flow" ],
+        "summary" : "Retrieves the registered content viewers",
+        "operationId" : "getContentViewers",
+        "responses" : {
+          "default" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ContentViewerEntity"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "NiFi was unable to complete the request because it was invalid. The request should not be retried without modification."
+          },
+          "401" : {
+            "description" : "Client could not be authenticated."
+          },
+          "403" : {
+            "description" : "Client is not authorized to make this request."
+          },
+          "409" : {
+            "description" : "The request was valid but NiFi was not in the appropriate state to process it."
+          }
+        },
+        "security" : [ {
+          "Read - /flow" : [ ]
+        } ]
+      }
+    },
+    "/flow/controller-service-definition/{group}/{artifact}/{version}/{type}" : {
+      "get" : {
+        "tags" : [ "Flow" ],
+        "summary" : "Retrieves the Controller Service Definition for the specified component type.",
+        "description" : "Note: This endpoint is subject to change as NiFi and it's REST API evolve.",
+        "operationId" : "getControllerServiceDefinition",
+        "parameters" : [ {
+          "name" : "group",
+          "in" : "path",
+          "description" : "The bundle group",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "artifact",
+          "in" : "path",
+          "description" : "The bundle artifact",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "version",
+          "in" : "path",
+          "description" : "The bundle version",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "type",
+          "in" : "path",
+          "description" : "The controller service type",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "default" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ControllerServiceDefinition"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "NiFi was unable to complete the request because it was invalid. The request should not be retried without modification."
+          },
+          "401" : {
+            "description" : "Client could not be authenticated."
+          },
+          "403" : {
+            "description" : "Client is not authorized to make this request."
+          },
+          "404" : {
+            "description" : "The controller service definition for the coordinates could not be located."
+          }
+        },
+        "security" : [ {
+          "Read - /flow" : [ ]
+        } ]
+      }
+    },
     "/flow/controller-service-types" : {
       "get" : {
         "tags" : [ "Flow" ],
@@ -4990,6 +5359,13 @@
           "schema" : {
             "type" : "string"
           }
+        }, {
+          "name" : "branch",
+          "in" : "query",
+          "description" : "The name of a branch to get the flow from. If not specified the default branch of the registry client will be used.",
+          "schema" : {
+            "type" : "string"
+          }
         } ],
         "responses" : {
           "default" : {
@@ -5088,7 +5464,7 @@
           }
         } ],
         "requestBody" : {
-          "description" : "The request to schedule or unschedule. If the comopnents in the request are not specified, all authorized components will be considered.",
+          "description" : "The request to schedule or unschedule. If the components in the request are not specified, all authorized components will be considered.",
           "content" : {
             "application/json" : {
               "schema" : {
@@ -5169,6 +5545,73 @@
           },
           "409" : {
             "description" : "The request was valid but NiFi was not in the appropriate state to process it."
+          }
+        },
+        "security" : [ {
+          "Read - /flow" : [ ]
+        } ]
+      }
+    },
+    "/flow/flow-analysis-rule-definition/{group}/{artifact}/{version}/{type}" : {
+      "get" : {
+        "tags" : [ "Flow" ],
+        "summary" : "Retrieves the Flow Analysis Rule Definition for the specified component type.",
+        "description" : "Note: This endpoint is subject to change as NiFi and it's REST API evolve.",
+        "operationId" : "getFlowAnalysisRuleDefinition",
+        "parameters" : [ {
+          "name" : "group",
+          "in" : "path",
+          "description" : "The bundle group",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "artifact",
+          "in" : "path",
+          "description" : "The bundle artifact",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "version",
+          "in" : "path",
+          "description" : "The bundle version",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "type",
+          "in" : "path",
+          "description" : "The flow analysis rule type",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "default" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/FlowAnalysisRuleDefinition"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "NiFi was unable to complete the request because it was invalid. The request should not be retried without modification."
+          },
+          "401" : {
+            "description" : "Client could not be authenticated."
+          },
+          "403" : {
+            "description" : "Client is not authorized to make this request."
+          },
+          "404" : {
+            "description" : "The flow analysis rule definition for the coordinates could not be located."
           }
         },
         "security" : [ {
@@ -5364,6 +5807,13 @@
           "schema" : {
             "type" : "string"
           }
+        }, {
+          "name" : "branch",
+          "in" : "query",
+          "description" : "The name of a branch to get the flows from. If not specified the default branch of the registry client will be used.",
+          "schema" : {
+            "type" : "string"
+          }
         } ],
         "responses" : {
           "default" : {
@@ -5546,6 +5996,73 @@
         },
         "security" : [ {
           "Read - /parameter-contexts/{id} for each Parameter Context" : [ ]
+        } ]
+      }
+    },
+    "/flow/parameter-provider-definition/{group}/{artifact}/{version}/{type}" : {
+      "get" : {
+        "tags" : [ "Flow" ],
+        "summary" : "Retrieves the Parameter Provider Definition for the specified component type.",
+        "description" : "Note: This endpoint is subject to change as NiFi and it's REST API evolve.",
+        "operationId" : "getParameterProviderDefinition",
+        "parameters" : [ {
+          "name" : "group",
+          "in" : "path",
+          "description" : "The bundle group",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "artifact",
+          "in" : "path",
+          "description" : "The bundle artifact",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "version",
+          "in" : "path",
+          "description" : "The bundle version",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "type",
+          "in" : "path",
+          "description" : "The parameter provider type",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "default" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ParameterProviderDefinition"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "NiFi was unable to complete the request because it was invalid. The request should not be retried without modification."
+          },
+          "401" : {
+            "description" : "Client could not be authenticated."
+          },
+          "403" : {
+            "description" : "Client is not authorized to make this request."
+          },
+          "404" : {
+            "description" : "The reporting task definition for the coordinates could not be located."
+          }
+        },
+        "security" : [ {
+          "Read - /flow" : [ ]
         } ]
       }
     },
@@ -5779,6 +6296,73 @@
           },
           "409" : {
             "description" : "The request was valid but NiFi was not in the appropriate state to process it."
+          }
+        },
+        "security" : [ {
+          "Read - /flow" : [ ]
+        } ]
+      }
+    },
+    "/flow/processor-definition/{group}/{artifact}/{version}/{type}" : {
+      "get" : {
+        "tags" : [ "Flow" ],
+        "summary" : "Retrieves the Processor Definition for the specified component type.",
+        "description" : "Note: This endpoint is subject to change as NiFi and it's REST API evolve.",
+        "operationId" : "getProcessorDefinition",
+        "parameters" : [ {
+          "name" : "group",
+          "in" : "path",
+          "description" : "The bundle group",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "artifact",
+          "in" : "path",
+          "description" : "The bundle artifact",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "version",
+          "in" : "path",
+          "description" : "The bundle version",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "type",
+          "in" : "path",
+          "description" : "The processor type",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "default" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProcessorDefinition"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "NiFi was unable to complete the request because it was invalid. The request should not be retried without modification."
+          },
+          "401" : {
+            "description" : "Client could not be authenticated."
+          },
+          "403" : {
+            "description" : "Client is not authorized to make this request."
+          },
+          "404" : {
+            "description" : "The processor definition for the coordinates could not be located."
           }
         },
         "security" : [ {
@@ -6081,6 +6665,73 @@
           },
           "409" : {
             "description" : "The request was valid but NiFi was not in the appropriate state to process it."
+          }
+        },
+        "security" : [ {
+          "Read - /flow" : [ ]
+        } ]
+      }
+    },
+    "/flow/reporting-task-definition/{group}/{artifact}/{version}/{type}" : {
+      "get" : {
+        "tags" : [ "Flow" ],
+        "summary" : "Retrieves the Reporting Task Definition for the specified component type.",
+        "description" : "Note: This endpoint is subject to change as NiFi and it's REST API evolve.",
+        "operationId" : "getReportingTaskDefinition",
+        "parameters" : [ {
+          "name" : "group",
+          "in" : "path",
+          "description" : "The bundle group",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "artifact",
+          "in" : "path",
+          "description" : "The bundle artifact",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "version",
+          "in" : "path",
+          "description" : "The bundle version",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "type",
+          "in" : "path",
+          "description" : "The reporting task type",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "default" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ReportingTaskDefinition"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "NiFi was unable to complete the request because it was invalid. The request should not be retried without modification."
+          },
+          "401" : {
+            "description" : "Client could not be authenticated."
+          },
+          "403" : {
+            "description" : "Client is not authorized to make this request."
+          },
+          "404" : {
+            "description" : "The reporting task definition for the coordinates could not be located."
           }
         },
         "security" : [ {
@@ -6402,6 +7053,13 @@
           "in" : "path",
           "description" : "The flow id.",
           "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "branch",
+          "in" : "query",
+          "description" : "The name of a branch to get the flow versions from. If not specified the default branch of the registry client will be used.",
           "schema" : {
             "type" : "string"
           }
@@ -7402,6 +8060,120 @@
         } ]
       }
     },
+    "/parameter-contexts/{contextId}/assets" : {
+      "get" : {
+        "tags" : [ "ParameterContexts" ],
+        "summary" : "Lists the assets that belong to the Parameter Context with the given ID",
+        "description" : "Lists the assets that belong to the Parameter Context with the given ID.",
+        "operationId" : "getAssets",
+        "parameters" : [ {
+          "name" : "contextId",
+          "in" : "path",
+          "description" : "The ID of the Parameter Context",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "default" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/AssetsEntity"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "NiFi was unable to complete the request because it was invalid. The request should not be retried without modification."
+          },
+          "401" : {
+            "description" : "Client could not be authenticated."
+          },
+          "403" : {
+            "description" : "Client is not authorized to make this request."
+          },
+          "404" : {
+            "description" : "The specified resource could not be found."
+          },
+          "409" : {
+            "description" : "The request was valid but NiFi was not in the appropriate state to process it."
+          }
+        },
+        "security" : [ {
+          "Read - /parameter-contexts/{id}" : [ ]
+        } ]
+      },
+      "post" : {
+        "tags" : [ "ParameterContexts" ],
+        "summary" : "Creates a new Asset in the given Parameter Context",
+        "description" : "This endpoint will create a new Asset in the given Parameter Context. The Asset will be created with the given name and the contents of the file that is uploaded. The Asset will be created in the given Parameter Context, and will be available for use by any component that references the Parameter Context.",
+        "operationId" : "createAsset",
+        "parameters" : [ {
+          "name" : "contextId",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "Filename",
+          "in" : "header",
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "requestBody" : {
+          "description" : "The contents of the asset.",
+          "content" : {
+            "application/octet-stream" : {
+              "schema" : {
+                "type" : "object"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "default" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/AssetEntity"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "NiFi was unable to complete the request because it was invalid. The request should not be retried without modification."
+          },
+          "401" : {
+            "description" : "Client could not be authenticated."
+          },
+          "403" : {
+            "description" : "Client is not authorized to make this request."
+          },
+          "404" : {
+            "description" : "The specified resource could not be found."
+          },
+          "409" : {
+            "description" : "The request was valid but NiFi was not in the appropriate state to process it."
+          }
+        },
+        "security" : [ {
+          "Read - /parameter-contexts/{parameterContextId}" : [ ]
+        }, {
+          "Write - /parameter-contexts/{parameterContextId}" : [ ]
+        }, {
+          "Read - for every component that is affected by the update" : [ ]
+        }, {
+          "Write - for every component that is affected by the update" : [ ]
+        }, {
+          "Read - for every currently inherited parameter context" : [ ]
+        } ]
+      }
+    },
     "/parameter-contexts" : {
       "post" : {
         "tags" : [ "ParameterContexts" ],
@@ -7448,6 +8220,127 @@
           "Write - /parameter-contexts" : [ ]
         }, {
           "Read - for every inherited parameter context" : [ ]
+        } ]
+      }
+    },
+    "/parameter-contexts/{contextId}/assets/{assetId}" : {
+      "get" : {
+        "tags" : [ "ParameterContexts" ],
+        "summary" : "Retrieves the content of the asset with the given id",
+        "operationId" : "getAssetContent",
+        "parameters" : [ {
+          "name" : "contextId",
+          "in" : "path",
+          "description" : "The ID of the Parameter Context",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "assetId",
+          "in" : "path",
+          "description" : "The ID of the Asset",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "default" : {
+            "content" : {
+              "application/octet-stream" : {
+                "schema" : {
+                  "type" : "string",
+                  "format" : "byte"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "NiFi was unable to complete the request because it was invalid. The request should not be retried without modification."
+          },
+          "401" : {
+            "description" : "Client could not be authenticated."
+          },
+          "403" : {
+            "description" : "Client is not authorized to make this request."
+          },
+          "404" : {
+            "description" : "The specified resource could not be found."
+          },
+          "409" : {
+            "description" : "The request was valid but NiFi was not in the appropriate state to process it."
+          }
+        },
+        "security" : [ {
+          "Read - /parameter-contexts/{id}" : [ ]
+        } ]
+      },
+      "delete" : {
+        "tags" : [ "ParameterContexts" ],
+        "summary" : "Deletes an Asset from the given Parameter Context",
+        "description" : "This endpoint will create a new Asset in the given Parameter Context. The Asset will be created with the given name and the contents of the file that is uploaded. The Asset will be created in the given Parameter Context, and will be available for use by any component that references the Parameter Context.",
+        "operationId" : "deleteAsset",
+        "parameters" : [ {
+          "name" : "disconnectedNodeAcknowledged",
+          "in" : "query",
+          "schema" : {
+            "type" : "boolean",
+            "default" : false
+          }
+        }, {
+          "name" : "contextId",
+          "in" : "path",
+          "description" : "The ID of the Parameter Context",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "assetId",
+          "in" : "path",
+          "description" : "The ID of the Asset",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "default" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/AssetEntity"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "NiFi was unable to complete the request because it was invalid. The request should not be retried without modification."
+          },
+          "401" : {
+            "description" : "Client could not be authenticated."
+          },
+          "403" : {
+            "description" : "Client is not authorized to make this request."
+          },
+          "404" : {
+            "description" : "The specified resource could not be found."
+          },
+          "409" : {
+            "description" : "The request was valid but NiFi was not in the appropriate state to process it."
+          }
+        },
+        "security" : [ {
+          "Read - /parameter-contexts/{parameterContextId}" : [ ]
+        }, {
+          "Write - /parameter-contexts/{parameterContextId}" : [ ]
+        }, {
+          "Read - for every component that is affected by the update" : [ ]
+        }, {
+          "Write - for every component that is affected by the update" : [ ]
+        }, {
+          "Read - for every currently inherited parameter context" : [ ]
         } ]
       }
     },
@@ -11257,6 +12150,13 @@
         "summary" : "Gets the input content for a provenance event",
         "operationId" : "getInputContent",
         "parameters" : [ {
+          "name" : "Range",
+          "in" : "header",
+          "description" : "Range of bytes requested",
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
           "name" : "clusterNodeId",
           "in" : "query",
           "description" : "The id of the node where the content exists if clustered.",
@@ -11278,6 +12178,68 @@
               "*/*" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/StreamingOutput"
+                }
+              }
+            }
+          },
+          "206" : {
+            "description" : "Partial Content with range of bytes requested"
+          },
+          "400" : {
+            "description" : "NiFi was unable to complete the request because it was invalid. The request should not be retried without modification."
+          },
+          "401" : {
+            "description" : "Client could not be authenticated."
+          },
+          "403" : {
+            "description" : "Client is not authorized to make this request."
+          },
+          "404" : {
+            "description" : "The specified resource could not be found."
+          },
+          "409" : {
+            "description" : "The request was valid but NiFi was not in the appropriate state to process it."
+          },
+          "416" : {
+            "description" : "Requested Range Not Satisfiable based on bytes requested"
+          }
+        },
+        "security" : [ {
+          "Read Component Provenance Data - /provenance-data/{component-type}/{uuid}" : [ ]
+        }, {
+          "Read Component Data - /data/{component-type}/{uuid}" : [ ]
+        } ]
+      }
+    },
+    "/provenance-events/latest/{componentId}" : {
+      "get" : {
+        "tags" : [ "ProvenanceEvents" ],
+        "summary" : "Retrieves the latest cached Provenance Events for the specified component",
+        "operationId" : "getLatestProvenanceEvents",
+        "parameters" : [ {
+          "name" : "componentId",
+          "in" : "path",
+          "description" : "The ID of the component to retrieve the latest Provenance Events for.",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "limit",
+          "in" : "query",
+          "description" : "The number of events to limit the response to. Defaults to 10.",
+          "schema" : {
+            "type" : "integer",
+            "format" : "int32",
+            "default" : 10
+          }
+        } ],
+        "responses" : {
+          "default" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/LatestProvenanceEventsEntity"
                 }
               }
             }
@@ -11311,6 +12273,13 @@
         "summary" : "Gets the output content for a provenance event",
         "operationId" : "getOutputContent",
         "parameters" : [ {
+          "name" : "Range",
+          "in" : "header",
+          "description" : "Range of bytes requested",
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
           "name" : "clusterNodeId",
           "in" : "query",
           "description" : "The id of the node where the content exists if clustered.",
@@ -11336,6 +12305,9 @@
               }
             }
           },
+          "206" : {
+            "description" : "Partial Content with range of bytes requested"
+          },
           "400" : {
             "description" : "NiFi was unable to complete the request because it was invalid. The request should not be retried without modification."
           },
@@ -11350,6 +12322,9 @@
           },
           "409" : {
             "description" : "The request was valid but NiFi was not in the appropriate state to process it."
+          },
+          "416" : {
+            "description" : "Requested Range Not Satisfiable based on bytes requested"
           }
         },
         "security" : [ {
@@ -15085,83 +16060,42 @@
           }
         }
       },
-      "AccessStatusDTO" : {
+      "AuthenticationConfigurationDTO" : {
         "type" : "object",
         "properties" : {
-          "identity" : {
-            "type" : "string",
-            "description" : "The user identity.",
-            "readOnly" : true
-          },
-          "status" : {
-            "type" : "string",
-            "description" : "The user access status.",
-            "readOnly" : true
-          },
-          "message" : {
-            "type" : "string",
-            "description" : "Additional details about the user access status.",
-            "readOnly" : true
-          }
-        },
-        "xml" : {
-          "name" : "accessStatus"
-        }
-      },
-      "AccessStatusEntity" : {
-        "type" : "object",
-        "properties" : {
-          "accessStatus" : {
-            "$ref" : "#/components/schemas/AccessStatusDTO"
-          }
-        },
-        "xml" : {
-          "name" : "accessStatusEntity"
-        }
-      },
-      "AccessTokenExpirationDTO" : {
-        "type" : "object",
-        "properties" : {
-          "expiration" : {
-            "type" : "string",
-            "description" : "Token Expiration",
-            "readOnly" : true
-          }
-        },
-        "xml" : {
-          "name" : "accessTokenExpiration"
-        }
-      },
-      "AccessTokenExpirationEntity" : {
-        "type" : "object",
-        "properties" : {
-          "accessTokenExpiration" : {
-            "$ref" : "#/components/schemas/AccessTokenExpirationDTO"
-          }
-        },
-        "xml" : {
-          "name" : "accessTokenExpirationEntity"
-        }
-      },
-      "AccessConfigurationDTO" : {
-        "type" : "object",
-        "properties" : {
-          "supportsLogin" : {
+          "externalLoginRequired" : {
             "type" : "boolean",
-            "description" : "Indicates whether or not this NiFi supports user login.",
+            "description" : "Whether the system requires login through an external Identity Provider",
+            "readOnly" : true
+          },
+          "loginSupported" : {
+            "type" : "boolean",
+            "description" : "Whether the system is configured to support login operations",
+            "readOnly" : true
+          },
+          "loginUri" : {
+            "type" : "string",
+            "description" : "Location for initiating login processing",
+            "nullable" : true,
+            "readOnly" : true
+          },
+          "logoutUri" : {
+            "type" : "string",
+            "description" : "Location for initiating logout processing",
+            "nullable" : true,
             "readOnly" : true
           }
         }
       },
-      "AccessConfigurationEntity" : {
+      "AuthenticationConfigurationEntity" : {
         "type" : "object",
         "properties" : {
-          "config" : {
-            "$ref" : "#/components/schemas/AccessConfigurationDTO"
+          "authenticationConfiguration" : {
+            "$ref" : "#/components/schemas/AuthenticationConfigurationDTO"
           }
         },
         "xml" : {
-          "name" : "accessConfigurationEntity"
+          "name" : "authenticationConfigurationEntity"
         }
       },
       "ConnectableDTO" : {
@@ -16587,6 +17521,21 @@
           "name" : "affectedComponentEntity"
         }
       },
+      "AssetReferenceDTO" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "description" : "The identifier of the referenced asset."
+          },
+          "name" : {
+            "type" : "string",
+            "description" : "The name of the referenced asset.",
+            "readOnly" : true
+          }
+        },
+        "description" : "A list of identifiers of the assets that are referenced by the parameter"
+      },
       "ParameterContextReferenceDTO" : {
         "type" : "object",
         "properties" : {
@@ -16645,6 +17594,13 @@
           "provided" : {
             "type" : "boolean",
             "description" : "Whether or not the Parameter is provided by a ParameterProvider"
+          },
+          "referencedAssets" : {
+            "type" : "array",
+            "description" : "A list of identifiers of the assets that are referenced by the parameter",
+            "items" : {
+              "$ref" : "#/components/schemas/AssetReferenceDTO"
+            }
           },
           "referencingComponents" : {
             "uniqueItems" : true,
@@ -17412,6 +18368,88 @@
           }
         }
       },
+      "NarCoordinateDTO" : {
+        "type" : "object",
+        "properties" : {
+          "group" : {
+            "type" : "string",
+            "description" : "The group of the NAR."
+          },
+          "artifact" : {
+            "type" : "string",
+            "description" : "The artifact id of the NAR."
+          },
+          "version" : {
+            "type" : "string",
+            "description" : "The version of the NAR."
+          }
+        },
+        "description" : "The coordinate of another NAR that the this NAR is dependent on, or null if not dependent on another NAR."
+      },
+      "NarSummaryDTO" : {
+        "type" : "object",
+        "properties" : {
+          "identifier" : {
+            "type" : "string",
+            "description" : "The identifier of the NAR."
+          },
+          "coordinate" : {
+            "$ref" : "#/components/schemas/NarCoordinateDTO"
+          },
+          "dependencyCoordinate" : {
+            "$ref" : "#/components/schemas/NarCoordinateDTO"
+          },
+          "buildTime" : {
+            "type" : "string",
+            "description" : "The time the NAR was built according to it's MANIFEST"
+          },
+          "createdBy" : {
+            "type" : "string",
+            "description" : "The plugin that created the NAR according to it's MANIFEST"
+          },
+          "digest" : {
+            "type" : "string",
+            "description" : "The hex digest of the NAR contents"
+          },
+          "sourceType" : {
+            "type" : "string",
+            "description" : "The source of this NAR"
+          },
+          "sourceIdentifier" : {
+            "type" : "string",
+            "description" : "The identifier of the source of this NAR"
+          },
+          "extensionCount" : {
+            "type" : "integer",
+            "description" : "The number of extensions contained in this NAR",
+            "format" : "int32"
+          },
+          "state" : {
+            "type" : "string",
+            "description" : "The state of the NAR (i.e. Installed, or not)"
+          },
+          "failureMessage" : {
+            "type" : "string",
+            "description" : "Information about why the installation failed, only populated when the state is failed"
+          },
+          "installComplete" : {
+            "type" : "boolean",
+            "description" : "Indicates if the install task has completed"
+          }
+        },
+        "description" : "The NAR summary"
+      },
+      "NarSummaryEntity" : {
+        "type" : "object",
+        "properties" : {
+          "narSummary" : {
+            "$ref" : "#/components/schemas/NarSummaryDTO"
+          }
+        },
+        "xml" : {
+          "name" : "entity"
+        }
+      },
       "NodeDTO" : {
         "type" : "object",
         "properties" : {
@@ -17637,64 +18675,6 @@
           "name" : "registryClientsEntity"
         }
       },
-      "ComponentHistoryDTO" : {
-        "type" : "object",
-        "properties" : {
-          "componentId" : {
-            "type" : "string",
-            "description" : "The component id."
-          },
-          "propertyHistory" : {
-            "type" : "object",
-            "additionalProperties" : {
-              "$ref" : "#/components/schemas/PropertyHistoryDTO"
-            },
-            "description" : "The history for the properties of the component."
-          }
-        }
-      },
-      "ComponentHistoryEntity" : {
-        "type" : "object",
-        "properties" : {
-          "componentHistory" : {
-            "$ref" : "#/components/schemas/ComponentHistoryDTO"
-          }
-        },
-        "xml" : {
-          "name" : "componentHistoryEntity"
-        }
-      },
-      "PreviousValueDTO" : {
-        "type" : "object",
-        "properties" : {
-          "previousValue" : {
-            "type" : "string",
-            "description" : "The previous value."
-          },
-          "timestamp" : {
-            "type" : "string",
-            "description" : "The timestamp when the value was modified."
-          },
-          "userIdentity" : {
-            "type" : "string",
-            "description" : "The user who changed the previous value."
-          }
-        },
-        "description" : "Previous values for a given property."
-      },
-      "PropertyHistoryDTO" : {
-        "type" : "object",
-        "properties" : {
-          "previousValues" : {
-            "type" : "array",
-            "description" : "Previous values for a given property.",
-            "items" : {
-              "$ref" : "#/components/schemas/PreviousValueDTO"
-            }
-          }
-        },
-        "description" : "The history for the properties of the component."
-      },
       "DocumentedTypeDTO" : {
         "type" : "object",
         "properties" : {
@@ -17760,19 +18740,71 @@
         },
         "description" : "An optional collection of explicit restrictions. If specified, these explicit restrictions will be enfored."
       },
-      "FlowRegistryClientTypesEntity" : {
+      "NarDetailsEntity" : {
         "type" : "object",
         "properties" : {
+          "narSummary" : {
+            "$ref" : "#/components/schemas/NarSummaryDTO"
+          },
+          "dependentCoordinates" : {
+            "uniqueItems" : true,
+            "type" : "array",
+            "description" : "The coordinates of NARs that depend on this NAR",
+            "items" : {
+              "$ref" : "#/components/schemas/NarCoordinateDTO"
+            }
+          },
+          "processorTypes" : {
+            "uniqueItems" : true,
+            "type" : "array",
+            "description" : "The Processor types contained in the NAR",
+            "items" : {
+              "$ref" : "#/components/schemas/DocumentedTypeDTO"
+            }
+          },
+          "controllerServiceTypes" : {
+            "uniqueItems" : true,
+            "type" : "array",
+            "description" : "The ControllerService types contained in the NAR",
+            "items" : {
+              "$ref" : "#/components/schemas/DocumentedTypeDTO"
+            }
+          },
+          "reportingTaskTypes" : {
+            "uniqueItems" : true,
+            "type" : "array",
+            "description" : "The ReportingTask types contained in the NAR",
+            "items" : {
+              "$ref" : "#/components/schemas/DocumentedTypeDTO"
+            }
+          },
+          "parameterProviderTypes" : {
+            "uniqueItems" : true,
+            "type" : "array",
+            "description" : "The ParameterProvider types contained in the NAR",
+            "items" : {
+              "$ref" : "#/components/schemas/DocumentedTypeDTO"
+            }
+          },
           "flowRegistryClientTypes" : {
             "uniqueItems" : true,
             "type" : "array",
+            "description" : "The FlowRegistryClient types contained in the NAR",
+            "items" : {
+              "$ref" : "#/components/schemas/DocumentedTypeDTO"
+            }
+          },
+          "flowAnalysisRuleTypes" : {
+            "uniqueItems" : true,
+            "type" : "array",
+            "description" : "The FlowAnalysisRule types contained in the NAR",
             "items" : {
               "$ref" : "#/components/schemas/DocumentedTypeDTO"
             }
           }
         },
         "xml" : {
-          "name" : "flowRegistryClientTypesEntity"
+          "name" : "entity"
         }
       },
       "RequiredPermissionDTO" : {
@@ -17788,6 +18820,98 @@
           }
         },
         "description" : "The required permission necessary for this restriction."
+      },
+      "NarSummariesEntity" : {
+        "type" : "object",
+        "properties" : {
+          "currentTime" : {
+            "type" : "string",
+            "description" : "The current time on the system."
+          },
+          "narSummaries" : {
+            "type" : "array",
+            "description" : "The NAR summaries",
+            "items" : {
+              "$ref" : "#/components/schemas/NarSummaryEntity"
+            }
+          }
+        },
+        "xml" : {
+          "name" : "entity"
+        }
+      },
+      "ComponentHistoryDTO" : {
+        "type" : "object",
+        "properties" : {
+          "componentId" : {
+            "type" : "string",
+            "description" : "The component id."
+          },
+          "propertyHistory" : {
+            "type" : "object",
+            "additionalProperties" : {
+              "$ref" : "#/components/schemas/PropertyHistoryDTO"
+            },
+            "description" : "The history for the properties of the component."
+          }
+        }
+      },
+      "ComponentHistoryEntity" : {
+        "type" : "object",
+        "properties" : {
+          "componentHistory" : {
+            "$ref" : "#/components/schemas/ComponentHistoryDTO"
+          }
+        },
+        "xml" : {
+          "name" : "componentHistoryEntity"
+        }
+      },
+      "PreviousValueDTO" : {
+        "type" : "object",
+        "properties" : {
+          "previousValue" : {
+            "type" : "string",
+            "description" : "The previous value."
+          },
+          "timestamp" : {
+            "type" : "string",
+            "description" : "The timestamp when the value was modified."
+          },
+          "userIdentity" : {
+            "type" : "string",
+            "description" : "The user who changed the previous value."
+          }
+        },
+        "description" : "Previous values for a given property."
+      },
+      "PropertyHistoryDTO" : {
+        "type" : "object",
+        "properties" : {
+          "previousValues" : {
+            "type" : "array",
+            "description" : "Previous values for a given property.",
+            "items" : {
+              "$ref" : "#/components/schemas/PreviousValueDTO"
+            }
+          }
+        },
+        "description" : "The history for the properties of the component."
+      },
+      "FlowRegistryClientTypesEntity" : {
+        "type" : "object",
+        "properties" : {
+          "flowRegistryClientTypes" : {
+            "uniqueItems" : true,
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/DocumentedTypeDTO"
+            }
+          }
+        },
+        "xml" : {
+          "name" : "flowRegistryClientTypesEntity"
+        }
       },
       "VersionedReportingTaskImportResponseEntity" : {
         "type" : "object",
@@ -18412,6 +19536,10 @@
             "type" : "string",
             "description" : "The FlowFile filename."
           },
+          "mimeType" : {
+            "type" : "string",
+            "description" : "The FlowFile mime type."
+          },
           "position" : {
             "type" : "integer",
             "description" : "The FlowFile's position in the queue.",
@@ -18554,6 +19682,10 @@
           "filename" : {
             "type" : "string",
             "description" : "The FlowFile filename."
+          },
+          "mimeType" : {
+            "type" : "string",
+            "description" : "The FlowFile mime type."
           },
           "position" : {
             "type" : "integer",
@@ -18727,6 +19859,17 @@
             "type" : "integer",
             "format" : "int32"
           }
+        }
+      },
+      "AdditionalDetailsEntity" : {
+        "type" : "object",
+        "properties" : {
+          "additionalDetails" : {
+            "type" : "string"
+          }
+        },
+        "xml" : {
+          "name" : "additionalDetailsEntity"
         }
       },
       "FlowAnalysisResultEntity" : {
@@ -19380,6 +20523,453 @@
           }
         },
         "description" : "A list of StatusSnapshotDTO objects that provide the actual metric values for the component for this node."
+      },
+      "ContentViewerDTO" : {
+        "type" : "object",
+        "properties" : {
+          "displayName" : {
+            "type" : "string",
+            "description" : "The display name of the Content Viewer.",
+            "readOnly" : true
+          },
+          "uri" : {
+            "type" : "string",
+            "description" : "The uri of the Content Viewer.",
+            "readOnly" : true
+          },
+          "supportedMimeTypes" : {
+            "type" : "array",
+            "description" : "The mime types this Content Viewer supports.",
+            "readOnly" : true,
+            "items" : {
+              "$ref" : "#/components/schemas/SupportedMimeTypesDTO"
+            }
+          }
+        },
+        "description" : "The Content Viewers.",
+        "readOnly" : true
+      },
+      "ContentViewerEntity" : {
+        "type" : "object",
+        "properties" : {
+          "contentViewers" : {
+            "type" : "array",
+            "description" : "The Content Viewers.",
+            "readOnly" : true,
+            "items" : {
+              "$ref" : "#/components/schemas/ContentViewerDTO"
+            }
+          }
+        },
+        "xml" : {
+          "name" : "contentViewerEntity"
+        }
+      },
+      "SupportedMimeTypesDTO" : {
+        "type" : "object",
+        "properties" : {
+          "displayName" : {
+            "type" : "string",
+            "description" : "The display name of the mime types.",
+            "readOnly" : true
+          },
+          "mimeTypes" : {
+            "type" : "array",
+            "description" : "The mime types this Content Viewer supports.",
+            "readOnly" : true,
+            "items" : {
+              "type" : "string",
+              "description" : "The mime types this Content Viewer supports.",
+              "readOnly" : true
+            }
+          }
+        },
+        "description" : "The mime types this Content Viewer supports.",
+        "readOnly" : true
+      },
+      "BuildInfo" : {
+        "type" : "object",
+        "properties" : {
+          "version" : {
+            "type" : "string",
+            "description" : "The version number of the built component."
+          },
+          "revision" : {
+            "type" : "string",
+            "description" : "The SCM revision id of the source code used for this build."
+          },
+          "timestamp" : {
+            "type" : "integer",
+            "description" : "The timestamp (milliseconds since Epoch) of the build.",
+            "format" : "int64"
+          },
+          "targetArch" : {
+            "type" : "string",
+            "description" : "The target architecture of the built component."
+          },
+          "compiler" : {
+            "type" : "string",
+            "description" : "The compiler used for the build"
+          },
+          "compilerFlags" : {
+            "type" : "string",
+            "description" : "The compiler flags used for the build."
+          }
+        },
+        "description" : "The build metadata for this component"
+      },
+      "ControllerServiceDefinition" : {
+        "type" : "object",
+        "properties" : {
+          "group" : {
+            "type" : "string",
+            "description" : "The group name of the bundle that provides the referenced type."
+          },
+          "artifact" : {
+            "type" : "string",
+            "description" : "The artifact name of the bundle that provides the referenced type."
+          },
+          "version" : {
+            "type" : "string",
+            "description" : "The version of the bundle that provides the referenced type."
+          },
+          "type" : {
+            "type" : "string",
+            "description" : "The fully-qualified class type"
+          },
+          "typeDescription" : {
+            "type" : "string",
+            "description" : "The description of the type."
+          },
+          "buildInfo" : {
+            "$ref" : "#/components/schemas/BuildInfo"
+          },
+          "providedApiImplementations" : {
+            "type" : "array",
+            "description" : "If this type represents a provider for an interface, this lists the APIs it implements",
+            "items" : {
+              "$ref" : "#/components/schemas/DefinedType"
+            }
+          },
+          "tags" : {
+            "uniqueItems" : true,
+            "type" : "array",
+            "description" : "The tags associated with this type",
+            "items" : {
+              "type" : "string",
+              "description" : "The tags associated with this type"
+            }
+          },
+          "seeAlso" : {
+            "uniqueItems" : true,
+            "type" : "array",
+            "description" : "The names of other component types that may be related",
+            "items" : {
+              "type" : "string",
+              "description" : "The names of other component types that may be related"
+            }
+          },
+          "deprecated" : {
+            "type" : "boolean",
+            "description" : "Whether or not the component has been deprecated"
+          },
+          "deprecationReason" : {
+            "type" : "string",
+            "description" : "If this component has been deprecated, this optional field can be used to provide an explanation"
+          },
+          "deprecationAlternatives" : {
+            "uniqueItems" : true,
+            "type" : "array",
+            "description" : "If this component has been deprecated, this optional field provides alternatives to use",
+            "items" : {
+              "type" : "string",
+              "description" : "If this component has been deprecated, this optional field provides alternatives to use"
+            }
+          },
+          "restricted" : {
+            "type" : "boolean",
+            "description" : "Whether or not the component has a general restriction"
+          },
+          "restrictedExplanation" : {
+            "type" : "string",
+            "description" : "An optional description of the general restriction"
+          },
+          "explicitRestrictions" : {
+            "uniqueItems" : true,
+            "type" : "array",
+            "description" : "Explicit restrictions that indicate a require permission to use the component",
+            "items" : {
+              "$ref" : "#/components/schemas/Restriction"
+            }
+          },
+          "stateful" : {
+            "$ref" : "#/components/schemas/Stateful"
+          },
+          "systemResourceConsiderations" : {
+            "type" : "array",
+            "description" : "The system resource considerations for the given component",
+            "items" : {
+              "$ref" : "#/components/schemas/SystemResourceConsideration"
+            }
+          },
+          "additionalDetails" : {
+            "type" : "boolean",
+            "description" : "Indicates if the component has additional details documentation"
+          },
+          "propertyDescriptors" : {
+            "type" : "object",
+            "additionalProperties" : {
+              "$ref" : "#/components/schemas/PropertyDescriptor"
+            },
+            "description" : "Descriptions of configuration properties applicable to this component."
+          },
+          "supportsDynamicProperties" : {
+            "type" : "boolean",
+            "description" : "Whether or not this component makes use of dynamic (user-set) properties."
+          },
+          "supportsSensitiveDynamicProperties" : {
+            "type" : "boolean",
+            "description" : "Whether or not this component makes use of sensitive dynamic (user-set) properties."
+          },
+          "dynamicProperties" : {
+            "type" : "array",
+            "description" : "Describes the dynamic properties supported by this component",
+            "items" : {
+              "$ref" : "#/components/schemas/DynamicProperty"
+            }
+          }
+        },
+        "description" : "Controller Services provided in this bundle"
+      },
+      "DefinedType" : {
+        "type" : "object",
+        "properties" : {
+          "group" : {
+            "type" : "string",
+            "description" : "The group name of the bundle that provides the referenced type."
+          },
+          "artifact" : {
+            "type" : "string",
+            "description" : "The artifact name of the bundle that provides the referenced type."
+          },
+          "version" : {
+            "type" : "string",
+            "description" : "The version of the bundle that provides the referenced type."
+          },
+          "type" : {
+            "type" : "string",
+            "description" : "The fully-qualified class type"
+          },
+          "typeDescription" : {
+            "type" : "string",
+            "description" : "The description of the type."
+          }
+        },
+        "description" : "Indicates that this property is for selecting a controller service of the specified type"
+      },
+      "DynamicProperty" : {
+        "type" : "object",
+        "properties" : {
+          "name" : {
+            "type" : "string",
+            "description" : "The description of the dynamic property name"
+          },
+          "value" : {
+            "type" : "string",
+            "description" : "The description of the dynamic property value"
+          },
+          "description" : {
+            "type" : "string",
+            "description" : "The description of the dynamic property"
+          },
+          "expressionLanguageScope" : {
+            "type" : "string",
+            "description" : "The scope of the expression language support",
+            "enum" : [ "NONE", "ENVIRONMENT", "FLOWFILE_ATTRIBUTES" ]
+          }
+        },
+        "description" : "Describes the dynamic properties supported by this component"
+      },
+      "PropertyAllowableValue" : {
+        "type" : "object",
+        "properties" : {
+          "value" : {
+            "type" : "string",
+            "description" : "The internal value"
+          },
+          "displayName" : {
+            "type" : "string",
+            "description" : "The display name of the value, if different from the internal value"
+          },
+          "description" : {
+            "type" : "string",
+            "description" : "The description of the value, e.g., the behavior it produces."
+          }
+        },
+        "description" : "A list of the allowable values for the property"
+      },
+      "PropertyDependency" : {
+        "type" : "object",
+        "properties" : {
+          "propertyName" : {
+            "type" : "string",
+            "description" : "The name of the property that is depended upon"
+          },
+          "propertyDisplayName" : {
+            "type" : "string",
+            "description" : "The name of the property that is depended upon"
+          },
+          "dependentValues" : {
+            "type" : "array",
+            "description" : "The values that satisfy the dependency",
+            "items" : {
+              "type" : "string",
+              "description" : "The values that satisfy the dependency"
+            }
+          }
+        },
+        "description" : "The dependencies that this property has on other properties"
+      },
+      "PropertyDescriptor" : {
+        "type" : "object",
+        "properties" : {
+          "name" : {
+            "type" : "string",
+            "description" : "The name of the property key"
+          },
+          "displayName" : {
+            "type" : "string",
+            "description" : "The display name of the property key, if different from the name"
+          },
+          "description" : {
+            "type" : "string",
+            "description" : "The description of what the property does"
+          },
+          "allowableValues" : {
+            "type" : "array",
+            "description" : "A list of the allowable values for the property",
+            "items" : {
+              "$ref" : "#/components/schemas/PropertyAllowableValue"
+            }
+          },
+          "defaultValue" : {
+            "type" : "string",
+            "description" : "The default value if a user-set value is not specified"
+          },
+          "required" : {
+            "type" : "boolean",
+            "description" : "Whether or not  the property is required for the component"
+          },
+          "sensitive" : {
+            "type" : "boolean",
+            "description" : "Whether or not  the value of the property is considered sensitive (e.g., passwords and keys)"
+          },
+          "expressionLanguageScope" : {
+            "type" : "string",
+            "description" : "The scope of expression language supported by this property",
+            "enum" : [ "NONE", "ENVIRONMENT", "FLOWFILE_ATTRIBUTES" ]
+          },
+          "expressionLanguageScopeDescription" : {
+            "type" : "string",
+            "description" : "The description of the expression language scope supported by this property",
+            "readOnly" : true
+          },
+          "typeProvidedByValue" : {
+            "$ref" : "#/components/schemas/DefinedType"
+          },
+          "validRegex" : {
+            "type" : "string",
+            "description" : "A regular expression that can be used to validate the value of this property"
+          },
+          "validator" : {
+            "type" : "string",
+            "description" : "Name of the validator used for this property descriptor"
+          },
+          "dynamic" : {
+            "type" : "boolean",
+            "description" : "Whether or not the descriptor is for a dynamically added property"
+          },
+          "resourceDefinition" : {
+            "$ref" : "#/components/schemas/PropertyResourceDefinition"
+          },
+          "dependencies" : {
+            "type" : "array",
+            "description" : "The dependencies that this property has on other properties",
+            "items" : {
+              "$ref" : "#/components/schemas/PropertyDependency"
+            }
+          }
+        },
+        "description" : "Descriptions of configuration properties applicable to this component."
+      },
+      "PropertyResourceDefinition" : {
+        "type" : "object",
+        "properties" : {
+          "cardinality" : {
+            "type" : "string",
+            "description" : "The cardinality of the resource definition (i.e. single or multiple)",
+            "enum" : [ "SINGLE", "MULTIPLE" ]
+          },
+          "resourceTypes" : {
+            "uniqueItems" : true,
+            "type" : "array",
+            "description" : "The types of resources that can be referenced",
+            "items" : {
+              "type" : "string",
+              "description" : "The types of resources that can be referenced",
+              "enum" : [ "FILE", "DIRECTORY", "TEXT", "URL" ]
+            }
+          }
+        },
+        "description" : "Indicates that this property references external resources"
+      },
+      "Restriction" : {
+        "type" : "object",
+        "properties" : {
+          "requiredPermission" : {
+            "type" : "string",
+            "description" : "The permission required for this restriction"
+          },
+          "explanation" : {
+            "type" : "string",
+            "description" : "The explanation of this restriction"
+          }
+        },
+        "description" : "Explicit restrictions that indicate a require permission to use the component"
+      },
+      "Stateful" : {
+        "type" : "object",
+        "properties" : {
+          "description" : {
+            "type" : "string",
+            "description" : "Description of what information is being stored in the StateManager"
+          },
+          "scopes" : {
+            "uniqueItems" : true,
+            "type" : "array",
+            "description" : "Indicates the Scope(s) associated with the State that is stored and retrieved",
+            "items" : {
+              "type" : "string",
+              "description" : "Indicates the Scope(s) associated with the State that is stored and retrieved",
+              "enum" : [ "CLUSTER", "LOCAL" ]
+            }
+          }
+        },
+        "description" : "Indicates if the component stores state"
+      },
+      "SystemResourceConsideration" : {
+        "type" : "object",
+        "properties" : {
+          "resource" : {
+            "type" : "string",
+            "description" : "The resource to consider"
+          },
+          "description" : {
+            "type" : "string",
+            "description" : "The description of how the resource is affected"
+          }
+        },
+        "description" : "The system resource considerations for the given component"
       },
       "ControllerServiceTypesEntity" : {
         "type" : "object",
@@ -21006,6 +22596,9 @@
           "processingNanos" : {
             "type" : "integer",
             "format" : "int64"
+          },
+          "processingPerformanceStatus" : {
+            "$ref" : "#/components/schemas/ProcessingPerformanceStatusDTO"
           }
         },
         "description" : "The process group status snapshot from the node."
@@ -21030,6 +22623,41 @@
         "xml" : {
           "name" : "entity"
         }
+      },
+      "ProcessingPerformanceStatusDTO" : {
+        "type" : "object",
+        "properties" : {
+          "identifier" : {
+            "type" : "string",
+            "description" : "The unique ID of the process group that the Processor belongs to"
+          },
+          "cpuDuration" : {
+            "type" : "integer",
+            "description" : "The number of nanoseconds has spent on CPU usage in the last 5 minutes.",
+            "format" : "int64"
+          },
+          "contentReadDuration" : {
+            "type" : "integer",
+            "description" : "The number of nanoseconds has spent to read content in the last 5 minutes.",
+            "format" : "int64"
+          },
+          "contentWriteDuration" : {
+            "type" : "integer",
+            "description" : "The number of nanoseconds has spent to write content in the last 5 minutes.",
+            "format" : "int64"
+          },
+          "sessionCommitDuration" : {
+            "type" : "integer",
+            "description" : "The number of nanoseconds has spent running to commit sessions the last 5 minutes.",
+            "format" : "int64"
+          },
+          "garbageCollectionDuration" : {
+            "type" : "integer",
+            "description" : "The number of nanoseconds has spent running garbage collection in the last 5 minutes.",
+            "format" : "int64"
+          }
+        },
+        "description" : "Represents the processor's processing performance."
       },
       "ProcessorConfigDTO" : {
         "type" : "object",
@@ -21463,6 +23091,9 @@
             "type" : "integer",
             "description" : "The number of threads currently terminated for the processor.",
             "format" : "int32"
+          },
+          "processingPerformanceStatus" : {
+            "$ref" : "#/components/schemas/ProcessingPerformanceStatusDTO"
           }
         },
         "description" : "The processor status snapshot from the node."
@@ -22015,6 +23646,20 @@
           "name" : "entity"
         }
       },
+      "VersionedAsset" : {
+        "type" : "object",
+        "properties" : {
+          "identifier" : {
+            "type" : "string",
+            "description" : "The identifier of the asset"
+          },
+          "name" : {
+            "type" : "string",
+            "description" : "The name of the asset"
+          }
+        },
+        "description" : "The assets that are referenced by this parameter"
+      },
       "VersionedConnection" : {
         "type" : "object",
         "properties" : {
@@ -22264,6 +23909,13 @@
           "value" : {
             "type" : "string",
             "description" : "The value of the parameter"
+          },
+          "referencedAssets" : {
+            "type" : "array",
+            "description" : "The assets that are referenced by this parameter",
+            "items" : {
+              "$ref" : "#/components/schemas/VersionedAsset"
+            }
           }
         },
         "description" : "The parameters in the context"
@@ -22823,6 +24475,129 @@
         },
         "description" : "The Remote Process Groups"
       },
+      "FlowAnalysisRuleDefinition" : {
+        "type" : "object",
+        "properties" : {
+          "group" : {
+            "type" : "string",
+            "description" : "The group name of the bundle that provides the referenced type."
+          },
+          "artifact" : {
+            "type" : "string",
+            "description" : "The artifact name of the bundle that provides the referenced type."
+          },
+          "version" : {
+            "type" : "string",
+            "description" : "The version of the bundle that provides the referenced type."
+          },
+          "type" : {
+            "type" : "string",
+            "description" : "The fully-qualified class type"
+          },
+          "typeDescription" : {
+            "type" : "string",
+            "description" : "The description of the type."
+          },
+          "buildInfo" : {
+            "$ref" : "#/components/schemas/BuildInfo"
+          },
+          "providedApiImplementations" : {
+            "type" : "array",
+            "description" : "If this type represents a provider for an interface, this lists the APIs it implements",
+            "items" : {
+              "$ref" : "#/components/schemas/DefinedType"
+            }
+          },
+          "tags" : {
+            "uniqueItems" : true,
+            "type" : "array",
+            "description" : "The tags associated with this type",
+            "items" : {
+              "type" : "string",
+              "description" : "The tags associated with this type"
+            }
+          },
+          "seeAlso" : {
+            "uniqueItems" : true,
+            "type" : "array",
+            "description" : "The names of other component types that may be related",
+            "items" : {
+              "type" : "string",
+              "description" : "The names of other component types that may be related"
+            }
+          },
+          "deprecated" : {
+            "type" : "boolean",
+            "description" : "Whether or not the component has been deprecated"
+          },
+          "deprecationReason" : {
+            "type" : "string",
+            "description" : "If this component has been deprecated, this optional field can be used to provide an explanation"
+          },
+          "deprecationAlternatives" : {
+            "uniqueItems" : true,
+            "type" : "array",
+            "description" : "If this component has been deprecated, this optional field provides alternatives to use",
+            "items" : {
+              "type" : "string",
+              "description" : "If this component has been deprecated, this optional field provides alternatives to use"
+            }
+          },
+          "restricted" : {
+            "type" : "boolean",
+            "description" : "Whether or not the component has a general restriction"
+          },
+          "restrictedExplanation" : {
+            "type" : "string",
+            "description" : "An optional description of the general restriction"
+          },
+          "explicitRestrictions" : {
+            "uniqueItems" : true,
+            "type" : "array",
+            "description" : "Explicit restrictions that indicate a require permission to use the component",
+            "items" : {
+              "$ref" : "#/components/schemas/Restriction"
+            }
+          },
+          "stateful" : {
+            "$ref" : "#/components/schemas/Stateful"
+          },
+          "systemResourceConsiderations" : {
+            "type" : "array",
+            "description" : "The system resource considerations for the given component",
+            "items" : {
+              "$ref" : "#/components/schemas/SystemResourceConsideration"
+            }
+          },
+          "additionalDetails" : {
+            "type" : "boolean",
+            "description" : "Indicates if the component has additional details documentation"
+          },
+          "propertyDescriptors" : {
+            "type" : "object",
+            "additionalProperties" : {
+              "$ref" : "#/components/schemas/PropertyDescriptor"
+            },
+            "description" : "Descriptions of configuration properties applicable to this component."
+          },
+          "supportsDynamicProperties" : {
+            "type" : "boolean",
+            "description" : "Whether or not this component makes use of dynamic (user-set) properties."
+          },
+          "supportsSensitiveDynamicProperties" : {
+            "type" : "boolean",
+            "description" : "Whether or not this component makes use of sensitive dynamic (user-set) properties."
+          },
+          "dynamicProperties" : {
+            "type" : "array",
+            "description" : "Describes the dynamic properties supported by this component",
+            "items" : {
+              "$ref" : "#/components/schemas/DynamicProperty"
+            }
+          }
+        },
+        "description" : "Flow Analysis Rules provided in this bundle"
+      },
       "FlowAnalysisRuleTypesEntity" : {
         "type" : "object",
         "properties" : {
@@ -23066,583 +24841,6 @@
           "name" : "parameterProviderConfigurationEntity"
         }
       },
-      "ParameterProviderTypesEntity" : {
-        "type" : "object",
-        "properties" : {
-          "parameterProviderTypes" : {
-            "uniqueItems" : true,
-            "type" : "array",
-            "items" : {
-              "$ref" : "#/components/schemas/DocumentedTypeDTO"
-            }
-          }
-        },
-        "xml" : {
-          "name" : "parameterProviderTypesEntity"
-        }
-      },
-      "ParameterProvidersEntity" : {
-        "type" : "object",
-        "properties" : {
-          "parameterProviders" : {
-            "uniqueItems" : true,
-            "type" : "array",
-            "items" : {
-              "$ref" : "#/components/schemas/ParameterProviderEntity"
-            }
-          },
-          "currentTime" : {
-            "type" : "string",
-            "description" : "The current time on the system."
-          }
-        },
-        "xml" : {
-          "name" : "parameterProvidersEntity"
-        }
-      },
-      "PrioritizerTypesEntity" : {
-        "type" : "object",
-        "properties" : {
-          "prioritizerTypes" : {
-            "uniqueItems" : true,
-            "type" : "array",
-            "items" : {
-              "$ref" : "#/components/schemas/DocumentedTypeDTO"
-            }
-          }
-        },
-        "xml" : {
-          "name" : "prioritizerTypesEntity"
-        }
-      },
-      "ProcessGroupStatusEntity" : {
-        "type" : "object",
-        "properties" : {
-          "processGroupStatus" : {
-            "$ref" : "#/components/schemas/ProcessGroupStatusDTO"
-          },
-          "canRead" : {
-            "type" : "boolean",
-            "description" : "Indicates whether the user can read a given resource.",
-            "readOnly" : true
-          }
-        },
-        "xml" : {
-          "name" : "processGroupStatusEntity"
-        }
-      },
-      "ProcessorStatusEntity" : {
-        "type" : "object",
-        "properties" : {
-          "processorStatus" : {
-            "$ref" : "#/components/schemas/ProcessorStatusDTO"
-          },
-          "canRead" : {
-            "type" : "boolean",
-            "description" : "Indicates whether the user can read a given resource.",
-            "readOnly" : true
-          }
-        },
-        "xml" : {
-          "name" : "processorStatusEntity"
-        }
-      },
-      "ProcessorTypesEntity" : {
-        "type" : "object",
-        "properties" : {
-          "processorTypes" : {
-            "uniqueItems" : true,
-            "type" : "array",
-            "items" : {
-              "$ref" : "#/components/schemas/DocumentedTypeDTO"
-            }
-          }
-        },
-        "xml" : {
-          "name" : "processorTypesEntity"
-        }
-      },
-      "RemoteProcessGroupStatusEntity" : {
-        "type" : "object",
-        "properties" : {
-          "remoteProcessGroupStatus" : {
-            "$ref" : "#/components/schemas/RemoteProcessGroupStatusDTO"
-          },
-          "canRead" : {
-            "type" : "boolean",
-            "description" : "Indicates whether the user can read a given resource.",
-            "readOnly" : true
-          }
-        },
-        "xml" : {
-          "name" : "remoteProcessGroupStatusEntity"
-        }
-      },
-      "ReportingTaskTypesEntity" : {
-        "type" : "object",
-        "properties" : {
-          "reportingTaskTypes" : {
-            "uniqueItems" : true,
-            "type" : "array",
-            "items" : {
-              "$ref" : "#/components/schemas/DocumentedTypeDTO"
-            }
-          }
-        },
-        "xml" : {
-          "name" : "reportingTaskTypesEntity"
-        }
-      },
-      "ReportingTasksEntity" : {
-        "type" : "object",
-        "properties" : {
-          "currentTime" : {
-            "type" : "string",
-            "description" : "The current time on the system."
-          },
-          "reportingTasks" : {
-            "uniqueItems" : true,
-            "type" : "array",
-            "items" : {
-              "$ref" : "#/components/schemas/ReportingTaskEntity"
-            }
-          }
-        },
-        "xml" : {
-          "name" : "reportingTasksEntity"
-        }
-      },
-      "Attribute" : {
-        "type" : "object",
-        "properties" : {
-          "name" : {
-            "type" : "string",
-            "description" : "The name of the attribute"
-          },
-          "description" : {
-            "type" : "string",
-            "description" : "The description of the attribute"
-          }
-        },
-        "description" : "The FlowFile attributes this processor writes/updates"
-      },
-      "BuildInfo" : {
-        "type" : "object",
-        "properties" : {
-          "version" : {
-            "type" : "string",
-            "description" : "The version number of the built component."
-          },
-          "revision" : {
-            "type" : "string",
-            "description" : "The SCM revision id of the source code used for this build."
-          },
-          "timestamp" : {
-            "type" : "integer",
-            "description" : "The timestamp (milliseconds since Epoch) of the build.",
-            "format" : "int64"
-          },
-          "targetArch" : {
-            "type" : "string",
-            "description" : "The target architecture of the built component."
-          },
-          "compiler" : {
-            "type" : "string",
-            "description" : "The compiler used for the build"
-          },
-          "compilerFlags" : {
-            "type" : "string",
-            "description" : "The compiler flags used for the build."
-          }
-        },
-        "description" : "The build metadata for this component"
-      },
-      "ComponentManifest" : {
-        "type" : "object",
-        "properties" : {
-          "apis" : {
-            "type" : "array",
-            "description" : "Public interfaces defined in this bundle",
-            "items" : {
-              "$ref" : "#/components/schemas/DefinedType"
-            }
-          },
-          "controllerServices" : {
-            "type" : "array",
-            "description" : "Controller Services provided in this bundle",
-            "items" : {
-              "$ref" : "#/components/schemas/ControllerServiceDefinition"
-            }
-          },
-          "processors" : {
-            "type" : "array",
-            "description" : "Processors provided in this bundle",
-            "items" : {
-              "$ref" : "#/components/schemas/ProcessorDefinition"
-            }
-          },
-          "reportingTasks" : {
-            "type" : "array",
-            "description" : "Reporting Tasks provided in this bundle",
-            "items" : {
-              "$ref" : "#/components/schemas/ReportingTaskDefinition"
-            }
-          },
-          "parameterProviders" : {
-            "type" : "array",
-            "description" : "Parameter Providers provided in this bundle",
-            "items" : {
-              "$ref" : "#/components/schemas/ParameterProviderDefinition"
-            }
-          },
-          "flowAnalysisRules" : {
-            "type" : "array",
-            "description" : "Flow Analysis Rules provided in this bundle",
-            "items" : {
-              "$ref" : "#/components/schemas/FlowAnalysisRuleDefinition"
-            }
-          }
-        },
-        "description" : "The full specification of the bundle contents"
-      },
-      "ControllerServiceDefinition" : {
-        "type" : "object",
-        "properties" : {
-          "group" : {
-            "type" : "string",
-            "description" : "The group name of the bundle that provides the referenced type."
-          },
-          "artifact" : {
-            "type" : "string",
-            "description" : "The artifact name of the bundle that provides the referenced type."
-          },
-          "version" : {
-            "type" : "string",
-            "description" : "The version of the bundle that provides the referenced type."
-          },
-          "type" : {
-            "type" : "string",
-            "description" : "The fully-qualified class type"
-          },
-          "typeDescription" : {
-            "type" : "string",
-            "description" : "The description of the type."
-          },
-          "buildInfo" : {
-            "$ref" : "#/components/schemas/BuildInfo"
-          },
-          "providedApiImplementations" : {
-            "type" : "array",
-            "description" : "If this type represents a provider for an interface, this lists the APIs it implements",
-            "items" : {
-              "$ref" : "#/components/schemas/DefinedType"
-            }
-          },
-          "tags" : {
-            "uniqueItems" : true,
-            "type" : "array",
-            "description" : "The tags associated with this type",
-            "items" : {
-              "type" : "string",
-              "description" : "The tags associated with this type"
-            }
-          },
-          "seeAlso" : {
-            "uniqueItems" : true,
-            "type" : "array",
-            "description" : "The names of other component types that may be related",
-            "items" : {
-              "type" : "string",
-              "description" : "The names of other component types that may be related"
-            }
-          },
-          "deprecated" : {
-            "type" : "boolean",
-            "description" : "Whether or not the component has been deprecated"
-          },
-          "deprecationReason" : {
-            "type" : "string",
-            "description" : "If this component has been deprecated, this optional field can be used to provide an explanation"
-          },
-          "deprecationAlternatives" : {
-            "uniqueItems" : true,
-            "type" : "array",
-            "description" : "If this component has been deprecated, this optional field provides alternatives to use",
-            "items" : {
-              "type" : "string",
-              "description" : "If this component has been deprecated, this optional field provides alternatives to use"
-            }
-          },
-          "restricted" : {
-            "type" : "boolean",
-            "description" : "Whether or not the component has a general restriction"
-          },
-          "restrictedExplanation" : {
-            "type" : "string",
-            "description" : "An optional description of the general restriction"
-          },
-          "explicitRestrictions" : {
-            "uniqueItems" : true,
-            "type" : "array",
-            "description" : "Explicit restrictions that indicate a require permission to use the component",
-            "items" : {
-              "$ref" : "#/components/schemas/Restriction"
-            }
-          },
-          "stateful" : {
-            "$ref" : "#/components/schemas/Stateful"
-          },
-          "systemResourceConsiderations" : {
-            "type" : "array",
-            "description" : "The system resource considerations for the given component",
-            "items" : {
-              "$ref" : "#/components/schemas/SystemResourceConsideration"
-            }
-          },
-          "additionalDetails" : {
-            "type" : "boolean",
-            "description" : "Indicates if the component has additional details documentation"
-          },
-          "propertyDescriptors" : {
-            "type" : "object",
-            "additionalProperties" : {
-              "$ref" : "#/components/schemas/PropertyDescriptor"
-            },
-            "description" : "Descriptions of configuration properties applicable to this component."
-          },
-          "supportsDynamicProperties" : {
-            "type" : "boolean",
-            "description" : "Whether or not this component makes use of dynamic (user-set) properties."
-          },
-          "supportsSensitiveDynamicProperties" : {
-            "type" : "boolean",
-            "description" : "Whether or not this component makes use of sensitive dynamic (user-set) properties."
-          },
-          "dynamicProperties" : {
-            "type" : "array",
-            "description" : "Describes the dynamic properties supported by this component",
-            "items" : {
-              "$ref" : "#/components/schemas/DynamicProperty"
-            }
-          }
-        },
-        "description" : "Controller Services provided in this bundle"
-      },
-      "DefinedType" : {
-        "type" : "object",
-        "properties" : {
-          "group" : {
-            "type" : "string",
-            "description" : "The group name of the bundle that provides the referenced type."
-          },
-          "artifact" : {
-            "type" : "string",
-            "description" : "The artifact name of the bundle that provides the referenced type."
-          },
-          "version" : {
-            "type" : "string",
-            "description" : "The version of the bundle that provides the referenced type."
-          },
-          "type" : {
-            "type" : "string",
-            "description" : "The fully-qualified class type"
-          },
-          "typeDescription" : {
-            "type" : "string",
-            "description" : "The description of the type."
-          }
-        },
-        "description" : "Indicates that this property is for selecting a controller service of the specified type"
-      },
-      "DynamicProperty" : {
-        "type" : "object",
-        "properties" : {
-          "name" : {
-            "type" : "string",
-            "description" : "The description of the dynamic property name"
-          },
-          "value" : {
-            "type" : "string",
-            "description" : "The description of the dynamic property value"
-          },
-          "description" : {
-            "type" : "string",
-            "description" : "The description of the dynamic property"
-          },
-          "expressionLanguageScope" : {
-            "type" : "string",
-            "description" : "The scope of the expression language support",
-            "enum" : [ "NONE", "ENVIRONMENT", "FLOWFILE_ATTRIBUTES" ]
-          }
-        },
-        "description" : "Describes the dynamic properties supported by this component"
-      },
-      "DynamicRelationship" : {
-        "type" : "object",
-        "properties" : {
-          "name" : {
-            "type" : "string",
-            "description" : "The description of the dynamic relationship name"
-          },
-          "description" : {
-            "type" : "string",
-            "description" : "The description of the dynamic relationship"
-          }
-        },
-        "description" : "If the processor supports dynamic relationships, this describes the dynamic relationship"
-      },
-      "FlowAnalysisRuleDefinition" : {
-        "type" : "object",
-        "properties" : {
-          "group" : {
-            "type" : "string",
-            "description" : "The group name of the bundle that provides the referenced type."
-          },
-          "artifact" : {
-            "type" : "string",
-            "description" : "The artifact name of the bundle that provides the referenced type."
-          },
-          "version" : {
-            "type" : "string",
-            "description" : "The version of the bundle that provides the referenced type."
-          },
-          "type" : {
-            "type" : "string",
-            "description" : "The fully-qualified class type"
-          },
-          "typeDescription" : {
-            "type" : "string",
-            "description" : "The description of the type."
-          },
-          "buildInfo" : {
-            "$ref" : "#/components/schemas/BuildInfo"
-          },
-          "providedApiImplementations" : {
-            "type" : "array",
-            "description" : "If this type represents a provider for an interface, this lists the APIs it implements",
-            "items" : {
-              "$ref" : "#/components/schemas/DefinedType"
-            }
-          },
-          "tags" : {
-            "uniqueItems" : true,
-            "type" : "array",
-            "description" : "The tags associated with this type",
-            "items" : {
-              "type" : "string",
-              "description" : "The tags associated with this type"
-            }
-          },
-          "seeAlso" : {
-            "uniqueItems" : true,
-            "type" : "array",
-            "description" : "The names of other component types that may be related",
-            "items" : {
-              "type" : "string",
-              "description" : "The names of other component types that may be related"
-            }
-          },
-          "deprecated" : {
-            "type" : "boolean",
-            "description" : "Whether or not the component has been deprecated"
-          },
-          "deprecationReason" : {
-            "type" : "string",
-            "description" : "If this component has been deprecated, this optional field can be used to provide an explanation"
-          },
-          "deprecationAlternatives" : {
-            "uniqueItems" : true,
-            "type" : "array",
-            "description" : "If this component has been deprecated, this optional field provides alternatives to use",
-            "items" : {
-              "type" : "string",
-              "description" : "If this component has been deprecated, this optional field provides alternatives to use"
-            }
-          },
-          "restricted" : {
-            "type" : "boolean",
-            "description" : "Whether or not the component has a general restriction"
-          },
-          "restrictedExplanation" : {
-            "type" : "string",
-            "description" : "An optional description of the general restriction"
-          },
-          "explicitRestrictions" : {
-            "uniqueItems" : true,
-            "type" : "array",
-            "description" : "Explicit restrictions that indicate a require permission to use the component",
-            "items" : {
-              "$ref" : "#/components/schemas/Restriction"
-            }
-          },
-          "stateful" : {
-            "$ref" : "#/components/schemas/Stateful"
-          },
-          "systemResourceConsiderations" : {
-            "type" : "array",
-            "description" : "The system resource considerations for the given component",
-            "items" : {
-              "$ref" : "#/components/schemas/SystemResourceConsideration"
-            }
-          },
-          "additionalDetails" : {
-            "type" : "boolean",
-            "description" : "Indicates if the component has additional details documentation"
-          },
-          "propertyDescriptors" : {
-            "type" : "object",
-            "additionalProperties" : {
-              "$ref" : "#/components/schemas/PropertyDescriptor"
-            },
-            "description" : "Descriptions of configuration properties applicable to this component."
-          },
-          "supportsDynamicProperties" : {
-            "type" : "boolean",
-            "description" : "Whether or not this component makes use of dynamic (user-set) properties."
-          },
-          "supportsSensitiveDynamicProperties" : {
-            "type" : "boolean",
-            "description" : "Whether or not this component makes use of sensitive dynamic (user-set) properties."
-          },
-          "dynamicProperties" : {
-            "type" : "array",
-            "description" : "Describes the dynamic properties supported by this component",
-            "items" : {
-              "$ref" : "#/components/schemas/DynamicProperty"
-            }
-          }
-        },
-        "description" : "Flow Analysis Rules provided in this bundle"
-      },
-      "MultiProcessorUseCase" : {
-        "type" : "object",
-        "properties" : {
-          "description" : {
-            "type" : "string",
-            "description" : "A description of the use case"
-          },
-          "notes" : {
-            "type" : "string",
-            "description" : "Any pertinent notes about the use case"
-          },
-          "keywords" : {
-            "type" : "array",
-            "description" : "Keywords that pertain to the use csae",
-            "items" : {
-              "type" : "string",
-              "description" : "Keywords that pertain to the use csae"
-            }
-          },
-          "configurations" : {
-            "type" : "array",
-            "description" : "A description of how to configure the Processor to perform the task described in the use case",
-            "items" : {
-              "$ref" : "#/components/schemas/ProcessorConfiguration"
-            }
-          }
-        },
-        "description" : "A list of use cases that have been documented that involve this Processor in conjunction with other Processors"
-      },
       "ParameterProviderDefinition" : {
         "type" : "object",
         "properties" : {
@@ -23765,6 +24963,128 @@
           }
         },
         "description" : "Parameter Providers provided in this bundle"
+      },
+      "ParameterProviderTypesEntity" : {
+        "type" : "object",
+        "properties" : {
+          "parameterProviderTypes" : {
+            "uniqueItems" : true,
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/DocumentedTypeDTO"
+            }
+          }
+        },
+        "xml" : {
+          "name" : "parameterProviderTypesEntity"
+        }
+      },
+      "ParameterProvidersEntity" : {
+        "type" : "object",
+        "properties" : {
+          "parameterProviders" : {
+            "uniqueItems" : true,
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/ParameterProviderEntity"
+            }
+          },
+          "currentTime" : {
+            "type" : "string",
+            "description" : "The current time on the system."
+          }
+        },
+        "xml" : {
+          "name" : "parameterProvidersEntity"
+        }
+      },
+      "PrioritizerTypesEntity" : {
+        "type" : "object",
+        "properties" : {
+          "prioritizerTypes" : {
+            "uniqueItems" : true,
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/DocumentedTypeDTO"
+            }
+          }
+        },
+        "xml" : {
+          "name" : "prioritizerTypesEntity"
+        }
+      },
+      "ProcessGroupStatusEntity" : {
+        "type" : "object",
+        "properties" : {
+          "processGroupStatus" : {
+            "$ref" : "#/components/schemas/ProcessGroupStatusDTO"
+          },
+          "canRead" : {
+            "type" : "boolean",
+            "description" : "Indicates whether the user can read a given resource.",
+            "readOnly" : true
+          }
+        },
+        "xml" : {
+          "name" : "processGroupStatusEntity"
+        }
+      },
+      "Attribute" : {
+        "type" : "object",
+        "properties" : {
+          "name" : {
+            "type" : "string",
+            "description" : "The name of the attribute"
+          },
+          "description" : {
+            "type" : "string",
+            "description" : "The description of the attribute"
+          }
+        },
+        "description" : "The FlowFile attributes this processor writes/updates"
+      },
+      "DynamicRelationship" : {
+        "type" : "object",
+        "properties" : {
+          "name" : {
+            "type" : "string",
+            "description" : "The description of the dynamic relationship name"
+          },
+          "description" : {
+            "type" : "string",
+            "description" : "The description of the dynamic relationship"
+          }
+        },
+        "description" : "If the processor supports dynamic relationships, this describes the dynamic relationship"
+      },
+      "MultiProcessorUseCase" : {
+        "type" : "object",
+        "properties" : {
+          "description" : {
+            "type" : "string",
+            "description" : "A description of the use case"
+          },
+          "notes" : {
+            "type" : "string",
+            "description" : "Any pertinent notes about the use case"
+          },
+          "keywords" : {
+            "type" : "array",
+            "description" : "Keywords that pertain to the use csae",
+            "items" : {
+              "type" : "string",
+              "description" : "Keywords that pertain to the use csae"
+            }
+          },
+          "configurations" : {
+            "type" : "array",
+            "description" : "A description of how to configure the Processor to perform the task described in the use case",
+            "items" : {
+              "$ref" : "#/components/schemas/ProcessorConfiguration"
+            }
+          }
+        },
+        "description" : "A list of use cases that have been documented that involve this Processor in conjunction with other Processors"
       },
       "ProcessorConfiguration" : {
         "type" : "object",
@@ -24015,139 +25335,6 @@
         },
         "description" : "Processors provided in this bundle"
       },
-      "PropertyAllowableValue" : {
-        "type" : "object",
-        "properties" : {
-          "value" : {
-            "type" : "string",
-            "description" : "The internal value"
-          },
-          "displayName" : {
-            "type" : "string",
-            "description" : "The display name of the value, if different from the internal value"
-          },
-          "description" : {
-            "type" : "string",
-            "description" : "The description of the value, e.g., the behavior it produces."
-          }
-        },
-        "description" : "A list of the allowable values for the property"
-      },
-      "PropertyDependency" : {
-        "type" : "object",
-        "properties" : {
-          "propertyName" : {
-            "type" : "string",
-            "description" : "The name of the property that is depended upon"
-          },
-          "propertyDisplayName" : {
-            "type" : "string",
-            "description" : "The name of the property that is depended upon"
-          },
-          "dependentValues" : {
-            "type" : "array",
-            "description" : "The values that satisfy the dependency",
-            "items" : {
-              "type" : "string",
-              "description" : "The values that satisfy the dependency"
-            }
-          }
-        },
-        "description" : "The dependencies that this property has on other properties"
-      },
-      "PropertyDescriptor" : {
-        "type" : "object",
-        "properties" : {
-          "name" : {
-            "type" : "string",
-            "description" : "The name of the property key"
-          },
-          "displayName" : {
-            "type" : "string",
-            "description" : "The display name of the property key, if different from the name"
-          },
-          "description" : {
-            "type" : "string",
-            "description" : "The description of what the property does"
-          },
-          "allowableValues" : {
-            "type" : "array",
-            "description" : "A list of the allowable values for the property",
-            "items" : {
-              "$ref" : "#/components/schemas/PropertyAllowableValue"
-            }
-          },
-          "defaultValue" : {
-            "type" : "string",
-            "description" : "The default value if a user-set value is not specified"
-          },
-          "required" : {
-            "type" : "boolean",
-            "description" : "Whether or not  the property is required for the component"
-          },
-          "sensitive" : {
-            "type" : "boolean",
-            "description" : "Whether or not  the value of the property is considered sensitive (e.g., passwords and keys)"
-          },
-          "expressionLanguageScope" : {
-            "type" : "string",
-            "description" : "The scope of expression language supported by this property",
-            "enum" : [ "NONE", "ENVIRONMENT", "FLOWFILE_ATTRIBUTES" ]
-          },
-          "expressionLanguageScopeDescription" : {
-            "type" : "string",
-            "description" : "The description of the expression language scope supported by this property",
-            "readOnly" : true
-          },
-          "typeProvidedByValue" : {
-            "$ref" : "#/components/schemas/DefinedType"
-          },
-          "validRegex" : {
-            "type" : "string",
-            "description" : "A regular expression that can be used to validate the value of this property"
-          },
-          "validator" : {
-            "type" : "string",
-            "description" : "Name of the validator used for this property descriptor"
-          },
-          "dynamic" : {
-            "type" : "boolean",
-            "description" : "Whether or not the descriptor is for a dynamically added property"
-          },
-          "resourceDefinition" : {
-            "$ref" : "#/components/schemas/PropertyResourceDefinition"
-          },
-          "dependencies" : {
-            "type" : "array",
-            "description" : "The dependencies that this property has on other properties",
-            "items" : {
-              "$ref" : "#/components/schemas/PropertyDependency"
-            }
-          }
-        },
-        "description" : "Descriptions of configuration properties applicable to this component."
-      },
-      "PropertyResourceDefinition" : {
-        "type" : "object",
-        "properties" : {
-          "cardinality" : {
-            "type" : "string",
-            "description" : "The cardinality of the resource definition (i.e. single or multiple)",
-            "enum" : [ "SINGLE", "MULTIPLE" ]
-          },
-          "resourceTypes" : {
-            "uniqueItems" : true,
-            "type" : "array",
-            "description" : "The types of resources that can be referenced",
-            "items" : {
-              "type" : "string",
-              "description" : "The types of resources that can be referenced",
-              "enum" : [ "FILE", "DIRECTORY", "TEXT", "URL" ]
-            }
-          }
-        },
-        "description" : "Indicates that this property references external resources"
-      },
       "Relationship" : {
         "type" : "object",
         "properties" : {
@@ -24161,6 +25348,84 @@
           }
         },
         "description" : "The supported relationships for this processor."
+      },
+      "UseCase" : {
+        "type" : "object",
+        "properties" : {
+          "description" : {
+            "type" : "string",
+            "description" : "A description of the use case"
+          },
+          "notes" : {
+            "type" : "string",
+            "description" : "Any pertinent notes about the use case"
+          },
+          "keywords" : {
+            "type" : "array",
+            "description" : "Keywords that pertain to the use case",
+            "items" : {
+              "type" : "string",
+              "description" : "Keywords that pertain to the use case"
+            }
+          },
+          "configuration" : {
+            "type" : "string",
+            "description" : "A description of how to configure the Processor to perform the task described in the use case"
+          },
+          "inputRequirement" : {
+            "type" : "string",
+            "description" : "Specifies whether an incoming FlowFile is expected for this use case",
+            "enum" : [ "INPUT_REQUIRED", "INPUT_ALLOWED", "INPUT_FORBIDDEN" ]
+          }
+        },
+        "description" : "A list of use cases that have been documented for this Processor"
+      },
+      "ProcessorStatusEntity" : {
+        "type" : "object",
+        "properties" : {
+          "processorStatus" : {
+            "$ref" : "#/components/schemas/ProcessorStatusDTO"
+          },
+          "canRead" : {
+            "type" : "boolean",
+            "description" : "Indicates whether the user can read a given resource.",
+            "readOnly" : true
+          }
+        },
+        "xml" : {
+          "name" : "processorStatusEntity"
+        }
+      },
+      "ProcessorTypesEntity" : {
+        "type" : "object",
+        "properties" : {
+          "processorTypes" : {
+            "uniqueItems" : true,
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/DocumentedTypeDTO"
+            }
+          }
+        },
+        "xml" : {
+          "name" : "processorTypesEntity"
+        }
+      },
+      "RemoteProcessGroupStatusEntity" : {
+        "type" : "object",
+        "properties" : {
+          "remoteProcessGroupStatus" : {
+            "$ref" : "#/components/schemas/RemoteProcessGroupStatusDTO"
+          },
+          "canRead" : {
+            "type" : "boolean",
+            "description" : "Indicates whether the user can read a given resource.",
+            "readOnly" : true
+          }
+        },
+        "xml" : {
+          "name" : "remoteProcessGroupStatusEntity"
+        }
       },
       "ReportingTaskDefinition" : {
         "type" : "object",
@@ -24305,19 +25570,87 @@
         },
         "description" : "Reporting Tasks provided in this bundle"
       },
-      "Restriction" : {
+      "ReportingTaskTypesEntity" : {
         "type" : "object",
         "properties" : {
-          "requiredPermission" : {
-            "type" : "string",
-            "description" : "The permission required for this restriction"
-          },
-          "explanation" : {
-            "type" : "string",
-            "description" : "The explanation of this restriction"
+          "reportingTaskTypes" : {
+            "uniqueItems" : true,
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/DocumentedTypeDTO"
+            }
           }
         },
-        "description" : "Explicit restrictions that indicate a require permission to use the component"
+        "xml" : {
+          "name" : "reportingTaskTypesEntity"
+        }
+      },
+      "ReportingTasksEntity" : {
+        "type" : "object",
+        "properties" : {
+          "currentTime" : {
+            "type" : "string",
+            "description" : "The current time on the system."
+          },
+          "reportingTasks" : {
+            "uniqueItems" : true,
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/ReportingTaskEntity"
+            }
+          }
+        },
+        "xml" : {
+          "name" : "reportingTasksEntity"
+        }
+      },
+      "ComponentManifest" : {
+        "type" : "object",
+        "properties" : {
+          "apis" : {
+            "type" : "array",
+            "description" : "Public interfaces defined in this bundle",
+            "items" : {
+              "$ref" : "#/components/schemas/DefinedType"
+            }
+          },
+          "controllerServices" : {
+            "type" : "array",
+            "description" : "Controller Services provided in this bundle",
+            "items" : {
+              "$ref" : "#/components/schemas/ControllerServiceDefinition"
+            }
+          },
+          "processors" : {
+            "type" : "array",
+            "description" : "Processors provided in this bundle",
+            "items" : {
+              "$ref" : "#/components/schemas/ProcessorDefinition"
+            }
+          },
+          "reportingTasks" : {
+            "type" : "array",
+            "description" : "Reporting Tasks provided in this bundle",
+            "items" : {
+              "$ref" : "#/components/schemas/ReportingTaskDefinition"
+            }
+          },
+          "parameterProviders" : {
+            "type" : "array",
+            "description" : "Parameter Providers provided in this bundle",
+            "items" : {
+              "$ref" : "#/components/schemas/ParameterProviderDefinition"
+            }
+          },
+          "flowAnalysisRules" : {
+            "type" : "array",
+            "description" : "Flow Analysis Rules provided in this bundle",
+            "items" : {
+              "$ref" : "#/components/schemas/FlowAnalysisRuleDefinition"
+            }
+          }
+        },
+        "description" : "The full specification of the bundle contents"
       },
       "RuntimeManifest" : {
         "type" : "object",
@@ -24411,71 +25744,6 @@
           }
         },
         "description" : "Scheduling defaults for components defined in this manifest"
-      },
-      "Stateful" : {
-        "type" : "object",
-        "properties" : {
-          "description" : {
-            "type" : "string",
-            "description" : "Description of what information is being stored in the StateManager"
-          },
-          "scopes" : {
-            "uniqueItems" : true,
-            "type" : "array",
-            "description" : "Indicates the Scope(s) associated with the State that is stored and retrieved",
-            "items" : {
-              "type" : "string",
-              "description" : "Indicates the Scope(s) associated with the State that is stored and retrieved",
-              "enum" : [ "CLUSTER", "LOCAL" ]
-            }
-          }
-        },
-        "description" : "Indicates if the component stores state"
-      },
-      "SystemResourceConsideration" : {
-        "type" : "object",
-        "properties" : {
-          "resource" : {
-            "type" : "string",
-            "description" : "The resource to consider"
-          },
-          "description" : {
-            "type" : "string",
-            "description" : "The description of how the resource is affected"
-          }
-        },
-        "description" : "The system resource considerations for the given component"
-      },
-      "UseCase" : {
-        "type" : "object",
-        "properties" : {
-          "description" : {
-            "type" : "string",
-            "description" : "A description of the use case"
-          },
-          "notes" : {
-            "type" : "string",
-            "description" : "Any pertinent notes about the use case"
-          },
-          "keywords" : {
-            "type" : "array",
-            "description" : "Keywords that pertain to the use case",
-            "items" : {
-              "type" : "string",
-              "description" : "Keywords that pertain to the use case"
-            }
-          },
-          "configuration" : {
-            "type" : "string",
-            "description" : "A description of how to configure the Processor to perform the task described in the use case"
-          },
-          "inputRequirement" : {
-            "type" : "string",
-            "description" : "Specifies whether an incoming FlowFile is expected for this use case",
-            "enum" : [ "INPUT_REQUIRED", "INPUT_ALLOWED", "INPUT_FORBIDDEN" ]
-          }
-        },
-        "description" : "A list of use cases that have been documented for this Processor"
       },
       "ComponentDifferenceDTO" : {
         "type" : "object",
@@ -24786,6 +26054,41 @@
         },
         "xml" : {
           "name" : "entity"
+        }
+      },
+      "AssetDTO" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "description" : "The identifier of the asset."
+          },
+          "name" : {
+            "type" : "string",
+            "description" : "The name of the asset."
+          },
+          "digest" : {
+            "type" : "string",
+            "description" : "The digest of the asset, will be null if the asset content is missing."
+          },
+          "missingContent" : {
+            "type" : "boolean",
+            "description" : "Indicates if the content of the asset is missing."
+          }
+        },
+        "description" : "The Asset.",
+        "readOnly" : true
+      },
+      "AssetEntity" : {
+        "type" : "object",
+        "properties" : {
+          "asset" : {
+            "$ref" : "#/components/schemas/AssetDTO"
+          }
+        },
+        "description" : "The asset entities",
+        "xml" : {
+          "name" : "assetEntity"
         }
       },
       "ParameterContextUpdateRequestDTO" : {
@@ -25104,6 +26407,21 @@
         },
         "description" : "The steps that are required in order to complete the request, along with the status of each",
         "readOnly" : true
+      },
+      "AssetsEntity" : {
+        "type" : "object",
+        "properties" : {
+          "assets" : {
+            "type" : "array",
+            "description" : "The asset entities",
+            "items" : {
+              "$ref" : "#/components/schemas/AssetEntity"
+            }
+          }
+        },
+        "xml" : {
+          "name" : "assetEntity"
+        }
       },
       "ParameterContextUpdateEntity" : {
         "type" : "object",
@@ -25682,6 +27000,31 @@
           }
         },
         "description" : "The attributes of the flowfile for the event."
+      },
+      "LatestProvenanceEventsDTO" : {
+        "type" : "object",
+        "properties" : {
+          "componentId" : {
+            "type" : "string"
+          },
+          "provenanceEvents" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/ProvenanceEventDTO"
+            }
+          }
+        }
+      },
+      "LatestProvenanceEventsEntity" : {
+        "type" : "object",
+        "properties" : {
+          "latestProvenanceEvents" : {
+            "$ref" : "#/components/schemas/LatestProvenanceEventsDTO"
+          }
+        },
+        "xml" : {
+          "name" : "latestProvenanceEventsEntity"
+        }
       },
       "ProvenanceEventDTO" : {
         "type" : "object",

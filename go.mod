@@ -3,7 +3,7 @@ module github.com/skycubed/nifi-go/v2
 go 1.22.5
 
 require (
-	github.com/getkin/kin-openapi v0.127.0
+	github.com/getkin/kin-openapi v0.128.0
 	github.com/oapi-codegen/runtime v1.1.1
 )
 

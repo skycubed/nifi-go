@@ -1,59 +1,12 @@
-From 87fc4690bb74c0b04b17b8bf0851dc06fc10a187 Mon Sep 17 00:00:00 2001
-From: mactaggart <mactaggart@users.noreply.github.com>
-Date: Fri, 13 Sep 2024 11:48:37 -0700
-Subject: [PATCH] replace allowableValues in schema annotations with string
- array of values
+commit b6d301e2a38093be2c2250270cb5e914789b7eac
+Author: mactaggart <mactaggart@users.noreply.github.com>
+Date:   Mon Nov 25 11:44:20 2024 -0800
 
-use of a single command-delimited string results in a swagger spec where only
-one value is specified. this is incorrect as generated code requires separate
-values.
----
- .../apache/nifi/web/api/dto/AccessPolicySummaryDTO.java   | 2 +-
- .../org/apache/nifi/web/api/dto/AffectedComponentDTO.java | 6 +++---
- .../nifi/web/api/dto/ConfigVerificationResultDTO.java     | 2 +-
- .../java/org/apache/nifi/web/api/dto/ConnectableDTO.java  | 2 +-
- .../java/org/apache/nifi/web/api/dto/ConnectionDTO.java   | 6 +++---
- .../org/apache/nifi/web/api/dto/ControllerServiceDTO.java | 4 ++--
- .../api/dto/ControllerServiceReferencingComponentDTO.java | 2 +-
- .../org/apache/nifi/web/api/dto/FlowAnalysisRuleDTO.java  | 4 ++--
- .../apache/nifi/web/api/dto/FlowRegistryClientDTO.java    | 2 +-
- .../org/apache/nifi/web/api/dto/ParameterProviderDTO.java | 2 +-
- .../main/java/org/apache/nifi/web/api/dto/PortDTO.java    | 6 +++---
- .../java/org/apache/nifi/web/api/dto/ProcessGroupDTO.java | 8 ++++----
- .../org/apache/nifi/web/api/dto/ProcessorConfigDTO.java   | 2 +-
- .../java/org/apache/nifi/web/api/dto/ProcessorDTO.java    | 4 ++--
- .../nifi/web/api/dto/ProcessorRunStatusDetailsDTO.java    | 2 +-
- .../org/apache/nifi/web/api/dto/ReportingTaskDTO.java     | 4 ++--
- .../nifi/web/api/dto/VersionControlInformationDTO.java    | 2 +-
- .../org/apache/nifi/web/api/dto/VersionedFlowDTO.java     | 2 +-
- .../web/api/dto/provenance/lineage/LineageRequestDTO.java | 2 +-
- .../web/api/dto/provenance/lineage/ProvenanceNodeDTO.java | 2 +-
- .../nifi/web/api/dto/status/ComponentStatusDTO.java       | 4 ++--
- .../web/api/dto/status/ControllerServiceStatusDTO.java    | 2 +-
- .../web/api/dto/status/FlowAnalysisRuleStatusDTO.java     | 2 +-
- .../org/apache/nifi/web/api/dto/status/PortStatusDTO.java | 2 +-
- .../nifi/web/api/dto/status/PortStatusSnapshotDTO.java    | 2 +-
- .../web/api/dto/status/ProcessGroupStatusSnapshotDTO.java | 2 +-
- .../nifi/web/api/dto/status/ProcessorStatusDTO.java       | 2 +-
- .../web/api/dto/status/ProcessorStatusSnapshotDTO.java    | 4 ++--
- .../web/api/dto/status/RemoteProcessGroupStatusDTO.java   | 2 +-
- .../nifi/web/api/dto/status/ReportingTaskStatusDTO.java   | 2 +-
- .../web/api/entity/ActivateControllerServicesEntity.java  | 2 +-
- .../nifi/web/api/entity/AffectedComponentEntity.java      | 6 +++---
- .../org/apache/nifi/web/api/entity/ConnectionEntity.java  | 4 ++--
- .../web/api/entity/ControllerServiceRunStatusEntity.java  | 2 +-
- .../web/api/entity/FlowAnalysisRuleRunStatusEntity.java   | 2 +-
- .../apache/nifi/web/api/entity/FlowBreadcrumbEntity.java  | 2 +-
- .../apache/nifi/web/api/entity/PortRunStatusEntity.java   | 2 +-
- .../apache/nifi/web/api/entity/ProcessGroupEntity.java    | 4 ++--
- .../nifi/web/api/entity/ProcessorRunStatusEntity.java     | 2 +-
- .../nifi/web/api/entity/RemotePortRunStatusEntity.java    | 2 +-
- .../nifi/web/api/entity/ReplayLastEventRequestEntity.java | 2 +-
- .../web/api/entity/ReplayLastEventResponseEntity.java     | 2 +-
- .../nifi/web/api/entity/ReportingTaskRunStatusEntity.java | 2 +-
- .../nifi/web/api/entity/ScheduleComponentsEntity.java     | 2 +-
- .../UpdateControllerServiceReferenceRequestEntity.java    | 2 +-
- 45 files changed, 64 insertions(+), 64 deletions(-)
+    replace allowableValues in schema annotations with string array of values
+    
+    use of a single command-delimited string results in a swagger spec where only
+    one value is specified. this is incorrect as generated code requires separate
+    values.
 
 diff --git a/nifi-framework-bundle/nifi-framework/nifi-client-dto/src/main/java/org/apache/nifi/web/api/dto/AccessPolicySummaryDTO.java b/nifi-framework-bundle/nifi-framework/nifi-client-dto/src/main/java/org/apache/nifi/web/api/dto/AccessPolicySummaryDTO.java
 index 07da700c06..93db1d2773 100644
@@ -493,10 +446,10 @@ index dad3c74c93..76c4fdbe71 100644
      public String getRunStatus() {
          return runStatus;
 diff --git a/nifi-framework-bundle/nifi-framework/nifi-client-dto/src/main/java/org/apache/nifi/web/api/dto/status/ProcessGroupStatusSnapshotDTO.java b/nifi-framework-bundle/nifi-framework/nifi-client-dto/src/main/java/org/apache/nifi/web/api/dto/status/ProcessGroupStatusSnapshotDTO.java
-index 39593473c5..e19599404e 100644
+index f6254a7647..78a3c93006 100644
 --- a/nifi-framework-bundle/nifi-framework/nifi-client-dto/src/main/java/org/apache/nifi/web/api/dto/status/ProcessGroupStatusSnapshotDTO.java
 +++ b/nifi-framework-bundle/nifi-framework/nifi-client-dto/src/main/java/org/apache/nifi/web/api/dto/status/ProcessGroupStatusSnapshotDTO.java
-@@ -109,7 +109,7 @@ public class ProcessGroupStatusSnapshotDTO implements Cloneable {
+@@ -112,7 +112,7 @@ public class ProcessGroupStatusSnapshotDTO implements Cloneable {
  
      @Schema(description = "The current state of the Process Group, as it relates to the Versioned Flow",
              accessMode = Schema.AccessMode.READ_ONLY,
@@ -519,10 +472,10 @@ index 36c3f27e43..24239357f9 100644
          return runStatus;
      }
 diff --git a/nifi-framework-bundle/nifi-framework/nifi-client-dto/src/main/java/org/apache/nifi/web/api/dto/status/ProcessorStatusSnapshotDTO.java b/nifi-framework-bundle/nifi-framework/nifi-client-dto/src/main/java/org/apache/nifi/web/api/dto/status/ProcessorStatusSnapshotDTO.java
-index 2e9d1ac245..8dc96dac6c 100644
+index 2eaa89488c..e8d999c557 100644
 --- a/nifi-framework-bundle/nifi-framework/nifi-client-dto/src/main/java/org/apache/nifi/web/api/dto/status/ProcessorStatusSnapshotDTO.java
 +++ b/nifi-framework-bundle/nifi-framework/nifi-client-dto/src/main/java/org/apache/nifi/web/api/dto/status/ProcessorStatusSnapshotDTO.java
-@@ -94,7 +94,7 @@ public class ProcessorStatusSnapshotDTO implements Cloneable {
+@@ -97,7 +97,7 @@ public class ProcessorStatusSnapshotDTO implements Cloneable {
       * @return run status of this processor
       */
      @Schema(description = "The state of the processor.",
@@ -531,7 +484,7 @@ index 2e9d1ac245..8dc96dac6c 100644
      )
      public String getRunStatus() {
          return runStatus;
-@@ -105,7 +105,7 @@ public class ProcessorStatusSnapshotDTO implements Cloneable {
+@@ -108,7 +108,7 @@ public class ProcessorStatusSnapshotDTO implements Cloneable {
      }
  
      @Schema(description = "Indicates the node where the process will execute.",
@@ -783,6 +736,16 @@ index 181e793e28..2da456622f 100644
      )
      public String getState() {
          return state;
--- 
-2.39.3 (Apple Git-146)
-
+diff --git a/nifi-registry/nifi-registry-core/nifi-registry-data-model/src/main/java/org/apache/nifi/registry/authorization/AccessPolicySummary.java b/nifi-registry/nifi-registry-core/nifi-registry-data-model/src/main/java/org/apache/nifi/registry/authorization/AccessPolicySummary.java
+index a56a95902a..df6ede8c9b 100644
+--- a/nifi-registry/nifi-registry-core/nifi-registry-data-model/src/main/java/org/apache/nifi/registry/authorization/AccessPolicySummary.java
++++ b/nifi-registry/nifi-registry-core/nifi-registry-data-model/src/main/java/org/apache/nifi/registry/authorization/AccessPolicySummary.java
+@@ -54,7 +54,7 @@ public class AccessPolicySummary implements RevisableEntity {
+ 
+     @Schema(
+             description = "The action associated with this access policy.",
+-            allowableValues = "read, write, delete"
++            allowableValues = {"read","write","delete"}
+     )
+     public String getAction() {
+         return action;

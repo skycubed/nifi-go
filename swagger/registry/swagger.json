@@ -11,7 +11,7 @@
       "name" : "Apache 2.0",
       "url" : "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "version" : "2.0.0-M4"
+    "version" : "2.0.0"
   },
   "paths" : {
     "/policies" : {
@@ -1991,7 +1991,8 @@
             "content" : {
               "application/octet-stream" : {
                 "schema" : {
-                  "type" : "string"
+                  "type" : "string",
+                  "format" : "byte"
                 }
               }
             }
@@ -2680,7 +2681,8 @@
             "content" : {
               "application/octet-stream" : {
                 "schema" : {
-                  "type" : "string"
+                  "type" : "string",
+                  "format" : "byte"
                 }
               }
             }
@@ -4910,6 +4912,20 @@
         },
         "description" : "The position of a component on the graph"
       },
+      "VersionedAsset" : {
+        "type" : "object",
+        "properties" : {
+          "identifier" : {
+            "type" : "string",
+            "description" : "The identifier of the asset"
+          },
+          "name" : {
+            "type" : "string",
+            "description" : "The name of the asset"
+          }
+        },
+        "description" : "The assets that are referenced by this parameter"
+      },
       "VersionedConnection" : {
         "type" : "object",
         "properties" : {
@@ -5319,6 +5335,13 @@
           "value" : {
             "type" : "string",
             "description" : "The value of the parameter"
+          },
+          "referencedAssets" : {
+            "type" : "array",
+            "description" : "The assets that are referenced by this parameter",
+            "items" : {
+              "$ref" : "#/components/schemas/VersionedAsset"
+            }
           }
         },
         "description" : "The parameters in the context"
