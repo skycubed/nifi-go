@@ -19,6 +19,7 @@ import (
 )
 
 const archiveEntry = "docs/rest-api/swagger.json"
+const userAgent = "nifi-go-bindings/2 (+https://github.com/skycubed/nifi-go)"
 
 var versionPattern = regexp.MustCompile(`^2\.[0-9]+\.[0-9]+$`)
 
@@ -107,6 +108,7 @@ func downloadAndVerify(url string, maximum int64, output string) (string, error)
 	if err != nil {
 		return "", err
 	}
+	request.Header.Set("User-Agent", userAgent)
 	client := &http.Client{
 		Timeout: 5 * time.Minute,
 		CheckRedirect: func(_ *http.Request, _ []*http.Request) error {
