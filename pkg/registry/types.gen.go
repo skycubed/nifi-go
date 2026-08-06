@@ -115,45 +115,6 @@ func (e ConnectableComponentType) Valid() bool {
 	}
 }
 
-// Defines values for ConnectorPropertyPropertyType.
-const (
-	ASSET      ConnectorPropertyPropertyType = "ASSET"
-	ASSETLIST  ConnectorPropertyPropertyType = "ASSET_LIST"
-	BOOLEAN    ConnectorPropertyPropertyType = "BOOLEAN"
-	DOUBLE     ConnectorPropertyPropertyType = "DOUBLE"
-	FLOAT      ConnectorPropertyPropertyType = "FLOAT"
-	INTEGER    ConnectorPropertyPropertyType = "INTEGER"
-	SECRET     ConnectorPropertyPropertyType = "SECRET"
-	STRING     ConnectorPropertyPropertyType = "STRING"
-	STRINGLIST ConnectorPropertyPropertyType = "STRING_LIST"
-)
-
-// Valid indicates whether the value is a known member of the ConnectorPropertyPropertyType enum.
-func (e ConnectorPropertyPropertyType) Valid() bool {
-	switch e {
-	case ASSET:
-		return true
-	case ASSETLIST:
-		return true
-	case BOOLEAN:
-		return true
-	case DOUBLE:
-		return true
-	case FLOAT:
-		return true
-	case INTEGER:
-		return true
-	case SECRET:
-		return true
-	case STRING:
-		return true
-	case STRINGLIST:
-		return true
-	default:
-		return false
-	}
-}
-
 // Defines values for DynamicPropertyExpressionLanguageScope.
 const (
 	DynamicPropertyExpressionLanguageScopeENVIRONMENT        DynamicPropertyExpressionLanguageScope = "ENVIRONMENT"
@@ -198,25 +159,19 @@ func (e ExtensionInputRequirement) Valid() bool {
 
 // Defines values for ExtensionType.
 const (
-	ExtensionTypeCONNECTOR          ExtensionType = "CONNECTOR"
-	ExtensionTypeCONTROLLERSERVICE  ExtensionType = "CONTROLLER_SERVICE"
-	ExtensionTypeFLOWANALYSISRULE   ExtensionType = "FLOW_ANALYSIS_RULE"
-	ExtensionTypeFLOWREGISTRYCLIENT ExtensionType = "FLOW_REGISTRY_CLIENT"
-	ExtensionTypePARAMETERPROVIDER  ExtensionType = "PARAMETER_PROVIDER"
-	ExtensionTypePROCESSOR          ExtensionType = "PROCESSOR"
-	ExtensionTypeREPORTINGTASK      ExtensionType = "REPORTING_TASK"
+	ExtensionTypeCONTROLLERSERVICE ExtensionType = "CONTROLLER_SERVICE"
+	ExtensionTypeFLOWANALYSISRULE  ExtensionType = "FLOW_ANALYSIS_RULE"
+	ExtensionTypePARAMETERPROVIDER ExtensionType = "PARAMETER_PROVIDER"
+	ExtensionTypePROCESSOR         ExtensionType = "PROCESSOR"
+	ExtensionTypeREPORTINGTASK     ExtensionType = "REPORTING_TASK"
 )
 
 // Valid indicates whether the value is a known member of the ExtensionType enum.
 func (e ExtensionType) Valid() bool {
 	switch e {
-	case ExtensionTypeCONNECTOR:
-		return true
 	case ExtensionTypeCONTROLLERSERVICE:
 		return true
 	case ExtensionTypeFLOWANALYSISRULE:
-		return true
-	case ExtensionTypeFLOWREGISTRYCLIENT:
 		return true
 	case ExtensionTypePARAMETERPROVIDER:
 		return true
@@ -249,25 +204,19 @@ func (e ExtensionFilterParamsBundleType) Valid() bool {
 
 // Defines values for ExtensionFilterParamsExtensionType.
 const (
-	ExtensionFilterParamsExtensionTypeCONNECTOR          ExtensionFilterParamsExtensionType = "CONNECTOR"
-	ExtensionFilterParamsExtensionTypeCONTROLLERSERVICE  ExtensionFilterParamsExtensionType = "CONTROLLER_SERVICE"
-	ExtensionFilterParamsExtensionTypeFLOWANALYSISRULE   ExtensionFilterParamsExtensionType = "FLOW_ANALYSIS_RULE"
-	ExtensionFilterParamsExtensionTypeFLOWREGISTRYCLIENT ExtensionFilterParamsExtensionType = "FLOW_REGISTRY_CLIENT"
-	ExtensionFilterParamsExtensionTypePARAMETERPROVIDER  ExtensionFilterParamsExtensionType = "PARAMETER_PROVIDER"
-	ExtensionFilterParamsExtensionTypePROCESSOR          ExtensionFilterParamsExtensionType = "PROCESSOR"
-	ExtensionFilterParamsExtensionTypeREPORTINGTASK      ExtensionFilterParamsExtensionType = "REPORTING_TASK"
+	ExtensionFilterParamsExtensionTypeCONTROLLERSERVICE ExtensionFilterParamsExtensionType = "CONTROLLER_SERVICE"
+	ExtensionFilterParamsExtensionTypeFLOWANALYSISRULE  ExtensionFilterParamsExtensionType = "FLOW_ANALYSIS_RULE"
+	ExtensionFilterParamsExtensionTypePARAMETERPROVIDER ExtensionFilterParamsExtensionType = "PARAMETER_PROVIDER"
+	ExtensionFilterParamsExtensionTypePROCESSOR         ExtensionFilterParamsExtensionType = "PROCESSOR"
+	ExtensionFilterParamsExtensionTypeREPORTINGTASK     ExtensionFilterParamsExtensionType = "REPORTING_TASK"
 )
 
 // Valid indicates whether the value is a known member of the ExtensionFilterParamsExtensionType enum.
 func (e ExtensionFilterParamsExtensionType) Valid() bool {
 	switch e {
-	case ExtensionFilterParamsExtensionTypeCONNECTOR:
-		return true
 	case ExtensionFilterParamsExtensionTypeCONTROLLERSERVICE:
 		return true
 	case ExtensionFilterParamsExtensionTypeFLOWANALYSISRULE:
-		return true
-	case ExtensionFilterParamsExtensionTypeFLOWREGISTRYCLIENT:
 		return true
 	case ExtensionFilterParamsExtensionTypePARAMETERPROVIDER:
 		return true
@@ -282,49 +231,25 @@ func (e ExtensionFilterParamsExtensionType) Valid() bool {
 
 // Defines values for ExtensionMetadataType.
 const (
-	ExtensionMetadataTypeCONNECTOR          ExtensionMetadataType = "CONNECTOR"
-	ExtensionMetadataTypeCONTROLLERSERVICE  ExtensionMetadataType = "CONTROLLER_SERVICE"
-	ExtensionMetadataTypeFLOWANALYSISRULE   ExtensionMetadataType = "FLOW_ANALYSIS_RULE"
-	ExtensionMetadataTypeFLOWREGISTRYCLIENT ExtensionMetadataType = "FLOW_REGISTRY_CLIENT"
-	ExtensionMetadataTypePARAMETERPROVIDER  ExtensionMetadataType = "PARAMETER_PROVIDER"
-	ExtensionMetadataTypePROCESSOR          ExtensionMetadataType = "PROCESSOR"
-	ExtensionMetadataTypeREPORTINGTASK      ExtensionMetadataType = "REPORTING_TASK"
+	ExtensionMetadataTypeCONTROLLERSERVICE ExtensionMetadataType = "CONTROLLER_SERVICE"
+	ExtensionMetadataTypeFLOWANALYSISRULE  ExtensionMetadataType = "FLOW_ANALYSIS_RULE"
+	ExtensionMetadataTypePARAMETERPROVIDER ExtensionMetadataType = "PARAMETER_PROVIDER"
+	ExtensionMetadataTypePROCESSOR         ExtensionMetadataType = "PROCESSOR"
+	ExtensionMetadataTypeREPORTINGTASK     ExtensionMetadataType = "REPORTING_TASK"
 )
 
 // Valid indicates whether the value is a known member of the ExtensionMetadataType enum.
 func (e ExtensionMetadataType) Valid() bool {
 	switch e {
-	case ExtensionMetadataTypeCONNECTOR:
-		return true
 	case ExtensionMetadataTypeCONTROLLERSERVICE:
 		return true
 	case ExtensionMetadataTypeFLOWANALYSISRULE:
-		return true
-	case ExtensionMetadataTypeFLOWREGISTRYCLIENT:
 		return true
 	case ExtensionMetadataTypePARAMETERPROVIDER:
 		return true
 	case ExtensionMetadataTypePROCESSOR:
 		return true
 	case ExtensionMetadataTypeREPORTINGTASK:
-		return true
-	default:
-		return false
-	}
-}
-
-// Defines values for ListenPortDefinitionTransportProtocol.
-const (
-	ListenPortDefinitionTransportProtocolTCP ListenPortDefinitionTransportProtocol = "TCP"
-	ListenPortDefinitionTransportProtocolUDP ListenPortDefinitionTransportProtocol = "UDP"
-)
-
-// Valid indicates whether the value is a known member of the ListenPortDefinitionTransportProtocol enum.
-func (e ListenPortDefinitionTransportProtocol) Valid() bool {
-	switch e {
-	case ListenPortDefinitionTransportProtocolTCP:
-		return true
-	case ListenPortDefinitionTransportProtocolUDP:
 		return true
 	default:
 		return false
@@ -436,7 +361,6 @@ func (e UseCaseInputRequirement) Valid() bool {
 // Defines values for VersionedConnectionComponentType.
 const (
 	VersionedConnectionComponentTypeCONNECTION         VersionedConnectionComponentType = "CONNECTION"
-	VersionedConnectionComponentTypeCONNECTOR          VersionedConnectionComponentType = "CONNECTOR"
 	VersionedConnectionComponentTypeCONTROLLERSERVICE  VersionedConnectionComponentType = "CONTROLLER_SERVICE"
 	VersionedConnectionComponentTypeFLOWANALYSISRULE   VersionedConnectionComponentType = "FLOW_ANALYSIS_RULE"
 	VersionedConnectionComponentTypeFLOWREGISTRYCLIENT VersionedConnectionComponentType = "FLOW_REGISTRY_CLIENT"
@@ -458,8 +382,6 @@ const (
 func (e VersionedConnectionComponentType) Valid() bool {
 	switch e {
 	case VersionedConnectionComponentTypeCONNECTION:
-		return true
-	case VersionedConnectionComponentTypeCONNECTOR:
 		return true
 	case VersionedConnectionComponentTypeCONTROLLERSERVICE:
 		return true
@@ -499,7 +421,6 @@ func (e VersionedConnectionComponentType) Valid() bool {
 // Defines values for VersionedControllerServiceComponentType.
 const (
 	VersionedControllerServiceComponentTypeCONNECTION         VersionedControllerServiceComponentType = "CONNECTION"
-	VersionedControllerServiceComponentTypeCONNECTOR          VersionedControllerServiceComponentType = "CONNECTOR"
 	VersionedControllerServiceComponentTypeCONTROLLERSERVICE  VersionedControllerServiceComponentType = "CONTROLLER_SERVICE"
 	VersionedControllerServiceComponentTypeFLOWANALYSISRULE   VersionedControllerServiceComponentType = "FLOW_ANALYSIS_RULE"
 	VersionedControllerServiceComponentTypeFLOWREGISTRYCLIENT VersionedControllerServiceComponentType = "FLOW_REGISTRY_CLIENT"
@@ -521,8 +442,6 @@ const (
 func (e VersionedControllerServiceComponentType) Valid() bool {
 	switch e {
 	case VersionedControllerServiceComponentTypeCONNECTION:
-		return true
-	case VersionedControllerServiceComponentTypeCONNECTOR:
 		return true
 	case VersionedControllerServiceComponentTypeCONTROLLERSERVICE:
 		return true
@@ -601,7 +520,6 @@ func (e VersionedFlowType) Valid() bool {
 // Defines values for VersionedFunnelComponentType.
 const (
 	VersionedFunnelComponentTypeCONNECTION         VersionedFunnelComponentType = "CONNECTION"
-	VersionedFunnelComponentTypeCONNECTOR          VersionedFunnelComponentType = "CONNECTOR"
 	VersionedFunnelComponentTypeCONTROLLERSERVICE  VersionedFunnelComponentType = "CONTROLLER_SERVICE"
 	VersionedFunnelComponentTypeFLOWANALYSISRULE   VersionedFunnelComponentType = "FLOW_ANALYSIS_RULE"
 	VersionedFunnelComponentTypeFLOWREGISTRYCLIENT VersionedFunnelComponentType = "FLOW_REGISTRY_CLIENT"
@@ -623,8 +541,6 @@ const (
 func (e VersionedFunnelComponentType) Valid() bool {
 	switch e {
 	case VersionedFunnelComponentTypeCONNECTION:
-		return true
-	case VersionedFunnelComponentTypeCONNECTOR:
 		return true
 	case VersionedFunnelComponentTypeCONTROLLERSERVICE:
 		return true
@@ -664,7 +580,6 @@ func (e VersionedFunnelComponentType) Valid() bool {
 // Defines values for VersionedLabelComponentType.
 const (
 	VersionedLabelComponentTypeCONNECTION         VersionedLabelComponentType = "CONNECTION"
-	VersionedLabelComponentTypeCONNECTOR          VersionedLabelComponentType = "CONNECTOR"
 	VersionedLabelComponentTypeCONTROLLERSERVICE  VersionedLabelComponentType = "CONTROLLER_SERVICE"
 	VersionedLabelComponentTypeFLOWANALYSISRULE   VersionedLabelComponentType = "FLOW_ANALYSIS_RULE"
 	VersionedLabelComponentTypeFLOWREGISTRYCLIENT VersionedLabelComponentType = "FLOW_REGISTRY_CLIENT"
@@ -686,8 +601,6 @@ const (
 func (e VersionedLabelComponentType) Valid() bool {
 	switch e {
 	case VersionedLabelComponentTypeCONNECTION:
-		return true
-	case VersionedLabelComponentTypeCONNECTOR:
 		return true
 	case VersionedLabelComponentTypeCONTROLLERSERVICE:
 		return true
@@ -724,28 +637,9 @@ func (e VersionedLabelComponentType) Valid() bool {
 	}
 }
 
-// Defines values for VersionedListenPortDefinitionTransportProtocol.
-const (
-	VersionedListenPortDefinitionTransportProtocolTCP VersionedListenPortDefinitionTransportProtocol = "TCP"
-	VersionedListenPortDefinitionTransportProtocolUDP VersionedListenPortDefinitionTransportProtocol = "UDP"
-)
-
-// Valid indicates whether the value is a known member of the VersionedListenPortDefinitionTransportProtocol enum.
-func (e VersionedListenPortDefinitionTransportProtocol) Valid() bool {
-	switch e {
-	case VersionedListenPortDefinitionTransportProtocolTCP:
-		return true
-	case VersionedListenPortDefinitionTransportProtocolUDP:
-		return true
-	default:
-		return false
-	}
-}
-
 // Defines values for VersionedParameterContextComponentType.
 const (
 	VersionedParameterContextComponentTypeCONNECTION         VersionedParameterContextComponentType = "CONNECTION"
-	VersionedParameterContextComponentTypeCONNECTOR          VersionedParameterContextComponentType = "CONNECTOR"
 	VersionedParameterContextComponentTypeCONTROLLERSERVICE  VersionedParameterContextComponentType = "CONTROLLER_SERVICE"
 	VersionedParameterContextComponentTypeFLOWANALYSISRULE   VersionedParameterContextComponentType = "FLOW_ANALYSIS_RULE"
 	VersionedParameterContextComponentTypeFLOWREGISTRYCLIENT VersionedParameterContextComponentType = "FLOW_REGISTRY_CLIENT"
@@ -767,8 +661,6 @@ const (
 func (e VersionedParameterContextComponentType) Valid() bool {
 	switch e {
 	case VersionedParameterContextComponentTypeCONNECTION:
-		return true
-	case VersionedParameterContextComponentTypeCONNECTOR:
 		return true
 	case VersionedParameterContextComponentTypeCONTROLLERSERVICE:
 		return true
@@ -808,7 +700,6 @@ func (e VersionedParameterContextComponentType) Valid() bool {
 // Defines values for VersionedPortComponentType.
 const (
 	VersionedPortComponentTypeCONNECTION         VersionedPortComponentType = "CONNECTION"
-	VersionedPortComponentTypeCONNECTOR          VersionedPortComponentType = "CONNECTOR"
 	VersionedPortComponentTypeCONTROLLERSERVICE  VersionedPortComponentType = "CONTROLLER_SERVICE"
 	VersionedPortComponentTypeFLOWANALYSISRULE   VersionedPortComponentType = "FLOW_ANALYSIS_RULE"
 	VersionedPortComponentTypeFLOWREGISTRYCLIENT VersionedPortComponentType = "FLOW_REGISTRY_CLIENT"
@@ -830,8 +721,6 @@ const (
 func (e VersionedPortComponentType) Valid() bool {
 	switch e {
 	case VersionedPortComponentTypeCONNECTION:
-		return true
-	case VersionedPortComponentTypeCONNECTOR:
 		return true
 	case VersionedPortComponentTypeCONTROLLERSERVICE:
 		return true
@@ -928,7 +817,6 @@ func (e VersionedPortType) Valid() bool {
 // Defines values for VersionedProcessGroupComponentType.
 const (
 	VersionedProcessGroupComponentTypeCONNECTION         VersionedProcessGroupComponentType = "CONNECTION"
-	VersionedProcessGroupComponentTypeCONNECTOR          VersionedProcessGroupComponentType = "CONNECTOR"
 	VersionedProcessGroupComponentTypeCONTROLLERSERVICE  VersionedProcessGroupComponentType = "CONTROLLER_SERVICE"
 	VersionedProcessGroupComponentTypeFLOWANALYSISRULE   VersionedProcessGroupComponentType = "FLOW_ANALYSIS_RULE"
 	VersionedProcessGroupComponentTypeFLOWREGISTRYCLIENT VersionedProcessGroupComponentType = "FLOW_REGISTRY_CLIENT"
@@ -950,8 +838,6 @@ const (
 func (e VersionedProcessGroupComponentType) Valid() bool {
 	switch e {
 	case VersionedProcessGroupComponentTypeCONNECTION:
-		return true
-	case VersionedProcessGroupComponentTypeCONNECTOR:
 		return true
 	case VersionedProcessGroupComponentTypeCONTROLLERSERVICE:
 		return true
@@ -1033,7 +919,6 @@ func (e VersionedProcessGroupScheduledState) Valid() bool {
 // Defines values for VersionedProcessorComponentType.
 const (
 	VersionedProcessorComponentTypeCONNECTION         VersionedProcessorComponentType = "CONNECTION"
-	VersionedProcessorComponentTypeCONNECTOR          VersionedProcessorComponentType = "CONNECTOR"
 	VersionedProcessorComponentTypeCONTROLLERSERVICE  VersionedProcessorComponentType = "CONTROLLER_SERVICE"
 	VersionedProcessorComponentTypeFLOWANALYSISRULE   VersionedProcessorComponentType = "FLOW_ANALYSIS_RULE"
 	VersionedProcessorComponentTypeFLOWREGISTRYCLIENT VersionedProcessorComponentType = "FLOW_REGISTRY_CLIENT"
@@ -1055,8 +940,6 @@ const (
 func (e VersionedProcessorComponentType) Valid() bool {
 	switch e {
 	case VersionedProcessorComponentTypeCONNECTION:
-		return true
-	case VersionedProcessorComponentTypeCONNECTOR:
 		return true
 	case VersionedProcessorComponentTypeCONTROLLERSERVICE:
 		return true
@@ -1117,7 +1000,6 @@ func (e VersionedProcessorScheduledState) Valid() bool {
 // Defines values for VersionedRemoteGroupPortComponentType.
 const (
 	VersionedRemoteGroupPortComponentTypeCONNECTION         VersionedRemoteGroupPortComponentType = "CONNECTION"
-	VersionedRemoteGroupPortComponentTypeCONNECTOR          VersionedRemoteGroupPortComponentType = "CONNECTOR"
 	VersionedRemoteGroupPortComponentTypeCONTROLLERSERVICE  VersionedRemoteGroupPortComponentType = "CONTROLLER_SERVICE"
 	VersionedRemoteGroupPortComponentTypeFLOWANALYSISRULE   VersionedRemoteGroupPortComponentType = "FLOW_ANALYSIS_RULE"
 	VersionedRemoteGroupPortComponentTypeFLOWREGISTRYCLIENT VersionedRemoteGroupPortComponentType = "FLOW_REGISTRY_CLIENT"
@@ -1139,8 +1021,6 @@ const (
 func (e VersionedRemoteGroupPortComponentType) Valid() bool {
 	switch e {
 	case VersionedRemoteGroupPortComponentTypeCONNECTION:
-		return true
-	case VersionedRemoteGroupPortComponentTypeCONNECTOR:
 		return true
 	case VersionedRemoteGroupPortComponentTypeCONTROLLERSERVICE:
 		return true
@@ -1201,7 +1081,6 @@ func (e VersionedRemoteGroupPortScheduledState) Valid() bool {
 // Defines values for VersionedRemoteProcessGroupComponentType.
 const (
 	VersionedRemoteProcessGroupComponentTypeCONNECTION         VersionedRemoteProcessGroupComponentType = "CONNECTION"
-	VersionedRemoteProcessGroupComponentTypeCONNECTOR          VersionedRemoteProcessGroupComponentType = "CONNECTOR"
 	VersionedRemoteProcessGroupComponentTypeCONTROLLERSERVICE  VersionedRemoteProcessGroupComponentType = "CONTROLLER_SERVICE"
 	VersionedRemoteProcessGroupComponentTypeFLOWANALYSISRULE   VersionedRemoteProcessGroupComponentType = "FLOW_ANALYSIS_RULE"
 	VersionedRemoteProcessGroupComponentTypeFLOWREGISTRYCLIENT VersionedRemoteProcessGroupComponentType = "FLOW_REGISTRY_CLIENT"
@@ -1223,8 +1102,6 @@ const (
 func (e VersionedRemoteProcessGroupComponentType) Valid() bool {
 	switch e {
 	case VersionedRemoteProcessGroupComponentTypeCONNECTION:
-		return true
-	case VersionedRemoteProcessGroupComponentTypeCONNECTOR:
 		return true
 	case VersionedRemoteProcessGroupComponentTypeCONTROLLERSERVICE:
 		return true
@@ -1341,25 +1218,19 @@ func (e GetExtensionsParamsBundleType) Valid() bool {
 
 // Defines values for GetExtensionsParamsExtensionType.
 const (
-	GetExtensionsParamsExtensionTypeCONNECTOR          GetExtensionsParamsExtensionType = "CONNECTOR"
-	GetExtensionsParamsExtensionTypeCONTROLLERSERVICE  GetExtensionsParamsExtensionType = "CONTROLLER_SERVICE"
-	GetExtensionsParamsExtensionTypeFLOWANALYSISRULE   GetExtensionsParamsExtensionType = "FLOW_ANALYSIS_RULE"
-	GetExtensionsParamsExtensionTypeFLOWREGISTRYCLIENT GetExtensionsParamsExtensionType = "FLOW_REGISTRY_CLIENT"
-	GetExtensionsParamsExtensionTypePARAMETERPROVIDER  GetExtensionsParamsExtensionType = "PARAMETER_PROVIDER"
-	GetExtensionsParamsExtensionTypePROCESSOR          GetExtensionsParamsExtensionType = "PROCESSOR"
-	GetExtensionsParamsExtensionTypeREPORTINGTASK      GetExtensionsParamsExtensionType = "REPORTING_TASK"
+	GetExtensionsParamsExtensionTypeCONTROLLERSERVICE GetExtensionsParamsExtensionType = "CONTROLLER_SERVICE"
+	GetExtensionsParamsExtensionTypeFLOWANALYSISRULE  GetExtensionsParamsExtensionType = "FLOW_ANALYSIS_RULE"
+	GetExtensionsParamsExtensionTypePARAMETERPROVIDER GetExtensionsParamsExtensionType = "PARAMETER_PROVIDER"
+	GetExtensionsParamsExtensionTypePROCESSOR         GetExtensionsParamsExtensionType = "PROCESSOR"
+	GetExtensionsParamsExtensionTypeREPORTINGTASK     GetExtensionsParamsExtensionType = "REPORTING_TASK"
 )
 
 // Valid indicates whether the value is a known member of the GetExtensionsParamsExtensionType enum.
 func (e GetExtensionsParamsExtensionType) Valid() bool {
 	switch e {
-	case GetExtensionsParamsExtensionTypeCONNECTOR:
-		return true
 	case GetExtensionsParamsExtensionTypeCONTROLLERSERVICE:
 		return true
 	case GetExtensionsParamsExtensionTypeFLOWANALYSISRULE:
-		return true
-	case GetExtensionsParamsExtensionTypeFLOWREGISTRYCLIENT:
 		return true
 	case GetExtensionsParamsExtensionTypePARAMETERPROVIDER:
 		return true
@@ -1432,7 +1303,7 @@ type AllowableValue struct {
 	Value *string `json:"value,omitempty"`
 }
 
-// Attribute The attributes written to FlowFiles by the extension
+// Attribute The attributes written to flow files by the extension
 type Attribute struct {
 	// Description The description of the attribute
 	Description *string `json:"description,omitempty"`
@@ -1443,7 +1314,7 @@ type Attribute struct {
 
 // BatchSize The batch settings for data transmission.
 type BatchSize struct {
-	// Count Preferred number of FlowFiles to include in a transaction.
+	// Count Preferred number of flow files to include in a transaction.
 	Count *int32 `json:"count,omitempty"`
 
 	// Duration Preferred amount of time that a transaction should span.
@@ -1700,33 +1571,6 @@ type ComponentDifferenceGroup struct {
 	ProcessGroupId *string `json:"processGroupId,omitempty"`
 }
 
-// ConfigurationStep The configuration steps for a Connector extension
-type ConfigurationStep struct {
-	// Description The description of the configuration step
-	Description *string `json:"description,omitempty"`
-
-	// Name The name of the configuration step
-	Name *string `json:"name,omitempty"`
-
-	// PropertyGroups The property groups in this configuration step
-	PropertyGroups *[]ConnectorPropertyGroup `json:"propertyGroups,omitempty"`
-
-	// StepDependencies The dependencies that this step has on other steps
-	StepDependencies *[]ConfigurationStepDependency `json:"stepDependencies,omitempty"`
-}
-
-// ConfigurationStepDependency The dependencies that this step has on other steps
-type ConfigurationStepDependency struct {
-	// DependentValues The values of the dependent property that enable this step
-	DependentValues *[]string `json:"dependentValues,omitempty"`
-
-	// PropertyName The name of the property within the step that this step depends on
-	PropertyName *string `json:"propertyName,omitempty"`
-
-	// StepName The name of the step that this step depends on
-	StepName *string `json:"stepName,omitempty"`
-}
-
 // ConnectableComponent The destination of the connection.
 type ConnectableComponent struct {
 	// Comments The comments for the connectable component.
@@ -1750,57 +1594,6 @@ type ConnectableComponent struct {
 
 // ConnectableComponentType The type of component the connectable is.
 type ConnectableComponentType string
-
-// ConnectorProperty The properties in this group
-type ConnectorProperty struct {
-	// AllowableValues The allowable values for this property
-	AllowableValues *[]AllowableValue `json:"allowableValues,omitempty"`
-
-	// AllowableValuesFetchable Whether or not the allowable values can be fetched dynamically
-	AllowableValuesFetchable *bool `json:"allowableValuesFetchable,omitempty"`
-
-	// DefaultValue The default value of the property
-	DefaultValue *string `json:"defaultValue,omitempty"`
-
-	// Dependencies The properties that this property depends on
-	Dependencies *[]ConnectorPropertyDependency `json:"dependencies,omitempty"`
-
-	// Description The description of the property
-	Description *string `json:"description,omitempty"`
-
-	// Name The name of the property
-	Name *string `json:"name,omitempty"`
-
-	// PropertyType The type of the property
-	PropertyType *ConnectorPropertyPropertyType `json:"propertyType,omitempty"`
-
-	// Required Whether or not the property is required
-	Required *bool `json:"required,omitempty"`
-}
-
-// ConnectorPropertyPropertyType The type of the property
-type ConnectorPropertyPropertyType string
-
-// ConnectorPropertyDependency The properties that this property depends on
-type ConnectorPropertyDependency struct {
-	// DependentValues The values of the dependent property that enable this property
-	DependentValues *[]string `json:"dependentValues,omitempty"`
-
-	// PropertyName The name of the property that this property depends on
-	PropertyName *string `json:"propertyName,omitempty"`
-}
-
-// ConnectorPropertyGroup The property groups in this configuration step
-type ConnectorPropertyGroup struct {
-	// Description The description of the property group
-	Description *string `json:"description,omitempty"`
-
-	// Name The name of the property group
-	Name *string `json:"name,omitempty"`
-
-	// Properties The properties in this group
-	Properties *[]ConnectorProperty `json:"properties,omitempty"`
-}
 
 // ControllerServiceAPI Lists the APIs this Controller Service implements.
 type ControllerServiceAPI struct {
@@ -1927,9 +1720,6 @@ type DynamicRelationship struct {
 
 // Extension defines model for Extension.
 type Extension struct {
-	// ConfigurationSteps The configuration steps for a Connector extension
-	ConfigurationSteps *[]ConfigurationStep `json:"configurationSteps,omitempty"`
-
 	// DefaultSchedule The default schedule for a processor reporting task
 	DefaultSchedule *DefaultSchedule `json:"defaultSchedule,omitempty"`
 
@@ -1966,7 +1756,7 @@ type Extension struct {
 	// ProvidedServiceAPIs The service APIs provided by this extension
 	ProvidedServiceAPIs *[]ProvidedServiceAPI `json:"providedServiceAPIs,omitempty"`
 
-	// ReadsAttributes The attributes read from FlowFiles by the extension
+	// ReadsAttributes The attributes read from flow files by the extension
 	ReadsAttributes *[]Attribute `json:"readsAttributes,omitempty"`
 
 	// Relationships The relationships of the extension
@@ -1997,7 +1787,7 @@ type Extension struct {
 	// TriggerSerially Indicates that a processor should be triggered serially
 	TriggerSerially *bool `json:"triggerSerially,omitempty"`
 
-	// TriggerWhenAnyDestinationAvailable Indicates that a processor should be triggered when any destinations have space for FlowFiles
+	// TriggerWhenAnyDestinationAvailable Indicates that a processor should be triggered when any destinations have space for flow files
 	TriggerWhenAnyDestinationAvailable *bool `json:"triggerWhenAnyDestinationAvailable,omitempty"`
 
 	// TriggerWhenEmpty Indicates that a processor should be triggered when the incoming queues are empty
@@ -2009,7 +1799,7 @@ type Extension struct {
 	// UseCases Zero or more documented use cases for how the extension may be used
 	UseCases *[]UseCase `json:"useCases,omitempty"`
 
-	// WritesAttributes The attributes written to FlowFiles by the extension
+	// WritesAttributes The attributes written to flow files by the extension
 	WritesAttributes *[]Attribute `json:"writesAttributes,omitempty"`
 }
 
@@ -2203,18 +1993,6 @@ type Link struct {
 	UriBuilder *UriBuilder        `json:"uriBuilder,omitempty"`
 }
 
-// ListenPortDefinition The optional listen port definition
-type ListenPortDefinition struct {
-	// ApplicationProtocols The application protocols that this listen port could support (if any)
-	ApplicationProtocols *[]string `json:"applicationProtocols,omitempty"`
-
-	// TransportProtocol The transport protocol used by this listen port
-	TransportProtocol *ListenPortDefinitionTransportProtocol `json:"transportProtocol,omitempty"`
-}
-
-// ListenPortDefinitionTransportProtocol The transport protocol used by this listen port
-type ListenPortDefinitionTransportProtocol string
-
 // LongParameter defines model for LongParameter.
 type LongParameter struct {
 	Long *int64 `json:"long,omitempty"`
@@ -2302,9 +2080,6 @@ type Property struct {
 	// ExpressionLanguageSupported Whether or not expression language is supported
 	ExpressionLanguageSupported *bool `json:"expressionLanguageSupported,omitempty"`
 
-	// ListenPortDefinition The optional listen port definition
-	ListenPortDefinition *ListenPortDefinition `json:"listenPortDefinition,omitempty"`
-
 	// Name The name of the property
 	Name *string `json:"name,omitempty"`
 
@@ -2324,16 +2099,16 @@ type PropertyExpressionLanguageScope string
 // ProvidedServiceAPI The service APIs provided by the extension
 type ProvidedServiceAPI struct {
 	// ArtifactId The artifact id of the service API being provided
-	ArtifactId string `json:"artifactId"`
+	ArtifactId *string `json:"artifactId,omitempty"`
 
 	// ClassName The class name of the service API being provided
-	ClassName string `json:"className"`
+	ClassName *string `json:"className,omitempty"`
 
 	// GroupId The group id of the service API being provided
-	GroupId string `json:"groupId"`
+	GroupId *string `json:"groupId,omitempty"`
 
 	// Version The version of the service API being provided
-	Version string `json:"version"`
+	Version *string `json:"version,omitempty"`
 }
 
 // RegistryAbout defines model for RegistryAbout.
@@ -2420,10 +2195,10 @@ type Restricted struct {
 // Restriction The specific restrictions
 type Restriction struct {
 	// Explanation The explanation of this restriction
-	Explanation string `json:"explanation"`
+	Explanation *string `json:"explanation,omitempty"`
 
 	// RequiredPermission The permission required for this restriction
-	RequiredPermission string `json:"requiredPermission"`
+	RequiredPermission *string `json:"requiredPermission,omitempty"`
 }
 
 // RevisionInfo The revision information for an entity managed through the REST API.
@@ -2561,15 +2336,6 @@ type VersionedAsset struct {
 	Name *string `json:"name,omitempty"`
 }
 
-// VersionedComponentState The state of the component, if exported with state
-type VersionedComponentState struct {
-	// ClusterState The cluster-scoped state of the component, or null if not exported
-	ClusterState *map[string]string `json:"clusterState,omitempty"`
-
-	// LocalNodeStates The local-scoped state of the component ordered by node ordinal index, or null if not exported
-	LocalNodeStates *[]VersionedNodeState `json:"localNodeStates,omitempty"`
-}
-
 // VersionedConnection The Connections
 type VersionedConnection struct {
 	// BackPressureDataSizeThreshold The object data size threshold for determining when back pressure is applied. Updating this value is a passive change in the sense that it won't impact whether existing files over the limit are affected but it does help feeder processors to stop pushing too much into this work queue.
@@ -2588,7 +2354,7 @@ type VersionedConnection struct {
 	// Destination The destination of the connection.
 	Destination *ConnectableComponent `json:"destination,omitempty"`
 
-	// FlowFileExpiration The amount of time a FlowFile may be in the flow before it will be automatically aged out of the flow. Once a FlowFile reaches this age it will be terminated from the flow the next time a processor attempts to start work on it.
+	// FlowFileExpiration The amount of time a flow file may be in the flow before it will be automatically aged out of the flow. Once a flow file reaches this age it will be terminated from the flow the next time a processor attempts to start work on it.
 	FlowFileExpiration *string `json:"flowFileExpiration,omitempty"`
 
 	// GroupIdentifier The ID of the Process Group that this component belongs to
@@ -2646,11 +2412,8 @@ type VersionedControllerService struct {
 	Bundle *Bundle `json:"bundle,omitempty"`
 
 	// Comments The user-supplied comments for the component
-	Comments *string `json:"comments,omitempty"`
-
-	// ComponentState The state of the component, if exported with state
-	ComponentState *VersionedComponentState                 `json:"componentState,omitempty"`
-	ComponentType  *VersionedControllerServiceComponentType `json:"componentType,omitempty"`
+	Comments      *string                                  `json:"comments,omitempty"`
+	ComponentType *VersionedControllerServiceComponentType `json:"componentType,omitempty"`
 
 	// ControllerServiceApis Lists the APIs this Controller Service implements.
 	ControllerServiceApis *[]ControllerServiceAPI `json:"controllerServiceApis,omitempty"`
@@ -2886,24 +2649,6 @@ type VersionedLabel struct {
 // VersionedLabelComponentType defines model for VersionedLabel.ComponentType.
 type VersionedLabelComponentType string
 
-// VersionedListenPortDefinition Returns the Listen Port Definition for the port this property specifies, if applicable
-type VersionedListenPortDefinition struct {
-	// ApplicationProtocols The application protocol(s) that the listen port could support (if any)
-	ApplicationProtocols *[]string `json:"applicationProtocols,omitempty"`
-
-	// TransportProtocol The transport protocol used by the listen port
-	TransportProtocol *VersionedListenPortDefinitionTransportProtocol `json:"transportProtocol,omitempty"`
-}
-
-// VersionedListenPortDefinitionTransportProtocol The transport protocol used by the listen port
-type VersionedListenPortDefinitionTransportProtocol string
-
-// VersionedNodeState The state entries for a single node
-type VersionedNodeState struct {
-	// State The state key-value pairs for this node
-	State *map[string]string `json:"state,omitempty"`
-}
-
 // VersionedParameter The parameters in the context
 type VersionedParameter struct {
 	// Description The description of the param
@@ -3113,10 +2858,10 @@ type VersionedProcessGroupScheduledState string
 
 // VersionedProcessor The Processors
 type VersionedProcessor struct {
-	// AnnotationData The annotation data for the processor used to relay configuration between a custom UI and the processor.
+	// AnnotationData The annotation data for the processor used to relay configuration between a custom UI and the procesosr.
 	AnnotationData *string `json:"annotationData,omitempty"`
 
-	// AutoTerminatedRelationships The names of all relationships that cause a FlowFile to be terminated if the relationship is not connected elsewhere. This property differs from the 'isAutoTerminate' property of the RelationshipDTO in that the RelationshipDTO is meant to depict the current configuration, whereas this property can be set in a DTO when updating a Processor in order to change which Relationships should be auto-terminated.
+	// AutoTerminatedRelationships The names of all relationships that cause a flow file to be terminated if the relationship is not connected elsewhere. This property differs from the 'isAutoTerminate' property of the RelationshipDTO in that the RelationshipDTO is meant to depict the current configuration, whereas this property can be set in a DTO when updating a Processor in order to change which Relationships should be auto-terminated.
 	AutoTerminatedRelationships *[]string `json:"autoTerminatedRelationships,omitempty"`
 
 	// BackoffMechanism Determines whether the FlowFile should be penalized or the processor should be yielded between retries. Possible returned values: PENALIZE_FLOWFILE, YIELD_PROCESSOR.
@@ -3129,13 +2874,10 @@ type VersionedProcessor struct {
 	Bundle *Bundle `json:"bundle,omitempty"`
 
 	// Comments The user-supplied comments for the component
-	Comments *string `json:"comments,omitempty"`
+	Comments      *string                          `json:"comments,omitempty"`
+	ComponentType *VersionedProcessorComponentType `json:"componentType,omitempty"`
 
-	// ComponentState The state of the component, if exported with state
-	ComponentState *VersionedComponentState         `json:"componentState,omitempty"`
-	ComponentType  *VersionedProcessorComponentType `json:"componentType,omitempty"`
-
-	// ConcurrentlySchedulableTaskCount The number of tasks that should be concurrently schedule for the processor. If the processor doesn't allow parallel processing then any positive input will be ignored.
+	// ConcurrentlySchedulableTaskCount The number of tasks that should be concurrently schedule for the processor. If the processor doesn't allow parallol processing then any positive input will be ignored.
 	ConcurrentlySchedulableTaskCount *int32 `json:"concurrentlySchedulableTaskCount,omitempty"`
 
 	// ExecutionNode Indicates the node where the process will execute.
@@ -3156,7 +2898,7 @@ type VersionedProcessor struct {
 	// Name The component's name
 	Name *string `json:"name,omitempty"`
 
-	// PenaltyDuration The amount of time that is used when the process penalizes a FlowFile.
+	// PenaltyDuration The amout of time that is used when the process penalizes a flowfile.
 	PenaltyDuration *string `json:"penaltyDuration,omitempty"`
 
 	// Position The position of a component on the graph
@@ -3213,9 +2955,6 @@ type VersionedPropertyDescriptor struct {
 	// IdentifiesControllerService Whether or not the property provides the identifier of a Controller Service
 	IdentifiesControllerService *bool `json:"identifiesControllerService,omitempty"`
 
-	// ListenPortDefinition Returns the Listen Port Definition for the port this property specifies, if applicable
-	ListenPortDefinition *VersionedListenPortDefinition `json:"listenPortDefinition,omitempty"`
-
 	// Name The name of the property
 	Name *string `json:"name,omitempty"`
 
@@ -3235,7 +2974,7 @@ type VersionedRemoteGroupPort struct {
 	Comments      *string                                `json:"comments,omitempty"`
 	ComponentType *VersionedRemoteGroupPortComponentType `json:"componentType,omitempty"`
 
-	// ConcurrentlySchedulableTaskCount The number of task that may transmit FlowFiles to the target port concurrently.
+	// ConcurrentlySchedulableTaskCount The number of task that may transmit flowfiles to the target port concurrently.
 	ConcurrentlySchedulableTaskCount *int32 `json:"concurrentlySchedulableTaskCount,omitempty"`
 
 	// GroupIdentifier The ID of the Process Group that this component belongs to
@@ -3262,7 +3001,7 @@ type VersionedRemoteGroupPort struct {
 	// TargetId The ID of the port on the target NiFi instance
 	TargetId *string `json:"targetId,omitempty"`
 
-	// UseCompression Whether the FlowFiles are compressed when sent to the target port.
+	// UseCompression Whether the flowfiles are compressed when sent to the target port.
 	UseCompression *bool `json:"useCompression,omitempty"`
 }
 
@@ -3401,7 +3140,7 @@ type GetBundleVersions1Params struct {
 	// ArtifactId Optional artifactId to filter results. The value may be an exact match, or a wildcard, such as 'nifi-%' to select all bundle versions where the artifactId starts with 'nifi-'.
 	ArtifactId *string `form:"artifactId,omitempty" json:"artifactId,omitempty"`
 
-	// Version Optional version to filter results. The value may be an exact match, or a wildcard, such as '1.0.%' to select all bundle versions where the version starts with '1.0.'.
+	// Version Optional version to filter results. The value maye be an exact match, or a wildcard, such as '1.0.%' to select all bundle versions where the version starts with '1.0.'.
 	Version *string `form:"version,omitempty" json:"version,omitempty"`
 }
 

@@ -123,7 +123,7 @@ type ClientInterface interface {
 	// Corresponds with POST /access/token (the `CreateAccessToken` operationId).
 	CreateAccessTokenWithFormdataBody(ctx context.Context, body CreateAccessTokenFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// GetAuthenticationConfiguration Retrieves the authentication configuration details and status information
+	// GetAuthenticationConfiguration Retrieves the authentication configuration endpoint and status information
 	//
 	// Corresponds with GET /authentication/configuration (the `GetAuthenticationConfiguration` operationId).
 	GetAuthenticationConfiguration(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -152,389 +152,6 @@ type ClientInterface interface {
 	// Corresponds with PUT /connections/{id} (the `UpdateConnection` operationId).
 	UpdateConnection(ctx context.Context, id string, body UpdateConnectionJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// CreateConnectorWithBody Creates a new connector
-	//
-	// Takes any type of body and a specified content type.
-	//
-	// Corresponds with POST /connectors (the `CreateConnector` operationId).
-	CreateConnectorWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// CreateConnector Creates a new connector
-	//
-	// Takes a body of the `application/json` content type.
-	//
-	// Corresponds with POST /connectors (the `CreateConnector` operationId).
-	CreateConnector(ctx context.Context, body CreateConnectorJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// GetFlow Gets the flow for a process group within a connector
-	//
-	// Returns the flow for the specified process group within the connector's hierarchy. The processGroupId can be obtained from the managedProcessGroupId field of the ConnectorDTO for the root process group, or from child process groups within the flow. If the uiOnly query parameter is provided with a value of true, the returned entity may only contain fields that are necessary for rendering the NiFi User Interface. As such, the selected fields may change at any time, even during incremental releases, without warning. As a result, this parameter should not be provided by any client other than the UI.
-	//
-	// Corresponds with GET /connectors/{connectorId}/flow/process-groups/{processGroupId} (the `GetFlow` operationId).
-	GetFlow(ctx context.Context, connectorId string, processGroupId string, params *GetFlowParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// GetControllerServicesFromConnectorProcessGroup Gets all controller services for a process group within a connector
-	//
-	// Returns the controller services for the specified process group within the connector's hierarchy. The processGroupId can be obtained from the managedProcessGroupId field of the ConnectorDTO for the root process group, or from child process groups within the flow.
-	//
-	// Corresponds with GET /connectors/{connectorId}/flow/process-groups/{processGroupId}/controller-services (the `GetControllerServicesFromConnectorProcessGroup` operationId).
-	GetControllerServicesFromConnectorProcessGroup(ctx context.Context, connectorId string, processGroupId string, params *GetControllerServicesFromConnectorProcessGroupParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// GetParameterContextForConnectorProcessGroup Gets the parameter context bound to a process group within a connector
-	//
-	// Returns the parameter context (with effective parameters, including those inherited from other contexts) bound to the specified process group within the connector's hierarchy. Sensitive parameter values are masked. Returns 204 No Content if the process group has no bound parameter context.
-	//
-	// Corresponds with GET /connectors/{connectorId}/flow/process-groups/{processGroupId}/parameter-context (the `GetParameterContextForConnectorProcessGroup` operationId).
-	GetParameterContextForConnectorProcessGroup(ctx context.Context, connectorId string, processGroupId string, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// DeleteConnector Deletes a connector
-	//
-	// Corresponds with DELETE /connectors/{id} (the `DeleteConnector` operationId).
-	DeleteConnector(ctx context.Context, id string, params *DeleteConnectorParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// GetConnector Gets a connector
-	//
-	// Corresponds with GET /connectors/{id} (the `GetConnector` operationId).
-	GetConnector(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// UpdateConnectorWithBody Updates a connector
-	//
-	// Takes any type of body and a specified content type.
-	//
-	// Corresponds with PUT /connectors/{id} (the `UpdateConnector` operationId).
-	UpdateConnectorWithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// UpdateConnector Updates a connector
-	//
-	// Takes a body of the `application/json` content type.
-	//
-	// Corresponds with PUT /connectors/{id} (the `UpdateConnector` operationId).
-	UpdateConnector(ctx context.Context, id string, body UpdateConnectorJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApplyConnectorUpdateWithBody Applies an update to a connector
-	//
-	// This will apply any pending configuration changes to the connector. The client can poll the connector endpoint to check when the update is complete.
-	//
-	// Takes any type of body and a specified content type.
-	//
-	// Corresponds with POST /connectors/{id}/apply-update (the `ApplyConnectorUpdate` operationId).
-	ApplyConnectorUpdateWithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApplyConnectorUpdate Applies an update to a connector
-	//
-	// This will apply any pending configuration changes to the connector. The client can poll the connector endpoint to check when the update is complete.
-	//
-	// Takes a body of the `application/json` content type.
-	//
-	// Corresponds with POST /connectors/{id}/apply-update (the `ApplyConnectorUpdate` operationId).
-	ApplyConnectorUpdate(ctx context.Context, id string, body ApplyConnectorUpdateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// GetAssets Lists the assets that belong to the Connector with the given ID
-	//
-	// Lists the assets that belong to the Connector with the given ID.
-	//
-	// Corresponds with GET /connectors/{id}/assets (the `GetAssets` operationId).
-	GetAssets(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// CreateAssetWithBody Creates a new Asset in the given Connector
-	//
-	// This endpoint will create a new Asset in the Connector. The Asset will be created with the given name and the contents of the file that is uploaded.
-	//
-	// Takes any type of body and a specified content type.
-	//
-	// Corresponds with POST /connectors/{id}/assets (the `CreateAsset` operationId).
-	CreateAssetWithBody(ctx context.Context, id string, params *CreateAssetParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// GetAssetContent Retrieves the content of the asset with the given id for a connector
-	//
-	// Corresponds with GET /connectors/{id}/assets/{assetId} (the `GetAssetContent` operationId).
-	GetAssetContent(ctx context.Context, id string, assetId string, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// SubmitConnectorBacklogRequest Initiates a request to determine the current backlog for a Connector
-	//
-	// This will initiate the process of determining the backlog for a Connector. This may be a long-running task. As a result, this endpoint will immediately return a BacklogRequestEntity, and the process of determining the backlog will occur asynchronously in the background. The client may then periodically poll the status of the request by issuing a GET request to /connectors/{id}/backlog-requests/{requestId}. Once the request is completed, the client is expected to issue a DELETE request to /connectors/{id}/backlog-requests/{requestId}.
-	//
-	// Corresponds with POST /connectors/{id}/backlog-requests (the `SubmitConnectorBacklogRequest` operationId).
-	SubmitConnectorBacklogRequest(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// DeleteConnectorBacklogRequest Deletes the Backlog Request with the given ID
-	//
-	// Deletes the Backlog Request with the given ID. After a request is created, it is expected that the client will properly clean up the request by DELETE'ing it once the backlog determination has completed. If the request is deleted before it completes, the background determination is cancelled.
-	//
-	// Corresponds with DELETE /connectors/{id}/backlog-requests/{requestId} (the `DeleteConnectorBacklogRequest` operationId).
-	DeleteConnectorBacklogRequest(ctx context.Context, id string, requestId string, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// GetConnectorBacklogRequest Returns the Backlog Request with the given ID
-	//
-	// Returns the Backlog Request with the given ID. Once a Backlog Request has been created by performing a POST to /connectors/{id}/backlog-requests, that request can subsequently be retrieved via this endpoint, and the request that is fetched will contain the updated state, such as percent complete, the current state of the request, and the backlog once the request is complete.
-	//
-	// Corresponds with GET /connectors/{id}/backlog-requests/{requestId} (the `GetConnectorBacklogRequest` operationId).
-	GetConnectorBacklogRequest(ctx context.Context, id string, requestId string, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// GetConnectorConfigurationSteps Gets all configuration step names for a connector
-	//
-	// Corresponds with GET /connectors/{id}/configuration-steps (the `GetConnectorConfigurationSteps` operationId).
-	GetConnectorConfigurationSteps(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// GetConnectorConfigurationStep Gets a specific configuration step by name for a connector
-	//
-	// Corresponds with GET /connectors/{id}/configuration-steps/{configurationStepName} (the `GetConnectorConfigurationStep` operationId).
-	GetConnectorConfigurationStep(ctx context.Context, id string, configurationStepName string, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// UpdateConnectorConfigurationStepWithBody Updates a specific configuration step by name for a connector
-	//
-	// Takes any type of body and a specified content type.
-	//
-	// Corresponds with PUT /connectors/{id}/configuration-steps/{configurationStepName} (the `UpdateConnectorConfigurationStep` operationId).
-	UpdateConnectorConfigurationStepWithBody(ctx context.Context, id string, configurationStepName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// UpdateConnectorConfigurationStep Updates a specific configuration step by name for a connector
-	//
-	// Takes a body of the `application/json` content type.
-	//
-	// Corresponds with PUT /connectors/{id}/configuration-steps/{configurationStepName} (the `UpdateConnectorConfigurationStep` operationId).
-	UpdateConnectorConfigurationStep(ctx context.Context, id string, configurationStepName string, body UpdateConnectorConfigurationStepJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// GetConnectorPropertyAllowableValues Gets the allowable values for a specific property in a connector's configuration step
-	//
-	// Gets the allowable values for a specific property that supports dynamic fetching of allowable values. The filter parameter can be used to narrow down the results based on the property's filtering logic.
-	//
-	// Corresponds with GET /connectors/{id}/configuration-steps/{configurationStepName}/property-groups/{propertyGroupName}/properties/{propertyName}/allowable-values (the `GetConnectorPropertyAllowableValues` operationId).
-	GetConnectorPropertyAllowableValues(ctx context.Context, id string, configurationStepName string, propertyGroupName string, propertyName string, params *GetConnectorPropertyAllowableValuesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// SubmitConfigurationStepVerificationRequestWithBody Performs verification of a configuration step for a connector
-	//
-	// This will initiate the process of verifying a given Connector Configuration Step. This may be a long-running task. As a result, this endpoint will immediately return a VerifyConnectorConfigStepRequestEntity, and the process of performing the verification will occur asynchronously in the background. The client may then periodically poll the status of the request by issuing a GET request to /connectors/{connectorId}/configuration-steps/{stepName}/verify-config/{requestId}. Once the request is completed, the client is expected to issue a DELETE request to /connectors/{connectorId}/configuration-steps/{stepName}/verify-config/{requestId}.
-	//
-	// Takes any type of body and a specified content type.
-	//
-	// Corresponds with POST /connectors/{id}/configuration-steps/{configurationStepName}/verify-config (the `SubmitConfigurationStepVerificationRequest` operationId).
-	SubmitConfigurationStepVerificationRequestWithBody(ctx context.Context, id string, configurationStepName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// SubmitConfigurationStepVerificationRequest Performs verification of a configuration step for a connector
-	//
-	// This will initiate the process of verifying a given Connector Configuration Step. This may be a long-running task. As a result, this endpoint will immediately return a VerifyConnectorConfigStepRequestEntity, and the process of performing the verification will occur asynchronously in the background. The client may then periodically poll the status of the request by issuing a GET request to /connectors/{connectorId}/configuration-steps/{stepName}/verify-config/{requestId}. Once the request is completed, the client is expected to issue a DELETE request to /connectors/{connectorId}/configuration-steps/{stepName}/verify-config/{requestId}.
-	//
-	// Takes a body of the `application/json` content type.
-	//
-	// Corresponds with POST /connectors/{id}/configuration-steps/{configurationStepName}/verify-config (the `SubmitConfigurationStepVerificationRequest` operationId).
-	SubmitConfigurationStepVerificationRequest(ctx context.Context, id string, configurationStepName string, body SubmitConfigurationStepVerificationRequestJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// DeleteConfigurationStepVerificationRequest Deletes the Verification Request with the given ID
-	//
-	// Deletes the Verification Request with the given ID. After a request is created, it is expected that the client will properly clean up the request by DELETE'ing it, once the Verification process has completed. If the request is deleted before the request completes, then the Verification request will finish the step that it is currently performing and then will cancel any subsequent steps.
-	//
-	// Corresponds with DELETE /connectors/{id}/configuration-steps/{configurationStepName}/verify-config/{requestId} (the `DeleteConfigurationStepVerificationRequest` operationId).
-	DeleteConfigurationStepVerificationRequest(ctx context.Context, id string, configurationStepName string, requestId string, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// GetConfigurationStepVerificationRequest Returns the Verification Request with the given ID
-	//
-	// Returns the Verification Request with the given ID. Once a Verification Request has been created, that request can subsequently be retrieved via this endpoint, and the request that is fetched will contain the updated state, such as percent complete, the current state of the request, and any failures.
-	//
-	// Corresponds with GET /connectors/{id}/configuration-steps/{configurationStepName}/verify-config/{requestId} (the `GetConfigurationStepVerificationRequest` operationId).
-	GetConfigurationStepVerificationRequest(ctx context.Context, id string, configurationStepName string, requestId string, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// GetConnectorConnectionStatusHistory Gets the status history for a connection within a connector
-	//
-	// Corresponds with GET /connectors/{id}/connections/{connectionId}/status/history (the `GetConnectorConnectionStatusHistory` operationId).
-	GetConnectorConnectionStatusHistory(ctx context.Context, id string, connectionId string, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// GetConnectorControllerServiceState Gets the state for a controller service within a connector
-	//
-	// Corresponds with GET /connectors/{id}/controller-services/{controllerServiceId}/state (the `GetConnectorControllerServiceState` operationId).
-	GetConnectorControllerServiceState(ctx context.Context, id string, controllerServiceId string, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ClearConnectorControllerServiceStateWithBody Clears the state for a controller service within a connector
-	//
-	// Takes any type of body and a specified content type.
-	//
-	// Corresponds with POST /connectors/{id}/controller-services/{controllerServiceId}/state/clear-requests (the `ClearConnectorControllerServiceState` operationId).
-	ClearConnectorControllerServiceStateWithBody(ctx context.Context, id string, controllerServiceId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ClearConnectorControllerServiceState Clears the state for a controller service within a connector
-	//
-	// Takes a body of the `application/json` content type.
-	//
-	// Corresponds with POST /connectors/{id}/controller-services/{controllerServiceId}/state/clear-requests (the `ClearConnectorControllerServiceState` operationId).
-	ClearConnectorControllerServiceState(ctx context.Context, id string, controllerServiceId string, body ClearConnectorControllerServiceStateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// CancelDrain Cancels the draining of FlowFiles for a connector
-	//
-	// Corresponds with DELETE /connectors/{id}/drain (the `CancelDrain` operationId).
-	CancelDrain(ctx context.Context, id string, params *CancelDrainParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// InitiateDrainWithBody Initiates draining of FlowFiles for a connector
-	//
-	// This will initiate draining of FlowFiles for a stopped connector. Draining allows the connector to process data that is currently in the flow but does not ingest any additional data. The connector must be in a STOPPED state before draining can begin. Once initiated, the connector will transition to a DRAINING state. Use the DELETE method on this endpoint to cancel an ongoing drain operation.
-	//
-	// Takes any type of body and a specified content type.
-	//
-	// Corresponds with POST /connectors/{id}/drain (the `InitiateDrain` operationId).
-	InitiateDrainWithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// InitiateDrain Initiates draining of FlowFiles for a connector
-	//
-	// This will initiate draining of FlowFiles for a stopped connector. Draining allows the connector to process data that is currently in the flow but does not ingest any additional data. The connector must be in a STOPPED state before draining can begin. Once initiated, the connector will transition to a DRAINING state. Use the DELETE method on this endpoint to cancel an ongoing drain operation.
-	//
-	// Takes a body of the `application/json` content type.
-	//
-	// Corresponds with POST /connectors/{id}/drain (the `InitiateDrain` operationId).
-	InitiateDrain(ctx context.Context, id string, body InitiateDrainJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// CreateMigrationPayloadWithBody Uploads a flow snapshot payload for a later Connector migration request
-	//
-	// Takes any type of body and a specified content type.
-	//
-	// Corresponds with POST /connectors/{id}/migration-payloads (the `CreateMigrationPayload` operationId).
-	CreateMigrationPayloadWithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// CreateMigrationRequestWithBody Creates a Connector migration request
-	//
-	// Takes any type of body and a specified content type.
-	//
-	// Corresponds with POST /connectors/{id}/migration-requests (the `CreateMigrationRequest` operationId).
-	CreateMigrationRequestWithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// CreateMigrationRequest Creates a Connector migration request
-	//
-	// Takes a body of the `application/json` content type.
-	//
-	// Corresponds with POST /connectors/{id}/migration-requests (the `CreateMigrationRequest` operationId).
-	CreateMigrationRequest(ctx context.Context, id string, body CreateMigrationRequestJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// DeleteMigrationRequest Deletes the Connector migration request with the given ID
-	//
-	// Corresponds with DELETE /connectors/{id}/migration-requests/{requestId} (the `DeleteMigrationRequest` operationId).
-	DeleteMigrationRequest(ctx context.Context, id string, requestId string, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// GetMigrationRequest Gets the Connector migration request with the given ID
-	//
-	// Corresponds with GET /connectors/{id}/migration-requests/{requestId} (the `GetMigrationRequest` operationId).
-	GetMigrationRequest(ctx context.Context, id string, requestId string, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// GetMigrationSources Lists the Versioned Process Groups that the Connector can be migrated from
-	//
-	// Corresponds with GET /connectors/{id}/migration-sources (the `GetMigrationSources` operationId).
-	GetMigrationSources(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// GetConnectorProcessGroupStatusHistory Gets the status history for a process group within a connector
-	//
-	// Corresponds with GET /connectors/{id}/process-groups/{processGroupId}/status/history (the `GetConnectorProcessGroupStatusHistory` operationId).
-	GetConnectorProcessGroupStatusHistory(ctx context.Context, id string, processGroupId string, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// GetConnectorProcessorState Gets the state for a processor within a connector
-	//
-	// Corresponds with GET /connectors/{id}/processors/{processorId}/state (the `GetConnectorProcessorState` operationId).
-	GetConnectorProcessorState(ctx context.Context, id string, processorId string, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ClearConnectorProcessorStateWithBody Clears the state for a processor within a connector
-	//
-	// Takes any type of body and a specified content type.
-	//
-	// Corresponds with POST /connectors/{id}/processors/{processorId}/state/clear-requests (the `ClearConnectorProcessorState` operationId).
-	ClearConnectorProcessorStateWithBody(ctx context.Context, id string, processorId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ClearConnectorProcessorState Clears the state for a processor within a connector
-	//
-	// Takes a body of the `application/json` content type.
-	//
-	// Corresponds with POST /connectors/{id}/processors/{processorId}/state/clear-requests (the `ClearConnectorProcessorState` operationId).
-	ClearConnectorProcessorState(ctx context.Context, id string, processorId string, body ClearConnectorProcessorStateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// GetConnectorProcessorStatusHistory Gets the status history for a processor within a connector
-	//
-	// Corresponds with GET /connectors/{id}/processors/{processorId}/status/history (the `GetConnectorProcessorStatusHistory` operationId).
-	GetConnectorProcessorStatusHistory(ctx context.Context, id string, processorId string, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// CreatePurgeRequest Creates a request to purge the FlowFiles for this connector
-	//
-	// This will create a request to purge all FlowFiles from the connector. The connector must be in a STOPPED state before purging can begin. This is an asynchronous operation. The client should poll the returned URI to get the status of the purge request.
-	//
-	// Corresponds with POST /connectors/{id}/purge-requests (the `CreatePurgeRequest` operationId).
-	CreatePurgeRequest(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// RemovePurgeRequest Cancels and/or removes a request to purge the FlowFiles for this connector
-	//
-	// Corresponds with DELETE /connectors/{id}/purge-requests/{purge-request-id} (the `RemovePurgeRequest` operationId).
-	RemovePurgeRequest(ctx context.Context, id string, purgeRequestId string, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// GetPurgeRequest Gets the current status of a purge request for the specified connector
-	//
-	// Corresponds with GET /connectors/{id}/purge-requests/{purge-request-id} (the `GetPurgeRequest` operationId).
-	GetPurgeRequest(ctx context.Context, id string, purgeRequestId string, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// GetConnectorRemoteProcessGroupStatusHistory Gets the status history for a remote process group within a connector
-	//
-	// Corresponds with GET /connectors/{id}/remote-process-groups/{remoteProcessGroupId}/status/history (the `GetConnectorRemoteProcessGroupStatusHistory` operationId).
-	GetConnectorRemoteProcessGroupStatusHistory(ctx context.Context, id string, remoteProcessGroupId string, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// UpdateRunStatusWithBody Updates run status of a connector
-	//
-	// Takes any type of body and a specified content type.
-	//
-	// Corresponds with PUT /connectors/{id}/run-status (the `UpdateRunStatus` operationId).
-	UpdateRunStatusWithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// UpdateRunStatus Updates run status of a connector
-	//
-	// Takes a body of the `application/json` content type.
-	//
-	// Corresponds with PUT /connectors/{id}/run-status (the `UpdateRunStatus` operationId).
-	UpdateRunStatus(ctx context.Context, id string, body UpdateRunStatusJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// SearchConnector Performs a search against the encapsulated process group of this connector using the specified search term
-	//
-	// Only search results from authorized components will be returned.
-	//
-	// Corresponds with GET /connectors/{id}/search-results (the `SearchConnector` operationId).
-	SearchConnector(ctx context.Context, id string, params *SearchConnectorParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// GetSecrets Gets all secrets available for configuring a connector
-	//
-	// Returns metadata for all secrets available from all secret providers. This endpoint is used when configuring a connector to discover available secrets. Note: Actual secret values are not included in the response for security reasons.
-	//
-	// Corresponds with GET /connectors/{id}/secrets (the `GetSecrets` operationId).
-	GetSecrets(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// GetConnectorStatus Gets the status for the process group managed by a connector
-	//
-	// Returns the status for the process group managed by the specified connector. The status includes status for all descendent components. When invoked with recursive set to true, it will return the current status of every component in the connector's encapsulated flow.
-	//
-	// Corresponds with GET /connectors/{id}/status (the `GetConnectorStatus` operationId).
-	GetConnectorStatus(ctx context.Context, id string, params *GetConnectorStatusParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// EndTroubleshooting Transitions a Connector out of Troubleshooting mode
-	//
-	// Ends Troubleshooting mode for the Connector, restoring the authoritative flow. All components in the managed flow must be stopped and disabled, and the managed flow must have no active tasks.
-	//
-	// Corresponds with DELETE /connectors/{id}/troubleshooting (the `EndTroubleshooting` operationId).
-	EndTroubleshooting(ctx context.Context, id string, params *EndTroubleshootingParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// EnterTroubleshootingWithBody Transitions a Connector into Troubleshooting mode
-	//
-	// Places the Connector into Troubleshooting mode so that its managed flow may be directly modified. Standard lifecycle operations are disabled while in Troubleshooting mode.
-	//
-	// Takes any type of body and a specified content type.
-	//
-	// Corresponds with POST /connectors/{id}/troubleshooting (the `EnterTroubleshooting` operationId).
-	EnterTroubleshootingWithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// EnterTroubleshooting Transitions a Connector into Troubleshooting mode
-	//
-	// Places the Connector into Troubleshooting mode so that its managed flow may be directly modified. Standard lifecycle operations are disabled while in Troubleshooting mode.
-	//
-	// Takes a body of the `application/json` content type.
-	//
-	// Corresponds with POST /connectors/{id}/troubleshooting (the `EnterTroubleshooting` operationId).
-	EnterTroubleshooting(ctx context.Context, id string, body EnterTroubleshootingJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// DiscardConnectorUpdate Discards the working configuration of a connector
-	//
-	// This will discard any pending configuration changes for the connector and revert to the last applied configuration.
-	//
-	// Corresponds with DELETE /connectors/{id}/working-configuration (the `DiscardConnectorUpdate` operationId).
-	DiscardConnectorUpdate(ctx context.Context, id string, params *DiscardConnectorUpdateParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
 	// RemoveControllerService Deletes a controller service
 	//
 	// Corresponds with DELETE /controller-services/{id} (the `RemoveControllerService` operationId).
@@ -560,20 +177,6 @@ type ClientInterface interface {
 	//
 	// Corresponds with PUT /controller-services/{id} (the `UpdateControllerService` operationId).
 	UpdateControllerService(ctx context.Context, id string, body UpdateControllerServiceJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ClearBulletinsWithBody Clears bulletins for a controller service
-	//
-	// Takes any type of body and a specified content type.
-	//
-	// Corresponds with POST /controller-services/{id}/bulletins/clear-requests (the `ClearBulletins` operationId).
-	ClearBulletinsWithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ClearBulletins Clears bulletins for a controller service
-	//
-	// Takes a body of the `application/json` content type.
-	//
-	// Corresponds with POST /controller-services/{id}/bulletins/clear-requests (the `ClearBulletins` operationId).
-	ClearBulletins(ctx context.Context, id string, body ClearBulletinsJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// AnalyzeConfigurationWithBody Performs analysis of the component's configuration, providing information about which attributes are referenced.
 	//
@@ -645,19 +248,19 @@ type ClientInterface interface {
 	// Corresponds with PUT /controller-services/{id}/references (the `UpdateControllerServiceReferences` operationId).
 	UpdateControllerServiceReferences(ctx context.Context, id string, body UpdateControllerServiceReferencesJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// UpdateRunStatus2WithBody Updates run status of a controller service
+	// UpdateRunStatus1WithBody Updates run status of a controller service
 	//
 	// Takes any type of body and a specified content type.
 	//
-	// Corresponds with PUT /controller-services/{id}/run-status (the `UpdateRunStatus2` operationId).
-	UpdateRunStatus2WithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	// Corresponds with PUT /controller-services/{id}/run-status (the `UpdateRunStatus1` operationId).
+	UpdateRunStatus1WithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// UpdateRunStatus2 Updates run status of a controller service
+	// UpdateRunStatus1 Updates run status of a controller service
 	//
 	// Takes a body of the `application/json` content type.
 	//
-	// Corresponds with PUT /controller-services/{id}/run-status (the `UpdateRunStatus2` operationId).
-	UpdateRunStatus2(ctx context.Context, id string, body UpdateRunStatus2JSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	// Corresponds with PUT /controller-services/{id}/run-status (the `UpdateRunStatus1` operationId).
+	UpdateRunStatus1(ctx context.Context, id string, body UpdateRunStatus1JSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetState Gets the state for a controller service
 	//
@@ -728,14 +331,14 @@ type ClientInterface interface {
 	// Corresponds with GET /controller/config (the `GetControllerConfig` operationId).
 	GetControllerConfig(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// UpdateControllerConfigWithBody Updates the configuration for this NiFi
+	// UpdateControllerConfigWithBody Retrieves the configuration for this NiFi
 	//
 	// Takes any type of body and a specified content type.
 	//
 	// Corresponds with PUT /controller/config (the `UpdateControllerConfig` operationId).
 	UpdateControllerConfigWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// UpdateControllerConfig Updates the configuration for this NiFi
+	// UpdateControllerConfig Retrieves the configuration for this NiFi
 	//
 	// Takes a body of the `application/json` content type.
 	//
@@ -799,20 +402,6 @@ type ClientInterface interface {
 	// Corresponds with PUT /controller/flow-analysis-rules/{id} (the `UpdateFlowAnalysisRule` operationId).
 	UpdateFlowAnalysisRule(ctx context.Context, id string, body UpdateFlowAnalysisRuleJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// ClearFlowAnalysisRuleBulletinsWithBody Clears bulletins for a flow analysis rule
-	//
-	// Takes any type of body and a specified content type.
-	//
-	// Corresponds with POST /controller/flow-analysis-rules/{id}/bulletins/clear-requests (the `ClearFlowAnalysisRuleBulletins` operationId).
-	ClearFlowAnalysisRuleBulletinsWithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ClearFlowAnalysisRuleBulletins Clears bulletins for a flow analysis rule
-	//
-	// Takes a body of the `application/json` content type.
-	//
-	// Corresponds with POST /controller/flow-analysis-rules/{id}/bulletins/clear-requests (the `ClearFlowAnalysisRuleBulletins` operationId).
-	ClearFlowAnalysisRuleBulletins(ctx context.Context, id string, body ClearFlowAnalysisRuleBulletinsJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
 	// AnalyzeFlowAnalysisRuleConfigurationWithBody Performs analysis of the component's configuration, providing information about which attributes are referenced.
 	//
 	// Takes any type of body and a specified content type.
@@ -864,19 +453,19 @@ type ClientInterface interface {
 	// Corresponds with GET /controller/flow-analysis-rules/{id}/descriptors (the `GetFlowAnalysisRulePropertyDescriptor` operationId).
 	GetFlowAnalysisRulePropertyDescriptor(ctx context.Context, id string, params *GetFlowAnalysisRulePropertyDescriptorParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// UpdateRunStatus1WithBody Updates run status of a flow analysis rule
+	// UpdateRunStatusWithBody Updates run status of a flow analysis rule
 	//
 	// Takes any type of body and a specified content type.
 	//
-	// Corresponds with PUT /controller/flow-analysis-rules/{id}/run-status (the `UpdateRunStatus1` operationId).
-	UpdateRunStatus1WithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	// Corresponds with PUT /controller/flow-analysis-rules/{id}/run-status (the `UpdateRunStatus` operationId).
+	UpdateRunStatusWithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// UpdateRunStatus1 Updates run status of a flow analysis rule
+	// UpdateRunStatus Updates run status of a flow analysis rule
 	//
 	// Takes a body of the `application/json` content type.
 	//
-	// Corresponds with PUT /controller/flow-analysis-rules/{id}/run-status (the `UpdateRunStatus1` operationId).
-	UpdateRunStatus1(ctx context.Context, id string, body UpdateRunStatus1JSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	// Corresponds with PUT /controller/flow-analysis-rules/{id}/run-status (the `UpdateRunStatus` operationId).
+	UpdateRunStatus(ctx context.Context, id string, body UpdateRunStatusJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetFlowAnalysisRuleState Gets the state for a flow analysis rule
 	//
@@ -948,20 +537,6 @@ type ClientInterface interface {
 	// Corresponds with POST /controller/parameter-providers (the `CreateParameterProvider` operationId).
 	CreateParameterProvider(ctx context.Context, body CreateParameterProviderJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// ClearParameterProviderBulletinsWithBody Clears bulletins for a parameter provider
-	//
-	// Takes any type of body and a specified content type.
-	//
-	// Corresponds with POST /controller/parameter-providers/{id}/bulletins/clear-requests (the `ClearParameterProviderBulletins` operationId).
-	ClearParameterProviderBulletinsWithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ClearParameterProviderBulletins Clears bulletins for a parameter provider
-	//
-	// Takes a body of the `application/json` content type.
-	//
-	// Corresponds with POST /controller/parameter-providers/{id}/bulletins/clear-requests (the `ClearParameterProviderBulletins` operationId).
-	ClearParameterProviderBulletins(ctx context.Context, id string, body ClearParameterProviderBulletinsJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
 	// GetFlowRegistryClients Gets the listing of available flow registry clients
 	//
 	// Corresponds with GET /controller/registry-clients (the `GetFlowRegistryClients` operationId).
@@ -1005,72 +580,12 @@ type ClientInterface interface {
 	// Corresponds with PUT /controller/registry-clients/{id} (the `UpdateFlowRegistryClient` operationId).
 	UpdateFlowRegistryClient(ctx context.Context, id string, body UpdateFlowRegistryClientJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// ClearRegistryClientBulletinsWithBody Clears bulletins for a registry client
-	//
-	// Takes any type of body and a specified content type.
-	//
-	// Corresponds with POST /controller/registry-clients/{id}/bulletins/clear-requests (the `ClearRegistryClientBulletins` operationId).
-	ClearRegistryClientBulletinsWithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ClearRegistryClientBulletins Clears bulletins for a registry client
-	//
-	// Takes a body of the `application/json` content type.
-	//
-	// Corresponds with POST /controller/registry-clients/{id}/bulletins/clear-requests (the `ClearRegistryClientBulletins` operationId).
-	ClearRegistryClientBulletins(ctx context.Context, id string, body ClearRegistryClientBulletinsJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// AnalyzeFlowRegistryClientConfigurationWithBody Performs analysis of the component's configuration, providing information about which attributes are referenced.
-	//
-	// Takes any type of body and a specified content type.
-	//
-	// Corresponds with POST /controller/registry-clients/{id}/config/analysis (the `AnalyzeFlowRegistryClientConfiguration` operationId).
-	AnalyzeFlowRegistryClientConfigurationWithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// AnalyzeFlowRegistryClientConfiguration Performs analysis of the component's configuration, providing information about which attributes are referenced.
-	//
-	// Takes a body of the `application/json` content type.
-	//
-	// Corresponds with POST /controller/registry-clients/{id}/config/analysis (the `AnalyzeFlowRegistryClientConfiguration` operationId).
-	AnalyzeFlowRegistryClientConfiguration(ctx context.Context, id string, body AnalyzeFlowRegistryClientConfigurationJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// SubmitRegistryClientConfigVerificationRequestWithBody Performs verification of the Registry Client's configuration
-	//
-	// Initiates verification of a Registry Client configuration. The request returns immediately with a request entity while verification runs asynchronously. The client should poll /controller/registry-clients/{clientId}/config/verification-requests/{requestId} for status and DELETE the request once verification completes.
-	//
-	// Takes any type of body and a specified content type.
-	//
-	// Corresponds with POST /controller/registry-clients/{id}/config/verification-requests (the `SubmitRegistryClientConfigVerificationRequest` operationId).
-	SubmitRegistryClientConfigVerificationRequestWithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// SubmitRegistryClientConfigVerificationRequest Performs verification of the Registry Client's configuration
-	//
-	// Initiates verification of a Registry Client configuration. The request returns immediately with a request entity while verification runs asynchronously. The client should poll /controller/registry-clients/{clientId}/config/verification-requests/{requestId} for status and DELETE the request once verification completes.
-	//
-	// Takes a body of the `application/json` content type.
-	//
-	// Corresponds with POST /controller/registry-clients/{id}/config/verification-requests (the `SubmitRegistryClientConfigVerificationRequest` operationId).
-	SubmitRegistryClientConfigVerificationRequest(ctx context.Context, id string, body SubmitRegistryClientConfigVerificationRequestJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// DeleteRegistryClientVerificationRequest Deletes the Verification Request with the given ID
-	//
-	// Deletes the Verification Request with the given ID. After a request is created, it is expected that the client will properly clean up the request by DELETE'ing it, once the Verification process has completed. If the request is deleted before the request completes, then the Verification request will finish the step that it is currently performing and then will cancel any subsequent steps.
-	//
-	// Corresponds with DELETE /controller/registry-clients/{id}/config/verification-requests/{requestId} (the `DeleteRegistryClientVerificationRequest` operationId).
-	DeleteRegistryClientVerificationRequest(ctx context.Context, id string, requestId string, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// GetRegistryClientVerificationRequest Returns the Verification Request with the given ID
-	//
-	// Returns the Verification Request with the given ID. Once a Verification Request has been created, that request can subsequently be retrieved via this endpoint, and the request that is fetched will contain the updated state, such as percent complete, the current state of the request, and any failures.
-	//
-	// Corresponds with GET /controller/registry-clients/{id}/config/verification-requests/{requestId} (the `GetRegistryClientVerificationRequest` operationId).
-	GetRegistryClientVerificationRequest(ctx context.Context, id string, requestId string, reqEditors ...RequestEditorFn) (*http.Response, error)
-
 	// GetPropertyDescriptor Gets a flow registry client property descriptor
 	//
 	// Corresponds with GET /controller/registry-clients/{id}/descriptors (the `GetPropertyDescriptor` operationId).
 	GetPropertyDescriptor(ctx context.Context, id string, params *GetPropertyDescriptorParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// GetRegistryClientTypes Retrieves the types of flow registry clients that this NiFi supports
+	// GetRegistryClientTypes Retrieves the types of flow  that this NiFi supports
 	//
 	// Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 	//
@@ -1147,7 +662,7 @@ type ClientInterface interface {
 	// Corresponds with PUT /data-transfer/input-ports/{portId}/transactions/{transactionId} (the `ExtendInputPortTransactionTTL` operationId).
 	ExtendInputPortTransactionTTLWithBody(ctx context.Context, portId string, transactionId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// ReceiveFlowFilesWithBody Transfer FlowFiles to the input port
+	// ReceiveFlowFilesWithBody Transfer flow files to the input port
 	//
 	// Takes any type of body and a specified content type.
 	//
@@ -1168,7 +683,7 @@ type ClientInterface interface {
 	// Corresponds with PUT /data-transfer/output-ports/{portId}/transactions/{transactionId} (the `ExtendOutputPortTransactionTTL` operationId).
 	ExtendOutputPortTransactionTTLWithBody(ctx context.Context, portId string, transactionId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// TransferFlowFilesWithBody Transfer FlowFiles from the output port
+	// TransferFlowFilesWithBody Transfer flow files from the output port
 	//
 	// Takes any type of body and a specified content type.
 	//
@@ -1241,25 +756,6 @@ type ClientInterface interface {
 	// Corresponds with GET /flow/connections/{id}/status/history (the `GetConnectionStatusHistory` operationId).
 	GetConnectionStatusHistory(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// GetConnectorDefinition Retrieves the Connector Definition for the specified component type.
-	//
-	// Note: This endpoint is subject to change as NiFi and it's REST API evolve.
-	//
-	// Corresponds with GET /flow/connector-definition/{group}/{artifact}/{version}/{type} (the `GetConnectorDefinition` operationId).
-	GetConnectorDefinition(ctx context.Context, group string, artifact string, version string, pType string, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// GetConnectorTypes Retrieves the types of connectors that this NiFi supports
-	//
-	// Note: This endpoint is subject to change as NiFi and it's REST API evolve.
-	//
-	// Corresponds with GET /flow/connector-types (the `GetConnectorTypes` operationId).
-	GetConnectorTypes(ctx context.Context, params *GetConnectorTypesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// GetConnectors Gets all connectors
-	//
-	// Corresponds with GET /flow/connectors (the `GetConnectors` operationId).
-	GetConnectors(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error)
-
 	// GetContentViewers Retrieves the registered content viewers
 	//
 	// Corresponds with GET /flow/content-viewers (the `GetContentViewers` operationId).
@@ -1320,13 +816,6 @@ type ClientInterface interface {
 	// Corresponds with GET /flow/flow-analysis/results/{processGroupId} (the `GetFlowAnalysisResults` operationId).
 	GetFlowAnalysisResults(ctx context.Context, processGroupId string, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// GetFlowRegistryClientDefinition Retrieves the Flow Registry Client Definition for the specified component type.
-	//
-	// Note: This endpoint is subject to change as NiFi and it's REST API evolve.
-	//
-	// Corresponds with GET /flow/flow-registry-client-definition/{group}/{artifact}/{version}/{type} (the `GetFlowRegistryClientDefinition` operationId).
-	GetFlowRegistryClientDefinition(ctx context.Context, group string, artifact string, version string, pType string, reqEditors ...RequestEditorFn) (*http.Response, error)
-
 	// QueryHistory Gets configuration history
 	//
 	// Note: This endpoint is subject to change as NiFi and it's REST API evolve.
@@ -1352,11 +841,6 @@ type ClientInterface interface {
 	//
 	// Corresponds with GET /flow/input-ports/{id}/status (the `GetInputPortStatus` operationId).
 	GetInputPortStatus(ctx context.Context, id string, params *GetInputPortStatusParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// GetListenPorts Gets all listen ports configured on this NiFi that the current user has access to
-	//
-	// Corresponds with GET /flow/listen-ports (the `GetListenPorts` operationId).
-	GetListenPorts(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetFlowMetrics Gets all metrics for the flow from a particular node
 	//
@@ -1399,12 +883,12 @@ type ClientInterface interface {
 	// Corresponds with GET /flow/prioritizers (the `GetPrioritizers` operationId).
 	GetPrioritizers(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// GetFlow1 Gets a process group
+	// GetFlow Gets a process group
 	//
 	// If the uiOnly query parameter is provided with a value of true, the returned entity may only contain fields that are necessary for rendering the NiFi User Interface. As such, the selected fields may change at any time, even during incremental releases, without warning. As a result, this parameter should not be provided by any client other than the UI.
 	//
-	// Corresponds with GET /flow/process-groups/{id} (the `GetFlow1` operationId).
-	GetFlow1(ctx context.Context, id string, params *GetFlow1Params, reqEditors ...RequestEditorFn) (*http.Response, error)
+	// Corresponds with GET /flow/process-groups/{id} (the `GetFlow` operationId).
+	GetFlow(ctx context.Context, id string, params *GetFlowParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// ScheduleComponentsWithBody Schedule or unschedule components in the specified Process Group.
 	//
@@ -1424,20 +908,6 @@ type ClientInterface interface {
 	//
 	// Corresponds with GET /flow/process-groups/{id}/breadcrumbs (the `GetBreadcrumbs` operationId).
 	GetBreadcrumbs(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ClearBulletins1WithBody Clears bulletins for components in the specified Process Group.
-	//
-	// Takes any type of body and a specified content type.
-	//
-	// Corresponds with POST /flow/process-groups/{id}/bulletins/clear-requests (the `ClearBulletins1` operationId).
-	ClearBulletins1WithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ClearBulletins1 Clears bulletins for components in the specified Process Group.
-	//
-	// Takes a body of the `application/json` content type.
-	//
-	// Corresponds with POST /flow/process-groups/{id}/bulletins/clear-requests (the `ClearBulletins1` operationId).
-	ClearBulletins1(ctx context.Context, id string, body ClearBulletins1JSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetControllerServicesFromGroup Gets all controller services
 	//
@@ -1589,13 +1059,6 @@ type ClientInterface interface {
 	// Corresponds with GET /flow/status (the `GetControllerStatus` operationId).
 	GetControllerStatus(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// GetStepDocumentation Retrieves the step documentation for the specified Connector configuration step.
-	//
-	// Note: This endpoint is subject to change as NiFi and it's REST API evolve.
-	//
-	// Corresponds with GET /flow/steps/{group}/{artifact}/{version}/{connectorType}/{stepName} (the `GetStepDocumentation` operationId).
-	GetStepDocumentation(ctx context.Context, group string, artifact string, version string, connectorType string, stepName string, reqEditors ...RequestEditorFn) (*http.Response, error)
-
 	// CreateDropRequest Creates a request to drop the contents of the queue in this connection.
 	//
 	// Corresponds with POST /flowfile-queues/{id}/drop-requests (the `CreateDropRequest` operationId).
@@ -1684,33 +1147,19 @@ type ClientInterface interface {
 	// Corresponds with PUT /input-ports/{id} (the `UpdateInputPort` operationId).
 	UpdateInputPort(ctx context.Context, id string, body UpdateInputPortJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// ClearBulletins2WithBody Clears bulletins for an input port
+	// UpdateRunStatus2WithBody Updates run status of an input-port
 	//
 	// Takes any type of body and a specified content type.
 	//
-	// Corresponds with POST /input-ports/{id}/bulletins/clear-requests (the `ClearBulletins2` operationId).
-	ClearBulletins2WithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	// Corresponds with PUT /input-ports/{id}/run-status (the `UpdateRunStatus2` operationId).
+	UpdateRunStatus2WithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// ClearBulletins2 Clears bulletins for an input port
+	// UpdateRunStatus2 Updates run status of an input-port
 	//
 	// Takes a body of the `application/json` content type.
 	//
-	// Corresponds with POST /input-ports/{id}/bulletins/clear-requests (the `ClearBulletins2` operationId).
-	ClearBulletins2(ctx context.Context, id string, body ClearBulletins2JSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// UpdateRunStatus3WithBody Updates run status of an input-port
-	//
-	// Takes any type of body and a specified content type.
-	//
-	// Corresponds with PUT /input-ports/{id}/run-status (the `UpdateRunStatus3` operationId).
-	UpdateRunStatus3WithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// UpdateRunStatus3 Updates run status of an input-port
-	//
-	// Takes a body of the `application/json` content type.
-	//
-	// Corresponds with PUT /input-ports/{id}/run-status (the `UpdateRunStatus3` operationId).
-	UpdateRunStatus3(ctx context.Context, id string, body UpdateRunStatus3JSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	// Corresponds with PUT /input-ports/{id}/run-status (the `UpdateRunStatus2` operationId).
+	UpdateRunStatus2(ctx context.Context, id string, body UpdateRunStatus2JSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// RemoveLabel Deletes a label
 	//
@@ -1760,33 +1209,19 @@ type ClientInterface interface {
 	// Corresponds with PUT /output-ports/{id} (the `UpdateOutputPort` operationId).
 	UpdateOutputPort(ctx context.Context, id string, body UpdateOutputPortJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// ClearBulletins3WithBody Clears bulletins for an output port
+	// UpdateRunStatus3WithBody Updates run status of an output-port
 	//
 	// Takes any type of body and a specified content type.
 	//
-	// Corresponds with POST /output-ports/{id}/bulletins/clear-requests (the `ClearBulletins3` operationId).
-	ClearBulletins3WithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	// Corresponds with PUT /output-ports/{id}/run-status (the `UpdateRunStatus3` operationId).
+	UpdateRunStatus3WithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// ClearBulletins3 Clears bulletins for an output port
+	// UpdateRunStatus3 Updates run status of an output-port
 	//
 	// Takes a body of the `application/json` content type.
 	//
-	// Corresponds with POST /output-ports/{id}/bulletins/clear-requests (the `ClearBulletins3` operationId).
-	ClearBulletins3(ctx context.Context, id string, body ClearBulletins3JSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// UpdateRunStatus4WithBody Updates run status of an output-port
-	//
-	// Takes any type of body and a specified content type.
-	//
-	// Corresponds with PUT /output-ports/{id}/run-status (the `UpdateRunStatus4` operationId).
-	UpdateRunStatus4WithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// UpdateRunStatus4 Updates run status of an output-port
-	//
-	// Takes a body of the `application/json` content type.
-	//
-	// Corresponds with PUT /output-ports/{id}/run-status (the `UpdateRunStatus4` operationId).
-	UpdateRunStatus4(ctx context.Context, id string, body UpdateRunStatus4JSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	// Corresponds with PUT /output-ports/{id}/run-status (the `UpdateRunStatus3` operationId).
+	UpdateRunStatus3(ctx context.Context, id string, body UpdateRunStatus3JSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// CreateParameterContextWithBody Create a Parameter Context
 	//
@@ -1802,19 +1237,21 @@ type ClientInterface interface {
 	// Corresponds with POST /parameter-contexts (the `CreateParameterContext` operationId).
 	CreateParameterContext(ctx context.Context, body CreateParameterContextJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// GetAssets1 Lists the assets that belong to the Parameter Context with the given ID.
+	// GetAssets Lists the assets that belong to the Parameter Context with the given ID
 	//
-	// Corresponds with GET /parameter-contexts/{contextId}/assets (the `GetAssets1` operationId).
-	GetAssets1(ctx context.Context, contextId string, reqEditors ...RequestEditorFn) (*http.Response, error)
+	// Lists the assets that belong to the Parameter Context with the given ID.
+	//
+	// Corresponds with GET /parameter-contexts/{contextId}/assets (the `GetAssets` operationId).
+	GetAssets(ctx context.Context, contextId string, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// CreateAsset1WithBody Creates a new Asset in the given Parameter Context
+	// CreateAssetWithBody Creates a new Asset in the given Parameter Context
 	//
 	// This endpoint will create a new Asset in the given Parameter Context. The Asset will be created with the given name and the contents of the file that is uploaded. The Asset will be created in the given Parameter Context, and will be available for use by any component that references the Parameter Context.
 	//
 	// Takes any type of body and a specified content type.
 	//
-	// Corresponds with POST /parameter-contexts/{contextId}/assets (the `CreateAsset1` operationId).
-	CreateAsset1WithBody(ctx context.Context, contextId string, params *CreateAsset1Params, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	// Corresponds with POST /parameter-contexts/{contextId}/assets (the `CreateAsset` operationId).
+	CreateAssetWithBody(ctx context.Context, contextId string, params *CreateAssetParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// DeleteAsset Deletes an Asset from the given Parameter Context
 	//
@@ -1823,10 +1260,10 @@ type ClientInterface interface {
 	// Corresponds with DELETE /parameter-contexts/{contextId}/assets/{assetId} (the `DeleteAsset` operationId).
 	DeleteAsset(ctx context.Context, contextId string, assetId string, params *DeleteAssetParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// GetAssetContent1 Retrieves the content of the asset with the given id
+	// GetAssetContent Retrieves the content of the asset with the given id
 	//
-	// Corresponds with GET /parameter-contexts/{contextId}/assets/{assetId} (the `GetAssetContent1` operationId).
-	GetAssetContent1(ctx context.Context, contextId string, assetId string, reqEditors ...RequestEditorFn) (*http.Response, error)
+	// Corresponds with GET /parameter-contexts/{contextId}/assets/{assetId} (the `GetAssetContent` operationId).
+	GetAssetContent(ctx context.Context, contextId string, assetId string, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// SubmitParameterContextUpdateWithBody Initiate the Update Request of a Parameter Context
 	//
@@ -1947,20 +1384,6 @@ type ClientInterface interface {
 	//
 	// Corresponds with PUT /parameter-providers/{id} (the `UpdateParameterProvider` operationId).
 	UpdateParameterProvider(ctx context.Context, id string, body UpdateParameterProviderJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ClearBulletins4WithBody Clears bulletins for a parameter provider
-	//
-	// Takes any type of body and a specified content type.
-	//
-	// Corresponds with POST /parameter-providers/{id}/bulletins/clear-requests (the `ClearBulletins4` operationId).
-	ClearBulletins4WithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ClearBulletins4 Clears bulletins for a parameter provider
-	//
-	// Takes a body of the `application/json` content type.
-	//
-	// Corresponds with POST /parameter-providers/{id}/bulletins/clear-requests (the `ClearBulletins4` operationId).
-	ClearBulletins4(ctx context.Context, id string, body ClearBulletins4JSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// AnalyzeConfiguration1WithBody Performs analysis of the component's configuration, providing information about which attributes are referenced.
 	//
@@ -2218,17 +1641,17 @@ type ClientInterface interface {
 	// Corresponds with GET /process-groups/{id}/download (the `ExportProcessGroup` operationId).
 	ExportProcessGroup(ctx context.Context, id string, params *ExportProcessGroupParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// CreateEmptyAllConnectionsRequest Creates a request to drop all FlowFiles of all connection queues in this process group.
+	// CreateEmptyAllConnectionsRequest Creates a request to drop all flowfiles of all connection queues in this process group.
 	//
 	// Corresponds with POST /process-groups/{id}/empty-all-connections-requests (the `CreateEmptyAllConnectionsRequest` operationId).
 	CreateEmptyAllConnectionsRequest(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// RemoveDropRequest1 Cancels and/or removes a request to drop all FlowFiles.
+	// RemoveDropRequest1 Cancels and/or removes a request to drop all flowfiles.
 	//
 	// Corresponds with DELETE /process-groups/{id}/empty-all-connections-requests/{drop-request-id} (the `RemoveDropRequest1` operationId).
 	RemoveDropRequest1(ctx context.Context, id string, dropRequestId string, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// GetDropAllFlowfilesRequest Gets the current status of a drop all FlowFiles request.
+	// GetDropAllFlowfilesRequest Gets the current status of a drop all flowfiles request.
 	//
 	// Corresponds with GET /process-groups/{id}/empty-all-connections-requests/{drop-request-id} (the `GetDropAllFlowfilesRequest` operationId).
 	GetDropAllFlowfilesRequest(ctx context.Context, id string, dropRequestId string, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -2494,41 +1917,6 @@ type ClientInterface interface {
 	// Corresponds with PUT /processors/{id} (the `UpdateProcessor` operationId).
 	UpdateProcessor(ctx context.Context, id string, body UpdateProcessorJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// SubmitProcessorBacklogRequest Initiates a request to determine the current backlog for a processor that implements BacklogReportingProcessor
-	//
-	// This will initiate the process of determining the backlog for a Processor. This may be a long-running task. As a result, this endpoint will immediately return a BacklogRequestEntity, and the process of determining the backlog will occur asynchronously in the background. The client may then periodically poll the status of the request by issuing a GET request to /processors/{processorId}/backlog-requests/{requestId}. Once the request is completed, the client is expected to issue a DELETE request to /processors/{processorId}/backlog-requests/{requestId}.
-	//
-	// Corresponds with POST /processors/{id}/backlog-requests (the `SubmitProcessorBacklogRequest` operationId).
-	SubmitProcessorBacklogRequest(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// DeleteBacklogRequest Deletes the Backlog Request with the given ID
-	//
-	// Deletes the Backlog Request with the given ID. After a request is created, it is expected that the client will properly clean up the request by DELETE'ing it once the backlog determination has completed. If the request is deleted before it completes, the background determination is cancelled.
-	//
-	// Corresponds with DELETE /processors/{id}/backlog-requests/{requestId} (the `DeleteBacklogRequest` operationId).
-	DeleteBacklogRequest(ctx context.Context, id string, requestId string, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// GetBacklogRequest Returns the Backlog Request with the given ID
-	//
-	// Returns the Backlog Request with the given ID. Once a Backlog Request has been created by performing a POST to /processors/{processorId}/backlog-requests, that request can subsequently be retrieved via this endpoint, and the request that is fetched will contain the updated state, such as percent complete, the current state of the request, and the backlog once the request is complete.
-	//
-	// Corresponds with GET /processors/{id}/backlog-requests/{requestId} (the `GetBacklogRequest` operationId).
-	GetBacklogRequest(ctx context.Context, id string, requestId string, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ClearBulletins5WithBody Clears bulletins for a processor
-	//
-	// Takes any type of body and a specified content type.
-	//
-	// Corresponds with POST /processors/{id}/bulletins/clear-requests (the `ClearBulletins5` operationId).
-	ClearBulletins5WithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ClearBulletins5 Clears bulletins for a processor
-	//
-	// Takes a body of the `application/json` content type.
-	//
-	// Corresponds with POST /processors/{id}/bulletins/clear-requests (the `ClearBulletins5` operationId).
-	ClearBulletins5(ctx context.Context, id string, body ClearBulletins5JSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
 	// AnalyzeConfiguration2WithBody Performs analysis of the component's configuration, providing information about which attributes are referenced.
 	//
 	// Takes any type of body and a specified content type.
@@ -2587,19 +1975,19 @@ type ClientInterface interface {
 	// Corresponds with GET /processors/{id}/diagnostics (the `GetProcessorDiagnostics` operationId).
 	GetProcessorDiagnostics(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// UpdateRunStatus5WithBody Updates run status of a processor
+	// UpdateRunStatus4WithBody Updates run status of a processor
 	//
 	// Takes any type of body and a specified content type.
 	//
-	// Corresponds with PUT /processors/{id}/run-status (the `UpdateRunStatus5` operationId).
-	UpdateRunStatus5WithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	// Corresponds with PUT /processors/{id}/run-status (the `UpdateRunStatus4` operationId).
+	UpdateRunStatus4WithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// UpdateRunStatus5 Updates run status of a processor
+	// UpdateRunStatus4 Updates run status of a processor
 	//
 	// Takes a body of the `application/json` content type.
 	//
-	// Corresponds with PUT /processors/{id}/run-status (the `UpdateRunStatus5` operationId).
-	UpdateRunStatus5(ctx context.Context, id string, body UpdateRunStatus5JSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	// Corresponds with PUT /processors/{id}/run-status (the `UpdateRunStatus4` operationId).
+	UpdateRunStatus4(ctx context.Context, id string, body UpdateRunStatus4JSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetState2 Gets the state for a processor
 	//
@@ -2772,20 +2160,6 @@ type ClientInterface interface {
 	// Corresponds with PUT /remote-process-groups/{id} (the `UpdateRemoteProcessGroup` operationId).
 	UpdateRemoteProcessGroup(ctx context.Context, id string, body UpdateRemoteProcessGroupJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// ClearBulletins6WithBody Clears bulletins for a remote process group
-	//
-	// Takes any type of body and a specified content type.
-	//
-	// Corresponds with POST /remote-process-groups/{id}/bulletins/clear-requests (the `ClearBulletins6` operationId).
-	ClearBulletins6WithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ClearBulletins6 Clears bulletins for a remote process group
-	//
-	// Takes a body of the `application/json` content type.
-	//
-	// Corresponds with POST /remote-process-groups/{id}/bulletins/clear-requests (the `ClearBulletins6` operationId).
-	ClearBulletins6(ctx context.Context, id string, body ClearBulletins6JSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
 	// UpdateRemoteProcessGroupInputPortWithBody Updates a remote port
 	//
 	// Note: This endpoint is subject to change as NiFi and it's REST API evolve.
@@ -2804,7 +2178,7 @@ type ClientInterface interface {
 	// Corresponds with PUT /remote-process-groups/{id}/input-ports/{port-id} (the `UpdateRemoteProcessGroupInputPort` operationId).
 	UpdateRemoteProcessGroupInputPort(ctx context.Context, id string, portId string, body UpdateRemoteProcessGroupInputPortJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// UpdateRemoteProcessGroupInputPortRunStatusWithBody Updates run status of a remote input port
+	// UpdateRemoteProcessGroupInputPortRunStatusWithBody Updates run status of a remote port
 	//
 	// Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 	//
@@ -2813,7 +2187,7 @@ type ClientInterface interface {
 	// Corresponds with PUT /remote-process-groups/{id}/input-ports/{port-id}/run-status (the `UpdateRemoteProcessGroupInputPortRunStatus` operationId).
 	UpdateRemoteProcessGroupInputPortRunStatusWithBody(ctx context.Context, id string, portId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// UpdateRemoteProcessGroupInputPortRunStatus Updates run status of a remote input port
+	// UpdateRemoteProcessGroupInputPortRunStatus Updates run status of a remote port
 	//
 	// Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 	//
@@ -2840,7 +2214,7 @@ type ClientInterface interface {
 	// Corresponds with PUT /remote-process-groups/{id}/output-ports/{port-id} (the `UpdateRemoteProcessGroupOutputPort` operationId).
 	UpdateRemoteProcessGroupOutputPort(ctx context.Context, id string, portId string, body UpdateRemoteProcessGroupOutputPortJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// UpdateRemoteProcessGroupOutputPortRunStatusWithBody Updates run status of a remote output port
+	// UpdateRemoteProcessGroupOutputPortRunStatusWithBody Updates run status of a remote port
 	//
 	// Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 	//
@@ -2849,7 +2223,7 @@ type ClientInterface interface {
 	// Corresponds with PUT /remote-process-groups/{id}/output-ports/{port-id}/run-status (the `UpdateRemoteProcessGroupOutputPortRunStatus` operationId).
 	UpdateRemoteProcessGroupOutputPortRunStatusWithBody(ctx context.Context, id string, portId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// UpdateRemoteProcessGroupOutputPortRunStatus Updates run status of a remote output port
+	// UpdateRemoteProcessGroupOutputPortRunStatus Updates run status of a remote port
 	//
 	// Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 	//
@@ -2900,20 +2274,6 @@ type ClientInterface interface {
 	//
 	// Corresponds with PUT /reporting-tasks/{id} (the `UpdateReportingTask` operationId).
 	UpdateReportingTask(ctx context.Context, id string, body UpdateReportingTaskJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ClearBulletins7WithBody Clears bulletins for a reporting task
-	//
-	// Takes any type of body and a specified content type.
-	//
-	// Corresponds with POST /reporting-tasks/{id}/bulletins/clear-requests (the `ClearBulletins7` operationId).
-	ClearBulletins7WithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ClearBulletins7 Clears bulletins for a reporting task
-	//
-	// Takes a body of the `application/json` content type.
-	//
-	// Corresponds with POST /reporting-tasks/{id}/bulletins/clear-requests (the `ClearBulletins7` operationId).
-	ClearBulletins7(ctx context.Context, id string, body ClearBulletins7JSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// AnalyzeConfiguration3WithBody Performs analysis of the component's configuration, providing information about which attributes are referenced.
 	//
@@ -2966,19 +2326,19 @@ type ClientInterface interface {
 	// Corresponds with GET /reporting-tasks/{id}/descriptors (the `GetPropertyDescriptor4` operationId).
 	GetPropertyDescriptor4(ctx context.Context, id string, params *GetPropertyDescriptor4Params, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// UpdateRunStatus6WithBody Updates run status of a reporting task
+	// UpdateRunStatus5WithBody Updates run status of a reporting task
 	//
 	// Takes any type of body and a specified content type.
 	//
-	// Corresponds with PUT /reporting-tasks/{id}/run-status (the `UpdateRunStatus6` operationId).
-	UpdateRunStatus6WithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	// Corresponds with PUT /reporting-tasks/{id}/run-status (the `UpdateRunStatus5` operationId).
+	UpdateRunStatus5WithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// UpdateRunStatus6 Updates run status of a reporting task
+	// UpdateRunStatus5 Updates run status of a reporting task
 	//
 	// Takes a body of the `application/json` content type.
 	//
-	// Corresponds with PUT /reporting-tasks/{id}/run-status (the `UpdateRunStatus6` operationId).
-	UpdateRunStatus6(ctx context.Context, id string, body UpdateRunStatus6JSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	// Corresponds with PUT /reporting-tasks/{id}/run-status (the `UpdateRunStatus5` operationId).
+	UpdateRunStatus5(ctx context.Context, id string, body UpdateRunStatus5JSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetState4 Gets the state for a reporting task
 	//
@@ -3273,85 +2633,10 @@ type ClientInterface interface {
 	// Corresponds with PUT /versions/process-groups/{id} (the `UpdateFlowVersion` operationId).
 	UpdateFlowVersion(ctx context.Context, id string, body UpdateFlowVersionJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// CreateFlowBranchWithBody Creates a new branch for a version controlled Process Group
-	//
-	// Note: This endpoint is subject to change as NiFi and it's REST API evolve.
-	//
-	// Takes any type of body and a specified content type.
-	//
-	// Corresponds with POST /versions/process-groups/{id}/branches (the `CreateFlowBranch` operationId).
-	CreateFlowBranchWithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// CreateFlowBranch Creates a new branch for a version controlled Process Group
-	//
-	// Note: This endpoint is subject to change as NiFi and it's REST API evolve.
-	//
-	// Takes a body of the `application/json` content type.
-	//
-	// Corresponds with POST /versions/process-groups/{id}/branches (the `CreateFlowBranch` operationId).
-	CreateFlowBranch(ctx context.Context, id string, body CreateFlowBranchJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
 	// ExportFlowVersion Gets the latest version of a Process Group for download
 	//
 	// Corresponds with GET /versions/process-groups/{id}/download (the `ExportFlowVersion` operationId).
 	ExportFlowVersion(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApplyRebasedFlowVersionWithBody Applies a rebased flow to a Process Group with the given ID on this node
-	//
-	// This endpoint is used internally to apply a rebase to a Process Group on each node of a cluster. It synchronizes the flow to the supplied merged snapshot and then resets the Version Control Information to the clean target version so that the preserved local changes are detected as local modifications. Note: This endpoint is subject to change as NiFi and it's REST API evolve.
-	//
-	// Takes any type of body and a specified content type.
-	//
-	// Corresponds with PUT /versions/process-groups/{id}/rebase (the `ApplyRebasedFlowVersion` operationId).
-	ApplyRebasedFlowVersionWithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApplyRebasedFlowVersion Applies a rebased flow to a Process Group with the given ID on this node
-	//
-	// This endpoint is used internally to apply a rebase to a Process Group on each node of a cluster. It synchronizes the flow to the supplied merged snapshot and then resets the Version Control Information to the clean target version so that the preserved local changes are detected as local modifications. Note: This endpoint is subject to change as NiFi and it's REST API evolve.
-	//
-	// Takes a body of the `application/json` content type.
-	//
-	// Corresponds with PUT /versions/process-groups/{id}/rebase (the `ApplyRebasedFlowVersion` operationId).
-	ApplyRebasedFlowVersion(ctx context.Context, id string, body ApplyRebasedFlowVersionJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// GetRebaseAnalysis Gets a Rebase Analysis for a Process Group
-	//
-	// For a Process Group that is under Version Control, this will perform a rebase analysis by comparing local modifications against upstream changes between the current version and the specified target version. The analysis determines whether a rebase is allowed or if there are conflicts.
-	//
-	// Corresponds with GET /versions/rebase-analysis/process-groups/{id} (the `GetRebaseAnalysis` operationId).
-	GetRebaseAnalysis(ctx context.Context, id string, params *GetRebaseAnalysisParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// InitiateRebaseWithBody Initiate a Rebase Request for a Process Group with the given ID
-	//
-	// For a Process Group that is already under Version Control, this will initiate the action of rebasing the flow to a different version while preserving compatible local changes. This can be a lengthy process, as it will stop any Processors and disable any Controller Services necessary to perform the action and then restart them. As a result, the endpoint will immediately return a VersionedFlowUpdateRequestEntity, and the process of rebasing the flow will occur asynchronously in the background. The client may then periodically poll the status of the request by issuing a GET request to /versions/rebase-requests/{requestId}. Once the request is completed, the client is expected to issue a DELETE request to /versions/rebase-requests/{requestId}. Note: This endpoint is subject to change as NiFi and it's REST API evolve.
-	//
-	// Takes any type of body and a specified content type.
-	//
-	// Corresponds with POST /versions/rebase-requests/process-groups/{id} (the `InitiateRebase` operationId).
-	InitiateRebaseWithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// InitiateRebase Initiate a Rebase Request for a Process Group with the given ID
-	//
-	// For a Process Group that is already under Version Control, this will initiate the action of rebasing the flow to a different version while preserving compatible local changes. This can be a lengthy process, as it will stop any Processors and disable any Controller Services necessary to perform the action and then restart them. As a result, the endpoint will immediately return a VersionedFlowUpdateRequestEntity, and the process of rebasing the flow will occur asynchronously in the background. The client may then periodically poll the status of the request by issuing a GET request to /versions/rebase-requests/{requestId}. Once the request is completed, the client is expected to issue a DELETE request to /versions/rebase-requests/{requestId}. Note: This endpoint is subject to change as NiFi and it's REST API evolve.
-	//
-	// Takes a body of the `application/json` content type.
-	//
-	// Corresponds with POST /versions/rebase-requests/process-groups/{id} (the `InitiateRebase` operationId).
-	InitiateRebase(ctx context.Context, id string, body InitiateRebaseJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// DeleteRebaseRequest Deletes the Rebase Request with the given ID
-	//
-	// Deletes the Rebase Request with the given ID. After a request is created via a POST to /versions/rebase-requests/process-groups/{id}, it is expected that the client will properly clean up the request by DELETE'ing it, once the Rebase process has completed. If the request is deleted before the request completes, then the Rebase request will finish the step that it is currently performing and then will cancel any subsequent steps. Note: This endpoint is subject to change as NiFi and it's REST API evolve.
-	//
-	// Corresponds with DELETE /versions/rebase-requests/{id} (the `DeleteRebaseRequest` operationId).
-	DeleteRebaseRequest(ctx context.Context, id string, params *DeleteRebaseRequestParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// GetRebaseRequest Returns the Rebase Request with the given ID
-	//
-	// Returns the Rebase Request with the given ID. Once a Rebase Request has been created by performing a POST to /versions/rebase-requests/process-groups/{id}, that request can subsequently be retrieved via this endpoint, and the request that is fetched will contain the updated state, such as percent complete, the current state of the request, and any failures. Note: This endpoint is subject to change as NiFi and it's REST API evolve.
-	//
-	// Corresponds with GET /versions/rebase-requests/{id} (the `GetRebaseRequest` operationId).
-	GetRebaseRequest(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// InitiateRevertFlowVersionWithBody Initiate the Revert Request of a Process Group with the given ID
 	//
@@ -3490,7 +2775,7 @@ func (c *Client) CreateAccessTokenWithFormdataBody(ctx context.Context, body Cre
 	return c.Client.Do(req)
 }
 
-// GetAuthenticationConfiguration Retrieves the authentication configuration details and status information
+// GetAuthenticationConfiguration Retrieves the authentication configuration endpoint and status information
 //
 // Corresponds with GET /authentication/configuration (the `GetAuthenticationConfiguration` operationId).
 func (c *Client) GetAuthenticationConfiguration(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -3569,959 +2854,6 @@ func (c *Client) UpdateConnection(ctx context.Context, id string, body UpdateCon
 	return c.Client.Do(req)
 }
 
-// CreateConnectorWithBody Creates a new connector
-//
-// Takes any type of body and a specified content type.
-//
-// Corresponds with POST /connectors (the `CreateConnector` operationId).
-func (c *Client) CreateConnectorWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCreateConnectorRequestWithBody(c.Server, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// CreateConnector Creates a new connector
-//
-// Takes a body of the `application/json` content type.
-//
-// Corresponds with POST /connectors (the `CreateConnector` operationId).
-func (c *Client) CreateConnector(ctx context.Context, body CreateConnectorJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCreateConnectorRequest(c.Server, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// GetFlow Gets the flow for a process group within a connector
-//
-// Returns the flow for the specified process group within the connector's hierarchy. The processGroupId can be obtained from the managedProcessGroupId field of the ConnectorDTO for the root process group, or from child process groups within the flow. If the uiOnly query parameter is provided with a value of true, the returned entity may only contain fields that are necessary for rendering the NiFi User Interface. As such, the selected fields may change at any time, even during incremental releases, without warning. As a result, this parameter should not be provided by any client other than the UI.
-//
-// Corresponds with GET /connectors/{connectorId}/flow/process-groups/{processGroupId} (the `GetFlow` operationId).
-func (c *Client) GetFlow(ctx context.Context, connectorId string, processGroupId string, params *GetFlowParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetFlowRequest(c.Server, connectorId, processGroupId, params)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// GetControllerServicesFromConnectorProcessGroup Gets all controller services for a process group within a connector
-//
-// Returns the controller services for the specified process group within the connector's hierarchy. The processGroupId can be obtained from the managedProcessGroupId field of the ConnectorDTO for the root process group, or from child process groups within the flow.
-//
-// Corresponds with GET /connectors/{connectorId}/flow/process-groups/{processGroupId}/controller-services (the `GetControllerServicesFromConnectorProcessGroup` operationId).
-func (c *Client) GetControllerServicesFromConnectorProcessGroup(ctx context.Context, connectorId string, processGroupId string, params *GetControllerServicesFromConnectorProcessGroupParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetControllerServicesFromConnectorProcessGroupRequest(c.Server, connectorId, processGroupId, params)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// GetParameterContextForConnectorProcessGroup Gets the parameter context bound to a process group within a connector
-//
-// Returns the parameter context (with effective parameters, including those inherited from other contexts) bound to the specified process group within the connector's hierarchy. Sensitive parameter values are masked. Returns 204 No Content if the process group has no bound parameter context.
-//
-// Corresponds with GET /connectors/{connectorId}/flow/process-groups/{processGroupId}/parameter-context (the `GetParameterContextForConnectorProcessGroup` operationId).
-func (c *Client) GetParameterContextForConnectorProcessGroup(ctx context.Context, connectorId string, processGroupId string, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetParameterContextForConnectorProcessGroupRequest(c.Server, connectorId, processGroupId)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// DeleteConnector Deletes a connector
-//
-// Corresponds with DELETE /connectors/{id} (the `DeleteConnector` operationId).
-func (c *Client) DeleteConnector(ctx context.Context, id string, params *DeleteConnectorParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewDeleteConnectorRequest(c.Server, id, params)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// GetConnector Gets a connector
-//
-// Corresponds with GET /connectors/{id} (the `GetConnector` operationId).
-func (c *Client) GetConnector(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetConnectorRequest(c.Server, id)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// UpdateConnectorWithBody Updates a connector
-//
-// Takes any type of body and a specified content type.
-//
-// Corresponds with PUT /connectors/{id} (the `UpdateConnector` operationId).
-func (c *Client) UpdateConnectorWithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewUpdateConnectorRequestWithBody(c.Server, id, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// UpdateConnector Updates a connector
-//
-// Takes a body of the `application/json` content type.
-//
-// Corresponds with PUT /connectors/{id} (the `UpdateConnector` operationId).
-func (c *Client) UpdateConnector(ctx context.Context, id string, body UpdateConnectorJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewUpdateConnectorRequest(c.Server, id, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApplyConnectorUpdateWithBody Applies an update to a connector
-//
-// This will apply any pending configuration changes to the connector. The client can poll the connector endpoint to check when the update is complete.
-//
-// Takes any type of body and a specified content type.
-//
-// Corresponds with POST /connectors/{id}/apply-update (the `ApplyConnectorUpdate` operationId).
-func (c *Client) ApplyConnectorUpdateWithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApplyConnectorUpdateRequestWithBody(c.Server, id, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApplyConnectorUpdate Applies an update to a connector
-//
-// This will apply any pending configuration changes to the connector. The client can poll the connector endpoint to check when the update is complete.
-//
-// Takes a body of the `application/json` content type.
-//
-// Corresponds with POST /connectors/{id}/apply-update (the `ApplyConnectorUpdate` operationId).
-func (c *Client) ApplyConnectorUpdate(ctx context.Context, id string, body ApplyConnectorUpdateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApplyConnectorUpdateRequest(c.Server, id, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// GetAssets Lists the assets that belong to the Connector with the given ID
-//
-// Lists the assets that belong to the Connector with the given ID.
-//
-// Corresponds with GET /connectors/{id}/assets (the `GetAssets` operationId).
-func (c *Client) GetAssets(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetAssetsRequest(c.Server, id)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// CreateAssetWithBody Creates a new Asset in the given Connector
-//
-// This endpoint will create a new Asset in the Connector. The Asset will be created with the given name and the contents of the file that is uploaded.
-//
-// Takes any type of body and a specified content type.
-//
-// Corresponds with POST /connectors/{id}/assets (the `CreateAsset` operationId).
-func (c *Client) CreateAssetWithBody(ctx context.Context, id string, params *CreateAssetParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCreateAssetRequestWithBody(c.Server, id, params, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// GetAssetContent Retrieves the content of the asset with the given id for a connector
-//
-// Corresponds with GET /connectors/{id}/assets/{assetId} (the `GetAssetContent` operationId).
-func (c *Client) GetAssetContent(ctx context.Context, id string, assetId string, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetAssetContentRequest(c.Server, id, assetId)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// SubmitConnectorBacklogRequest Initiates a request to determine the current backlog for a Connector
-//
-// This will initiate the process of determining the backlog for a Connector. This may be a long-running task. As a result, this endpoint will immediately return a BacklogRequestEntity, and the process of determining the backlog will occur asynchronously in the background. The client may then periodically poll the status of the request by issuing a GET request to /connectors/{id}/backlog-requests/{requestId}. Once the request is completed, the client is expected to issue a DELETE request to /connectors/{id}/backlog-requests/{requestId}.
-//
-// Corresponds with POST /connectors/{id}/backlog-requests (the `SubmitConnectorBacklogRequest` operationId).
-func (c *Client) SubmitConnectorBacklogRequest(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewSubmitConnectorBacklogRequestRequest(c.Server, id)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// DeleteConnectorBacklogRequest Deletes the Backlog Request with the given ID
-//
-// Deletes the Backlog Request with the given ID. After a request is created, it is expected that the client will properly clean up the request by DELETE'ing it once the backlog determination has completed. If the request is deleted before it completes, the background determination is cancelled.
-//
-// Corresponds with DELETE /connectors/{id}/backlog-requests/{requestId} (the `DeleteConnectorBacklogRequest` operationId).
-func (c *Client) DeleteConnectorBacklogRequest(ctx context.Context, id string, requestId string, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewDeleteConnectorBacklogRequestRequest(c.Server, id, requestId)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// GetConnectorBacklogRequest Returns the Backlog Request with the given ID
-//
-// Returns the Backlog Request with the given ID. Once a Backlog Request has been created by performing a POST to /connectors/{id}/backlog-requests, that request can subsequently be retrieved via this endpoint, and the request that is fetched will contain the updated state, such as percent complete, the current state of the request, and the backlog once the request is complete.
-//
-// Corresponds with GET /connectors/{id}/backlog-requests/{requestId} (the `GetConnectorBacklogRequest` operationId).
-func (c *Client) GetConnectorBacklogRequest(ctx context.Context, id string, requestId string, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetConnectorBacklogRequestRequest(c.Server, id, requestId)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// GetConnectorConfigurationSteps Gets all configuration step names for a connector
-//
-// Corresponds with GET /connectors/{id}/configuration-steps (the `GetConnectorConfigurationSteps` operationId).
-func (c *Client) GetConnectorConfigurationSteps(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetConnectorConfigurationStepsRequest(c.Server, id)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// GetConnectorConfigurationStep Gets a specific configuration step by name for a connector
-//
-// Corresponds with GET /connectors/{id}/configuration-steps/{configurationStepName} (the `GetConnectorConfigurationStep` operationId).
-func (c *Client) GetConnectorConfigurationStep(ctx context.Context, id string, configurationStepName string, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetConnectorConfigurationStepRequest(c.Server, id, configurationStepName)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// UpdateConnectorConfigurationStepWithBody Updates a specific configuration step by name for a connector
-//
-// Takes any type of body and a specified content type.
-//
-// Corresponds with PUT /connectors/{id}/configuration-steps/{configurationStepName} (the `UpdateConnectorConfigurationStep` operationId).
-func (c *Client) UpdateConnectorConfigurationStepWithBody(ctx context.Context, id string, configurationStepName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewUpdateConnectorConfigurationStepRequestWithBody(c.Server, id, configurationStepName, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// UpdateConnectorConfigurationStep Updates a specific configuration step by name for a connector
-//
-// Takes a body of the `application/json` content type.
-//
-// Corresponds with PUT /connectors/{id}/configuration-steps/{configurationStepName} (the `UpdateConnectorConfigurationStep` operationId).
-func (c *Client) UpdateConnectorConfigurationStep(ctx context.Context, id string, configurationStepName string, body UpdateConnectorConfigurationStepJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewUpdateConnectorConfigurationStepRequest(c.Server, id, configurationStepName, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// GetConnectorPropertyAllowableValues Gets the allowable values for a specific property in a connector's configuration step
-//
-// Gets the allowable values for a specific property that supports dynamic fetching of allowable values. The filter parameter can be used to narrow down the results based on the property's filtering logic.
-//
-// Corresponds with GET /connectors/{id}/configuration-steps/{configurationStepName}/property-groups/{propertyGroupName}/properties/{propertyName}/allowable-values (the `GetConnectorPropertyAllowableValues` operationId).
-func (c *Client) GetConnectorPropertyAllowableValues(ctx context.Context, id string, configurationStepName string, propertyGroupName string, propertyName string, params *GetConnectorPropertyAllowableValuesParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetConnectorPropertyAllowableValuesRequest(c.Server, id, configurationStepName, propertyGroupName, propertyName, params)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// SubmitConfigurationStepVerificationRequestWithBody Performs verification of a configuration step for a connector
-//
-// This will initiate the process of verifying a given Connector Configuration Step. This may be a long-running task. As a result, this endpoint will immediately return a VerifyConnectorConfigStepRequestEntity, and the process of performing the verification will occur asynchronously in the background. The client may then periodically poll the status of the request by issuing a GET request to /connectors/{connectorId}/configuration-steps/{stepName}/verify-config/{requestId}. Once the request is completed, the client is expected to issue a DELETE request to /connectors/{connectorId}/configuration-steps/{stepName}/verify-config/{requestId}.
-//
-// Takes any type of body and a specified content type.
-//
-// Corresponds with POST /connectors/{id}/configuration-steps/{configurationStepName}/verify-config (the `SubmitConfigurationStepVerificationRequest` operationId).
-func (c *Client) SubmitConfigurationStepVerificationRequestWithBody(ctx context.Context, id string, configurationStepName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewSubmitConfigurationStepVerificationRequestRequestWithBody(c.Server, id, configurationStepName, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// SubmitConfigurationStepVerificationRequest Performs verification of a configuration step for a connector
-//
-// This will initiate the process of verifying a given Connector Configuration Step. This may be a long-running task. As a result, this endpoint will immediately return a VerifyConnectorConfigStepRequestEntity, and the process of performing the verification will occur asynchronously in the background. The client may then periodically poll the status of the request by issuing a GET request to /connectors/{connectorId}/configuration-steps/{stepName}/verify-config/{requestId}. Once the request is completed, the client is expected to issue a DELETE request to /connectors/{connectorId}/configuration-steps/{stepName}/verify-config/{requestId}.
-//
-// Takes a body of the `application/json` content type.
-//
-// Corresponds with POST /connectors/{id}/configuration-steps/{configurationStepName}/verify-config (the `SubmitConfigurationStepVerificationRequest` operationId).
-func (c *Client) SubmitConfigurationStepVerificationRequest(ctx context.Context, id string, configurationStepName string, body SubmitConfigurationStepVerificationRequestJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewSubmitConfigurationStepVerificationRequestRequest(c.Server, id, configurationStepName, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// DeleteConfigurationStepVerificationRequest Deletes the Verification Request with the given ID
-//
-// Deletes the Verification Request with the given ID. After a request is created, it is expected that the client will properly clean up the request by DELETE'ing it, once the Verification process has completed. If the request is deleted before the request completes, then the Verification request will finish the step that it is currently performing and then will cancel any subsequent steps.
-//
-// Corresponds with DELETE /connectors/{id}/configuration-steps/{configurationStepName}/verify-config/{requestId} (the `DeleteConfigurationStepVerificationRequest` operationId).
-func (c *Client) DeleteConfigurationStepVerificationRequest(ctx context.Context, id string, configurationStepName string, requestId string, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewDeleteConfigurationStepVerificationRequestRequest(c.Server, id, configurationStepName, requestId)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// GetConfigurationStepVerificationRequest Returns the Verification Request with the given ID
-//
-// Returns the Verification Request with the given ID. Once a Verification Request has been created, that request can subsequently be retrieved via this endpoint, and the request that is fetched will contain the updated state, such as percent complete, the current state of the request, and any failures.
-//
-// Corresponds with GET /connectors/{id}/configuration-steps/{configurationStepName}/verify-config/{requestId} (the `GetConfigurationStepVerificationRequest` operationId).
-func (c *Client) GetConfigurationStepVerificationRequest(ctx context.Context, id string, configurationStepName string, requestId string, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetConfigurationStepVerificationRequestRequest(c.Server, id, configurationStepName, requestId)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// GetConnectorConnectionStatusHistory Gets the status history for a connection within a connector
-//
-// Corresponds with GET /connectors/{id}/connections/{connectionId}/status/history (the `GetConnectorConnectionStatusHistory` operationId).
-func (c *Client) GetConnectorConnectionStatusHistory(ctx context.Context, id string, connectionId string, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetConnectorConnectionStatusHistoryRequest(c.Server, id, connectionId)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// GetConnectorControllerServiceState Gets the state for a controller service within a connector
-//
-// Corresponds with GET /connectors/{id}/controller-services/{controllerServiceId}/state (the `GetConnectorControllerServiceState` operationId).
-func (c *Client) GetConnectorControllerServiceState(ctx context.Context, id string, controllerServiceId string, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetConnectorControllerServiceStateRequest(c.Server, id, controllerServiceId)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ClearConnectorControllerServiceStateWithBody Clears the state for a controller service within a connector
-//
-// Takes any type of body and a specified content type.
-//
-// Corresponds with POST /connectors/{id}/controller-services/{controllerServiceId}/state/clear-requests (the `ClearConnectorControllerServiceState` operationId).
-func (c *Client) ClearConnectorControllerServiceStateWithBody(ctx context.Context, id string, controllerServiceId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewClearConnectorControllerServiceStateRequestWithBody(c.Server, id, controllerServiceId, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ClearConnectorControllerServiceState Clears the state for a controller service within a connector
-//
-// Takes a body of the `application/json` content type.
-//
-// Corresponds with POST /connectors/{id}/controller-services/{controllerServiceId}/state/clear-requests (the `ClearConnectorControllerServiceState` operationId).
-func (c *Client) ClearConnectorControllerServiceState(ctx context.Context, id string, controllerServiceId string, body ClearConnectorControllerServiceStateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewClearConnectorControllerServiceStateRequest(c.Server, id, controllerServiceId, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// CancelDrain Cancels the draining of FlowFiles for a connector
-//
-// Corresponds with DELETE /connectors/{id}/drain (the `CancelDrain` operationId).
-func (c *Client) CancelDrain(ctx context.Context, id string, params *CancelDrainParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCancelDrainRequest(c.Server, id, params)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// InitiateDrainWithBody Initiates draining of FlowFiles for a connector
-//
-// This will initiate draining of FlowFiles for a stopped connector. Draining allows the connector to process data that is currently in the flow but does not ingest any additional data. The connector must be in a STOPPED state before draining can begin. Once initiated, the connector will transition to a DRAINING state. Use the DELETE method on this endpoint to cancel an ongoing drain operation.
-//
-// Takes any type of body and a specified content type.
-//
-// Corresponds with POST /connectors/{id}/drain (the `InitiateDrain` operationId).
-func (c *Client) InitiateDrainWithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewInitiateDrainRequestWithBody(c.Server, id, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// InitiateDrain Initiates draining of FlowFiles for a connector
-//
-// This will initiate draining of FlowFiles for a stopped connector. Draining allows the connector to process data that is currently in the flow but does not ingest any additional data. The connector must be in a STOPPED state before draining can begin. Once initiated, the connector will transition to a DRAINING state. Use the DELETE method on this endpoint to cancel an ongoing drain operation.
-//
-// Takes a body of the `application/json` content type.
-//
-// Corresponds with POST /connectors/{id}/drain (the `InitiateDrain` operationId).
-func (c *Client) InitiateDrain(ctx context.Context, id string, body InitiateDrainJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewInitiateDrainRequest(c.Server, id, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// CreateMigrationPayloadWithBody Uploads a flow snapshot payload for a later Connector migration request
-//
-// Takes any type of body and a specified content type.
-//
-// Corresponds with POST /connectors/{id}/migration-payloads (the `CreateMigrationPayload` operationId).
-func (c *Client) CreateMigrationPayloadWithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCreateMigrationPayloadRequestWithBody(c.Server, id, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// CreateMigrationRequestWithBody Creates a Connector migration request
-//
-// Takes any type of body and a specified content type.
-//
-// Corresponds with POST /connectors/{id}/migration-requests (the `CreateMigrationRequest` operationId).
-func (c *Client) CreateMigrationRequestWithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCreateMigrationRequestRequestWithBody(c.Server, id, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// CreateMigrationRequest Creates a Connector migration request
-//
-// Takes a body of the `application/json` content type.
-//
-// Corresponds with POST /connectors/{id}/migration-requests (the `CreateMigrationRequest` operationId).
-func (c *Client) CreateMigrationRequest(ctx context.Context, id string, body CreateMigrationRequestJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCreateMigrationRequestRequest(c.Server, id, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// DeleteMigrationRequest Deletes the Connector migration request with the given ID
-//
-// Corresponds with DELETE /connectors/{id}/migration-requests/{requestId} (the `DeleteMigrationRequest` operationId).
-func (c *Client) DeleteMigrationRequest(ctx context.Context, id string, requestId string, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewDeleteMigrationRequestRequest(c.Server, id, requestId)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// GetMigrationRequest Gets the Connector migration request with the given ID
-//
-// Corresponds with GET /connectors/{id}/migration-requests/{requestId} (the `GetMigrationRequest` operationId).
-func (c *Client) GetMigrationRequest(ctx context.Context, id string, requestId string, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetMigrationRequestRequest(c.Server, id, requestId)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// GetMigrationSources Lists the Versioned Process Groups that the Connector can be migrated from
-//
-// Corresponds with GET /connectors/{id}/migration-sources (the `GetMigrationSources` operationId).
-func (c *Client) GetMigrationSources(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetMigrationSourcesRequest(c.Server, id)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// GetConnectorProcessGroupStatusHistory Gets the status history for a process group within a connector
-//
-// Corresponds with GET /connectors/{id}/process-groups/{processGroupId}/status/history (the `GetConnectorProcessGroupStatusHistory` operationId).
-func (c *Client) GetConnectorProcessGroupStatusHistory(ctx context.Context, id string, processGroupId string, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetConnectorProcessGroupStatusHistoryRequest(c.Server, id, processGroupId)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// GetConnectorProcessorState Gets the state for a processor within a connector
-//
-// Corresponds with GET /connectors/{id}/processors/{processorId}/state (the `GetConnectorProcessorState` operationId).
-func (c *Client) GetConnectorProcessorState(ctx context.Context, id string, processorId string, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetConnectorProcessorStateRequest(c.Server, id, processorId)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ClearConnectorProcessorStateWithBody Clears the state for a processor within a connector
-//
-// Takes any type of body and a specified content type.
-//
-// Corresponds with POST /connectors/{id}/processors/{processorId}/state/clear-requests (the `ClearConnectorProcessorState` operationId).
-func (c *Client) ClearConnectorProcessorStateWithBody(ctx context.Context, id string, processorId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewClearConnectorProcessorStateRequestWithBody(c.Server, id, processorId, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ClearConnectorProcessorState Clears the state for a processor within a connector
-//
-// Takes a body of the `application/json` content type.
-//
-// Corresponds with POST /connectors/{id}/processors/{processorId}/state/clear-requests (the `ClearConnectorProcessorState` operationId).
-func (c *Client) ClearConnectorProcessorState(ctx context.Context, id string, processorId string, body ClearConnectorProcessorStateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewClearConnectorProcessorStateRequest(c.Server, id, processorId, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// GetConnectorProcessorStatusHistory Gets the status history for a processor within a connector
-//
-// Corresponds with GET /connectors/{id}/processors/{processorId}/status/history (the `GetConnectorProcessorStatusHistory` operationId).
-func (c *Client) GetConnectorProcessorStatusHistory(ctx context.Context, id string, processorId string, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetConnectorProcessorStatusHistoryRequest(c.Server, id, processorId)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// CreatePurgeRequest Creates a request to purge the FlowFiles for this connector
-//
-// This will create a request to purge all FlowFiles from the connector. The connector must be in a STOPPED state before purging can begin. This is an asynchronous operation. The client should poll the returned URI to get the status of the purge request.
-//
-// Corresponds with POST /connectors/{id}/purge-requests (the `CreatePurgeRequest` operationId).
-func (c *Client) CreatePurgeRequest(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCreatePurgeRequestRequest(c.Server, id)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// RemovePurgeRequest Cancels and/or removes a request to purge the FlowFiles for this connector
-//
-// Corresponds with DELETE /connectors/{id}/purge-requests/{purge-request-id} (the `RemovePurgeRequest` operationId).
-func (c *Client) RemovePurgeRequest(ctx context.Context, id string, purgeRequestId string, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewRemovePurgeRequestRequest(c.Server, id, purgeRequestId)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// GetPurgeRequest Gets the current status of a purge request for the specified connector
-//
-// Corresponds with GET /connectors/{id}/purge-requests/{purge-request-id} (the `GetPurgeRequest` operationId).
-func (c *Client) GetPurgeRequest(ctx context.Context, id string, purgeRequestId string, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetPurgeRequestRequest(c.Server, id, purgeRequestId)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// GetConnectorRemoteProcessGroupStatusHistory Gets the status history for a remote process group within a connector
-//
-// Corresponds with GET /connectors/{id}/remote-process-groups/{remoteProcessGroupId}/status/history (the `GetConnectorRemoteProcessGroupStatusHistory` operationId).
-func (c *Client) GetConnectorRemoteProcessGroupStatusHistory(ctx context.Context, id string, remoteProcessGroupId string, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetConnectorRemoteProcessGroupStatusHistoryRequest(c.Server, id, remoteProcessGroupId)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// UpdateRunStatusWithBody Updates run status of a connector
-//
-// Takes any type of body and a specified content type.
-//
-// Corresponds with PUT /connectors/{id}/run-status (the `UpdateRunStatus` operationId).
-func (c *Client) UpdateRunStatusWithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewUpdateRunStatusRequestWithBody(c.Server, id, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// UpdateRunStatus Updates run status of a connector
-//
-// Takes a body of the `application/json` content type.
-//
-// Corresponds with PUT /connectors/{id}/run-status (the `UpdateRunStatus` operationId).
-func (c *Client) UpdateRunStatus(ctx context.Context, id string, body UpdateRunStatusJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewUpdateRunStatusRequest(c.Server, id, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// SearchConnector Performs a search against the encapsulated process group of this connector using the specified search term
-//
-// Only search results from authorized components will be returned.
-//
-// Corresponds with GET /connectors/{id}/search-results (the `SearchConnector` operationId).
-func (c *Client) SearchConnector(ctx context.Context, id string, params *SearchConnectorParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewSearchConnectorRequest(c.Server, id, params)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// GetSecrets Gets all secrets available for configuring a connector
-//
-// Returns metadata for all secrets available from all secret providers. This endpoint is used when configuring a connector to discover available secrets. Note: Actual secret values are not included in the response for security reasons.
-//
-// Corresponds with GET /connectors/{id}/secrets (the `GetSecrets` operationId).
-func (c *Client) GetSecrets(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetSecretsRequest(c.Server, id)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// GetConnectorStatus Gets the status for the process group managed by a connector
-//
-// Returns the status for the process group managed by the specified connector. The status includes status for all descendent components. When invoked with recursive set to true, it will return the current status of every component in the connector's encapsulated flow.
-//
-// Corresponds with GET /connectors/{id}/status (the `GetConnectorStatus` operationId).
-func (c *Client) GetConnectorStatus(ctx context.Context, id string, params *GetConnectorStatusParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetConnectorStatusRequest(c.Server, id, params)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// EndTroubleshooting Transitions a Connector out of Troubleshooting mode
-//
-// Ends Troubleshooting mode for the Connector, restoring the authoritative flow. All components in the managed flow must be stopped and disabled, and the managed flow must have no active tasks.
-//
-// Corresponds with DELETE /connectors/{id}/troubleshooting (the `EndTroubleshooting` operationId).
-func (c *Client) EndTroubleshooting(ctx context.Context, id string, params *EndTroubleshootingParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewEndTroubleshootingRequest(c.Server, id, params)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// EnterTroubleshootingWithBody Transitions a Connector into Troubleshooting mode
-//
-// Places the Connector into Troubleshooting mode so that its managed flow may be directly modified. Standard lifecycle operations are disabled while in Troubleshooting mode.
-//
-// Takes any type of body and a specified content type.
-//
-// Corresponds with POST /connectors/{id}/troubleshooting (the `EnterTroubleshooting` operationId).
-func (c *Client) EnterTroubleshootingWithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewEnterTroubleshootingRequestWithBody(c.Server, id, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// EnterTroubleshooting Transitions a Connector into Troubleshooting mode
-//
-// Places the Connector into Troubleshooting mode so that its managed flow may be directly modified. Standard lifecycle operations are disabled while in Troubleshooting mode.
-//
-// Takes a body of the `application/json` content type.
-//
-// Corresponds with POST /connectors/{id}/troubleshooting (the `EnterTroubleshooting` operationId).
-func (c *Client) EnterTroubleshooting(ctx context.Context, id string, body EnterTroubleshootingJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewEnterTroubleshootingRequest(c.Server, id, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// DiscardConnectorUpdate Discards the working configuration of a connector
-//
-// This will discard any pending configuration changes for the connector and revert to the last applied configuration.
-//
-// Corresponds with DELETE /connectors/{id}/working-configuration (the `DiscardConnectorUpdate` operationId).
-func (c *Client) DiscardConnectorUpdate(ctx context.Context, id string, params *DiscardConnectorUpdateParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewDiscardConnectorUpdateRequest(c.Server, id, params)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
 // RemoveControllerService Deletes a controller service
 //
 // Corresponds with DELETE /controller-services/{id} (the `RemoveControllerService` operationId).
@@ -4578,40 +2910,6 @@ func (c *Client) UpdateControllerServiceWithBody(ctx context.Context, id string,
 // Corresponds with PUT /controller-services/{id} (the `UpdateControllerService` operationId).
 func (c *Client) UpdateControllerService(ctx context.Context, id string, body UpdateControllerServiceJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewUpdateControllerServiceRequest(c.Server, id, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ClearBulletinsWithBody Clears bulletins for a controller service
-//
-// Takes any type of body and a specified content type.
-//
-// Corresponds with POST /controller-services/{id}/bulletins/clear-requests (the `ClearBulletins` operationId).
-func (c *Client) ClearBulletinsWithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewClearBulletinsRequestWithBody(c.Server, id, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ClearBulletins Clears bulletins for a controller service
-//
-// Takes a body of the `application/json` content type.
-//
-// Corresponds with POST /controller-services/{id}/bulletins/clear-requests (the `ClearBulletins` operationId).
-func (c *Client) ClearBulletins(ctx context.Context, id string, body ClearBulletinsJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewClearBulletinsRequest(c.Server, id, body)
 	if err != nil {
 		return nil, err
 	}
@@ -4792,13 +3090,13 @@ func (c *Client) UpdateControllerServiceReferences(ctx context.Context, id strin
 	return c.Client.Do(req)
 }
 
-// UpdateRunStatus2WithBody Updates run status of a controller service
+// UpdateRunStatus1WithBody Updates run status of a controller service
 //
 // Takes any type of body and a specified content type.
 //
-// Corresponds with PUT /controller-services/{id}/run-status (the `UpdateRunStatus2` operationId).
-func (c *Client) UpdateRunStatus2WithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewUpdateRunStatus2RequestWithBody(c.Server, id, contentType, body)
+// Corresponds with PUT /controller-services/{id}/run-status (the `UpdateRunStatus1` operationId).
+func (c *Client) UpdateRunStatus1WithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewUpdateRunStatus1RequestWithBody(c.Server, id, contentType, body)
 	if err != nil {
 		return nil, err
 	}
@@ -4809,13 +3107,13 @@ func (c *Client) UpdateRunStatus2WithBody(ctx context.Context, id string, conten
 	return c.Client.Do(req)
 }
 
-// UpdateRunStatus2 Updates run status of a controller service
+// UpdateRunStatus1 Updates run status of a controller service
 //
 // Takes a body of the `application/json` content type.
 //
-// Corresponds with PUT /controller-services/{id}/run-status (the `UpdateRunStatus2` operationId).
-func (c *Client) UpdateRunStatus2(ctx context.Context, id string, body UpdateRunStatus2JSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewUpdateRunStatus2Request(c.Server, id, body)
+// Corresponds with PUT /controller-services/{id}/run-status (the `UpdateRunStatus1` operationId).
+func (c *Client) UpdateRunStatus1(ctx context.Context, id string, body UpdateRunStatus1JSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewUpdateRunStatus1Request(c.Server, id, body)
 	if err != nil {
 		return nil, err
 	}
@@ -5005,7 +3303,7 @@ func (c *Client) GetControllerConfig(ctx context.Context, reqEditors ...RequestE
 	return c.Client.Do(req)
 }
 
-// UpdateControllerConfigWithBody Updates the configuration for this NiFi
+// UpdateControllerConfigWithBody Retrieves the configuration for this NiFi
 //
 // Takes any type of body and a specified content type.
 //
@@ -5022,7 +3320,7 @@ func (c *Client) UpdateControllerConfigWithBody(ctx context.Context, contentType
 	return c.Client.Do(req)
 }
 
-// UpdateControllerConfig Updates the configuration for this NiFi
+// UpdateControllerConfig Retrieves the configuration for this NiFi
 //
 // Takes a body of the `application/json` content type.
 //
@@ -5186,40 +3484,6 @@ func (c *Client) UpdateFlowAnalysisRule(ctx context.Context, id string, body Upd
 	return c.Client.Do(req)
 }
 
-// ClearFlowAnalysisRuleBulletinsWithBody Clears bulletins for a flow analysis rule
-//
-// Takes any type of body and a specified content type.
-//
-// Corresponds with POST /controller/flow-analysis-rules/{id}/bulletins/clear-requests (the `ClearFlowAnalysisRuleBulletins` operationId).
-func (c *Client) ClearFlowAnalysisRuleBulletinsWithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewClearFlowAnalysisRuleBulletinsRequestWithBody(c.Server, id, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ClearFlowAnalysisRuleBulletins Clears bulletins for a flow analysis rule
-//
-// Takes a body of the `application/json` content type.
-//
-// Corresponds with POST /controller/flow-analysis-rules/{id}/bulletins/clear-requests (the `ClearFlowAnalysisRuleBulletins` operationId).
-func (c *Client) ClearFlowAnalysisRuleBulletins(ctx context.Context, id string, body ClearFlowAnalysisRuleBulletinsJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewClearFlowAnalysisRuleBulletinsRequest(c.Server, id, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
 // AnalyzeFlowAnalysisRuleConfigurationWithBody Performs analysis of the component's configuration, providing information about which attributes are referenced.
 //
 // Takes any type of body and a specified content type.
@@ -5341,13 +3605,13 @@ func (c *Client) GetFlowAnalysisRulePropertyDescriptor(ctx context.Context, id s
 	return c.Client.Do(req)
 }
 
-// UpdateRunStatus1WithBody Updates run status of a flow analysis rule
+// UpdateRunStatusWithBody Updates run status of a flow analysis rule
 //
 // Takes any type of body and a specified content type.
 //
-// Corresponds with PUT /controller/flow-analysis-rules/{id}/run-status (the `UpdateRunStatus1` operationId).
-func (c *Client) UpdateRunStatus1WithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewUpdateRunStatus1RequestWithBody(c.Server, id, contentType, body)
+// Corresponds with PUT /controller/flow-analysis-rules/{id}/run-status (the `UpdateRunStatus` operationId).
+func (c *Client) UpdateRunStatusWithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewUpdateRunStatusRequestWithBody(c.Server, id, contentType, body)
 	if err != nil {
 		return nil, err
 	}
@@ -5358,13 +3622,13 @@ func (c *Client) UpdateRunStatus1WithBody(ctx context.Context, id string, conten
 	return c.Client.Do(req)
 }
 
-// UpdateRunStatus1 Updates run status of a flow analysis rule
+// UpdateRunStatus Updates run status of a flow analysis rule
 //
 // Takes a body of the `application/json` content type.
 //
-// Corresponds with PUT /controller/flow-analysis-rules/{id}/run-status (the `UpdateRunStatus1` operationId).
-func (c *Client) UpdateRunStatus1(ctx context.Context, id string, body UpdateRunStatus1JSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewUpdateRunStatus1Request(c.Server, id, body)
+// Corresponds with PUT /controller/flow-analysis-rules/{id}/run-status (the `UpdateRunStatus` operationId).
+func (c *Client) UpdateRunStatus(ctx context.Context, id string, body UpdateRunStatusJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewUpdateRunStatusRequest(c.Server, id, body)
 	if err != nil {
 		return nil, err
 	}
@@ -5565,40 +3829,6 @@ func (c *Client) CreateParameterProvider(ctx context.Context, body CreateParamet
 	return c.Client.Do(req)
 }
 
-// ClearParameterProviderBulletinsWithBody Clears bulletins for a parameter provider
-//
-// Takes any type of body and a specified content type.
-//
-// Corresponds with POST /controller/parameter-providers/{id}/bulletins/clear-requests (the `ClearParameterProviderBulletins` operationId).
-func (c *Client) ClearParameterProviderBulletinsWithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewClearParameterProviderBulletinsRequestWithBody(c.Server, id, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ClearParameterProviderBulletins Clears bulletins for a parameter provider
-//
-// Takes a body of the `application/json` content type.
-//
-// Corresponds with POST /controller/parameter-providers/{id}/bulletins/clear-requests (the `ClearParameterProviderBulletins` operationId).
-func (c *Client) ClearParameterProviderBulletins(ctx context.Context, id string, body ClearParameterProviderBulletinsJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewClearParameterProviderBulletinsRequest(c.Server, id, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
 // GetFlowRegistryClients Gets the listing of available flow registry clients
 //
 // Corresponds with GET /controller/registry-clients (the `GetFlowRegistryClients` operationId).
@@ -5712,146 +3942,6 @@ func (c *Client) UpdateFlowRegistryClient(ctx context.Context, id string, body U
 	return c.Client.Do(req)
 }
 
-// ClearRegistryClientBulletinsWithBody Clears bulletins for a registry client
-//
-// Takes any type of body and a specified content type.
-//
-// Corresponds with POST /controller/registry-clients/{id}/bulletins/clear-requests (the `ClearRegistryClientBulletins` operationId).
-func (c *Client) ClearRegistryClientBulletinsWithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewClearRegistryClientBulletinsRequestWithBody(c.Server, id, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ClearRegistryClientBulletins Clears bulletins for a registry client
-//
-// Takes a body of the `application/json` content type.
-//
-// Corresponds with POST /controller/registry-clients/{id}/bulletins/clear-requests (the `ClearRegistryClientBulletins` operationId).
-func (c *Client) ClearRegistryClientBulletins(ctx context.Context, id string, body ClearRegistryClientBulletinsJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewClearRegistryClientBulletinsRequest(c.Server, id, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// AnalyzeFlowRegistryClientConfigurationWithBody Performs analysis of the component's configuration, providing information about which attributes are referenced.
-//
-// Takes any type of body and a specified content type.
-//
-// Corresponds with POST /controller/registry-clients/{id}/config/analysis (the `AnalyzeFlowRegistryClientConfiguration` operationId).
-func (c *Client) AnalyzeFlowRegistryClientConfigurationWithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewAnalyzeFlowRegistryClientConfigurationRequestWithBody(c.Server, id, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// AnalyzeFlowRegistryClientConfiguration Performs analysis of the component's configuration, providing information about which attributes are referenced.
-//
-// Takes a body of the `application/json` content type.
-//
-// Corresponds with POST /controller/registry-clients/{id}/config/analysis (the `AnalyzeFlowRegistryClientConfiguration` operationId).
-func (c *Client) AnalyzeFlowRegistryClientConfiguration(ctx context.Context, id string, body AnalyzeFlowRegistryClientConfigurationJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewAnalyzeFlowRegistryClientConfigurationRequest(c.Server, id, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// SubmitRegistryClientConfigVerificationRequestWithBody Performs verification of the Registry Client's configuration
-//
-// Initiates verification of a Registry Client configuration. The request returns immediately with a request entity while verification runs asynchronously. The client should poll /controller/registry-clients/{clientId}/config/verification-requests/{requestId} for status and DELETE the request once verification completes.
-//
-// Takes any type of body and a specified content type.
-//
-// Corresponds with POST /controller/registry-clients/{id}/config/verification-requests (the `SubmitRegistryClientConfigVerificationRequest` operationId).
-func (c *Client) SubmitRegistryClientConfigVerificationRequestWithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewSubmitRegistryClientConfigVerificationRequestRequestWithBody(c.Server, id, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// SubmitRegistryClientConfigVerificationRequest Performs verification of the Registry Client's configuration
-//
-// Initiates verification of a Registry Client configuration. The request returns immediately with a request entity while verification runs asynchronously. The client should poll /controller/registry-clients/{clientId}/config/verification-requests/{requestId} for status and DELETE the request once verification completes.
-//
-// Takes a body of the `application/json` content type.
-//
-// Corresponds with POST /controller/registry-clients/{id}/config/verification-requests (the `SubmitRegistryClientConfigVerificationRequest` operationId).
-func (c *Client) SubmitRegistryClientConfigVerificationRequest(ctx context.Context, id string, body SubmitRegistryClientConfigVerificationRequestJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewSubmitRegistryClientConfigVerificationRequestRequest(c.Server, id, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// DeleteRegistryClientVerificationRequest Deletes the Verification Request with the given ID
-//
-// Deletes the Verification Request with the given ID. After a request is created, it is expected that the client will properly clean up the request by DELETE'ing it, once the Verification process has completed. If the request is deleted before the request completes, then the Verification request will finish the step that it is currently performing and then will cancel any subsequent steps.
-//
-// Corresponds with DELETE /controller/registry-clients/{id}/config/verification-requests/{requestId} (the `DeleteRegistryClientVerificationRequest` operationId).
-func (c *Client) DeleteRegistryClientVerificationRequest(ctx context.Context, id string, requestId string, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewDeleteRegistryClientVerificationRequestRequest(c.Server, id, requestId)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// GetRegistryClientVerificationRequest Returns the Verification Request with the given ID
-//
-// Returns the Verification Request with the given ID. Once a Verification Request has been created, that request can subsequently be retrieved via this endpoint, and the request that is fetched will contain the updated state, such as percent complete, the current state of the request, and any failures.
-//
-// Corresponds with GET /controller/registry-clients/{id}/config/verification-requests/{requestId} (the `GetRegistryClientVerificationRequest` operationId).
-func (c *Client) GetRegistryClientVerificationRequest(ctx context.Context, id string, requestId string, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetRegistryClientVerificationRequestRequest(c.Server, id, requestId)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
 // GetPropertyDescriptor Gets a flow registry client property descriptor
 //
 // Corresponds with GET /controller/registry-clients/{id}/descriptors (the `GetPropertyDescriptor` operationId).
@@ -5867,7 +3957,7 @@ func (c *Client) GetPropertyDescriptor(ctx context.Context, id string, params *G
 	return c.Client.Do(req)
 }
 
-// GetRegistryClientTypes Retrieves the types of flow registry clients that this NiFi supports
+// GetRegistryClientTypes Retrieves the types of flow  that this NiFi supports
 //
 // Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 //
@@ -6054,7 +4144,7 @@ func (c *Client) ExtendInputPortTransactionTTLWithBody(ctx context.Context, port
 	return c.Client.Do(req)
 }
 
-// ReceiveFlowFilesWithBody Transfer FlowFiles to the input port
+// ReceiveFlowFilesWithBody Transfer flow files to the input port
 //
 // Takes any type of body and a specified content type.
 //
@@ -6105,7 +4195,7 @@ func (c *Client) ExtendOutputPortTransactionTTLWithBody(ctx context.Context, por
 	return c.Client.Do(req)
 }
 
-// TransferFlowFilesWithBody Transfer FlowFiles from the output port
+// TransferFlowFilesWithBody Transfer flow files from the output port
 //
 // Takes any type of body and a specified content type.
 //
@@ -6308,55 +4398,6 @@ func (c *Client) GetConnectionStatusHistory(ctx context.Context, id string, reqE
 	return c.Client.Do(req)
 }
 
-// GetConnectorDefinition Retrieves the Connector Definition for the specified component type.
-//
-// Note: This endpoint is subject to change as NiFi and it's REST API evolve.
-//
-// Corresponds with GET /flow/connector-definition/{group}/{artifact}/{version}/{type} (the `GetConnectorDefinition` operationId).
-func (c *Client) GetConnectorDefinition(ctx context.Context, group string, artifact string, version string, pType string, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetConnectorDefinitionRequest(c.Server, group, artifact, version, pType)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// GetConnectorTypes Retrieves the types of connectors that this NiFi supports
-//
-// Note: This endpoint is subject to change as NiFi and it's REST API evolve.
-//
-// Corresponds with GET /flow/connector-types (the `GetConnectorTypes` operationId).
-func (c *Client) GetConnectorTypes(ctx context.Context, params *GetConnectorTypesParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetConnectorTypesRequest(c.Server, params)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// GetConnectors Gets all connectors
-//
-// Corresponds with GET /flow/connectors (the `GetConnectors` operationId).
-func (c *Client) GetConnectors(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetConnectorsRequest(c.Server)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
 // GetContentViewers Retrieves the registered content viewers
 //
 // Corresponds with GET /flow/content-viewers (the `GetContentViewers` operationId).
@@ -6517,23 +4558,6 @@ func (c *Client) GetFlowAnalysisResults(ctx context.Context, processGroupId stri
 	return c.Client.Do(req)
 }
 
-// GetFlowRegistryClientDefinition Retrieves the Flow Registry Client Definition for the specified component type.
-//
-// Note: This endpoint is subject to change as NiFi and it's REST API evolve.
-//
-// Corresponds with GET /flow/flow-registry-client-definition/{group}/{artifact}/{version}/{type} (the `GetFlowRegistryClientDefinition` operationId).
-func (c *Client) GetFlowRegistryClientDefinition(ctx context.Context, group string, artifact string, version string, pType string, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetFlowRegistryClientDefinitionRequest(c.Server, group, artifact, version, pType)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
 // QueryHistory Gets configuration history
 //
 // Note: This endpoint is subject to change as NiFi and it's REST API evolve.
@@ -6590,21 +4614,6 @@ func (c *Client) GetAction(ctx context.Context, id IntegerParameter, reqEditors 
 // Corresponds with GET /flow/input-ports/{id}/status (the `GetInputPortStatus` operationId).
 func (c *Client) GetInputPortStatus(ctx context.Context, id string, params *GetInputPortStatusParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetInputPortStatusRequest(c.Server, id, params)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// GetListenPorts Gets all listen ports configured on this NiFi that the current user has access to
-//
-// Corresponds with GET /flow/listen-ports (the `GetListenPorts` operationId).
-func (c *Client) GetListenPorts(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetListenPortsRequest(c.Server)
 	if err != nil {
 		return nil, err
 	}
@@ -6726,13 +4735,13 @@ func (c *Client) GetPrioritizers(ctx context.Context, reqEditors ...RequestEdito
 	return c.Client.Do(req)
 }
 
-// GetFlow1 Gets a process group
+// GetFlow Gets a process group
 //
 // If the uiOnly query parameter is provided with a value of true, the returned entity may only contain fields that are necessary for rendering the NiFi User Interface. As such, the selected fields may change at any time, even during incremental releases, without warning. As a result, this parameter should not be provided by any client other than the UI.
 //
-// Corresponds with GET /flow/process-groups/{id} (the `GetFlow1` operationId).
-func (c *Client) GetFlow1(ctx context.Context, id string, params *GetFlow1Params, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetFlow1Request(c.Server, id, params)
+// Corresponds with GET /flow/process-groups/{id} (the `GetFlow` operationId).
+func (c *Client) GetFlow(ctx context.Context, id string, params *GetFlowParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetFlowRequest(c.Server, id, params)
 	if err != nil {
 		return nil, err
 	}
@@ -6782,40 +4791,6 @@ func (c *Client) ScheduleComponents(ctx context.Context, id string, body Schedul
 // Corresponds with GET /flow/process-groups/{id}/breadcrumbs (the `GetBreadcrumbs` operationId).
 func (c *Client) GetBreadcrumbs(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetBreadcrumbsRequest(c.Server, id)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ClearBulletins1WithBody Clears bulletins for components in the specified Process Group.
-//
-// Takes any type of body and a specified content type.
-//
-// Corresponds with POST /flow/process-groups/{id}/bulletins/clear-requests (the `ClearBulletins1` operationId).
-func (c *Client) ClearBulletins1WithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewClearBulletins1RequestWithBody(c.Server, id, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ClearBulletins1 Clears bulletins for components in the specified Process Group.
-//
-// Takes a body of the `application/json` content type.
-//
-// Corresponds with POST /flow/process-groups/{id}/bulletins/clear-requests (the `ClearBulletins1` operationId).
-func (c *Client) ClearBulletins1(ctx context.Context, id string, body ClearBulletins1JSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewClearBulletins1Request(c.Server, id, body)
 	if err != nil {
 		return nil, err
 	}
@@ -7236,23 +5211,6 @@ func (c *Client) GetControllerStatus(ctx context.Context, reqEditors ...RequestE
 	return c.Client.Do(req)
 }
 
-// GetStepDocumentation Retrieves the step documentation for the specified Connector configuration step.
-//
-// Note: This endpoint is subject to change as NiFi and it's REST API evolve.
-//
-// Corresponds with GET /flow/steps/{group}/{artifact}/{version}/{connectorType}/{stepName} (the `GetStepDocumentation` operationId).
-func (c *Client) GetStepDocumentation(ctx context.Context, group string, artifact string, version string, connectorType string, stepName string, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetStepDocumentationRequest(c.Server, group, artifact, version, connectorType, stepName)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
 // CreateDropRequest Creates a request to drop the contents of the queue in this connection.
 //
 // Corresponds with POST /flowfile-queues/{id}/drop-requests (the `CreateDropRequest` operationId).
@@ -7501,13 +5459,13 @@ func (c *Client) UpdateInputPort(ctx context.Context, id string, body UpdateInpu
 	return c.Client.Do(req)
 }
 
-// ClearBulletins2WithBody Clears bulletins for an input port
+// UpdateRunStatus2WithBody Updates run status of an input-port
 //
 // Takes any type of body and a specified content type.
 //
-// Corresponds with POST /input-ports/{id}/bulletins/clear-requests (the `ClearBulletins2` operationId).
-func (c *Client) ClearBulletins2WithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewClearBulletins2RequestWithBody(c.Server, id, contentType, body)
+// Corresponds with PUT /input-ports/{id}/run-status (the `UpdateRunStatus2` operationId).
+func (c *Client) UpdateRunStatus2WithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewUpdateRunStatus2RequestWithBody(c.Server, id, contentType, body)
 	if err != nil {
 		return nil, err
 	}
@@ -7518,47 +5476,13 @@ func (c *Client) ClearBulletins2WithBody(ctx context.Context, id string, content
 	return c.Client.Do(req)
 }
 
-// ClearBulletins2 Clears bulletins for an input port
+// UpdateRunStatus2 Updates run status of an input-port
 //
 // Takes a body of the `application/json` content type.
 //
-// Corresponds with POST /input-ports/{id}/bulletins/clear-requests (the `ClearBulletins2` operationId).
-func (c *Client) ClearBulletins2(ctx context.Context, id string, body ClearBulletins2JSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewClearBulletins2Request(c.Server, id, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// UpdateRunStatus3WithBody Updates run status of an input-port
-//
-// Takes any type of body and a specified content type.
-//
-// Corresponds with PUT /input-ports/{id}/run-status (the `UpdateRunStatus3` operationId).
-func (c *Client) UpdateRunStatus3WithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewUpdateRunStatus3RequestWithBody(c.Server, id, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// UpdateRunStatus3 Updates run status of an input-port
-//
-// Takes a body of the `application/json` content type.
-//
-// Corresponds with PUT /input-ports/{id}/run-status (the `UpdateRunStatus3` operationId).
-func (c *Client) UpdateRunStatus3(ctx context.Context, id string, body UpdateRunStatus3JSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewUpdateRunStatus3Request(c.Server, id, body)
+// Corresponds with PUT /input-ports/{id}/run-status (the `UpdateRunStatus2` operationId).
+func (c *Client) UpdateRunStatus2(ctx context.Context, id string, body UpdateRunStatus2JSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewUpdateRunStatus2Request(c.Server, id, body)
 	if err != nil {
 		return nil, err
 	}
@@ -7697,13 +5621,13 @@ func (c *Client) UpdateOutputPort(ctx context.Context, id string, body UpdateOut
 	return c.Client.Do(req)
 }
 
-// ClearBulletins3WithBody Clears bulletins for an output port
+// UpdateRunStatus3WithBody Updates run status of an output-port
 //
 // Takes any type of body and a specified content type.
 //
-// Corresponds with POST /output-ports/{id}/bulletins/clear-requests (the `ClearBulletins3` operationId).
-func (c *Client) ClearBulletins3WithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewClearBulletins3RequestWithBody(c.Server, id, contentType, body)
+// Corresponds with PUT /output-ports/{id}/run-status (the `UpdateRunStatus3` operationId).
+func (c *Client) UpdateRunStatus3WithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewUpdateRunStatus3RequestWithBody(c.Server, id, contentType, body)
 	if err != nil {
 		return nil, err
 	}
@@ -7714,47 +5638,13 @@ func (c *Client) ClearBulletins3WithBody(ctx context.Context, id string, content
 	return c.Client.Do(req)
 }
 
-// ClearBulletins3 Clears bulletins for an output port
+// UpdateRunStatus3 Updates run status of an output-port
 //
 // Takes a body of the `application/json` content type.
 //
-// Corresponds with POST /output-ports/{id}/bulletins/clear-requests (the `ClearBulletins3` operationId).
-func (c *Client) ClearBulletins3(ctx context.Context, id string, body ClearBulletins3JSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewClearBulletins3Request(c.Server, id, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// UpdateRunStatus4WithBody Updates run status of an output-port
-//
-// Takes any type of body and a specified content type.
-//
-// Corresponds with PUT /output-ports/{id}/run-status (the `UpdateRunStatus4` operationId).
-func (c *Client) UpdateRunStatus4WithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewUpdateRunStatus4RequestWithBody(c.Server, id, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// UpdateRunStatus4 Updates run status of an output-port
-//
-// Takes a body of the `application/json` content type.
-//
-// Corresponds with PUT /output-ports/{id}/run-status (the `UpdateRunStatus4` operationId).
-func (c *Client) UpdateRunStatus4(ctx context.Context, id string, body UpdateRunStatus4JSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewUpdateRunStatus4Request(c.Server, id, body)
+// Corresponds with PUT /output-ports/{id}/run-status (the `UpdateRunStatus3` operationId).
+func (c *Client) UpdateRunStatus3(ctx context.Context, id string, body UpdateRunStatus3JSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewUpdateRunStatus3Request(c.Server, id, body)
 	if err != nil {
 		return nil, err
 	}
@@ -7799,11 +5689,13 @@ func (c *Client) CreateParameterContext(ctx context.Context, body CreateParamete
 	return c.Client.Do(req)
 }
 
-// GetAssets1 Lists the assets that belong to the Parameter Context with the given ID.
+// GetAssets Lists the assets that belong to the Parameter Context with the given ID
 //
-// Corresponds with GET /parameter-contexts/{contextId}/assets (the `GetAssets1` operationId).
-func (c *Client) GetAssets1(ctx context.Context, contextId string, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetAssets1Request(c.Server, contextId)
+// Lists the assets that belong to the Parameter Context with the given ID.
+//
+// Corresponds with GET /parameter-contexts/{contextId}/assets (the `GetAssets` operationId).
+func (c *Client) GetAssets(ctx context.Context, contextId string, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetAssetsRequest(c.Server, contextId)
 	if err != nil {
 		return nil, err
 	}
@@ -7814,15 +5706,15 @@ func (c *Client) GetAssets1(ctx context.Context, contextId string, reqEditors ..
 	return c.Client.Do(req)
 }
 
-// CreateAsset1WithBody Creates a new Asset in the given Parameter Context
+// CreateAssetWithBody Creates a new Asset in the given Parameter Context
 //
 // This endpoint will create a new Asset in the given Parameter Context. The Asset will be created with the given name and the contents of the file that is uploaded. The Asset will be created in the given Parameter Context, and will be available for use by any component that references the Parameter Context.
 //
 // Takes any type of body and a specified content type.
 //
-// Corresponds with POST /parameter-contexts/{contextId}/assets (the `CreateAsset1` operationId).
-func (c *Client) CreateAsset1WithBody(ctx context.Context, contextId string, params *CreateAsset1Params, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCreateAsset1RequestWithBody(c.Server, contextId, params, contentType, body)
+// Corresponds with POST /parameter-contexts/{contextId}/assets (the `CreateAsset` operationId).
+func (c *Client) CreateAssetWithBody(ctx context.Context, contextId string, params *CreateAssetParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewCreateAssetRequestWithBody(c.Server, contextId, params, contentType, body)
 	if err != nil {
 		return nil, err
 	}
@@ -7850,11 +5742,11 @@ func (c *Client) DeleteAsset(ctx context.Context, contextId string, assetId stri
 	return c.Client.Do(req)
 }
 
-// GetAssetContent1 Retrieves the content of the asset with the given id
+// GetAssetContent Retrieves the content of the asset with the given id
 //
-// Corresponds with GET /parameter-contexts/{contextId}/assets/{assetId} (the `GetAssetContent1` operationId).
-func (c *Client) GetAssetContent1(ctx context.Context, contextId string, assetId string, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetAssetContent1Request(c.Server, contextId, assetId)
+// Corresponds with GET /parameter-contexts/{contextId}/assets/{assetId} (the `GetAssetContent` operationId).
+func (c *Client) GetAssetContent(ctx context.Context, contextId string, assetId string, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetAssetContentRequest(c.Server, contextId, assetId)
 	if err != nil {
 		return nil, err
 	}
@@ -8135,40 +6027,6 @@ func (c *Client) UpdateParameterProviderWithBody(ctx context.Context, id string,
 // Corresponds with PUT /parameter-providers/{id} (the `UpdateParameterProvider` operationId).
 func (c *Client) UpdateParameterProvider(ctx context.Context, id string, body UpdateParameterProviderJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewUpdateParameterProviderRequest(c.Server, id, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ClearBulletins4WithBody Clears bulletins for a parameter provider
-//
-// Takes any type of body and a specified content type.
-//
-// Corresponds with POST /parameter-providers/{id}/bulletins/clear-requests (the `ClearBulletins4` operationId).
-func (c *Client) ClearBulletins4WithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewClearBulletins4RequestWithBody(c.Server, id, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ClearBulletins4 Clears bulletins for a parameter provider
-//
-// Takes a body of the `application/json` content type.
-//
-// Corresponds with POST /parameter-providers/{id}/bulletins/clear-requests (the `ClearBulletins4` operationId).
-func (c *Client) ClearBulletins4(ctx context.Context, id string, body ClearBulletins4JSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewClearBulletins4Request(c.Server, id, body)
 	if err != nil {
 		return nil, err
 	}
@@ -8815,7 +6673,7 @@ func (c *Client) ExportProcessGroup(ctx context.Context, id string, params *Expo
 	return c.Client.Do(req)
 }
 
-// CreateEmptyAllConnectionsRequest Creates a request to drop all FlowFiles of all connection queues in this process group.
+// CreateEmptyAllConnectionsRequest Creates a request to drop all flowfiles of all connection queues in this process group.
 //
 // Corresponds with POST /process-groups/{id}/empty-all-connections-requests (the `CreateEmptyAllConnectionsRequest` operationId).
 func (c *Client) CreateEmptyAllConnectionsRequest(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -8830,7 +6688,7 @@ func (c *Client) CreateEmptyAllConnectionsRequest(ctx context.Context, id string
 	return c.Client.Do(req)
 }
 
-// RemoveDropRequest1 Cancels and/or removes a request to drop all FlowFiles.
+// RemoveDropRequest1 Cancels and/or removes a request to drop all flowfiles.
 //
 // Corresponds with DELETE /process-groups/{id}/empty-all-connections-requests/{drop-request-id} (the `RemoveDropRequest1` operationId).
 func (c *Client) RemoveDropRequest1(ctx context.Context, id string, dropRequestId string, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -8845,7 +6703,7 @@ func (c *Client) RemoveDropRequest1(ctx context.Context, id string, dropRequestI
 	return c.Client.Do(req)
 }
 
-// GetDropAllFlowfilesRequest Gets the current status of a drop all FlowFiles request.
+// GetDropAllFlowfilesRequest Gets the current status of a drop all flowfiles request.
 //
 // Corresponds with GET /process-groups/{id}/empty-all-connections-requests/{drop-request-id} (the `GetDropAllFlowfilesRequest` operationId).
 func (c *Client) GetDropAllFlowfilesRequest(ctx context.Context, id string, dropRequestId string, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -9511,91 +7369,6 @@ func (c *Client) UpdateProcessor(ctx context.Context, id string, body UpdateProc
 	return c.Client.Do(req)
 }
 
-// SubmitProcessorBacklogRequest Initiates a request to determine the current backlog for a processor that implements BacklogReportingProcessor
-//
-// This will initiate the process of determining the backlog for a Processor. This may be a long-running task. As a result, this endpoint will immediately return a BacklogRequestEntity, and the process of determining the backlog will occur asynchronously in the background. The client may then periodically poll the status of the request by issuing a GET request to /processors/{processorId}/backlog-requests/{requestId}. Once the request is completed, the client is expected to issue a DELETE request to /processors/{processorId}/backlog-requests/{requestId}.
-//
-// Corresponds with POST /processors/{id}/backlog-requests (the `SubmitProcessorBacklogRequest` operationId).
-func (c *Client) SubmitProcessorBacklogRequest(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewSubmitProcessorBacklogRequestRequest(c.Server, id)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// DeleteBacklogRequest Deletes the Backlog Request with the given ID
-//
-// Deletes the Backlog Request with the given ID. After a request is created, it is expected that the client will properly clean up the request by DELETE'ing it once the backlog determination has completed. If the request is deleted before it completes, the background determination is cancelled.
-//
-// Corresponds with DELETE /processors/{id}/backlog-requests/{requestId} (the `DeleteBacklogRequest` operationId).
-func (c *Client) DeleteBacklogRequest(ctx context.Context, id string, requestId string, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewDeleteBacklogRequestRequest(c.Server, id, requestId)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// GetBacklogRequest Returns the Backlog Request with the given ID
-//
-// Returns the Backlog Request with the given ID. Once a Backlog Request has been created by performing a POST to /processors/{processorId}/backlog-requests, that request can subsequently be retrieved via this endpoint, and the request that is fetched will contain the updated state, such as percent complete, the current state of the request, and the backlog once the request is complete.
-//
-// Corresponds with GET /processors/{id}/backlog-requests/{requestId} (the `GetBacklogRequest` operationId).
-func (c *Client) GetBacklogRequest(ctx context.Context, id string, requestId string, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetBacklogRequestRequest(c.Server, id, requestId)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ClearBulletins5WithBody Clears bulletins for a processor
-//
-// Takes any type of body and a specified content type.
-//
-// Corresponds with POST /processors/{id}/bulletins/clear-requests (the `ClearBulletins5` operationId).
-func (c *Client) ClearBulletins5WithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewClearBulletins5RequestWithBody(c.Server, id, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ClearBulletins5 Clears bulletins for a processor
-//
-// Takes a body of the `application/json` content type.
-//
-// Corresponds with POST /processors/{id}/bulletins/clear-requests (the `ClearBulletins5` operationId).
-func (c *Client) ClearBulletins5(ctx context.Context, id string, body ClearBulletins5JSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewClearBulletins5Request(c.Server, id, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
 // AnalyzeConfiguration2WithBody Performs analysis of the component's configuration, providing information about which attributes are referenced.
 //
 // Takes any type of body and a specified content type.
@@ -9734,13 +7507,13 @@ func (c *Client) GetProcessorDiagnostics(ctx context.Context, id string, reqEdit
 	return c.Client.Do(req)
 }
 
-// UpdateRunStatus5WithBody Updates run status of a processor
+// UpdateRunStatus4WithBody Updates run status of a processor
 //
 // Takes any type of body and a specified content type.
 //
-// Corresponds with PUT /processors/{id}/run-status (the `UpdateRunStatus5` operationId).
-func (c *Client) UpdateRunStatus5WithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewUpdateRunStatus5RequestWithBody(c.Server, id, contentType, body)
+// Corresponds with PUT /processors/{id}/run-status (the `UpdateRunStatus4` operationId).
+func (c *Client) UpdateRunStatus4WithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewUpdateRunStatus4RequestWithBody(c.Server, id, contentType, body)
 	if err != nil {
 		return nil, err
 	}
@@ -9751,13 +7524,13 @@ func (c *Client) UpdateRunStatus5WithBody(ctx context.Context, id string, conten
 	return c.Client.Do(req)
 }
 
-// UpdateRunStatus5 Updates run status of a processor
+// UpdateRunStatus4 Updates run status of a processor
 //
 // Takes a body of the `application/json` content type.
 //
-// Corresponds with PUT /processors/{id}/run-status (the `UpdateRunStatus5` operationId).
-func (c *Client) UpdateRunStatus5(ctx context.Context, id string, body UpdateRunStatus5JSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewUpdateRunStatus5Request(c.Server, id, body)
+// Corresponds with PUT /processors/{id}/run-status (the `UpdateRunStatus4` operationId).
+func (c *Client) UpdateRunStatus4(ctx context.Context, id string, body UpdateRunStatus4JSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewUpdateRunStatus4Request(c.Server, id, body)
 	if err != nil {
 		return nil, err
 	}
@@ -10209,40 +7982,6 @@ func (c *Client) UpdateRemoteProcessGroup(ctx context.Context, id string, body U
 	return c.Client.Do(req)
 }
 
-// ClearBulletins6WithBody Clears bulletins for a remote process group
-//
-// Takes any type of body and a specified content type.
-//
-// Corresponds with POST /remote-process-groups/{id}/bulletins/clear-requests (the `ClearBulletins6` operationId).
-func (c *Client) ClearBulletins6WithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewClearBulletins6RequestWithBody(c.Server, id, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ClearBulletins6 Clears bulletins for a remote process group
-//
-// Takes a body of the `application/json` content type.
-//
-// Corresponds with POST /remote-process-groups/{id}/bulletins/clear-requests (the `ClearBulletins6` operationId).
-func (c *Client) ClearBulletins6(ctx context.Context, id string, body ClearBulletins6JSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewClearBulletins6Request(c.Server, id, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
 // UpdateRemoteProcessGroupInputPortWithBody Updates a remote port
 //
 // Note: This endpoint is subject to change as NiFi and it's REST API evolve.
@@ -10281,7 +8020,7 @@ func (c *Client) UpdateRemoteProcessGroupInputPort(ctx context.Context, id strin
 	return c.Client.Do(req)
 }
 
-// UpdateRemoteProcessGroupInputPortRunStatusWithBody Updates run status of a remote input port
+// UpdateRemoteProcessGroupInputPortRunStatusWithBody Updates run status of a remote port
 //
 // Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 //
@@ -10300,7 +8039,7 @@ func (c *Client) UpdateRemoteProcessGroupInputPortRunStatusWithBody(ctx context.
 	return c.Client.Do(req)
 }
 
-// UpdateRemoteProcessGroupInputPortRunStatus Updates run status of a remote input port
+// UpdateRemoteProcessGroupInputPortRunStatus Updates run status of a remote port
 //
 // Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 //
@@ -10357,7 +8096,7 @@ func (c *Client) UpdateRemoteProcessGroupOutputPort(ctx context.Context, id stri
 	return c.Client.Do(req)
 }
 
-// UpdateRemoteProcessGroupOutputPortRunStatusWithBody Updates run status of a remote output port
+// UpdateRemoteProcessGroupOutputPortRunStatusWithBody Updates run status of a remote port
 //
 // Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 //
@@ -10376,7 +8115,7 @@ func (c *Client) UpdateRemoteProcessGroupOutputPortRunStatusWithBody(ctx context
 	return c.Client.Do(req)
 }
 
-// UpdateRemoteProcessGroupOutputPortRunStatus Updates run status of a remote output port
+// UpdateRemoteProcessGroupOutputPortRunStatus Updates run status of a remote port
 //
 // Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 //
@@ -10508,40 +8247,6 @@ func (c *Client) UpdateReportingTask(ctx context.Context, id string, body Update
 	return c.Client.Do(req)
 }
 
-// ClearBulletins7WithBody Clears bulletins for a reporting task
-//
-// Takes any type of body and a specified content type.
-//
-// Corresponds with POST /reporting-tasks/{id}/bulletins/clear-requests (the `ClearBulletins7` operationId).
-func (c *Client) ClearBulletins7WithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewClearBulletins7RequestWithBody(c.Server, id, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ClearBulletins7 Clears bulletins for a reporting task
-//
-// Takes a body of the `application/json` content type.
-//
-// Corresponds with POST /reporting-tasks/{id}/bulletins/clear-requests (the `ClearBulletins7` operationId).
-func (c *Client) ClearBulletins7(ctx context.Context, id string, body ClearBulletins7JSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewClearBulletins7Request(c.Server, id, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
 // AnalyzeConfiguration3WithBody Performs analysis of the component's configuration, providing information about which attributes are referenced.
 //
 // Takes any type of body and a specified content type.
@@ -10663,13 +8368,13 @@ func (c *Client) GetPropertyDescriptor4(ctx context.Context, id string, params *
 	return c.Client.Do(req)
 }
 
-// UpdateRunStatus6WithBody Updates run status of a reporting task
+// UpdateRunStatus5WithBody Updates run status of a reporting task
 //
 // Takes any type of body and a specified content type.
 //
-// Corresponds with PUT /reporting-tasks/{id}/run-status (the `UpdateRunStatus6` operationId).
-func (c *Client) UpdateRunStatus6WithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewUpdateRunStatus6RequestWithBody(c.Server, id, contentType, body)
+// Corresponds with PUT /reporting-tasks/{id}/run-status (the `UpdateRunStatus5` operationId).
+func (c *Client) UpdateRunStatus5WithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewUpdateRunStatus5RequestWithBody(c.Server, id, contentType, body)
 	if err != nil {
 		return nil, err
 	}
@@ -10680,13 +8385,13 @@ func (c *Client) UpdateRunStatus6WithBody(ctx context.Context, id string, conten
 	return c.Client.Do(req)
 }
 
-// UpdateRunStatus6 Updates run status of a reporting task
+// UpdateRunStatus5 Updates run status of a reporting task
 //
 // Takes a body of the `application/json` content type.
 //
-// Corresponds with PUT /reporting-tasks/{id}/run-status (the `UpdateRunStatus6` operationId).
-func (c *Client) UpdateRunStatus6(ctx context.Context, id string, body UpdateRunStatus6JSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewUpdateRunStatus6Request(c.Server, id, body)
+// Corresponds with PUT /reporting-tasks/{id}/run-status (the `UpdateRunStatus5` operationId).
+func (c *Client) UpdateRunStatus5(ctx context.Context, id string, body UpdateRunStatus5JSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewUpdateRunStatus5Request(c.Server, id, body)
 	if err != nil {
 		return nil, err
 	}
@@ -11380,176 +9085,11 @@ func (c *Client) UpdateFlowVersion(ctx context.Context, id string, body UpdateFl
 	return c.Client.Do(req)
 }
 
-// CreateFlowBranchWithBody Creates a new branch for a version controlled Process Group
-//
-// Note: This endpoint is subject to change as NiFi and it's REST API evolve.
-//
-// Takes any type of body and a specified content type.
-//
-// Corresponds with POST /versions/process-groups/{id}/branches (the `CreateFlowBranch` operationId).
-func (c *Client) CreateFlowBranchWithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCreateFlowBranchRequestWithBody(c.Server, id, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// CreateFlowBranch Creates a new branch for a version controlled Process Group
-//
-// Note: This endpoint is subject to change as NiFi and it's REST API evolve.
-//
-// Takes a body of the `application/json` content type.
-//
-// Corresponds with POST /versions/process-groups/{id}/branches (the `CreateFlowBranch` operationId).
-func (c *Client) CreateFlowBranch(ctx context.Context, id string, body CreateFlowBranchJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCreateFlowBranchRequest(c.Server, id, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
 // ExportFlowVersion Gets the latest version of a Process Group for download
 //
 // Corresponds with GET /versions/process-groups/{id}/download (the `ExportFlowVersion` operationId).
 func (c *Client) ExportFlowVersion(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewExportFlowVersionRequest(c.Server, id)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApplyRebasedFlowVersionWithBody Applies a rebased flow to a Process Group with the given ID on this node
-//
-// This endpoint is used internally to apply a rebase to a Process Group on each node of a cluster. It synchronizes the flow to the supplied merged snapshot and then resets the Version Control Information to the clean target version so that the preserved local changes are detected as local modifications. Note: This endpoint is subject to change as NiFi and it's REST API evolve.
-//
-// Takes any type of body and a specified content type.
-//
-// Corresponds with PUT /versions/process-groups/{id}/rebase (the `ApplyRebasedFlowVersion` operationId).
-func (c *Client) ApplyRebasedFlowVersionWithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApplyRebasedFlowVersionRequestWithBody(c.Server, id, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApplyRebasedFlowVersion Applies a rebased flow to a Process Group with the given ID on this node
-//
-// This endpoint is used internally to apply a rebase to a Process Group on each node of a cluster. It synchronizes the flow to the supplied merged snapshot and then resets the Version Control Information to the clean target version so that the preserved local changes are detected as local modifications. Note: This endpoint is subject to change as NiFi and it's REST API evolve.
-//
-// Takes a body of the `application/json` content type.
-//
-// Corresponds with PUT /versions/process-groups/{id}/rebase (the `ApplyRebasedFlowVersion` operationId).
-func (c *Client) ApplyRebasedFlowVersion(ctx context.Context, id string, body ApplyRebasedFlowVersionJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApplyRebasedFlowVersionRequest(c.Server, id, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// GetRebaseAnalysis Gets a Rebase Analysis for a Process Group
-//
-// For a Process Group that is under Version Control, this will perform a rebase analysis by comparing local modifications against upstream changes between the current version and the specified target version. The analysis determines whether a rebase is allowed or if there are conflicts.
-//
-// Corresponds with GET /versions/rebase-analysis/process-groups/{id} (the `GetRebaseAnalysis` operationId).
-func (c *Client) GetRebaseAnalysis(ctx context.Context, id string, params *GetRebaseAnalysisParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetRebaseAnalysisRequest(c.Server, id, params)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// InitiateRebaseWithBody Initiate a Rebase Request for a Process Group with the given ID
-//
-// For a Process Group that is already under Version Control, this will initiate the action of rebasing the flow to a different version while preserving compatible local changes. This can be a lengthy process, as it will stop any Processors and disable any Controller Services necessary to perform the action and then restart them. As a result, the endpoint will immediately return a VersionedFlowUpdateRequestEntity, and the process of rebasing the flow will occur asynchronously in the background. The client may then periodically poll the status of the request by issuing a GET request to /versions/rebase-requests/{requestId}. Once the request is completed, the client is expected to issue a DELETE request to /versions/rebase-requests/{requestId}. Note: This endpoint is subject to change as NiFi and it's REST API evolve.
-//
-// Takes any type of body and a specified content type.
-//
-// Corresponds with POST /versions/rebase-requests/process-groups/{id} (the `InitiateRebase` operationId).
-func (c *Client) InitiateRebaseWithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewInitiateRebaseRequestWithBody(c.Server, id, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// InitiateRebase Initiate a Rebase Request for a Process Group with the given ID
-//
-// For a Process Group that is already under Version Control, this will initiate the action of rebasing the flow to a different version while preserving compatible local changes. This can be a lengthy process, as it will stop any Processors and disable any Controller Services necessary to perform the action and then restart them. As a result, the endpoint will immediately return a VersionedFlowUpdateRequestEntity, and the process of rebasing the flow will occur asynchronously in the background. The client may then periodically poll the status of the request by issuing a GET request to /versions/rebase-requests/{requestId}. Once the request is completed, the client is expected to issue a DELETE request to /versions/rebase-requests/{requestId}. Note: This endpoint is subject to change as NiFi and it's REST API evolve.
-//
-// Takes a body of the `application/json` content type.
-//
-// Corresponds with POST /versions/rebase-requests/process-groups/{id} (the `InitiateRebase` operationId).
-func (c *Client) InitiateRebase(ctx context.Context, id string, body InitiateRebaseJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewInitiateRebaseRequest(c.Server, id, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// DeleteRebaseRequest Deletes the Rebase Request with the given ID
-//
-// Deletes the Rebase Request with the given ID. After a request is created via a POST to /versions/rebase-requests/process-groups/{id}, it is expected that the client will properly clean up the request by DELETE'ing it, once the Rebase process has completed. If the request is deleted before the request completes, then the Rebase request will finish the step that it is currently performing and then will cancel any subsequent steps. Note: This endpoint is subject to change as NiFi and it's REST API evolve.
-//
-// Corresponds with DELETE /versions/rebase-requests/{id} (the `DeleteRebaseRequest` operationId).
-func (c *Client) DeleteRebaseRequest(ctx context.Context, id string, params *DeleteRebaseRequestParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewDeleteRebaseRequestRequest(c.Server, id, params)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// GetRebaseRequest Returns the Rebase Request with the given ID
-//
-// Returns the Rebase Request with the given ID. Once a Rebase Request has been created by performing a POST to /versions/rebase-requests/process-groups/{id}, that request can subsequently be retrieved via this endpoint, and the request that is fetched will contain the updated state, such as percent complete, the current state of the request, and any failures. Note: This endpoint is subject to change as NiFi and it's REST API evolve.
-//
-// Corresponds with GET /versions/rebase-requests/{id} (the `GetRebaseRequest` operationId).
-func (c *Client) GetRebaseRequest(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetRebaseRequestRequest(c.Server, id)
 	if err != nil {
 		return nil, err
 	}
@@ -11991,2308 +9531,6 @@ func NewUpdateConnectionRequestWithBody(server string, id string, contentType st
 	return req, nil
 }
 
-// NewCreateConnectorRequest calls the generic CreateConnector builder with application/json body
-func NewCreateConnectorRequest(server string, body CreateConnectorJSONRequestBody) (*http.Request, error) {
-	var bodyReader io.Reader
-	buf, err := json.Marshal(body)
-	if err != nil {
-		return nil, err
-	}
-	bodyReader = bytes.NewReader(buf)
-	return NewCreateConnectorRequestWithBody(server, "application/json", bodyReader)
-}
-
-// NewCreateConnectorRequestWithBody constructs an http.Request for the CreateConnector method, with any body, and a specified content type
-func NewCreateConnectorRequestWithBody(server string, contentType string, body io.Reader) (*http.Request, error) {
-	var err error
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/connectors")
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
-	if err != nil {
-		return nil, err
-	}
-
-	req.Header.Add("Content-Type", contentType)
-
-	return req, nil
-}
-
-// NewGetFlowRequest constructs an http.Request for the GetFlow method
-func NewGetFlowRequest(server string, connectorId string, processGroupId string, params *GetFlowParams) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "connectorId", connectorId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam1 string
-
-	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "processGroupId", processGroupId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/connectors/%s/flow/process-groups/%s", pathParam0, pathParam1)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	if params != nil {
-		// queryValues collects non-styled parameters (passthrough, JSON)
-		// that are safe to round-trip through url.Values.Encode().
-		queryValues := queryURL.Query()
-		// rawQueryFragments collects pre-encoded query fragments from
-		// styled parameters, preserving literal commas as delimiters
-		// per the OpenAPI spec (e.g. "color=blue,black,brown").
-		var rawQueryFragments []string
-
-		if params.UiOnly != nil {
-
-			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "uiOnly", *params.UiOnly, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "boolean", Format: ""}); err != nil {
-				return nil, err
-			} else {
-				for _, qp := range strings.Split(queryFrag, "&") {
-					rawQueryFragments = append(rawQueryFragments, qp)
-				}
-			}
-
-		}
-
-		if encoded := queryValues.Encode(); encoded != "" {
-			rawQueryFragments = append(rawQueryFragments, encoded)
-		}
-		queryURL.RawQuery = strings.Join(rawQueryFragments, "&")
-	}
-
-	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-
-// NewGetControllerServicesFromConnectorProcessGroupRequest constructs an http.Request for the GetControllerServicesFromConnectorProcessGroup method
-func NewGetControllerServicesFromConnectorProcessGroupRequest(server string, connectorId string, processGroupId string, params *GetControllerServicesFromConnectorProcessGroupParams) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "connectorId", connectorId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam1 string
-
-	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "processGroupId", processGroupId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/connectors/%s/flow/process-groups/%s/controller-services", pathParam0, pathParam1)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	if params != nil {
-		// queryValues collects non-styled parameters (passthrough, JSON)
-		// that are safe to round-trip through url.Values.Encode().
-		queryValues := queryURL.Query()
-		// rawQueryFragments collects pre-encoded query fragments from
-		// styled parameters, preserving literal commas as delimiters
-		// per the OpenAPI spec (e.g. "color=blue,black,brown").
-		var rawQueryFragments []string
-
-		if params.IncludeAncestorGroups != nil {
-
-			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "includeAncestorGroups", *params.IncludeAncestorGroups, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "boolean", Format: ""}); err != nil {
-				return nil, err
-			} else {
-				for _, qp := range strings.Split(queryFrag, "&") {
-					rawQueryFragments = append(rawQueryFragments, qp)
-				}
-			}
-
-		}
-
-		if params.IncludeDescendantGroups != nil {
-
-			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "includeDescendantGroups", *params.IncludeDescendantGroups, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "boolean", Format: ""}); err != nil {
-				return nil, err
-			} else {
-				for _, qp := range strings.Split(queryFrag, "&") {
-					rawQueryFragments = append(rawQueryFragments, qp)
-				}
-			}
-
-		}
-
-		if params.IncludeReferencingComponents != nil {
-
-			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "includeReferencingComponents", *params.IncludeReferencingComponents, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "boolean", Format: ""}); err != nil {
-				return nil, err
-			} else {
-				for _, qp := range strings.Split(queryFrag, "&") {
-					rawQueryFragments = append(rawQueryFragments, qp)
-				}
-			}
-
-		}
-
-		if encoded := queryValues.Encode(); encoded != "" {
-			rawQueryFragments = append(rawQueryFragments, encoded)
-		}
-		queryURL.RawQuery = strings.Join(rawQueryFragments, "&")
-	}
-
-	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-
-// NewGetParameterContextForConnectorProcessGroupRequest constructs an http.Request for the GetParameterContextForConnectorProcessGroup method
-func NewGetParameterContextForConnectorProcessGroupRequest(server string, connectorId string, processGroupId string) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "connectorId", connectorId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam1 string
-
-	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "processGroupId", processGroupId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/connectors/%s/flow/process-groups/%s/parameter-context", pathParam0, pathParam1)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-
-// NewDeleteConnectorRequest constructs an http.Request for the DeleteConnector method
-func NewDeleteConnectorRequest(server string, id string, params *DeleteConnectorParams) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/connectors/%s", pathParam0)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	if params != nil {
-		// queryValues collects non-styled parameters (passthrough, JSON)
-		// that are safe to round-trip through url.Values.Encode().
-		queryValues := queryURL.Query()
-		// rawQueryFragments collects pre-encoded query fragments from
-		// styled parameters, preserving literal commas as delimiters
-		// per the OpenAPI spec (e.g. "color=blue,black,brown").
-		var rawQueryFragments []string
-
-		if params.Version != nil {
-
-			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "version", *params.Version, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "object", Format: ""}); err != nil {
-				return nil, err
-			} else {
-				for _, qp := range strings.Split(queryFrag, "&") {
-					rawQueryFragments = append(rawQueryFragments, qp)
-				}
-			}
-
-		}
-
-		if params.ClientId != nil {
-
-			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "clientId", *params.ClientId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "object", Format: ""}); err != nil {
-				return nil, err
-			} else {
-				for _, qp := range strings.Split(queryFrag, "&") {
-					rawQueryFragments = append(rawQueryFragments, qp)
-				}
-			}
-
-		}
-
-		if params.DisconnectedNodeAcknowledged != nil {
-
-			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "disconnectedNodeAcknowledged", *params.DisconnectedNodeAcknowledged, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "boolean", Format: ""}); err != nil {
-				return nil, err
-			} else {
-				for _, qp := range strings.Split(queryFrag, "&") {
-					rawQueryFragments = append(rawQueryFragments, qp)
-				}
-			}
-
-		}
-
-		if encoded := queryValues.Encode(); encoded != "" {
-			rawQueryFragments = append(rawQueryFragments, encoded)
-		}
-		queryURL.RawQuery = strings.Join(rawQueryFragments, "&")
-	}
-
-	req, err := http.NewRequest(http.MethodDelete, queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-
-// NewGetConnectorRequest constructs an http.Request for the GetConnector method
-func NewGetConnectorRequest(server string, id string) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/connectors/%s", pathParam0)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-
-// NewUpdateConnectorRequest calls the generic UpdateConnector builder with application/json body
-func NewUpdateConnectorRequest(server string, id string, body UpdateConnectorJSONRequestBody) (*http.Request, error) {
-	var bodyReader io.Reader
-	buf, err := json.Marshal(body)
-	if err != nil {
-		return nil, err
-	}
-	bodyReader = bytes.NewReader(buf)
-	return NewUpdateConnectorRequestWithBody(server, id, "application/json", bodyReader)
-}
-
-// NewUpdateConnectorRequestWithBody constructs an http.Request for the UpdateConnector method, with any body, and a specified content type
-func NewUpdateConnectorRequestWithBody(server string, id string, contentType string, body io.Reader) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/connectors/%s", pathParam0)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodPut, queryURL.String(), body)
-	if err != nil {
-		return nil, err
-	}
-
-	req.Header.Add("Content-Type", contentType)
-
-	return req, nil
-}
-
-// NewApplyConnectorUpdateRequest calls the generic ApplyConnectorUpdate builder with application/json body
-func NewApplyConnectorUpdateRequest(server string, id string, body ApplyConnectorUpdateJSONRequestBody) (*http.Request, error) {
-	var bodyReader io.Reader
-	buf, err := json.Marshal(body)
-	if err != nil {
-		return nil, err
-	}
-	bodyReader = bytes.NewReader(buf)
-	return NewApplyConnectorUpdateRequestWithBody(server, id, "application/json", bodyReader)
-}
-
-// NewApplyConnectorUpdateRequestWithBody constructs an http.Request for the ApplyConnectorUpdate method, with any body, and a specified content type
-func NewApplyConnectorUpdateRequestWithBody(server string, id string, contentType string, body io.Reader) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/connectors/%s/apply-update", pathParam0)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
-	if err != nil {
-		return nil, err
-	}
-
-	req.Header.Add("Content-Type", contentType)
-
-	return req, nil
-}
-
-// NewGetAssetsRequest constructs an http.Request for the GetAssets method
-func NewGetAssetsRequest(server string, id string) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/connectors/%s/assets", pathParam0)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-
-// NewCreateAssetRequestWithBody constructs an http.Request for the CreateAsset method, with any body, and a specified content type
-func NewCreateAssetRequestWithBody(server string, id string, params *CreateAssetParams, contentType string, body io.Reader) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/connectors/%s/assets", pathParam0)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
-	if err != nil {
-		return nil, err
-	}
-
-	req.Header.Add("Content-Type", contentType)
-
-	if params != nil {
-
-		if params.Filename != nil {
-			var headerParam0 string
-
-			headerParam0, err = runtime.StyleParamWithOptions("simple", false, "Filename", *params.Filename, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationHeader, Type: "string", Format: ""})
-			if err != nil {
-				return nil, err
-			}
-
-			req.Header.Set("Filename", headerParam0)
-		}
-
-	}
-
-	return req, nil
-}
-
-// NewGetAssetContentRequest constructs an http.Request for the GetAssetContent method
-func NewGetAssetContentRequest(server string, id string, assetId string) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam1 string
-
-	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "assetId", assetId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/connectors/%s/assets/%s", pathParam0, pathParam1)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-
-// NewSubmitConnectorBacklogRequestRequest constructs an http.Request for the SubmitConnectorBacklogRequest method
-func NewSubmitConnectorBacklogRequestRequest(server string, id string) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/connectors/%s/backlog-requests", pathParam0)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodPost, queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-
-// NewDeleteConnectorBacklogRequestRequest constructs an http.Request for the DeleteConnectorBacklogRequest method
-func NewDeleteConnectorBacklogRequestRequest(server string, id string, requestId string) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam1 string
-
-	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "requestId", requestId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/connectors/%s/backlog-requests/%s", pathParam0, pathParam1)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodDelete, queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-
-// NewGetConnectorBacklogRequestRequest constructs an http.Request for the GetConnectorBacklogRequest method
-func NewGetConnectorBacklogRequestRequest(server string, id string, requestId string) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam1 string
-
-	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "requestId", requestId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/connectors/%s/backlog-requests/%s", pathParam0, pathParam1)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-
-// NewGetConnectorConfigurationStepsRequest constructs an http.Request for the GetConnectorConfigurationSteps method
-func NewGetConnectorConfigurationStepsRequest(server string, id string) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/connectors/%s/configuration-steps", pathParam0)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-
-// NewGetConnectorConfigurationStepRequest constructs an http.Request for the GetConnectorConfigurationStep method
-func NewGetConnectorConfigurationStepRequest(server string, id string, configurationStepName string) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam1 string
-
-	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "configurationStepName", configurationStepName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/connectors/%s/configuration-steps/%s", pathParam0, pathParam1)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-
-// NewUpdateConnectorConfigurationStepRequest calls the generic UpdateConnectorConfigurationStep builder with application/json body
-func NewUpdateConnectorConfigurationStepRequest(server string, id string, configurationStepName string, body UpdateConnectorConfigurationStepJSONRequestBody) (*http.Request, error) {
-	var bodyReader io.Reader
-	buf, err := json.Marshal(body)
-	if err != nil {
-		return nil, err
-	}
-	bodyReader = bytes.NewReader(buf)
-	return NewUpdateConnectorConfigurationStepRequestWithBody(server, id, configurationStepName, "application/json", bodyReader)
-}
-
-// NewUpdateConnectorConfigurationStepRequestWithBody constructs an http.Request for the UpdateConnectorConfigurationStep method, with any body, and a specified content type
-func NewUpdateConnectorConfigurationStepRequestWithBody(server string, id string, configurationStepName string, contentType string, body io.Reader) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam1 string
-
-	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "configurationStepName", configurationStepName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/connectors/%s/configuration-steps/%s", pathParam0, pathParam1)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodPut, queryURL.String(), body)
-	if err != nil {
-		return nil, err
-	}
-
-	req.Header.Add("Content-Type", contentType)
-
-	return req, nil
-}
-
-// NewGetConnectorPropertyAllowableValuesRequest constructs an http.Request for the GetConnectorPropertyAllowableValues method
-func NewGetConnectorPropertyAllowableValuesRequest(server string, id string, configurationStepName string, propertyGroupName string, propertyName string, params *GetConnectorPropertyAllowableValuesParams) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam1 string
-
-	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "configurationStepName", configurationStepName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam2 string
-
-	pathParam2, err = runtime.StyleParamWithOptions("simple", false, "propertyGroupName", propertyGroupName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam3 string
-
-	pathParam3, err = runtime.StyleParamWithOptions("simple", false, "propertyName", propertyName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/connectors/%s/configuration-steps/%s/property-groups/%s/properties/%s/allowable-values", pathParam0, pathParam1, pathParam2, pathParam3)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	if params != nil {
-		// queryValues collects non-styled parameters (passthrough, JSON)
-		// that are safe to round-trip through url.Values.Encode().
-		queryValues := queryURL.Query()
-		// rawQueryFragments collects pre-encoded query fragments from
-		// styled parameters, preserving literal commas as delimiters
-		// per the OpenAPI spec (e.g. "color=blue,black,brown").
-		var rawQueryFragments []string
-
-		if params.Filter != nil {
-
-			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "filter", *params.Filter, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
-				return nil, err
-			} else {
-				for _, qp := range strings.Split(queryFrag, "&") {
-					rawQueryFragments = append(rawQueryFragments, qp)
-				}
-			}
-
-		}
-
-		if encoded := queryValues.Encode(); encoded != "" {
-			rawQueryFragments = append(rawQueryFragments, encoded)
-		}
-		queryURL.RawQuery = strings.Join(rawQueryFragments, "&")
-	}
-
-	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-
-// NewSubmitConfigurationStepVerificationRequestRequest calls the generic SubmitConfigurationStepVerificationRequest builder with application/json body
-func NewSubmitConfigurationStepVerificationRequestRequest(server string, id string, configurationStepName string, body SubmitConfigurationStepVerificationRequestJSONRequestBody) (*http.Request, error) {
-	var bodyReader io.Reader
-	buf, err := json.Marshal(body)
-	if err != nil {
-		return nil, err
-	}
-	bodyReader = bytes.NewReader(buf)
-	return NewSubmitConfigurationStepVerificationRequestRequestWithBody(server, id, configurationStepName, "application/json", bodyReader)
-}
-
-// NewSubmitConfigurationStepVerificationRequestRequestWithBody constructs an http.Request for the SubmitConfigurationStepVerificationRequest method, with any body, and a specified content type
-func NewSubmitConfigurationStepVerificationRequestRequestWithBody(server string, id string, configurationStepName string, contentType string, body io.Reader) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam1 string
-
-	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "configurationStepName", configurationStepName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/connectors/%s/configuration-steps/%s/verify-config", pathParam0, pathParam1)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
-	if err != nil {
-		return nil, err
-	}
-
-	req.Header.Add("Content-Type", contentType)
-
-	return req, nil
-}
-
-// NewDeleteConfigurationStepVerificationRequestRequest constructs an http.Request for the DeleteConfigurationStepVerificationRequest method
-func NewDeleteConfigurationStepVerificationRequestRequest(server string, id string, configurationStepName string, requestId string) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam1 string
-
-	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "configurationStepName", configurationStepName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam2 string
-
-	pathParam2, err = runtime.StyleParamWithOptions("simple", false, "requestId", requestId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/connectors/%s/configuration-steps/%s/verify-config/%s", pathParam0, pathParam1, pathParam2)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodDelete, queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-
-// NewGetConfigurationStepVerificationRequestRequest constructs an http.Request for the GetConfigurationStepVerificationRequest method
-func NewGetConfigurationStepVerificationRequestRequest(server string, id string, configurationStepName string, requestId string) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam1 string
-
-	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "configurationStepName", configurationStepName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam2 string
-
-	pathParam2, err = runtime.StyleParamWithOptions("simple", false, "requestId", requestId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/connectors/%s/configuration-steps/%s/verify-config/%s", pathParam0, pathParam1, pathParam2)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-
-// NewGetConnectorConnectionStatusHistoryRequest constructs an http.Request for the GetConnectorConnectionStatusHistory method
-func NewGetConnectorConnectionStatusHistoryRequest(server string, id string, connectionId string) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam1 string
-
-	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "connectionId", connectionId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/connectors/%s/connections/%s/status/history", pathParam0, pathParam1)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-
-// NewGetConnectorControllerServiceStateRequest constructs an http.Request for the GetConnectorControllerServiceState method
-func NewGetConnectorControllerServiceStateRequest(server string, id string, controllerServiceId string) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam1 string
-
-	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "controllerServiceId", controllerServiceId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/connectors/%s/controller-services/%s/state", pathParam0, pathParam1)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-
-// NewClearConnectorControllerServiceStateRequest calls the generic ClearConnectorControllerServiceState builder with application/json body
-func NewClearConnectorControllerServiceStateRequest(server string, id string, controllerServiceId string, body ClearConnectorControllerServiceStateJSONRequestBody) (*http.Request, error) {
-	var bodyReader io.Reader
-	buf, err := json.Marshal(body)
-	if err != nil {
-		return nil, err
-	}
-	bodyReader = bytes.NewReader(buf)
-	return NewClearConnectorControllerServiceStateRequestWithBody(server, id, controllerServiceId, "application/json", bodyReader)
-}
-
-// NewClearConnectorControllerServiceStateRequestWithBody constructs an http.Request for the ClearConnectorControllerServiceState method, with any body, and a specified content type
-func NewClearConnectorControllerServiceStateRequestWithBody(server string, id string, controllerServiceId string, contentType string, body io.Reader) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam1 string
-
-	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "controllerServiceId", controllerServiceId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/connectors/%s/controller-services/%s/state/clear-requests", pathParam0, pathParam1)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
-	if err != nil {
-		return nil, err
-	}
-
-	req.Header.Add("Content-Type", contentType)
-
-	return req, nil
-}
-
-// NewCancelDrainRequest constructs an http.Request for the CancelDrain method
-func NewCancelDrainRequest(server string, id string, params *CancelDrainParams) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/connectors/%s/drain", pathParam0)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	if params != nil {
-		// queryValues collects non-styled parameters (passthrough, JSON)
-		// that are safe to round-trip through url.Values.Encode().
-		queryValues := queryURL.Query()
-		// rawQueryFragments collects pre-encoded query fragments from
-		// styled parameters, preserving literal commas as delimiters
-		// per the OpenAPI spec (e.g. "color=blue,black,brown").
-		var rawQueryFragments []string
-
-		if params.Version != nil {
-
-			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "version", *params.Version, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "object", Format: ""}); err != nil {
-				return nil, err
-			} else {
-				for _, qp := range strings.Split(queryFrag, "&") {
-					rawQueryFragments = append(rawQueryFragments, qp)
-				}
-			}
-
-		}
-
-		if params.ClientId != nil {
-
-			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "clientId", *params.ClientId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "object", Format: ""}); err != nil {
-				return nil, err
-			} else {
-				for _, qp := range strings.Split(queryFrag, "&") {
-					rawQueryFragments = append(rawQueryFragments, qp)
-				}
-			}
-
-		}
-
-		if params.DisconnectedNodeAcknowledged != nil {
-
-			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "disconnectedNodeAcknowledged", *params.DisconnectedNodeAcknowledged, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "boolean", Format: ""}); err != nil {
-				return nil, err
-			} else {
-				for _, qp := range strings.Split(queryFrag, "&") {
-					rawQueryFragments = append(rawQueryFragments, qp)
-				}
-			}
-
-		}
-
-		if encoded := queryValues.Encode(); encoded != "" {
-			rawQueryFragments = append(rawQueryFragments, encoded)
-		}
-		queryURL.RawQuery = strings.Join(rawQueryFragments, "&")
-	}
-
-	req, err := http.NewRequest(http.MethodDelete, queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-
-// NewInitiateDrainRequest calls the generic InitiateDrain builder with application/json body
-func NewInitiateDrainRequest(server string, id string, body InitiateDrainJSONRequestBody) (*http.Request, error) {
-	var bodyReader io.Reader
-	buf, err := json.Marshal(body)
-	if err != nil {
-		return nil, err
-	}
-	bodyReader = bytes.NewReader(buf)
-	return NewInitiateDrainRequestWithBody(server, id, "application/json", bodyReader)
-}
-
-// NewInitiateDrainRequestWithBody constructs an http.Request for the InitiateDrain method, with any body, and a specified content type
-func NewInitiateDrainRequestWithBody(server string, id string, contentType string, body io.Reader) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/connectors/%s/drain", pathParam0)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
-	if err != nil {
-		return nil, err
-	}
-
-	req.Header.Add("Content-Type", contentType)
-
-	return req, nil
-}
-
-// NewCreateMigrationPayloadRequestWithBody constructs an http.Request for the CreateMigrationPayload method, with any body, and a specified content type
-func NewCreateMigrationPayloadRequestWithBody(server string, id string, contentType string, body io.Reader) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/connectors/%s/migration-payloads", pathParam0)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
-	if err != nil {
-		return nil, err
-	}
-
-	req.Header.Add("Content-Type", contentType)
-
-	return req, nil
-}
-
-// NewCreateMigrationRequestRequest calls the generic CreateMigrationRequest builder with application/json body
-func NewCreateMigrationRequestRequest(server string, id string, body CreateMigrationRequestJSONRequestBody) (*http.Request, error) {
-	var bodyReader io.Reader
-	buf, err := json.Marshal(body)
-	if err != nil {
-		return nil, err
-	}
-	bodyReader = bytes.NewReader(buf)
-	return NewCreateMigrationRequestRequestWithBody(server, id, "application/json", bodyReader)
-}
-
-// NewCreateMigrationRequestRequestWithBody constructs an http.Request for the CreateMigrationRequest method, with any body, and a specified content type
-func NewCreateMigrationRequestRequestWithBody(server string, id string, contentType string, body io.Reader) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/connectors/%s/migration-requests", pathParam0)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
-	if err != nil {
-		return nil, err
-	}
-
-	req.Header.Add("Content-Type", contentType)
-
-	return req, nil
-}
-
-// NewDeleteMigrationRequestRequest constructs an http.Request for the DeleteMigrationRequest method
-func NewDeleteMigrationRequestRequest(server string, id string, requestId string) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam1 string
-
-	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "requestId", requestId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/connectors/%s/migration-requests/%s", pathParam0, pathParam1)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodDelete, queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-
-// NewGetMigrationRequestRequest constructs an http.Request for the GetMigrationRequest method
-func NewGetMigrationRequestRequest(server string, id string, requestId string) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam1 string
-
-	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "requestId", requestId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/connectors/%s/migration-requests/%s", pathParam0, pathParam1)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-
-// NewGetMigrationSourcesRequest constructs an http.Request for the GetMigrationSources method
-func NewGetMigrationSourcesRequest(server string, id string) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/connectors/%s/migration-sources", pathParam0)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-
-// NewGetConnectorProcessGroupStatusHistoryRequest constructs an http.Request for the GetConnectorProcessGroupStatusHistory method
-func NewGetConnectorProcessGroupStatusHistoryRequest(server string, id string, processGroupId string) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam1 string
-
-	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "processGroupId", processGroupId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/connectors/%s/process-groups/%s/status/history", pathParam0, pathParam1)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-
-// NewGetConnectorProcessorStateRequest constructs an http.Request for the GetConnectorProcessorState method
-func NewGetConnectorProcessorStateRequest(server string, id string, processorId string) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam1 string
-
-	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "processorId", processorId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/connectors/%s/processors/%s/state", pathParam0, pathParam1)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-
-// NewClearConnectorProcessorStateRequest calls the generic ClearConnectorProcessorState builder with application/json body
-func NewClearConnectorProcessorStateRequest(server string, id string, processorId string, body ClearConnectorProcessorStateJSONRequestBody) (*http.Request, error) {
-	var bodyReader io.Reader
-	buf, err := json.Marshal(body)
-	if err != nil {
-		return nil, err
-	}
-	bodyReader = bytes.NewReader(buf)
-	return NewClearConnectorProcessorStateRequestWithBody(server, id, processorId, "application/json", bodyReader)
-}
-
-// NewClearConnectorProcessorStateRequestWithBody constructs an http.Request for the ClearConnectorProcessorState method, with any body, and a specified content type
-func NewClearConnectorProcessorStateRequestWithBody(server string, id string, processorId string, contentType string, body io.Reader) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam1 string
-
-	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "processorId", processorId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/connectors/%s/processors/%s/state/clear-requests", pathParam0, pathParam1)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
-	if err != nil {
-		return nil, err
-	}
-
-	req.Header.Add("Content-Type", contentType)
-
-	return req, nil
-}
-
-// NewGetConnectorProcessorStatusHistoryRequest constructs an http.Request for the GetConnectorProcessorStatusHistory method
-func NewGetConnectorProcessorStatusHistoryRequest(server string, id string, processorId string) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam1 string
-
-	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "processorId", processorId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/connectors/%s/processors/%s/status/history", pathParam0, pathParam1)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-
-// NewCreatePurgeRequestRequest constructs an http.Request for the CreatePurgeRequest method
-func NewCreatePurgeRequestRequest(server string, id string) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/connectors/%s/purge-requests", pathParam0)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodPost, queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-
-// NewRemovePurgeRequestRequest constructs an http.Request for the RemovePurgeRequest method
-func NewRemovePurgeRequestRequest(server string, id string, purgeRequestId string) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam1 string
-
-	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "purge-request-id", purgeRequestId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/connectors/%s/purge-requests/%s", pathParam0, pathParam1)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodDelete, queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-
-// NewGetPurgeRequestRequest constructs an http.Request for the GetPurgeRequest method
-func NewGetPurgeRequestRequest(server string, id string, purgeRequestId string) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam1 string
-
-	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "purge-request-id", purgeRequestId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/connectors/%s/purge-requests/%s", pathParam0, pathParam1)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-
-// NewGetConnectorRemoteProcessGroupStatusHistoryRequest constructs an http.Request for the GetConnectorRemoteProcessGroupStatusHistory method
-func NewGetConnectorRemoteProcessGroupStatusHistoryRequest(server string, id string, remoteProcessGroupId string) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam1 string
-
-	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "remoteProcessGroupId", remoteProcessGroupId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/connectors/%s/remote-process-groups/%s/status/history", pathParam0, pathParam1)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-
-// NewUpdateRunStatusRequest calls the generic UpdateRunStatus builder with application/json body
-func NewUpdateRunStatusRequest(server string, id string, body UpdateRunStatusJSONRequestBody) (*http.Request, error) {
-	var bodyReader io.Reader
-	buf, err := json.Marshal(body)
-	if err != nil {
-		return nil, err
-	}
-	bodyReader = bytes.NewReader(buf)
-	return NewUpdateRunStatusRequestWithBody(server, id, "application/json", bodyReader)
-}
-
-// NewUpdateRunStatusRequestWithBody constructs an http.Request for the UpdateRunStatus method, with any body, and a specified content type
-func NewUpdateRunStatusRequestWithBody(server string, id string, contentType string, body io.Reader) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/connectors/%s/run-status", pathParam0)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodPut, queryURL.String(), body)
-	if err != nil {
-		return nil, err
-	}
-
-	req.Header.Add("Content-Type", contentType)
-
-	return req, nil
-}
-
-// NewSearchConnectorRequest constructs an http.Request for the SearchConnector method
-func NewSearchConnectorRequest(server string, id string, params *SearchConnectorParams) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/connectors/%s/search-results", pathParam0)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	if params != nil {
-		// queryValues collects non-styled parameters (passthrough, JSON)
-		// that are safe to round-trip through url.Values.Encode().
-		queryValues := queryURL.Query()
-		// rawQueryFragments collects pre-encoded query fragments from
-		// styled parameters, preserving literal commas as delimiters
-		// per the OpenAPI spec (e.g. "color=blue,black,brown").
-		var rawQueryFragments []string
-
-		if params.Q != nil {
-
-			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "q", *params.Q, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
-				return nil, err
-			} else {
-				for _, qp := range strings.Split(queryFrag, "&") {
-					rawQueryFragments = append(rawQueryFragments, qp)
-				}
-			}
-
-		}
-
-		if encoded := queryValues.Encode(); encoded != "" {
-			rawQueryFragments = append(rawQueryFragments, encoded)
-		}
-		queryURL.RawQuery = strings.Join(rawQueryFragments, "&")
-	}
-
-	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-
-// NewGetSecretsRequest constructs an http.Request for the GetSecrets method
-func NewGetSecretsRequest(server string, id string) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/connectors/%s/secrets", pathParam0)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-
-// NewGetConnectorStatusRequest constructs an http.Request for the GetConnectorStatus method
-func NewGetConnectorStatusRequest(server string, id string, params *GetConnectorStatusParams) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/connectors/%s/status", pathParam0)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	if params != nil {
-		// queryValues collects non-styled parameters (passthrough, JSON)
-		// that are safe to round-trip through url.Values.Encode().
-		queryValues := queryURL.Query()
-		// rawQueryFragments collects pre-encoded query fragments from
-		// styled parameters, preserving literal commas as delimiters
-		// per the OpenAPI spec (e.g. "color=blue,black,brown").
-		var rawQueryFragments []string
-
-		if params.Recursive != nil {
-
-			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "recursive", *params.Recursive, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "boolean", Format: ""}); err != nil {
-				return nil, err
-			} else {
-				for _, qp := range strings.Split(queryFrag, "&") {
-					rawQueryFragments = append(rawQueryFragments, qp)
-				}
-			}
-
-		}
-
-		if params.Nodewise != nil {
-
-			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "nodewise", *params.Nodewise, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "boolean", Format: ""}); err != nil {
-				return nil, err
-			} else {
-				for _, qp := range strings.Split(queryFrag, "&") {
-					rawQueryFragments = append(rawQueryFragments, qp)
-				}
-			}
-
-		}
-
-		if params.ClusterNodeId != nil {
-
-			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "clusterNodeId", *params.ClusterNodeId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
-				return nil, err
-			} else {
-				for _, qp := range strings.Split(queryFrag, "&") {
-					rawQueryFragments = append(rawQueryFragments, qp)
-				}
-			}
-
-		}
-
-		if encoded := queryValues.Encode(); encoded != "" {
-			rawQueryFragments = append(rawQueryFragments, encoded)
-		}
-		queryURL.RawQuery = strings.Join(rawQueryFragments, "&")
-	}
-
-	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-
-// NewEndTroubleshootingRequest constructs an http.Request for the EndTroubleshooting method
-func NewEndTroubleshootingRequest(server string, id string, params *EndTroubleshootingParams) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/connectors/%s/troubleshooting", pathParam0)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	if params != nil {
-		// queryValues collects non-styled parameters (passthrough, JSON)
-		// that are safe to round-trip through url.Values.Encode().
-		queryValues := queryURL.Query()
-		// rawQueryFragments collects pre-encoded query fragments from
-		// styled parameters, preserving literal commas as delimiters
-		// per the OpenAPI spec (e.g. "color=blue,black,brown").
-		var rawQueryFragments []string
-
-		if params.Version != nil {
-
-			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "version", *params.Version, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "object", Format: ""}); err != nil {
-				return nil, err
-			} else {
-				for _, qp := range strings.Split(queryFrag, "&") {
-					rawQueryFragments = append(rawQueryFragments, qp)
-				}
-			}
-
-		}
-
-		if params.ClientId != nil {
-
-			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "clientId", *params.ClientId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "object", Format: ""}); err != nil {
-				return nil, err
-			} else {
-				for _, qp := range strings.Split(queryFrag, "&") {
-					rawQueryFragments = append(rawQueryFragments, qp)
-				}
-			}
-
-		}
-
-		if params.DisconnectedNodeAcknowledged != nil {
-
-			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "disconnectedNodeAcknowledged", *params.DisconnectedNodeAcknowledged, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "boolean", Format: ""}); err != nil {
-				return nil, err
-			} else {
-				for _, qp := range strings.Split(queryFrag, "&") {
-					rawQueryFragments = append(rawQueryFragments, qp)
-				}
-			}
-
-		}
-
-		if encoded := queryValues.Encode(); encoded != "" {
-			rawQueryFragments = append(rawQueryFragments, encoded)
-		}
-		queryURL.RawQuery = strings.Join(rawQueryFragments, "&")
-	}
-
-	req, err := http.NewRequest(http.MethodDelete, queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-
-// NewEnterTroubleshootingRequest calls the generic EnterTroubleshooting builder with application/json body
-func NewEnterTroubleshootingRequest(server string, id string, body EnterTroubleshootingJSONRequestBody) (*http.Request, error) {
-	var bodyReader io.Reader
-	buf, err := json.Marshal(body)
-	if err != nil {
-		return nil, err
-	}
-	bodyReader = bytes.NewReader(buf)
-	return NewEnterTroubleshootingRequestWithBody(server, id, "application/json", bodyReader)
-}
-
-// NewEnterTroubleshootingRequestWithBody constructs an http.Request for the EnterTroubleshooting method, with any body, and a specified content type
-func NewEnterTroubleshootingRequestWithBody(server string, id string, contentType string, body io.Reader) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/connectors/%s/troubleshooting", pathParam0)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
-	if err != nil {
-		return nil, err
-	}
-
-	req.Header.Add("Content-Type", contentType)
-
-	return req, nil
-}
-
-// NewDiscardConnectorUpdateRequest constructs an http.Request for the DiscardConnectorUpdate method
-func NewDiscardConnectorUpdateRequest(server string, id string, params *DiscardConnectorUpdateParams) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/connectors/%s/working-configuration", pathParam0)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	if params != nil {
-		// queryValues collects non-styled parameters (passthrough, JSON)
-		// that are safe to round-trip through url.Values.Encode().
-		queryValues := queryURL.Query()
-		// rawQueryFragments collects pre-encoded query fragments from
-		// styled parameters, preserving literal commas as delimiters
-		// per the OpenAPI spec (e.g. "color=blue,black,brown").
-		var rawQueryFragments []string
-
-		if params.Version != nil {
-
-			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "version", *params.Version, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "object", Format: ""}); err != nil {
-				return nil, err
-			} else {
-				for _, qp := range strings.Split(queryFrag, "&") {
-					rawQueryFragments = append(rawQueryFragments, qp)
-				}
-			}
-
-		}
-
-		if params.ClientId != nil {
-
-			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "clientId", *params.ClientId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "object", Format: ""}); err != nil {
-				return nil, err
-			} else {
-				for _, qp := range strings.Split(queryFrag, "&") {
-					rawQueryFragments = append(rawQueryFragments, qp)
-				}
-			}
-
-		}
-
-		if params.DisconnectedNodeAcknowledged != nil {
-
-			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "disconnectedNodeAcknowledged", *params.DisconnectedNodeAcknowledged, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "boolean", Format: ""}); err != nil {
-				return nil, err
-			} else {
-				for _, qp := range strings.Split(queryFrag, "&") {
-					rawQueryFragments = append(rawQueryFragments, qp)
-				}
-			}
-
-		}
-
-		if encoded := queryValues.Encode(); encoded != "" {
-			rawQueryFragments = append(rawQueryFragments, encoded)
-		}
-		queryURL.RawQuery = strings.Join(rawQueryFragments, "&")
-	}
-
-	req, err := http.NewRequest(http.MethodDelete, queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-
 // NewRemoveControllerServiceRequest constructs an http.Request for the RemoveControllerService method
 func NewRemoveControllerServiceRequest(server string, id string, params *RemoveControllerServiceParams) (*http.Request, error) {
 	var err error
@@ -14477,53 +9715,6 @@ func NewUpdateControllerServiceRequestWithBody(server string, id string, content
 	}
 
 	req, err := http.NewRequest(http.MethodPut, queryURL.String(), body)
-	if err != nil {
-		return nil, err
-	}
-
-	req.Header.Add("Content-Type", contentType)
-
-	return req, nil
-}
-
-// NewClearBulletinsRequest calls the generic ClearBulletins builder with application/json body
-func NewClearBulletinsRequest(server string, id string, body ClearBulletinsJSONRequestBody) (*http.Request, error) {
-	var bodyReader io.Reader
-	buf, err := json.Marshal(body)
-	if err != nil {
-		return nil, err
-	}
-	bodyReader = bytes.NewReader(buf)
-	return NewClearBulletinsRequestWithBody(server, id, "application/json", bodyReader)
-}
-
-// NewClearBulletinsRequestWithBody constructs an http.Request for the ClearBulletins method, with any body, and a specified content type
-func NewClearBulletinsRequestWithBody(server string, id string, contentType string, body io.Reader) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/controller-services/%s/bulletins/clear-requests", pathParam0)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
 	if err != nil {
 		return nil, err
 	}
@@ -14859,19 +10050,19 @@ func NewUpdateControllerServiceReferencesRequestWithBody(server string, id strin
 	return req, nil
 }
 
-// NewUpdateRunStatus2Request calls the generic UpdateRunStatus2 builder with application/json body
-func NewUpdateRunStatus2Request(server string, id string, body UpdateRunStatus2JSONRequestBody) (*http.Request, error) {
+// NewUpdateRunStatus1Request calls the generic UpdateRunStatus1 builder with application/json body
+func NewUpdateRunStatus1Request(server string, id string, body UpdateRunStatus1JSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
 		return nil, err
 	}
 	bodyReader = bytes.NewReader(buf)
-	return NewUpdateRunStatus2RequestWithBody(server, id, "application/json", bodyReader)
+	return NewUpdateRunStatus1RequestWithBody(server, id, "application/json", bodyReader)
 }
 
-// NewUpdateRunStatus2RequestWithBody constructs an http.Request for the UpdateRunStatus2 method, with any body, and a specified content type
-func NewUpdateRunStatus2RequestWithBody(server string, id string, contentType string, body io.Reader) (*http.Request, error) {
+// NewUpdateRunStatus1RequestWithBody constructs an http.Request for the UpdateRunStatus1 method, with any body, and a specified content type
+func NewUpdateRunStatus1RequestWithBody(server string, id string, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
@@ -15509,53 +10700,6 @@ func NewUpdateFlowAnalysisRuleRequestWithBody(server string, id string, contentT
 	return req, nil
 }
 
-// NewClearFlowAnalysisRuleBulletinsRequest calls the generic ClearFlowAnalysisRuleBulletins builder with application/json body
-func NewClearFlowAnalysisRuleBulletinsRequest(server string, id string, body ClearFlowAnalysisRuleBulletinsJSONRequestBody) (*http.Request, error) {
-	var bodyReader io.Reader
-	buf, err := json.Marshal(body)
-	if err != nil {
-		return nil, err
-	}
-	bodyReader = bytes.NewReader(buf)
-	return NewClearFlowAnalysisRuleBulletinsRequestWithBody(server, id, "application/json", bodyReader)
-}
-
-// NewClearFlowAnalysisRuleBulletinsRequestWithBody constructs an http.Request for the ClearFlowAnalysisRuleBulletins method, with any body, and a specified content type
-func NewClearFlowAnalysisRuleBulletinsRequestWithBody(server string, id string, contentType string, body io.Reader) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/controller/flow-analysis-rules/%s/bulletins/clear-requests", pathParam0)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
-	if err != nil {
-		return nil, err
-	}
-
-	req.Header.Add("Content-Type", contentType)
-
-	return req, nil
-}
-
 // NewAnalyzeFlowAnalysisRuleConfigurationRequest calls the generic AnalyzeFlowAnalysisRuleConfiguration builder with application/json body
 func NewAnalyzeFlowAnalysisRuleConfigurationRequest(server string, id string, body AnalyzeFlowAnalysisRuleConfigurationJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
@@ -15801,19 +10945,19 @@ func NewGetFlowAnalysisRulePropertyDescriptorRequest(server string, id string, p
 	return req, nil
 }
 
-// NewUpdateRunStatus1Request calls the generic UpdateRunStatus1 builder with application/json body
-func NewUpdateRunStatus1Request(server string, id string, body UpdateRunStatus1JSONRequestBody) (*http.Request, error) {
+// NewUpdateRunStatusRequest calls the generic UpdateRunStatus builder with application/json body
+func NewUpdateRunStatusRequest(server string, id string, body UpdateRunStatusJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
 		return nil, err
 	}
 	bodyReader = bytes.NewReader(buf)
-	return NewUpdateRunStatus1RequestWithBody(server, id, "application/json", bodyReader)
+	return NewUpdateRunStatusRequestWithBody(server, id, "application/json", bodyReader)
 }
 
-// NewUpdateRunStatus1RequestWithBody constructs an http.Request for the UpdateRunStatus1 method, with any body, and a specified content type
-func NewUpdateRunStatus1RequestWithBody(server string, id string, contentType string, body io.Reader) (*http.Request, error) {
+// NewUpdateRunStatusRequestWithBody constructs an http.Request for the UpdateRunStatus method, with any body, and a specified content type
+func NewUpdateRunStatusRequestWithBody(server string, id string, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
@@ -16265,53 +11409,6 @@ func NewCreateParameterProviderRequestWithBody(server string, contentType string
 	return req, nil
 }
 
-// NewClearParameterProviderBulletinsRequest calls the generic ClearParameterProviderBulletins builder with application/json body
-func NewClearParameterProviderBulletinsRequest(server string, id string, body ClearParameterProviderBulletinsJSONRequestBody) (*http.Request, error) {
-	var bodyReader io.Reader
-	buf, err := json.Marshal(body)
-	if err != nil {
-		return nil, err
-	}
-	bodyReader = bytes.NewReader(buf)
-	return NewClearParameterProviderBulletinsRequestWithBody(server, id, "application/json", bodyReader)
-}
-
-// NewClearParameterProviderBulletinsRequestWithBody constructs an http.Request for the ClearParameterProviderBulletins method, with any body, and a specified content type
-func NewClearParameterProviderBulletinsRequestWithBody(server string, id string, contentType string, body io.Reader) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/controller/parameter-providers/%s/bulletins/clear-requests", pathParam0)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
-	if err != nil {
-		return nil, err
-	}
-
-	req.Header.Add("Content-Type", contentType)
-
-	return req, nil
-}
-
 // NewGetFlowRegistryClientsRequest constructs an http.Request for the GetFlowRegistryClients method
 func NewGetFlowRegistryClientsRequest(server string) (*http.Request, error) {
 	var err error
@@ -16541,229 +11638,6 @@ func NewUpdateFlowRegistryClientRequestWithBody(server string, id string, conten
 	}
 
 	req.Header.Add("Content-Type", contentType)
-
-	return req, nil
-}
-
-// NewClearRegistryClientBulletinsRequest calls the generic ClearRegistryClientBulletins builder with application/json body
-func NewClearRegistryClientBulletinsRequest(server string, id string, body ClearRegistryClientBulletinsJSONRequestBody) (*http.Request, error) {
-	var bodyReader io.Reader
-	buf, err := json.Marshal(body)
-	if err != nil {
-		return nil, err
-	}
-	bodyReader = bytes.NewReader(buf)
-	return NewClearRegistryClientBulletinsRequestWithBody(server, id, "application/json", bodyReader)
-}
-
-// NewClearRegistryClientBulletinsRequestWithBody constructs an http.Request for the ClearRegistryClientBulletins method, with any body, and a specified content type
-func NewClearRegistryClientBulletinsRequestWithBody(server string, id string, contentType string, body io.Reader) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/controller/registry-clients/%s/bulletins/clear-requests", pathParam0)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
-	if err != nil {
-		return nil, err
-	}
-
-	req.Header.Add("Content-Type", contentType)
-
-	return req, nil
-}
-
-// NewAnalyzeFlowRegistryClientConfigurationRequest calls the generic AnalyzeFlowRegistryClientConfiguration builder with application/json body
-func NewAnalyzeFlowRegistryClientConfigurationRequest(server string, id string, body AnalyzeFlowRegistryClientConfigurationJSONRequestBody) (*http.Request, error) {
-	var bodyReader io.Reader
-	buf, err := json.Marshal(body)
-	if err != nil {
-		return nil, err
-	}
-	bodyReader = bytes.NewReader(buf)
-	return NewAnalyzeFlowRegistryClientConfigurationRequestWithBody(server, id, "application/json", bodyReader)
-}
-
-// NewAnalyzeFlowRegistryClientConfigurationRequestWithBody constructs an http.Request for the AnalyzeFlowRegistryClientConfiguration method, with any body, and a specified content type
-func NewAnalyzeFlowRegistryClientConfigurationRequestWithBody(server string, id string, contentType string, body io.Reader) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/controller/registry-clients/%s/config/analysis", pathParam0)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
-	if err != nil {
-		return nil, err
-	}
-
-	req.Header.Add("Content-Type", contentType)
-
-	return req, nil
-}
-
-// NewSubmitRegistryClientConfigVerificationRequestRequest calls the generic SubmitRegistryClientConfigVerificationRequest builder with application/json body
-func NewSubmitRegistryClientConfigVerificationRequestRequest(server string, id string, body SubmitRegistryClientConfigVerificationRequestJSONRequestBody) (*http.Request, error) {
-	var bodyReader io.Reader
-	buf, err := json.Marshal(body)
-	if err != nil {
-		return nil, err
-	}
-	bodyReader = bytes.NewReader(buf)
-	return NewSubmitRegistryClientConfigVerificationRequestRequestWithBody(server, id, "application/json", bodyReader)
-}
-
-// NewSubmitRegistryClientConfigVerificationRequestRequestWithBody constructs an http.Request for the SubmitRegistryClientConfigVerificationRequest method, with any body, and a specified content type
-func NewSubmitRegistryClientConfigVerificationRequestRequestWithBody(server string, id string, contentType string, body io.Reader) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/controller/registry-clients/%s/config/verification-requests", pathParam0)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
-	if err != nil {
-		return nil, err
-	}
-
-	req.Header.Add("Content-Type", contentType)
-
-	return req, nil
-}
-
-// NewDeleteRegistryClientVerificationRequestRequest constructs an http.Request for the DeleteRegistryClientVerificationRequest method
-func NewDeleteRegistryClientVerificationRequestRequest(server string, id string, requestId string) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam1 string
-
-	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "requestId", requestId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/controller/registry-clients/%s/config/verification-requests/%s", pathParam0, pathParam1)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodDelete, queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-
-// NewGetRegistryClientVerificationRequestRequest constructs an http.Request for the GetRegistryClientVerificationRequest method
-func NewGetRegistryClientVerificationRequestRequest(server string, id string, requestId string) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam1 string
-
-	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "requestId", requestId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/controller/registry-clients/%s/config/verification-requests/%s", pathParam0, pathParam1)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
 
 	return req, nil
 }
@@ -17987,166 +12861,6 @@ func NewGetConnectionStatusHistoryRequest(server string, id string) (*http.Reque
 	return req, nil
 }
 
-// NewGetConnectorDefinitionRequest constructs an http.Request for the GetConnectorDefinition method
-func NewGetConnectorDefinitionRequest(server string, group string, artifact string, version string, pType string) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "group", group, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam1 string
-
-	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "artifact", artifact, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam2 string
-
-	pathParam2, err = runtime.StyleParamWithOptions("simple", false, "version", version, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam3 string
-
-	pathParam3, err = runtime.StyleParamWithOptions("simple", false, "type", pType, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/flow/connector-definition/%s/%s/%s/%s", pathParam0, pathParam1, pathParam2, pathParam3)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-
-// NewGetConnectorTypesRequest constructs an http.Request for the GetConnectorTypes method
-func NewGetConnectorTypesRequest(server string, params *GetConnectorTypesParams) (*http.Request, error) {
-	var err error
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/flow/connector-types")
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	if params != nil {
-		// queryValues collects non-styled parameters (passthrough, JSON)
-		// that are safe to round-trip through url.Values.Encode().
-		queryValues := queryURL.Query()
-		// rawQueryFragments collects pre-encoded query fragments from
-		// styled parameters, preserving literal commas as delimiters
-		// per the OpenAPI spec (e.g. "color=blue,black,brown").
-		var rawQueryFragments []string
-
-		if params.BundleGroupFilter != nil {
-
-			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "bundleGroupFilter", *params.BundleGroupFilter, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
-				return nil, err
-			} else {
-				for _, qp := range strings.Split(queryFrag, "&") {
-					rawQueryFragments = append(rawQueryFragments, qp)
-				}
-			}
-
-		}
-
-		if params.BundleArtifactFilter != nil {
-
-			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "bundleArtifactFilter", *params.BundleArtifactFilter, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
-				return nil, err
-			} else {
-				for _, qp := range strings.Split(queryFrag, "&") {
-					rawQueryFragments = append(rawQueryFragments, qp)
-				}
-			}
-
-		}
-
-		if params.Type != nil {
-
-			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "type", *params.Type, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
-				return nil, err
-			} else {
-				for _, qp := range strings.Split(queryFrag, "&") {
-					rawQueryFragments = append(rawQueryFragments, qp)
-				}
-			}
-
-		}
-
-		if encoded := queryValues.Encode(); encoded != "" {
-			rawQueryFragments = append(rawQueryFragments, encoded)
-		}
-		queryURL.RawQuery = strings.Join(rawQueryFragments, "&")
-	}
-
-	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-
-// NewGetConnectorsRequest constructs an http.Request for the GetConnectors method
-func NewGetConnectorsRequest(server string) (*http.Request, error) {
-	var err error
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/flow/connectors")
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-
 // NewGetContentViewersRequest constructs an http.Request for the GetContentViewers method
 func NewGetContentViewersRequest(server string) (*http.Request, error) {
 	var err error
@@ -18410,9 +13124,9 @@ func NewGetControllerServicesFromControllerRequest(server string, params *GetCon
 		// per the OpenAPI spec (e.g. "color=blue,black,brown").
 		var rawQueryFragments []string
 
-		if params.IncludeReferencingComponents != nil {
+		if params.UiOnly != nil {
 
-			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "includeReferencingComponents", *params.IncludeReferencingComponents, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "boolean", Format: ""}); err != nil {
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "uiOnly", *params.UiOnly, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "boolean", Format: ""}); err != nil {
 				return nil, err
 			} else {
 				for _, qp := range strings.Split(queryFrag, "&") {
@@ -18422,9 +13136,9 @@ func NewGetControllerServicesFromControllerRequest(server string, params *GetCon
 
 		}
 
-		if params.UiOnly != nil {
+		if params.IncludeReferencingComponents != nil {
 
-			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "uiOnly", *params.UiOnly, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "boolean", Format: ""}); err != nil {
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "includeReferencingComponents", *params.IncludeReferencingComponents, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "boolean", Format: ""}); err != nil {
 				return nil, err
 			} else {
 				for _, qp := range strings.Split(queryFrag, "&") {
@@ -18652,61 +13366,6 @@ func NewGetFlowAnalysisResultsRequest(server string, processGroupId string) (*ht
 	}
 
 	operationPath := fmt.Sprintf("/flow/flow-analysis/results/%s", pathParam0)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-
-// NewGetFlowRegistryClientDefinitionRequest constructs an http.Request for the GetFlowRegistryClientDefinition method
-func NewGetFlowRegistryClientDefinitionRequest(server string, group string, artifact string, version string, pType string) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "group", group, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam1 string
-
-	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "artifact", artifact, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam2 string
-
-	pathParam2, err = runtime.StyleParamWithOptions("simple", false, "version", version, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam3 string
-
-	pathParam3, err = runtime.StyleParamWithOptions("simple", false, "type", pType, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/flow/flow-registry-client-definition/%s/%s/%s/%s", pathParam0, pathParam1, pathParam2, pathParam3)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -18995,33 +13654,6 @@ func NewGetInputPortStatusRequest(server string, id string, params *GetInputPort
 	return req, nil
 }
 
-// NewGetListenPortsRequest constructs an http.Request for the GetListenPorts method
-func NewGetListenPortsRequest(server string) (*http.Request, error) {
-	var err error
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/flow/listen-ports")
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-
 // NewGetFlowMetricsRequest constructs an http.Request for the GetFlowMetrics method
 func NewGetFlowMetricsRequest(server string, producer GetFlowMetricsParamsProducer, params *GetFlowMetricsParams) (*http.Request, error) {
 	var err error
@@ -19096,18 +13728,6 @@ func NewGetFlowMetricsRequest(server string, producer GetFlowMetricsParamsProduc
 		if params.RootFieldName != nil {
 
 			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "rootFieldName", *params.RootFieldName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
-				return nil, err
-			} else {
-				for _, qp := range strings.Split(queryFrag, "&") {
-					rawQueryFragments = append(rawQueryFragments, qp)
-				}
-			}
-
-		}
-
-		if params.FlowMetricsReportingStrategy != nil {
-
-			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "flowMetricsReportingStrategy", *params.FlowMetricsReportingStrategy, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
 				return nil, err
 			} else {
 				for _, qp := range strings.Split(queryFrag, "&") {
@@ -19418,8 +14038,8 @@ func NewGetPrioritizersRequest(server string) (*http.Request, error) {
 	return req, nil
 }
 
-// NewGetFlow1Request constructs an http.Request for the GetFlow1 method
-func NewGetFlow1Request(server string, id string, params *GetFlow1Params) (*http.Request, error) {
+// NewGetFlowRequest constructs an http.Request for the GetFlow method
+func NewGetFlowRequest(server string, id string, params *GetFlowParams) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
@@ -19556,53 +14176,6 @@ func NewGetBreadcrumbsRequest(server string, id string) (*http.Request, error) {
 	if err != nil {
 		return nil, err
 	}
-
-	return req, nil
-}
-
-// NewClearBulletins1Request calls the generic ClearBulletins1 builder with application/json body
-func NewClearBulletins1Request(server string, id string, body ClearBulletins1JSONRequestBody) (*http.Request, error) {
-	var bodyReader io.Reader
-	buf, err := json.Marshal(body)
-	if err != nil {
-		return nil, err
-	}
-	bodyReader = bytes.NewReader(buf)
-	return NewClearBulletins1RequestWithBody(server, id, "application/json", bodyReader)
-}
-
-// NewClearBulletins1RequestWithBody constructs an http.Request for the ClearBulletins1 method, with any body, and a specified content type
-func NewClearBulletins1RequestWithBody(server string, id string, contentType string, body io.Reader) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/flow/process-groups/%s/bulletins/clear-requests", pathParam0)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
-	if err != nil {
-		return nil, err
-	}
-
-	req.Header.Add("Content-Type", contentType)
 
 	return req, nil
 }
@@ -21074,68 +15647,6 @@ func NewGetControllerStatusRequest(server string) (*http.Request, error) {
 	return req, nil
 }
 
-// NewGetStepDocumentationRequest constructs an http.Request for the GetStepDocumentation method
-func NewGetStepDocumentationRequest(server string, group string, artifact string, version string, connectorType string, stepName string) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "group", group, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam1 string
-
-	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "artifact", artifact, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam2 string
-
-	pathParam2, err = runtime.StyleParamWithOptions("simple", false, "version", version, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam3 string
-
-	pathParam3, err = runtime.StyleParamWithOptions("simple", false, "connectorType", connectorType, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam4 string
-
-	pathParam4, err = runtime.StyleParamWithOptions("simple", false, "stepName", stepName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/flow/steps/%s/%s/%s/%s/%s", pathParam0, pathParam1, pathParam2, pathParam3, pathParam4)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-
 // NewCreateDropRequestRequest constructs an http.Request for the CreateDropRequest method
 func NewCreateDropRequestRequest(server string, id string) (*http.Request, error) {
 	var err error
@@ -21863,66 +16374,19 @@ func NewUpdateInputPortRequestWithBody(server string, id string, contentType str
 	return req, nil
 }
 
-// NewClearBulletins2Request calls the generic ClearBulletins2 builder with application/json body
-func NewClearBulletins2Request(server string, id string, body ClearBulletins2JSONRequestBody) (*http.Request, error) {
+// NewUpdateRunStatus2Request calls the generic UpdateRunStatus2 builder with application/json body
+func NewUpdateRunStatus2Request(server string, id string, body UpdateRunStatus2JSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
 		return nil, err
 	}
 	bodyReader = bytes.NewReader(buf)
-	return NewClearBulletins2RequestWithBody(server, id, "application/json", bodyReader)
+	return NewUpdateRunStatus2RequestWithBody(server, id, "application/json", bodyReader)
 }
 
-// NewClearBulletins2RequestWithBody constructs an http.Request for the ClearBulletins2 method, with any body, and a specified content type
-func NewClearBulletins2RequestWithBody(server string, id string, contentType string, body io.Reader) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/input-ports/%s/bulletins/clear-requests", pathParam0)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
-	if err != nil {
-		return nil, err
-	}
-
-	req.Header.Add("Content-Type", contentType)
-
-	return req, nil
-}
-
-// NewUpdateRunStatus3Request calls the generic UpdateRunStatus3 builder with application/json body
-func NewUpdateRunStatus3Request(server string, id string, body UpdateRunStatus3JSONRequestBody) (*http.Request, error) {
-	var bodyReader io.Reader
-	buf, err := json.Marshal(body)
-	if err != nil {
-		return nil, err
-	}
-	bodyReader = bytes.NewReader(buf)
-	return NewUpdateRunStatus3RequestWithBody(server, id, "application/json", bodyReader)
-}
-
-// NewUpdateRunStatus3RequestWithBody constructs an http.Request for the UpdateRunStatus3 method, with any body, and a specified content type
-func NewUpdateRunStatus3RequestWithBody(server string, id string, contentType string, body io.Reader) (*http.Request, error) {
+// NewUpdateRunStatus2RequestWithBody constructs an http.Request for the UpdateRunStatus2 method, with any body, and a specified content type
+func NewUpdateRunStatus2RequestWithBody(server string, id string, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
@@ -22289,66 +16753,19 @@ func NewUpdateOutputPortRequestWithBody(server string, id string, contentType st
 	return req, nil
 }
 
-// NewClearBulletins3Request calls the generic ClearBulletins3 builder with application/json body
-func NewClearBulletins3Request(server string, id string, body ClearBulletins3JSONRequestBody) (*http.Request, error) {
+// NewUpdateRunStatus3Request calls the generic UpdateRunStatus3 builder with application/json body
+func NewUpdateRunStatus3Request(server string, id string, body UpdateRunStatus3JSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
 		return nil, err
 	}
 	bodyReader = bytes.NewReader(buf)
-	return NewClearBulletins3RequestWithBody(server, id, "application/json", bodyReader)
+	return NewUpdateRunStatus3RequestWithBody(server, id, "application/json", bodyReader)
 }
 
-// NewClearBulletins3RequestWithBody constructs an http.Request for the ClearBulletins3 method, with any body, and a specified content type
-func NewClearBulletins3RequestWithBody(server string, id string, contentType string, body io.Reader) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/output-ports/%s/bulletins/clear-requests", pathParam0)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
-	if err != nil {
-		return nil, err
-	}
-
-	req.Header.Add("Content-Type", contentType)
-
-	return req, nil
-}
-
-// NewUpdateRunStatus4Request calls the generic UpdateRunStatus4 builder with application/json body
-func NewUpdateRunStatus4Request(server string, id string, body UpdateRunStatus4JSONRequestBody) (*http.Request, error) {
-	var bodyReader io.Reader
-	buf, err := json.Marshal(body)
-	if err != nil {
-		return nil, err
-	}
-	bodyReader = bytes.NewReader(buf)
-	return NewUpdateRunStatus4RequestWithBody(server, id, "application/json", bodyReader)
-}
-
-// NewUpdateRunStatus4RequestWithBody constructs an http.Request for the UpdateRunStatus4 method, with any body, and a specified content type
-func NewUpdateRunStatus4RequestWithBody(server string, id string, contentType string, body io.Reader) (*http.Request, error) {
+// NewUpdateRunStatus3RequestWithBody constructs an http.Request for the UpdateRunStatus3 method, with any body, and a specified content type
+func NewUpdateRunStatus3RequestWithBody(server string, id string, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
@@ -22423,8 +16840,8 @@ func NewCreateParameterContextRequestWithBody(server string, contentType string,
 	return req, nil
 }
 
-// NewGetAssets1Request constructs an http.Request for the GetAssets1 method
-func NewGetAssets1Request(server string, contextId string) (*http.Request, error) {
+// NewGetAssetsRequest constructs an http.Request for the GetAssets method
+func NewGetAssetsRequest(server string, contextId string) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
@@ -22457,8 +16874,8 @@ func NewGetAssets1Request(server string, contextId string) (*http.Request, error
 	return req, nil
 }
 
-// NewCreateAsset1RequestWithBody constructs an http.Request for the CreateAsset1 method, with any body, and a specified content type
-func NewCreateAsset1RequestWithBody(server string, contextId string, params *CreateAsset1Params, contentType string, body io.Reader) (*http.Request, error) {
+// NewCreateAssetRequestWithBody constructs an http.Request for the CreateAsset method, with any body, and a specified content type
+func NewCreateAssetRequestWithBody(server string, contextId string, params *CreateAssetParams, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
@@ -22576,8 +16993,8 @@ func NewDeleteAssetRequest(server string, contextId string, assetId string, para
 	return req, nil
 }
 
-// NewGetAssetContent1Request constructs an http.Request for the GetAssetContent1 method
-func NewGetAssetContent1Request(server string, contextId string, assetId string) (*http.Request, error) {
+// NewGetAssetContentRequest constructs an http.Request for the GetAssetContent method
+func NewGetAssetContentRequest(server string, contextId string, assetId string) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
@@ -23279,53 +17696,6 @@ func NewUpdateParameterProviderRequestWithBody(server string, id string, content
 	}
 
 	req, err := http.NewRequest(http.MethodPut, queryURL.String(), body)
-	if err != nil {
-		return nil, err
-	}
-
-	req.Header.Add("Content-Type", contentType)
-
-	return req, nil
-}
-
-// NewClearBulletins4Request calls the generic ClearBulletins4 builder with application/json body
-func NewClearBulletins4Request(server string, id string, body ClearBulletins4JSONRequestBody) (*http.Request, error) {
-	var bodyReader io.Reader
-	buf, err := json.Marshal(body)
-	if err != nil {
-		return nil, err
-	}
-	bodyReader = bytes.NewReader(buf)
-	return NewClearBulletins4RequestWithBody(server, id, "application/json", bodyReader)
-}
-
-// NewClearBulletins4RequestWithBody constructs an http.Request for the ClearBulletins4 method, with any body, and a specified content type
-func NewClearBulletins4RequestWithBody(server string, id string, contentType string, body io.Reader) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/parameter-providers/%s/bulletins/clear-requests", pathParam0)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
 	if err != nil {
 		return nil, err
 	}
@@ -24616,18 +18986,6 @@ func NewExportProcessGroupRequest(server string, id string, params *ExportProces
 
 		}
 
-		if params.IncludeComponentState != nil {
-
-			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "includeComponentState", *params.IncludeComponentState, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "boolean", Format: ""}); err != nil {
-				return nil, err
-			} else {
-				for _, qp := range strings.Split(queryFrag, "&") {
-					rawQueryFragments = append(rawQueryFragments, qp)
-				}
-			}
-
-		}
-
 		if encoded := queryValues.Encode(); encoded != "" {
 			rawQueryFragments = append(rawQueryFragments, encoded)
 		}
@@ -25890,169 +20248,6 @@ func NewUpdateProcessorRequestWithBody(server string, id string, contentType str
 	return req, nil
 }
 
-// NewSubmitProcessorBacklogRequestRequest constructs an http.Request for the SubmitProcessorBacklogRequest method
-func NewSubmitProcessorBacklogRequestRequest(server string, id string) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/processors/%s/backlog-requests", pathParam0)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodPost, queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-
-// NewDeleteBacklogRequestRequest constructs an http.Request for the DeleteBacklogRequest method
-func NewDeleteBacklogRequestRequest(server string, id string, requestId string) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam1 string
-
-	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "requestId", requestId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/processors/%s/backlog-requests/%s", pathParam0, pathParam1)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodDelete, queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-
-// NewGetBacklogRequestRequest constructs an http.Request for the GetBacklogRequest method
-func NewGetBacklogRequestRequest(server string, id string, requestId string) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam1 string
-
-	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "requestId", requestId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/processors/%s/backlog-requests/%s", pathParam0, pathParam1)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-
-// NewClearBulletins5Request calls the generic ClearBulletins5 builder with application/json body
-func NewClearBulletins5Request(server string, id string, body ClearBulletins5JSONRequestBody) (*http.Request, error) {
-	var bodyReader io.Reader
-	buf, err := json.Marshal(body)
-	if err != nil {
-		return nil, err
-	}
-	bodyReader = bytes.NewReader(buf)
-	return NewClearBulletins5RequestWithBody(server, id, "application/json", bodyReader)
-}
-
-// NewClearBulletins5RequestWithBody constructs an http.Request for the ClearBulletins5 method, with any body, and a specified content type
-func NewClearBulletins5RequestWithBody(server string, id string, contentType string, body io.Reader) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/processors/%s/bulletins/clear-requests", pathParam0)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
-	if err != nil {
-		return nil, err
-	}
-
-	req.Header.Add("Content-Type", contentType)
-
-	return req, nil
-}
-
 // NewAnalyzeConfiguration2Request calls the generic AnalyzeConfiguration2 builder with application/json body
 func NewAnalyzeConfiguration2Request(server string, id string, body AnalyzeConfiguration2JSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
@@ -26344,19 +20539,19 @@ func NewGetProcessorDiagnosticsRequest(server string, id string) (*http.Request,
 	return req, nil
 }
 
-// NewUpdateRunStatus5Request calls the generic UpdateRunStatus5 builder with application/json body
-func NewUpdateRunStatus5Request(server string, id string, body UpdateRunStatus5JSONRequestBody) (*http.Request, error) {
+// NewUpdateRunStatus4Request calls the generic UpdateRunStatus4 builder with application/json body
+func NewUpdateRunStatus4Request(server string, id string, body UpdateRunStatus4JSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
 		return nil, err
 	}
 	bodyReader = bytes.NewReader(buf)
-	return NewUpdateRunStatus5RequestWithBody(server, id, "application/json", bodyReader)
+	return NewUpdateRunStatus4RequestWithBody(server, id, "application/json", bodyReader)
 }
 
-// NewUpdateRunStatus5RequestWithBody constructs an http.Request for the UpdateRunStatus5 method, with any body, and a specified content type
-func NewUpdateRunStatus5RequestWithBody(server string, id string, contentType string, body io.Reader) (*http.Request, error) {
+// NewUpdateRunStatus4RequestWithBody constructs an http.Request for the UpdateRunStatus4 method, with any body, and a specified content type
+func NewUpdateRunStatus4RequestWithBody(server string, id string, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
@@ -27448,53 +21643,6 @@ func NewUpdateRemoteProcessGroupRequestWithBody(server string, id string, conten
 	return req, nil
 }
 
-// NewClearBulletins6Request calls the generic ClearBulletins6 builder with application/json body
-func NewClearBulletins6Request(server string, id string, body ClearBulletins6JSONRequestBody) (*http.Request, error) {
-	var bodyReader io.Reader
-	buf, err := json.Marshal(body)
-	if err != nil {
-		return nil, err
-	}
-	bodyReader = bytes.NewReader(buf)
-	return NewClearBulletins6RequestWithBody(server, id, "application/json", bodyReader)
-}
-
-// NewClearBulletins6RequestWithBody constructs an http.Request for the ClearBulletins6 method, with any body, and a specified content type
-func NewClearBulletins6RequestWithBody(server string, id string, contentType string, body io.Reader) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/remote-process-groups/%s/bulletins/clear-requests", pathParam0)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
-	if err != nil {
-		return nil, err
-	}
-
-	req.Header.Add("Content-Type", contentType)
-
-	return req, nil
-}
-
 // NewUpdateRemoteProcessGroupInputPortRequest calls the generic UpdateRemoteProcessGroupInputPort builder with application/json body
 func NewUpdateRemoteProcessGroupInputPortRequest(server string, id string, portId string, body UpdateRemoteProcessGroupInputPortJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
@@ -27958,53 +22106,6 @@ func NewUpdateReportingTaskRequestWithBody(server string, id string, contentType
 	return req, nil
 }
 
-// NewClearBulletins7Request calls the generic ClearBulletins7 builder with application/json body
-func NewClearBulletins7Request(server string, id string, body ClearBulletins7JSONRequestBody) (*http.Request, error) {
-	var bodyReader io.Reader
-	buf, err := json.Marshal(body)
-	if err != nil {
-		return nil, err
-	}
-	bodyReader = bytes.NewReader(buf)
-	return NewClearBulletins7RequestWithBody(server, id, "application/json", bodyReader)
-}
-
-// NewClearBulletins7RequestWithBody constructs an http.Request for the ClearBulletins7 method, with any body, and a specified content type
-func NewClearBulletins7RequestWithBody(server string, id string, contentType string, body io.Reader) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/reporting-tasks/%s/bulletins/clear-requests", pathParam0)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
-	if err != nil {
-		return nil, err
-	}
-
-	req.Header.Add("Content-Type", contentType)
-
-	return req, nil
-}
-
 // NewAnalyzeConfiguration3Request calls the generic AnalyzeConfiguration3 builder with application/json body
 func NewAnalyzeConfiguration3Request(server string, id string, body AnalyzeConfiguration3JSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
@@ -28250,19 +22351,19 @@ func NewGetPropertyDescriptor4Request(server string, id string, params *GetPrope
 	return req, nil
 }
 
-// NewUpdateRunStatus6Request calls the generic UpdateRunStatus6 builder with application/json body
-func NewUpdateRunStatus6Request(server string, id string, body UpdateRunStatus6JSONRequestBody) (*http.Request, error) {
+// NewUpdateRunStatus5Request calls the generic UpdateRunStatus5 builder with application/json body
+func NewUpdateRunStatus5Request(server string, id string, body UpdateRunStatus5JSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
 		return nil, err
 	}
 	bodyReader = bytes.NewReader(buf)
-	return NewUpdateRunStatus6RequestWithBody(server, id, "application/json", bodyReader)
+	return NewUpdateRunStatus5RequestWithBody(server, id, "application/json", bodyReader)
 }
 
-// NewUpdateRunStatus6RequestWithBody constructs an http.Request for the UpdateRunStatus6 method, with any body, and a specified content type
-func NewUpdateRunStatus6RequestWithBody(server string, id string, contentType string, body io.Reader) (*http.Request, error) {
+// NewUpdateRunStatus5RequestWithBody constructs an http.Request for the UpdateRunStatus5 method, with any body, and a specified content type
+func NewUpdateRunStatus5RequestWithBody(server string, id string, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
@@ -29616,53 +23717,6 @@ func NewUpdateFlowVersionRequestWithBody(server string, id string, contentType s
 	return req, nil
 }
 
-// NewCreateFlowBranchRequest calls the generic CreateFlowBranch builder with application/json body
-func NewCreateFlowBranchRequest(server string, id string, body CreateFlowBranchJSONRequestBody) (*http.Request, error) {
-	var bodyReader io.Reader
-	buf, err := json.Marshal(body)
-	if err != nil {
-		return nil, err
-	}
-	bodyReader = bytes.NewReader(buf)
-	return NewCreateFlowBranchRequestWithBody(server, id, "application/json", bodyReader)
-}
-
-// NewCreateFlowBranchRequestWithBody constructs an http.Request for the CreateFlowBranch method, with any body, and a specified content type
-func NewCreateFlowBranchRequestWithBody(server string, id string, contentType string, body io.Reader) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/versions/process-groups/%s/branches", pathParam0)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
-	if err != nil {
-		return nil, err
-	}
-
-	req.Header.Add("Content-Type", contentType)
-
-	return req, nil
-}
-
 // NewExportFlowVersionRequest constructs an http.Request for the ExportFlowVersion method
 func NewExportFlowVersionRequest(server string, id string) (*http.Request, error) {
 	var err error
@@ -29680,252 +23734,6 @@ func NewExportFlowVersionRequest(server string, id string) (*http.Request, error
 	}
 
 	operationPath := fmt.Sprintf("/versions/process-groups/%s/download", pathParam0)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-
-// NewApplyRebasedFlowVersionRequest calls the generic ApplyRebasedFlowVersion builder with application/json body
-func NewApplyRebasedFlowVersionRequest(server string, id string, body ApplyRebasedFlowVersionJSONRequestBody) (*http.Request, error) {
-	var bodyReader io.Reader
-	buf, err := json.Marshal(body)
-	if err != nil {
-		return nil, err
-	}
-	bodyReader = bytes.NewReader(buf)
-	return NewApplyRebasedFlowVersionRequestWithBody(server, id, "application/json", bodyReader)
-}
-
-// NewApplyRebasedFlowVersionRequestWithBody constructs an http.Request for the ApplyRebasedFlowVersion method, with any body, and a specified content type
-func NewApplyRebasedFlowVersionRequestWithBody(server string, id string, contentType string, body io.Reader) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/versions/process-groups/%s/rebase", pathParam0)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodPut, queryURL.String(), body)
-	if err != nil {
-		return nil, err
-	}
-
-	req.Header.Add("Content-Type", contentType)
-
-	return req, nil
-}
-
-// NewGetRebaseAnalysisRequest constructs an http.Request for the GetRebaseAnalysis method
-func NewGetRebaseAnalysisRequest(server string, id string, params *GetRebaseAnalysisParams) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/versions/rebase-analysis/process-groups/%s", pathParam0)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	if params != nil {
-		// queryValues collects non-styled parameters (passthrough, JSON)
-		// that are safe to round-trip through url.Values.Encode().
-		queryValues := queryURL.Query()
-		// rawQueryFragments collects pre-encoded query fragments from
-		// styled parameters, preserving literal commas as delimiters
-		// per the OpenAPI spec (e.g. "color=blue,black,brown").
-		var rawQueryFragments []string
-
-		if queryFrag, err := runtime.StyleParamWithOptions("form", true, "targetVersion", params.TargetVersion, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
-			return nil, err
-		} else {
-			for _, qp := range strings.Split(queryFrag, "&") {
-				rawQueryFragments = append(rawQueryFragments, qp)
-			}
-		}
-
-		if encoded := queryValues.Encode(); encoded != "" {
-			rawQueryFragments = append(rawQueryFragments, encoded)
-		}
-		queryURL.RawQuery = strings.Join(rawQueryFragments, "&")
-	}
-
-	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-
-// NewInitiateRebaseRequest calls the generic InitiateRebase builder with application/json body
-func NewInitiateRebaseRequest(server string, id string, body InitiateRebaseJSONRequestBody) (*http.Request, error) {
-	var bodyReader io.Reader
-	buf, err := json.Marshal(body)
-	if err != nil {
-		return nil, err
-	}
-	bodyReader = bytes.NewReader(buf)
-	return NewInitiateRebaseRequestWithBody(server, id, "application/json", bodyReader)
-}
-
-// NewInitiateRebaseRequestWithBody constructs an http.Request for the InitiateRebase method, with any body, and a specified content type
-func NewInitiateRebaseRequestWithBody(server string, id string, contentType string, body io.Reader) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/versions/rebase-requests/process-groups/%s", pathParam0)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
-	if err != nil {
-		return nil, err
-	}
-
-	req.Header.Add("Content-Type", contentType)
-
-	return req, nil
-}
-
-// NewDeleteRebaseRequestRequest constructs an http.Request for the DeleteRebaseRequest method
-func NewDeleteRebaseRequestRequest(server string, id string, params *DeleteRebaseRequestParams) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/versions/rebase-requests/%s", pathParam0)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	if params != nil {
-		// queryValues collects non-styled parameters (passthrough, JSON)
-		// that are safe to round-trip through url.Values.Encode().
-		queryValues := queryURL.Query()
-		// rawQueryFragments collects pre-encoded query fragments from
-		// styled parameters, preserving literal commas as delimiters
-		// per the OpenAPI spec (e.g. "color=blue,black,brown").
-		var rawQueryFragments []string
-
-		if params.DisconnectedNodeAcknowledged != nil {
-
-			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "disconnectedNodeAcknowledged", *params.DisconnectedNodeAcknowledged, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "boolean", Format: ""}); err != nil {
-				return nil, err
-			} else {
-				for _, qp := range strings.Split(queryFrag, "&") {
-					rawQueryFragments = append(rawQueryFragments, qp)
-				}
-			}
-
-		}
-
-		if encoded := queryValues.Encode(); encoded != "" {
-			rawQueryFragments = append(rawQueryFragments, encoded)
-		}
-		queryURL.RawQuery = strings.Join(rawQueryFragments, "&")
-	}
-
-	req, err := http.NewRequest(http.MethodDelete, queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-
-// NewGetRebaseRequestRequest constructs an http.Request for the GetRebaseRequest method
-func NewGetRebaseRequestRequest(server string, id string) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/versions/rebase-requests/%s", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -30307,7 +24115,7 @@ type ClientWithResponsesInterface interface {
 	// Corresponds with POST /access/token (the `CreateAccessToken` operationId).
 	CreateAccessTokenWithFormdataBodyWithResponse(ctx context.Context, body CreateAccessTokenFormdataRequestBody, reqEditors ...RequestEditorFn) (*CreateAccessTokenResponse, error)
 
-	// GetAuthenticationConfigurationWithResponse Retrieves the authentication configuration details and status information
+	// GetAuthenticationConfigurationWithResponse Retrieves the authentication configuration endpoint and status information
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -30342,455 +24150,6 @@ type ClientWithResponsesInterface interface {
 	// Corresponds with PUT /connections/{id} (the `UpdateConnection` operationId).
 	UpdateConnectionWithResponse(ctx context.Context, id string, body UpdateConnectionJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateConnectionResponse, error)
 
-	// CreateConnectorWithBodyWithResponse Creates a new connector
-	//
-	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with POST /connectors (the `CreateConnector` operationId).
-	CreateConnectorWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CreateConnectorResponse, error)
-
-	// CreateConnectorWithResponse Creates a new connector
-	//
-	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with POST /connectors (the `CreateConnector` operationId).
-	CreateConnectorWithResponse(ctx context.Context, body CreateConnectorJSONRequestBody, reqEditors ...RequestEditorFn) (*CreateConnectorResponse, error)
-
-	// GetFlowWithResponse Gets the flow for a process group within a connector
-	//
-	// Returns the flow for the specified process group within the connector's hierarchy. The processGroupId can be obtained from the managedProcessGroupId field of the ConnectorDTO for the root process group, or from child process groups within the flow. If the uiOnly query parameter is provided with a value of true, the returned entity may only contain fields that are necessary for rendering the NiFi User Interface. As such, the selected fields may change at any time, even during incremental releases, without warning. As a result, this parameter should not be provided by any client other than the UI.
-	//
-	// Returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with GET /connectors/{connectorId}/flow/process-groups/{processGroupId} (the `GetFlow` operationId).
-	GetFlowWithResponse(ctx context.Context, connectorId string, processGroupId string, params *GetFlowParams, reqEditors ...RequestEditorFn) (*GetFlowResponse, error)
-
-	// GetControllerServicesFromConnectorProcessGroupWithResponse Gets all controller services for a process group within a connector
-	//
-	// Returns the controller services for the specified process group within the connector's hierarchy. The processGroupId can be obtained from the managedProcessGroupId field of the ConnectorDTO for the root process group, or from child process groups within the flow.
-	//
-	// Returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with GET /connectors/{connectorId}/flow/process-groups/{processGroupId}/controller-services (the `GetControllerServicesFromConnectorProcessGroup` operationId).
-	GetControllerServicesFromConnectorProcessGroupWithResponse(ctx context.Context, connectorId string, processGroupId string, params *GetControllerServicesFromConnectorProcessGroupParams, reqEditors ...RequestEditorFn) (*GetControllerServicesFromConnectorProcessGroupResponse, error)
-
-	// GetParameterContextForConnectorProcessGroupWithResponse Gets the parameter context bound to a process group within a connector
-	//
-	// Returns the parameter context (with effective parameters, including those inherited from other contexts) bound to the specified process group within the connector's hierarchy. Sensitive parameter values are masked. Returns 204 No Content if the process group has no bound parameter context.
-	//
-	// Returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with GET /connectors/{connectorId}/flow/process-groups/{processGroupId}/parameter-context (the `GetParameterContextForConnectorProcessGroup` operationId).
-	GetParameterContextForConnectorProcessGroupWithResponse(ctx context.Context, connectorId string, processGroupId string, reqEditors ...RequestEditorFn) (*GetParameterContextForConnectorProcessGroupResponse, error)
-
-	// DeleteConnectorWithResponse Deletes a connector
-	//
-	// Returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with DELETE /connectors/{id} (the `DeleteConnector` operationId).
-	DeleteConnectorWithResponse(ctx context.Context, id string, params *DeleteConnectorParams, reqEditors ...RequestEditorFn) (*DeleteConnectorResponse, error)
-
-	// GetConnectorWithResponse Gets a connector
-	//
-	// Returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with GET /connectors/{id} (the `GetConnector` operationId).
-	GetConnectorWithResponse(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*GetConnectorResponse, error)
-
-	// UpdateConnectorWithBodyWithResponse Updates a connector
-	//
-	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with PUT /connectors/{id} (the `UpdateConnector` operationId).
-	UpdateConnectorWithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateConnectorResponse, error)
-
-	// UpdateConnectorWithResponse Updates a connector
-	//
-	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with PUT /connectors/{id} (the `UpdateConnector` operationId).
-	UpdateConnectorWithResponse(ctx context.Context, id string, body UpdateConnectorJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateConnectorResponse, error)
-
-	// ApplyConnectorUpdateWithBodyWithResponse Applies an update to a connector
-	//
-	// This will apply any pending configuration changes to the connector. The client can poll the connector endpoint to check when the update is complete.
-	//
-	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with POST /connectors/{id}/apply-update (the `ApplyConnectorUpdate` operationId).
-	ApplyConnectorUpdateWithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApplyConnectorUpdateResponse, error)
-
-	// ApplyConnectorUpdateWithResponse Applies an update to a connector
-	//
-	// This will apply any pending configuration changes to the connector. The client can poll the connector endpoint to check when the update is complete.
-	//
-	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with POST /connectors/{id}/apply-update (the `ApplyConnectorUpdate` operationId).
-	ApplyConnectorUpdateWithResponse(ctx context.Context, id string, body ApplyConnectorUpdateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApplyConnectorUpdateResponse, error)
-
-	// GetAssetsWithResponse Lists the assets that belong to the Connector with the given ID
-	//
-	// Lists the assets that belong to the Connector with the given ID.
-	//
-	// Returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with GET /connectors/{id}/assets (the `GetAssets` operationId).
-	GetAssetsWithResponse(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*GetAssetsResponse, error)
-
-	// CreateAssetWithBodyWithResponse Creates a new Asset in the given Connector
-	//
-	// This endpoint will create a new Asset in the Connector. The Asset will be created with the given name and the contents of the file that is uploaded.
-	//
-	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with POST /connectors/{id}/assets (the `CreateAsset` operationId).
-	CreateAssetWithBodyWithResponse(ctx context.Context, id string, params *CreateAssetParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CreateAssetResponse, error)
-
-	// GetAssetContentWithResponse Retrieves the content of the asset with the given id for a connector
-	//
-	// Returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with GET /connectors/{id}/assets/{assetId} (the `GetAssetContent` operationId).
-	GetAssetContentWithResponse(ctx context.Context, id string, assetId string, reqEditors ...RequestEditorFn) (*GetAssetContentResponse, error)
-
-	// SubmitConnectorBacklogRequestWithResponse Initiates a request to determine the current backlog for a Connector
-	//
-	// This will initiate the process of determining the backlog for a Connector. This may be a long-running task. As a result, this endpoint will immediately return a BacklogRequestEntity, and the process of determining the backlog will occur asynchronously in the background. The client may then periodically poll the status of the request by issuing a GET request to /connectors/{id}/backlog-requests/{requestId}. Once the request is completed, the client is expected to issue a DELETE request to /connectors/{id}/backlog-requests/{requestId}.
-	//
-	// Returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with POST /connectors/{id}/backlog-requests (the `SubmitConnectorBacklogRequest` operationId).
-	SubmitConnectorBacklogRequestWithResponse(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*SubmitConnectorBacklogRequestResponse, error)
-
-	// DeleteConnectorBacklogRequestWithResponse Deletes the Backlog Request with the given ID
-	//
-	// Deletes the Backlog Request with the given ID. After a request is created, it is expected that the client will properly clean up the request by DELETE'ing it once the backlog determination has completed. If the request is deleted before it completes, the background determination is cancelled.
-	//
-	// Returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with DELETE /connectors/{id}/backlog-requests/{requestId} (the `DeleteConnectorBacklogRequest` operationId).
-	DeleteConnectorBacklogRequestWithResponse(ctx context.Context, id string, requestId string, reqEditors ...RequestEditorFn) (*DeleteConnectorBacklogRequestResponse, error)
-
-	// GetConnectorBacklogRequestWithResponse Returns the Backlog Request with the given ID
-	//
-	// Returns the Backlog Request with the given ID. Once a Backlog Request has been created by performing a POST to /connectors/{id}/backlog-requests, that request can subsequently be retrieved via this endpoint, and the request that is fetched will contain the updated state, such as percent complete, the current state of the request, and the backlog once the request is complete.
-	//
-	// Returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with GET /connectors/{id}/backlog-requests/{requestId} (the `GetConnectorBacklogRequest` operationId).
-	GetConnectorBacklogRequestWithResponse(ctx context.Context, id string, requestId string, reqEditors ...RequestEditorFn) (*GetConnectorBacklogRequestResponse, error)
-
-	// GetConnectorConfigurationStepsWithResponse Gets all configuration step names for a connector
-	//
-	// Returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with GET /connectors/{id}/configuration-steps (the `GetConnectorConfigurationSteps` operationId).
-	GetConnectorConfigurationStepsWithResponse(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*GetConnectorConfigurationStepsResponse, error)
-
-	// GetConnectorConfigurationStepWithResponse Gets a specific configuration step by name for a connector
-	//
-	// Returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with GET /connectors/{id}/configuration-steps/{configurationStepName} (the `GetConnectorConfigurationStep` operationId).
-	GetConnectorConfigurationStepWithResponse(ctx context.Context, id string, configurationStepName string, reqEditors ...RequestEditorFn) (*GetConnectorConfigurationStepResponse, error)
-
-	// UpdateConnectorConfigurationStepWithBodyWithResponse Updates a specific configuration step by name for a connector
-	//
-	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with PUT /connectors/{id}/configuration-steps/{configurationStepName} (the `UpdateConnectorConfigurationStep` operationId).
-	UpdateConnectorConfigurationStepWithBodyWithResponse(ctx context.Context, id string, configurationStepName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateConnectorConfigurationStepResponse, error)
-
-	// UpdateConnectorConfigurationStepWithResponse Updates a specific configuration step by name for a connector
-	//
-	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with PUT /connectors/{id}/configuration-steps/{configurationStepName} (the `UpdateConnectorConfigurationStep` operationId).
-	UpdateConnectorConfigurationStepWithResponse(ctx context.Context, id string, configurationStepName string, body UpdateConnectorConfigurationStepJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateConnectorConfigurationStepResponse, error)
-
-	// GetConnectorPropertyAllowableValuesWithResponse Gets the allowable values for a specific property in a connector's configuration step
-	//
-	// Gets the allowable values for a specific property that supports dynamic fetching of allowable values. The filter parameter can be used to narrow down the results based on the property's filtering logic.
-	//
-	// Returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with GET /connectors/{id}/configuration-steps/{configurationStepName}/property-groups/{propertyGroupName}/properties/{propertyName}/allowable-values (the `GetConnectorPropertyAllowableValues` operationId).
-	GetConnectorPropertyAllowableValuesWithResponse(ctx context.Context, id string, configurationStepName string, propertyGroupName string, propertyName string, params *GetConnectorPropertyAllowableValuesParams, reqEditors ...RequestEditorFn) (*GetConnectorPropertyAllowableValuesResponse, error)
-
-	// SubmitConfigurationStepVerificationRequestWithBodyWithResponse Performs verification of a configuration step for a connector
-	//
-	// This will initiate the process of verifying a given Connector Configuration Step. This may be a long-running task. As a result, this endpoint will immediately return a VerifyConnectorConfigStepRequestEntity, and the process of performing the verification will occur asynchronously in the background. The client may then periodically poll the status of the request by issuing a GET request to /connectors/{connectorId}/configuration-steps/{stepName}/verify-config/{requestId}. Once the request is completed, the client is expected to issue a DELETE request to /connectors/{connectorId}/configuration-steps/{stepName}/verify-config/{requestId}.
-	//
-	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with POST /connectors/{id}/configuration-steps/{configurationStepName}/verify-config (the `SubmitConfigurationStepVerificationRequest` operationId).
-	SubmitConfigurationStepVerificationRequestWithBodyWithResponse(ctx context.Context, id string, configurationStepName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*SubmitConfigurationStepVerificationRequestResponse, error)
-
-	// SubmitConfigurationStepVerificationRequestWithResponse Performs verification of a configuration step for a connector
-	//
-	// This will initiate the process of verifying a given Connector Configuration Step. This may be a long-running task. As a result, this endpoint will immediately return a VerifyConnectorConfigStepRequestEntity, and the process of performing the verification will occur asynchronously in the background. The client may then periodically poll the status of the request by issuing a GET request to /connectors/{connectorId}/configuration-steps/{stepName}/verify-config/{requestId}. Once the request is completed, the client is expected to issue a DELETE request to /connectors/{connectorId}/configuration-steps/{stepName}/verify-config/{requestId}.
-	//
-	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with POST /connectors/{id}/configuration-steps/{configurationStepName}/verify-config (the `SubmitConfigurationStepVerificationRequest` operationId).
-	SubmitConfigurationStepVerificationRequestWithResponse(ctx context.Context, id string, configurationStepName string, body SubmitConfigurationStepVerificationRequestJSONRequestBody, reqEditors ...RequestEditorFn) (*SubmitConfigurationStepVerificationRequestResponse, error)
-
-	// DeleteConfigurationStepVerificationRequestWithResponse Deletes the Verification Request with the given ID
-	//
-	// Deletes the Verification Request with the given ID. After a request is created, it is expected that the client will properly clean up the request by DELETE'ing it, once the Verification process has completed. If the request is deleted before the request completes, then the Verification request will finish the step that it is currently performing and then will cancel any subsequent steps.
-	//
-	// Returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with DELETE /connectors/{id}/configuration-steps/{configurationStepName}/verify-config/{requestId} (the `DeleteConfigurationStepVerificationRequest` operationId).
-	DeleteConfigurationStepVerificationRequestWithResponse(ctx context.Context, id string, configurationStepName string, requestId string, reqEditors ...RequestEditorFn) (*DeleteConfigurationStepVerificationRequestResponse, error)
-
-	// GetConfigurationStepVerificationRequestWithResponse Returns the Verification Request with the given ID
-	//
-	// Returns the Verification Request with the given ID. Once a Verification Request has been created, that request can subsequently be retrieved via this endpoint, and the request that is fetched will contain the updated state, such as percent complete, the current state of the request, and any failures.
-	//
-	// Returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with GET /connectors/{id}/configuration-steps/{configurationStepName}/verify-config/{requestId} (the `GetConfigurationStepVerificationRequest` operationId).
-	GetConfigurationStepVerificationRequestWithResponse(ctx context.Context, id string, configurationStepName string, requestId string, reqEditors ...RequestEditorFn) (*GetConfigurationStepVerificationRequestResponse, error)
-
-	// GetConnectorConnectionStatusHistoryWithResponse Gets the status history for a connection within a connector
-	//
-	// Returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with GET /connectors/{id}/connections/{connectionId}/status/history (the `GetConnectorConnectionStatusHistory` operationId).
-	GetConnectorConnectionStatusHistoryWithResponse(ctx context.Context, id string, connectionId string, reqEditors ...RequestEditorFn) (*GetConnectorConnectionStatusHistoryResponse, error)
-
-	// GetConnectorControllerServiceStateWithResponse Gets the state for a controller service within a connector
-	//
-	// Returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with GET /connectors/{id}/controller-services/{controllerServiceId}/state (the `GetConnectorControllerServiceState` operationId).
-	GetConnectorControllerServiceStateWithResponse(ctx context.Context, id string, controllerServiceId string, reqEditors ...RequestEditorFn) (*GetConnectorControllerServiceStateResponse, error)
-
-	// ClearConnectorControllerServiceStateWithBodyWithResponse Clears the state for a controller service within a connector
-	//
-	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with POST /connectors/{id}/controller-services/{controllerServiceId}/state/clear-requests (the `ClearConnectorControllerServiceState` operationId).
-	ClearConnectorControllerServiceStateWithBodyWithResponse(ctx context.Context, id string, controllerServiceId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ClearConnectorControllerServiceStateResponse, error)
-
-	// ClearConnectorControllerServiceStateWithResponse Clears the state for a controller service within a connector
-	//
-	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with POST /connectors/{id}/controller-services/{controllerServiceId}/state/clear-requests (the `ClearConnectorControllerServiceState` operationId).
-	ClearConnectorControllerServiceStateWithResponse(ctx context.Context, id string, controllerServiceId string, body ClearConnectorControllerServiceStateJSONRequestBody, reqEditors ...RequestEditorFn) (*ClearConnectorControllerServiceStateResponse, error)
-
-	// CancelDrainWithResponse Cancels the draining of FlowFiles for a connector
-	//
-	// Returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with DELETE /connectors/{id}/drain (the `CancelDrain` operationId).
-	CancelDrainWithResponse(ctx context.Context, id string, params *CancelDrainParams, reqEditors ...RequestEditorFn) (*CancelDrainResponse, error)
-
-	// InitiateDrainWithBodyWithResponse Initiates draining of FlowFiles for a connector
-	//
-	// This will initiate draining of FlowFiles for a stopped connector. Draining allows the connector to process data that is currently in the flow but does not ingest any additional data. The connector must be in a STOPPED state before draining can begin. Once initiated, the connector will transition to a DRAINING state. Use the DELETE method on this endpoint to cancel an ongoing drain operation.
-	//
-	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with POST /connectors/{id}/drain (the `InitiateDrain` operationId).
-	InitiateDrainWithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*InitiateDrainResponse, error)
-
-	// InitiateDrainWithResponse Initiates draining of FlowFiles for a connector
-	//
-	// This will initiate draining of FlowFiles for a stopped connector. Draining allows the connector to process data that is currently in the flow but does not ingest any additional data. The connector must be in a STOPPED state before draining can begin. Once initiated, the connector will transition to a DRAINING state. Use the DELETE method on this endpoint to cancel an ongoing drain operation.
-	//
-	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with POST /connectors/{id}/drain (the `InitiateDrain` operationId).
-	InitiateDrainWithResponse(ctx context.Context, id string, body InitiateDrainJSONRequestBody, reqEditors ...RequestEditorFn) (*InitiateDrainResponse, error)
-
-	// CreateMigrationPayloadWithBodyWithResponse Uploads a flow snapshot payload for a later Connector migration request
-	//
-	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with POST /connectors/{id}/migration-payloads (the `CreateMigrationPayload` operationId).
-	CreateMigrationPayloadWithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CreateMigrationPayloadResponse, error)
-
-	// CreateMigrationRequestWithBodyWithResponse Creates a Connector migration request
-	//
-	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with POST /connectors/{id}/migration-requests (the `CreateMigrationRequest` operationId).
-	CreateMigrationRequestWithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CreateMigrationRequestResponse, error)
-
-	// CreateMigrationRequestWithResponse Creates a Connector migration request
-	//
-	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with POST /connectors/{id}/migration-requests (the `CreateMigrationRequest` operationId).
-	CreateMigrationRequestWithResponse(ctx context.Context, id string, body CreateMigrationRequestJSONRequestBody, reqEditors ...RequestEditorFn) (*CreateMigrationRequestResponse, error)
-
-	// DeleteMigrationRequestWithResponse Deletes the Connector migration request with the given ID
-	//
-	// Returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with DELETE /connectors/{id}/migration-requests/{requestId} (the `DeleteMigrationRequest` operationId).
-	DeleteMigrationRequestWithResponse(ctx context.Context, id string, requestId string, reqEditors ...RequestEditorFn) (*DeleteMigrationRequestResponse, error)
-
-	// GetMigrationRequestWithResponse Gets the Connector migration request with the given ID
-	//
-	// Returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with GET /connectors/{id}/migration-requests/{requestId} (the `GetMigrationRequest` operationId).
-	GetMigrationRequestWithResponse(ctx context.Context, id string, requestId string, reqEditors ...RequestEditorFn) (*GetMigrationRequestResponse, error)
-
-	// GetMigrationSourcesWithResponse Lists the Versioned Process Groups that the Connector can be migrated from
-	//
-	// Returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with GET /connectors/{id}/migration-sources (the `GetMigrationSources` operationId).
-	GetMigrationSourcesWithResponse(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*GetMigrationSourcesResponse, error)
-
-	// GetConnectorProcessGroupStatusHistoryWithResponse Gets the status history for a process group within a connector
-	//
-	// Returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with GET /connectors/{id}/process-groups/{processGroupId}/status/history (the `GetConnectorProcessGroupStatusHistory` operationId).
-	GetConnectorProcessGroupStatusHistoryWithResponse(ctx context.Context, id string, processGroupId string, reqEditors ...RequestEditorFn) (*GetConnectorProcessGroupStatusHistoryResponse, error)
-
-	// GetConnectorProcessorStateWithResponse Gets the state for a processor within a connector
-	//
-	// Returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with GET /connectors/{id}/processors/{processorId}/state (the `GetConnectorProcessorState` operationId).
-	GetConnectorProcessorStateWithResponse(ctx context.Context, id string, processorId string, reqEditors ...RequestEditorFn) (*GetConnectorProcessorStateResponse, error)
-
-	// ClearConnectorProcessorStateWithBodyWithResponse Clears the state for a processor within a connector
-	//
-	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with POST /connectors/{id}/processors/{processorId}/state/clear-requests (the `ClearConnectorProcessorState` operationId).
-	ClearConnectorProcessorStateWithBodyWithResponse(ctx context.Context, id string, processorId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ClearConnectorProcessorStateResponse, error)
-
-	// ClearConnectorProcessorStateWithResponse Clears the state for a processor within a connector
-	//
-	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with POST /connectors/{id}/processors/{processorId}/state/clear-requests (the `ClearConnectorProcessorState` operationId).
-	ClearConnectorProcessorStateWithResponse(ctx context.Context, id string, processorId string, body ClearConnectorProcessorStateJSONRequestBody, reqEditors ...RequestEditorFn) (*ClearConnectorProcessorStateResponse, error)
-
-	// GetConnectorProcessorStatusHistoryWithResponse Gets the status history for a processor within a connector
-	//
-	// Returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with GET /connectors/{id}/processors/{processorId}/status/history (the `GetConnectorProcessorStatusHistory` operationId).
-	GetConnectorProcessorStatusHistoryWithResponse(ctx context.Context, id string, processorId string, reqEditors ...RequestEditorFn) (*GetConnectorProcessorStatusHistoryResponse, error)
-
-	// CreatePurgeRequestWithResponse Creates a request to purge the FlowFiles for this connector
-	//
-	// This will create a request to purge all FlowFiles from the connector. The connector must be in a STOPPED state before purging can begin. This is an asynchronous operation. The client should poll the returned URI to get the status of the purge request.
-	//
-	// Returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with POST /connectors/{id}/purge-requests (the `CreatePurgeRequest` operationId).
-	CreatePurgeRequestWithResponse(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*CreatePurgeRequestResponse, error)
-
-	// RemovePurgeRequestWithResponse Cancels and/or removes a request to purge the FlowFiles for this connector
-	//
-	// Returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with DELETE /connectors/{id}/purge-requests/{purge-request-id} (the `RemovePurgeRequest` operationId).
-	RemovePurgeRequestWithResponse(ctx context.Context, id string, purgeRequestId string, reqEditors ...RequestEditorFn) (*RemovePurgeRequestResponse, error)
-
-	// GetPurgeRequestWithResponse Gets the current status of a purge request for the specified connector
-	//
-	// Returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with GET /connectors/{id}/purge-requests/{purge-request-id} (the `GetPurgeRequest` operationId).
-	GetPurgeRequestWithResponse(ctx context.Context, id string, purgeRequestId string, reqEditors ...RequestEditorFn) (*GetPurgeRequestResponse, error)
-
-	// GetConnectorRemoteProcessGroupStatusHistoryWithResponse Gets the status history for a remote process group within a connector
-	//
-	// Returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with GET /connectors/{id}/remote-process-groups/{remoteProcessGroupId}/status/history (the `GetConnectorRemoteProcessGroupStatusHistory` operationId).
-	GetConnectorRemoteProcessGroupStatusHistoryWithResponse(ctx context.Context, id string, remoteProcessGroupId string, reqEditors ...RequestEditorFn) (*GetConnectorRemoteProcessGroupStatusHistoryResponse, error)
-
-	// UpdateRunStatusWithBodyWithResponse Updates run status of a connector
-	//
-	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with PUT /connectors/{id}/run-status (the `UpdateRunStatus` operationId).
-	UpdateRunStatusWithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateRunStatusResponse, error)
-
-	// UpdateRunStatusWithResponse Updates run status of a connector
-	//
-	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with PUT /connectors/{id}/run-status (the `UpdateRunStatus` operationId).
-	UpdateRunStatusWithResponse(ctx context.Context, id string, body UpdateRunStatusJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateRunStatusResponse, error)
-
-	// SearchConnectorWithResponse Performs a search against the encapsulated process group of this connector using the specified search term
-	//
-	// Only search results from authorized components will be returned.
-	//
-	// Returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with GET /connectors/{id}/search-results (the `SearchConnector` operationId).
-	SearchConnectorWithResponse(ctx context.Context, id string, params *SearchConnectorParams, reqEditors ...RequestEditorFn) (*SearchConnectorResponse, error)
-
-	// GetSecretsWithResponse Gets all secrets available for configuring a connector
-	//
-	// Returns metadata for all secrets available from all secret providers. This endpoint is used when configuring a connector to discover available secrets. Note: Actual secret values are not included in the response for security reasons.
-	//
-	// Returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with GET /connectors/{id}/secrets (the `GetSecrets` operationId).
-	GetSecretsWithResponse(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*GetSecretsResponse, error)
-
-	// GetConnectorStatusWithResponse Gets the status for the process group managed by a connector
-	//
-	// Returns the status for the process group managed by the specified connector. The status includes status for all descendent components. When invoked with recursive set to true, it will return the current status of every component in the connector's encapsulated flow.
-	//
-	// Returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with GET /connectors/{id}/status (the `GetConnectorStatus` operationId).
-	GetConnectorStatusWithResponse(ctx context.Context, id string, params *GetConnectorStatusParams, reqEditors ...RequestEditorFn) (*GetConnectorStatusResponse, error)
-
-	// EndTroubleshootingWithResponse Transitions a Connector out of Troubleshooting mode
-	//
-	// Ends Troubleshooting mode for the Connector, restoring the authoritative flow. All components in the managed flow must be stopped and disabled, and the managed flow must have no active tasks.
-	//
-	// Returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with DELETE /connectors/{id}/troubleshooting (the `EndTroubleshooting` operationId).
-	EndTroubleshootingWithResponse(ctx context.Context, id string, params *EndTroubleshootingParams, reqEditors ...RequestEditorFn) (*EndTroubleshootingResponse, error)
-
-	// EnterTroubleshootingWithBodyWithResponse Transitions a Connector into Troubleshooting mode
-	//
-	// Places the Connector into Troubleshooting mode so that its managed flow may be directly modified. Standard lifecycle operations are disabled while in Troubleshooting mode.
-	//
-	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with POST /connectors/{id}/troubleshooting (the `EnterTroubleshooting` operationId).
-	EnterTroubleshootingWithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*EnterTroubleshootingResponse, error)
-
-	// EnterTroubleshootingWithResponse Transitions a Connector into Troubleshooting mode
-	//
-	// Places the Connector into Troubleshooting mode so that its managed flow may be directly modified. Standard lifecycle operations are disabled while in Troubleshooting mode.
-	//
-	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with POST /connectors/{id}/troubleshooting (the `EnterTroubleshooting` operationId).
-	EnterTroubleshootingWithResponse(ctx context.Context, id string, body EnterTroubleshootingJSONRequestBody, reqEditors ...RequestEditorFn) (*EnterTroubleshootingResponse, error)
-
-	// DiscardConnectorUpdateWithResponse Discards the working configuration of a connector
-	//
-	// This will discard any pending configuration changes for the connector and revert to the last applied configuration.
-	//
-	// Returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with DELETE /connectors/{id}/working-configuration (the `DiscardConnectorUpdate` operationId).
-	DiscardConnectorUpdateWithResponse(ctx context.Context, id string, params *DiscardConnectorUpdateParams, reqEditors ...RequestEditorFn) (*DiscardConnectorUpdateResponse, error)
-
 	// RemoveControllerServiceWithResponse Deletes a controller service
 	//
 	// Returns a wrapper object for the known response body format(s).
@@ -30820,20 +24179,6 @@ type ClientWithResponsesInterface interface {
 	//
 	// Corresponds with PUT /controller-services/{id} (the `UpdateControllerService` operationId).
 	UpdateControllerServiceWithResponse(ctx context.Context, id string, body UpdateControllerServiceJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateControllerServiceResponse, error)
-
-	// ClearBulletinsWithBodyWithResponse Clears bulletins for a controller service
-	//
-	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with POST /controller-services/{id}/bulletins/clear-requests (the `ClearBulletins` operationId).
-	ClearBulletinsWithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ClearBulletinsResponse, error)
-
-	// ClearBulletinsWithResponse Clears bulletins for a controller service
-	//
-	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with POST /controller-services/{id}/bulletins/clear-requests (the `ClearBulletins` operationId).
-	ClearBulletinsWithResponse(ctx context.Context, id string, body ClearBulletinsJSONRequestBody, reqEditors ...RequestEditorFn) (*ClearBulletinsResponse, error)
 
 	// AnalyzeConfigurationWithBodyWithResponse Performs analysis of the component's configuration, providing information about which attributes are referenced.
 	//
@@ -30913,19 +24258,19 @@ type ClientWithResponsesInterface interface {
 	// Corresponds with PUT /controller-services/{id}/references (the `UpdateControllerServiceReferences` operationId).
 	UpdateControllerServiceReferencesWithResponse(ctx context.Context, id string, body UpdateControllerServiceReferencesJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateControllerServiceReferencesResponse, error)
 
-	// UpdateRunStatus2WithBodyWithResponse Updates run status of a controller service
+	// UpdateRunStatus1WithBodyWithResponse Updates run status of a controller service
 	//
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 	//
-	// Corresponds with PUT /controller-services/{id}/run-status (the `UpdateRunStatus2` operationId).
-	UpdateRunStatus2WithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateRunStatus2Response, error)
+	// Corresponds with PUT /controller-services/{id}/run-status (the `UpdateRunStatus1` operationId).
+	UpdateRunStatus1WithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateRunStatus1Response, error)
 
-	// UpdateRunStatus2WithResponse Updates run status of a controller service
+	// UpdateRunStatus1WithResponse Updates run status of a controller service
 	//
 	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 	//
-	// Corresponds with PUT /controller-services/{id}/run-status (the `UpdateRunStatus2` operationId).
-	UpdateRunStatus2WithResponse(ctx context.Context, id string, body UpdateRunStatus2JSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateRunStatus2Response, error)
+	// Corresponds with PUT /controller-services/{id}/run-status (the `UpdateRunStatus1` operationId).
+	UpdateRunStatus1WithResponse(ctx context.Context, id string, body UpdateRunStatus1JSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateRunStatus1Response, error)
 
 	// GetStateWithResponse Gets the state for a controller service
 	//
@@ -31006,14 +24351,14 @@ type ClientWithResponsesInterface interface {
 	// Corresponds with GET /controller/config (the `GetControllerConfig` operationId).
 	GetControllerConfigWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*GetControllerConfigResponse, error)
 
-	// UpdateControllerConfigWithBodyWithResponse Updates the configuration for this NiFi
+	// UpdateControllerConfigWithBodyWithResponse Retrieves the configuration for this NiFi
 	//
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with PUT /controller/config (the `UpdateControllerConfig` operationId).
 	UpdateControllerConfigWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateControllerConfigResponse, error)
 
-	// UpdateControllerConfigWithResponse Updates the configuration for this NiFi
+	// UpdateControllerConfigWithResponse Retrieves the configuration for this NiFi
 	//
 	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 	//
@@ -31083,20 +24428,6 @@ type ClientWithResponsesInterface interface {
 	// Corresponds with PUT /controller/flow-analysis-rules/{id} (the `UpdateFlowAnalysisRule` operationId).
 	UpdateFlowAnalysisRuleWithResponse(ctx context.Context, id string, body UpdateFlowAnalysisRuleJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateFlowAnalysisRuleResponse, error)
 
-	// ClearFlowAnalysisRuleBulletinsWithBodyWithResponse Clears bulletins for a flow analysis rule
-	//
-	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with POST /controller/flow-analysis-rules/{id}/bulletins/clear-requests (the `ClearFlowAnalysisRuleBulletins` operationId).
-	ClearFlowAnalysisRuleBulletinsWithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ClearFlowAnalysisRuleBulletinsResponse, error)
-
-	// ClearFlowAnalysisRuleBulletinsWithResponse Clears bulletins for a flow analysis rule
-	//
-	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with POST /controller/flow-analysis-rules/{id}/bulletins/clear-requests (the `ClearFlowAnalysisRuleBulletins` operationId).
-	ClearFlowAnalysisRuleBulletinsWithResponse(ctx context.Context, id string, body ClearFlowAnalysisRuleBulletinsJSONRequestBody, reqEditors ...RequestEditorFn) (*ClearFlowAnalysisRuleBulletinsResponse, error)
-
 	// AnalyzeFlowAnalysisRuleConfigurationWithBodyWithResponse Performs analysis of the component's configuration, providing information about which attributes are referenced.
 	//
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
@@ -31154,19 +24485,19 @@ type ClientWithResponsesInterface interface {
 	// Corresponds with GET /controller/flow-analysis-rules/{id}/descriptors (the `GetFlowAnalysisRulePropertyDescriptor` operationId).
 	GetFlowAnalysisRulePropertyDescriptorWithResponse(ctx context.Context, id string, params *GetFlowAnalysisRulePropertyDescriptorParams, reqEditors ...RequestEditorFn) (*GetFlowAnalysisRulePropertyDescriptorResponse, error)
 
-	// UpdateRunStatus1WithBodyWithResponse Updates run status of a flow analysis rule
+	// UpdateRunStatusWithBodyWithResponse Updates run status of a flow analysis rule
 	//
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 	//
-	// Corresponds with PUT /controller/flow-analysis-rules/{id}/run-status (the `UpdateRunStatus1` operationId).
-	UpdateRunStatus1WithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateRunStatus1Response, error)
+	// Corresponds with PUT /controller/flow-analysis-rules/{id}/run-status (the `UpdateRunStatus` operationId).
+	UpdateRunStatusWithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateRunStatusResponse, error)
 
-	// UpdateRunStatus1WithResponse Updates run status of a flow analysis rule
+	// UpdateRunStatusWithResponse Updates run status of a flow analysis rule
 	//
 	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 	//
-	// Corresponds with PUT /controller/flow-analysis-rules/{id}/run-status (the `UpdateRunStatus1` operationId).
-	UpdateRunStatus1WithResponse(ctx context.Context, id string, body UpdateRunStatus1JSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateRunStatus1Response, error)
+	// Corresponds with PUT /controller/flow-analysis-rules/{id}/run-status (the `UpdateRunStatus` operationId).
+	UpdateRunStatusWithResponse(ctx context.Context, id string, body UpdateRunStatusJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateRunStatusResponse, error)
 
 	// GetFlowAnalysisRuleStateWithResponse Gets the state for a flow analysis rule
 	//
@@ -31252,20 +24583,6 @@ type ClientWithResponsesInterface interface {
 	// Corresponds with POST /controller/parameter-providers (the `CreateParameterProvider` operationId).
 	CreateParameterProviderWithResponse(ctx context.Context, body CreateParameterProviderJSONRequestBody, reqEditors ...RequestEditorFn) (*CreateParameterProviderResponse, error)
 
-	// ClearParameterProviderBulletinsWithBodyWithResponse Clears bulletins for a parameter provider
-	//
-	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with POST /controller/parameter-providers/{id}/bulletins/clear-requests (the `ClearParameterProviderBulletins` operationId).
-	ClearParameterProviderBulletinsWithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ClearParameterProviderBulletinsResponse, error)
-
-	// ClearParameterProviderBulletinsWithResponse Clears bulletins for a parameter provider
-	//
-	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with POST /controller/parameter-providers/{id}/bulletins/clear-requests (the `ClearParameterProviderBulletins` operationId).
-	ClearParameterProviderBulletinsWithResponse(ctx context.Context, id string, body ClearParameterProviderBulletinsJSONRequestBody, reqEditors ...RequestEditorFn) (*ClearParameterProviderBulletinsResponse, error)
-
 	// GetFlowRegistryClientsWithResponse Gets the listing of available flow registry clients
 	//
 	// Returns a wrapper object for the known response body format(s).
@@ -31315,70 +24632,6 @@ type ClientWithResponsesInterface interface {
 	// Corresponds with PUT /controller/registry-clients/{id} (the `UpdateFlowRegistryClient` operationId).
 	UpdateFlowRegistryClientWithResponse(ctx context.Context, id string, body UpdateFlowRegistryClientJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateFlowRegistryClientResponse, error)
 
-	// ClearRegistryClientBulletinsWithBodyWithResponse Clears bulletins for a registry client
-	//
-	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with POST /controller/registry-clients/{id}/bulletins/clear-requests (the `ClearRegistryClientBulletins` operationId).
-	ClearRegistryClientBulletinsWithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ClearRegistryClientBulletinsResponse, error)
-
-	// ClearRegistryClientBulletinsWithResponse Clears bulletins for a registry client
-	//
-	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with POST /controller/registry-clients/{id}/bulletins/clear-requests (the `ClearRegistryClientBulletins` operationId).
-	ClearRegistryClientBulletinsWithResponse(ctx context.Context, id string, body ClearRegistryClientBulletinsJSONRequestBody, reqEditors ...RequestEditorFn) (*ClearRegistryClientBulletinsResponse, error)
-
-	// AnalyzeFlowRegistryClientConfigurationWithBodyWithResponse Performs analysis of the component's configuration, providing information about which attributes are referenced.
-	//
-	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with POST /controller/registry-clients/{id}/config/analysis (the `AnalyzeFlowRegistryClientConfiguration` operationId).
-	AnalyzeFlowRegistryClientConfigurationWithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*AnalyzeFlowRegistryClientConfigurationResponse, error)
-
-	// AnalyzeFlowRegistryClientConfigurationWithResponse Performs analysis of the component's configuration, providing information about which attributes are referenced.
-	//
-	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with POST /controller/registry-clients/{id}/config/analysis (the `AnalyzeFlowRegistryClientConfiguration` operationId).
-	AnalyzeFlowRegistryClientConfigurationWithResponse(ctx context.Context, id string, body AnalyzeFlowRegistryClientConfigurationJSONRequestBody, reqEditors ...RequestEditorFn) (*AnalyzeFlowRegistryClientConfigurationResponse, error)
-
-	// SubmitRegistryClientConfigVerificationRequestWithBodyWithResponse Performs verification of the Registry Client's configuration
-	//
-	// Initiates verification of a Registry Client configuration. The request returns immediately with a request entity while verification runs asynchronously. The client should poll /controller/registry-clients/{clientId}/config/verification-requests/{requestId} for status and DELETE the request once verification completes.
-	//
-	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with POST /controller/registry-clients/{id}/config/verification-requests (the `SubmitRegistryClientConfigVerificationRequest` operationId).
-	SubmitRegistryClientConfigVerificationRequestWithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*SubmitRegistryClientConfigVerificationRequestResponse, error)
-
-	// SubmitRegistryClientConfigVerificationRequestWithResponse Performs verification of the Registry Client's configuration
-	//
-	// Initiates verification of a Registry Client configuration. The request returns immediately with a request entity while verification runs asynchronously. The client should poll /controller/registry-clients/{clientId}/config/verification-requests/{requestId} for status and DELETE the request once verification completes.
-	//
-	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with POST /controller/registry-clients/{id}/config/verification-requests (the `SubmitRegistryClientConfigVerificationRequest` operationId).
-	SubmitRegistryClientConfigVerificationRequestWithResponse(ctx context.Context, id string, body SubmitRegistryClientConfigVerificationRequestJSONRequestBody, reqEditors ...RequestEditorFn) (*SubmitRegistryClientConfigVerificationRequestResponse, error)
-
-	// DeleteRegistryClientVerificationRequestWithResponse Deletes the Verification Request with the given ID
-	//
-	// Deletes the Verification Request with the given ID. After a request is created, it is expected that the client will properly clean up the request by DELETE'ing it, once the Verification process has completed. If the request is deleted before the request completes, then the Verification request will finish the step that it is currently performing and then will cancel any subsequent steps.
-	//
-	// Returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with DELETE /controller/registry-clients/{id}/config/verification-requests/{requestId} (the `DeleteRegistryClientVerificationRequest` operationId).
-	DeleteRegistryClientVerificationRequestWithResponse(ctx context.Context, id string, requestId string, reqEditors ...RequestEditorFn) (*DeleteRegistryClientVerificationRequestResponse, error)
-
-	// GetRegistryClientVerificationRequestWithResponse Returns the Verification Request with the given ID
-	//
-	// Returns the Verification Request with the given ID. Once a Verification Request has been created, that request can subsequently be retrieved via this endpoint, and the request that is fetched will contain the updated state, such as percent complete, the current state of the request, and any failures.
-	//
-	// Returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with GET /controller/registry-clients/{id}/config/verification-requests/{requestId} (the `GetRegistryClientVerificationRequest` operationId).
-	GetRegistryClientVerificationRequestWithResponse(ctx context.Context, id string, requestId string, reqEditors ...RequestEditorFn) (*GetRegistryClientVerificationRequestResponse, error)
-
 	// GetPropertyDescriptorWithResponse Gets a flow registry client property descriptor
 	//
 	// Returns a wrapper object for the known response body format(s).
@@ -31386,7 +24639,7 @@ type ClientWithResponsesInterface interface {
 	// Corresponds with GET /controller/registry-clients/{id}/descriptors (the `GetPropertyDescriptor` operationId).
 	GetPropertyDescriptorWithResponse(ctx context.Context, id string, params *GetPropertyDescriptorParams, reqEditors ...RequestEditorFn) (*GetPropertyDescriptorResponse, error)
 
-	// GetRegistryClientTypesWithResponse Retrieves the types of flow registry clients that this NiFi supports
+	// GetRegistryClientTypesWithResponse Retrieves the types of flow  that this NiFi supports
 	//
 	// Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 	//
@@ -31473,7 +24726,7 @@ type ClientWithResponsesInterface interface {
 	// Corresponds with PUT /data-transfer/input-ports/{portId}/transactions/{transactionId} (the `ExtendInputPortTransactionTTL` operationId).
 	ExtendInputPortTransactionTTLWithBodyWithResponse(ctx context.Context, portId string, transactionId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ExtendInputPortTransactionTTLResponse, error)
 
-	// ReceiveFlowFilesWithBodyWithResponse Transfer FlowFiles to the input port
+	// ReceiveFlowFilesWithBodyWithResponse Transfer flow files to the input port
 	//
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 	//
@@ -31494,7 +24747,7 @@ type ClientWithResponsesInterface interface {
 	// Corresponds with PUT /data-transfer/output-ports/{portId}/transactions/{transactionId} (the `ExtendOutputPortTransactionTTL` operationId).
 	ExtendOutputPortTransactionTTLWithBodyWithResponse(ctx context.Context, portId string, transactionId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ExtendOutputPortTransactionTTLResponse, error)
 
-	// TransferFlowFilesWithBodyWithResponse Transfer FlowFiles from the output port
+	// TransferFlowFilesWithBodyWithResponse Transfer flow files from the output port
 	//
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 	//
@@ -31589,31 +24842,6 @@ type ClientWithResponsesInterface interface {
 	// Corresponds with GET /flow/connections/{id}/status/history (the `GetConnectionStatusHistory` operationId).
 	GetConnectionStatusHistoryWithResponse(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*GetConnectionStatusHistoryResponse, error)
 
-	// GetConnectorDefinitionWithResponse Retrieves the Connector Definition for the specified component type.
-	//
-	// Note: This endpoint is subject to change as NiFi and it's REST API evolve.
-	//
-	// Returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with GET /flow/connector-definition/{group}/{artifact}/{version}/{type} (the `GetConnectorDefinition` operationId).
-	GetConnectorDefinitionWithResponse(ctx context.Context, group string, artifact string, version string, pType string, reqEditors ...RequestEditorFn) (*GetConnectorDefinitionResponse, error)
-
-	// GetConnectorTypesWithResponse Retrieves the types of connectors that this NiFi supports
-	//
-	// Note: This endpoint is subject to change as NiFi and it's REST API evolve.
-	//
-	// Returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with GET /flow/connector-types (the `GetConnectorTypes` operationId).
-	GetConnectorTypesWithResponse(ctx context.Context, params *GetConnectorTypesParams, reqEditors ...RequestEditorFn) (*GetConnectorTypesResponse, error)
-
-	// GetConnectorsWithResponse Gets all connectors
-	//
-	// Returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with GET /flow/connectors (the `GetConnectors` operationId).
-	GetConnectorsWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*GetConnectorsResponse, error)
-
 	// GetContentViewersWithResponse Retrieves the registered content viewers
 	//
 	// Returns a wrapper object for the known response body format(s).
@@ -31694,15 +24922,6 @@ type ClientWithResponsesInterface interface {
 	// Corresponds with GET /flow/flow-analysis/results/{processGroupId} (the `GetFlowAnalysisResults` operationId).
 	GetFlowAnalysisResultsWithResponse(ctx context.Context, processGroupId string, reqEditors ...RequestEditorFn) (*GetFlowAnalysisResultsResponse, error)
 
-	// GetFlowRegistryClientDefinitionWithResponse Retrieves the Flow Registry Client Definition for the specified component type.
-	//
-	// Note: This endpoint is subject to change as NiFi and it's REST API evolve.
-	//
-	// Returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with GET /flow/flow-registry-client-definition/{group}/{artifact}/{version}/{type} (the `GetFlowRegistryClientDefinition` operationId).
-	GetFlowRegistryClientDefinitionWithResponse(ctx context.Context, group string, artifact string, version string, pType string, reqEditors ...RequestEditorFn) (*GetFlowRegistryClientDefinitionResponse, error)
-
 	// QueryHistoryWithResponse Gets configuration history
 	//
 	// Note: This endpoint is subject to change as NiFi and it's REST API evolve.
@@ -31736,13 +24955,6 @@ type ClientWithResponsesInterface interface {
 	//
 	// Corresponds with GET /flow/input-ports/{id}/status (the `GetInputPortStatus` operationId).
 	GetInputPortStatusWithResponse(ctx context.Context, id string, params *GetInputPortStatusParams, reqEditors ...RequestEditorFn) (*GetInputPortStatusResponse, error)
-
-	// GetListenPortsWithResponse Gets all listen ports configured on this NiFi that the current user has access to
-	//
-	// Returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with GET /flow/listen-ports (the `GetListenPorts` operationId).
-	GetListenPortsWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*GetListenPortsResponse, error)
 
 	// GetFlowMetricsWithResponse Gets all metrics for the flow from a particular node
 	//
@@ -31799,14 +25011,14 @@ type ClientWithResponsesInterface interface {
 	// Corresponds with GET /flow/prioritizers (the `GetPrioritizers` operationId).
 	GetPrioritizersWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*GetPrioritizersResponse, error)
 
-	// GetFlow1WithResponse Gets a process group
+	// GetFlowWithResponse Gets a process group
 	//
 	// If the uiOnly query parameter is provided with a value of true, the returned entity may only contain fields that are necessary for rendering the NiFi User Interface. As such, the selected fields may change at any time, even during incremental releases, without warning. As a result, this parameter should not be provided by any client other than the UI.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
-	// Corresponds with GET /flow/process-groups/{id} (the `GetFlow1` operationId).
-	GetFlow1WithResponse(ctx context.Context, id string, params *GetFlow1Params, reqEditors ...RequestEditorFn) (*GetFlow1Response, error)
+	// Corresponds with GET /flow/process-groups/{id} (the `GetFlow` operationId).
+	GetFlowWithResponse(ctx context.Context, id string, params *GetFlowParams, reqEditors ...RequestEditorFn) (*GetFlowResponse, error)
 
 	// ScheduleComponentsWithBodyWithResponse Schedule or unschedule components in the specified Process Group.
 	//
@@ -31828,20 +25040,6 @@ type ClientWithResponsesInterface interface {
 	//
 	// Corresponds with GET /flow/process-groups/{id}/breadcrumbs (the `GetBreadcrumbs` operationId).
 	GetBreadcrumbsWithResponse(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*GetBreadcrumbsResponse, error)
-
-	// ClearBulletins1WithBodyWithResponse Clears bulletins for components in the specified Process Group.
-	//
-	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with POST /flow/process-groups/{id}/bulletins/clear-requests (the `ClearBulletins1` operationId).
-	ClearBulletins1WithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ClearBulletins1Response, error)
-
-	// ClearBulletins1WithResponse Clears bulletins for components in the specified Process Group.
-	//
-	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with POST /flow/process-groups/{id}/bulletins/clear-requests (the `ClearBulletins1` operationId).
-	ClearBulletins1WithResponse(ctx context.Context, id string, body ClearBulletins1JSONRequestBody, reqEditors ...RequestEditorFn) (*ClearBulletins1Response, error)
 
 	// GetControllerServicesFromGroupWithResponse Gets all controller services
 	//
@@ -32041,15 +25239,6 @@ type ClientWithResponsesInterface interface {
 	// Corresponds with GET /flow/status (the `GetControllerStatus` operationId).
 	GetControllerStatusWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*GetControllerStatusResponse, error)
 
-	// GetStepDocumentationWithResponse Retrieves the step documentation for the specified Connector configuration step.
-	//
-	// Note: This endpoint is subject to change as NiFi and it's REST API evolve.
-	//
-	// Returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with GET /flow/steps/{group}/{artifact}/{version}/{connectorType}/{stepName} (the `GetStepDocumentation` operationId).
-	GetStepDocumentationWithResponse(ctx context.Context, group string, artifact string, version string, connectorType string, stepName string, reqEditors ...RequestEditorFn) (*GetStepDocumentationResponse, error)
-
 	// CreateDropRequestWithResponse Creates a request to drop the contents of the queue in this connection.
 	//
 	// Returns a wrapper object for the known response body format(s).
@@ -32162,33 +25351,19 @@ type ClientWithResponsesInterface interface {
 	// Corresponds with PUT /input-ports/{id} (the `UpdateInputPort` operationId).
 	UpdateInputPortWithResponse(ctx context.Context, id string, body UpdateInputPortJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateInputPortResponse, error)
 
-	// ClearBulletins2WithBodyWithResponse Clears bulletins for an input port
+	// UpdateRunStatus2WithBodyWithResponse Updates run status of an input-port
 	//
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 	//
-	// Corresponds with POST /input-ports/{id}/bulletins/clear-requests (the `ClearBulletins2` operationId).
-	ClearBulletins2WithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ClearBulletins2Response, error)
+	// Corresponds with PUT /input-ports/{id}/run-status (the `UpdateRunStatus2` operationId).
+	UpdateRunStatus2WithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateRunStatus2Response, error)
 
-	// ClearBulletins2WithResponse Clears bulletins for an input port
+	// UpdateRunStatus2WithResponse Updates run status of an input-port
 	//
 	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 	//
-	// Corresponds with POST /input-ports/{id}/bulletins/clear-requests (the `ClearBulletins2` operationId).
-	ClearBulletins2WithResponse(ctx context.Context, id string, body ClearBulletins2JSONRequestBody, reqEditors ...RequestEditorFn) (*ClearBulletins2Response, error)
-
-	// UpdateRunStatus3WithBodyWithResponse Updates run status of an input-port
-	//
-	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with PUT /input-ports/{id}/run-status (the `UpdateRunStatus3` operationId).
-	UpdateRunStatus3WithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateRunStatus3Response, error)
-
-	// UpdateRunStatus3WithResponse Updates run status of an input-port
-	//
-	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with PUT /input-ports/{id}/run-status (the `UpdateRunStatus3` operationId).
-	UpdateRunStatus3WithResponse(ctx context.Context, id string, body UpdateRunStatus3JSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateRunStatus3Response, error)
+	// Corresponds with PUT /input-ports/{id}/run-status (the `UpdateRunStatus2` operationId).
+	UpdateRunStatus2WithResponse(ctx context.Context, id string, body UpdateRunStatus2JSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateRunStatus2Response, error)
 
 	// RemoveLabelWithResponse Deletes a label
 	//
@@ -32246,33 +25421,19 @@ type ClientWithResponsesInterface interface {
 	// Corresponds with PUT /output-ports/{id} (the `UpdateOutputPort` operationId).
 	UpdateOutputPortWithResponse(ctx context.Context, id string, body UpdateOutputPortJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateOutputPortResponse, error)
 
-	// ClearBulletins3WithBodyWithResponse Clears bulletins for an output port
+	// UpdateRunStatus3WithBodyWithResponse Updates run status of an output-port
 	//
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 	//
-	// Corresponds with POST /output-ports/{id}/bulletins/clear-requests (the `ClearBulletins3` operationId).
-	ClearBulletins3WithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ClearBulletins3Response, error)
+	// Corresponds with PUT /output-ports/{id}/run-status (the `UpdateRunStatus3` operationId).
+	UpdateRunStatus3WithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateRunStatus3Response, error)
 
-	// ClearBulletins3WithResponse Clears bulletins for an output port
+	// UpdateRunStatus3WithResponse Updates run status of an output-port
 	//
 	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 	//
-	// Corresponds with POST /output-ports/{id}/bulletins/clear-requests (the `ClearBulletins3` operationId).
-	ClearBulletins3WithResponse(ctx context.Context, id string, body ClearBulletins3JSONRequestBody, reqEditors ...RequestEditorFn) (*ClearBulletins3Response, error)
-
-	// UpdateRunStatus4WithBodyWithResponse Updates run status of an output-port
-	//
-	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with PUT /output-ports/{id}/run-status (the `UpdateRunStatus4` operationId).
-	UpdateRunStatus4WithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateRunStatus4Response, error)
-
-	// UpdateRunStatus4WithResponse Updates run status of an output-port
-	//
-	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with PUT /output-ports/{id}/run-status (the `UpdateRunStatus4` operationId).
-	UpdateRunStatus4WithResponse(ctx context.Context, id string, body UpdateRunStatus4JSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateRunStatus4Response, error)
+	// Corresponds with PUT /output-ports/{id}/run-status (the `UpdateRunStatus3` operationId).
+	UpdateRunStatus3WithResponse(ctx context.Context, id string, body UpdateRunStatus3JSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateRunStatus3Response, error)
 
 	// CreateParameterContextWithBodyWithResponse Create a Parameter Context
 	//
@@ -32288,21 +25449,23 @@ type ClientWithResponsesInterface interface {
 	// Corresponds with POST /parameter-contexts (the `CreateParameterContext` operationId).
 	CreateParameterContextWithResponse(ctx context.Context, body CreateParameterContextJSONRequestBody, reqEditors ...RequestEditorFn) (*CreateParameterContextResponse, error)
 
-	// GetAssets1WithResponse Lists the assets that belong to the Parameter Context with the given ID.
+	// GetAssetsWithResponse Lists the assets that belong to the Parameter Context with the given ID
+	//
+	// Lists the assets that belong to the Parameter Context with the given ID.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
-	// Corresponds with GET /parameter-contexts/{contextId}/assets (the `GetAssets1` operationId).
-	GetAssets1WithResponse(ctx context.Context, contextId string, reqEditors ...RequestEditorFn) (*GetAssets1Response, error)
+	// Corresponds with GET /parameter-contexts/{contextId}/assets (the `GetAssets` operationId).
+	GetAssetsWithResponse(ctx context.Context, contextId string, reqEditors ...RequestEditorFn) (*GetAssetsResponse, error)
 
-	// CreateAsset1WithBodyWithResponse Creates a new Asset in the given Parameter Context
+	// CreateAssetWithBodyWithResponse Creates a new Asset in the given Parameter Context
 	//
 	// This endpoint will create a new Asset in the given Parameter Context. The Asset will be created with the given name and the contents of the file that is uploaded. The Asset will be created in the given Parameter Context, and will be available for use by any component that references the Parameter Context.
 	//
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 	//
-	// Corresponds with POST /parameter-contexts/{contextId}/assets (the `CreateAsset1` operationId).
-	CreateAsset1WithBodyWithResponse(ctx context.Context, contextId string, params *CreateAsset1Params, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CreateAsset1Response, error)
+	// Corresponds with POST /parameter-contexts/{contextId}/assets (the `CreateAsset` operationId).
+	CreateAssetWithBodyWithResponse(ctx context.Context, contextId string, params *CreateAssetParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CreateAssetResponse, error)
 
 	// DeleteAssetWithResponse Deletes an Asset from the given Parameter Context
 	//
@@ -32313,12 +25476,12 @@ type ClientWithResponsesInterface interface {
 	// Corresponds with DELETE /parameter-contexts/{contextId}/assets/{assetId} (the `DeleteAsset` operationId).
 	DeleteAssetWithResponse(ctx context.Context, contextId string, assetId string, params *DeleteAssetParams, reqEditors ...RequestEditorFn) (*DeleteAssetResponse, error)
 
-	// GetAssetContent1WithResponse Retrieves the content of the asset with the given id
+	// GetAssetContentWithResponse Retrieves the content of the asset with the given id
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
-	// Corresponds with GET /parameter-contexts/{contextId}/assets/{assetId} (the `GetAssetContent1` operationId).
-	GetAssetContent1WithResponse(ctx context.Context, contextId string, assetId string, reqEditors ...RequestEditorFn) (*GetAssetContent1Response, error)
+	// Corresponds with GET /parameter-contexts/{contextId}/assets/{assetId} (the `GetAssetContent` operationId).
+	GetAssetContentWithResponse(ctx context.Context, contextId string, assetId string, reqEditors ...RequestEditorFn) (*GetAssetContentResponse, error)
 
 	// SubmitParameterContextUpdateWithBodyWithResponse Initiate the Update Request of a Parameter Context
 	//
@@ -32455,20 +25618,6 @@ type ClientWithResponsesInterface interface {
 	//
 	// Corresponds with PUT /parameter-providers/{id} (the `UpdateParameterProvider` operationId).
 	UpdateParameterProviderWithResponse(ctx context.Context, id string, body UpdateParameterProviderJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateParameterProviderResponse, error)
-
-	// ClearBulletins4WithBodyWithResponse Clears bulletins for a parameter provider
-	//
-	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with POST /parameter-providers/{id}/bulletins/clear-requests (the `ClearBulletins4` operationId).
-	ClearBulletins4WithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ClearBulletins4Response, error)
-
-	// ClearBulletins4WithResponse Clears bulletins for a parameter provider
-	//
-	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with POST /parameter-providers/{id}/bulletins/clear-requests (the `ClearBulletins4` operationId).
-	ClearBulletins4WithResponse(ctx context.Context, id string, body ClearBulletins4JSONRequestBody, reqEditors ...RequestEditorFn) (*ClearBulletins4Response, error)
 
 	// AnalyzeConfiguration1WithBodyWithResponse Performs analysis of the component's configuration, providing information about which attributes are referenced.
 	//
@@ -32758,21 +25907,21 @@ type ClientWithResponsesInterface interface {
 	// Corresponds with GET /process-groups/{id}/download (the `ExportProcessGroup` operationId).
 	ExportProcessGroupWithResponse(ctx context.Context, id string, params *ExportProcessGroupParams, reqEditors ...RequestEditorFn) (*ExportProcessGroupResponse, error)
 
-	// CreateEmptyAllConnectionsRequestWithResponse Creates a request to drop all FlowFiles of all connection queues in this process group.
+	// CreateEmptyAllConnectionsRequestWithResponse Creates a request to drop all flowfiles of all connection queues in this process group.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /process-groups/{id}/empty-all-connections-requests (the `CreateEmptyAllConnectionsRequest` operationId).
 	CreateEmptyAllConnectionsRequestWithResponse(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*CreateEmptyAllConnectionsRequestResponse, error)
 
-	// RemoveDropRequest1WithResponse Cancels and/or removes a request to drop all FlowFiles.
+	// RemoveDropRequest1WithResponse Cancels and/or removes a request to drop all flowfiles.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with DELETE /process-groups/{id}/empty-all-connections-requests/{drop-request-id} (the `RemoveDropRequest1` operationId).
 	RemoveDropRequest1WithResponse(ctx context.Context, id string, dropRequestId string, reqEditors ...RequestEditorFn) (*RemoveDropRequest1Response, error)
 
-	// GetDropAllFlowfilesRequestWithResponse Gets the current status of a drop all FlowFiles request.
+	// GetDropAllFlowfilesRequestWithResponse Gets the current status of a drop all flowfiles request.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -33060,47 +26209,6 @@ type ClientWithResponsesInterface interface {
 	// Corresponds with PUT /processors/{id} (the `UpdateProcessor` operationId).
 	UpdateProcessorWithResponse(ctx context.Context, id string, body UpdateProcessorJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateProcessorResponse, error)
 
-	// SubmitProcessorBacklogRequestWithResponse Initiates a request to determine the current backlog for a processor that implements BacklogReportingProcessor
-	//
-	// This will initiate the process of determining the backlog for a Processor. This may be a long-running task. As a result, this endpoint will immediately return a BacklogRequestEntity, and the process of determining the backlog will occur asynchronously in the background. The client may then periodically poll the status of the request by issuing a GET request to /processors/{processorId}/backlog-requests/{requestId}. Once the request is completed, the client is expected to issue a DELETE request to /processors/{processorId}/backlog-requests/{requestId}.
-	//
-	// Returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with POST /processors/{id}/backlog-requests (the `SubmitProcessorBacklogRequest` operationId).
-	SubmitProcessorBacklogRequestWithResponse(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*SubmitProcessorBacklogRequestResponse, error)
-
-	// DeleteBacklogRequestWithResponse Deletes the Backlog Request with the given ID
-	//
-	// Deletes the Backlog Request with the given ID. After a request is created, it is expected that the client will properly clean up the request by DELETE'ing it once the backlog determination has completed. If the request is deleted before it completes, the background determination is cancelled.
-	//
-	// Returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with DELETE /processors/{id}/backlog-requests/{requestId} (the `DeleteBacklogRequest` operationId).
-	DeleteBacklogRequestWithResponse(ctx context.Context, id string, requestId string, reqEditors ...RequestEditorFn) (*DeleteBacklogRequestResponse, error)
-
-	// GetBacklogRequestWithResponse Returns the Backlog Request with the given ID
-	//
-	// Returns the Backlog Request with the given ID. Once a Backlog Request has been created by performing a POST to /processors/{processorId}/backlog-requests, that request can subsequently be retrieved via this endpoint, and the request that is fetched will contain the updated state, such as percent complete, the current state of the request, and the backlog once the request is complete.
-	//
-	// Returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with GET /processors/{id}/backlog-requests/{requestId} (the `GetBacklogRequest` operationId).
-	GetBacklogRequestWithResponse(ctx context.Context, id string, requestId string, reqEditors ...RequestEditorFn) (*GetBacklogRequestResponse, error)
-
-	// ClearBulletins5WithBodyWithResponse Clears bulletins for a processor
-	//
-	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with POST /processors/{id}/bulletins/clear-requests (the `ClearBulletins5` operationId).
-	ClearBulletins5WithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ClearBulletins5Response, error)
-
-	// ClearBulletins5WithResponse Clears bulletins for a processor
-	//
-	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with POST /processors/{id}/bulletins/clear-requests (the `ClearBulletins5` operationId).
-	ClearBulletins5WithResponse(ctx context.Context, id string, body ClearBulletins5JSONRequestBody, reqEditors ...RequestEditorFn) (*ClearBulletins5Response, error)
-
 	// AnalyzeConfiguration2WithBodyWithResponse Performs analysis of the component's configuration, providing information about which attributes are referenced.
 	//
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
@@ -33167,19 +26275,19 @@ type ClientWithResponsesInterface interface {
 	// Corresponds with GET /processors/{id}/diagnostics (the `GetProcessorDiagnostics` operationId).
 	GetProcessorDiagnosticsWithResponse(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*GetProcessorDiagnosticsResponse, error)
 
-	// UpdateRunStatus5WithBodyWithResponse Updates run status of a processor
+	// UpdateRunStatus4WithBodyWithResponse Updates run status of a processor
 	//
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 	//
-	// Corresponds with PUT /processors/{id}/run-status (the `UpdateRunStatus5` operationId).
-	UpdateRunStatus5WithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateRunStatus5Response, error)
+	// Corresponds with PUT /processors/{id}/run-status (the `UpdateRunStatus4` operationId).
+	UpdateRunStatus4WithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateRunStatus4Response, error)
 
-	// UpdateRunStatus5WithResponse Updates run status of a processor
+	// UpdateRunStatus4WithResponse Updates run status of a processor
 	//
 	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 	//
-	// Corresponds with PUT /processors/{id}/run-status (the `UpdateRunStatus5` operationId).
-	UpdateRunStatus5WithResponse(ctx context.Context, id string, body UpdateRunStatus5JSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateRunStatus5Response, error)
+	// Corresponds with PUT /processors/{id}/run-status (the `UpdateRunStatus4` operationId).
+	UpdateRunStatus4WithResponse(ctx context.Context, id string, body UpdateRunStatus4JSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateRunStatus4Response, error)
 
 	// GetState2WithResponse Gets the state for a processor
 	//
@@ -33378,20 +26486,6 @@ type ClientWithResponsesInterface interface {
 	// Corresponds with PUT /remote-process-groups/{id} (the `UpdateRemoteProcessGroup` operationId).
 	UpdateRemoteProcessGroupWithResponse(ctx context.Context, id string, body UpdateRemoteProcessGroupJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateRemoteProcessGroupResponse, error)
 
-	// ClearBulletins6WithBodyWithResponse Clears bulletins for a remote process group
-	//
-	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with POST /remote-process-groups/{id}/bulletins/clear-requests (the `ClearBulletins6` operationId).
-	ClearBulletins6WithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ClearBulletins6Response, error)
-
-	// ClearBulletins6WithResponse Clears bulletins for a remote process group
-	//
-	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with POST /remote-process-groups/{id}/bulletins/clear-requests (the `ClearBulletins6` operationId).
-	ClearBulletins6WithResponse(ctx context.Context, id string, body ClearBulletins6JSONRequestBody, reqEditors ...RequestEditorFn) (*ClearBulletins6Response, error)
-
 	// UpdateRemoteProcessGroupInputPortWithBodyWithResponse Updates a remote port
 	//
 	// Note: This endpoint is subject to change as NiFi and it's REST API evolve.
@@ -33410,7 +26504,7 @@ type ClientWithResponsesInterface interface {
 	// Corresponds with PUT /remote-process-groups/{id}/input-ports/{port-id} (the `UpdateRemoteProcessGroupInputPort` operationId).
 	UpdateRemoteProcessGroupInputPortWithResponse(ctx context.Context, id string, portId string, body UpdateRemoteProcessGroupInputPortJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateRemoteProcessGroupInputPortResponse, error)
 
-	// UpdateRemoteProcessGroupInputPortRunStatusWithBodyWithResponse Updates run status of a remote input port
+	// UpdateRemoteProcessGroupInputPortRunStatusWithBodyWithResponse Updates run status of a remote port
 	//
 	// Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 	//
@@ -33419,7 +26513,7 @@ type ClientWithResponsesInterface interface {
 	// Corresponds with PUT /remote-process-groups/{id}/input-ports/{port-id}/run-status (the `UpdateRemoteProcessGroupInputPortRunStatus` operationId).
 	UpdateRemoteProcessGroupInputPortRunStatusWithBodyWithResponse(ctx context.Context, id string, portId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateRemoteProcessGroupInputPortRunStatusResponse, error)
 
-	// UpdateRemoteProcessGroupInputPortRunStatusWithResponse Updates run status of a remote input port
+	// UpdateRemoteProcessGroupInputPortRunStatusWithResponse Updates run status of a remote port
 	//
 	// Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 	//
@@ -33446,7 +26540,7 @@ type ClientWithResponsesInterface interface {
 	// Corresponds with PUT /remote-process-groups/{id}/output-ports/{port-id} (the `UpdateRemoteProcessGroupOutputPort` operationId).
 	UpdateRemoteProcessGroupOutputPortWithResponse(ctx context.Context, id string, portId string, body UpdateRemoteProcessGroupOutputPortJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateRemoteProcessGroupOutputPortResponse, error)
 
-	// UpdateRemoteProcessGroupOutputPortRunStatusWithBodyWithResponse Updates run status of a remote output port
+	// UpdateRemoteProcessGroupOutputPortRunStatusWithBodyWithResponse Updates run status of a remote port
 	//
 	// Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 	//
@@ -33455,7 +26549,7 @@ type ClientWithResponsesInterface interface {
 	// Corresponds with PUT /remote-process-groups/{id}/output-ports/{port-id}/run-status (the `UpdateRemoteProcessGroupOutputPortRunStatus` operationId).
 	UpdateRemoteProcessGroupOutputPortRunStatusWithBodyWithResponse(ctx context.Context, id string, portId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateRemoteProcessGroupOutputPortRunStatusResponse, error)
 
-	// UpdateRemoteProcessGroupOutputPortRunStatusWithResponse Updates run status of a remote output port
+	// UpdateRemoteProcessGroupOutputPortRunStatusWithResponse Updates run status of a remote port
 	//
 	// Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 	//
@@ -33512,20 +26606,6 @@ type ClientWithResponsesInterface interface {
 	//
 	// Corresponds with PUT /reporting-tasks/{id} (the `UpdateReportingTask` operationId).
 	UpdateReportingTaskWithResponse(ctx context.Context, id string, body UpdateReportingTaskJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateReportingTaskResponse, error)
-
-	// ClearBulletins7WithBodyWithResponse Clears bulletins for a reporting task
-	//
-	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with POST /reporting-tasks/{id}/bulletins/clear-requests (the `ClearBulletins7` operationId).
-	ClearBulletins7WithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ClearBulletins7Response, error)
-
-	// ClearBulletins7WithResponse Clears bulletins for a reporting task
-	//
-	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with POST /reporting-tasks/{id}/bulletins/clear-requests (the `ClearBulletins7` operationId).
-	ClearBulletins7WithResponse(ctx context.Context, id string, body ClearBulletins7JSONRequestBody, reqEditors ...RequestEditorFn) (*ClearBulletins7Response, error)
 
 	// AnalyzeConfiguration3WithBodyWithResponse Performs analysis of the component's configuration, providing information about which attributes are referenced.
 	//
@@ -33584,19 +26664,19 @@ type ClientWithResponsesInterface interface {
 	// Corresponds with GET /reporting-tasks/{id}/descriptors (the `GetPropertyDescriptor4` operationId).
 	GetPropertyDescriptor4WithResponse(ctx context.Context, id string, params *GetPropertyDescriptor4Params, reqEditors ...RequestEditorFn) (*GetPropertyDescriptor4Response, error)
 
-	// UpdateRunStatus6WithBodyWithResponse Updates run status of a reporting task
+	// UpdateRunStatus5WithBodyWithResponse Updates run status of a reporting task
 	//
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 	//
-	// Corresponds with PUT /reporting-tasks/{id}/run-status (the `UpdateRunStatus6` operationId).
-	UpdateRunStatus6WithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateRunStatus6Response, error)
+	// Corresponds with PUT /reporting-tasks/{id}/run-status (the `UpdateRunStatus5` operationId).
+	UpdateRunStatus5WithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateRunStatus5Response, error)
 
-	// UpdateRunStatus6WithResponse Updates run status of a reporting task
+	// UpdateRunStatus5WithResponse Updates run status of a reporting task
 	//
 	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 	//
-	// Corresponds with PUT /reporting-tasks/{id}/run-status (the `UpdateRunStatus6` operationId).
-	UpdateRunStatus6WithResponse(ctx context.Context, id string, body UpdateRunStatus6JSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateRunStatus6Response, error)
+	// Corresponds with PUT /reporting-tasks/{id}/run-status (the `UpdateRunStatus5` operationId).
+	UpdateRunStatus5WithResponse(ctx context.Context, id string, body UpdateRunStatus5JSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateRunStatus5Response, error)
 
 	// GetState4WithResponse Gets the state for a reporting task
 	//
@@ -33925,93 +27005,12 @@ type ClientWithResponsesInterface interface {
 	// Corresponds with PUT /versions/process-groups/{id} (the `UpdateFlowVersion` operationId).
 	UpdateFlowVersionWithResponse(ctx context.Context, id string, body UpdateFlowVersionJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateFlowVersionResponse, error)
 
-	// CreateFlowBranchWithBodyWithResponse Creates a new branch for a version controlled Process Group
-	//
-	// Note: This endpoint is subject to change as NiFi and it's REST API evolve.
-	//
-	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with POST /versions/process-groups/{id}/branches (the `CreateFlowBranch` operationId).
-	CreateFlowBranchWithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CreateFlowBranchResponse, error)
-
-	// CreateFlowBranchWithResponse Creates a new branch for a version controlled Process Group
-	//
-	// Note: This endpoint is subject to change as NiFi and it's REST API evolve.
-	//
-	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with POST /versions/process-groups/{id}/branches (the `CreateFlowBranch` operationId).
-	CreateFlowBranchWithResponse(ctx context.Context, id string, body CreateFlowBranchJSONRequestBody, reqEditors ...RequestEditorFn) (*CreateFlowBranchResponse, error)
-
 	// ExportFlowVersionWithResponse Gets the latest version of a Process Group for download
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with GET /versions/process-groups/{id}/download (the `ExportFlowVersion` operationId).
 	ExportFlowVersionWithResponse(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*ExportFlowVersionResponse, error)
-
-	// ApplyRebasedFlowVersionWithBodyWithResponse Applies a rebased flow to a Process Group with the given ID on this node
-	//
-	// This endpoint is used internally to apply a rebase to a Process Group on each node of a cluster. It synchronizes the flow to the supplied merged snapshot and then resets the Version Control Information to the clean target version so that the preserved local changes are detected as local modifications. Note: This endpoint is subject to change as NiFi and it's REST API evolve.
-	//
-	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with PUT /versions/process-groups/{id}/rebase (the `ApplyRebasedFlowVersion` operationId).
-	ApplyRebasedFlowVersionWithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApplyRebasedFlowVersionResponse, error)
-
-	// ApplyRebasedFlowVersionWithResponse Applies a rebased flow to a Process Group with the given ID on this node
-	//
-	// This endpoint is used internally to apply a rebase to a Process Group on each node of a cluster. It synchronizes the flow to the supplied merged snapshot and then resets the Version Control Information to the clean target version so that the preserved local changes are detected as local modifications. Note: This endpoint is subject to change as NiFi and it's REST API evolve.
-	//
-	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with PUT /versions/process-groups/{id}/rebase (the `ApplyRebasedFlowVersion` operationId).
-	ApplyRebasedFlowVersionWithResponse(ctx context.Context, id string, body ApplyRebasedFlowVersionJSONRequestBody, reqEditors ...RequestEditorFn) (*ApplyRebasedFlowVersionResponse, error)
-
-	// GetRebaseAnalysisWithResponse Gets a Rebase Analysis for a Process Group
-	//
-	// For a Process Group that is under Version Control, this will perform a rebase analysis by comparing local modifications against upstream changes between the current version and the specified target version. The analysis determines whether a rebase is allowed or if there are conflicts.
-	//
-	// Returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with GET /versions/rebase-analysis/process-groups/{id} (the `GetRebaseAnalysis` operationId).
-	GetRebaseAnalysisWithResponse(ctx context.Context, id string, params *GetRebaseAnalysisParams, reqEditors ...RequestEditorFn) (*GetRebaseAnalysisResponse, error)
-
-	// InitiateRebaseWithBodyWithResponse Initiate a Rebase Request for a Process Group with the given ID
-	//
-	// For a Process Group that is already under Version Control, this will initiate the action of rebasing the flow to a different version while preserving compatible local changes. This can be a lengthy process, as it will stop any Processors and disable any Controller Services necessary to perform the action and then restart them. As a result, the endpoint will immediately return a VersionedFlowUpdateRequestEntity, and the process of rebasing the flow will occur asynchronously in the background. The client may then periodically poll the status of the request by issuing a GET request to /versions/rebase-requests/{requestId}. Once the request is completed, the client is expected to issue a DELETE request to /versions/rebase-requests/{requestId}. Note: This endpoint is subject to change as NiFi and it's REST API evolve.
-	//
-	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with POST /versions/rebase-requests/process-groups/{id} (the `InitiateRebase` operationId).
-	InitiateRebaseWithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*InitiateRebaseResponse, error)
-
-	// InitiateRebaseWithResponse Initiate a Rebase Request for a Process Group with the given ID
-	//
-	// For a Process Group that is already under Version Control, this will initiate the action of rebasing the flow to a different version while preserving compatible local changes. This can be a lengthy process, as it will stop any Processors and disable any Controller Services necessary to perform the action and then restart them. As a result, the endpoint will immediately return a VersionedFlowUpdateRequestEntity, and the process of rebasing the flow will occur asynchronously in the background. The client may then periodically poll the status of the request by issuing a GET request to /versions/rebase-requests/{requestId}. Once the request is completed, the client is expected to issue a DELETE request to /versions/rebase-requests/{requestId}. Note: This endpoint is subject to change as NiFi and it's REST API evolve.
-	//
-	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with POST /versions/rebase-requests/process-groups/{id} (the `InitiateRebase` operationId).
-	InitiateRebaseWithResponse(ctx context.Context, id string, body InitiateRebaseJSONRequestBody, reqEditors ...RequestEditorFn) (*InitiateRebaseResponse, error)
-
-	// DeleteRebaseRequestWithResponse Deletes the Rebase Request with the given ID
-	//
-	// Deletes the Rebase Request with the given ID. After a request is created via a POST to /versions/rebase-requests/process-groups/{id}, it is expected that the client will properly clean up the request by DELETE'ing it, once the Rebase process has completed. If the request is deleted before the request completes, then the Rebase request will finish the step that it is currently performing and then will cancel any subsequent steps. Note: This endpoint is subject to change as NiFi and it's REST API evolve.
-	//
-	// Returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with DELETE /versions/rebase-requests/{id} (the `DeleteRebaseRequest` operationId).
-	DeleteRebaseRequestWithResponse(ctx context.Context, id string, params *DeleteRebaseRequestParams, reqEditors ...RequestEditorFn) (*DeleteRebaseRequestResponse, error)
-
-	// GetRebaseRequestWithResponse Returns the Rebase Request with the given ID
-	//
-	// Returns the Rebase Request with the given ID. Once a Rebase Request has been created by performing a POST to /versions/rebase-requests/process-groups/{id}, that request can subsequently be retrieved via this endpoint, and the request that is fetched will contain the updated state, such as percent complete, the current state of the request, and any failures. Note: This endpoint is subject to change as NiFi and it's REST API evolve.
-	//
-	// Returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with GET /versions/rebase-requests/{id} (the `GetRebaseRequest` operationId).
-	GetRebaseRequestWithResponse(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*GetRebaseRequestResponse, error)
 
 	// InitiateRevertFlowVersionWithBodyWithResponse Initiate the Revert Request of a Process Group with the given ID
 	//
@@ -34352,1885 +27351,6 @@ func (r UpdateConnectionResponse) ContentType() string {
 	return ""
 }
 
-type CreateConnectorResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON201 the response for an HTTP 201 `application/json` response
-	JSON201 *ConnectorEntity
-}
-
-// GetJSON201 returns the response for an HTTP 201 `application/json` response
-func (r CreateConnectorResponse) GetJSON201() *ConnectorEntity {
-	return r.JSON201
-}
-
-// GetBody returns the raw response body bytes
-func (r CreateConnectorResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r CreateConnectorResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r CreateConnectorResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r CreateConnectorResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type GetFlowResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *ProcessGroupFlowEntity
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetFlowResponse) GetJSON200() *ProcessGroupFlowEntity {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r GetFlowResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r GetFlowResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r GetFlowResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r GetFlowResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type GetControllerServicesFromConnectorProcessGroupResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *ControllerServicesEntity
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetControllerServicesFromConnectorProcessGroupResponse) GetJSON200() *ControllerServicesEntity {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r GetControllerServicesFromConnectorProcessGroupResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r GetControllerServicesFromConnectorProcessGroupResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r GetControllerServicesFromConnectorProcessGroupResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r GetControllerServicesFromConnectorProcessGroupResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type GetParameterContextForConnectorProcessGroupResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *ParameterContextEntity
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetParameterContextForConnectorProcessGroupResponse) GetJSON200() *ParameterContextEntity {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r GetParameterContextForConnectorProcessGroupResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r GetParameterContextForConnectorProcessGroupResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r GetParameterContextForConnectorProcessGroupResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r GetParameterContextForConnectorProcessGroupResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type DeleteConnectorResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *ConnectorEntity
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r DeleteConnectorResponse) GetJSON200() *ConnectorEntity {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r DeleteConnectorResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r DeleteConnectorResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r DeleteConnectorResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r DeleteConnectorResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type GetConnectorResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *ConnectorEntity
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetConnectorResponse) GetJSON200() *ConnectorEntity {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r GetConnectorResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r GetConnectorResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r GetConnectorResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r GetConnectorResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type UpdateConnectorResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *ConnectorEntity
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r UpdateConnectorResponse) GetJSON200() *ConnectorEntity {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r UpdateConnectorResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r UpdateConnectorResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r UpdateConnectorResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r UpdateConnectorResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type ApplyConnectorUpdateResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *ConnectorEntity
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r ApplyConnectorUpdateResponse) GetJSON200() *ConnectorEntity {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r ApplyConnectorUpdateResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ApplyConnectorUpdateResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ApplyConnectorUpdateResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ApplyConnectorUpdateResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type GetAssetsResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *AssetsEntity
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetAssetsResponse) GetJSON200() *AssetsEntity {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r GetAssetsResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r GetAssetsResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r GetAssetsResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r GetAssetsResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type CreateAssetResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *AssetEntity
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r CreateAssetResponse) GetJSON200() *AssetEntity {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r CreateAssetResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r CreateAssetResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r CreateAssetResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r CreateAssetResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type GetAssetContentResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-}
-
-// GetBody returns the raw response body bytes
-func (r GetAssetContentResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r GetAssetContentResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r GetAssetContentResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r GetAssetContentResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type SubmitConnectorBacklogRequestResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *BacklogRequestEntity
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r SubmitConnectorBacklogRequestResponse) GetJSON200() *BacklogRequestEntity {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r SubmitConnectorBacklogRequestResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r SubmitConnectorBacklogRequestResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r SubmitConnectorBacklogRequestResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r SubmitConnectorBacklogRequestResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type DeleteConnectorBacklogRequestResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *BacklogRequestEntity
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r DeleteConnectorBacklogRequestResponse) GetJSON200() *BacklogRequestEntity {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r DeleteConnectorBacklogRequestResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r DeleteConnectorBacklogRequestResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r DeleteConnectorBacklogRequestResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r DeleteConnectorBacklogRequestResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type GetConnectorBacklogRequestResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *BacklogRequestEntity
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetConnectorBacklogRequestResponse) GetJSON200() *BacklogRequestEntity {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r GetConnectorBacklogRequestResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r GetConnectorBacklogRequestResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r GetConnectorBacklogRequestResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r GetConnectorBacklogRequestResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type GetConnectorConfigurationStepsResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *ConfigurationStepNamesEntity
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetConnectorConfigurationStepsResponse) GetJSON200() *ConfigurationStepNamesEntity {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r GetConnectorConfigurationStepsResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r GetConnectorConfigurationStepsResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r GetConnectorConfigurationStepsResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r GetConnectorConfigurationStepsResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type GetConnectorConfigurationStepResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *ConfigurationStepEntity
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetConnectorConfigurationStepResponse) GetJSON200() *ConfigurationStepEntity {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r GetConnectorConfigurationStepResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r GetConnectorConfigurationStepResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r GetConnectorConfigurationStepResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r GetConnectorConfigurationStepResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type UpdateConnectorConfigurationStepResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *ConfigurationStepEntity
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r UpdateConnectorConfigurationStepResponse) GetJSON200() *ConfigurationStepEntity {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r UpdateConnectorConfigurationStepResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r UpdateConnectorConfigurationStepResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r UpdateConnectorConfigurationStepResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r UpdateConnectorConfigurationStepResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type GetConnectorPropertyAllowableValuesResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *ConnectorPropertyAllowableValuesEntity
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetConnectorPropertyAllowableValuesResponse) GetJSON200() *ConnectorPropertyAllowableValuesEntity {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r GetConnectorPropertyAllowableValuesResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r GetConnectorPropertyAllowableValuesResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r GetConnectorPropertyAllowableValuesResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r GetConnectorPropertyAllowableValuesResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type SubmitConfigurationStepVerificationRequestResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *VerifyConnectorConfigStepRequestEntity
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r SubmitConfigurationStepVerificationRequestResponse) GetJSON200() *VerifyConnectorConfigStepRequestEntity {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r SubmitConfigurationStepVerificationRequestResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r SubmitConfigurationStepVerificationRequestResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r SubmitConfigurationStepVerificationRequestResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r SubmitConfigurationStepVerificationRequestResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type DeleteConfigurationStepVerificationRequestResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *VerifyConnectorConfigStepRequestEntity
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r DeleteConfigurationStepVerificationRequestResponse) GetJSON200() *VerifyConnectorConfigStepRequestEntity {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r DeleteConfigurationStepVerificationRequestResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r DeleteConfigurationStepVerificationRequestResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r DeleteConfigurationStepVerificationRequestResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r DeleteConfigurationStepVerificationRequestResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type GetConfigurationStepVerificationRequestResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *VerifyConnectorConfigStepRequestEntity
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetConfigurationStepVerificationRequestResponse) GetJSON200() *VerifyConnectorConfigStepRequestEntity {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r GetConfigurationStepVerificationRequestResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r GetConfigurationStepVerificationRequestResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r GetConfigurationStepVerificationRequestResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r GetConfigurationStepVerificationRequestResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type GetConnectorConnectionStatusHistoryResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *StatusHistoryEntity
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetConnectorConnectionStatusHistoryResponse) GetJSON200() *StatusHistoryEntity {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r GetConnectorConnectionStatusHistoryResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r GetConnectorConnectionStatusHistoryResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r GetConnectorConnectionStatusHistoryResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r GetConnectorConnectionStatusHistoryResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type GetConnectorControllerServiceStateResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *ComponentStateEntity
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetConnectorControllerServiceStateResponse) GetJSON200() *ComponentStateEntity {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r GetConnectorControllerServiceStateResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r GetConnectorControllerServiceStateResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r GetConnectorControllerServiceStateResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r GetConnectorControllerServiceStateResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type ClearConnectorControllerServiceStateResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *ComponentStateEntity
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r ClearConnectorControllerServiceStateResponse) GetJSON200() *ComponentStateEntity {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r ClearConnectorControllerServiceStateResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ClearConnectorControllerServiceStateResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ClearConnectorControllerServiceStateResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ClearConnectorControllerServiceStateResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type CancelDrainResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *ConnectorEntity
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r CancelDrainResponse) GetJSON200() *ConnectorEntity {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r CancelDrainResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r CancelDrainResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r CancelDrainResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r CancelDrainResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type InitiateDrainResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *ConnectorEntity
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r InitiateDrainResponse) GetJSON200() *ConnectorEntity {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r InitiateDrainResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r InitiateDrainResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r InitiateDrainResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r InitiateDrainResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type CreateMigrationPayloadResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *MigrationPayloadEntity
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r CreateMigrationPayloadResponse) GetJSON200() *MigrationPayloadEntity {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r CreateMigrationPayloadResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r CreateMigrationPayloadResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r CreateMigrationPayloadResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r CreateMigrationPayloadResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type CreateMigrationRequestResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *MigrationRequestEntity
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r CreateMigrationRequestResponse) GetJSON200() *MigrationRequestEntity {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r CreateMigrationRequestResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r CreateMigrationRequestResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r CreateMigrationRequestResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r CreateMigrationRequestResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type DeleteMigrationRequestResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *MigrationRequestEntity
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r DeleteMigrationRequestResponse) GetJSON200() *MigrationRequestEntity {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r DeleteMigrationRequestResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r DeleteMigrationRequestResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r DeleteMigrationRequestResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r DeleteMigrationRequestResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type GetMigrationRequestResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *MigrationRequestEntity
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetMigrationRequestResponse) GetJSON200() *MigrationRequestEntity {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r GetMigrationRequestResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r GetMigrationRequestResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r GetMigrationRequestResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r GetMigrationRequestResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type GetMigrationSourcesResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *VersionedFlowMigrationSourcesEntity
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetMigrationSourcesResponse) GetJSON200() *VersionedFlowMigrationSourcesEntity {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r GetMigrationSourcesResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r GetMigrationSourcesResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r GetMigrationSourcesResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r GetMigrationSourcesResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type GetConnectorProcessGroupStatusHistoryResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *StatusHistoryEntity
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetConnectorProcessGroupStatusHistoryResponse) GetJSON200() *StatusHistoryEntity {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r GetConnectorProcessGroupStatusHistoryResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r GetConnectorProcessGroupStatusHistoryResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r GetConnectorProcessGroupStatusHistoryResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r GetConnectorProcessGroupStatusHistoryResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type GetConnectorProcessorStateResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *ComponentStateEntity
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetConnectorProcessorStateResponse) GetJSON200() *ComponentStateEntity {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r GetConnectorProcessorStateResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r GetConnectorProcessorStateResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r GetConnectorProcessorStateResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r GetConnectorProcessorStateResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type ClearConnectorProcessorStateResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *ComponentStateEntity
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r ClearConnectorProcessorStateResponse) GetJSON200() *ComponentStateEntity {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r ClearConnectorProcessorStateResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ClearConnectorProcessorStateResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ClearConnectorProcessorStateResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ClearConnectorProcessorStateResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type GetConnectorProcessorStatusHistoryResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *StatusHistoryEntity
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetConnectorProcessorStatusHistoryResponse) GetJSON200() *StatusHistoryEntity {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r GetConnectorProcessorStatusHistoryResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r GetConnectorProcessorStatusHistoryResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r GetConnectorProcessorStatusHistoryResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r GetConnectorProcessorStatusHistoryResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type CreatePurgeRequestResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON202 the response for an HTTP 202 `application/json` response
-	JSON202 *DropRequestEntity
-}
-
-// GetJSON202 returns the response for an HTTP 202 `application/json` response
-func (r CreatePurgeRequestResponse) GetJSON202() *DropRequestEntity {
-	return r.JSON202
-}
-
-// GetBody returns the raw response body bytes
-func (r CreatePurgeRequestResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r CreatePurgeRequestResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r CreatePurgeRequestResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r CreatePurgeRequestResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type RemovePurgeRequestResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *DropRequestEntity
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r RemovePurgeRequestResponse) GetJSON200() *DropRequestEntity {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r RemovePurgeRequestResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r RemovePurgeRequestResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r RemovePurgeRequestResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r RemovePurgeRequestResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type GetPurgeRequestResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *DropRequestEntity
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetPurgeRequestResponse) GetJSON200() *DropRequestEntity {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r GetPurgeRequestResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r GetPurgeRequestResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r GetPurgeRequestResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r GetPurgeRequestResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type GetConnectorRemoteProcessGroupStatusHistoryResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *StatusHistoryEntity
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetConnectorRemoteProcessGroupStatusHistoryResponse) GetJSON200() *StatusHistoryEntity {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r GetConnectorRemoteProcessGroupStatusHistoryResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r GetConnectorRemoteProcessGroupStatusHistoryResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r GetConnectorRemoteProcessGroupStatusHistoryResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r GetConnectorRemoteProcessGroupStatusHistoryResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type UpdateRunStatusResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *ConnectorEntity
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r UpdateRunStatusResponse) GetJSON200() *ConnectorEntity {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r UpdateRunStatusResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r UpdateRunStatusResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r UpdateRunStatusResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r UpdateRunStatusResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type SearchConnectorResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *SearchResultsEntity
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r SearchConnectorResponse) GetJSON200() *SearchResultsEntity {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r SearchConnectorResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r SearchConnectorResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r SearchConnectorResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r SearchConnectorResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type GetSecretsResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *SecretsEntity
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetSecretsResponse) GetJSON200() *SecretsEntity {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r GetSecretsResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r GetSecretsResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r GetSecretsResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r GetSecretsResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type GetConnectorStatusResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *ProcessGroupStatusEntity
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetConnectorStatusResponse) GetJSON200() *ProcessGroupStatusEntity {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r GetConnectorStatusResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r GetConnectorStatusResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r GetConnectorStatusResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r GetConnectorStatusResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type EndTroubleshootingResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *ConnectorEntity
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r EndTroubleshootingResponse) GetJSON200() *ConnectorEntity {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r EndTroubleshootingResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r EndTroubleshootingResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r EndTroubleshootingResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r EndTroubleshootingResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type EnterTroubleshootingResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *ConnectorEntity
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r EnterTroubleshootingResponse) GetJSON200() *ConnectorEntity {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r EnterTroubleshootingResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r EnterTroubleshootingResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r EnterTroubleshootingResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r EnterTroubleshootingResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type DiscardConnectorUpdateResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *ConnectorEntity
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r DiscardConnectorUpdateResponse) GetJSON200() *ConnectorEntity {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r DiscardConnectorUpdateResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r DiscardConnectorUpdateResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r DiscardConnectorUpdateResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r DiscardConnectorUpdateResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
 type RemoveControllerServiceResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -36348,47 +27468,6 @@ func (r UpdateControllerServiceResponse) StatusCode() int {
 
 // ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
 func (r UpdateControllerServiceResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type ClearBulletinsResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *ClearBulletinsResultEntity
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r ClearBulletinsResponse) GetJSON200() *ClearBulletinsResultEntity {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r ClearBulletinsResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ClearBulletinsResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ClearBulletinsResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ClearBulletinsResponse) ContentType() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Header.Get("Content-Type")
 	}
@@ -36682,7 +27761,7 @@ func (r UpdateControllerServiceReferencesResponse) ContentType() string {
 	return ""
 }
 
-type UpdateRunStatus2Response struct {
+type UpdateRunStatus1Response struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	// JSON200 the response for an HTTP 200 `application/json` response
@@ -36690,17 +27769,17 @@ type UpdateRunStatus2Response struct {
 }
 
 // GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r UpdateRunStatus2Response) GetJSON200() *ControllerServiceEntity {
+func (r UpdateRunStatus1Response) GetJSON200() *ControllerServiceEntity {
 	return r.JSON200
 }
 
 // GetBody returns the raw response body bytes
-func (r UpdateRunStatus2Response) GetBody() []byte {
+func (r UpdateRunStatus1Response) GetBody() []byte {
 	return r.Body
 }
 
 // Status returns HTTPResponse.Status
-func (r UpdateRunStatus2Response) Status() string {
+func (r UpdateRunStatus1Response) Status() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Status
 	}
@@ -36708,7 +27787,7 @@ func (r UpdateRunStatus2Response) Status() string {
 }
 
 // StatusCode returns HTTPResponse.StatusCode
-func (r UpdateRunStatus2Response) StatusCode() int {
+func (r UpdateRunStatus1Response) StatusCode() int {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.StatusCode
 	}
@@ -36716,7 +27795,7 @@ func (r UpdateRunStatus2Response) StatusCode() int {
 }
 
 // ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r UpdateRunStatus2Response) ContentType() string {
+func (r UpdateRunStatus1Response) ContentType() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Header.Get("Content-Type")
 	}
@@ -37338,47 +28417,6 @@ func (r UpdateFlowAnalysisRuleResponse) ContentType() string {
 	return ""
 }
 
-type ClearFlowAnalysisRuleBulletinsResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *ClearBulletinsResultEntity
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r ClearFlowAnalysisRuleBulletinsResponse) GetJSON200() *ClearBulletinsResultEntity {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r ClearFlowAnalysisRuleBulletinsResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ClearFlowAnalysisRuleBulletinsResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ClearFlowAnalysisRuleBulletinsResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ClearFlowAnalysisRuleBulletinsResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
 type AnalyzeFlowAnalysisRuleConfigurationResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -37584,7 +28622,7 @@ func (r GetFlowAnalysisRulePropertyDescriptorResponse) ContentType() string {
 	return ""
 }
 
-type UpdateRunStatus1Response struct {
+type UpdateRunStatusResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	// JSON200 the response for an HTTP 200 `application/json` response
@@ -37592,17 +28630,17 @@ type UpdateRunStatus1Response struct {
 }
 
 // GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r UpdateRunStatus1Response) GetJSON200() *FlowAnalysisRuleEntity {
+func (r UpdateRunStatusResponse) GetJSON200() *FlowAnalysisRuleEntity {
 	return r.JSON200
 }
 
 // GetBody returns the raw response body bytes
-func (r UpdateRunStatus1Response) GetBody() []byte {
+func (r UpdateRunStatusResponse) GetBody() []byte {
 	return r.Body
 }
 
 // Status returns HTTPResponse.Status
-func (r UpdateRunStatus1Response) Status() string {
+func (r UpdateRunStatusResponse) Status() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Status
 	}
@@ -37610,7 +28648,7 @@ func (r UpdateRunStatus1Response) Status() string {
 }
 
 // StatusCode returns HTTPResponse.StatusCode
-func (r UpdateRunStatus1Response) StatusCode() int {
+func (r UpdateRunStatusResponse) StatusCode() int {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.StatusCode
 	}
@@ -37618,7 +28656,7 @@ func (r UpdateRunStatus1Response) StatusCode() int {
 }
 
 // ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r UpdateRunStatus1Response) ContentType() string {
+func (r UpdateRunStatusResponse) ContentType() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Header.Get("Content-Type")
 	}
@@ -38028,47 +29066,6 @@ func (r CreateParameterProviderResponse) ContentType() string {
 	return ""
 }
 
-type ClearParameterProviderBulletinsResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *ClearBulletinsResultEntity
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r ClearParameterProviderBulletinsResponse) GetJSON200() *ClearBulletinsResultEntity {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r ClearParameterProviderBulletinsResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ClearParameterProviderBulletinsResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ClearParameterProviderBulletinsResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ClearParameterProviderBulletinsResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
 type GetFlowRegistryClientsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -38268,211 +29265,6 @@ func (r UpdateFlowRegistryClientResponse) StatusCode() int {
 
 // ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
 func (r UpdateFlowRegistryClientResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type ClearRegistryClientBulletinsResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *ClearBulletinsResultEntity
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r ClearRegistryClientBulletinsResponse) GetJSON200() *ClearBulletinsResultEntity {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r ClearRegistryClientBulletinsResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ClearRegistryClientBulletinsResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ClearRegistryClientBulletinsResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ClearRegistryClientBulletinsResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type AnalyzeFlowRegistryClientConfigurationResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *ConfigurationAnalysisEntity
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r AnalyzeFlowRegistryClientConfigurationResponse) GetJSON200() *ConfigurationAnalysisEntity {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r AnalyzeFlowRegistryClientConfigurationResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r AnalyzeFlowRegistryClientConfigurationResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r AnalyzeFlowRegistryClientConfigurationResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r AnalyzeFlowRegistryClientConfigurationResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type SubmitRegistryClientConfigVerificationRequestResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *VerifyConfigRequestEntity
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r SubmitRegistryClientConfigVerificationRequestResponse) GetJSON200() *VerifyConfigRequestEntity {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r SubmitRegistryClientConfigVerificationRequestResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r SubmitRegistryClientConfigVerificationRequestResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r SubmitRegistryClientConfigVerificationRequestResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r SubmitRegistryClientConfigVerificationRequestResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type DeleteRegistryClientVerificationRequestResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *VerifyConfigRequestEntity
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r DeleteRegistryClientVerificationRequestResponse) GetJSON200() *VerifyConfigRequestEntity {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r DeleteRegistryClientVerificationRequestResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r DeleteRegistryClientVerificationRequestResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r DeleteRegistryClientVerificationRequestResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r DeleteRegistryClientVerificationRequestResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type GetRegistryClientVerificationRequestResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *VerifyConfigRequestEntity
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetRegistryClientVerificationRequestResponse) GetJSON200() *VerifyConfigRequestEntity {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r GetRegistryClientVerificationRequestResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r GetRegistryClientVerificationRequestResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r GetRegistryClientVerificationRequestResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r GetRegistryClientVerificationRequestResponse) ContentType() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Header.Get("Content-Type")
 	}
@@ -39524,129 +30316,6 @@ func (r GetConnectionStatusHistoryResponse) ContentType() string {
 	return ""
 }
 
-type GetConnectorDefinitionResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *ConnectorDefinition
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetConnectorDefinitionResponse) GetJSON200() *ConnectorDefinition {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r GetConnectorDefinitionResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r GetConnectorDefinitionResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r GetConnectorDefinitionResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r GetConnectorDefinitionResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type GetConnectorTypesResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *ConnectorTypesEntity
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetConnectorTypesResponse) GetJSON200() *ConnectorTypesEntity {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r GetConnectorTypesResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r GetConnectorTypesResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r GetConnectorTypesResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r GetConnectorTypesResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type GetConnectorsResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *ConnectorsEntity
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetConnectorsResponse) GetJSON200() *ConnectorsEntity {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r GetConnectorsResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r GetConnectorsResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r GetConnectorsResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r GetConnectorsResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
 type GetContentViewersResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -40057,47 +30726,6 @@ func (r GetFlowAnalysisResultsResponse) ContentType() string {
 	return ""
 }
 
-type GetFlowRegistryClientDefinitionResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *FlowRegistryClientDefinition
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetFlowRegistryClientDefinitionResponse) GetJSON200() *FlowRegistryClientDefinition {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r GetFlowRegistryClientDefinitionResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r GetFlowRegistryClientDefinitionResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r GetFlowRegistryClientDefinitionResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r GetFlowRegistryClientDefinitionResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
 type QueryHistoryResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -40256,47 +30884,6 @@ func (r GetInputPortStatusResponse) StatusCode() int {
 
 // ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
 func (r GetInputPortStatusResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type GetListenPortsResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *ListenPortsEntity
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetListenPortsResponse) GetJSON200() *ListenPortsEntity {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r GetListenPortsResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r GetListenPortsResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r GetListenPortsResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r GetListenPortsResponse) ContentType() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Header.Get("Content-Type")
 	}
@@ -40583,7 +31170,7 @@ func (r GetPrioritizersResponse) ContentType() string {
 	return ""
 }
 
-type GetFlow1Response struct {
+type GetFlowResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	// JSON200 the response for an HTTP 200 `application/json` response
@@ -40591,17 +31178,17 @@ type GetFlow1Response struct {
 }
 
 // GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetFlow1Response) GetJSON200() *ProcessGroupFlowEntity {
+func (r GetFlowResponse) GetJSON200() *ProcessGroupFlowEntity {
 	return r.JSON200
 }
 
 // GetBody returns the raw response body bytes
-func (r GetFlow1Response) GetBody() []byte {
+func (r GetFlowResponse) GetBody() []byte {
 	return r.Body
 }
 
 // Status returns HTTPResponse.Status
-func (r GetFlow1Response) Status() string {
+func (r GetFlowResponse) Status() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Status
 	}
@@ -40609,7 +31196,7 @@ func (r GetFlow1Response) Status() string {
 }
 
 // StatusCode returns HTTPResponse.StatusCode
-func (r GetFlow1Response) StatusCode() int {
+func (r GetFlowResponse) StatusCode() int {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.StatusCode
 	}
@@ -40617,7 +31204,7 @@ func (r GetFlow1Response) StatusCode() int {
 }
 
 // ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r GetFlow1Response) ContentType() string {
+func (r GetFlowResponse) ContentType() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Header.Get("Content-Type")
 	}
@@ -40700,47 +31287,6 @@ func (r GetBreadcrumbsResponse) StatusCode() int {
 
 // ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
 func (r GetBreadcrumbsResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type ClearBulletins1Response struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *ClearBulletinsForGroupResultsEntity
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r ClearBulletins1Response) GetJSON200() *ClearBulletinsForGroupResultsEntity {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r ClearBulletins1Response) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ClearBulletins1Response) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ClearBulletins1Response) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ClearBulletins1Response) ContentType() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Header.Get("Content-Type")
 	}
@@ -41772,47 +32318,6 @@ func (r GetControllerStatusResponse) ContentType() string {
 	return ""
 }
 
-type GetStepDocumentationResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *StepDocumentationEntity
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetStepDocumentationResponse) GetJSON200() *StepDocumentationEntity {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r GetStepDocumentationResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r GetStepDocumentationResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r GetStepDocumentationResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r GetStepDocumentationResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
 type CreateDropRequestResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -42380,48 +32885,7 @@ func (r UpdateInputPortResponse) ContentType() string {
 	return ""
 }
 
-type ClearBulletins2Response struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *ClearBulletinsResultEntity
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r ClearBulletins2Response) GetJSON200() *ClearBulletinsResultEntity {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r ClearBulletins2Response) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ClearBulletins2Response) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ClearBulletins2Response) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ClearBulletins2Response) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type UpdateRunStatus3Response struct {
+type UpdateRunStatus2Response struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	// JSON200 the response for an HTTP 200 `application/json` response
@@ -42429,17 +32893,17 @@ type UpdateRunStatus3Response struct {
 }
 
 // GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r UpdateRunStatus3Response) GetJSON200() *ProcessorEntity {
+func (r UpdateRunStatus2Response) GetJSON200() *ProcessorEntity {
 	return r.JSON200
 }
 
 // GetBody returns the raw response body bytes
-func (r UpdateRunStatus3Response) GetBody() []byte {
+func (r UpdateRunStatus2Response) GetBody() []byte {
 	return r.Body
 }
 
 // Status returns HTTPResponse.Status
-func (r UpdateRunStatus3Response) Status() string {
+func (r UpdateRunStatus2Response) Status() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Status
 	}
@@ -42447,7 +32911,7 @@ func (r UpdateRunStatus3Response) Status() string {
 }
 
 // StatusCode returns HTTPResponse.StatusCode
-func (r UpdateRunStatus3Response) StatusCode() int {
+func (r UpdateRunStatus2Response) StatusCode() int {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.StatusCode
 	}
@@ -42455,7 +32919,7 @@ func (r UpdateRunStatus3Response) StatusCode() int {
 }
 
 // ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r UpdateRunStatus3Response) ContentType() string {
+func (r UpdateRunStatus2Response) ContentType() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Header.Get("Content-Type")
 	}
@@ -42708,48 +33172,7 @@ func (r UpdateOutputPortResponse) ContentType() string {
 	return ""
 }
 
-type ClearBulletins3Response struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *ClearBulletinsResultEntity
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r ClearBulletins3Response) GetJSON200() *ClearBulletinsResultEntity {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r ClearBulletins3Response) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ClearBulletins3Response) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ClearBulletins3Response) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ClearBulletins3Response) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type UpdateRunStatus4Response struct {
+type UpdateRunStatus3Response struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	// JSON200 the response for an HTTP 200 `application/json` response
@@ -42757,17 +33180,17 @@ type UpdateRunStatus4Response struct {
 }
 
 // GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r UpdateRunStatus4Response) GetJSON200() *ProcessorEntity {
+func (r UpdateRunStatus3Response) GetJSON200() *ProcessorEntity {
 	return r.JSON200
 }
 
 // GetBody returns the raw response body bytes
-func (r UpdateRunStatus4Response) GetBody() []byte {
+func (r UpdateRunStatus3Response) GetBody() []byte {
 	return r.Body
 }
 
 // Status returns HTTPResponse.Status
-func (r UpdateRunStatus4Response) Status() string {
+func (r UpdateRunStatus3Response) Status() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Status
 	}
@@ -42775,7 +33198,7 @@ func (r UpdateRunStatus4Response) Status() string {
 }
 
 // StatusCode returns HTTPResponse.StatusCode
-func (r UpdateRunStatus4Response) StatusCode() int {
+func (r UpdateRunStatus3Response) StatusCode() int {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.StatusCode
 	}
@@ -42783,7 +33206,7 @@ func (r UpdateRunStatus4Response) StatusCode() int {
 }
 
 // ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r UpdateRunStatus4Response) ContentType() string {
+func (r UpdateRunStatus3Response) ContentType() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Header.Get("Content-Type")
 	}
@@ -42831,7 +33254,7 @@ func (r CreateParameterContextResponse) ContentType() string {
 	return ""
 }
 
-type GetAssets1Response struct {
+type GetAssetsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	// JSON200 the response for an HTTP 200 `application/json` response
@@ -42839,17 +33262,17 @@ type GetAssets1Response struct {
 }
 
 // GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetAssets1Response) GetJSON200() *AssetsEntity {
+func (r GetAssetsResponse) GetJSON200() *AssetsEntity {
 	return r.JSON200
 }
 
 // GetBody returns the raw response body bytes
-func (r GetAssets1Response) GetBody() []byte {
+func (r GetAssetsResponse) GetBody() []byte {
 	return r.Body
 }
 
 // Status returns HTTPResponse.Status
-func (r GetAssets1Response) Status() string {
+func (r GetAssetsResponse) Status() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Status
 	}
@@ -42857,7 +33280,7 @@ func (r GetAssets1Response) Status() string {
 }
 
 // StatusCode returns HTTPResponse.StatusCode
-func (r GetAssets1Response) StatusCode() int {
+func (r GetAssetsResponse) StatusCode() int {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.StatusCode
 	}
@@ -42865,14 +33288,14 @@ func (r GetAssets1Response) StatusCode() int {
 }
 
 // ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r GetAssets1Response) ContentType() string {
+func (r GetAssetsResponse) ContentType() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Header.Get("Content-Type")
 	}
 	return ""
 }
 
-type CreateAsset1Response struct {
+type CreateAssetResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	// JSON200 the response for an HTTP 200 `application/json` response
@@ -42880,17 +33303,17 @@ type CreateAsset1Response struct {
 }
 
 // GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r CreateAsset1Response) GetJSON200() *AssetEntity {
+func (r CreateAssetResponse) GetJSON200() *AssetEntity {
 	return r.JSON200
 }
 
 // GetBody returns the raw response body bytes
-func (r CreateAsset1Response) GetBody() []byte {
+func (r CreateAssetResponse) GetBody() []byte {
 	return r.Body
 }
 
 // Status returns HTTPResponse.Status
-func (r CreateAsset1Response) Status() string {
+func (r CreateAssetResponse) Status() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Status
 	}
@@ -42898,7 +33321,7 @@ func (r CreateAsset1Response) Status() string {
 }
 
 // StatusCode returns HTTPResponse.StatusCode
-func (r CreateAsset1Response) StatusCode() int {
+func (r CreateAssetResponse) StatusCode() int {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.StatusCode
 	}
@@ -42906,7 +33329,7 @@ func (r CreateAsset1Response) StatusCode() int {
 }
 
 // ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r CreateAsset1Response) ContentType() string {
+func (r CreateAssetResponse) ContentType() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Header.Get("Content-Type")
 	}
@@ -42954,18 +33377,18 @@ func (r DeleteAssetResponse) ContentType() string {
 	return ""
 }
 
-type GetAssetContent1Response struct {
+type GetAssetContentResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 }
 
 // GetBody returns the raw response body bytes
-func (r GetAssetContent1Response) GetBody() []byte {
+func (r GetAssetContentResponse) GetBody() []byte {
 	return r.Body
 }
 
 // Status returns HTTPResponse.Status
-func (r GetAssetContent1Response) Status() string {
+func (r GetAssetContentResponse) Status() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Status
 	}
@@ -42973,7 +33396,7 @@ func (r GetAssetContent1Response) Status() string {
 }
 
 // StatusCode returns HTTPResponse.StatusCode
-func (r GetAssetContent1Response) StatusCode() int {
+func (r GetAssetContentResponse) StatusCode() int {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.StatusCode
 	}
@@ -42981,7 +33404,7 @@ func (r GetAssetContent1Response) StatusCode() int {
 }
 
 // ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r GetAssetContent1Response) ContentType() string {
+func (r GetAssetContentResponse) ContentType() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Header.Get("Content-Type")
 	}
@@ -43474,47 +33897,6 @@ func (r UpdateParameterProviderResponse) StatusCode() int {
 
 // ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
 func (r UpdateParameterProviderResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type ClearBulletins4Response struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *ClearBulletinsResultEntity
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r ClearBulletins4Response) GetJSON200() *ClearBulletinsResultEntity {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r ClearBulletins4Response) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ClearBulletins4Response) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ClearBulletins4Response) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ClearBulletins4Response) ContentType() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Header.Get("Content-Type")
 	}
@@ -45776,170 +36158,6 @@ func (r UpdateProcessorResponse) ContentType() string {
 	return ""
 }
 
-type SubmitProcessorBacklogRequestResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *BacklogRequestEntity
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r SubmitProcessorBacklogRequestResponse) GetJSON200() *BacklogRequestEntity {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r SubmitProcessorBacklogRequestResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r SubmitProcessorBacklogRequestResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r SubmitProcessorBacklogRequestResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r SubmitProcessorBacklogRequestResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type DeleteBacklogRequestResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *BacklogRequestEntity
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r DeleteBacklogRequestResponse) GetJSON200() *BacklogRequestEntity {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r DeleteBacklogRequestResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r DeleteBacklogRequestResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r DeleteBacklogRequestResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r DeleteBacklogRequestResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type GetBacklogRequestResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *BacklogRequestEntity
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetBacklogRequestResponse) GetJSON200() *BacklogRequestEntity {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r GetBacklogRequestResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r GetBacklogRequestResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r GetBacklogRequestResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r GetBacklogRequestResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type ClearBulletins5Response struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *ClearBulletinsResultEntity
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r ClearBulletins5Response) GetJSON200() *ClearBulletinsResultEntity {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r ClearBulletins5Response) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ClearBulletins5Response) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ClearBulletins5Response) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ClearBulletins5Response) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
 type AnalyzeConfiguration2Response struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -46186,7 +36404,7 @@ func (r GetProcessorDiagnosticsResponse) ContentType() string {
 	return ""
 }
 
-type UpdateRunStatus5Response struct {
+type UpdateRunStatus4Response struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	// JSON200 the response for an HTTP 200 `application/json` response
@@ -46194,17 +36412,17 @@ type UpdateRunStatus5Response struct {
 }
 
 // GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r UpdateRunStatus5Response) GetJSON200() *ProcessorEntity {
+func (r UpdateRunStatus4Response) GetJSON200() *ProcessorEntity {
 	return r.JSON200
 }
 
 // GetBody returns the raw response body bytes
-func (r UpdateRunStatus5Response) GetBody() []byte {
+func (r UpdateRunStatus4Response) GetBody() []byte {
 	return r.Body
 }
 
 // Status returns HTTPResponse.Status
-func (r UpdateRunStatus5Response) Status() string {
+func (r UpdateRunStatus4Response) Status() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Status
 	}
@@ -46212,7 +36430,7 @@ func (r UpdateRunStatus5Response) Status() string {
 }
 
 // StatusCode returns HTTPResponse.StatusCode
-func (r UpdateRunStatus5Response) StatusCode() int {
+func (r UpdateRunStatus4Response) StatusCode() int {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.StatusCode
 	}
@@ -46220,7 +36438,7 @@ func (r UpdateRunStatus5Response) StatusCode() int {
 }
 
 // ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r UpdateRunStatus5Response) ContentType() string {
+func (r UpdateRunStatus4Response) ContentType() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Header.Get("Content-Type")
 	}
@@ -47033,47 +37251,6 @@ func (r UpdateRemoteProcessGroupResponse) ContentType() string {
 	return ""
 }
 
-type ClearBulletins6Response struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *ClearBulletinsResultEntity
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r ClearBulletins6Response) GetJSON200() *ClearBulletinsResultEntity {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r ClearBulletins6Response) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ClearBulletins6Response) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ClearBulletins6Response) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ClearBulletins6Response) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
 type UpdateRemoteProcessGroupInputPortResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -47443,47 +37620,6 @@ func (r UpdateReportingTaskResponse) ContentType() string {
 	return ""
 }
 
-type ClearBulletins7Response struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *ClearBulletinsResultEntity
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r ClearBulletins7Response) GetJSON200() *ClearBulletinsResultEntity {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r ClearBulletins7Response) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ClearBulletins7Response) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ClearBulletins7Response) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ClearBulletins7Response) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
 type AnalyzeConfiguration3Response struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -47689,7 +37825,7 @@ func (r GetPropertyDescriptor4Response) ContentType() string {
 	return ""
 }
 
-type UpdateRunStatus6Response struct {
+type UpdateRunStatus5Response struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	// JSON200 the response for an HTTP 200 `application/json` response
@@ -47697,17 +37833,17 @@ type UpdateRunStatus6Response struct {
 }
 
 // GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r UpdateRunStatus6Response) GetJSON200() *ReportingTaskEntity {
+func (r UpdateRunStatus5Response) GetJSON200() *ReportingTaskEntity {
 	return r.JSON200
 }
 
 // GetBody returns the raw response body bytes
-func (r UpdateRunStatus6Response) GetBody() []byte {
+func (r UpdateRunStatus5Response) GetBody() []byte {
 	return r.Body
 }
 
 // Status returns HTTPResponse.Status
-func (r UpdateRunStatus6Response) Status() string {
+func (r UpdateRunStatus5Response) Status() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Status
 	}
@@ -47715,7 +37851,7 @@ func (r UpdateRunStatus6Response) Status() string {
 }
 
 // StatusCode returns HTTPResponse.StatusCode
-func (r UpdateRunStatus6Response) StatusCode() int {
+func (r UpdateRunStatus5Response) StatusCode() int {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.StatusCode
 	}
@@ -47723,7 +37859,7 @@ func (r UpdateRunStatus6Response) StatusCode() int {
 }
 
 // ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r UpdateRunStatus6Response) ContentType() string {
+func (r UpdateRunStatus5Response) ContentType() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Header.Get("Content-Type")
 	}
@@ -48871,47 +39007,6 @@ func (r UpdateFlowVersionResponse) ContentType() string {
 	return ""
 }
 
-type CreateFlowBranchResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *VersionControlInformationEntity
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r CreateFlowBranchResponse) GetJSON200() *VersionControlInformationEntity {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r CreateFlowBranchResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r CreateFlowBranchResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r CreateFlowBranchResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r CreateFlowBranchResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
 type ExportFlowVersionResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -48947,211 +39042,6 @@ func (r ExportFlowVersionResponse) StatusCode() int {
 
 // ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
 func (r ExportFlowVersionResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type ApplyRebasedFlowVersionResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *VersionControlInformationEntity
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r ApplyRebasedFlowVersionResponse) GetJSON200() *VersionControlInformationEntity {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r ApplyRebasedFlowVersionResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ApplyRebasedFlowVersionResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ApplyRebasedFlowVersionResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ApplyRebasedFlowVersionResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type GetRebaseAnalysisResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *RebaseAnalysisEntity
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetRebaseAnalysisResponse) GetJSON200() *RebaseAnalysisEntity {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r GetRebaseAnalysisResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r GetRebaseAnalysisResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r GetRebaseAnalysisResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r GetRebaseAnalysisResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type InitiateRebaseResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *VersionedFlowUpdateRequestEntity
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r InitiateRebaseResponse) GetJSON200() *VersionedFlowUpdateRequestEntity {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r InitiateRebaseResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r InitiateRebaseResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r InitiateRebaseResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r InitiateRebaseResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type DeleteRebaseRequestResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *VersionedFlowUpdateRequestEntity
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r DeleteRebaseRequestResponse) GetJSON200() *VersionedFlowUpdateRequestEntity {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r DeleteRebaseRequestResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r DeleteRebaseRequestResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r DeleteRebaseRequestResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r DeleteRebaseRequestResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type GetRebaseRequestResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *VersionedFlowUpdateRequestEntity
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetRebaseRequestResponse) GetJSON200() *VersionedFlowUpdateRequestEntity {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r GetRebaseRequestResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r GetRebaseRequestResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r GetRebaseRequestResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r GetRebaseRequestResponse) ContentType() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Header.Get("Content-Type")
 	}
@@ -49464,7 +39354,7 @@ func (c *ClientWithResponses) CreateAccessTokenWithFormdataBodyWithResponse(ctx 
 	return ParseCreateAccessTokenResponse(rsp)
 }
 
-// GetAuthenticationConfigurationWithResponse Retrieves the authentication configuration details and status information
+// GetAuthenticationConfigurationWithResponse Retrieves the authentication configuration endpoint and status information
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -49529,797 +39419,6 @@ func (c *ClientWithResponses) UpdateConnectionWithResponse(ctx context.Context, 
 	return ParseUpdateConnectionResponse(rsp)
 }
 
-// CreateConnectorWithBodyWithResponse Creates a new connector
-//
-// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /connectors (the `CreateConnector` operationId).
-func (c *ClientWithResponses) CreateConnectorWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CreateConnectorResponse, error) {
-	rsp, err := c.CreateConnectorWithBody(ctx, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseCreateConnectorResponse(rsp)
-}
-
-// CreateConnectorWithResponse Creates a new connector
-//
-// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /connectors (the `CreateConnector` operationId).
-func (c *ClientWithResponses) CreateConnectorWithResponse(ctx context.Context, body CreateConnectorJSONRequestBody, reqEditors ...RequestEditorFn) (*CreateConnectorResponse, error) {
-	rsp, err := c.CreateConnector(ctx, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseCreateConnectorResponse(rsp)
-}
-
-// GetFlowWithResponse Gets the flow for a process group within a connector
-//
-// Returns the flow for the specified process group within the connector's hierarchy. The processGroupId can be obtained from the managedProcessGroupId field of the ConnectorDTO for the root process group, or from child process groups within the flow. If the uiOnly query parameter is provided with a value of true, the returned entity may only contain fields that are necessary for rendering the NiFi User Interface. As such, the selected fields may change at any time, even during incremental releases, without warning. As a result, this parameter should not be provided by any client other than the UI.
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with GET /connectors/{connectorId}/flow/process-groups/{processGroupId} (the `GetFlow` operationId).
-func (c *ClientWithResponses) GetFlowWithResponse(ctx context.Context, connectorId string, processGroupId string, params *GetFlowParams, reqEditors ...RequestEditorFn) (*GetFlowResponse, error) {
-	rsp, err := c.GetFlow(ctx, connectorId, processGroupId, params, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseGetFlowResponse(rsp)
-}
-
-// GetControllerServicesFromConnectorProcessGroupWithResponse Gets all controller services for a process group within a connector
-//
-// Returns the controller services for the specified process group within the connector's hierarchy. The processGroupId can be obtained from the managedProcessGroupId field of the ConnectorDTO for the root process group, or from child process groups within the flow.
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with GET /connectors/{connectorId}/flow/process-groups/{processGroupId}/controller-services (the `GetControllerServicesFromConnectorProcessGroup` operationId).
-func (c *ClientWithResponses) GetControllerServicesFromConnectorProcessGroupWithResponse(ctx context.Context, connectorId string, processGroupId string, params *GetControllerServicesFromConnectorProcessGroupParams, reqEditors ...RequestEditorFn) (*GetControllerServicesFromConnectorProcessGroupResponse, error) {
-	rsp, err := c.GetControllerServicesFromConnectorProcessGroup(ctx, connectorId, processGroupId, params, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseGetControllerServicesFromConnectorProcessGroupResponse(rsp)
-}
-
-// GetParameterContextForConnectorProcessGroupWithResponse Gets the parameter context bound to a process group within a connector
-//
-// Returns the parameter context (with effective parameters, including those inherited from other contexts) bound to the specified process group within the connector's hierarchy. Sensitive parameter values are masked. Returns 204 No Content if the process group has no bound parameter context.
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with GET /connectors/{connectorId}/flow/process-groups/{processGroupId}/parameter-context (the `GetParameterContextForConnectorProcessGroup` operationId).
-func (c *ClientWithResponses) GetParameterContextForConnectorProcessGroupWithResponse(ctx context.Context, connectorId string, processGroupId string, reqEditors ...RequestEditorFn) (*GetParameterContextForConnectorProcessGroupResponse, error) {
-	rsp, err := c.GetParameterContextForConnectorProcessGroup(ctx, connectorId, processGroupId, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseGetParameterContextForConnectorProcessGroupResponse(rsp)
-}
-
-// DeleteConnectorWithResponse Deletes a connector
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with DELETE /connectors/{id} (the `DeleteConnector` operationId).
-func (c *ClientWithResponses) DeleteConnectorWithResponse(ctx context.Context, id string, params *DeleteConnectorParams, reqEditors ...RequestEditorFn) (*DeleteConnectorResponse, error) {
-	rsp, err := c.DeleteConnector(ctx, id, params, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseDeleteConnectorResponse(rsp)
-}
-
-// GetConnectorWithResponse Gets a connector
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with GET /connectors/{id} (the `GetConnector` operationId).
-func (c *ClientWithResponses) GetConnectorWithResponse(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*GetConnectorResponse, error) {
-	rsp, err := c.GetConnector(ctx, id, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseGetConnectorResponse(rsp)
-}
-
-// UpdateConnectorWithBodyWithResponse Updates a connector
-//
-// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with PUT /connectors/{id} (the `UpdateConnector` operationId).
-func (c *ClientWithResponses) UpdateConnectorWithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateConnectorResponse, error) {
-	rsp, err := c.UpdateConnectorWithBody(ctx, id, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseUpdateConnectorResponse(rsp)
-}
-
-// UpdateConnectorWithResponse Updates a connector
-//
-// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with PUT /connectors/{id} (the `UpdateConnector` operationId).
-func (c *ClientWithResponses) UpdateConnectorWithResponse(ctx context.Context, id string, body UpdateConnectorJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateConnectorResponse, error) {
-	rsp, err := c.UpdateConnector(ctx, id, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseUpdateConnectorResponse(rsp)
-}
-
-// ApplyConnectorUpdateWithBodyWithResponse Applies an update to a connector
-//
-// This will apply any pending configuration changes to the connector. The client can poll the connector endpoint to check when the update is complete.
-//
-// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /connectors/{id}/apply-update (the `ApplyConnectorUpdate` operationId).
-func (c *ClientWithResponses) ApplyConnectorUpdateWithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApplyConnectorUpdateResponse, error) {
-	rsp, err := c.ApplyConnectorUpdateWithBody(ctx, id, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApplyConnectorUpdateResponse(rsp)
-}
-
-// ApplyConnectorUpdateWithResponse Applies an update to a connector
-//
-// This will apply any pending configuration changes to the connector. The client can poll the connector endpoint to check when the update is complete.
-//
-// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /connectors/{id}/apply-update (the `ApplyConnectorUpdate` operationId).
-func (c *ClientWithResponses) ApplyConnectorUpdateWithResponse(ctx context.Context, id string, body ApplyConnectorUpdateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApplyConnectorUpdateResponse, error) {
-	rsp, err := c.ApplyConnectorUpdate(ctx, id, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApplyConnectorUpdateResponse(rsp)
-}
-
-// GetAssetsWithResponse Lists the assets that belong to the Connector with the given ID
-//
-// Lists the assets that belong to the Connector with the given ID.
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with GET /connectors/{id}/assets (the `GetAssets` operationId).
-func (c *ClientWithResponses) GetAssetsWithResponse(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*GetAssetsResponse, error) {
-	rsp, err := c.GetAssets(ctx, id, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseGetAssetsResponse(rsp)
-}
-
-// CreateAssetWithBodyWithResponse Creates a new Asset in the given Connector
-//
-// This endpoint will create a new Asset in the Connector. The Asset will be created with the given name and the contents of the file that is uploaded.
-//
-// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /connectors/{id}/assets (the `CreateAsset` operationId).
-func (c *ClientWithResponses) CreateAssetWithBodyWithResponse(ctx context.Context, id string, params *CreateAssetParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CreateAssetResponse, error) {
-	rsp, err := c.CreateAssetWithBody(ctx, id, params, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseCreateAssetResponse(rsp)
-}
-
-// GetAssetContentWithResponse Retrieves the content of the asset with the given id for a connector
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with GET /connectors/{id}/assets/{assetId} (the `GetAssetContent` operationId).
-func (c *ClientWithResponses) GetAssetContentWithResponse(ctx context.Context, id string, assetId string, reqEditors ...RequestEditorFn) (*GetAssetContentResponse, error) {
-	rsp, err := c.GetAssetContent(ctx, id, assetId, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseGetAssetContentResponse(rsp)
-}
-
-// SubmitConnectorBacklogRequestWithResponse Initiates a request to determine the current backlog for a Connector
-//
-// This will initiate the process of determining the backlog for a Connector. This may be a long-running task. As a result, this endpoint will immediately return a BacklogRequestEntity, and the process of determining the backlog will occur asynchronously in the background. The client may then periodically poll the status of the request by issuing a GET request to /connectors/{id}/backlog-requests/{requestId}. Once the request is completed, the client is expected to issue a DELETE request to /connectors/{id}/backlog-requests/{requestId}.
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /connectors/{id}/backlog-requests (the `SubmitConnectorBacklogRequest` operationId).
-func (c *ClientWithResponses) SubmitConnectorBacklogRequestWithResponse(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*SubmitConnectorBacklogRequestResponse, error) {
-	rsp, err := c.SubmitConnectorBacklogRequest(ctx, id, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseSubmitConnectorBacklogRequestResponse(rsp)
-}
-
-// DeleteConnectorBacklogRequestWithResponse Deletes the Backlog Request with the given ID
-//
-// Deletes the Backlog Request with the given ID. After a request is created, it is expected that the client will properly clean up the request by DELETE'ing it once the backlog determination has completed. If the request is deleted before it completes, the background determination is cancelled.
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with DELETE /connectors/{id}/backlog-requests/{requestId} (the `DeleteConnectorBacklogRequest` operationId).
-func (c *ClientWithResponses) DeleteConnectorBacklogRequestWithResponse(ctx context.Context, id string, requestId string, reqEditors ...RequestEditorFn) (*DeleteConnectorBacklogRequestResponse, error) {
-	rsp, err := c.DeleteConnectorBacklogRequest(ctx, id, requestId, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseDeleteConnectorBacklogRequestResponse(rsp)
-}
-
-// GetConnectorBacklogRequestWithResponse Returns the Backlog Request with the given ID
-//
-// Returns the Backlog Request with the given ID. Once a Backlog Request has been created by performing a POST to /connectors/{id}/backlog-requests, that request can subsequently be retrieved via this endpoint, and the request that is fetched will contain the updated state, such as percent complete, the current state of the request, and the backlog once the request is complete.
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with GET /connectors/{id}/backlog-requests/{requestId} (the `GetConnectorBacklogRequest` operationId).
-func (c *ClientWithResponses) GetConnectorBacklogRequestWithResponse(ctx context.Context, id string, requestId string, reqEditors ...RequestEditorFn) (*GetConnectorBacklogRequestResponse, error) {
-	rsp, err := c.GetConnectorBacklogRequest(ctx, id, requestId, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseGetConnectorBacklogRequestResponse(rsp)
-}
-
-// GetConnectorConfigurationStepsWithResponse Gets all configuration step names for a connector
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with GET /connectors/{id}/configuration-steps (the `GetConnectorConfigurationSteps` operationId).
-func (c *ClientWithResponses) GetConnectorConfigurationStepsWithResponse(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*GetConnectorConfigurationStepsResponse, error) {
-	rsp, err := c.GetConnectorConfigurationSteps(ctx, id, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseGetConnectorConfigurationStepsResponse(rsp)
-}
-
-// GetConnectorConfigurationStepWithResponse Gets a specific configuration step by name for a connector
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with GET /connectors/{id}/configuration-steps/{configurationStepName} (the `GetConnectorConfigurationStep` operationId).
-func (c *ClientWithResponses) GetConnectorConfigurationStepWithResponse(ctx context.Context, id string, configurationStepName string, reqEditors ...RequestEditorFn) (*GetConnectorConfigurationStepResponse, error) {
-	rsp, err := c.GetConnectorConfigurationStep(ctx, id, configurationStepName, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseGetConnectorConfigurationStepResponse(rsp)
-}
-
-// UpdateConnectorConfigurationStepWithBodyWithResponse Updates a specific configuration step by name for a connector
-//
-// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with PUT /connectors/{id}/configuration-steps/{configurationStepName} (the `UpdateConnectorConfigurationStep` operationId).
-func (c *ClientWithResponses) UpdateConnectorConfigurationStepWithBodyWithResponse(ctx context.Context, id string, configurationStepName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateConnectorConfigurationStepResponse, error) {
-	rsp, err := c.UpdateConnectorConfigurationStepWithBody(ctx, id, configurationStepName, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseUpdateConnectorConfigurationStepResponse(rsp)
-}
-
-// UpdateConnectorConfigurationStepWithResponse Updates a specific configuration step by name for a connector
-//
-// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with PUT /connectors/{id}/configuration-steps/{configurationStepName} (the `UpdateConnectorConfigurationStep` operationId).
-func (c *ClientWithResponses) UpdateConnectorConfigurationStepWithResponse(ctx context.Context, id string, configurationStepName string, body UpdateConnectorConfigurationStepJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateConnectorConfigurationStepResponse, error) {
-	rsp, err := c.UpdateConnectorConfigurationStep(ctx, id, configurationStepName, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseUpdateConnectorConfigurationStepResponse(rsp)
-}
-
-// GetConnectorPropertyAllowableValuesWithResponse Gets the allowable values for a specific property in a connector's configuration step
-//
-// Gets the allowable values for a specific property that supports dynamic fetching of allowable values. The filter parameter can be used to narrow down the results based on the property's filtering logic.
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with GET /connectors/{id}/configuration-steps/{configurationStepName}/property-groups/{propertyGroupName}/properties/{propertyName}/allowable-values (the `GetConnectorPropertyAllowableValues` operationId).
-func (c *ClientWithResponses) GetConnectorPropertyAllowableValuesWithResponse(ctx context.Context, id string, configurationStepName string, propertyGroupName string, propertyName string, params *GetConnectorPropertyAllowableValuesParams, reqEditors ...RequestEditorFn) (*GetConnectorPropertyAllowableValuesResponse, error) {
-	rsp, err := c.GetConnectorPropertyAllowableValues(ctx, id, configurationStepName, propertyGroupName, propertyName, params, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseGetConnectorPropertyAllowableValuesResponse(rsp)
-}
-
-// SubmitConfigurationStepVerificationRequestWithBodyWithResponse Performs verification of a configuration step for a connector
-//
-// This will initiate the process of verifying a given Connector Configuration Step. This may be a long-running task. As a result, this endpoint will immediately return a VerifyConnectorConfigStepRequestEntity, and the process of performing the verification will occur asynchronously in the background. The client may then periodically poll the status of the request by issuing a GET request to /connectors/{connectorId}/configuration-steps/{stepName}/verify-config/{requestId}. Once the request is completed, the client is expected to issue a DELETE request to /connectors/{connectorId}/configuration-steps/{stepName}/verify-config/{requestId}.
-//
-// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /connectors/{id}/configuration-steps/{configurationStepName}/verify-config (the `SubmitConfigurationStepVerificationRequest` operationId).
-func (c *ClientWithResponses) SubmitConfigurationStepVerificationRequestWithBodyWithResponse(ctx context.Context, id string, configurationStepName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*SubmitConfigurationStepVerificationRequestResponse, error) {
-	rsp, err := c.SubmitConfigurationStepVerificationRequestWithBody(ctx, id, configurationStepName, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseSubmitConfigurationStepVerificationRequestResponse(rsp)
-}
-
-// SubmitConfigurationStepVerificationRequestWithResponse Performs verification of a configuration step for a connector
-//
-// This will initiate the process of verifying a given Connector Configuration Step. This may be a long-running task. As a result, this endpoint will immediately return a VerifyConnectorConfigStepRequestEntity, and the process of performing the verification will occur asynchronously in the background. The client may then periodically poll the status of the request by issuing a GET request to /connectors/{connectorId}/configuration-steps/{stepName}/verify-config/{requestId}. Once the request is completed, the client is expected to issue a DELETE request to /connectors/{connectorId}/configuration-steps/{stepName}/verify-config/{requestId}.
-//
-// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /connectors/{id}/configuration-steps/{configurationStepName}/verify-config (the `SubmitConfigurationStepVerificationRequest` operationId).
-func (c *ClientWithResponses) SubmitConfigurationStepVerificationRequestWithResponse(ctx context.Context, id string, configurationStepName string, body SubmitConfigurationStepVerificationRequestJSONRequestBody, reqEditors ...RequestEditorFn) (*SubmitConfigurationStepVerificationRequestResponse, error) {
-	rsp, err := c.SubmitConfigurationStepVerificationRequest(ctx, id, configurationStepName, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseSubmitConfigurationStepVerificationRequestResponse(rsp)
-}
-
-// DeleteConfigurationStepVerificationRequestWithResponse Deletes the Verification Request with the given ID
-//
-// Deletes the Verification Request with the given ID. After a request is created, it is expected that the client will properly clean up the request by DELETE'ing it, once the Verification process has completed. If the request is deleted before the request completes, then the Verification request will finish the step that it is currently performing and then will cancel any subsequent steps.
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with DELETE /connectors/{id}/configuration-steps/{configurationStepName}/verify-config/{requestId} (the `DeleteConfigurationStepVerificationRequest` operationId).
-func (c *ClientWithResponses) DeleteConfigurationStepVerificationRequestWithResponse(ctx context.Context, id string, configurationStepName string, requestId string, reqEditors ...RequestEditorFn) (*DeleteConfigurationStepVerificationRequestResponse, error) {
-	rsp, err := c.DeleteConfigurationStepVerificationRequest(ctx, id, configurationStepName, requestId, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseDeleteConfigurationStepVerificationRequestResponse(rsp)
-}
-
-// GetConfigurationStepVerificationRequestWithResponse Returns the Verification Request with the given ID
-//
-// Returns the Verification Request with the given ID. Once a Verification Request has been created, that request can subsequently be retrieved via this endpoint, and the request that is fetched will contain the updated state, such as percent complete, the current state of the request, and any failures.
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with GET /connectors/{id}/configuration-steps/{configurationStepName}/verify-config/{requestId} (the `GetConfigurationStepVerificationRequest` operationId).
-func (c *ClientWithResponses) GetConfigurationStepVerificationRequestWithResponse(ctx context.Context, id string, configurationStepName string, requestId string, reqEditors ...RequestEditorFn) (*GetConfigurationStepVerificationRequestResponse, error) {
-	rsp, err := c.GetConfigurationStepVerificationRequest(ctx, id, configurationStepName, requestId, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseGetConfigurationStepVerificationRequestResponse(rsp)
-}
-
-// GetConnectorConnectionStatusHistoryWithResponse Gets the status history for a connection within a connector
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with GET /connectors/{id}/connections/{connectionId}/status/history (the `GetConnectorConnectionStatusHistory` operationId).
-func (c *ClientWithResponses) GetConnectorConnectionStatusHistoryWithResponse(ctx context.Context, id string, connectionId string, reqEditors ...RequestEditorFn) (*GetConnectorConnectionStatusHistoryResponse, error) {
-	rsp, err := c.GetConnectorConnectionStatusHistory(ctx, id, connectionId, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseGetConnectorConnectionStatusHistoryResponse(rsp)
-}
-
-// GetConnectorControllerServiceStateWithResponse Gets the state for a controller service within a connector
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with GET /connectors/{id}/controller-services/{controllerServiceId}/state (the `GetConnectorControllerServiceState` operationId).
-func (c *ClientWithResponses) GetConnectorControllerServiceStateWithResponse(ctx context.Context, id string, controllerServiceId string, reqEditors ...RequestEditorFn) (*GetConnectorControllerServiceStateResponse, error) {
-	rsp, err := c.GetConnectorControllerServiceState(ctx, id, controllerServiceId, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseGetConnectorControllerServiceStateResponse(rsp)
-}
-
-// ClearConnectorControllerServiceStateWithBodyWithResponse Clears the state for a controller service within a connector
-//
-// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /connectors/{id}/controller-services/{controllerServiceId}/state/clear-requests (the `ClearConnectorControllerServiceState` operationId).
-func (c *ClientWithResponses) ClearConnectorControllerServiceStateWithBodyWithResponse(ctx context.Context, id string, controllerServiceId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ClearConnectorControllerServiceStateResponse, error) {
-	rsp, err := c.ClearConnectorControllerServiceStateWithBody(ctx, id, controllerServiceId, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseClearConnectorControllerServiceStateResponse(rsp)
-}
-
-// ClearConnectorControllerServiceStateWithResponse Clears the state for a controller service within a connector
-//
-// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /connectors/{id}/controller-services/{controllerServiceId}/state/clear-requests (the `ClearConnectorControllerServiceState` operationId).
-func (c *ClientWithResponses) ClearConnectorControllerServiceStateWithResponse(ctx context.Context, id string, controllerServiceId string, body ClearConnectorControllerServiceStateJSONRequestBody, reqEditors ...RequestEditorFn) (*ClearConnectorControllerServiceStateResponse, error) {
-	rsp, err := c.ClearConnectorControllerServiceState(ctx, id, controllerServiceId, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseClearConnectorControllerServiceStateResponse(rsp)
-}
-
-// CancelDrainWithResponse Cancels the draining of FlowFiles for a connector
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with DELETE /connectors/{id}/drain (the `CancelDrain` operationId).
-func (c *ClientWithResponses) CancelDrainWithResponse(ctx context.Context, id string, params *CancelDrainParams, reqEditors ...RequestEditorFn) (*CancelDrainResponse, error) {
-	rsp, err := c.CancelDrain(ctx, id, params, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseCancelDrainResponse(rsp)
-}
-
-// InitiateDrainWithBodyWithResponse Initiates draining of FlowFiles for a connector
-//
-// This will initiate draining of FlowFiles for a stopped connector. Draining allows the connector to process data that is currently in the flow but does not ingest any additional data. The connector must be in a STOPPED state before draining can begin. Once initiated, the connector will transition to a DRAINING state. Use the DELETE method on this endpoint to cancel an ongoing drain operation.
-//
-// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /connectors/{id}/drain (the `InitiateDrain` operationId).
-func (c *ClientWithResponses) InitiateDrainWithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*InitiateDrainResponse, error) {
-	rsp, err := c.InitiateDrainWithBody(ctx, id, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseInitiateDrainResponse(rsp)
-}
-
-// InitiateDrainWithResponse Initiates draining of FlowFiles for a connector
-//
-// This will initiate draining of FlowFiles for a stopped connector. Draining allows the connector to process data that is currently in the flow but does not ingest any additional data. The connector must be in a STOPPED state before draining can begin. Once initiated, the connector will transition to a DRAINING state. Use the DELETE method on this endpoint to cancel an ongoing drain operation.
-//
-// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /connectors/{id}/drain (the `InitiateDrain` operationId).
-func (c *ClientWithResponses) InitiateDrainWithResponse(ctx context.Context, id string, body InitiateDrainJSONRequestBody, reqEditors ...RequestEditorFn) (*InitiateDrainResponse, error) {
-	rsp, err := c.InitiateDrain(ctx, id, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseInitiateDrainResponse(rsp)
-}
-
-// CreateMigrationPayloadWithBodyWithResponse Uploads a flow snapshot payload for a later Connector migration request
-//
-// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /connectors/{id}/migration-payloads (the `CreateMigrationPayload` operationId).
-func (c *ClientWithResponses) CreateMigrationPayloadWithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CreateMigrationPayloadResponse, error) {
-	rsp, err := c.CreateMigrationPayloadWithBody(ctx, id, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseCreateMigrationPayloadResponse(rsp)
-}
-
-// CreateMigrationRequestWithBodyWithResponse Creates a Connector migration request
-//
-// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /connectors/{id}/migration-requests (the `CreateMigrationRequest` operationId).
-func (c *ClientWithResponses) CreateMigrationRequestWithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CreateMigrationRequestResponse, error) {
-	rsp, err := c.CreateMigrationRequestWithBody(ctx, id, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseCreateMigrationRequestResponse(rsp)
-}
-
-// CreateMigrationRequestWithResponse Creates a Connector migration request
-//
-// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /connectors/{id}/migration-requests (the `CreateMigrationRequest` operationId).
-func (c *ClientWithResponses) CreateMigrationRequestWithResponse(ctx context.Context, id string, body CreateMigrationRequestJSONRequestBody, reqEditors ...RequestEditorFn) (*CreateMigrationRequestResponse, error) {
-	rsp, err := c.CreateMigrationRequest(ctx, id, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseCreateMigrationRequestResponse(rsp)
-}
-
-// DeleteMigrationRequestWithResponse Deletes the Connector migration request with the given ID
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with DELETE /connectors/{id}/migration-requests/{requestId} (the `DeleteMigrationRequest` operationId).
-func (c *ClientWithResponses) DeleteMigrationRequestWithResponse(ctx context.Context, id string, requestId string, reqEditors ...RequestEditorFn) (*DeleteMigrationRequestResponse, error) {
-	rsp, err := c.DeleteMigrationRequest(ctx, id, requestId, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseDeleteMigrationRequestResponse(rsp)
-}
-
-// GetMigrationRequestWithResponse Gets the Connector migration request with the given ID
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with GET /connectors/{id}/migration-requests/{requestId} (the `GetMigrationRequest` operationId).
-func (c *ClientWithResponses) GetMigrationRequestWithResponse(ctx context.Context, id string, requestId string, reqEditors ...RequestEditorFn) (*GetMigrationRequestResponse, error) {
-	rsp, err := c.GetMigrationRequest(ctx, id, requestId, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseGetMigrationRequestResponse(rsp)
-}
-
-// GetMigrationSourcesWithResponse Lists the Versioned Process Groups that the Connector can be migrated from
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with GET /connectors/{id}/migration-sources (the `GetMigrationSources` operationId).
-func (c *ClientWithResponses) GetMigrationSourcesWithResponse(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*GetMigrationSourcesResponse, error) {
-	rsp, err := c.GetMigrationSources(ctx, id, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseGetMigrationSourcesResponse(rsp)
-}
-
-// GetConnectorProcessGroupStatusHistoryWithResponse Gets the status history for a process group within a connector
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with GET /connectors/{id}/process-groups/{processGroupId}/status/history (the `GetConnectorProcessGroupStatusHistory` operationId).
-func (c *ClientWithResponses) GetConnectorProcessGroupStatusHistoryWithResponse(ctx context.Context, id string, processGroupId string, reqEditors ...RequestEditorFn) (*GetConnectorProcessGroupStatusHistoryResponse, error) {
-	rsp, err := c.GetConnectorProcessGroupStatusHistory(ctx, id, processGroupId, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseGetConnectorProcessGroupStatusHistoryResponse(rsp)
-}
-
-// GetConnectorProcessorStateWithResponse Gets the state for a processor within a connector
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with GET /connectors/{id}/processors/{processorId}/state (the `GetConnectorProcessorState` operationId).
-func (c *ClientWithResponses) GetConnectorProcessorStateWithResponse(ctx context.Context, id string, processorId string, reqEditors ...RequestEditorFn) (*GetConnectorProcessorStateResponse, error) {
-	rsp, err := c.GetConnectorProcessorState(ctx, id, processorId, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseGetConnectorProcessorStateResponse(rsp)
-}
-
-// ClearConnectorProcessorStateWithBodyWithResponse Clears the state for a processor within a connector
-//
-// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /connectors/{id}/processors/{processorId}/state/clear-requests (the `ClearConnectorProcessorState` operationId).
-func (c *ClientWithResponses) ClearConnectorProcessorStateWithBodyWithResponse(ctx context.Context, id string, processorId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ClearConnectorProcessorStateResponse, error) {
-	rsp, err := c.ClearConnectorProcessorStateWithBody(ctx, id, processorId, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseClearConnectorProcessorStateResponse(rsp)
-}
-
-// ClearConnectorProcessorStateWithResponse Clears the state for a processor within a connector
-//
-// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /connectors/{id}/processors/{processorId}/state/clear-requests (the `ClearConnectorProcessorState` operationId).
-func (c *ClientWithResponses) ClearConnectorProcessorStateWithResponse(ctx context.Context, id string, processorId string, body ClearConnectorProcessorStateJSONRequestBody, reqEditors ...RequestEditorFn) (*ClearConnectorProcessorStateResponse, error) {
-	rsp, err := c.ClearConnectorProcessorState(ctx, id, processorId, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseClearConnectorProcessorStateResponse(rsp)
-}
-
-// GetConnectorProcessorStatusHistoryWithResponse Gets the status history for a processor within a connector
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with GET /connectors/{id}/processors/{processorId}/status/history (the `GetConnectorProcessorStatusHistory` operationId).
-func (c *ClientWithResponses) GetConnectorProcessorStatusHistoryWithResponse(ctx context.Context, id string, processorId string, reqEditors ...RequestEditorFn) (*GetConnectorProcessorStatusHistoryResponse, error) {
-	rsp, err := c.GetConnectorProcessorStatusHistory(ctx, id, processorId, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseGetConnectorProcessorStatusHistoryResponse(rsp)
-}
-
-// CreatePurgeRequestWithResponse Creates a request to purge the FlowFiles for this connector
-//
-// This will create a request to purge all FlowFiles from the connector. The connector must be in a STOPPED state before purging can begin. This is an asynchronous operation. The client should poll the returned URI to get the status of the purge request.
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /connectors/{id}/purge-requests (the `CreatePurgeRequest` operationId).
-func (c *ClientWithResponses) CreatePurgeRequestWithResponse(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*CreatePurgeRequestResponse, error) {
-	rsp, err := c.CreatePurgeRequest(ctx, id, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseCreatePurgeRequestResponse(rsp)
-}
-
-// RemovePurgeRequestWithResponse Cancels and/or removes a request to purge the FlowFiles for this connector
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with DELETE /connectors/{id}/purge-requests/{purge-request-id} (the `RemovePurgeRequest` operationId).
-func (c *ClientWithResponses) RemovePurgeRequestWithResponse(ctx context.Context, id string, purgeRequestId string, reqEditors ...RequestEditorFn) (*RemovePurgeRequestResponse, error) {
-	rsp, err := c.RemovePurgeRequest(ctx, id, purgeRequestId, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseRemovePurgeRequestResponse(rsp)
-}
-
-// GetPurgeRequestWithResponse Gets the current status of a purge request for the specified connector
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with GET /connectors/{id}/purge-requests/{purge-request-id} (the `GetPurgeRequest` operationId).
-func (c *ClientWithResponses) GetPurgeRequestWithResponse(ctx context.Context, id string, purgeRequestId string, reqEditors ...RequestEditorFn) (*GetPurgeRequestResponse, error) {
-	rsp, err := c.GetPurgeRequest(ctx, id, purgeRequestId, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseGetPurgeRequestResponse(rsp)
-}
-
-// GetConnectorRemoteProcessGroupStatusHistoryWithResponse Gets the status history for a remote process group within a connector
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with GET /connectors/{id}/remote-process-groups/{remoteProcessGroupId}/status/history (the `GetConnectorRemoteProcessGroupStatusHistory` operationId).
-func (c *ClientWithResponses) GetConnectorRemoteProcessGroupStatusHistoryWithResponse(ctx context.Context, id string, remoteProcessGroupId string, reqEditors ...RequestEditorFn) (*GetConnectorRemoteProcessGroupStatusHistoryResponse, error) {
-	rsp, err := c.GetConnectorRemoteProcessGroupStatusHistory(ctx, id, remoteProcessGroupId, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseGetConnectorRemoteProcessGroupStatusHistoryResponse(rsp)
-}
-
-// UpdateRunStatusWithBodyWithResponse Updates run status of a connector
-//
-// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with PUT /connectors/{id}/run-status (the `UpdateRunStatus` operationId).
-func (c *ClientWithResponses) UpdateRunStatusWithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateRunStatusResponse, error) {
-	rsp, err := c.UpdateRunStatusWithBody(ctx, id, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseUpdateRunStatusResponse(rsp)
-}
-
-// UpdateRunStatusWithResponse Updates run status of a connector
-//
-// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with PUT /connectors/{id}/run-status (the `UpdateRunStatus` operationId).
-func (c *ClientWithResponses) UpdateRunStatusWithResponse(ctx context.Context, id string, body UpdateRunStatusJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateRunStatusResponse, error) {
-	rsp, err := c.UpdateRunStatus(ctx, id, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseUpdateRunStatusResponse(rsp)
-}
-
-// SearchConnectorWithResponse Performs a search against the encapsulated process group of this connector using the specified search term
-//
-// Only search results from authorized components will be returned.
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with GET /connectors/{id}/search-results (the `SearchConnector` operationId).
-func (c *ClientWithResponses) SearchConnectorWithResponse(ctx context.Context, id string, params *SearchConnectorParams, reqEditors ...RequestEditorFn) (*SearchConnectorResponse, error) {
-	rsp, err := c.SearchConnector(ctx, id, params, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseSearchConnectorResponse(rsp)
-}
-
-// GetSecretsWithResponse Gets all secrets available for configuring a connector
-//
-// Returns metadata for all secrets available from all secret providers. This endpoint is used when configuring a connector to discover available secrets. Note: Actual secret values are not included in the response for security reasons.
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with GET /connectors/{id}/secrets (the `GetSecrets` operationId).
-func (c *ClientWithResponses) GetSecretsWithResponse(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*GetSecretsResponse, error) {
-	rsp, err := c.GetSecrets(ctx, id, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseGetSecretsResponse(rsp)
-}
-
-// GetConnectorStatusWithResponse Gets the status for the process group managed by a connector
-//
-// Returns the status for the process group managed by the specified connector. The status includes status for all descendent components. When invoked with recursive set to true, it will return the current status of every component in the connector's encapsulated flow.
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with GET /connectors/{id}/status (the `GetConnectorStatus` operationId).
-func (c *ClientWithResponses) GetConnectorStatusWithResponse(ctx context.Context, id string, params *GetConnectorStatusParams, reqEditors ...RequestEditorFn) (*GetConnectorStatusResponse, error) {
-	rsp, err := c.GetConnectorStatus(ctx, id, params, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseGetConnectorStatusResponse(rsp)
-}
-
-// EndTroubleshootingWithResponse Transitions a Connector out of Troubleshooting mode
-//
-// Ends Troubleshooting mode for the Connector, restoring the authoritative flow. All components in the managed flow must be stopped and disabled, and the managed flow must have no active tasks.
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with DELETE /connectors/{id}/troubleshooting (the `EndTroubleshooting` operationId).
-func (c *ClientWithResponses) EndTroubleshootingWithResponse(ctx context.Context, id string, params *EndTroubleshootingParams, reqEditors ...RequestEditorFn) (*EndTroubleshootingResponse, error) {
-	rsp, err := c.EndTroubleshooting(ctx, id, params, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseEndTroubleshootingResponse(rsp)
-}
-
-// EnterTroubleshootingWithBodyWithResponse Transitions a Connector into Troubleshooting mode
-//
-// Places the Connector into Troubleshooting mode so that its managed flow may be directly modified. Standard lifecycle operations are disabled while in Troubleshooting mode.
-//
-// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /connectors/{id}/troubleshooting (the `EnterTroubleshooting` operationId).
-func (c *ClientWithResponses) EnterTroubleshootingWithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*EnterTroubleshootingResponse, error) {
-	rsp, err := c.EnterTroubleshootingWithBody(ctx, id, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseEnterTroubleshootingResponse(rsp)
-}
-
-// EnterTroubleshootingWithResponse Transitions a Connector into Troubleshooting mode
-//
-// Places the Connector into Troubleshooting mode so that its managed flow may be directly modified. Standard lifecycle operations are disabled while in Troubleshooting mode.
-//
-// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /connectors/{id}/troubleshooting (the `EnterTroubleshooting` operationId).
-func (c *ClientWithResponses) EnterTroubleshootingWithResponse(ctx context.Context, id string, body EnterTroubleshootingJSONRequestBody, reqEditors ...RequestEditorFn) (*EnterTroubleshootingResponse, error) {
-	rsp, err := c.EnterTroubleshooting(ctx, id, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseEnterTroubleshootingResponse(rsp)
-}
-
-// DiscardConnectorUpdateWithResponse Discards the working configuration of a connector
-//
-// This will discard any pending configuration changes for the connector and revert to the last applied configuration.
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with DELETE /connectors/{id}/working-configuration (the `DiscardConnectorUpdate` operationId).
-func (c *ClientWithResponses) DiscardConnectorUpdateWithResponse(ctx context.Context, id string, params *DiscardConnectorUpdateParams, reqEditors ...RequestEditorFn) (*DiscardConnectorUpdateResponse, error) {
-	rsp, err := c.DiscardConnectorUpdate(ctx, id, params, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseDiscardConnectorUpdateResponse(rsp)
-}
-
 // RemoveControllerServiceWithResponse Deletes a controller service
 //
 // Returns a wrapper object for the known response body format(s).
@@ -50372,32 +39471,6 @@ func (c *ClientWithResponses) UpdateControllerServiceWithResponse(ctx context.Co
 		return nil, err
 	}
 	return ParseUpdateControllerServiceResponse(rsp)
-}
-
-// ClearBulletinsWithBodyWithResponse Clears bulletins for a controller service
-//
-// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /controller-services/{id}/bulletins/clear-requests (the `ClearBulletins` operationId).
-func (c *ClientWithResponses) ClearBulletinsWithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ClearBulletinsResponse, error) {
-	rsp, err := c.ClearBulletinsWithBody(ctx, id, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseClearBulletinsResponse(rsp)
-}
-
-// ClearBulletinsWithResponse Clears bulletins for a controller service
-//
-// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /controller-services/{id}/bulletins/clear-requests (the `ClearBulletins` operationId).
-func (c *ClientWithResponses) ClearBulletinsWithResponse(ctx context.Context, id string, body ClearBulletinsJSONRequestBody, reqEditors ...RequestEditorFn) (*ClearBulletinsResponse, error) {
-	rsp, err := c.ClearBulletins(ctx, id, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseClearBulletinsResponse(rsp)
 }
 
 // AnalyzeConfigurationWithBodyWithResponse Performs analysis of the component's configuration, providing information about which attributes are referenced.
@@ -50538,30 +39611,30 @@ func (c *ClientWithResponses) UpdateControllerServiceReferencesWithResponse(ctx 
 	return ParseUpdateControllerServiceReferencesResponse(rsp)
 }
 
-// UpdateRunStatus2WithBodyWithResponse Updates run status of a controller service
+// UpdateRunStatus1WithBodyWithResponse Updates run status of a controller service
 //
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
-// Corresponds with PUT /controller-services/{id}/run-status (the `UpdateRunStatus2` operationId).
-func (c *ClientWithResponses) UpdateRunStatus2WithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateRunStatus2Response, error) {
-	rsp, err := c.UpdateRunStatus2WithBody(ctx, id, contentType, body, reqEditors...)
+// Corresponds with PUT /controller-services/{id}/run-status (the `UpdateRunStatus1` operationId).
+func (c *ClientWithResponses) UpdateRunStatus1WithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateRunStatus1Response, error) {
+	rsp, err := c.UpdateRunStatus1WithBody(ctx, id, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
-	return ParseUpdateRunStatus2Response(rsp)
+	return ParseUpdateRunStatus1Response(rsp)
 }
 
-// UpdateRunStatus2WithResponse Updates run status of a controller service
+// UpdateRunStatus1WithResponse Updates run status of a controller service
 //
 // Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 //
-// Corresponds with PUT /controller-services/{id}/run-status (the `UpdateRunStatus2` operationId).
-func (c *ClientWithResponses) UpdateRunStatus2WithResponse(ctx context.Context, id string, body UpdateRunStatus2JSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateRunStatus2Response, error) {
-	rsp, err := c.UpdateRunStatus2(ctx, id, body, reqEditors...)
+// Corresponds with PUT /controller-services/{id}/run-status (the `UpdateRunStatus1` operationId).
+func (c *ClientWithResponses) UpdateRunStatus1WithResponse(ctx context.Context, id string, body UpdateRunStatus1JSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateRunStatus1Response, error) {
+	rsp, err := c.UpdateRunStatus1(ctx, id, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
-	return ParseUpdateRunStatus2Response(rsp)
+	return ParseUpdateRunStatus1Response(rsp)
 }
 
 // GetStateWithResponse Gets the state for a controller service
@@ -50709,7 +39782,7 @@ func (c *ClientWithResponses) GetControllerConfigWithResponse(ctx context.Contex
 	return ParseGetControllerConfigResponse(rsp)
 }
 
-// UpdateControllerConfigWithBodyWithResponse Updates the configuration for this NiFi
+// UpdateControllerConfigWithBodyWithResponse Retrieves the configuration for this NiFi
 //
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
@@ -50722,7 +39795,7 @@ func (c *ClientWithResponses) UpdateControllerConfigWithBodyWithResponse(ctx con
 	return ParseUpdateControllerConfigResponse(rsp)
 }
 
-// UpdateControllerConfigWithResponse Updates the configuration for this NiFi
+// UpdateControllerConfigWithResponse Retrieves the configuration for this NiFi
 //
 // Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 //
@@ -50852,32 +39925,6 @@ func (c *ClientWithResponses) UpdateFlowAnalysisRuleWithResponse(ctx context.Con
 	return ParseUpdateFlowAnalysisRuleResponse(rsp)
 }
 
-// ClearFlowAnalysisRuleBulletinsWithBodyWithResponse Clears bulletins for a flow analysis rule
-//
-// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /controller/flow-analysis-rules/{id}/bulletins/clear-requests (the `ClearFlowAnalysisRuleBulletins` operationId).
-func (c *ClientWithResponses) ClearFlowAnalysisRuleBulletinsWithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ClearFlowAnalysisRuleBulletinsResponse, error) {
-	rsp, err := c.ClearFlowAnalysisRuleBulletinsWithBody(ctx, id, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseClearFlowAnalysisRuleBulletinsResponse(rsp)
-}
-
-// ClearFlowAnalysisRuleBulletinsWithResponse Clears bulletins for a flow analysis rule
-//
-// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /controller/flow-analysis-rules/{id}/bulletins/clear-requests (the `ClearFlowAnalysisRuleBulletins` operationId).
-func (c *ClientWithResponses) ClearFlowAnalysisRuleBulletinsWithResponse(ctx context.Context, id string, body ClearFlowAnalysisRuleBulletinsJSONRequestBody, reqEditors ...RequestEditorFn) (*ClearFlowAnalysisRuleBulletinsResponse, error) {
-	rsp, err := c.ClearFlowAnalysisRuleBulletins(ctx, id, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseClearFlowAnalysisRuleBulletinsResponse(rsp)
-}
-
 // AnalyzeFlowAnalysisRuleConfigurationWithBodyWithResponse Performs analysis of the component's configuration, providing information about which attributes are referenced.
 //
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
@@ -50977,30 +40024,30 @@ func (c *ClientWithResponses) GetFlowAnalysisRulePropertyDescriptorWithResponse(
 	return ParseGetFlowAnalysisRulePropertyDescriptorResponse(rsp)
 }
 
-// UpdateRunStatus1WithBodyWithResponse Updates run status of a flow analysis rule
+// UpdateRunStatusWithBodyWithResponse Updates run status of a flow analysis rule
 //
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
-// Corresponds with PUT /controller/flow-analysis-rules/{id}/run-status (the `UpdateRunStatus1` operationId).
-func (c *ClientWithResponses) UpdateRunStatus1WithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateRunStatus1Response, error) {
-	rsp, err := c.UpdateRunStatus1WithBody(ctx, id, contentType, body, reqEditors...)
+// Corresponds with PUT /controller/flow-analysis-rules/{id}/run-status (the `UpdateRunStatus` operationId).
+func (c *ClientWithResponses) UpdateRunStatusWithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateRunStatusResponse, error) {
+	rsp, err := c.UpdateRunStatusWithBody(ctx, id, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
-	return ParseUpdateRunStatus1Response(rsp)
+	return ParseUpdateRunStatusResponse(rsp)
 }
 
-// UpdateRunStatus1WithResponse Updates run status of a flow analysis rule
+// UpdateRunStatusWithResponse Updates run status of a flow analysis rule
 //
 // Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 //
-// Corresponds with PUT /controller/flow-analysis-rules/{id}/run-status (the `UpdateRunStatus1` operationId).
-func (c *ClientWithResponses) UpdateRunStatus1WithResponse(ctx context.Context, id string, body UpdateRunStatus1JSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateRunStatus1Response, error) {
-	rsp, err := c.UpdateRunStatus1(ctx, id, body, reqEditors...)
+// Corresponds with PUT /controller/flow-analysis-rules/{id}/run-status (the `UpdateRunStatus` operationId).
+func (c *ClientWithResponses) UpdateRunStatusWithResponse(ctx context.Context, id string, body UpdateRunStatusJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateRunStatusResponse, error) {
+	rsp, err := c.UpdateRunStatus(ctx, id, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
-	return ParseUpdateRunStatus1Response(rsp)
+	return ParseUpdateRunStatusResponse(rsp)
 }
 
 // GetFlowAnalysisRuleStateWithResponse Gets the state for a flow analysis rule
@@ -51159,32 +40206,6 @@ func (c *ClientWithResponses) CreateParameterProviderWithResponse(ctx context.Co
 	return ParseCreateParameterProviderResponse(rsp)
 }
 
-// ClearParameterProviderBulletinsWithBodyWithResponse Clears bulletins for a parameter provider
-//
-// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /controller/parameter-providers/{id}/bulletins/clear-requests (the `ClearParameterProviderBulletins` operationId).
-func (c *ClientWithResponses) ClearParameterProviderBulletinsWithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ClearParameterProviderBulletinsResponse, error) {
-	rsp, err := c.ClearParameterProviderBulletinsWithBody(ctx, id, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseClearParameterProviderBulletinsResponse(rsp)
-}
-
-// ClearParameterProviderBulletinsWithResponse Clears bulletins for a parameter provider
-//
-// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /controller/parameter-providers/{id}/bulletins/clear-requests (the `ClearParameterProviderBulletins` operationId).
-func (c *ClientWithResponses) ClearParameterProviderBulletinsWithResponse(ctx context.Context, id string, body ClearParameterProviderBulletinsJSONRequestBody, reqEditors ...RequestEditorFn) (*ClearParameterProviderBulletinsResponse, error) {
-	rsp, err := c.ClearParameterProviderBulletins(ctx, id, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseClearParameterProviderBulletinsResponse(rsp)
-}
-
 // GetFlowRegistryClientsWithResponse Gets the listing of available flow registry clients
 //
 // Returns a wrapper object for the known response body format(s).
@@ -51276,118 +40297,6 @@ func (c *ClientWithResponses) UpdateFlowRegistryClientWithResponse(ctx context.C
 	return ParseUpdateFlowRegistryClientResponse(rsp)
 }
 
-// ClearRegistryClientBulletinsWithBodyWithResponse Clears bulletins for a registry client
-//
-// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /controller/registry-clients/{id}/bulletins/clear-requests (the `ClearRegistryClientBulletins` operationId).
-func (c *ClientWithResponses) ClearRegistryClientBulletinsWithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ClearRegistryClientBulletinsResponse, error) {
-	rsp, err := c.ClearRegistryClientBulletinsWithBody(ctx, id, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseClearRegistryClientBulletinsResponse(rsp)
-}
-
-// ClearRegistryClientBulletinsWithResponse Clears bulletins for a registry client
-//
-// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /controller/registry-clients/{id}/bulletins/clear-requests (the `ClearRegistryClientBulletins` operationId).
-func (c *ClientWithResponses) ClearRegistryClientBulletinsWithResponse(ctx context.Context, id string, body ClearRegistryClientBulletinsJSONRequestBody, reqEditors ...RequestEditorFn) (*ClearRegistryClientBulletinsResponse, error) {
-	rsp, err := c.ClearRegistryClientBulletins(ctx, id, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseClearRegistryClientBulletinsResponse(rsp)
-}
-
-// AnalyzeFlowRegistryClientConfigurationWithBodyWithResponse Performs analysis of the component's configuration, providing information about which attributes are referenced.
-//
-// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /controller/registry-clients/{id}/config/analysis (the `AnalyzeFlowRegistryClientConfiguration` operationId).
-func (c *ClientWithResponses) AnalyzeFlowRegistryClientConfigurationWithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*AnalyzeFlowRegistryClientConfigurationResponse, error) {
-	rsp, err := c.AnalyzeFlowRegistryClientConfigurationWithBody(ctx, id, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseAnalyzeFlowRegistryClientConfigurationResponse(rsp)
-}
-
-// AnalyzeFlowRegistryClientConfigurationWithResponse Performs analysis of the component's configuration, providing information about which attributes are referenced.
-//
-// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /controller/registry-clients/{id}/config/analysis (the `AnalyzeFlowRegistryClientConfiguration` operationId).
-func (c *ClientWithResponses) AnalyzeFlowRegistryClientConfigurationWithResponse(ctx context.Context, id string, body AnalyzeFlowRegistryClientConfigurationJSONRequestBody, reqEditors ...RequestEditorFn) (*AnalyzeFlowRegistryClientConfigurationResponse, error) {
-	rsp, err := c.AnalyzeFlowRegistryClientConfiguration(ctx, id, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseAnalyzeFlowRegistryClientConfigurationResponse(rsp)
-}
-
-// SubmitRegistryClientConfigVerificationRequestWithBodyWithResponse Performs verification of the Registry Client's configuration
-//
-// Initiates verification of a Registry Client configuration. The request returns immediately with a request entity while verification runs asynchronously. The client should poll /controller/registry-clients/{clientId}/config/verification-requests/{requestId} for status and DELETE the request once verification completes.
-//
-// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /controller/registry-clients/{id}/config/verification-requests (the `SubmitRegistryClientConfigVerificationRequest` operationId).
-func (c *ClientWithResponses) SubmitRegistryClientConfigVerificationRequestWithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*SubmitRegistryClientConfigVerificationRequestResponse, error) {
-	rsp, err := c.SubmitRegistryClientConfigVerificationRequestWithBody(ctx, id, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseSubmitRegistryClientConfigVerificationRequestResponse(rsp)
-}
-
-// SubmitRegistryClientConfigVerificationRequestWithResponse Performs verification of the Registry Client's configuration
-//
-// Initiates verification of a Registry Client configuration. The request returns immediately with a request entity while verification runs asynchronously. The client should poll /controller/registry-clients/{clientId}/config/verification-requests/{requestId} for status and DELETE the request once verification completes.
-//
-// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /controller/registry-clients/{id}/config/verification-requests (the `SubmitRegistryClientConfigVerificationRequest` operationId).
-func (c *ClientWithResponses) SubmitRegistryClientConfigVerificationRequestWithResponse(ctx context.Context, id string, body SubmitRegistryClientConfigVerificationRequestJSONRequestBody, reqEditors ...RequestEditorFn) (*SubmitRegistryClientConfigVerificationRequestResponse, error) {
-	rsp, err := c.SubmitRegistryClientConfigVerificationRequest(ctx, id, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseSubmitRegistryClientConfigVerificationRequestResponse(rsp)
-}
-
-// DeleteRegistryClientVerificationRequestWithResponse Deletes the Verification Request with the given ID
-//
-// Deletes the Verification Request with the given ID. After a request is created, it is expected that the client will properly clean up the request by DELETE'ing it, once the Verification process has completed. If the request is deleted before the request completes, then the Verification request will finish the step that it is currently performing and then will cancel any subsequent steps.
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with DELETE /controller/registry-clients/{id}/config/verification-requests/{requestId} (the `DeleteRegistryClientVerificationRequest` operationId).
-func (c *ClientWithResponses) DeleteRegistryClientVerificationRequestWithResponse(ctx context.Context, id string, requestId string, reqEditors ...RequestEditorFn) (*DeleteRegistryClientVerificationRequestResponse, error) {
-	rsp, err := c.DeleteRegistryClientVerificationRequest(ctx, id, requestId, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseDeleteRegistryClientVerificationRequestResponse(rsp)
-}
-
-// GetRegistryClientVerificationRequestWithResponse Returns the Verification Request with the given ID
-//
-// Returns the Verification Request with the given ID. Once a Verification Request has been created, that request can subsequently be retrieved via this endpoint, and the request that is fetched will contain the updated state, such as percent complete, the current state of the request, and any failures.
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with GET /controller/registry-clients/{id}/config/verification-requests/{requestId} (the `GetRegistryClientVerificationRequest` operationId).
-func (c *ClientWithResponses) GetRegistryClientVerificationRequestWithResponse(ctx context.Context, id string, requestId string, reqEditors ...RequestEditorFn) (*GetRegistryClientVerificationRequestResponse, error) {
-	rsp, err := c.GetRegistryClientVerificationRequest(ctx, id, requestId, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseGetRegistryClientVerificationRequestResponse(rsp)
-}
-
 // GetPropertyDescriptorWithResponse Gets a flow registry client property descriptor
 //
 // Returns a wrapper object for the known response body format(s).
@@ -51401,7 +40310,7 @@ func (c *ClientWithResponses) GetPropertyDescriptorWithResponse(ctx context.Cont
 	return ParseGetPropertyDescriptorResponse(rsp)
 }
 
-// GetRegistryClientTypesWithResponse Retrieves the types of flow registry clients that this NiFi supports
+// GetRegistryClientTypesWithResponse Retrieves the types of flow  that this NiFi supports
 //
 // Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 //
@@ -51554,7 +40463,7 @@ func (c *ClientWithResponses) ExtendInputPortTransactionTTLWithBodyWithResponse(
 	return ParseExtendInputPortTransactionTTLResponse(rsp)
 }
 
-// ReceiveFlowFilesWithBodyWithResponse Transfer FlowFiles to the input port
+// ReceiveFlowFilesWithBodyWithResponse Transfer flow files to the input port
 //
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
@@ -51593,7 +40502,7 @@ func (c *ClientWithResponses) ExtendOutputPortTransactionTTLWithBodyWithResponse
 	return ParseExtendOutputPortTransactionTTLResponse(rsp)
 }
 
-// TransferFlowFilesWithBodyWithResponse Transfer FlowFiles from the output port
+// TransferFlowFilesWithBodyWithResponse Transfer flow files from the output port
 //
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
@@ -51766,49 +40675,6 @@ func (c *ClientWithResponses) GetConnectionStatusHistoryWithResponse(ctx context
 	return ParseGetConnectionStatusHistoryResponse(rsp)
 }
 
-// GetConnectorDefinitionWithResponse Retrieves the Connector Definition for the specified component type.
-//
-// Note: This endpoint is subject to change as NiFi and it's REST API evolve.
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with GET /flow/connector-definition/{group}/{artifact}/{version}/{type} (the `GetConnectorDefinition` operationId).
-func (c *ClientWithResponses) GetConnectorDefinitionWithResponse(ctx context.Context, group string, artifact string, version string, pType string, reqEditors ...RequestEditorFn) (*GetConnectorDefinitionResponse, error) {
-	rsp, err := c.GetConnectorDefinition(ctx, group, artifact, version, pType, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseGetConnectorDefinitionResponse(rsp)
-}
-
-// GetConnectorTypesWithResponse Retrieves the types of connectors that this NiFi supports
-//
-// Note: This endpoint is subject to change as NiFi and it's REST API evolve.
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with GET /flow/connector-types (the `GetConnectorTypes` operationId).
-func (c *ClientWithResponses) GetConnectorTypesWithResponse(ctx context.Context, params *GetConnectorTypesParams, reqEditors ...RequestEditorFn) (*GetConnectorTypesResponse, error) {
-	rsp, err := c.GetConnectorTypes(ctx, params, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseGetConnectorTypesResponse(rsp)
-}
-
-// GetConnectorsWithResponse Gets all connectors
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with GET /flow/connectors (the `GetConnectors` operationId).
-func (c *ClientWithResponses) GetConnectorsWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*GetConnectorsResponse, error) {
-	rsp, err := c.GetConnectors(ctx, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseGetConnectorsResponse(rsp)
-}
-
 // GetContentViewersWithResponse Retrieves the registered content viewers
 //
 // Returns a wrapper object for the known response body format(s).
@@ -51949,21 +40815,6 @@ func (c *ClientWithResponses) GetFlowAnalysisResultsWithResponse(ctx context.Con
 	return ParseGetFlowAnalysisResultsResponse(rsp)
 }
 
-// GetFlowRegistryClientDefinitionWithResponse Retrieves the Flow Registry Client Definition for the specified component type.
-//
-// Note: This endpoint is subject to change as NiFi and it's REST API evolve.
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with GET /flow/flow-registry-client-definition/{group}/{artifact}/{version}/{type} (the `GetFlowRegistryClientDefinition` operationId).
-func (c *ClientWithResponses) GetFlowRegistryClientDefinitionWithResponse(ctx context.Context, group string, artifact string, version string, pType string, reqEditors ...RequestEditorFn) (*GetFlowRegistryClientDefinitionResponse, error) {
-	rsp, err := c.GetFlowRegistryClientDefinition(ctx, group, artifact, version, pType, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseGetFlowRegistryClientDefinitionResponse(rsp)
-}
-
 // QueryHistoryWithResponse Gets configuration history
 //
 // Note: This endpoint is subject to change as NiFi and it's REST API evolve.
@@ -52020,19 +40871,6 @@ func (c *ClientWithResponses) GetInputPortStatusWithResponse(ctx context.Context
 		return nil, err
 	}
 	return ParseGetInputPortStatusResponse(rsp)
-}
-
-// GetListenPortsWithResponse Gets all listen ports configured on this NiFi that the current user has access to
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with GET /flow/listen-ports (the `GetListenPorts` operationId).
-func (c *ClientWithResponses) GetListenPortsWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*GetListenPortsResponse, error) {
-	rsp, err := c.GetListenPorts(ctx, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseGetListenPortsResponse(rsp)
 }
 
 // GetFlowMetricsWithResponse Gets all metrics for the flow from a particular node
@@ -52132,19 +40970,19 @@ func (c *ClientWithResponses) GetPrioritizersWithResponse(ctx context.Context, r
 	return ParseGetPrioritizersResponse(rsp)
 }
 
-// GetFlow1WithResponse Gets a process group
+// GetFlowWithResponse Gets a process group
 //
 // If the uiOnly query parameter is provided with a value of true, the returned entity may only contain fields that are necessary for rendering the NiFi User Interface. As such, the selected fields may change at any time, even during incremental releases, without warning. As a result, this parameter should not be provided by any client other than the UI.
 //
 // Returns a wrapper object for the known response body format(s).
 //
-// Corresponds with GET /flow/process-groups/{id} (the `GetFlow1` operationId).
-func (c *ClientWithResponses) GetFlow1WithResponse(ctx context.Context, id string, params *GetFlow1Params, reqEditors ...RequestEditorFn) (*GetFlow1Response, error) {
-	rsp, err := c.GetFlow1(ctx, id, params, reqEditors...)
+// Corresponds with GET /flow/process-groups/{id} (the `GetFlow` operationId).
+func (c *ClientWithResponses) GetFlowWithResponse(ctx context.Context, id string, params *GetFlowParams, reqEditors ...RequestEditorFn) (*GetFlowResponse, error) {
+	rsp, err := c.GetFlow(ctx, id, params, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
-	return ParseGetFlow1Response(rsp)
+	return ParseGetFlowResponse(rsp)
 }
 
 // ScheduleComponentsWithBodyWithResponse Schedule or unschedule components in the specified Process Group.
@@ -52184,32 +41022,6 @@ func (c *ClientWithResponses) GetBreadcrumbsWithResponse(ctx context.Context, id
 		return nil, err
 	}
 	return ParseGetBreadcrumbsResponse(rsp)
-}
-
-// ClearBulletins1WithBodyWithResponse Clears bulletins for components in the specified Process Group.
-//
-// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /flow/process-groups/{id}/bulletins/clear-requests (the `ClearBulletins1` operationId).
-func (c *ClientWithResponses) ClearBulletins1WithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ClearBulletins1Response, error) {
-	rsp, err := c.ClearBulletins1WithBody(ctx, id, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseClearBulletins1Response(rsp)
-}
-
-// ClearBulletins1WithResponse Clears bulletins for components in the specified Process Group.
-//
-// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /flow/process-groups/{id}/bulletins/clear-requests (the `ClearBulletins1` operationId).
-func (c *ClientWithResponses) ClearBulletins1WithResponse(ctx context.Context, id string, body ClearBulletins1JSONRequestBody, reqEditors ...RequestEditorFn) (*ClearBulletins1Response, error) {
-	rsp, err := c.ClearBulletins1(ctx, id, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseClearBulletins1Response(rsp)
 }
 
 // GetControllerServicesFromGroupWithResponse Gets all controller services
@@ -52566,21 +41378,6 @@ func (c *ClientWithResponses) GetControllerStatusWithResponse(ctx context.Contex
 	return ParseGetControllerStatusResponse(rsp)
 }
 
-// GetStepDocumentationWithResponse Retrieves the step documentation for the specified Connector configuration step.
-//
-// Note: This endpoint is subject to change as NiFi and it's REST API evolve.
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with GET /flow/steps/{group}/{artifact}/{version}/{connectorType}/{stepName} (the `GetStepDocumentation` operationId).
-func (c *ClientWithResponses) GetStepDocumentationWithResponse(ctx context.Context, group string, artifact string, version string, connectorType string, stepName string, reqEditors ...RequestEditorFn) (*GetStepDocumentationResponse, error) {
-	rsp, err := c.GetStepDocumentation(ctx, group, artifact, version, connectorType, stepName, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseGetStepDocumentationResponse(rsp)
-}
-
 // CreateDropRequestWithResponse Creates a request to drop the contents of the queue in this connection.
 //
 // Returns a wrapper object for the known response body format(s).
@@ -52789,56 +41586,30 @@ func (c *ClientWithResponses) UpdateInputPortWithResponse(ctx context.Context, i
 	return ParseUpdateInputPortResponse(rsp)
 }
 
-// ClearBulletins2WithBodyWithResponse Clears bulletins for an input port
+// UpdateRunStatus2WithBodyWithResponse Updates run status of an input-port
 //
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
-// Corresponds with POST /input-ports/{id}/bulletins/clear-requests (the `ClearBulletins2` operationId).
-func (c *ClientWithResponses) ClearBulletins2WithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ClearBulletins2Response, error) {
-	rsp, err := c.ClearBulletins2WithBody(ctx, id, contentType, body, reqEditors...)
+// Corresponds with PUT /input-ports/{id}/run-status (the `UpdateRunStatus2` operationId).
+func (c *ClientWithResponses) UpdateRunStatus2WithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateRunStatus2Response, error) {
+	rsp, err := c.UpdateRunStatus2WithBody(ctx, id, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
-	return ParseClearBulletins2Response(rsp)
+	return ParseUpdateRunStatus2Response(rsp)
 }
 
-// ClearBulletins2WithResponse Clears bulletins for an input port
+// UpdateRunStatus2WithResponse Updates run status of an input-port
 //
 // Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 //
-// Corresponds with POST /input-ports/{id}/bulletins/clear-requests (the `ClearBulletins2` operationId).
-func (c *ClientWithResponses) ClearBulletins2WithResponse(ctx context.Context, id string, body ClearBulletins2JSONRequestBody, reqEditors ...RequestEditorFn) (*ClearBulletins2Response, error) {
-	rsp, err := c.ClearBulletins2(ctx, id, body, reqEditors...)
+// Corresponds with PUT /input-ports/{id}/run-status (the `UpdateRunStatus2` operationId).
+func (c *ClientWithResponses) UpdateRunStatus2WithResponse(ctx context.Context, id string, body UpdateRunStatus2JSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateRunStatus2Response, error) {
+	rsp, err := c.UpdateRunStatus2(ctx, id, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
-	return ParseClearBulletins2Response(rsp)
-}
-
-// UpdateRunStatus3WithBodyWithResponse Updates run status of an input-port
-//
-// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with PUT /input-ports/{id}/run-status (the `UpdateRunStatus3` operationId).
-func (c *ClientWithResponses) UpdateRunStatus3WithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateRunStatus3Response, error) {
-	rsp, err := c.UpdateRunStatus3WithBody(ctx, id, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseUpdateRunStatus3Response(rsp)
-}
-
-// UpdateRunStatus3WithResponse Updates run status of an input-port
-//
-// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with PUT /input-ports/{id}/run-status (the `UpdateRunStatus3` operationId).
-func (c *ClientWithResponses) UpdateRunStatus3WithResponse(ctx context.Context, id string, body UpdateRunStatus3JSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateRunStatus3Response, error) {
-	rsp, err := c.UpdateRunStatus3(ctx, id, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseUpdateRunStatus3Response(rsp)
+	return ParseUpdateRunStatus2Response(rsp)
 }
 
 // RemoveLabelWithResponse Deletes a label
@@ -52945,56 +41716,30 @@ func (c *ClientWithResponses) UpdateOutputPortWithResponse(ctx context.Context, 
 	return ParseUpdateOutputPortResponse(rsp)
 }
 
-// ClearBulletins3WithBodyWithResponse Clears bulletins for an output port
+// UpdateRunStatus3WithBodyWithResponse Updates run status of an output-port
 //
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
-// Corresponds with POST /output-ports/{id}/bulletins/clear-requests (the `ClearBulletins3` operationId).
-func (c *ClientWithResponses) ClearBulletins3WithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ClearBulletins3Response, error) {
-	rsp, err := c.ClearBulletins3WithBody(ctx, id, contentType, body, reqEditors...)
+// Corresponds with PUT /output-ports/{id}/run-status (the `UpdateRunStatus3` operationId).
+func (c *ClientWithResponses) UpdateRunStatus3WithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateRunStatus3Response, error) {
+	rsp, err := c.UpdateRunStatus3WithBody(ctx, id, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
-	return ParseClearBulletins3Response(rsp)
+	return ParseUpdateRunStatus3Response(rsp)
 }
 
-// ClearBulletins3WithResponse Clears bulletins for an output port
+// UpdateRunStatus3WithResponse Updates run status of an output-port
 //
 // Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 //
-// Corresponds with POST /output-ports/{id}/bulletins/clear-requests (the `ClearBulletins3` operationId).
-func (c *ClientWithResponses) ClearBulletins3WithResponse(ctx context.Context, id string, body ClearBulletins3JSONRequestBody, reqEditors ...RequestEditorFn) (*ClearBulletins3Response, error) {
-	rsp, err := c.ClearBulletins3(ctx, id, body, reqEditors...)
+// Corresponds with PUT /output-ports/{id}/run-status (the `UpdateRunStatus3` operationId).
+func (c *ClientWithResponses) UpdateRunStatus3WithResponse(ctx context.Context, id string, body UpdateRunStatus3JSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateRunStatus3Response, error) {
+	rsp, err := c.UpdateRunStatus3(ctx, id, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
-	return ParseClearBulletins3Response(rsp)
-}
-
-// UpdateRunStatus4WithBodyWithResponse Updates run status of an output-port
-//
-// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with PUT /output-ports/{id}/run-status (the `UpdateRunStatus4` operationId).
-func (c *ClientWithResponses) UpdateRunStatus4WithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateRunStatus4Response, error) {
-	rsp, err := c.UpdateRunStatus4WithBody(ctx, id, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseUpdateRunStatus4Response(rsp)
-}
-
-// UpdateRunStatus4WithResponse Updates run status of an output-port
-//
-// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with PUT /output-ports/{id}/run-status (the `UpdateRunStatus4` operationId).
-func (c *ClientWithResponses) UpdateRunStatus4WithResponse(ctx context.Context, id string, body UpdateRunStatus4JSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateRunStatus4Response, error) {
-	rsp, err := c.UpdateRunStatus4(ctx, id, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseUpdateRunStatus4Response(rsp)
+	return ParseUpdateRunStatus3Response(rsp)
 }
 
 // CreateParameterContextWithBodyWithResponse Create a Parameter Context
@@ -53023,32 +41768,34 @@ func (c *ClientWithResponses) CreateParameterContextWithResponse(ctx context.Con
 	return ParseCreateParameterContextResponse(rsp)
 }
 
-// GetAssets1WithResponse Lists the assets that belong to the Parameter Context with the given ID.
+// GetAssetsWithResponse Lists the assets that belong to the Parameter Context with the given ID
+//
+// Lists the assets that belong to the Parameter Context with the given ID.
 //
 // Returns a wrapper object for the known response body format(s).
 //
-// Corresponds with GET /parameter-contexts/{contextId}/assets (the `GetAssets1` operationId).
-func (c *ClientWithResponses) GetAssets1WithResponse(ctx context.Context, contextId string, reqEditors ...RequestEditorFn) (*GetAssets1Response, error) {
-	rsp, err := c.GetAssets1(ctx, contextId, reqEditors...)
+// Corresponds with GET /parameter-contexts/{contextId}/assets (the `GetAssets` operationId).
+func (c *ClientWithResponses) GetAssetsWithResponse(ctx context.Context, contextId string, reqEditors ...RequestEditorFn) (*GetAssetsResponse, error) {
+	rsp, err := c.GetAssets(ctx, contextId, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
-	return ParseGetAssets1Response(rsp)
+	return ParseGetAssetsResponse(rsp)
 }
 
-// CreateAsset1WithBodyWithResponse Creates a new Asset in the given Parameter Context
+// CreateAssetWithBodyWithResponse Creates a new Asset in the given Parameter Context
 //
 // This endpoint will create a new Asset in the given Parameter Context. The Asset will be created with the given name and the contents of the file that is uploaded. The Asset will be created in the given Parameter Context, and will be available for use by any component that references the Parameter Context.
 //
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
-// Corresponds with POST /parameter-contexts/{contextId}/assets (the `CreateAsset1` operationId).
-func (c *ClientWithResponses) CreateAsset1WithBodyWithResponse(ctx context.Context, contextId string, params *CreateAsset1Params, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CreateAsset1Response, error) {
-	rsp, err := c.CreateAsset1WithBody(ctx, contextId, params, contentType, body, reqEditors...)
+// Corresponds with POST /parameter-contexts/{contextId}/assets (the `CreateAsset` operationId).
+func (c *ClientWithResponses) CreateAssetWithBodyWithResponse(ctx context.Context, contextId string, params *CreateAssetParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CreateAssetResponse, error) {
+	rsp, err := c.CreateAssetWithBody(ctx, contextId, params, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
-	return ParseCreateAsset1Response(rsp)
+	return ParseCreateAssetResponse(rsp)
 }
 
 // DeleteAssetWithResponse Deletes an Asset from the given Parameter Context
@@ -53066,17 +41813,17 @@ func (c *ClientWithResponses) DeleteAssetWithResponse(ctx context.Context, conte
 	return ParseDeleteAssetResponse(rsp)
 }
 
-// GetAssetContent1WithResponse Retrieves the content of the asset with the given id
+// GetAssetContentWithResponse Retrieves the content of the asset with the given id
 //
 // Returns a wrapper object for the known response body format(s).
 //
-// Corresponds with GET /parameter-contexts/{contextId}/assets/{assetId} (the `GetAssetContent1` operationId).
-func (c *ClientWithResponses) GetAssetContent1WithResponse(ctx context.Context, contextId string, assetId string, reqEditors ...RequestEditorFn) (*GetAssetContent1Response, error) {
-	rsp, err := c.GetAssetContent1(ctx, contextId, assetId, reqEditors...)
+// Corresponds with GET /parameter-contexts/{contextId}/assets/{assetId} (the `GetAssetContent` operationId).
+func (c *ClientWithResponses) GetAssetContentWithResponse(ctx context.Context, contextId string, assetId string, reqEditors ...RequestEditorFn) (*GetAssetContentResponse, error) {
+	rsp, err := c.GetAssetContent(ctx, contextId, assetId, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
-	return ParseGetAssetContent1Response(rsp)
+	return ParseGetAssetContentResponse(rsp)
 }
 
 // SubmitParameterContextUpdateWithBodyWithResponse Initiate the Update Request of a Parameter Context
@@ -53309,32 +42056,6 @@ func (c *ClientWithResponses) UpdateParameterProviderWithResponse(ctx context.Co
 		return nil, err
 	}
 	return ParseUpdateParameterProviderResponse(rsp)
-}
-
-// ClearBulletins4WithBodyWithResponse Clears bulletins for a parameter provider
-//
-// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /parameter-providers/{id}/bulletins/clear-requests (the `ClearBulletins4` operationId).
-func (c *ClientWithResponses) ClearBulletins4WithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ClearBulletins4Response, error) {
-	rsp, err := c.ClearBulletins4WithBody(ctx, id, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseClearBulletins4Response(rsp)
-}
-
-// ClearBulletins4WithResponse Clears bulletins for a parameter provider
-//
-// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /parameter-providers/{id}/bulletins/clear-requests (the `ClearBulletins4` operationId).
-func (c *ClientWithResponses) ClearBulletins4WithResponse(ctx context.Context, id string, body ClearBulletins4JSONRequestBody, reqEditors ...RequestEditorFn) (*ClearBulletins4Response, error) {
-	rsp, err := c.ClearBulletins4(ctx, id, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseClearBulletins4Response(rsp)
 }
 
 // AnalyzeConfiguration1WithBodyWithResponse Performs analysis of the component's configuration, providing information about which attributes are referenced.
@@ -53853,7 +42574,7 @@ func (c *ClientWithResponses) ExportProcessGroupWithResponse(ctx context.Context
 	return ParseExportProcessGroupResponse(rsp)
 }
 
-// CreateEmptyAllConnectionsRequestWithResponse Creates a request to drop all FlowFiles of all connection queues in this process group.
+// CreateEmptyAllConnectionsRequestWithResponse Creates a request to drop all flowfiles of all connection queues in this process group.
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -53866,7 +42587,7 @@ func (c *ClientWithResponses) CreateEmptyAllConnectionsRequestWithResponse(ctx c
 	return ParseCreateEmptyAllConnectionsRequestResponse(rsp)
 }
 
-// RemoveDropRequest1WithResponse Cancels and/or removes a request to drop all FlowFiles.
+// RemoveDropRequest1WithResponse Cancels and/or removes a request to drop all flowfiles.
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -53879,7 +42600,7 @@ func (c *ClientWithResponses) RemoveDropRequest1WithResponse(ctx context.Context
 	return ParseRemoveDropRequest1Response(rsp)
 }
 
-// GetDropAllFlowfilesRequestWithResponse Gets the current status of a drop all FlowFiles request.
+// GetDropAllFlowfilesRequestWithResponse Gets the current status of a drop all flowfiles request.
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -54407,77 +43128,6 @@ func (c *ClientWithResponses) UpdateProcessorWithResponse(ctx context.Context, i
 	return ParseUpdateProcessorResponse(rsp)
 }
 
-// SubmitProcessorBacklogRequestWithResponse Initiates a request to determine the current backlog for a processor that implements BacklogReportingProcessor
-//
-// This will initiate the process of determining the backlog for a Processor. This may be a long-running task. As a result, this endpoint will immediately return a BacklogRequestEntity, and the process of determining the backlog will occur asynchronously in the background. The client may then periodically poll the status of the request by issuing a GET request to /processors/{processorId}/backlog-requests/{requestId}. Once the request is completed, the client is expected to issue a DELETE request to /processors/{processorId}/backlog-requests/{requestId}.
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /processors/{id}/backlog-requests (the `SubmitProcessorBacklogRequest` operationId).
-func (c *ClientWithResponses) SubmitProcessorBacklogRequestWithResponse(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*SubmitProcessorBacklogRequestResponse, error) {
-	rsp, err := c.SubmitProcessorBacklogRequest(ctx, id, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseSubmitProcessorBacklogRequestResponse(rsp)
-}
-
-// DeleteBacklogRequestWithResponse Deletes the Backlog Request with the given ID
-//
-// Deletes the Backlog Request with the given ID. After a request is created, it is expected that the client will properly clean up the request by DELETE'ing it once the backlog determination has completed. If the request is deleted before it completes, the background determination is cancelled.
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with DELETE /processors/{id}/backlog-requests/{requestId} (the `DeleteBacklogRequest` operationId).
-func (c *ClientWithResponses) DeleteBacklogRequestWithResponse(ctx context.Context, id string, requestId string, reqEditors ...RequestEditorFn) (*DeleteBacklogRequestResponse, error) {
-	rsp, err := c.DeleteBacklogRequest(ctx, id, requestId, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseDeleteBacklogRequestResponse(rsp)
-}
-
-// GetBacklogRequestWithResponse Returns the Backlog Request with the given ID
-//
-// Returns the Backlog Request with the given ID. Once a Backlog Request has been created by performing a POST to /processors/{processorId}/backlog-requests, that request can subsequently be retrieved via this endpoint, and the request that is fetched will contain the updated state, such as percent complete, the current state of the request, and the backlog once the request is complete.
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with GET /processors/{id}/backlog-requests/{requestId} (the `GetBacklogRequest` operationId).
-func (c *ClientWithResponses) GetBacklogRequestWithResponse(ctx context.Context, id string, requestId string, reqEditors ...RequestEditorFn) (*GetBacklogRequestResponse, error) {
-	rsp, err := c.GetBacklogRequest(ctx, id, requestId, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseGetBacklogRequestResponse(rsp)
-}
-
-// ClearBulletins5WithBodyWithResponse Clears bulletins for a processor
-//
-// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /processors/{id}/bulletins/clear-requests (the `ClearBulletins5` operationId).
-func (c *ClientWithResponses) ClearBulletins5WithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ClearBulletins5Response, error) {
-	rsp, err := c.ClearBulletins5WithBody(ctx, id, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseClearBulletins5Response(rsp)
-}
-
-// ClearBulletins5WithResponse Clears bulletins for a processor
-//
-// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /processors/{id}/bulletins/clear-requests (the `ClearBulletins5` operationId).
-func (c *ClientWithResponses) ClearBulletins5WithResponse(ctx context.Context, id string, body ClearBulletins5JSONRequestBody, reqEditors ...RequestEditorFn) (*ClearBulletins5Response, error) {
-	rsp, err := c.ClearBulletins5(ctx, id, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseClearBulletins5Response(rsp)
-}
-
 // AnalyzeConfiguration2WithBodyWithResponse Performs analysis of the component's configuration, providing information about which attributes are referenced.
 //
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
@@ -54592,30 +43242,30 @@ func (c *ClientWithResponses) GetProcessorDiagnosticsWithResponse(ctx context.Co
 	return ParseGetProcessorDiagnosticsResponse(rsp)
 }
 
-// UpdateRunStatus5WithBodyWithResponse Updates run status of a processor
+// UpdateRunStatus4WithBodyWithResponse Updates run status of a processor
 //
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
-// Corresponds with PUT /processors/{id}/run-status (the `UpdateRunStatus5` operationId).
-func (c *ClientWithResponses) UpdateRunStatus5WithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateRunStatus5Response, error) {
-	rsp, err := c.UpdateRunStatus5WithBody(ctx, id, contentType, body, reqEditors...)
+// Corresponds with PUT /processors/{id}/run-status (the `UpdateRunStatus4` operationId).
+func (c *ClientWithResponses) UpdateRunStatus4WithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateRunStatus4Response, error) {
+	rsp, err := c.UpdateRunStatus4WithBody(ctx, id, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
-	return ParseUpdateRunStatus5Response(rsp)
+	return ParseUpdateRunStatus4Response(rsp)
 }
 
-// UpdateRunStatus5WithResponse Updates run status of a processor
+// UpdateRunStatus4WithResponse Updates run status of a processor
 //
 // Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 //
-// Corresponds with PUT /processors/{id}/run-status (the `UpdateRunStatus5` operationId).
-func (c *ClientWithResponses) UpdateRunStatus5WithResponse(ctx context.Context, id string, body UpdateRunStatus5JSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateRunStatus5Response, error) {
-	rsp, err := c.UpdateRunStatus5(ctx, id, body, reqEditors...)
+// Corresponds with PUT /processors/{id}/run-status (the `UpdateRunStatus4` operationId).
+func (c *ClientWithResponses) UpdateRunStatus4WithResponse(ctx context.Context, id string, body UpdateRunStatus4JSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateRunStatus4Response, error) {
+	rsp, err := c.UpdateRunStatus4(ctx, id, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
-	return ParseUpdateRunStatus5Response(rsp)
+	return ParseUpdateRunStatus4Response(rsp)
 }
 
 // GetState2WithResponse Gets the state for a processor
@@ -54977,32 +43627,6 @@ func (c *ClientWithResponses) UpdateRemoteProcessGroupWithResponse(ctx context.C
 	return ParseUpdateRemoteProcessGroupResponse(rsp)
 }
 
-// ClearBulletins6WithBodyWithResponse Clears bulletins for a remote process group
-//
-// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /remote-process-groups/{id}/bulletins/clear-requests (the `ClearBulletins6` operationId).
-func (c *ClientWithResponses) ClearBulletins6WithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ClearBulletins6Response, error) {
-	rsp, err := c.ClearBulletins6WithBody(ctx, id, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseClearBulletins6Response(rsp)
-}
-
-// ClearBulletins6WithResponse Clears bulletins for a remote process group
-//
-// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /remote-process-groups/{id}/bulletins/clear-requests (the `ClearBulletins6` operationId).
-func (c *ClientWithResponses) ClearBulletins6WithResponse(ctx context.Context, id string, body ClearBulletins6JSONRequestBody, reqEditors ...RequestEditorFn) (*ClearBulletins6Response, error) {
-	rsp, err := c.ClearBulletins6(ctx, id, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseClearBulletins6Response(rsp)
-}
-
 // UpdateRemoteProcessGroupInputPortWithBodyWithResponse Updates a remote port
 //
 // Note: This endpoint is subject to change as NiFi and it's REST API evolve.
@@ -55033,7 +43657,7 @@ func (c *ClientWithResponses) UpdateRemoteProcessGroupInputPortWithResponse(ctx 
 	return ParseUpdateRemoteProcessGroupInputPortResponse(rsp)
 }
 
-// UpdateRemoteProcessGroupInputPortRunStatusWithBodyWithResponse Updates run status of a remote input port
+// UpdateRemoteProcessGroupInputPortRunStatusWithBodyWithResponse Updates run status of a remote port
 //
 // Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 //
@@ -55048,7 +43672,7 @@ func (c *ClientWithResponses) UpdateRemoteProcessGroupInputPortRunStatusWithBody
 	return ParseUpdateRemoteProcessGroupInputPortRunStatusResponse(rsp)
 }
 
-// UpdateRemoteProcessGroupInputPortRunStatusWithResponse Updates run status of a remote input port
+// UpdateRemoteProcessGroupInputPortRunStatusWithResponse Updates run status of a remote port
 //
 // Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 //
@@ -55093,7 +43717,7 @@ func (c *ClientWithResponses) UpdateRemoteProcessGroupOutputPortWithResponse(ctx
 	return ParseUpdateRemoteProcessGroupOutputPortResponse(rsp)
 }
 
-// UpdateRemoteProcessGroupOutputPortRunStatusWithBodyWithResponse Updates run status of a remote output port
+// UpdateRemoteProcessGroupOutputPortRunStatusWithBodyWithResponse Updates run status of a remote port
 //
 // Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 //
@@ -55108,7 +43732,7 @@ func (c *ClientWithResponses) UpdateRemoteProcessGroupOutputPortRunStatusWithBod
 	return ParseUpdateRemoteProcessGroupOutputPortRunStatusResponse(rsp)
 }
 
-// UpdateRemoteProcessGroupOutputPortRunStatusWithResponse Updates run status of a remote output port
+// UpdateRemoteProcessGroupOutputPortRunStatusWithResponse Updates run status of a remote port
 //
 // Note: This endpoint is subject to change as NiFi and it's REST API evolve.
 //
@@ -55214,32 +43838,6 @@ func (c *ClientWithResponses) UpdateReportingTaskWithResponse(ctx context.Contex
 	return ParseUpdateReportingTaskResponse(rsp)
 }
 
-// ClearBulletins7WithBodyWithResponse Clears bulletins for a reporting task
-//
-// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /reporting-tasks/{id}/bulletins/clear-requests (the `ClearBulletins7` operationId).
-func (c *ClientWithResponses) ClearBulletins7WithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ClearBulletins7Response, error) {
-	rsp, err := c.ClearBulletins7WithBody(ctx, id, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseClearBulletins7Response(rsp)
-}
-
-// ClearBulletins7WithResponse Clears bulletins for a reporting task
-//
-// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /reporting-tasks/{id}/bulletins/clear-requests (the `ClearBulletins7` operationId).
-func (c *ClientWithResponses) ClearBulletins7WithResponse(ctx context.Context, id string, body ClearBulletins7JSONRequestBody, reqEditors ...RequestEditorFn) (*ClearBulletins7Response, error) {
-	rsp, err := c.ClearBulletins7(ctx, id, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseClearBulletins7Response(rsp)
-}
-
 // AnalyzeConfiguration3WithBodyWithResponse Performs analysis of the component's configuration, providing information about which attributes are referenced.
 //
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
@@ -55339,30 +43937,30 @@ func (c *ClientWithResponses) GetPropertyDescriptor4WithResponse(ctx context.Con
 	return ParseGetPropertyDescriptor4Response(rsp)
 }
 
-// UpdateRunStatus6WithBodyWithResponse Updates run status of a reporting task
+// UpdateRunStatus5WithBodyWithResponse Updates run status of a reporting task
 //
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
-// Corresponds with PUT /reporting-tasks/{id}/run-status (the `UpdateRunStatus6` operationId).
-func (c *ClientWithResponses) UpdateRunStatus6WithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateRunStatus6Response, error) {
-	rsp, err := c.UpdateRunStatus6WithBody(ctx, id, contentType, body, reqEditors...)
+// Corresponds with PUT /reporting-tasks/{id}/run-status (the `UpdateRunStatus5` operationId).
+func (c *ClientWithResponses) UpdateRunStatus5WithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateRunStatus5Response, error) {
+	rsp, err := c.UpdateRunStatus5WithBody(ctx, id, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
-	return ParseUpdateRunStatus6Response(rsp)
+	return ParseUpdateRunStatus5Response(rsp)
 }
 
-// UpdateRunStatus6WithResponse Updates run status of a reporting task
+// UpdateRunStatus5WithResponse Updates run status of a reporting task
 //
 // Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 //
-// Corresponds with PUT /reporting-tasks/{id}/run-status (the `UpdateRunStatus6` operationId).
-func (c *ClientWithResponses) UpdateRunStatus6WithResponse(ctx context.Context, id string, body UpdateRunStatus6JSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateRunStatus6Response, error) {
-	rsp, err := c.UpdateRunStatus6(ctx, id, body, reqEditors...)
+// Corresponds with PUT /reporting-tasks/{id}/run-status (the `UpdateRunStatus5` operationId).
+func (c *ClientWithResponses) UpdateRunStatus5WithResponse(ctx context.Context, id string, body UpdateRunStatus5JSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateRunStatus5Response, error) {
+	rsp, err := c.UpdateRunStatus5(ctx, id, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
-	return ParseUpdateRunStatus6Response(rsp)
+	return ParseUpdateRunStatus5Response(rsp)
 }
 
 // GetState4WithResponse Gets the state for a reporting task
@@ -55926,36 +44524,6 @@ func (c *ClientWithResponses) UpdateFlowVersionWithResponse(ctx context.Context,
 	return ParseUpdateFlowVersionResponse(rsp)
 }
 
-// CreateFlowBranchWithBodyWithResponse Creates a new branch for a version controlled Process Group
-//
-// Note: This endpoint is subject to change as NiFi and it's REST API evolve.
-//
-// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /versions/process-groups/{id}/branches (the `CreateFlowBranch` operationId).
-func (c *ClientWithResponses) CreateFlowBranchWithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CreateFlowBranchResponse, error) {
-	rsp, err := c.CreateFlowBranchWithBody(ctx, id, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseCreateFlowBranchResponse(rsp)
-}
-
-// CreateFlowBranchWithResponse Creates a new branch for a version controlled Process Group
-//
-// Note: This endpoint is subject to change as NiFi and it's REST API evolve.
-//
-// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /versions/process-groups/{id}/branches (the `CreateFlowBranch` operationId).
-func (c *ClientWithResponses) CreateFlowBranchWithResponse(ctx context.Context, id string, body CreateFlowBranchJSONRequestBody, reqEditors ...RequestEditorFn) (*CreateFlowBranchResponse, error) {
-	rsp, err := c.CreateFlowBranch(ctx, id, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseCreateFlowBranchResponse(rsp)
-}
-
 // ExportFlowVersionWithResponse Gets the latest version of a Process Group for download
 //
 // Returns a wrapper object for the known response body format(s).
@@ -55967,111 +44535,6 @@ func (c *ClientWithResponses) ExportFlowVersionWithResponse(ctx context.Context,
 		return nil, err
 	}
 	return ParseExportFlowVersionResponse(rsp)
-}
-
-// ApplyRebasedFlowVersionWithBodyWithResponse Applies a rebased flow to a Process Group with the given ID on this node
-//
-// This endpoint is used internally to apply a rebase to a Process Group on each node of a cluster. It synchronizes the flow to the supplied merged snapshot and then resets the Version Control Information to the clean target version so that the preserved local changes are detected as local modifications. Note: This endpoint is subject to change as NiFi and it's REST API evolve.
-//
-// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with PUT /versions/process-groups/{id}/rebase (the `ApplyRebasedFlowVersion` operationId).
-func (c *ClientWithResponses) ApplyRebasedFlowVersionWithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApplyRebasedFlowVersionResponse, error) {
-	rsp, err := c.ApplyRebasedFlowVersionWithBody(ctx, id, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApplyRebasedFlowVersionResponse(rsp)
-}
-
-// ApplyRebasedFlowVersionWithResponse Applies a rebased flow to a Process Group with the given ID on this node
-//
-// This endpoint is used internally to apply a rebase to a Process Group on each node of a cluster. It synchronizes the flow to the supplied merged snapshot and then resets the Version Control Information to the clean target version so that the preserved local changes are detected as local modifications. Note: This endpoint is subject to change as NiFi and it's REST API evolve.
-//
-// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with PUT /versions/process-groups/{id}/rebase (the `ApplyRebasedFlowVersion` operationId).
-func (c *ClientWithResponses) ApplyRebasedFlowVersionWithResponse(ctx context.Context, id string, body ApplyRebasedFlowVersionJSONRequestBody, reqEditors ...RequestEditorFn) (*ApplyRebasedFlowVersionResponse, error) {
-	rsp, err := c.ApplyRebasedFlowVersion(ctx, id, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApplyRebasedFlowVersionResponse(rsp)
-}
-
-// GetRebaseAnalysisWithResponse Gets a Rebase Analysis for a Process Group
-//
-// For a Process Group that is under Version Control, this will perform a rebase analysis by comparing local modifications against upstream changes between the current version and the specified target version. The analysis determines whether a rebase is allowed or if there are conflicts.
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with GET /versions/rebase-analysis/process-groups/{id} (the `GetRebaseAnalysis` operationId).
-func (c *ClientWithResponses) GetRebaseAnalysisWithResponse(ctx context.Context, id string, params *GetRebaseAnalysisParams, reqEditors ...RequestEditorFn) (*GetRebaseAnalysisResponse, error) {
-	rsp, err := c.GetRebaseAnalysis(ctx, id, params, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseGetRebaseAnalysisResponse(rsp)
-}
-
-// InitiateRebaseWithBodyWithResponse Initiate a Rebase Request for a Process Group with the given ID
-//
-// For a Process Group that is already under Version Control, this will initiate the action of rebasing the flow to a different version while preserving compatible local changes. This can be a lengthy process, as it will stop any Processors and disable any Controller Services necessary to perform the action and then restart them. As a result, the endpoint will immediately return a VersionedFlowUpdateRequestEntity, and the process of rebasing the flow will occur asynchronously in the background. The client may then periodically poll the status of the request by issuing a GET request to /versions/rebase-requests/{requestId}. Once the request is completed, the client is expected to issue a DELETE request to /versions/rebase-requests/{requestId}. Note: This endpoint is subject to change as NiFi and it's REST API evolve.
-//
-// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /versions/rebase-requests/process-groups/{id} (the `InitiateRebase` operationId).
-func (c *ClientWithResponses) InitiateRebaseWithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*InitiateRebaseResponse, error) {
-	rsp, err := c.InitiateRebaseWithBody(ctx, id, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseInitiateRebaseResponse(rsp)
-}
-
-// InitiateRebaseWithResponse Initiate a Rebase Request for a Process Group with the given ID
-//
-// For a Process Group that is already under Version Control, this will initiate the action of rebasing the flow to a different version while preserving compatible local changes. This can be a lengthy process, as it will stop any Processors and disable any Controller Services necessary to perform the action and then restart them. As a result, the endpoint will immediately return a VersionedFlowUpdateRequestEntity, and the process of rebasing the flow will occur asynchronously in the background. The client may then periodically poll the status of the request by issuing a GET request to /versions/rebase-requests/{requestId}. Once the request is completed, the client is expected to issue a DELETE request to /versions/rebase-requests/{requestId}. Note: This endpoint is subject to change as NiFi and it's REST API evolve.
-//
-// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /versions/rebase-requests/process-groups/{id} (the `InitiateRebase` operationId).
-func (c *ClientWithResponses) InitiateRebaseWithResponse(ctx context.Context, id string, body InitiateRebaseJSONRequestBody, reqEditors ...RequestEditorFn) (*InitiateRebaseResponse, error) {
-	rsp, err := c.InitiateRebase(ctx, id, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseInitiateRebaseResponse(rsp)
-}
-
-// DeleteRebaseRequestWithResponse Deletes the Rebase Request with the given ID
-//
-// Deletes the Rebase Request with the given ID. After a request is created via a POST to /versions/rebase-requests/process-groups/{id}, it is expected that the client will properly clean up the request by DELETE'ing it, once the Rebase process has completed. If the request is deleted before the request completes, then the Rebase request will finish the step that it is currently performing and then will cancel any subsequent steps. Note: This endpoint is subject to change as NiFi and it's REST API evolve.
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with DELETE /versions/rebase-requests/{id} (the `DeleteRebaseRequest` operationId).
-func (c *ClientWithResponses) DeleteRebaseRequestWithResponse(ctx context.Context, id string, params *DeleteRebaseRequestParams, reqEditors ...RequestEditorFn) (*DeleteRebaseRequestResponse, error) {
-	rsp, err := c.DeleteRebaseRequest(ctx, id, params, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseDeleteRebaseRequestResponse(rsp)
-}
-
-// GetRebaseRequestWithResponse Returns the Rebase Request with the given ID
-//
-// Returns the Rebase Request with the given ID. Once a Rebase Request has been created by performing a POST to /versions/rebase-requests/process-groups/{id}, that request can subsequently be retrieved via this endpoint, and the request that is fetched will contain the updated state, such as percent complete, the current state of the request, and any failures. Note: This endpoint is subject to change as NiFi and it's REST API evolve.
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with GET /versions/rebase-requests/{id} (the `GetRebaseRequest` operationId).
-func (c *ClientWithResponses) GetRebaseRequestWithResponse(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*GetRebaseRequestResponse, error) {
-	rsp, err := c.GetRebaseRequest(ctx, id, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseGetRebaseRequestResponse(rsp)
 }
 
 // InitiateRevertFlowVersionWithBodyWithResponse Initiate the Revert Request of a Process Group with the given ID
@@ -56391,1867 +44854,6 @@ func ParseUpdateConnectionResponse(rsp *http.Response) (*UpdateConnectionRespons
 	return response, nil
 }
 
-// ParseCreateConnectorResponse parses an HTTP response from a CreateConnectorWithResponse call
-func ParseCreateConnectorResponse(rsp *http.Response) (*CreateConnectorResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &CreateConnectorResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 201:
-		var dest ConnectorEntity
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON201 = &dest
-
-	case rsp.StatusCode == 400:
-		break // No content-type
-
-	case rsp.StatusCode == 401:
-		break // No content-type
-
-	case rsp.StatusCode == 403:
-		break // No content-type
-
-	case rsp.StatusCode == 409:
-		break // No content-type
-
-	}
-
-	return response, nil
-}
-
-// ParseGetFlowResponse parses an HTTP response from a GetFlowWithResponse call
-func ParseGetFlowResponse(rsp *http.Response) (*GetFlowResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &GetFlowResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest ProcessGroupFlowEntity
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 400:
-		break // No content-type
-
-	case rsp.StatusCode == 401:
-		break // No content-type
-
-	case rsp.StatusCode == 403:
-		break // No content-type
-
-	case rsp.StatusCode == 404:
-		break // No content-type
-
-	case rsp.StatusCode == 409:
-		break // No content-type
-
-	}
-
-	return response, nil
-}
-
-// ParseGetControllerServicesFromConnectorProcessGroupResponse parses an HTTP response from a GetControllerServicesFromConnectorProcessGroupWithResponse call
-func ParseGetControllerServicesFromConnectorProcessGroupResponse(rsp *http.Response) (*GetControllerServicesFromConnectorProcessGroupResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &GetControllerServicesFromConnectorProcessGroupResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest ControllerServicesEntity
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 400:
-		break // No content-type
-
-	case rsp.StatusCode == 401:
-		break // No content-type
-
-	case rsp.StatusCode == 403:
-		break // No content-type
-
-	case rsp.StatusCode == 404:
-		break // No content-type
-
-	case rsp.StatusCode == 409:
-		break // No content-type
-
-	}
-
-	return response, nil
-}
-
-// ParseGetParameterContextForConnectorProcessGroupResponse parses an HTTP response from a GetParameterContextForConnectorProcessGroupWithResponse call
-func ParseGetParameterContextForConnectorProcessGroupResponse(rsp *http.Response) (*GetParameterContextForConnectorProcessGroupResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &GetParameterContextForConnectorProcessGroupResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest ParameterContextEntity
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 204:
-		break // No content-type
-
-	case rsp.StatusCode == 400:
-		break // No content-type
-
-	case rsp.StatusCode == 401:
-		break // No content-type
-
-	case rsp.StatusCode == 403:
-		break // No content-type
-
-	case rsp.StatusCode == 404:
-		break // No content-type
-
-	case rsp.StatusCode == 409:
-		break // No content-type
-
-	}
-
-	return response, nil
-}
-
-// ParseDeleteConnectorResponse parses an HTTP response from a DeleteConnectorWithResponse call
-func ParseDeleteConnectorResponse(rsp *http.Response) (*DeleteConnectorResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &DeleteConnectorResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest ConnectorEntity
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 400:
-		break // No content-type
-
-	case rsp.StatusCode == 401:
-		break // No content-type
-
-	case rsp.StatusCode == 403:
-		break // No content-type
-
-	case rsp.StatusCode == 404:
-		break // No content-type
-
-	case rsp.StatusCode == 409:
-		break // No content-type
-
-	}
-
-	return response, nil
-}
-
-// ParseGetConnectorResponse parses an HTTP response from a GetConnectorWithResponse call
-func ParseGetConnectorResponse(rsp *http.Response) (*GetConnectorResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &GetConnectorResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest ConnectorEntity
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 400:
-		break // No content-type
-
-	case rsp.StatusCode == 401:
-		break // No content-type
-
-	case rsp.StatusCode == 403:
-		break // No content-type
-
-	case rsp.StatusCode == 404:
-		break // No content-type
-
-	case rsp.StatusCode == 409:
-		break // No content-type
-
-	}
-
-	return response, nil
-}
-
-// ParseUpdateConnectorResponse parses an HTTP response from a UpdateConnectorWithResponse call
-func ParseUpdateConnectorResponse(rsp *http.Response) (*UpdateConnectorResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &UpdateConnectorResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest ConnectorEntity
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 400:
-		break // No content-type
-
-	case rsp.StatusCode == 401:
-		break // No content-type
-
-	case rsp.StatusCode == 403:
-		break // No content-type
-
-	case rsp.StatusCode == 404:
-		break // No content-type
-
-	case rsp.StatusCode == 409:
-		break // No content-type
-
-	}
-
-	return response, nil
-}
-
-// ParseApplyConnectorUpdateResponse parses an HTTP response from a ApplyConnectorUpdateWithResponse call
-func ParseApplyConnectorUpdateResponse(rsp *http.Response) (*ApplyConnectorUpdateResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &ApplyConnectorUpdateResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest ConnectorEntity
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 400:
-		break // No content-type
-
-	case rsp.StatusCode == 401:
-		break // No content-type
-
-	case rsp.StatusCode == 403:
-		break // No content-type
-
-	case rsp.StatusCode == 404:
-		break // No content-type
-
-	case rsp.StatusCode == 409:
-		break // No content-type
-
-	}
-
-	return response, nil
-}
-
-// ParseGetAssetsResponse parses an HTTP response from a GetAssetsWithResponse call
-func ParseGetAssetsResponse(rsp *http.Response) (*GetAssetsResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &GetAssetsResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest AssetsEntity
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 400:
-		break // No content-type
-
-	case rsp.StatusCode == 401:
-		break // No content-type
-
-	case rsp.StatusCode == 403:
-		break // No content-type
-
-	case rsp.StatusCode == 404:
-		break // No content-type
-
-	case rsp.StatusCode == 409:
-		break // No content-type
-
-	}
-
-	return response, nil
-}
-
-// ParseCreateAssetResponse parses an HTTP response from a CreateAssetWithResponse call
-func ParseCreateAssetResponse(rsp *http.Response) (*CreateAssetResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &CreateAssetResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest AssetEntity
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 400:
-		break // No content-type
-
-	case rsp.StatusCode == 401:
-		break // No content-type
-
-	case rsp.StatusCode == 403:
-		break // No content-type
-
-	case rsp.StatusCode == 404:
-		break // No content-type
-
-	case rsp.StatusCode == 409:
-		break // No content-type
-
-	}
-
-	return response, nil
-}
-
-// ParseGetAssetContentResponse parses an HTTP response from a GetAssetContentWithResponse call
-func ParseGetAssetContentResponse(rsp *http.Response) (*GetAssetContentResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &GetAssetContentResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	return response, nil
-}
-
-// ParseSubmitConnectorBacklogRequestResponse parses an HTTP response from a SubmitConnectorBacklogRequestWithResponse call
-func ParseSubmitConnectorBacklogRequestResponse(rsp *http.Response) (*SubmitConnectorBacklogRequestResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &SubmitConnectorBacklogRequestResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest BacklogRequestEntity
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 400:
-		break // No content-type
-
-	case rsp.StatusCode == 401:
-		break // No content-type
-
-	case rsp.StatusCode == 403:
-		break // No content-type
-
-	case rsp.StatusCode == 404:
-		break // No content-type
-
-	case rsp.StatusCode == 409:
-		break // No content-type
-
-	}
-
-	return response, nil
-}
-
-// ParseDeleteConnectorBacklogRequestResponse parses an HTTP response from a DeleteConnectorBacklogRequestWithResponse call
-func ParseDeleteConnectorBacklogRequestResponse(rsp *http.Response) (*DeleteConnectorBacklogRequestResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &DeleteConnectorBacklogRequestResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest BacklogRequestEntity
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 400:
-		break // No content-type
-
-	case rsp.StatusCode == 401:
-		break // No content-type
-
-	case rsp.StatusCode == 403:
-		break // No content-type
-
-	case rsp.StatusCode == 404:
-		break // No content-type
-
-	case rsp.StatusCode == 409:
-		break // No content-type
-
-	}
-
-	return response, nil
-}
-
-// ParseGetConnectorBacklogRequestResponse parses an HTTP response from a GetConnectorBacklogRequestWithResponse call
-func ParseGetConnectorBacklogRequestResponse(rsp *http.Response) (*GetConnectorBacklogRequestResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &GetConnectorBacklogRequestResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest BacklogRequestEntity
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 400:
-		break // No content-type
-
-	case rsp.StatusCode == 401:
-		break // No content-type
-
-	case rsp.StatusCode == 403:
-		break // No content-type
-
-	case rsp.StatusCode == 404:
-		break // No content-type
-
-	case rsp.StatusCode == 409:
-		break // No content-type
-
-	}
-
-	return response, nil
-}
-
-// ParseGetConnectorConfigurationStepsResponse parses an HTTP response from a GetConnectorConfigurationStepsWithResponse call
-func ParseGetConnectorConfigurationStepsResponse(rsp *http.Response) (*GetConnectorConfigurationStepsResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &GetConnectorConfigurationStepsResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest ConfigurationStepNamesEntity
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 400:
-		break // No content-type
-
-	case rsp.StatusCode == 401:
-		break // No content-type
-
-	case rsp.StatusCode == 403:
-		break // No content-type
-
-	case rsp.StatusCode == 404:
-		break // No content-type
-
-	case rsp.StatusCode == 409:
-		break // No content-type
-
-	}
-
-	return response, nil
-}
-
-// ParseGetConnectorConfigurationStepResponse parses an HTTP response from a GetConnectorConfigurationStepWithResponse call
-func ParseGetConnectorConfigurationStepResponse(rsp *http.Response) (*GetConnectorConfigurationStepResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &GetConnectorConfigurationStepResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest ConfigurationStepEntity
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 400:
-		break // No content-type
-
-	case rsp.StatusCode == 401:
-		break // No content-type
-
-	case rsp.StatusCode == 403:
-		break // No content-type
-
-	case rsp.StatusCode == 404:
-		break // No content-type
-
-	case rsp.StatusCode == 409:
-		break // No content-type
-
-	}
-
-	return response, nil
-}
-
-// ParseUpdateConnectorConfigurationStepResponse parses an HTTP response from a UpdateConnectorConfigurationStepWithResponse call
-func ParseUpdateConnectorConfigurationStepResponse(rsp *http.Response) (*UpdateConnectorConfigurationStepResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &UpdateConnectorConfigurationStepResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest ConfigurationStepEntity
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 400:
-		break // No content-type
-
-	case rsp.StatusCode == 401:
-		break // No content-type
-
-	case rsp.StatusCode == 403:
-		break // No content-type
-
-	case rsp.StatusCode == 404:
-		break // No content-type
-
-	case rsp.StatusCode == 409:
-		break // No content-type
-
-	}
-
-	return response, nil
-}
-
-// ParseGetConnectorPropertyAllowableValuesResponse parses an HTTP response from a GetConnectorPropertyAllowableValuesWithResponse call
-func ParseGetConnectorPropertyAllowableValuesResponse(rsp *http.Response) (*GetConnectorPropertyAllowableValuesResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &GetConnectorPropertyAllowableValuesResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest ConnectorPropertyAllowableValuesEntity
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 400:
-		break // No content-type
-
-	case rsp.StatusCode == 401:
-		break // No content-type
-
-	case rsp.StatusCode == 403:
-		break // No content-type
-
-	case rsp.StatusCode == 404:
-		break // No content-type
-
-	case rsp.StatusCode == 409:
-		break // No content-type
-
-	}
-
-	return response, nil
-}
-
-// ParseSubmitConfigurationStepVerificationRequestResponse parses an HTTP response from a SubmitConfigurationStepVerificationRequestWithResponse call
-func ParseSubmitConfigurationStepVerificationRequestResponse(rsp *http.Response) (*SubmitConfigurationStepVerificationRequestResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &SubmitConfigurationStepVerificationRequestResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest VerifyConnectorConfigStepRequestEntity
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 400:
-		break // No content-type
-
-	case rsp.StatusCode == 401:
-		break // No content-type
-
-	case rsp.StatusCode == 403:
-		break // No content-type
-
-	case rsp.StatusCode == 404:
-		break // No content-type
-
-	case rsp.StatusCode == 409:
-		break // No content-type
-
-	}
-
-	return response, nil
-}
-
-// ParseDeleteConfigurationStepVerificationRequestResponse parses an HTTP response from a DeleteConfigurationStepVerificationRequestWithResponse call
-func ParseDeleteConfigurationStepVerificationRequestResponse(rsp *http.Response) (*DeleteConfigurationStepVerificationRequestResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &DeleteConfigurationStepVerificationRequestResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest VerifyConnectorConfigStepRequestEntity
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 400:
-		break // No content-type
-
-	case rsp.StatusCode == 401:
-		break // No content-type
-
-	case rsp.StatusCode == 403:
-		break // No content-type
-
-	case rsp.StatusCode == 404:
-		break // No content-type
-
-	case rsp.StatusCode == 409:
-		break // No content-type
-
-	}
-
-	return response, nil
-}
-
-// ParseGetConfigurationStepVerificationRequestResponse parses an HTTP response from a GetConfigurationStepVerificationRequestWithResponse call
-func ParseGetConfigurationStepVerificationRequestResponse(rsp *http.Response) (*GetConfigurationStepVerificationRequestResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &GetConfigurationStepVerificationRequestResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest VerifyConnectorConfigStepRequestEntity
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 400:
-		break // No content-type
-
-	case rsp.StatusCode == 401:
-		break // No content-type
-
-	case rsp.StatusCode == 403:
-		break // No content-type
-
-	case rsp.StatusCode == 404:
-		break // No content-type
-
-	case rsp.StatusCode == 409:
-		break // No content-type
-
-	}
-
-	return response, nil
-}
-
-// ParseGetConnectorConnectionStatusHistoryResponse parses an HTTP response from a GetConnectorConnectionStatusHistoryWithResponse call
-func ParseGetConnectorConnectionStatusHistoryResponse(rsp *http.Response) (*GetConnectorConnectionStatusHistoryResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &GetConnectorConnectionStatusHistoryResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest StatusHistoryEntity
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 400:
-		break // No content-type
-
-	case rsp.StatusCode == 401:
-		break // No content-type
-
-	case rsp.StatusCode == 403:
-		break // No content-type
-
-	case rsp.StatusCode == 404:
-		break // No content-type
-
-	case rsp.StatusCode == 409:
-		break // No content-type
-
-	}
-
-	return response, nil
-}
-
-// ParseGetConnectorControllerServiceStateResponse parses an HTTP response from a GetConnectorControllerServiceStateWithResponse call
-func ParseGetConnectorControllerServiceStateResponse(rsp *http.Response) (*GetConnectorControllerServiceStateResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &GetConnectorControllerServiceStateResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest ComponentStateEntity
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 400:
-		break // No content-type
-
-	case rsp.StatusCode == 401:
-		break // No content-type
-
-	case rsp.StatusCode == 403:
-		break // No content-type
-
-	case rsp.StatusCode == 404:
-		break // No content-type
-
-	case rsp.StatusCode == 409:
-		break // No content-type
-
-	}
-
-	return response, nil
-}
-
-// ParseClearConnectorControllerServiceStateResponse parses an HTTP response from a ClearConnectorControllerServiceStateWithResponse call
-func ParseClearConnectorControllerServiceStateResponse(rsp *http.Response) (*ClearConnectorControllerServiceStateResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &ClearConnectorControllerServiceStateResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest ComponentStateEntity
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 400:
-		break // No content-type
-
-	case rsp.StatusCode == 401:
-		break // No content-type
-
-	case rsp.StatusCode == 403:
-		break // No content-type
-
-	case rsp.StatusCode == 404:
-		break // No content-type
-
-	case rsp.StatusCode == 409:
-		break // No content-type
-
-	}
-
-	return response, nil
-}
-
-// ParseCancelDrainResponse parses an HTTP response from a CancelDrainWithResponse call
-func ParseCancelDrainResponse(rsp *http.Response) (*CancelDrainResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &CancelDrainResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest ConnectorEntity
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 400:
-		break // No content-type
-
-	case rsp.StatusCode == 401:
-		break // No content-type
-
-	case rsp.StatusCode == 403:
-		break // No content-type
-
-	case rsp.StatusCode == 404:
-		break // No content-type
-
-	case rsp.StatusCode == 409:
-		break // No content-type
-
-	}
-
-	return response, nil
-}
-
-// ParseInitiateDrainResponse parses an HTTP response from a InitiateDrainWithResponse call
-func ParseInitiateDrainResponse(rsp *http.Response) (*InitiateDrainResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &InitiateDrainResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest ConnectorEntity
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 400:
-		break // No content-type
-
-	case rsp.StatusCode == 401:
-		break // No content-type
-
-	case rsp.StatusCode == 403:
-		break // No content-type
-
-	case rsp.StatusCode == 404:
-		break // No content-type
-
-	case rsp.StatusCode == 409:
-		break // No content-type
-
-	}
-
-	return response, nil
-}
-
-// ParseCreateMigrationPayloadResponse parses an HTTP response from a CreateMigrationPayloadWithResponse call
-func ParseCreateMigrationPayloadResponse(rsp *http.Response) (*CreateMigrationPayloadResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &CreateMigrationPayloadResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest MigrationPayloadEntity
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 400:
-		break // No content-type
-
-	case rsp.StatusCode == 401:
-		break // No content-type
-
-	case rsp.StatusCode == 403:
-		break // No content-type
-
-	case rsp.StatusCode == 404:
-		break // No content-type
-
-	case rsp.StatusCode == 409:
-		break // No content-type
-
-	}
-
-	return response, nil
-}
-
-// ParseCreateMigrationRequestResponse parses an HTTP response from a CreateMigrationRequestWithResponse call
-func ParseCreateMigrationRequestResponse(rsp *http.Response) (*CreateMigrationRequestResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &CreateMigrationRequestResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest MigrationRequestEntity
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 400:
-		break // No content-type
-
-	case rsp.StatusCode == 401:
-		break // No content-type
-
-	case rsp.StatusCode == 403:
-		break // No content-type
-
-	case rsp.StatusCode == 404:
-		break // No content-type
-
-	case rsp.StatusCode == 409:
-		break // No content-type
-
-	}
-
-	return response, nil
-}
-
-// ParseDeleteMigrationRequestResponse parses an HTTP response from a DeleteMigrationRequestWithResponse call
-func ParseDeleteMigrationRequestResponse(rsp *http.Response) (*DeleteMigrationRequestResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &DeleteMigrationRequestResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest MigrationRequestEntity
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 400:
-		break // No content-type
-
-	case rsp.StatusCode == 401:
-		break // No content-type
-
-	case rsp.StatusCode == 403:
-		break // No content-type
-
-	case rsp.StatusCode == 404:
-		break // No content-type
-
-	case rsp.StatusCode == 409:
-		break // No content-type
-
-	}
-
-	return response, nil
-}
-
-// ParseGetMigrationRequestResponse parses an HTTP response from a GetMigrationRequestWithResponse call
-func ParseGetMigrationRequestResponse(rsp *http.Response) (*GetMigrationRequestResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &GetMigrationRequestResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest MigrationRequestEntity
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 400:
-		break // No content-type
-
-	case rsp.StatusCode == 401:
-		break // No content-type
-
-	case rsp.StatusCode == 403:
-		break // No content-type
-
-	case rsp.StatusCode == 404:
-		break // No content-type
-
-	case rsp.StatusCode == 409:
-		break // No content-type
-
-	}
-
-	return response, nil
-}
-
-// ParseGetMigrationSourcesResponse parses an HTTP response from a GetMigrationSourcesWithResponse call
-func ParseGetMigrationSourcesResponse(rsp *http.Response) (*GetMigrationSourcesResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &GetMigrationSourcesResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest VersionedFlowMigrationSourcesEntity
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 400:
-		break // No content-type
-
-	case rsp.StatusCode == 401:
-		break // No content-type
-
-	case rsp.StatusCode == 403:
-		break // No content-type
-
-	case rsp.StatusCode == 404:
-		break // No content-type
-
-	case rsp.StatusCode == 409:
-		break // No content-type
-
-	}
-
-	return response, nil
-}
-
-// ParseGetConnectorProcessGroupStatusHistoryResponse parses an HTTP response from a GetConnectorProcessGroupStatusHistoryWithResponse call
-func ParseGetConnectorProcessGroupStatusHistoryResponse(rsp *http.Response) (*GetConnectorProcessGroupStatusHistoryResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &GetConnectorProcessGroupStatusHistoryResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest StatusHistoryEntity
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 400:
-		break // No content-type
-
-	case rsp.StatusCode == 401:
-		break // No content-type
-
-	case rsp.StatusCode == 403:
-		break // No content-type
-
-	case rsp.StatusCode == 404:
-		break // No content-type
-
-	case rsp.StatusCode == 409:
-		break // No content-type
-
-	}
-
-	return response, nil
-}
-
-// ParseGetConnectorProcessorStateResponse parses an HTTP response from a GetConnectorProcessorStateWithResponse call
-func ParseGetConnectorProcessorStateResponse(rsp *http.Response) (*GetConnectorProcessorStateResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &GetConnectorProcessorStateResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest ComponentStateEntity
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 400:
-		break // No content-type
-
-	case rsp.StatusCode == 401:
-		break // No content-type
-
-	case rsp.StatusCode == 403:
-		break // No content-type
-
-	case rsp.StatusCode == 404:
-		break // No content-type
-
-	case rsp.StatusCode == 409:
-		break // No content-type
-
-	}
-
-	return response, nil
-}
-
-// ParseClearConnectorProcessorStateResponse parses an HTTP response from a ClearConnectorProcessorStateWithResponse call
-func ParseClearConnectorProcessorStateResponse(rsp *http.Response) (*ClearConnectorProcessorStateResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &ClearConnectorProcessorStateResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest ComponentStateEntity
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 400:
-		break // No content-type
-
-	case rsp.StatusCode == 401:
-		break // No content-type
-
-	case rsp.StatusCode == 403:
-		break // No content-type
-
-	case rsp.StatusCode == 404:
-		break // No content-type
-
-	case rsp.StatusCode == 409:
-		break // No content-type
-
-	}
-
-	return response, nil
-}
-
-// ParseGetConnectorProcessorStatusHistoryResponse parses an HTTP response from a GetConnectorProcessorStatusHistoryWithResponse call
-func ParseGetConnectorProcessorStatusHistoryResponse(rsp *http.Response) (*GetConnectorProcessorStatusHistoryResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &GetConnectorProcessorStatusHistoryResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest StatusHistoryEntity
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 400:
-		break // No content-type
-
-	case rsp.StatusCode == 401:
-		break // No content-type
-
-	case rsp.StatusCode == 403:
-		break // No content-type
-
-	case rsp.StatusCode == 404:
-		break // No content-type
-
-	case rsp.StatusCode == 409:
-		break // No content-type
-
-	}
-
-	return response, nil
-}
-
-// ParseCreatePurgeRequestResponse parses an HTTP response from a CreatePurgeRequestWithResponse call
-func ParseCreatePurgeRequestResponse(rsp *http.Response) (*CreatePurgeRequestResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &CreatePurgeRequestResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 202:
-		var dest DropRequestEntity
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON202 = &dest
-
-	case rsp.StatusCode == 400:
-		break // No content-type
-
-	case rsp.StatusCode == 401:
-		break // No content-type
-
-	case rsp.StatusCode == 403:
-		break // No content-type
-
-	case rsp.StatusCode == 404:
-		break // No content-type
-
-	case rsp.StatusCode == 409:
-		break // No content-type
-
-	}
-
-	return response, nil
-}
-
-// ParseRemovePurgeRequestResponse parses an HTTP response from a RemovePurgeRequestWithResponse call
-func ParseRemovePurgeRequestResponse(rsp *http.Response) (*RemovePurgeRequestResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &RemovePurgeRequestResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest DropRequestEntity
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 400:
-		break // No content-type
-
-	case rsp.StatusCode == 401:
-		break // No content-type
-
-	case rsp.StatusCode == 403:
-		break // No content-type
-
-	case rsp.StatusCode == 404:
-		break // No content-type
-
-	case rsp.StatusCode == 409:
-		break // No content-type
-
-	}
-
-	return response, nil
-}
-
-// ParseGetPurgeRequestResponse parses an HTTP response from a GetPurgeRequestWithResponse call
-func ParseGetPurgeRequestResponse(rsp *http.Response) (*GetPurgeRequestResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &GetPurgeRequestResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest DropRequestEntity
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 400:
-		break // No content-type
-
-	case rsp.StatusCode == 401:
-		break // No content-type
-
-	case rsp.StatusCode == 403:
-		break // No content-type
-
-	case rsp.StatusCode == 404:
-		break // No content-type
-
-	case rsp.StatusCode == 409:
-		break // No content-type
-
-	}
-
-	return response, nil
-}
-
-// ParseGetConnectorRemoteProcessGroupStatusHistoryResponse parses an HTTP response from a GetConnectorRemoteProcessGroupStatusHistoryWithResponse call
-func ParseGetConnectorRemoteProcessGroupStatusHistoryResponse(rsp *http.Response) (*GetConnectorRemoteProcessGroupStatusHistoryResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &GetConnectorRemoteProcessGroupStatusHistoryResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest StatusHistoryEntity
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 400:
-		break // No content-type
-
-	case rsp.StatusCode == 401:
-		break // No content-type
-
-	case rsp.StatusCode == 403:
-		break // No content-type
-
-	case rsp.StatusCode == 404:
-		break // No content-type
-
-	case rsp.StatusCode == 409:
-		break // No content-type
-
-	}
-
-	return response, nil
-}
-
-// ParseUpdateRunStatusResponse parses an HTTP response from a UpdateRunStatusWithResponse call
-func ParseUpdateRunStatusResponse(rsp *http.Response) (*UpdateRunStatusResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &UpdateRunStatusResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest ConnectorEntity
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 400:
-		break // No content-type
-
-	case rsp.StatusCode == 401:
-		break // No content-type
-
-	case rsp.StatusCode == 403:
-		break // No content-type
-
-	case rsp.StatusCode == 404:
-		break // No content-type
-
-	case rsp.StatusCode == 409:
-		break // No content-type
-
-	}
-
-	return response, nil
-}
-
-// ParseSearchConnectorResponse parses an HTTP response from a SearchConnectorWithResponse call
-func ParseSearchConnectorResponse(rsp *http.Response) (*SearchConnectorResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &SearchConnectorResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest SearchResultsEntity
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 400:
-		break // No content-type
-
-	case rsp.StatusCode == 401:
-		break // No content-type
-
-	case rsp.StatusCode == 403:
-		break // No content-type
-
-	case rsp.StatusCode == 404:
-		break // No content-type
-
-	case rsp.StatusCode == 409:
-		break // No content-type
-
-	}
-
-	return response, nil
-}
-
-// ParseGetSecretsResponse parses an HTTP response from a GetSecretsWithResponse call
-func ParseGetSecretsResponse(rsp *http.Response) (*GetSecretsResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &GetSecretsResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest SecretsEntity
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 400:
-		break // No content-type
-
-	case rsp.StatusCode == 401:
-		break // No content-type
-
-	case rsp.StatusCode == 403:
-		break // No content-type
-
-	case rsp.StatusCode == 404:
-		break // No content-type
-
-	case rsp.StatusCode == 409:
-		break // No content-type
-
-	}
-
-	return response, nil
-}
-
-// ParseGetConnectorStatusResponse parses an HTTP response from a GetConnectorStatusWithResponse call
-func ParseGetConnectorStatusResponse(rsp *http.Response) (*GetConnectorStatusResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &GetConnectorStatusResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest ProcessGroupStatusEntity
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 400:
-		break // No content-type
-
-	case rsp.StatusCode == 401:
-		break // No content-type
-
-	case rsp.StatusCode == 403:
-		break // No content-type
-
-	case rsp.StatusCode == 404:
-		break // No content-type
-
-	case rsp.StatusCode == 409:
-		break // No content-type
-
-	}
-
-	return response, nil
-}
-
-// ParseEndTroubleshootingResponse parses an HTTP response from a EndTroubleshootingWithResponse call
-func ParseEndTroubleshootingResponse(rsp *http.Response) (*EndTroubleshootingResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &EndTroubleshootingResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest ConnectorEntity
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 400:
-		break // No content-type
-
-	case rsp.StatusCode == 401:
-		break // No content-type
-
-	case rsp.StatusCode == 403:
-		break // No content-type
-
-	case rsp.StatusCode == 404:
-		break // No content-type
-
-	case rsp.StatusCode == 409:
-		break // No content-type
-
-	}
-
-	return response, nil
-}
-
-// ParseEnterTroubleshootingResponse parses an HTTP response from a EnterTroubleshootingWithResponse call
-func ParseEnterTroubleshootingResponse(rsp *http.Response) (*EnterTroubleshootingResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &EnterTroubleshootingResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest ConnectorEntity
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 400:
-		break // No content-type
-
-	case rsp.StatusCode == 401:
-		break // No content-type
-
-	case rsp.StatusCode == 403:
-		break // No content-type
-
-	case rsp.StatusCode == 404:
-		break // No content-type
-
-	case rsp.StatusCode == 409:
-		break // No content-type
-
-	}
-
-	return response, nil
-}
-
-// ParseDiscardConnectorUpdateResponse parses an HTTP response from a DiscardConnectorUpdateWithResponse call
-func ParseDiscardConnectorUpdateResponse(rsp *http.Response) (*DiscardConnectorUpdateResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &DiscardConnectorUpdateResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest ConnectorEntity
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 400:
-		break // No content-type
-
-	case rsp.StatusCode == 401:
-		break // No content-type
-
-	case rsp.StatusCode == 403:
-		break // No content-type
-
-	case rsp.StatusCode == 404:
-		break // No content-type
-
-	case rsp.StatusCode == 409:
-		break // No content-type
-
-	}
-
-	return response, nil
-}
-
 // ParseRemoveControllerServiceResponse parses an HTTP response from a RemoveControllerServiceWithResponse call
 func ParseRemoveControllerServiceResponse(rsp *http.Response) (*RemoveControllerServiceResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
@@ -58350,47 +44952,6 @@ func ParseUpdateControllerServiceResponse(rsp *http.Response) (*UpdateController
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest ControllerServiceEntity
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 400:
-		break // No content-type
-
-	case rsp.StatusCode == 401:
-		break // No content-type
-
-	case rsp.StatusCode == 403:
-		break // No content-type
-
-	case rsp.StatusCode == 404:
-		break // No content-type
-
-	case rsp.StatusCode == 409:
-		break // No content-type
-
-	}
-
-	return response, nil
-}
-
-// ParseClearBulletinsResponse parses an HTTP response from a ClearBulletinsWithResponse call
-func ParseClearBulletinsResponse(rsp *http.Response) (*ClearBulletinsResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &ClearBulletinsResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest ClearBulletinsResultEntity
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -58703,15 +45264,15 @@ func ParseUpdateControllerServiceReferencesResponse(rsp *http.Response) (*Update
 	return response, nil
 }
 
-// ParseUpdateRunStatus2Response parses an HTTP response from a UpdateRunStatus2WithResponse call
-func ParseUpdateRunStatus2Response(rsp *http.Response) (*UpdateRunStatus2Response, error) {
+// ParseUpdateRunStatus1Response parses an HTTP response from a UpdateRunStatus1WithResponse call
+func ParseUpdateRunStatus1Response(rsp *http.Response) (*UpdateRunStatus1Response, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
 	defer func() { _ = rsp.Body.Close() }()
 	if err != nil {
 		return nil, err
 	}
 
-	response := &UpdateRunStatus2Response{
+	response := &UpdateRunStatus1Response{
 		Body:         bodyBytes,
 		HTTPResponse: rsp,
 	}
@@ -59338,47 +45899,6 @@ func ParseUpdateFlowAnalysisRuleResponse(rsp *http.Response) (*UpdateFlowAnalysi
 	return response, nil
 }
 
-// ParseClearFlowAnalysisRuleBulletinsResponse parses an HTTP response from a ClearFlowAnalysisRuleBulletinsWithResponse call
-func ParseClearFlowAnalysisRuleBulletinsResponse(rsp *http.Response) (*ClearFlowAnalysisRuleBulletinsResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &ClearFlowAnalysisRuleBulletinsResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest ClearBulletinsResultEntity
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 400:
-		break // No content-type
-
-	case rsp.StatusCode == 401:
-		break // No content-type
-
-	case rsp.StatusCode == 403:
-		break // No content-type
-
-	case rsp.StatusCode == 404:
-		break // No content-type
-
-	case rsp.StatusCode == 409:
-		break // No content-type
-
-	}
-
-	return response, nil
-}
-
 // ParseAnalyzeFlowAnalysisRuleConfigurationResponse parses an HTTP response from a AnalyzeFlowAnalysisRuleConfigurationWithResponse call
 func ParseAnalyzeFlowAnalysisRuleConfigurationResponse(rsp *http.Response) (*AnalyzeFlowAnalysisRuleConfigurationResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
@@ -59584,15 +46104,15 @@ func ParseGetFlowAnalysisRulePropertyDescriptorResponse(rsp *http.Response) (*Ge
 	return response, nil
 }
 
-// ParseUpdateRunStatus1Response parses an HTTP response from a UpdateRunStatus1WithResponse call
-func ParseUpdateRunStatus1Response(rsp *http.Response) (*UpdateRunStatus1Response, error) {
+// ParseUpdateRunStatusResponse parses an HTTP response from a UpdateRunStatusWithResponse call
+func ParseUpdateRunStatusResponse(rsp *http.Response) (*UpdateRunStatusResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
 	defer func() { _ = rsp.Body.Close() }()
 	if err != nil {
 		return nil, err
 	}
 
-	response := &UpdateRunStatus1Response{
+	response := &UpdateRunStatusResponse{
 		Body:         bodyBytes,
 		HTTPResponse: rsp,
 	}
@@ -59992,47 +46512,6 @@ func ParseCreateParameterProviderResponse(rsp *http.Response) (*CreateParameterP
 	return response, nil
 }
 
-// ParseClearParameterProviderBulletinsResponse parses an HTTP response from a ClearParameterProviderBulletinsWithResponse call
-func ParseClearParameterProviderBulletinsResponse(rsp *http.Response) (*ClearParameterProviderBulletinsResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &ClearParameterProviderBulletinsResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest ClearBulletinsResultEntity
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 400:
-		break // No content-type
-
-	case rsp.StatusCode == 401:
-		break // No content-type
-
-	case rsp.StatusCode == 403:
-		break // No content-type
-
-	case rsp.StatusCode == 404:
-		break // No content-type
-
-	case rsp.StatusCode == 409:
-		break // No content-type
-
-	}
-
-	return response, nil
-}
-
 // ParseGetFlowRegistryClientsResponse parses an HTTP response from a GetFlowRegistryClientsWithResponse call
 func ParseGetFlowRegistryClientsResponse(rsp *http.Response) (*GetFlowRegistryClientsResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
@@ -60210,211 +46689,6 @@ func ParseUpdateFlowRegistryClientResponse(rsp *http.Response) (*UpdateFlowRegis
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest FlowRegistryClientEntity
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 400:
-		break // No content-type
-
-	case rsp.StatusCode == 401:
-		break // No content-type
-
-	case rsp.StatusCode == 403:
-		break // No content-type
-
-	case rsp.StatusCode == 404:
-		break // No content-type
-
-	case rsp.StatusCode == 409:
-		break // No content-type
-
-	}
-
-	return response, nil
-}
-
-// ParseClearRegistryClientBulletinsResponse parses an HTTP response from a ClearRegistryClientBulletinsWithResponse call
-func ParseClearRegistryClientBulletinsResponse(rsp *http.Response) (*ClearRegistryClientBulletinsResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &ClearRegistryClientBulletinsResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest ClearBulletinsResultEntity
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 400:
-		break // No content-type
-
-	case rsp.StatusCode == 401:
-		break // No content-type
-
-	case rsp.StatusCode == 403:
-		break // No content-type
-
-	case rsp.StatusCode == 404:
-		break // No content-type
-
-	case rsp.StatusCode == 409:
-		break // No content-type
-
-	}
-
-	return response, nil
-}
-
-// ParseAnalyzeFlowRegistryClientConfigurationResponse parses an HTTP response from a AnalyzeFlowRegistryClientConfigurationWithResponse call
-func ParseAnalyzeFlowRegistryClientConfigurationResponse(rsp *http.Response) (*AnalyzeFlowRegistryClientConfigurationResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &AnalyzeFlowRegistryClientConfigurationResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest ConfigurationAnalysisEntity
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 400:
-		break // No content-type
-
-	case rsp.StatusCode == 401:
-		break // No content-type
-
-	case rsp.StatusCode == 403:
-		break // No content-type
-
-	case rsp.StatusCode == 404:
-		break // No content-type
-
-	case rsp.StatusCode == 409:
-		break // No content-type
-
-	}
-
-	return response, nil
-}
-
-// ParseSubmitRegistryClientConfigVerificationRequestResponse parses an HTTP response from a SubmitRegistryClientConfigVerificationRequestWithResponse call
-func ParseSubmitRegistryClientConfigVerificationRequestResponse(rsp *http.Response) (*SubmitRegistryClientConfigVerificationRequestResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &SubmitRegistryClientConfigVerificationRequestResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest VerifyConfigRequestEntity
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 400:
-		break // No content-type
-
-	case rsp.StatusCode == 401:
-		break // No content-type
-
-	case rsp.StatusCode == 403:
-		break // No content-type
-
-	case rsp.StatusCode == 404:
-		break // No content-type
-
-	case rsp.StatusCode == 409:
-		break // No content-type
-
-	}
-
-	return response, nil
-}
-
-// ParseDeleteRegistryClientVerificationRequestResponse parses an HTTP response from a DeleteRegistryClientVerificationRequestWithResponse call
-func ParseDeleteRegistryClientVerificationRequestResponse(rsp *http.Response) (*DeleteRegistryClientVerificationRequestResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &DeleteRegistryClientVerificationRequestResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest VerifyConfigRequestEntity
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 400:
-		break // No content-type
-
-	case rsp.StatusCode == 401:
-		break // No content-type
-
-	case rsp.StatusCode == 403:
-		break // No content-type
-
-	case rsp.StatusCode == 404:
-		break // No content-type
-
-	case rsp.StatusCode == 409:
-		break // No content-type
-
-	}
-
-	return response, nil
-}
-
-// ParseGetRegistryClientVerificationRequestResponse parses an HTTP response from a GetRegistryClientVerificationRequestWithResponse call
-func ParseGetRegistryClientVerificationRequestResponse(rsp *http.Response) (*GetRegistryClientVerificationRequestResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &GetRegistryClientVerificationRequestResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest VerifyConfigRequestEntity
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -61410,120 +47684,6 @@ func ParseGetConnectionStatusHistoryResponse(rsp *http.Response) (*GetConnection
 	return response, nil
 }
 
-// ParseGetConnectorDefinitionResponse parses an HTTP response from a GetConnectorDefinitionWithResponse call
-func ParseGetConnectorDefinitionResponse(rsp *http.Response) (*GetConnectorDefinitionResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &GetConnectorDefinitionResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest ConnectorDefinition
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 400:
-		break // No content-type
-
-	case rsp.StatusCode == 401:
-		break // No content-type
-
-	case rsp.StatusCode == 403:
-		break // No content-type
-
-	case rsp.StatusCode == 404:
-		break // No content-type
-
-	}
-
-	return response, nil
-}
-
-// ParseGetConnectorTypesResponse parses an HTTP response from a GetConnectorTypesWithResponse call
-func ParseGetConnectorTypesResponse(rsp *http.Response) (*GetConnectorTypesResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &GetConnectorTypesResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest ConnectorTypesEntity
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 400:
-		break // No content-type
-
-	case rsp.StatusCode == 401:
-		break // No content-type
-
-	case rsp.StatusCode == 403:
-		break // No content-type
-
-	case rsp.StatusCode == 409:
-		break // No content-type
-
-	}
-
-	return response, nil
-}
-
-// ParseGetConnectorsResponse parses an HTTP response from a GetConnectorsWithResponse call
-func ParseGetConnectorsResponse(rsp *http.Response) (*GetConnectorsResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &GetConnectorsResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest ConnectorsEntity
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 400:
-		break // No content-type
-
-	case rsp.StatusCode == 401:
-		break // No content-type
-
-	case rsp.StatusCode == 403:
-		break // No content-type
-
-	case rsp.StatusCode == 409:
-		break // No content-type
-
-	}
-
-	return response, nil
-}
-
 // ParseGetContentViewersResponse parses an HTTP response from a GetContentViewersWithResponse call
 func ParseGetContentViewersResponse(rsp *http.Response) (*GetContentViewersResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
@@ -61901,44 +48061,6 @@ func ParseGetFlowAnalysisResultsResponse(rsp *http.Response) (*GetFlowAnalysisRe
 	return response, nil
 }
 
-// ParseGetFlowRegistryClientDefinitionResponse parses an HTTP response from a GetFlowRegistryClientDefinitionWithResponse call
-func ParseGetFlowRegistryClientDefinitionResponse(rsp *http.Response) (*GetFlowRegistryClientDefinitionResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &GetFlowRegistryClientDefinitionResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest FlowRegistryClientDefinition
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 400:
-		break // No content-type
-
-	case rsp.StatusCode == 401:
-		break // No content-type
-
-	case rsp.StatusCode == 403:
-		break // No content-type
-
-	case rsp.StatusCode == 404:
-		break // No content-type
-
-	}
-
-	return response, nil
-}
-
 // ParseQueryHistoryResponse parses an HTTP response from a QueryHistoryWithResponse call
 func ParseQueryHistoryResponse(rsp *http.Response) (*QueryHistoryResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
@@ -62090,44 +48212,6 @@ func ParseGetInputPortStatusResponse(rsp *http.Response) (*GetInputPortStatusRes
 		break // No content-type
 
 	case rsp.StatusCode == 404:
-		break // No content-type
-
-	case rsp.StatusCode == 409:
-		break // No content-type
-
-	}
-
-	return response, nil
-}
-
-// ParseGetListenPortsResponse parses an HTTP response from a GetListenPortsWithResponse call
-func ParseGetListenPortsResponse(rsp *http.Response) (*GetListenPortsResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &GetListenPortsResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest ListenPortsEntity
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 400:
-		break // No content-type
-
-	case rsp.StatusCode == 401:
-		break // No content-type
-
-	case rsp.StatusCode == 403:
 		break // No content-type
 
 	case rsp.StatusCode == 409:
@@ -62385,15 +48469,15 @@ func ParseGetPrioritizersResponse(rsp *http.Response) (*GetPrioritizersResponse,
 	return response, nil
 }
 
-// ParseGetFlow1Response parses an HTTP response from a GetFlow1WithResponse call
-func ParseGetFlow1Response(rsp *http.Response) (*GetFlow1Response, error) {
+// ParseGetFlowResponse parses an HTTP response from a GetFlowWithResponse call
+func ParseGetFlowResponse(rsp *http.Response) (*GetFlowResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
 	defer func() { _ = rsp.Body.Close() }()
 	if err != nil {
 		return nil, err
 	}
 
-	response := &GetFlow1Response{
+	response := &GetFlowResponse{
 		Body:         bodyBytes,
 		HTTPResponse: rsp,
 	}
@@ -62483,47 +48567,6 @@ func ParseGetBreadcrumbsResponse(rsp *http.Response) (*GetBreadcrumbsResponse, e
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest FlowBreadcrumbEntity
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 400:
-		break // No content-type
-
-	case rsp.StatusCode == 401:
-		break // No content-type
-
-	case rsp.StatusCode == 403:
-		break // No content-type
-
-	case rsp.StatusCode == 404:
-		break // No content-type
-
-	case rsp.StatusCode == 409:
-		break // No content-type
-
-	}
-
-	return response, nil
-}
-
-// ParseClearBulletins1Response parses an HTTP response from a ClearBulletins1WithResponse call
-func ParseClearBulletins1Response(rsp *http.Response) (*ClearBulletins1Response, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &ClearBulletins1Response{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest ClearBulletinsForGroupResultsEntity
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -63535,44 +49578,6 @@ func ParseGetControllerStatusResponse(rsp *http.Response) (*GetControllerStatusR
 	return response, nil
 }
 
-// ParseGetStepDocumentationResponse parses an HTTP response from a GetStepDocumentationWithResponse call
-func ParseGetStepDocumentationResponse(rsp *http.Response) (*GetStepDocumentationResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &GetStepDocumentationResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest StepDocumentationEntity
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 400:
-		break // No content-type
-
-	case rsp.StatusCode == 401:
-		break // No content-type
-
-	case rsp.StatusCode == 403:
-		break // No content-type
-
-	case rsp.StatusCode == 404:
-		break // No content-type
-
-	}
-
-	return response, nil
-}
-
 // ParseCreateDropRequestResponse parses an HTTP response from a CreateDropRequestWithResponse call
 func ParseCreateDropRequestResponse(rsp *http.Response) (*CreateDropRequestResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
@@ -64122,56 +50127,15 @@ func ParseUpdateInputPortResponse(rsp *http.Response) (*UpdateInputPortResponse,
 	return response, nil
 }
 
-// ParseClearBulletins2Response parses an HTTP response from a ClearBulletins2WithResponse call
-func ParseClearBulletins2Response(rsp *http.Response) (*ClearBulletins2Response, error) {
+// ParseUpdateRunStatus2Response parses an HTTP response from a UpdateRunStatus2WithResponse call
+func ParseUpdateRunStatus2Response(rsp *http.Response) (*UpdateRunStatus2Response, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
 	defer func() { _ = rsp.Body.Close() }()
 	if err != nil {
 		return nil, err
 	}
 
-	response := &ClearBulletins2Response{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest ClearBulletinsResultEntity
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 400:
-		break // No content-type
-
-	case rsp.StatusCode == 401:
-		break // No content-type
-
-	case rsp.StatusCode == 403:
-		break // No content-type
-
-	case rsp.StatusCode == 404:
-		break // No content-type
-
-	case rsp.StatusCode == 409:
-		break // No content-type
-
-	}
-
-	return response, nil
-}
-
-// ParseUpdateRunStatus3Response parses an HTTP response from a UpdateRunStatus3WithResponse call
-func ParseUpdateRunStatus3Response(rsp *http.Response) (*UpdateRunStatus3Response, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &UpdateRunStatus3Response{
+	response := &UpdateRunStatus2Response{
 		Body:         bodyBytes,
 		HTTPResponse: rsp,
 	}
@@ -64450,56 +50414,15 @@ func ParseUpdateOutputPortResponse(rsp *http.Response) (*UpdateOutputPortRespons
 	return response, nil
 }
 
-// ParseClearBulletins3Response parses an HTTP response from a ClearBulletins3WithResponse call
-func ParseClearBulletins3Response(rsp *http.Response) (*ClearBulletins3Response, error) {
+// ParseUpdateRunStatus3Response parses an HTTP response from a UpdateRunStatus3WithResponse call
+func ParseUpdateRunStatus3Response(rsp *http.Response) (*UpdateRunStatus3Response, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
 	defer func() { _ = rsp.Body.Close() }()
 	if err != nil {
 		return nil, err
 	}
 
-	response := &ClearBulletins3Response{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest ClearBulletinsResultEntity
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 400:
-		break // No content-type
-
-	case rsp.StatusCode == 401:
-		break // No content-type
-
-	case rsp.StatusCode == 403:
-		break // No content-type
-
-	case rsp.StatusCode == 404:
-		break // No content-type
-
-	case rsp.StatusCode == 409:
-		break // No content-type
-
-	}
-
-	return response, nil
-}
-
-// ParseUpdateRunStatus4Response parses an HTTP response from a UpdateRunStatus4WithResponse call
-func ParseUpdateRunStatus4Response(rsp *http.Response) (*UpdateRunStatus4Response, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &UpdateRunStatus4Response{
+	response := &UpdateRunStatus3Response{
 		Body:         bodyBytes,
 		HTTPResponse: rsp,
 	}
@@ -64573,15 +50496,15 @@ func ParseCreateParameterContextResponse(rsp *http.Response) (*CreateParameterCo
 	return response, nil
 }
 
-// ParseGetAssets1Response parses an HTTP response from a GetAssets1WithResponse call
-func ParseGetAssets1Response(rsp *http.Response) (*GetAssets1Response, error) {
+// ParseGetAssetsResponse parses an HTTP response from a GetAssetsWithResponse call
+func ParseGetAssetsResponse(rsp *http.Response) (*GetAssetsResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
 	defer func() { _ = rsp.Body.Close() }()
 	if err != nil {
 		return nil, err
 	}
 
-	response := &GetAssets1Response{
+	response := &GetAssetsResponse{
 		Body:         bodyBytes,
 		HTTPResponse: rsp,
 	}
@@ -64614,15 +50537,15 @@ func ParseGetAssets1Response(rsp *http.Response) (*GetAssets1Response, error) {
 	return response, nil
 }
 
-// ParseCreateAsset1Response parses an HTTP response from a CreateAsset1WithResponse call
-func ParseCreateAsset1Response(rsp *http.Response) (*CreateAsset1Response, error) {
+// ParseCreateAssetResponse parses an HTTP response from a CreateAssetWithResponse call
+func ParseCreateAssetResponse(rsp *http.Response) (*CreateAssetResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
 	defer func() { _ = rsp.Body.Close() }()
 	if err != nil {
 		return nil, err
 	}
 
-	response := &CreateAsset1Response{
+	response := &CreateAssetResponse{
 		Body:         bodyBytes,
 		HTTPResponse: rsp,
 	}
@@ -64696,15 +50619,15 @@ func ParseDeleteAssetResponse(rsp *http.Response) (*DeleteAssetResponse, error) 
 	return response, nil
 }
 
-// ParseGetAssetContent1Response parses an HTTP response from a GetAssetContent1WithResponse call
-func ParseGetAssetContent1Response(rsp *http.Response) (*GetAssetContent1Response, error) {
+// ParseGetAssetContentResponse parses an HTTP response from a GetAssetContentWithResponse call
+func ParseGetAssetContentResponse(rsp *http.Response) (*GetAssetContentResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
 	defer func() { _ = rsp.Body.Close() }()
 	if err != nil {
 		return nil, err
 	}
 
-	response := &GetAssetContent1Response{
+	response := &GetAssetContentResponse{
 		Body:         bodyBytes,
 		HTTPResponse: rsp,
 	}
@@ -65179,47 +51102,6 @@ func ParseUpdateParameterProviderResponse(rsp *http.Response) (*UpdateParameterP
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest ParameterProviderEntity
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 400:
-		break // No content-type
-
-	case rsp.StatusCode == 401:
-		break // No content-type
-
-	case rsp.StatusCode == 403:
-		break // No content-type
-
-	case rsp.StatusCode == 404:
-		break // No content-type
-
-	case rsp.StatusCode == 409:
-		break // No content-type
-
-	}
-
-	return response, nil
-}
-
-// ParseClearBulletins4Response parses an HTTP response from a ClearBulletins4WithResponse call
-func ParseClearBulletins4Response(rsp *http.Response) (*ClearBulletins4Response, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &ClearBulletins4Response{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest ClearBulletinsResultEntity
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -67491,170 +53373,6 @@ func ParseUpdateProcessorResponse(rsp *http.Response) (*UpdateProcessorResponse,
 	return response, nil
 }
 
-// ParseSubmitProcessorBacklogRequestResponse parses an HTTP response from a SubmitProcessorBacklogRequestWithResponse call
-func ParseSubmitProcessorBacklogRequestResponse(rsp *http.Response) (*SubmitProcessorBacklogRequestResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &SubmitProcessorBacklogRequestResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest BacklogRequestEntity
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 400:
-		break // No content-type
-
-	case rsp.StatusCode == 401:
-		break // No content-type
-
-	case rsp.StatusCode == 403:
-		break // No content-type
-
-	case rsp.StatusCode == 404:
-		break // No content-type
-
-	case rsp.StatusCode == 409:
-		break // No content-type
-
-	}
-
-	return response, nil
-}
-
-// ParseDeleteBacklogRequestResponse parses an HTTP response from a DeleteBacklogRequestWithResponse call
-func ParseDeleteBacklogRequestResponse(rsp *http.Response) (*DeleteBacklogRequestResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &DeleteBacklogRequestResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest BacklogRequestEntity
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 400:
-		break // No content-type
-
-	case rsp.StatusCode == 401:
-		break // No content-type
-
-	case rsp.StatusCode == 403:
-		break // No content-type
-
-	case rsp.StatusCode == 404:
-		break // No content-type
-
-	case rsp.StatusCode == 409:
-		break // No content-type
-
-	}
-
-	return response, nil
-}
-
-// ParseGetBacklogRequestResponse parses an HTTP response from a GetBacklogRequestWithResponse call
-func ParseGetBacklogRequestResponse(rsp *http.Response) (*GetBacklogRequestResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &GetBacklogRequestResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest BacklogRequestEntity
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 400:
-		break // No content-type
-
-	case rsp.StatusCode == 401:
-		break // No content-type
-
-	case rsp.StatusCode == 403:
-		break // No content-type
-
-	case rsp.StatusCode == 404:
-		break // No content-type
-
-	case rsp.StatusCode == 409:
-		break // No content-type
-
-	}
-
-	return response, nil
-}
-
-// ParseClearBulletins5Response parses an HTTP response from a ClearBulletins5WithResponse call
-func ParseClearBulletins5Response(rsp *http.Response) (*ClearBulletins5Response, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &ClearBulletins5Response{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest ClearBulletinsResultEntity
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 400:
-		break // No content-type
-
-	case rsp.StatusCode == 401:
-		break // No content-type
-
-	case rsp.StatusCode == 403:
-		break // No content-type
-
-	case rsp.StatusCode == 404:
-		break // No content-type
-
-	case rsp.StatusCode == 409:
-		break // No content-type
-
-	}
-
-	return response, nil
-}
-
 // ParseAnalyzeConfiguration2Response parses an HTTP response from a AnalyzeConfiguration2WithResponse call
 func ParseAnalyzeConfiguration2Response(rsp *http.Response) (*AnalyzeConfiguration2Response, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
@@ -67901,15 +53619,15 @@ func ParseGetProcessorDiagnosticsResponse(rsp *http.Response) (*GetProcessorDiag
 	return response, nil
 }
 
-// ParseUpdateRunStatus5Response parses an HTTP response from a UpdateRunStatus5WithResponse call
-func ParseUpdateRunStatus5Response(rsp *http.Response) (*UpdateRunStatus5Response, error) {
+// ParseUpdateRunStatus4Response parses an HTTP response from a UpdateRunStatus4WithResponse call
+func ParseUpdateRunStatus4Response(rsp *http.Response) (*UpdateRunStatus4Response, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
 	defer func() { _ = rsp.Body.Close() }()
 	if err != nil {
 		return nil, err
 	}
 
-	response := &UpdateRunStatus5Response{
+	response := &UpdateRunStatus4Response{
 		Body:         bodyBytes,
 		HTTPResponse: rsp,
 	}
@@ -68706,47 +54424,6 @@ func ParseUpdateRemoteProcessGroupResponse(rsp *http.Response) (*UpdateRemotePro
 	return response, nil
 }
 
-// ParseClearBulletins6Response parses an HTTP response from a ClearBulletins6WithResponse call
-func ParseClearBulletins6Response(rsp *http.Response) (*ClearBulletins6Response, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &ClearBulletins6Response{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest ClearBulletinsResultEntity
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 400:
-		break // No content-type
-
-	case rsp.StatusCode == 401:
-		break // No content-type
-
-	case rsp.StatusCode == 403:
-		break // No content-type
-
-	case rsp.StatusCode == 404:
-		break // No content-type
-
-	case rsp.StatusCode == 409:
-		break // No content-type
-
-	}
-
-	return response, nil
-}
-
 // ParseUpdateRemoteProcessGroupInputPortResponse parses an HTTP response from a UpdateRemoteProcessGroupInputPortWithResponse call
 func ParseUpdateRemoteProcessGroupInputPortResponse(rsp *http.Response) (*UpdateRemoteProcessGroupInputPortResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
@@ -69116,47 +54793,6 @@ func ParseUpdateReportingTaskResponse(rsp *http.Response) (*UpdateReportingTaskR
 	return response, nil
 }
 
-// ParseClearBulletins7Response parses an HTTP response from a ClearBulletins7WithResponse call
-func ParseClearBulletins7Response(rsp *http.Response) (*ClearBulletins7Response, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &ClearBulletins7Response{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest ClearBulletinsResultEntity
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 400:
-		break // No content-type
-
-	case rsp.StatusCode == 401:
-		break // No content-type
-
-	case rsp.StatusCode == 403:
-		break // No content-type
-
-	case rsp.StatusCode == 404:
-		break // No content-type
-
-	case rsp.StatusCode == 409:
-		break // No content-type
-
-	}
-
-	return response, nil
-}
-
 // ParseAnalyzeConfiguration3Response parses an HTTP response from a AnalyzeConfiguration3WithResponse call
 func ParseAnalyzeConfiguration3Response(rsp *http.Response) (*AnalyzeConfiguration3Response, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
@@ -69362,15 +54998,15 @@ func ParseGetPropertyDescriptor4Response(rsp *http.Response) (*GetPropertyDescri
 	return response, nil
 }
 
-// ParseUpdateRunStatus6Response parses an HTTP response from a UpdateRunStatus6WithResponse call
-func ParseUpdateRunStatus6Response(rsp *http.Response) (*UpdateRunStatus6Response, error) {
+// ParseUpdateRunStatus5Response parses an HTTP response from a UpdateRunStatus5WithResponse call
+func ParseUpdateRunStatus5Response(rsp *http.Response) (*UpdateRunStatus5Response, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
 	defer func() { _ = rsp.Body.Close() }()
 	if err != nil {
 		return nil, err
 	}
 
-	response := &UpdateRunStatus6Response{
+	response := &UpdateRunStatus5Response{
 		Body:         bodyBytes,
 		HTTPResponse: rsp,
 	}
@@ -70484,47 +56120,6 @@ func ParseUpdateFlowVersionResponse(rsp *http.Response) (*UpdateFlowVersionRespo
 	return response, nil
 }
 
-// ParseCreateFlowBranchResponse parses an HTTP response from a CreateFlowBranchWithResponse call
-func ParseCreateFlowBranchResponse(rsp *http.Response) (*CreateFlowBranchResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &CreateFlowBranchResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest VersionControlInformationEntity
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 400:
-		break // No content-type
-
-	case rsp.StatusCode == 401:
-		break // No content-type
-
-	case rsp.StatusCode == 403:
-		break // No content-type
-
-	case rsp.StatusCode == 404:
-		break // No content-type
-
-	case rsp.StatusCode == 409:
-		break // No content-type
-
-	}
-
-	return response, nil
-}
-
 // ParseExportFlowVersionResponse parses an HTTP response from a ExportFlowVersionWithResponse call
 func ParseExportFlowVersionResponse(rsp *http.Response) (*ExportFlowVersionResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
@@ -70541,211 +56136,6 @@ func ParseExportFlowVersionResponse(rsp *http.Response) (*ExportFlowVersionRespo
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest string
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 400:
-		break // No content-type
-
-	case rsp.StatusCode == 401:
-		break // No content-type
-
-	case rsp.StatusCode == 403:
-		break // No content-type
-
-	case rsp.StatusCode == 404:
-		break // No content-type
-
-	case rsp.StatusCode == 409:
-		break // No content-type
-
-	}
-
-	return response, nil
-}
-
-// ParseApplyRebasedFlowVersionResponse parses an HTTP response from a ApplyRebasedFlowVersionWithResponse call
-func ParseApplyRebasedFlowVersionResponse(rsp *http.Response) (*ApplyRebasedFlowVersionResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &ApplyRebasedFlowVersionResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest VersionControlInformationEntity
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 400:
-		break // No content-type
-
-	case rsp.StatusCode == 401:
-		break // No content-type
-
-	case rsp.StatusCode == 403:
-		break // No content-type
-
-	case rsp.StatusCode == 404:
-		break // No content-type
-
-	case rsp.StatusCode == 409:
-		break // No content-type
-
-	}
-
-	return response, nil
-}
-
-// ParseGetRebaseAnalysisResponse parses an HTTP response from a GetRebaseAnalysisWithResponse call
-func ParseGetRebaseAnalysisResponse(rsp *http.Response) (*GetRebaseAnalysisResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &GetRebaseAnalysisResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest RebaseAnalysisEntity
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 400:
-		break // No content-type
-
-	case rsp.StatusCode == 401:
-		break // No content-type
-
-	case rsp.StatusCode == 403:
-		break // No content-type
-
-	case rsp.StatusCode == 404:
-		break // No content-type
-
-	case rsp.StatusCode == 409:
-		break // No content-type
-
-	}
-
-	return response, nil
-}
-
-// ParseInitiateRebaseResponse parses an HTTP response from a InitiateRebaseWithResponse call
-func ParseInitiateRebaseResponse(rsp *http.Response) (*InitiateRebaseResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &InitiateRebaseResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest VersionedFlowUpdateRequestEntity
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 400:
-		break // No content-type
-
-	case rsp.StatusCode == 401:
-		break // No content-type
-
-	case rsp.StatusCode == 403:
-		break // No content-type
-
-	case rsp.StatusCode == 404:
-		break // No content-type
-
-	case rsp.StatusCode == 409:
-		break // No content-type
-
-	}
-
-	return response, nil
-}
-
-// ParseDeleteRebaseRequestResponse parses an HTTP response from a DeleteRebaseRequestWithResponse call
-func ParseDeleteRebaseRequestResponse(rsp *http.Response) (*DeleteRebaseRequestResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &DeleteRebaseRequestResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest VersionedFlowUpdateRequestEntity
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 400:
-		break // No content-type
-
-	case rsp.StatusCode == 401:
-		break // No content-type
-
-	case rsp.StatusCode == 403:
-		break // No content-type
-
-	case rsp.StatusCode == 404:
-		break // No content-type
-
-	case rsp.StatusCode == 409:
-		break // No content-type
-
-	}
-
-	return response, nil
-}
-
-// ParseGetRebaseRequestResponse parses an HTTP response from a GetRebaseRequestWithResponse call
-func ParseGetRebaseRequestResponse(rsp *http.Response) (*GetRebaseRequestResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &GetRebaseRequestResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest VersionedFlowUpdateRequestEntity
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
