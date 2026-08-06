@@ -46,23 +46,13 @@ func TestWithBearerToken(t *testing.T) {
 	if response.StatusCode() != http.StatusOK {
 		t.Fatalf("status = %d, body = %s", response.StatusCode(), response.Body)
 	}
-	entity := aboutEntity(response)
+	entity := JSONResponseBody[AboutEntity](response)
 	if entity == nil || entity.About == nil || entity.About.Version == nil {
 		t.Fatalf("missing typed response: %#v", response)
 	}
 	if got, want := *entity.About.Version, TargetNiFiVersion; got != want {
 		t.Errorf("version = %q, want %q", got, want)
 	}
-}
-
-func aboutEntity(response *GetAboutInfoResponse) *AboutEntity {
-	if typed, ok := any(response).(interface{ GetJSON200() *AboutEntity }); ok {
-		return typed.GetJSON200()
-	}
-	if typed, ok := any(response).(interface{ GetJSONDefault() *AboutEntity }); ok {
-		return typed.GetJSONDefault()
-	}
-	return nil
 }
 
 func TestWithBearerTokenRejectsInvalidValues(t *testing.T) {
