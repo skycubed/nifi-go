@@ -11,7 +11,7 @@
       "url" : "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
     "title" : "Apache NiFi Registry REST API",
-    "version" : "2.11.0"
+    "version" : "2.5.0"
   },
   "paths" : {
     "/about" : {
@@ -1581,7 +1581,7 @@
             "type" : "string"
           }
         }, {
-          "description" : "Optional version to filter results. The value may be an exact match, or a wildcard, such as '1.0.%' to select all bundle versions where the version starts with '1.0.'.",
+          "description" : "Optional version to filter results. The value maye be an exact match, or a wildcard, such as '1.0.%' to select all bundle versions where the version starts with '1.0.'.",
           "in" : "query",
           "name" : "version",
           "schema" : {
@@ -2950,7 +2950,7 @@
           "name" : "extensionType",
           "schema" : {
             "type" : "string",
-            "enum" : [ "PROCESSOR", "CONTROLLER_SERVICE", "REPORTING_TASK", "FLOW_ANALYSIS_RULE", "PARAMETER_PROVIDER", "FLOW_REGISTRY_CLIENT", "CONNECTOR" ]
+            "enum" : [ "PROCESSOR", "CONTROLLER_SERVICE", "REPORTING_TASK", "FLOW_ANALYSIS_RULE", "PARAMETER_PROVIDER" ]
           }
         }, {
           "description" : "The tags to filter on, will be used in an OR statement",
@@ -4359,7 +4359,7 @@
       },
       "Attribute" : {
         "type" : "object",
-        "description" : "The attributes written to FlowFiles by the extension",
+        "description" : "The attributes written to flow files by the extension",
         "properties" : {
           "description" : {
             "type" : "string",
@@ -4378,7 +4378,7 @@
           "count" : {
             "type" : "integer",
             "format" : "int32",
-            "description" : "Preferred number of FlowFiles to include in a transaction."
+            "description" : "Preferred number of flow files to include in a transaction."
           },
           "duration" : {
             "type" : "string",
@@ -4774,68 +4774,6 @@
           }
         }
       },
-      "ConfigurationStep" : {
-        "type" : "object",
-        "description" : "The configuration steps for a Connector extension",
-        "properties" : {
-          "description" : {
-            "type" : "string",
-            "description" : "The description of the configuration step"
-          },
-          "name" : {
-            "type" : "string",
-            "description" : "The name of the configuration step"
-          },
-          "propertyGroups" : {
-            "type" : "array",
-            "description" : "The property groups in this configuration step",
-            "items" : {
-              "$ref" : "#/components/schemas/ConnectorPropertyGroup"
-            },
-            "xml" : {
-              "wrapped" : true
-            }
-          },
-          "stepDependencies" : {
-            "type" : "array",
-            "description" : "The dependencies that this step has on other steps",
-            "items" : {
-              "$ref" : "#/components/schemas/ConfigurationStepDependency"
-            },
-            "xml" : {
-              "wrapped" : true
-            }
-          }
-        }
-      },
-      "ConfigurationStepDependency" : {
-        "type" : "object",
-        "description" : "The dependencies that this step has on other steps",
-        "properties" : {
-          "dependentValues" : {
-            "type" : "array",
-            "description" : "The values of the dependent property that enable this step",
-            "items" : {
-              "type" : "string",
-              "description" : "The values of the dependent property that enable this step",
-              "xml" : {
-                "name" : "dependentValue"
-              }
-            },
-            "xml" : {
-              "wrapped" : true
-            }
-          },
-          "propertyName" : {
-            "type" : "string",
-            "description" : "The name of the property within the step that this step depends on"
-          },
-          "stepName" : {
-            "type" : "string",
-            "description" : "The name of the step that this step depends on"
-          }
-        }
-      },
       "ConnectableComponent" : {
         "type" : "object",
         "description" : "The destination of the connection.",
@@ -4864,105 +4802,6 @@
             "type" : "string",
             "description" : "The type of component the connectable is.",
             "enum" : [ "PROCESSOR", "REMOTE_INPUT_PORT", "REMOTE_OUTPUT_PORT", "INPUT_PORT", "OUTPUT_PORT", "FUNNEL" ]
-          }
-        }
-      },
-      "ConnectorProperty" : {
-        "type" : "object",
-        "description" : "The properties in this group",
-        "properties" : {
-          "allowableValues" : {
-            "type" : "array",
-            "description" : "The allowable values for this property",
-            "items" : {
-              "$ref" : "#/components/schemas/AllowableValue"
-            },
-            "xml" : {
-              "wrapped" : true
-            }
-          },
-          "allowableValuesFetchable" : {
-            "type" : "boolean",
-            "description" : "Whether or not the allowable values can be fetched dynamically"
-          },
-          "defaultValue" : {
-            "type" : "string",
-            "description" : "The default value of the property"
-          },
-          "dependencies" : {
-            "type" : "array",
-            "description" : "The properties that this property depends on",
-            "items" : {
-              "$ref" : "#/components/schemas/ConnectorPropertyDependency"
-            },
-            "xml" : {
-              "wrapped" : true
-            }
-          },
-          "description" : {
-            "type" : "string",
-            "description" : "The description of the property"
-          },
-          "name" : {
-            "type" : "string",
-            "description" : "The name of the property"
-          },
-          "propertyType" : {
-            "type" : "string",
-            "description" : "The type of the property",
-            "enum" : [ "STRING", "INTEGER", "BOOLEAN", "FLOAT", "DOUBLE", "STRING_LIST", "SECRET", "ASSET", "ASSET_LIST" ]
-          },
-          "required" : {
-            "type" : "boolean",
-            "description" : "Whether or not the property is required"
-          }
-        }
-      },
-      "ConnectorPropertyDependency" : {
-        "type" : "object",
-        "description" : "The properties that this property depends on",
-        "properties" : {
-          "dependentValues" : {
-            "type" : "array",
-            "description" : "The values of the dependent property that enable this property",
-            "items" : {
-              "type" : "string",
-              "description" : "The values of the dependent property that enable this property",
-              "xml" : {
-                "name" : "dependentValue"
-              }
-            },
-            "xml" : {
-              "wrapped" : true
-            }
-          },
-          "propertyName" : {
-            "type" : "string",
-            "description" : "The name of the property that this property depends on"
-          }
-        }
-      },
-      "ConnectorPropertyGroup" : {
-        "type" : "object",
-        "description" : "The property groups in this configuration step",
-        "properties" : {
-          "description" : {
-            "type" : "string",
-            "description" : "The description of the property group"
-          },
-          "name" : {
-            "type" : "string",
-            "description" : "The name of the property group"
-          },
-          "properties" : {
-            "type" : "array",
-            "description" : "The properties in this group",
-            "items" : {
-              "$ref" : "#/components/schemas/ConnectorProperty"
-            },
-            "xml" : {
-              "wrapped" : true
-            }
           }
         }
       },
@@ -5168,16 +5007,6 @@
       "Extension" : {
         "type" : "object",
         "properties" : {
-          "configurationSteps" : {
-            "type" : "array",
-            "description" : "The configuration steps for a Connector extension",
-            "items" : {
-              "$ref" : "#/components/schemas/ConfigurationStep"
-            },
-            "xml" : {
-              "wrapped" : true
-            }
-          },
           "defaultSchedule" : {
             "$ref" : "#/components/schemas/DefaultSchedule"
           },
@@ -5249,7 +5078,7 @@
           },
           "readsAttributes" : {
             "type" : "array",
-            "description" : "The attributes read from FlowFiles by the extension",
+            "description" : "The attributes read from flow files by the extension",
             "items" : {
               "$ref" : "#/components/schemas/Attribute"
             },
@@ -5328,7 +5157,7 @@
           },
           "triggerWhenAnyDestinationAvailable" : {
             "type" : "boolean",
-            "description" : "Indicates that a processor should be triggered when any destinations have space for FlowFiles"
+            "description" : "Indicates that a processor should be triggered when any destinations have space for flow files"
           },
           "triggerWhenEmpty" : {
             "type" : "boolean",
@@ -5337,7 +5166,7 @@
           "type" : {
             "type" : "string",
             "description" : "The type of the extension",
-            "enum" : [ "PROCESSOR", "CONTROLLER_SERVICE", "REPORTING_TASK", "FLOW_ANALYSIS_RULE", "PARAMETER_PROVIDER", "FLOW_REGISTRY_CLIENT", "CONNECTOR" ]
+            "enum" : [ "PROCESSOR", "CONTROLLER_SERVICE", "REPORTING_TASK", "FLOW_ANALYSIS_RULE", "PARAMETER_PROVIDER" ]
           },
           "useCases" : {
             "type" : "array",
@@ -5351,7 +5180,7 @@
           },
           "writesAttributes" : {
             "type" : "array",
-            "description" : "The attributes written to FlowFiles by the extension",
+            "description" : "The attributes written to flow files by the extension",
             "items" : {
               "$ref" : "#/components/schemas/Attribute"
             },
@@ -5374,7 +5203,7 @@
           "extensionType" : {
             "type" : "string",
             "description" : "The type of extension",
-            "enum" : [ "PROCESSOR", "CONTROLLER_SERVICE", "REPORTING_TASK", "FLOW_ANALYSIS_RULE", "PARAMETER_PROVIDER", "FLOW_REGISTRY_CLIENT", "CONNECTOR" ]
+            "enum" : [ "PROCESSOR", "CONTROLLER_SERVICE", "REPORTING_TASK", "FLOW_ANALYSIS_RULE", "PARAMETER_PROVIDER" ]
           },
           "tags" : {
             "type" : "array",
@@ -5440,7 +5269,7 @@
           "type" : {
             "type" : "string",
             "description" : "The type of the extension",
-            "enum" : [ "PROCESSOR", "CONTROLLER_SERVICE", "REPORTING_TASK", "FLOW_ANALYSIS_RULE", "PARAMETER_PROVIDER", "FLOW_REGISTRY_CLIENT", "CONNECTOR" ]
+            "enum" : [ "PROCESSOR", "CONTROLLER_SERVICE", "REPORTING_TASK", "FLOW_ANALYSIS_RULE", "PARAMETER_PROVIDER" ]
           }
         }
       },
@@ -5662,31 +5491,6 @@
         },
         "readOnly" : true
       },
-      "ListenPortDefinition" : {
-        "type" : "object",
-        "description" : "The optional listen port definition",
-        "properties" : {
-          "applicationProtocols" : {
-            "type" : "array",
-            "description" : "The application protocols that this listen port could support (if any)",
-            "items" : {
-              "type" : "string",
-              "description" : "The application protocols that this listen port could support (if any)",
-              "xml" : {
-                "name" : "applicationProtocol"
-              }
-            },
-            "xml" : {
-              "wrapped" : true
-            }
-          },
-          "transportProtocol" : {
-            "type" : "string",
-            "description" : "The transport protocol used by this listen port",
-            "enum" : [ "TCP", "UDP" ]
-          }
-        }
-      },
       "LongParameter" : {
         "type" : "object",
         "properties" : {
@@ -5855,9 +5659,6 @@
             "type" : "boolean",
             "description" : "Whether or not expression language is supported"
           },
-          "listenPortDefinition" : {
-            "$ref" : "#/components/schemas/ListenPortDefinition"
-          },
           "name" : {
             "type" : "string",
             "description" : "The name of the property"
@@ -5881,26 +5682,21 @@
         "properties" : {
           "artifactId" : {
             "type" : "string",
-            "description" : "The artifact id of the service API being provided",
-            "minLength" : 1
+            "description" : "The artifact id of the service API being provided"
           },
           "className" : {
             "type" : "string",
-            "description" : "The class name of the service API being provided",
-            "minLength" : 1
+            "description" : "The class name of the service API being provided"
           },
           "groupId" : {
             "type" : "string",
-            "description" : "The group id of the service API being provided",
-            "minLength" : 1
+            "description" : "The group id of the service API being provided"
           },
           "version" : {
             "type" : "string",
-            "description" : "The version of the service API being provided",
-            "minLength" : 1
+            "description" : "The version of the service API being provided"
           }
-        },
-        "required" : [ "artifactId", "className", "groupId", "version" ]
+        }
       },
       "RegistryAbout" : {
         "type" : "object",
@@ -6039,16 +5835,13 @@
         "properties" : {
           "explanation" : {
             "type" : "string",
-            "description" : "The explanation of this restriction",
-            "minLength" : 1
+            "description" : "The explanation of this restriction"
           },
           "requiredPermission" : {
             "type" : "string",
-            "description" : "The permission required for this restriction",
-            "minLength" : 1
+            "description" : "The permission required for this restriction"
           }
-        },
-        "required" : [ "explanation", "requiredPermission" ]
+        }
       },
       "RevisionInfo" : {
         "type" : "object",
@@ -6292,27 +6085,6 @@
           }
         }
       },
-      "VersionedComponentState" : {
-        "type" : "object",
-        "description" : "The state of the component, if exported with state",
-        "properties" : {
-          "clusterState" : {
-            "type" : "object",
-            "additionalProperties" : {
-              "type" : "string",
-              "description" : "The cluster-scoped state of the component, or null if not exported"
-            },
-            "description" : "The cluster-scoped state of the component, or null if not exported"
-          },
-          "localNodeStates" : {
-            "type" : "array",
-            "description" : "The local-scoped state of the component ordered by node ordinal index, or null if not exported",
-            "items" : {
-              "$ref" : "#/components/schemas/VersionedNodeState"
-            }
-          }
-        }
-      },
       "VersionedConnection" : {
         "type" : "object",
         "description" : "The Connections",
@@ -6339,14 +6111,14 @@
           },
           "componentType" : {
             "type" : "string",
-            "enum" : [ "CONNECTION", "PROCESSOR", "PROCESS_GROUP", "REMOTE_PROCESS_GROUP", "INPUT_PORT", "OUTPUT_PORT", "REMOTE_INPUT_PORT", "REMOTE_OUTPUT_PORT", "FUNNEL", "LABEL", "CONTROLLER_SERVICE", "REPORTING_TASK", "FLOW_ANALYSIS_RULE", "PARAMETER_CONTEXT", "PARAMETER_PROVIDER", "FLOW_REGISTRY_CLIENT", "CONNECTOR" ]
+            "enum" : [ "CONNECTION", "PROCESSOR", "PROCESS_GROUP", "REMOTE_PROCESS_GROUP", "INPUT_PORT", "OUTPUT_PORT", "REMOTE_INPUT_PORT", "REMOTE_OUTPUT_PORT", "FUNNEL", "LABEL", "CONTROLLER_SERVICE", "REPORTING_TASK", "FLOW_ANALYSIS_RULE", "PARAMETER_CONTEXT", "PARAMETER_PROVIDER", "FLOW_REGISTRY_CLIENT" ]
           },
           "destination" : {
             "$ref" : "#/components/schemas/ConnectableComponent"
           },
           "flowFileExpiration" : {
             "type" : "string",
-            "description" : "The amount of time a FlowFile may be in the flow before it will be automatically aged out of the flow. Once a FlowFile reaches this age it will be terminated from the flow the next time a processor attempts to start work on it."
+            "description" : "The amount of time a flow file may be in the flow before it will be automatically aged out of the flow. Once a flow file reaches this age it will be terminated from the flow the next time a processor attempts to start work on it."
           },
           "groupIdentifier" : {
             "type" : "string",
@@ -6367,11 +6139,13 @@
           },
           "loadBalanceCompression" : {
             "type" : "string",
-            "description" : "Whether or not compression should be used when transferring FlowFiles between nodes Possible returned values: DO_NOT_COMPRESS, COMPRESS_ATTRIBUTES_ONLY, COMPRESS_ATTRIBUTES_AND_CONTENT. See LoadBalanceCompression.class for more details."
+            "description" : "Whether or not compression should be used when transferring FlowFiles between nodes",
+            "enum" : [ "DO_NOT_COMPRESS, COMPRESS_ATTRIBUTES_ONLY, COMPRESS_ATTRIBUTES_AND_CONTENT" ]
           },
           "loadBalanceStrategy" : {
             "type" : "string",
-            "description" : "The Strategy to use for load balancing data across the cluster, or null, if no Load Balance Strategy has been specified. Possible returned values: DO_NOT_LOAD_BALANCE, PARTITION_BY_ATTRIBUTE, ROUND_ROBIN, SINGLE_NODE. See LoadBalanceStrategy.class for more details."
+            "description" : "The Strategy to use for load balancing data across the cluster, or null, if no Load Balance Strategy has been specified.",
+            "enum" : [ "DO_NOT_LOAD_BALANCE, PARTITION_BY_ATTRIBUTE, ROUND_ROBIN, SINGLE_NODE" ]
           },
           "name" : {
             "type" : "string",
@@ -6430,12 +6204,9 @@
             "type" : "string",
             "description" : "The user-supplied comments for the component"
           },
-          "componentState" : {
-            "$ref" : "#/components/schemas/VersionedComponentState"
-          },
           "componentType" : {
             "type" : "string",
-            "enum" : [ "CONNECTION", "PROCESSOR", "PROCESS_GROUP", "REMOTE_PROCESS_GROUP", "INPUT_PORT", "OUTPUT_PORT", "REMOTE_INPUT_PORT", "REMOTE_OUTPUT_PORT", "FUNNEL", "LABEL", "CONTROLLER_SERVICE", "REPORTING_TASK", "FLOW_ANALYSIS_RULE", "PARAMETER_CONTEXT", "PARAMETER_PROVIDER", "FLOW_REGISTRY_CLIENT", "CONNECTOR" ]
+            "enum" : [ "CONNECTION", "PROCESSOR", "PROCESS_GROUP", "REMOTE_PROCESS_GROUP", "INPUT_PORT", "OUTPUT_PORT", "REMOTE_INPUT_PORT", "REMOTE_OUTPUT_PORT", "FUNNEL", "LABEL", "CONTROLLER_SERVICE", "REPORTING_TASK", "FLOW_ANALYSIS_RULE", "PARAMETER_CONTEXT", "PARAMETER_PROVIDER", "FLOW_REGISTRY_CLIENT" ]
           },
           "controllerServiceApis" : {
             "type" : "array",
@@ -6719,7 +6490,7 @@
           },
           "componentType" : {
             "type" : "string",
-            "enum" : [ "CONNECTION", "PROCESSOR", "PROCESS_GROUP", "REMOTE_PROCESS_GROUP", "INPUT_PORT", "OUTPUT_PORT", "REMOTE_INPUT_PORT", "REMOTE_OUTPUT_PORT", "FUNNEL", "LABEL", "CONTROLLER_SERVICE", "REPORTING_TASK", "FLOW_ANALYSIS_RULE", "PARAMETER_CONTEXT", "PARAMETER_PROVIDER", "FLOW_REGISTRY_CLIENT", "CONNECTOR" ]
+            "enum" : [ "CONNECTION", "PROCESSOR", "PROCESS_GROUP", "REMOTE_PROCESS_GROUP", "INPUT_PORT", "OUTPUT_PORT", "REMOTE_INPUT_PORT", "REMOTE_OUTPUT_PORT", "FUNNEL", "LABEL", "CONTROLLER_SERVICE", "REPORTING_TASK", "FLOW_ANALYSIS_RULE", "PARAMETER_CONTEXT", "PARAMETER_PROVIDER", "FLOW_REGISTRY_CLIENT" ]
           },
           "groupIdentifier" : {
             "type" : "string",
@@ -6752,7 +6523,7 @@
           },
           "componentType" : {
             "type" : "string",
-            "enum" : [ "CONNECTION", "PROCESSOR", "PROCESS_GROUP", "REMOTE_PROCESS_GROUP", "INPUT_PORT", "OUTPUT_PORT", "REMOTE_INPUT_PORT", "REMOTE_OUTPUT_PORT", "FUNNEL", "LABEL", "CONTROLLER_SERVICE", "REPORTING_TASK", "FLOW_ANALYSIS_RULE", "PARAMETER_CONTEXT", "PARAMETER_PROVIDER", "FLOW_REGISTRY_CLIENT", "CONNECTOR" ]
+            "enum" : [ "CONNECTION", "PROCESSOR", "PROCESS_GROUP", "REMOTE_PROCESS_GROUP", "INPUT_PORT", "OUTPUT_PORT", "REMOTE_INPUT_PORT", "REMOTE_OUTPUT_PORT", "FUNNEL", "LABEL", "CONTROLLER_SERVICE", "REPORTING_TASK", "FLOW_ANALYSIS_RULE", "PARAMETER_CONTEXT", "PARAMETER_PROVIDER", "FLOW_REGISTRY_CLIENT" ]
           },
           "groupIdentifier" : {
             "type" : "string",
@@ -6802,39 +6573,6 @@
           }
         }
       },
-      "VersionedListenPortDefinition" : {
-        "type" : "object",
-        "description" : "Returns the Listen Port Definition for the port this property specifies, if applicable",
-        "properties" : {
-          "applicationProtocols" : {
-            "type" : "array",
-            "description" : "The application protocol(s) that the listen port could support (if any)",
-            "items" : {
-              "type" : "string",
-              "description" : "The application protocol(s) that the listen port could support (if any)"
-            }
-          },
-          "transportProtocol" : {
-            "type" : "string",
-            "description" : "The transport protocol used by the listen port",
-            "enum" : [ "TCP", "UDP" ]
-          }
-        }
-      },
-      "VersionedNodeState" : {
-        "type" : "object",
-        "description" : "The state entries for a single node",
-        "properties" : {
-          "state" : {
-            "type" : "object",
-            "additionalProperties" : {
-              "type" : "string",
-              "description" : "The state key-value pairs for this node"
-            },
-            "description" : "The state key-value pairs for this node"
-          }
-        }
-      },
       "VersionedParameter" : {
         "type" : "object",
         "description" : "The parameters in the context",
@@ -6878,7 +6616,7 @@
           },
           "componentType" : {
             "type" : "string",
-            "enum" : [ "CONNECTION", "PROCESSOR", "PROCESS_GROUP", "REMOTE_PROCESS_GROUP", "INPUT_PORT", "OUTPUT_PORT", "REMOTE_INPUT_PORT", "REMOTE_OUTPUT_PORT", "FUNNEL", "LABEL", "CONTROLLER_SERVICE", "REPORTING_TASK", "FLOW_ANALYSIS_RULE", "PARAMETER_CONTEXT", "PARAMETER_PROVIDER", "FLOW_REGISTRY_CLIENT", "CONNECTOR" ]
+            "enum" : [ "CONNECTION", "PROCESSOR", "PROCESS_GROUP", "REMOTE_PROCESS_GROUP", "INPUT_PORT", "OUTPUT_PORT", "REMOTE_INPUT_PORT", "REMOTE_OUTPUT_PORT", "FUNNEL", "LABEL", "CONTROLLER_SERVICE", "REPORTING_TASK", "FLOW_ANALYSIS_RULE", "PARAMETER_CONTEXT", "PARAMETER_PROVIDER", "FLOW_REGISTRY_CLIENT" ]
           },
           "description" : {
             "type" : "string",
@@ -6947,7 +6685,7 @@
           },
           "componentType" : {
             "type" : "string",
-            "enum" : [ "CONNECTION", "PROCESSOR", "PROCESS_GROUP", "REMOTE_PROCESS_GROUP", "INPUT_PORT", "OUTPUT_PORT", "REMOTE_INPUT_PORT", "REMOTE_OUTPUT_PORT", "FUNNEL", "LABEL", "CONTROLLER_SERVICE", "REPORTING_TASK", "FLOW_ANALYSIS_RULE", "PARAMETER_CONTEXT", "PARAMETER_PROVIDER", "FLOW_REGISTRY_CLIENT", "CONNECTOR" ]
+            "enum" : [ "CONNECTION", "PROCESSOR", "PROCESS_GROUP", "REMOTE_PROCESS_GROUP", "INPUT_PORT", "OUTPUT_PORT", "REMOTE_INPUT_PORT", "REMOTE_OUTPUT_PORT", "FUNNEL", "LABEL", "CONTROLLER_SERVICE", "REPORTING_TASK", "FLOW_ANALYSIS_RULE", "PARAMETER_CONTEXT", "PARAMETER_PROVIDER", "FLOW_REGISTRY_CLIENT" ]
           },
           "concurrentlySchedulableTaskCount" : {
             "type" : "integer",
@@ -7000,7 +6738,7 @@
           },
           "componentType" : {
             "type" : "string",
-            "enum" : [ "CONNECTION", "PROCESSOR", "PROCESS_GROUP", "REMOTE_PROCESS_GROUP", "INPUT_PORT", "OUTPUT_PORT", "REMOTE_INPUT_PORT", "REMOTE_OUTPUT_PORT", "FUNNEL", "LABEL", "CONTROLLER_SERVICE", "REPORTING_TASK", "FLOW_ANALYSIS_RULE", "PARAMETER_CONTEXT", "PARAMETER_PROVIDER", "FLOW_REGISTRY_CLIENT", "CONNECTOR" ]
+            "enum" : [ "CONNECTION", "PROCESSOR", "PROCESS_GROUP", "REMOTE_PROCESS_GROUP", "INPUT_PORT", "OUTPUT_PORT", "REMOTE_INPUT_PORT", "REMOTE_OUTPUT_PORT", "FUNNEL", "LABEL", "CONTROLLER_SERVICE", "REPORTING_TASK", "FLOW_ANALYSIS_RULE", "PARAMETER_CONTEXT", "PARAMETER_PROVIDER", "FLOW_REGISTRY_CLIENT" ]
           },
           "connections" : {
             "type" : "array",
@@ -7152,20 +6890,21 @@
         "properties" : {
           "annotationData" : {
             "type" : "string",
-            "description" : "The annotation data for the processor used to relay configuration between a custom UI and the processor."
+            "description" : "The annotation data for the processor used to relay configuration between a custom UI and the procesosr."
           },
           "autoTerminatedRelationships" : {
             "type" : "array",
-            "description" : "The names of all relationships that cause a FlowFile to be terminated if the relationship is not connected elsewhere. This property differs from the 'isAutoTerminate' property of the RelationshipDTO in that the RelationshipDTO is meant to depict the current configuration, whereas this property can be set in a DTO when updating a Processor in order to change which Relationships should be auto-terminated.",
+            "description" : "The names of all relationships that cause a flow file to be terminated if the relationship is not connected elsewhere. This property differs from the 'isAutoTerminate' property of the RelationshipDTO in that the RelationshipDTO is meant to depict the current configuration, whereas this property can be set in a DTO when updating a Processor in order to change which Relationships should be auto-terminated.",
             "items" : {
               "type" : "string",
-              "description" : "The names of all relationships that cause a FlowFile to be terminated if the relationship is not connected elsewhere. This property differs from the 'isAutoTerminate' property of the RelationshipDTO in that the RelationshipDTO is meant to depict the current configuration, whereas this property can be set in a DTO when updating a Processor in order to change which Relationships should be auto-terminated."
+              "description" : "The names of all relationships that cause a flow file to be terminated if the relationship is not connected elsewhere. This property differs from the 'isAutoTerminate' property of the RelationshipDTO in that the RelationshipDTO is meant to depict the current configuration, whereas this property can be set in a DTO when updating a Processor in order to change which Relationships should be auto-terminated."
             },
             "uniqueItems" : true
           },
           "backoffMechanism" : {
             "type" : "string",
-            "description" : "Determines whether the FlowFile should be penalized or the processor should be yielded between retries. Possible returned values: PENALIZE_FLOWFILE, YIELD_PROCESSOR."
+            "description" : "Determines whether the FlowFile should be penalized or the processor should be yielded between retries.",
+            "enum" : [ "PENALIZE_FLOWFILE, YIELD_PROCESSOR" ]
           },
           "bulletinLevel" : {
             "type" : "string",
@@ -7178,17 +6917,14 @@
             "type" : "string",
             "description" : "The user-supplied comments for the component"
           },
-          "componentState" : {
-            "$ref" : "#/components/schemas/VersionedComponentState"
-          },
           "componentType" : {
             "type" : "string",
-            "enum" : [ "CONNECTION", "PROCESSOR", "PROCESS_GROUP", "REMOTE_PROCESS_GROUP", "INPUT_PORT", "OUTPUT_PORT", "REMOTE_INPUT_PORT", "REMOTE_OUTPUT_PORT", "FUNNEL", "LABEL", "CONTROLLER_SERVICE", "REPORTING_TASK", "FLOW_ANALYSIS_RULE", "PARAMETER_CONTEXT", "PARAMETER_PROVIDER", "FLOW_REGISTRY_CLIENT", "CONNECTOR" ]
+            "enum" : [ "CONNECTION", "PROCESSOR", "PROCESS_GROUP", "REMOTE_PROCESS_GROUP", "INPUT_PORT", "OUTPUT_PORT", "REMOTE_INPUT_PORT", "REMOTE_OUTPUT_PORT", "FUNNEL", "LABEL", "CONTROLLER_SERVICE", "REPORTING_TASK", "FLOW_ANALYSIS_RULE", "PARAMETER_CONTEXT", "PARAMETER_PROVIDER", "FLOW_REGISTRY_CLIENT" ]
           },
           "concurrentlySchedulableTaskCount" : {
             "type" : "integer",
             "format" : "int32",
-            "description" : "The number of tasks that should be concurrently schedule for the processor. If the processor doesn't allow parallel processing then any positive input will be ignored."
+            "description" : "The number of tasks that should be concurrently schedule for the processor. If the processor doesn't allow parallol processing then any positive input will be ignored."
           },
           "executionNode" : {
             "type" : "string",
@@ -7216,7 +6952,7 @@
           },
           "penaltyDuration" : {
             "type" : "string",
-            "description" : "The amount of time that is used when the process penalizes a FlowFile."
+            "description" : "The amout of time that is used when the process penalizes a flowfile."
           },
           "position" : {
             "$ref" : "#/components/schemas/Position"
@@ -7302,9 +7038,6 @@
             "type" : "boolean",
             "description" : "Whether or not the property provides the identifier of a Controller Service"
           },
-          "listenPortDefinition" : {
-            "$ref" : "#/components/schemas/VersionedListenPortDefinition"
-          },
           "name" : {
             "type" : "string",
             "description" : "The name of the property"
@@ -7331,12 +7064,12 @@
           },
           "componentType" : {
             "type" : "string",
-            "enum" : [ "CONNECTION", "PROCESSOR", "PROCESS_GROUP", "REMOTE_PROCESS_GROUP", "INPUT_PORT", "OUTPUT_PORT", "REMOTE_INPUT_PORT", "REMOTE_OUTPUT_PORT", "FUNNEL", "LABEL", "CONTROLLER_SERVICE", "REPORTING_TASK", "FLOW_ANALYSIS_RULE", "PARAMETER_CONTEXT", "PARAMETER_PROVIDER", "FLOW_REGISTRY_CLIENT", "CONNECTOR" ]
+            "enum" : [ "CONNECTION", "PROCESSOR", "PROCESS_GROUP", "REMOTE_PROCESS_GROUP", "INPUT_PORT", "OUTPUT_PORT", "REMOTE_INPUT_PORT", "REMOTE_OUTPUT_PORT", "FUNNEL", "LABEL", "CONTROLLER_SERVICE", "REPORTING_TASK", "FLOW_ANALYSIS_RULE", "PARAMETER_CONTEXT", "PARAMETER_PROVIDER", "FLOW_REGISTRY_CLIENT" ]
           },
           "concurrentlySchedulableTaskCount" : {
             "type" : "integer",
             "format" : "int32",
-            "description" : "The number of task that may transmit FlowFiles to the target port concurrently."
+            "description" : "The number of task that may transmit flowfiles to the target port concurrently."
           },
           "groupIdentifier" : {
             "type" : "string",
@@ -7372,7 +7105,7 @@
           },
           "useCompression" : {
             "type" : "boolean",
-            "description" : "Whether the FlowFiles are compressed when sent to the target port."
+            "description" : "Whether the flowfiles are compressed when sent to the target port."
           }
         }
       },
@@ -7390,7 +7123,7 @@
           },
           "componentType" : {
             "type" : "string",
-            "enum" : [ "CONNECTION", "PROCESSOR", "PROCESS_GROUP", "REMOTE_PROCESS_GROUP", "INPUT_PORT", "OUTPUT_PORT", "REMOTE_INPUT_PORT", "REMOTE_OUTPUT_PORT", "FUNNEL", "LABEL", "CONTROLLER_SERVICE", "REPORTING_TASK", "FLOW_ANALYSIS_RULE", "PARAMETER_CONTEXT", "PARAMETER_PROVIDER", "FLOW_REGISTRY_CLIENT", "CONNECTOR" ]
+            "enum" : [ "CONNECTION", "PROCESSOR", "PROCESS_GROUP", "REMOTE_PROCESS_GROUP", "INPUT_PORT", "OUTPUT_PORT", "REMOTE_INPUT_PORT", "REMOTE_OUTPUT_PORT", "FUNNEL", "LABEL", "CONTROLLER_SERVICE", "REPORTING_TASK", "FLOW_ANALYSIS_RULE", "PARAMETER_CONTEXT", "PARAMETER_PROVIDER", "FLOW_REGISTRY_CLIENT" ]
           },
           "groupIdentifier" : {
             "type" : "string",
@@ -7450,7 +7183,8 @@
           },
           "transportProtocol" : {
             "type" : "string",
-            "description" : "The Transport Protocol that is used for Site-to-Site communications. Possible returned values: RAW, HTTP."
+            "description" : "The Transport Protocol that is used for Site-to-Site communications",
+            "enum" : [ "RAW, HTTP" ]
           },
           "yieldDuration" : {
             "type" : "string",
