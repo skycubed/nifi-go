@@ -9,16 +9,13 @@ import (
 
 // Defines values for AccessPolicyDTOAction.
 const (
-	AccessPolicyDTOActionRead  AccessPolicyDTOAction = "read"
-	AccessPolicyDTOActionWrite AccessPolicyDTOAction = "write"
+	AccessPolicyDTOActionReadWrite AccessPolicyDTOAction = "read, write"
 )
 
 // Valid indicates whether the value is a known member of the AccessPolicyDTOAction enum.
 func (e AccessPolicyDTOAction) Valid() bool {
 	switch e {
-	case AccessPolicyDTOActionRead:
-		return true
-	case AccessPolicyDTOActionWrite:
+	case AccessPolicyDTOActionReadWrite:
 		return true
 	default:
 		return false
@@ -27,16 +24,13 @@ func (e AccessPolicyDTOAction) Valid() bool {
 
 // Defines values for AccessPolicySummaryDTOAction.
 const (
-	AccessPolicySummaryDTOActionRead  AccessPolicySummaryDTOAction = "read"
-	AccessPolicySummaryDTOActionWrite AccessPolicySummaryDTOAction = "write"
+	AccessPolicySummaryDTOActionReadWrite AccessPolicySummaryDTOAction = "read, write"
 )
 
 // Valid indicates whether the value is a known member of the AccessPolicySummaryDTOAction enum.
 func (e AccessPolicySummaryDTOAction) Valid() bool {
 	switch e {
-	case AccessPolicySummaryDTOActionRead:
-		return true
-	case AccessPolicySummaryDTOActionWrite:
+	case AccessPolicySummaryDTOActionReadWrite:
 		return true
 	default:
 		return false
@@ -45,16 +39,13 @@ func (e AccessPolicySummaryDTOAction) Valid() bool {
 
 // Defines values for ActivateControllerServicesEntityState.
 const (
-	ActivateControllerServicesEntityStateDISABLED ActivateControllerServicesEntityState = "DISABLED"
-	ActivateControllerServicesEntityStateENABLED  ActivateControllerServicesEntityState = "ENABLED"
+	ActivateControllerServicesEntityStateENABLEDDISABLED ActivateControllerServicesEntityState = "ENABLED, DISABLED"
 )
 
 // Valid indicates whether the value is a known member of the ActivateControllerServicesEntityState enum.
 func (e ActivateControllerServicesEntityState) Valid() bool {
 	switch e {
-	case ActivateControllerServicesEntityStateDISABLED:
-		return true
-	case ActivateControllerServicesEntityStateENABLED:
+	case ActivateControllerServicesEntityStateENABLEDDISABLED:
 		return true
 	default:
 		return false
@@ -63,31 +54,13 @@ func (e ActivateControllerServicesEntityState) Valid() bool {
 
 // Defines values for AffectedComponentDTOReferenceType.
 const (
-	AffectedComponentDTOReferenceTypeCONTROLLERSERVICE AffectedComponentDTOReferenceType = "CONTROLLER_SERVICE"
-	AffectedComponentDTOReferenceTypeINPUTPORT         AffectedComponentDTOReferenceType = "INPUT_PORT"
-	AffectedComponentDTOReferenceTypeOUTPUTPORT        AffectedComponentDTOReferenceType = "OUTPUT_PORT"
-	AffectedComponentDTOReferenceTypePROCESSOR         AffectedComponentDTOReferenceType = "PROCESSOR"
-	AffectedComponentDTOReferenceTypeREMOTEINPUTPORT   AffectedComponentDTOReferenceType = "REMOTE_INPUT_PORT"
-	AffectedComponentDTOReferenceTypeREMOTEOUTPUTPORT  AffectedComponentDTOReferenceType = "REMOTE_OUTPUT_PORT"
-	AffectedComponentDTOReferenceTypeSTATELESSGROUP    AffectedComponentDTOReferenceType = "STATELESS_GROUP"
+	AffectedComponentDTOReferenceTypePROCESSORCONTROLLERSERVICEINPUTPORTOUTPUTPORTREMOTEINPUTPORTREMOTEOUTPUTPORTSTATELESSGROUP AffectedComponentDTOReferenceType = "PROCESSOR,CONTROLLER_SERVICE, INPUT_PORT, OUTPUT_PORT, REMOTE_INPUT_PORT, REMOTE_OUTPUT_PORT, STATELESS_GROUP"
 )
 
 // Valid indicates whether the value is a known member of the AffectedComponentDTOReferenceType enum.
 func (e AffectedComponentDTOReferenceType) Valid() bool {
 	switch e {
-	case AffectedComponentDTOReferenceTypeCONTROLLERSERVICE:
-		return true
-	case AffectedComponentDTOReferenceTypeINPUTPORT:
-		return true
-	case AffectedComponentDTOReferenceTypeOUTPUTPORT:
-		return true
-	case AffectedComponentDTOReferenceTypePROCESSOR:
-		return true
-	case AffectedComponentDTOReferenceTypeREMOTEINPUTPORT:
-		return true
-	case AffectedComponentDTOReferenceTypeREMOTEOUTPUTPORT:
-		return true
-	case AffectedComponentDTOReferenceTypeSTATELESSGROUP:
+	case AffectedComponentDTOReferenceTypePROCESSORCONTROLLERSERVICEINPUTPORTOUTPUTPORTREMOTEINPUTPORTREMOTEOUTPUTPORTSTATELESSGROUP:
 		return true
 	default:
 		return false
@@ -96,46 +69,13 @@ func (e AffectedComponentDTOReferenceType) Valid() bool {
 
 // Defines values for AffectedComponentEntityReferenceType.
 const (
-	AffectedComponentEntityReferenceTypeCONTROLLERSERVICE AffectedComponentEntityReferenceType = "CONTROLLER_SERVICE"
-	AffectedComponentEntityReferenceTypeINPUTPORT         AffectedComponentEntityReferenceType = "INPUT_PORT"
-	AffectedComponentEntityReferenceTypeOUTPUTPORT        AffectedComponentEntityReferenceType = "OUTPUT_PORT"
-	AffectedComponentEntityReferenceTypePROCESSOR         AffectedComponentEntityReferenceType = "PROCESSOR"
-	AffectedComponentEntityReferenceTypeREMOTEINPUTPORT   AffectedComponentEntityReferenceType = "REMOTE_INPUT_PORT"
-	AffectedComponentEntityReferenceTypeREMOTEOUTPUTPORT  AffectedComponentEntityReferenceType = "REMOTE_OUTPUT_PORT"
+	PROCESSORCONTROLLERSERVICEINPUTPORTOUTPUTPORTREMOTEINPUTPORTREMOTEOUTPUTPORT AffectedComponentEntityReferenceType = "PROCESSOR,CONTROLLER_SERVICE, INPUT_PORT, OUTPUT_PORT, REMOTE_INPUT_PORT, REMOTE_OUTPUT_PORT"
 )
 
 // Valid indicates whether the value is a known member of the AffectedComponentEntityReferenceType enum.
 func (e AffectedComponentEntityReferenceType) Valid() bool {
 	switch e {
-	case AffectedComponentEntityReferenceTypeCONTROLLERSERVICE:
-		return true
-	case AffectedComponentEntityReferenceTypeINPUTPORT:
-		return true
-	case AffectedComponentEntityReferenceTypeOUTPUTPORT:
-		return true
-	case AffectedComponentEntityReferenceTypePROCESSOR:
-		return true
-	case AffectedComponentEntityReferenceTypeREMOTEINPUTPORT:
-		return true
-	case AffectedComponentEntityReferenceTypeREMOTEOUTPUTPORT:
-		return true
-	default:
-		return false
-	}
-}
-
-// Defines values for BacklogDTOPrecision.
-const (
-	ATLEAST BacklogDTOPrecision = "AT_LEAST"
-	EXACT   BacklogDTOPrecision = "EXACT"
-)
-
-// Valid indicates whether the value is a known member of the BacklogDTOPrecision enum.
-func (e BacklogDTOPrecision) Valid() bool {
-	switch e {
-	case ATLEAST:
-		return true
-	case EXACT:
+	case PROCESSORCONTROLLERSERVICEINPUTPORTOUTPUTPORTREMOTEINPUTPORTREMOTEOUTPUTPORT:
 		return true
 	default:
 		return false
@@ -144,31 +84,13 @@ func (e BacklogDTOPrecision) Valid() bool {
 
 // Defines values for ComponentValidationResultDTOReferenceType.
 const (
-	ComponentValidationResultDTOReferenceTypeCONTROLLERSERVICE ComponentValidationResultDTOReferenceType = "CONTROLLER_SERVICE"
-	ComponentValidationResultDTOReferenceTypeINPUTPORT         ComponentValidationResultDTOReferenceType = "INPUT_PORT"
-	ComponentValidationResultDTOReferenceTypeOUTPUTPORT        ComponentValidationResultDTOReferenceType = "OUTPUT_PORT"
-	ComponentValidationResultDTOReferenceTypePROCESSOR         ComponentValidationResultDTOReferenceType = "PROCESSOR"
-	ComponentValidationResultDTOReferenceTypeREMOTEINPUTPORT   ComponentValidationResultDTOReferenceType = "REMOTE_INPUT_PORT"
-	ComponentValidationResultDTOReferenceTypeREMOTEOUTPUTPORT  ComponentValidationResultDTOReferenceType = "REMOTE_OUTPUT_PORT"
-	ComponentValidationResultDTOReferenceTypeSTATELESSGROUP    ComponentValidationResultDTOReferenceType = "STATELESS_GROUP"
+	ComponentValidationResultDTOReferenceTypePROCESSORCONTROLLERSERVICEINPUTPORTOUTPUTPORTREMOTEINPUTPORTREMOTEOUTPUTPORTSTATELESSGROUP ComponentValidationResultDTOReferenceType = "PROCESSOR,CONTROLLER_SERVICE, INPUT_PORT, OUTPUT_PORT, REMOTE_INPUT_PORT, REMOTE_OUTPUT_PORT, STATELESS_GROUP"
 )
 
 // Valid indicates whether the value is a known member of the ComponentValidationResultDTOReferenceType enum.
 func (e ComponentValidationResultDTOReferenceType) Valid() bool {
 	switch e {
-	case ComponentValidationResultDTOReferenceTypeCONTROLLERSERVICE:
-		return true
-	case ComponentValidationResultDTOReferenceTypeINPUTPORT:
-		return true
-	case ComponentValidationResultDTOReferenceTypeOUTPUTPORT:
-		return true
-	case ComponentValidationResultDTOReferenceTypePROCESSOR:
-		return true
-	case ComponentValidationResultDTOReferenceTypeREMOTEINPUTPORT:
-		return true
-	case ComponentValidationResultDTOReferenceTypeREMOTEOUTPUTPORT:
-		return true
-	case ComponentValidationResultDTOReferenceTypeSTATELESSGROUP:
+	case ComponentValidationResultDTOReferenceTypePROCESSORCONTROLLERSERVICEINPUTPORTOUTPUTPORTREMOTEINPUTPORTREMOTEOUTPUTPORTSTATELESSGROUP:
 		return true
 	default:
 		return false
@@ -177,19 +99,13 @@ func (e ComponentValidationResultDTOReferenceType) Valid() bool {
 
 // Defines values for ConfigVerificationResultDTOOutcome.
 const (
-	FAILED     ConfigVerificationResultDTOOutcome = "FAILED"
-	SKIPPED    ConfigVerificationResultDTOOutcome = "SKIPPED"
-	SUCCESSFUL ConfigVerificationResultDTOOutcome = "SUCCESSFUL"
+	SUCCESSFULFAILEDSKIPPED ConfigVerificationResultDTOOutcome = "SUCCESSFUL, FAILED, SKIPPED"
 )
 
 // Valid indicates whether the value is a known member of the ConfigVerificationResultDTOOutcome enum.
 func (e ConfigVerificationResultDTOOutcome) Valid() bool {
 	switch e {
-	case FAILED:
-		return true
-	case SKIPPED:
-		return true
-	case SUCCESSFUL:
+	case SUCCESSFULFAILEDSKIPPED:
 		return true
 	default:
 		return false
@@ -228,28 +144,58 @@ func (e ConnectableComponentType) Valid() bool {
 
 // Defines values for ConnectableDTOType.
 const (
-	ConnectableDTOTypeFUNNEL           ConnectableDTOType = "FUNNEL"
-	ConnectableDTOTypeINPUTPORT        ConnectableDTOType = "INPUT_PORT"
-	ConnectableDTOTypeOUTPUTPORT       ConnectableDTOType = "OUTPUT_PORT"
-	ConnectableDTOTypePROCESSOR        ConnectableDTOType = "PROCESSOR"
-	ConnectableDTOTypeREMOTEINPUTPORT  ConnectableDTOType = "REMOTE_INPUT_PORT"
-	ConnectableDTOTypeREMOTEOUTPUTPORT ConnectableDTOType = "REMOTE_OUTPUT_PORT"
+	ConnectableDTOTypePROCESSORREMOTEINPUTPORTREMOTEOUTPUTPORTINPUTPORTOUTPUTPORTFUNNEL ConnectableDTOType = "PROCESSOR, REMOTE_INPUT_PORT, REMOTE_OUTPUT_PORT, INPUT_PORT, OUTPUT_PORT, FUNNEL"
 )
 
 // Valid indicates whether the value is a known member of the ConnectableDTOType enum.
 func (e ConnectableDTOType) Valid() bool {
 	switch e {
-	case ConnectableDTOTypeFUNNEL:
+	case ConnectableDTOTypePROCESSORREMOTEINPUTPORTREMOTEOUTPUTPORTINPUTPORTOUTPUTPORTFUNNEL:
 		return true
-	case ConnectableDTOTypeINPUTPORT:
+	default:
+		return false
+	}
+}
+
+// Defines values for ConnectionDTOLoadBalanceCompression.
+const (
+	ConnectionDTOLoadBalanceCompressionDONOTCOMPRESSCOMPRESSATTRIBUTESONLYCOMPRESSATTRIBUTESANDCONTENT ConnectionDTOLoadBalanceCompression = "DO_NOT_COMPRESS, COMPRESS_ATTRIBUTES_ONLY, COMPRESS_ATTRIBUTES_AND_CONTENT"
+)
+
+// Valid indicates whether the value is a known member of the ConnectionDTOLoadBalanceCompression enum.
+func (e ConnectionDTOLoadBalanceCompression) Valid() bool {
+	switch e {
+	case ConnectionDTOLoadBalanceCompressionDONOTCOMPRESSCOMPRESSATTRIBUTESONLYCOMPRESSATTRIBUTESANDCONTENT:
 		return true
-	case ConnectableDTOTypeOUTPUTPORT:
+	default:
+		return false
+	}
+}
+
+// Defines values for ConnectionDTOLoadBalanceStatus.
+const (
+	LOADBALANCENOTCONFIGUREDLOADBALANCEINACTIVELOADBALANCEACTIVE ConnectionDTOLoadBalanceStatus = "LOAD_BALANCE_NOT_CONFIGURED, LOAD_BALANCE_INACTIVE, LOAD_BALANCE_ACTIVE"
+)
+
+// Valid indicates whether the value is a known member of the ConnectionDTOLoadBalanceStatus enum.
+func (e ConnectionDTOLoadBalanceStatus) Valid() bool {
+	switch e {
+	case LOADBALANCENOTCONFIGUREDLOADBALANCEINACTIVELOADBALANCEACTIVE:
 		return true
-	case ConnectableDTOTypePROCESSOR:
-		return true
-	case ConnectableDTOTypeREMOTEINPUTPORT:
-		return true
-	case ConnectableDTOTypeREMOTEOUTPUTPORT:
+	default:
+		return false
+	}
+}
+
+// Defines values for ConnectionDTOLoadBalanceStrategy.
+const (
+	ConnectionDTOLoadBalanceStrategyDONOTLOADBALANCEPARTITIONBYATTRIBUTEROUNDROBINSINGLENODE ConnectionDTOLoadBalanceStrategy = "DO_NOT_LOAD_BALANCE, PARTITION_BY_ATTRIBUTE, ROUND_ROBIN, SINGLE_NODE"
+)
+
+// Valid indicates whether the value is a known member of the ConnectionDTOLoadBalanceStrategy enum.
+func (e ConnectionDTOLoadBalanceStrategy) Valid() bool {
+	switch e {
+	case ConnectionDTOLoadBalanceStrategyDONOTLOADBALANCEPARTITIONBYATTRIBUTEROUNDROBINSINGLENODE:
 		return true
 	default:
 		return false
@@ -258,28 +204,13 @@ func (e ConnectableDTOType) Valid() bool {
 
 // Defines values for ConnectionEntityDestinationType.
 const (
-	ConnectionEntityDestinationTypeFUNNEL           ConnectionEntityDestinationType = "FUNNEL"
-	ConnectionEntityDestinationTypeINPUTPORT        ConnectionEntityDestinationType = "INPUT_PORT"
-	ConnectionEntityDestinationTypeOUTPUTPORT       ConnectionEntityDestinationType = "OUTPUT_PORT"
-	ConnectionEntityDestinationTypePROCESSOR        ConnectionEntityDestinationType = "PROCESSOR"
-	ConnectionEntityDestinationTypeREMOTEINPUTPORT  ConnectionEntityDestinationType = "REMOTE_INPUT_PORT"
-	ConnectionEntityDestinationTypeREMOTEOUTPUTPORT ConnectionEntityDestinationType = "REMOTE_OUTPUT_PORT"
+	ConnectionEntityDestinationTypePROCESSORREMOTEINPUTPORTREMOTEOUTPUTPORTINPUTPORTOUTPUTPORTFUNNEL ConnectionEntityDestinationType = "PROCESSOR, REMOTE_INPUT_PORT, REMOTE_OUTPUT_PORT, INPUT_PORT, OUTPUT_PORT, FUNNEL"
 )
 
 // Valid indicates whether the value is a known member of the ConnectionEntityDestinationType enum.
 func (e ConnectionEntityDestinationType) Valid() bool {
 	switch e {
-	case ConnectionEntityDestinationTypeFUNNEL:
-		return true
-	case ConnectionEntityDestinationTypeINPUTPORT:
-		return true
-	case ConnectionEntityDestinationTypeOUTPUTPORT:
-		return true
-	case ConnectionEntityDestinationTypePROCESSOR:
-		return true
-	case ConnectionEntityDestinationTypeREMOTEINPUTPORT:
-		return true
-	case ConnectionEntityDestinationTypeREMOTEOUTPUTPORT:
+	case ConnectionEntityDestinationTypePROCESSORREMOTEINPUTPORTREMOTEOUTPUTPORTINPUTPORTOUTPUTPORTFUNNEL:
 		return true
 	default:
 		return false
@@ -288,148 +219,13 @@ func (e ConnectionEntityDestinationType) Valid() bool {
 
 // Defines values for ConnectionEntitySourceType.
 const (
-	ConnectionEntitySourceTypeFUNNEL           ConnectionEntitySourceType = "FUNNEL"
-	ConnectionEntitySourceTypeINPUTPORT        ConnectionEntitySourceType = "INPUT_PORT"
-	ConnectionEntitySourceTypeOUTPUTPORT       ConnectionEntitySourceType = "OUTPUT_PORT"
-	ConnectionEntitySourceTypePROCESSOR        ConnectionEntitySourceType = "PROCESSOR"
-	ConnectionEntitySourceTypeREMOTEINPUTPORT  ConnectionEntitySourceType = "REMOTE_INPUT_PORT"
-	ConnectionEntitySourceTypeREMOTEOUTPUTPORT ConnectionEntitySourceType = "REMOTE_OUTPUT_PORT"
+	ConnectionEntitySourceTypePROCESSORREMOTEINPUTPORTREMOTEOUTPUTPORTINPUTPORTOUTPUTPORTFUNNEL ConnectionEntitySourceType = "PROCESSOR, REMOTE_INPUT_PORT, REMOTE_OUTPUT_PORT, INPUT_PORT, OUTPUT_PORT, FUNNEL"
 )
 
 // Valid indicates whether the value is a known member of the ConnectionEntitySourceType enum.
 func (e ConnectionEntitySourceType) Valid() bool {
 	switch e {
-	case ConnectionEntitySourceTypeFUNNEL:
-		return true
-	case ConnectionEntitySourceTypeINPUTPORT:
-		return true
-	case ConnectionEntitySourceTypeOUTPUTPORT:
-		return true
-	case ConnectionEntitySourceTypePROCESSOR:
-		return true
-	case ConnectionEntitySourceTypeREMOTEINPUTPORT:
-		return true
-	case ConnectionEntitySourceTypeREMOTEOUTPUTPORT:
-		return true
-	default:
-		return false
-	}
-}
-
-// Defines values for ConnectionStatusSnapshotDTOLoadBalanceStatus.
-const (
-	LOADBALANCEACTIVE        ConnectionStatusSnapshotDTOLoadBalanceStatus = "LOAD_BALANCE_ACTIVE"
-	LOADBALANCEINACTIVE      ConnectionStatusSnapshotDTOLoadBalanceStatus = "LOAD_BALANCE_INACTIVE"
-	LOADBALANCENOTCONFIGURED ConnectionStatusSnapshotDTOLoadBalanceStatus = "LOAD_BALANCE_NOT_CONFIGURED"
-)
-
-// Valid indicates whether the value is a known member of the ConnectionStatusSnapshotDTOLoadBalanceStatus enum.
-func (e ConnectionStatusSnapshotDTOLoadBalanceStatus) Valid() bool {
-	switch e {
-	case LOADBALANCEACTIVE:
-		return true
-	case LOADBALANCEINACTIVE:
-		return true
-	case LOADBALANCENOTCONFIGURED:
-		return true
-	default:
-		return false
-	}
-}
-
-// Defines values for ConnectorDTOState.
-const (
-	ConnectorDTOStateRUNNING ConnectorDTOState = "RUNNING"
-	ConnectorDTOStateSTOPPED ConnectorDTOState = "STOPPED"
-)
-
-// Valid indicates whether the value is a known member of the ConnectorDTOState enum.
-func (e ConnectorDTOState) Valid() bool {
-	switch e {
-	case ConnectorDTOStateRUNNING:
-		return true
-	case ConnectorDTOStateSTOPPED:
-		return true
-	default:
-		return false
-	}
-}
-
-// Defines values for ConnectorPropertyDescriptorPropertyType.
-const (
-	ASSET      ConnectorPropertyDescriptorPropertyType = "ASSET"
-	ASSETLIST  ConnectorPropertyDescriptorPropertyType = "ASSET_LIST"
-	BOOLEAN    ConnectorPropertyDescriptorPropertyType = "BOOLEAN"
-	DOUBLE     ConnectorPropertyDescriptorPropertyType = "DOUBLE"
-	FLOAT      ConnectorPropertyDescriptorPropertyType = "FLOAT"
-	INTEGER    ConnectorPropertyDescriptorPropertyType = "INTEGER"
-	SECRET     ConnectorPropertyDescriptorPropertyType = "SECRET"
-	STRING     ConnectorPropertyDescriptorPropertyType = "STRING"
-	STRINGLIST ConnectorPropertyDescriptorPropertyType = "STRING_LIST"
-)
-
-// Valid indicates whether the value is a known member of the ConnectorPropertyDescriptorPropertyType enum.
-func (e ConnectorPropertyDescriptorPropertyType) Valid() bool {
-	switch e {
-	case ASSET:
-		return true
-	case ASSETLIST:
-		return true
-	case BOOLEAN:
-		return true
-	case DOUBLE:
-		return true
-	case FLOAT:
-		return true
-	case INTEGER:
-		return true
-	case SECRET:
-		return true
-	case STRING:
-		return true
-	case STRINGLIST:
-		return true
-	default:
-		return false
-	}
-}
-
-// Defines values for ConnectorRunStatusEntityState.
-const (
-	ConnectorRunStatusEntityStateDISABLED ConnectorRunStatusEntityState = "DISABLED"
-	ConnectorRunStatusEntityStateRUNNING  ConnectorRunStatusEntityState = "RUNNING"
-	ConnectorRunStatusEntityStateSTOPPED  ConnectorRunStatusEntityState = "STOPPED"
-)
-
-// Valid indicates whether the value is a known member of the ConnectorRunStatusEntityState enum.
-func (e ConnectorRunStatusEntityState) Valid() bool {
-	switch e {
-	case ConnectorRunStatusEntityStateDISABLED:
-		return true
-	case ConnectorRunStatusEntityStateRUNNING:
-		return true
-	case ConnectorRunStatusEntityStateSTOPPED:
-		return true
-	default:
-		return false
-	}
-}
-
-// Defines values for ConnectorStatusDTOValidationStatus.
-const (
-	ConnectorStatusDTOValidationStatusINVALID    ConnectorStatusDTOValidationStatus = "INVALID"
-	ConnectorStatusDTOValidationStatusVALID      ConnectorStatusDTOValidationStatus = "VALID"
-	ConnectorStatusDTOValidationStatusVALIDATING ConnectorStatusDTOValidationStatus = "VALIDATING"
-)
-
-// Valid indicates whether the value is a known member of the ConnectorStatusDTOValidationStatus enum.
-func (e ConnectorStatusDTOValidationStatus) Valid() bool {
-	switch e {
-	case ConnectorStatusDTOValidationStatusINVALID:
-		return true
-	case ConnectorStatusDTOValidationStatusVALID:
-		return true
-	case ConnectorStatusDTOValidationStatusVALIDATING:
+	case ConnectionEntitySourceTypePROCESSORREMOTEINPUTPORTREMOTEOUTPUTPORTINPUTPORTOUTPUTPORTFUNNEL:
 		return true
 	default:
 		return false
@@ -438,22 +234,13 @@ func (e ConnectorStatusDTOValidationStatus) Valid() bool {
 
 // Defines values for ControllerServiceDTOState.
 const (
-	ControllerServiceDTOStateDISABLED  ControllerServiceDTOState = "DISABLED"
-	ControllerServiceDTOStateDISABLING ControllerServiceDTOState = "DISABLING"
-	ControllerServiceDTOStateENABLED   ControllerServiceDTOState = "ENABLED"
-	ControllerServiceDTOStateENABLING  ControllerServiceDTOState = "ENABLING"
+	ControllerServiceDTOStateENABLEDENABLINGDISABLEDDISABLING ControllerServiceDTOState = "ENABLED, ENABLING, DISABLED, DISABLING"
 )
 
 // Valid indicates whether the value is a known member of the ControllerServiceDTOState enum.
 func (e ControllerServiceDTOState) Valid() bool {
 	switch e {
-	case ControllerServiceDTOStateDISABLED:
-		return true
-	case ControllerServiceDTOStateDISABLING:
-		return true
-	case ControllerServiceDTOStateENABLED:
-		return true
-	case ControllerServiceDTOStateENABLING:
+	case ControllerServiceDTOStateENABLEDENABLINGDISABLEDDISABLING:
 		return true
 	default:
 		return false
@@ -462,19 +249,13 @@ func (e ControllerServiceDTOState) Valid() bool {
 
 // Defines values for ControllerServiceDTOValidationStatus.
 const (
-	ControllerServiceDTOValidationStatusINVALID    ControllerServiceDTOValidationStatus = "INVALID"
-	ControllerServiceDTOValidationStatusVALID      ControllerServiceDTOValidationStatus = "VALID"
-	ControllerServiceDTOValidationStatusVALIDATING ControllerServiceDTOValidationStatus = "VALIDATING"
+	ControllerServiceDTOValidationStatusVALIDINVALIDVALIDATING ControllerServiceDTOValidationStatus = "VALID, INVALID, VALIDATING"
 )
 
 // Valid indicates whether the value is a known member of the ControllerServiceDTOValidationStatus enum.
 func (e ControllerServiceDTOValidationStatus) Valid() bool {
 	switch e {
-	case ControllerServiceDTOValidationStatusINVALID:
-		return true
-	case ControllerServiceDTOValidationStatusVALID:
-		return true
-	case ControllerServiceDTOValidationStatusVALIDATING:
+	case ControllerServiceDTOValidationStatusVALIDINVALIDVALIDATING:
 		return true
 	default:
 		return false
@@ -483,28 +264,13 @@ func (e ControllerServiceDTOValidationStatus) Valid() bool {
 
 // Defines values for ControllerServiceReferencingComponentDTOReferenceType.
 const (
-	ControllerService  ControllerServiceReferencingComponentDTOReferenceType = "ControllerService"
-	FlowAnalysisRule   ControllerServiceReferencingComponentDTOReferenceType = "FlowAnalysisRule"
-	FlowRegistryClient ControllerServiceReferencingComponentDTOReferenceType = "FlowRegistryClient"
-	ParameterProvider  ControllerServiceReferencingComponentDTOReferenceType = "ParameterProvider"
-	Processor          ControllerServiceReferencingComponentDTOReferenceType = "Processor"
-	ReportingTask      ControllerServiceReferencingComponentDTOReferenceType = "ReportingTask"
+	ProcessorControllerServiceReportingTaskFlowRegistryClient ControllerServiceReferencingComponentDTOReferenceType = "Processor, ControllerService, ReportingTask, FlowRegistryClient"
 )
 
 // Valid indicates whether the value is a known member of the ControllerServiceReferencingComponentDTOReferenceType enum.
 func (e ControllerServiceReferencingComponentDTOReferenceType) Valid() bool {
 	switch e {
-	case ControllerService:
-		return true
-	case FlowAnalysisRule:
-		return true
-	case FlowRegistryClient:
-		return true
-	case ParameterProvider:
-		return true
-	case Processor:
-		return true
-	case ReportingTask:
+	case ProcessorControllerServiceReportingTaskFlowRegistryClient:
 		return true
 	default:
 		return false
@@ -513,16 +279,13 @@ func (e ControllerServiceReferencingComponentDTOReferenceType) Valid() bool {
 
 // Defines values for ControllerServiceRunStatusEntityState.
 const (
-	ControllerServiceRunStatusEntityStateDISABLED ControllerServiceRunStatusEntityState = "DISABLED"
-	ControllerServiceRunStatusEntityStateENABLED  ControllerServiceRunStatusEntityState = "ENABLED"
+	ControllerServiceRunStatusEntityStateENABLEDDISABLED ControllerServiceRunStatusEntityState = "ENABLED, DISABLED"
 )
 
 // Valid indicates whether the value is a known member of the ControllerServiceRunStatusEntityState enum.
 func (e ControllerServiceRunStatusEntityState) Valid() bool {
 	switch e {
-	case ControllerServiceRunStatusEntityStateDISABLED:
-		return true
-	case ControllerServiceRunStatusEntityStateENABLED:
+	case ControllerServiceRunStatusEntityStateENABLEDDISABLED:
 		return true
 	default:
 		return false
@@ -531,22 +294,13 @@ func (e ControllerServiceRunStatusEntityState) Valid() bool {
 
 // Defines values for ControllerServiceStatusDTORunStatus.
 const (
-	ControllerServiceStatusDTORunStatusDISABLED  ControllerServiceStatusDTORunStatus = "DISABLED"
-	ControllerServiceStatusDTORunStatusDISABLING ControllerServiceStatusDTORunStatus = "DISABLING"
-	ControllerServiceStatusDTORunStatusENABLED   ControllerServiceStatusDTORunStatus = "ENABLED"
-	ControllerServiceStatusDTORunStatusENABLING  ControllerServiceStatusDTORunStatus = "ENABLING"
+	ControllerServiceStatusDTORunStatusENABLEDENABLINGDISABLEDDISABLING ControllerServiceStatusDTORunStatus = "ENABLED, ENABLING, DISABLED, DISABLING"
 )
 
 // Valid indicates whether the value is a known member of the ControllerServiceStatusDTORunStatus enum.
 func (e ControllerServiceStatusDTORunStatus) Valid() bool {
 	switch e {
-	case ControllerServiceStatusDTORunStatusDISABLED:
-		return true
-	case ControllerServiceStatusDTORunStatusDISABLING:
-		return true
-	case ControllerServiceStatusDTORunStatusENABLED:
-		return true
-	case ControllerServiceStatusDTORunStatusENABLING:
+	case ControllerServiceStatusDTORunStatusENABLEDENABLINGDISABLEDDISABLING:
 		return true
 	default:
 		return false
@@ -555,19 +309,13 @@ func (e ControllerServiceStatusDTORunStatus) Valid() bool {
 
 // Defines values for ControllerServiceStatusDTOValidationStatus.
 const (
-	ControllerServiceStatusDTOValidationStatusINVALID    ControllerServiceStatusDTOValidationStatus = "INVALID"
-	ControllerServiceStatusDTOValidationStatusVALID      ControllerServiceStatusDTOValidationStatus = "VALID"
-	ControllerServiceStatusDTOValidationStatusVALIDATING ControllerServiceStatusDTOValidationStatus = "VALIDATING"
+	ControllerServiceStatusDTOValidationStatusVALIDINVALIDVALIDATING ControllerServiceStatusDTOValidationStatus = "VALID, INVALID, VALIDATING"
 )
 
 // Valid indicates whether the value is a known member of the ControllerServiceStatusDTOValidationStatus enum.
 func (e ControllerServiceStatusDTOValidationStatus) Valid() bool {
 	switch e {
-	case ControllerServiceStatusDTOValidationStatusINVALID:
-		return true
-	case ControllerServiceStatusDTOValidationStatusVALID:
-		return true
-	case ControllerServiceStatusDTOValidationStatusVALIDATING:
+	case ControllerServiceStatusDTOValidationStatusVALIDINVALIDVALIDATING:
 		return true
 	default:
 		return false
@@ -597,16 +345,13 @@ func (e DynamicPropertyExpressionLanguageScope) Valid() bool {
 
 // Defines values for FlowAnalysisRuleDTOState.
 const (
-	FlowAnalysisRuleDTOStateDISABLED FlowAnalysisRuleDTOState = "DISABLED"
-	FlowAnalysisRuleDTOStateENABLED  FlowAnalysisRuleDTOState = "ENABLED"
+	FlowAnalysisRuleDTOStateENABLEDDISABLED FlowAnalysisRuleDTOState = "ENABLED, DISABLED"
 )
 
 // Valid indicates whether the value is a known member of the FlowAnalysisRuleDTOState enum.
 func (e FlowAnalysisRuleDTOState) Valid() bool {
 	switch e {
-	case FlowAnalysisRuleDTOStateDISABLED:
-		return true
-	case FlowAnalysisRuleDTOStateENABLED:
+	case FlowAnalysisRuleDTOStateENABLEDDISABLED:
 		return true
 	default:
 		return false
@@ -615,19 +360,13 @@ func (e FlowAnalysisRuleDTOState) Valid() bool {
 
 // Defines values for FlowAnalysisRuleDTOValidationStatus.
 const (
-	FlowAnalysisRuleDTOValidationStatusINVALID    FlowAnalysisRuleDTOValidationStatus = "INVALID"
-	FlowAnalysisRuleDTOValidationStatusVALID      FlowAnalysisRuleDTOValidationStatus = "VALID"
-	FlowAnalysisRuleDTOValidationStatusVALIDATING FlowAnalysisRuleDTOValidationStatus = "VALIDATING"
+	FlowAnalysisRuleDTOValidationStatusVALIDINVALIDVALIDATING FlowAnalysisRuleDTOValidationStatus = "VALID, INVALID, VALIDATING"
 )
 
 // Valid indicates whether the value is a known member of the FlowAnalysisRuleDTOValidationStatus enum.
 func (e FlowAnalysisRuleDTOValidationStatus) Valid() bool {
 	switch e {
-	case FlowAnalysisRuleDTOValidationStatusINVALID:
-		return true
-	case FlowAnalysisRuleDTOValidationStatusVALID:
-		return true
-	case FlowAnalysisRuleDTOValidationStatusVALIDATING:
+	case FlowAnalysisRuleDTOValidationStatusVALIDINVALIDVALIDATING:
 		return true
 	default:
 		return false
@@ -636,16 +375,13 @@ func (e FlowAnalysisRuleDTOValidationStatus) Valid() bool {
 
 // Defines values for FlowAnalysisRuleRunStatusEntityState.
 const (
-	FlowAnalysisRuleRunStatusEntityStateDISABLED FlowAnalysisRuleRunStatusEntityState = "DISABLED"
-	FlowAnalysisRuleRunStatusEntityStateENABLED  FlowAnalysisRuleRunStatusEntityState = "ENABLED"
+	FlowAnalysisRuleRunStatusEntityStateENABLEDDISABLED FlowAnalysisRuleRunStatusEntityState = "ENABLED, DISABLED"
 )
 
 // Valid indicates whether the value is a known member of the FlowAnalysisRuleRunStatusEntityState enum.
 func (e FlowAnalysisRuleRunStatusEntityState) Valid() bool {
 	switch e {
-	case FlowAnalysisRuleRunStatusEntityStateDISABLED:
-		return true
-	case FlowAnalysisRuleRunStatusEntityStateENABLED:
+	case FlowAnalysisRuleRunStatusEntityStateENABLEDDISABLED:
 		return true
 	default:
 		return false
@@ -654,16 +390,13 @@ func (e FlowAnalysisRuleRunStatusEntityState) Valid() bool {
 
 // Defines values for FlowAnalysisRuleStatusDTORunStatus.
 const (
-	FlowAnalysisRuleStatusDTORunStatusDISABLED FlowAnalysisRuleStatusDTORunStatus = "DISABLED"
-	FlowAnalysisRuleStatusDTORunStatusENABLED  FlowAnalysisRuleStatusDTORunStatus = "ENABLED"
+	FlowAnalysisRuleStatusDTORunStatusENABLEDDISABLED FlowAnalysisRuleStatusDTORunStatus = "ENABLED, DISABLED"
 )
 
 // Valid indicates whether the value is a known member of the FlowAnalysisRuleStatusDTORunStatus enum.
 func (e FlowAnalysisRuleStatusDTORunStatus) Valid() bool {
 	switch e {
-	case FlowAnalysisRuleStatusDTORunStatusDISABLED:
-		return true
-	case FlowAnalysisRuleStatusDTORunStatusENABLED:
+	case FlowAnalysisRuleStatusDTORunStatusENABLEDDISABLED:
 		return true
 	default:
 		return false
@@ -672,19 +405,13 @@ func (e FlowAnalysisRuleStatusDTORunStatus) Valid() bool {
 
 // Defines values for FlowAnalysisRuleStatusDTOValidationStatus.
 const (
-	FlowAnalysisRuleStatusDTOValidationStatusINVALID    FlowAnalysisRuleStatusDTOValidationStatus = "INVALID"
-	FlowAnalysisRuleStatusDTOValidationStatusVALID      FlowAnalysisRuleStatusDTOValidationStatus = "VALID"
-	FlowAnalysisRuleStatusDTOValidationStatusVALIDATING FlowAnalysisRuleStatusDTOValidationStatus = "VALIDATING"
+	FlowAnalysisRuleStatusDTOValidationStatusVALIDINVALIDVALIDATING FlowAnalysisRuleStatusDTOValidationStatus = "VALID, INVALID, VALIDATING"
 )
 
 // Valid indicates whether the value is a known member of the FlowAnalysisRuleStatusDTOValidationStatus enum.
 func (e FlowAnalysisRuleStatusDTOValidationStatus) Valid() bool {
 	switch e {
-	case FlowAnalysisRuleStatusDTOValidationStatusINVALID:
-		return true
-	case FlowAnalysisRuleStatusDTOValidationStatusVALID:
-		return true
-	case FlowAnalysisRuleStatusDTOValidationStatusVALIDATING:
+	case FlowAnalysisRuleStatusDTOValidationStatusVALIDINVALIDVALIDATING:
 		return true
 	default:
 		return false
@@ -693,25 +420,13 @@ func (e FlowAnalysisRuleStatusDTOValidationStatus) Valid() bool {
 
 // Defines values for FlowBreadcrumbEntityVersionedFlowState.
 const (
-	FlowBreadcrumbEntityVersionedFlowStateLOCALLYMODIFIED         FlowBreadcrumbEntityVersionedFlowState = "LOCALLY_MODIFIED"
-	FlowBreadcrumbEntityVersionedFlowStateLOCALLYMODIFIEDANDSTALE FlowBreadcrumbEntityVersionedFlowState = "LOCALLY_MODIFIED_AND_STALE"
-	FlowBreadcrumbEntityVersionedFlowStateSTALE                   FlowBreadcrumbEntityVersionedFlowState = "STALE"
-	FlowBreadcrumbEntityVersionedFlowStateSYNCFAILURE             FlowBreadcrumbEntityVersionedFlowState = "SYNC_FAILURE"
-	FlowBreadcrumbEntityVersionedFlowStateUPTODATE                FlowBreadcrumbEntityVersionedFlowState = "UP_TO_DATE"
+	FlowBreadcrumbEntityVersionedFlowStateLOCALLYMODIFIEDSTALELOCALLYMODIFIEDANDSTALEUPTODATESYNCFAILURE FlowBreadcrumbEntityVersionedFlowState = "LOCALLY_MODIFIED, STALE, LOCALLY_MODIFIED_AND_STALE, UP_TO_DATE, SYNC_FAILURE"
 )
 
 // Valid indicates whether the value is a known member of the FlowBreadcrumbEntityVersionedFlowState enum.
 func (e FlowBreadcrumbEntityVersionedFlowState) Valid() bool {
 	switch e {
-	case FlowBreadcrumbEntityVersionedFlowStateLOCALLYMODIFIED:
-		return true
-	case FlowBreadcrumbEntityVersionedFlowStateLOCALLYMODIFIEDANDSTALE:
-		return true
-	case FlowBreadcrumbEntityVersionedFlowStateSTALE:
-		return true
-	case FlowBreadcrumbEntityVersionedFlowStateSYNCFAILURE:
-		return true
-	case FlowBreadcrumbEntityVersionedFlowStateUPTODATE:
+	case FlowBreadcrumbEntityVersionedFlowStateLOCALLYMODIFIEDSTALELOCALLYMODIFIEDANDSTALEUPTODATESYNCFAILURE:
 		return true
 	default:
 		return false
@@ -720,19 +435,13 @@ func (e FlowBreadcrumbEntityVersionedFlowState) Valid() bool {
 
 // Defines values for FlowRegistryClientDTOValidationStatus.
 const (
-	FlowRegistryClientDTOValidationStatusINVALID    FlowRegistryClientDTOValidationStatus = "INVALID"
-	FlowRegistryClientDTOValidationStatusVALID      FlowRegistryClientDTOValidationStatus = "VALID"
-	FlowRegistryClientDTOValidationStatusVALIDATING FlowRegistryClientDTOValidationStatus = "VALIDATING"
+	FlowRegistryClientDTOValidationStatusVALIDINVALIDVALIDATING FlowRegistryClientDTOValidationStatus = "VALID, INVALID, VALIDATING"
 )
 
 // Valid indicates whether the value is a known member of the FlowRegistryClientDTOValidationStatus enum.
 func (e FlowRegistryClientDTOValidationStatus) Valid() bool {
 	switch e {
-	case FlowRegistryClientDTOValidationStatusINVALID:
-		return true
-	case FlowRegistryClientDTOValidationStatusVALID:
-		return true
-	case FlowRegistryClientDTOValidationStatusVALIDATING:
+	case FlowRegistryClientDTOValidationStatusVALIDINVALIDVALIDATING:
 		return true
 	default:
 		return false
@@ -741,19 +450,22 @@ func (e FlowRegistryClientDTOValidationStatus) Valid() bool {
 
 // Defines values for LineageRequestDTOLineageRequestType.
 const (
-	LineageRequestDTOLineageRequestTypeCHILDREN LineageRequestDTOLineageRequestType = "CHILDREN"
-	LineageRequestDTOLineageRequestTypeFLOWFILE LineageRequestDTOLineageRequestType = "FLOWFILE"
-	LineageRequestDTOLineageRequestTypePARENTS  LineageRequestDTOLineageRequestType = "PARENTS"
+	CHILDREN                   LineageRequestDTOLineageRequestType = "CHILDREN"
+	FLOWFILE                   LineageRequestDTOLineageRequestType = "FLOWFILE"
+	PARENTS                    LineageRequestDTOLineageRequestType = "PARENTS"
+	PARENTSCHILDRENAndFLOWFILE LineageRequestDTOLineageRequestType = "PARENTS, CHILDREN, and FLOWFILE"
 )
 
 // Valid indicates whether the value is a known member of the LineageRequestDTOLineageRequestType enum.
 func (e LineageRequestDTOLineageRequestType) Valid() bool {
 	switch e {
-	case LineageRequestDTOLineageRequestTypeCHILDREN:
+	case CHILDREN:
 		return true
-	case LineageRequestDTOLineageRequestTypeFLOWFILE:
+	case FLOWFILE:
 		return true
-	case LineageRequestDTOLineageRequestTypePARENTS:
+	case PARENTS:
+		return true
+	case PARENTSCHILDRENAndFLOWFILE:
 		return true
 	default:
 		return false
@@ -780,19 +492,13 @@ func (e ParameterGroupConfigurationEntityParameterSensitivities) Valid() bool {
 
 // Defines values for ParameterProviderDTOValidationStatus.
 const (
-	ParameterProviderDTOValidationStatusINVALID    ParameterProviderDTOValidationStatus = "INVALID"
-	ParameterProviderDTOValidationStatusVALID      ParameterProviderDTOValidationStatus = "VALID"
-	ParameterProviderDTOValidationStatusVALIDATING ParameterProviderDTOValidationStatus = "VALIDATING"
+	ParameterProviderDTOValidationStatusVALIDINVALIDVALIDATING ParameterProviderDTOValidationStatus = "VALID, INVALID, VALIDATING"
 )
 
 // Valid indicates whether the value is a known member of the ParameterProviderDTOValidationStatus enum.
 func (e ParameterProviderDTOValidationStatus) Valid() bool {
 	switch e {
-	case ParameterProviderDTOValidationStatusINVALID:
-		return true
-	case ParameterProviderDTOValidationStatusVALID:
-		return true
-	case ParameterProviderDTOValidationStatusVALIDATING:
+	case ParameterProviderDTOValidationStatusVALIDINVALIDVALIDATING:
 		return true
 	default:
 		return false
@@ -828,16 +534,13 @@ func (e ParameterStatusDTOStatus) Valid() bool {
 
 // Defines values for PortDTOPortFunction.
 const (
-	PortDTOPortFunctionFAILURE  PortDTOPortFunction = "FAILURE"
-	PortDTOPortFunctionSTANDARD PortDTOPortFunction = "STANDARD"
+	STANDARDFAILURE PortDTOPortFunction = "STANDARD, FAILURE"
 )
 
 // Valid indicates whether the value is a known member of the PortDTOPortFunction enum.
 func (e PortDTOPortFunction) Valid() bool {
 	switch e {
-	case PortDTOPortFunctionFAILURE:
-		return true
-	case PortDTOPortFunctionSTANDARD:
+	case STANDARDFAILURE:
 		return true
 	default:
 		return false
@@ -846,19 +549,13 @@ func (e PortDTOPortFunction) Valid() bool {
 
 // Defines values for PortDTOState.
 const (
-	PortDTOStateDISABLED PortDTOState = "DISABLED"
-	PortDTOStateRUNNING  PortDTOState = "RUNNING"
-	PortDTOStateSTOPPED  PortDTOState = "STOPPED"
+	PortDTOStateRUNNINGSTOPPEDDISABLED PortDTOState = "RUNNING, STOPPED, DISABLED"
 )
 
 // Valid indicates whether the value is a known member of the PortDTOState enum.
 func (e PortDTOState) Valid() bool {
 	switch e {
-	case PortDTOStateDISABLED:
-		return true
-	case PortDTOStateRUNNING:
-		return true
-	case PortDTOStateSTOPPED:
+	case PortDTOStateRUNNINGSTOPPEDDISABLED:
 		return true
 	default:
 		return false
@@ -867,16 +564,13 @@ func (e PortDTOState) Valid() bool {
 
 // Defines values for PortDTOType.
 const (
-	PortDTOTypeINPUTPORT  PortDTOType = "INPUT_PORT"
-	PortDTOTypeOUTPUTPORT PortDTOType = "OUTPUT_PORT"
+	INPUTPORTOUTPUTPORT PortDTOType = "INPUT_PORT, OUTPUT_PORT"
 )
 
 // Valid indicates whether the value is a known member of the PortDTOType enum.
 func (e PortDTOType) Valid() bool {
 	switch e {
-	case PortDTOTypeINPUTPORT:
-		return true
-	case PortDTOTypeOUTPUTPORT:
+	case INPUTPORTOUTPUTPORT:
 		return true
 	default:
 		return false
@@ -885,19 +579,13 @@ func (e PortDTOType) Valid() bool {
 
 // Defines values for PortRunStatusEntityState.
 const (
-	PortRunStatusEntityStateDISABLED PortRunStatusEntityState = "DISABLED"
-	PortRunStatusEntityStateRUNNING  PortRunStatusEntityState = "RUNNING"
-	PortRunStatusEntityStateSTOPPED  PortRunStatusEntityState = "STOPPED"
+	PortRunStatusEntityStateRUNNINGSTOPPEDDISABLED PortRunStatusEntityState = "RUNNING, STOPPED, DISABLED"
 )
 
 // Valid indicates whether the value is a known member of the PortRunStatusEntityState enum.
 func (e PortRunStatusEntityState) Valid() bool {
 	switch e {
-	case PortRunStatusEntityStateDISABLED:
-		return true
-	case PortRunStatusEntityStateRUNNING:
-		return true
-	case PortRunStatusEntityStateSTOPPED:
+	case PortRunStatusEntityStateRUNNINGSTOPPEDDISABLED:
 		return true
 	default:
 		return false
@@ -906,25 +594,13 @@ func (e PortRunStatusEntityState) Valid() bool {
 
 // Defines values for PortStatusDTORunStatus.
 const (
-	PortStatusDTORunStatusDisabled   PortStatusDTORunStatus = "Disabled"
-	PortStatusDTORunStatusInvalid    PortStatusDTORunStatus = "Invalid"
-	PortStatusDTORunStatusRunning    PortStatusDTORunStatus = "Running"
-	PortStatusDTORunStatusStopped    PortStatusDTORunStatus = "Stopped"
-	PortStatusDTORunStatusValidating PortStatusDTORunStatus = "Validating"
+	PortStatusDTORunStatusRunningStoppedValidatingDisabledInvalid PortStatusDTORunStatus = "Running, Stopped, Validating, Disabled, Invalid"
 )
 
 // Valid indicates whether the value is a known member of the PortStatusDTORunStatus enum.
 func (e PortStatusDTORunStatus) Valid() bool {
 	switch e {
-	case PortStatusDTORunStatusDisabled:
-		return true
-	case PortStatusDTORunStatusInvalid:
-		return true
-	case PortStatusDTORunStatusRunning:
-		return true
-	case PortStatusDTORunStatusStopped:
-		return true
-	case PortStatusDTORunStatusValidating:
+	case PortStatusDTORunStatusRunningStoppedValidatingDisabledInvalid:
 		return true
 	default:
 		return false
@@ -933,25 +609,13 @@ func (e PortStatusDTORunStatus) Valid() bool {
 
 // Defines values for PortStatusSnapshotDTORunStatus.
 const (
-	PortStatusSnapshotDTORunStatusDisabled   PortStatusSnapshotDTORunStatus = "Disabled"
-	PortStatusSnapshotDTORunStatusInvalid    PortStatusSnapshotDTORunStatus = "Invalid"
-	PortStatusSnapshotDTORunStatusRunning    PortStatusSnapshotDTORunStatus = "Running"
-	PortStatusSnapshotDTORunStatusStopped    PortStatusSnapshotDTORunStatus = "Stopped"
-	PortStatusSnapshotDTORunStatusValidating PortStatusSnapshotDTORunStatus = "Validating"
+	PortStatusSnapshotDTORunStatusRunningStoppedValidatingDisabledInvalid PortStatusSnapshotDTORunStatus = "Running, Stopped, Validating, Disabled, Invalid"
 )
 
 // Valid indicates whether the value is a known member of the PortStatusSnapshotDTORunStatus enum.
 func (e PortStatusSnapshotDTORunStatus) Valid() bool {
 	switch e {
-	case PortStatusSnapshotDTORunStatusDisabled:
-		return true
-	case PortStatusSnapshotDTORunStatusInvalid:
-		return true
-	case PortStatusSnapshotDTORunStatusRunning:
-		return true
-	case PortStatusSnapshotDTORunStatusStopped:
-		return true
-	case PortStatusSnapshotDTORunStatusValidating:
+	case PortStatusSnapshotDTORunStatusRunningStoppedValidatingDisabledInvalid:
 		return true
 	default:
 		return false
@@ -960,19 +624,13 @@ func (e PortStatusSnapshotDTORunStatus) Valid() bool {
 
 // Defines values for ProcessGroupDTOExecutionEngine.
 const (
-	ProcessGroupDTOExecutionEngineINHERITED ProcessGroupDTOExecutionEngine = "INHERITED"
-	ProcessGroupDTOExecutionEngineSTANDARD  ProcessGroupDTOExecutionEngine = "STANDARD"
-	ProcessGroupDTOExecutionEngineSTATELESS ProcessGroupDTOExecutionEngine = "STATELESS"
+	STATELESSSTANDARDINHERITED ProcessGroupDTOExecutionEngine = "STATELESS, STANDARD, INHERITED"
 )
 
 // Valid indicates whether the value is a known member of the ProcessGroupDTOExecutionEngine enum.
 func (e ProcessGroupDTOExecutionEngine) Valid() bool {
 	switch e {
-	case ProcessGroupDTOExecutionEngineINHERITED:
-		return true
-	case ProcessGroupDTOExecutionEngineSTANDARD:
-		return true
-	case ProcessGroupDTOExecutionEngineSTATELESS:
+	case STATELESSSTANDARDINHERITED:
 		return true
 	default:
 		return false
@@ -981,19 +639,13 @@ func (e ProcessGroupDTOExecutionEngine) Valid() bool {
 
 // Defines values for ProcessGroupDTOFlowfileConcurrency.
 const (
-	SINGLEBATCHPERNODE    ProcessGroupDTOFlowfileConcurrency = "SINGLE_BATCH_PER_NODE"
-	SINGLEFLOWFILEPERNODE ProcessGroupDTOFlowfileConcurrency = "SINGLE_FLOWFILE_PER_NODE"
-	UNBOUNDED             ProcessGroupDTOFlowfileConcurrency = "UNBOUNDED"
+	UNBOUNDEDSINGLEFLOWFILEPERNODESINGLEBATCHPERNODE ProcessGroupDTOFlowfileConcurrency = "UNBOUNDED, SINGLE_FLOWFILE_PER_NODE, SINGLE_BATCH_PER_NODE"
 )
 
 // Valid indicates whether the value is a known member of the ProcessGroupDTOFlowfileConcurrency enum.
 func (e ProcessGroupDTOFlowfileConcurrency) Valid() bool {
 	switch e {
-	case SINGLEBATCHPERNODE:
-		return true
-	case SINGLEFLOWFILEPERNODE:
-		return true
-	case UNBOUNDED:
+	case UNBOUNDEDSINGLEFLOWFILEPERNODESINGLEBATCHPERNODE:
 		return true
 	default:
 		return false
@@ -1002,16 +654,13 @@ func (e ProcessGroupDTOFlowfileConcurrency) Valid() bool {
 
 // Defines values for ProcessGroupDTOFlowfileOutboundPolicy.
 const (
-	BATCHOUTPUT         ProcessGroupDTOFlowfileOutboundPolicy = "BATCH_OUTPUT"
-	STREAMWHENAVAILABLE ProcessGroupDTOFlowfileOutboundPolicy = "STREAM_WHEN_AVAILABLE"
+	STREAMWHENAVAILABLEBATCHOUTPUT ProcessGroupDTOFlowfileOutboundPolicy = "STREAM_WHEN_AVAILABLE, BATCH_OUTPUT"
 )
 
 // Valid indicates whether the value is a known member of the ProcessGroupDTOFlowfileOutboundPolicy enum.
 func (e ProcessGroupDTOFlowfileOutboundPolicy) Valid() bool {
 	switch e {
-	case BATCHOUTPUT:
-		return true
-	case STREAMWHENAVAILABLE:
+	case STREAMWHENAVAILABLEBATCHOUTPUT:
 		return true
 	default:
 		return false
@@ -1020,16 +669,13 @@ func (e ProcessGroupDTOFlowfileOutboundPolicy) Valid() bool {
 
 // Defines values for ProcessGroupDTOStatelessGroupScheduledState.
 const (
-	ProcessGroupDTOStatelessGroupScheduledStateRUNNING ProcessGroupDTOStatelessGroupScheduledState = "RUNNING"
-	ProcessGroupDTOStatelessGroupScheduledStateSTOPPED ProcessGroupDTOStatelessGroupScheduledState = "STOPPED"
+	STOPPEDRUNNING ProcessGroupDTOStatelessGroupScheduledState = "STOPPED, RUNNING"
 )
 
 // Valid indicates whether the value is a known member of the ProcessGroupDTOStatelessGroupScheduledState enum.
 func (e ProcessGroupDTOStatelessGroupScheduledState) Valid() bool {
 	switch e {
-	case ProcessGroupDTOStatelessGroupScheduledStateRUNNING:
-		return true
-	case ProcessGroupDTOStatelessGroupScheduledStateSTOPPED:
+	case STOPPEDRUNNING:
 		return true
 	default:
 		return false
@@ -1038,16 +684,13 @@ func (e ProcessGroupDTOStatelessGroupScheduledState) Valid() bool {
 
 // Defines values for ProcessGroupEntityProcessGroupUpdateStrategy.
 const (
-	CURRENTGROUP             ProcessGroupEntityProcessGroupUpdateStrategy = "CURRENT_GROUP"
-	CURRENTGROUPWITHCHILDREN ProcessGroupEntityProcessGroupUpdateStrategy = "CURRENT_GROUP_WITH_CHILDREN"
+	CURRENTGROUPCURRENTGROUPWITHCHILDREN ProcessGroupEntityProcessGroupUpdateStrategy = "CURRENT_GROUP, CURRENT_GROUP_WITH_CHILDREN"
 )
 
 // Valid indicates whether the value is a known member of the ProcessGroupEntityProcessGroupUpdateStrategy enum.
 func (e ProcessGroupEntityProcessGroupUpdateStrategy) Valid() bool {
 	switch e {
-	case CURRENTGROUP:
-		return true
-	case CURRENTGROUPWITHCHILDREN:
+	case CURRENTGROUPCURRENTGROUPWITHCHILDREN:
 		return true
 	default:
 		return false
@@ -1056,25 +699,13 @@ func (e ProcessGroupEntityProcessGroupUpdateStrategy) Valid() bool {
 
 // Defines values for ProcessGroupEntityVersionedFlowState.
 const (
-	ProcessGroupEntityVersionedFlowStateLOCALLYMODIFIED         ProcessGroupEntityVersionedFlowState = "LOCALLY_MODIFIED"
-	ProcessGroupEntityVersionedFlowStateLOCALLYMODIFIEDANDSTALE ProcessGroupEntityVersionedFlowState = "LOCALLY_MODIFIED_AND_STALE"
-	ProcessGroupEntityVersionedFlowStateSTALE                   ProcessGroupEntityVersionedFlowState = "STALE"
-	ProcessGroupEntityVersionedFlowStateSYNCFAILURE             ProcessGroupEntityVersionedFlowState = "SYNC_FAILURE"
-	ProcessGroupEntityVersionedFlowStateUPTODATE                ProcessGroupEntityVersionedFlowState = "UP_TO_DATE"
+	ProcessGroupEntityVersionedFlowStateLOCALLYMODIFIEDSTALELOCALLYMODIFIEDANDSTALEUPTODATESYNCFAILURE ProcessGroupEntityVersionedFlowState = "LOCALLY_MODIFIED, STALE, LOCALLY_MODIFIED_AND_STALE, UP_TO_DATE, SYNC_FAILURE"
 )
 
 // Valid indicates whether the value is a known member of the ProcessGroupEntityVersionedFlowState enum.
 func (e ProcessGroupEntityVersionedFlowState) Valid() bool {
 	switch e {
-	case ProcessGroupEntityVersionedFlowStateLOCALLYMODIFIED:
-		return true
-	case ProcessGroupEntityVersionedFlowStateLOCALLYMODIFIEDANDSTALE:
-		return true
-	case ProcessGroupEntityVersionedFlowStateSTALE:
-		return true
-	case ProcessGroupEntityVersionedFlowStateSYNCFAILURE:
-		return true
-	case ProcessGroupEntityVersionedFlowStateUPTODATE:
+	case ProcessGroupEntityVersionedFlowStateLOCALLYMODIFIEDSTALELOCALLYMODIFIEDANDSTALEUPTODATESYNCFAILURE:
 		return true
 	default:
 		return false
@@ -1083,55 +714,28 @@ func (e ProcessGroupEntityVersionedFlowState) Valid() bool {
 
 // Defines values for ProcessGroupStatusSnapshotDTOVersionedFlowState.
 const (
-	ProcessGroupStatusSnapshotDTOVersionedFlowStateLOCALLYMODIFIED         ProcessGroupStatusSnapshotDTOVersionedFlowState = "LOCALLY_MODIFIED"
-	ProcessGroupStatusSnapshotDTOVersionedFlowStateLOCALLYMODIFIEDANDSTALE ProcessGroupStatusSnapshotDTOVersionedFlowState = "LOCALLY_MODIFIED_AND_STALE"
-	ProcessGroupStatusSnapshotDTOVersionedFlowStateSTALE                   ProcessGroupStatusSnapshotDTOVersionedFlowState = "STALE"
-	ProcessGroupStatusSnapshotDTOVersionedFlowStateSYNCFAILURE             ProcessGroupStatusSnapshotDTOVersionedFlowState = "SYNC_FAILURE"
-	ProcessGroupStatusSnapshotDTOVersionedFlowStateUPTODATE                ProcessGroupStatusSnapshotDTOVersionedFlowState = "UP_TO_DATE"
+	ProcessGroupStatusSnapshotDTOVersionedFlowStateLOCALLYMODIFIEDSTALELOCALLYMODIFIEDANDSTALEUPTODATESYNCFAILURE ProcessGroupStatusSnapshotDTOVersionedFlowState = "LOCALLY_MODIFIED, STALE, LOCALLY_MODIFIED_AND_STALE, UP_TO_DATE, SYNC_FAILURE"
 )
 
 // Valid indicates whether the value is a known member of the ProcessGroupStatusSnapshotDTOVersionedFlowState enum.
 func (e ProcessGroupStatusSnapshotDTOVersionedFlowState) Valid() bool {
 	switch e {
-	case ProcessGroupStatusSnapshotDTOVersionedFlowStateLOCALLYMODIFIED:
-		return true
-	case ProcessGroupStatusSnapshotDTOVersionedFlowStateLOCALLYMODIFIEDANDSTALE:
-		return true
-	case ProcessGroupStatusSnapshotDTOVersionedFlowStateSTALE:
-		return true
-	case ProcessGroupStatusSnapshotDTOVersionedFlowStateSYNCFAILURE:
-		return true
-	case ProcessGroupStatusSnapshotDTOVersionedFlowStateUPTODATE:
+	case ProcessGroupStatusSnapshotDTOVersionedFlowStateLOCALLYMODIFIEDSTALELOCALLYMODIFIEDANDSTALEUPTODATESYNCFAILURE:
 		return true
 	default:
 		return false
 	}
 }
 
-// Defines values for ProcessorDTOPhysicalState.
+// Defines values for ProcessorConfigDTOBackoffMechanism.
 const (
-	ProcessorDTOPhysicalStateDISABLED ProcessorDTOPhysicalState = "DISABLED"
-	ProcessorDTOPhysicalStateRUNNING  ProcessorDTOPhysicalState = "RUNNING"
-	ProcessorDTOPhysicalStateRUNONCE  ProcessorDTOPhysicalState = "RUN_ONCE"
-	ProcessorDTOPhysicalStateSTARTING ProcessorDTOPhysicalState = "STARTING"
-	ProcessorDTOPhysicalStateSTOPPED  ProcessorDTOPhysicalState = "STOPPED"
-	ProcessorDTOPhysicalStateSTOPPING ProcessorDTOPhysicalState = "STOPPING"
+	ProcessorConfigDTOBackoffMechanismPENALIZEFLOWFILEYIELDPROCESSOR ProcessorConfigDTOBackoffMechanism = "PENALIZE_FLOWFILE, YIELD_PROCESSOR"
 )
 
-// Valid indicates whether the value is a known member of the ProcessorDTOPhysicalState enum.
-func (e ProcessorDTOPhysicalState) Valid() bool {
+// Valid indicates whether the value is a known member of the ProcessorConfigDTOBackoffMechanism enum.
+func (e ProcessorConfigDTOBackoffMechanism) Valid() bool {
 	switch e {
-	case ProcessorDTOPhysicalStateDISABLED:
-		return true
-	case ProcessorDTOPhysicalStateRUNNING:
-		return true
-	case ProcessorDTOPhysicalStateRUNONCE:
-		return true
-	case ProcessorDTOPhysicalStateSTARTING:
-		return true
-	case ProcessorDTOPhysicalStateSTOPPED:
-		return true
-	case ProcessorDTOPhysicalStateSTOPPING:
+	case ProcessorConfigDTOBackoffMechanismPENALIZEFLOWFILEYIELDPROCESSOR:
 		return true
 	default:
 		return false
@@ -1140,22 +744,13 @@ func (e ProcessorDTOPhysicalState) Valid() bool {
 
 // Defines values for ProcessorDTOState.
 const (
-	ProcessorDTOStateDISABLED ProcessorDTOState = "DISABLED"
-	ProcessorDTOStateRUNNING  ProcessorDTOState = "RUNNING"
-	ProcessorDTOStateRUNONCE  ProcessorDTOState = "RUN_ONCE"
-	ProcessorDTOStateSTOPPED  ProcessorDTOState = "STOPPED"
+	ProcessorDTOStateRUNNINGSTOPPEDDISABLED ProcessorDTOState = "RUNNING, STOPPED, DISABLED"
 )
 
 // Valid indicates whether the value is a known member of the ProcessorDTOState enum.
 func (e ProcessorDTOState) Valid() bool {
 	switch e {
-	case ProcessorDTOStateDISABLED:
-		return true
-	case ProcessorDTOStateRUNNING:
-		return true
-	case ProcessorDTOStateRUNONCE:
-		return true
-	case ProcessorDTOStateSTOPPED:
+	case ProcessorDTOStateRUNNINGSTOPPEDDISABLED:
 		return true
 	default:
 		return false
@@ -1164,19 +759,13 @@ func (e ProcessorDTOState) Valid() bool {
 
 // Defines values for ProcessorDTOValidationStatus.
 const (
-	ProcessorDTOValidationStatusINVALID    ProcessorDTOValidationStatus = "INVALID"
-	ProcessorDTOValidationStatusVALID      ProcessorDTOValidationStatus = "VALID"
-	ProcessorDTOValidationStatusVALIDATING ProcessorDTOValidationStatus = "VALIDATING"
+	ProcessorDTOValidationStatusVALIDINVALIDVALIDATING ProcessorDTOValidationStatus = "VALID, INVALID, VALIDATING"
 )
 
 // Valid indicates whether the value is a known member of the ProcessorDTOValidationStatus enum.
 func (e ProcessorDTOValidationStatus) Valid() bool {
 	switch e {
-	case ProcessorDTOValidationStatusINVALID:
-		return true
-	case ProcessorDTOValidationStatusVALID:
-		return true
-	case ProcessorDTOValidationStatusVALIDATING:
+	case ProcessorDTOValidationStatusVALIDINVALIDVALIDATING:
 		return true
 	default:
 		return false
@@ -1204,57 +793,15 @@ func (e ProcessorDefinitionInputRequirement) Valid() bool {
 	}
 }
 
-// Defines values for ProcessorEntityPhysicalState.
-const (
-	ProcessorEntityPhysicalStateDISABLED ProcessorEntityPhysicalState = "DISABLED"
-	ProcessorEntityPhysicalStateRUNNING  ProcessorEntityPhysicalState = "RUNNING"
-	ProcessorEntityPhysicalStateRUNONCE  ProcessorEntityPhysicalState = "RUN_ONCE"
-	ProcessorEntityPhysicalStateSTARTING ProcessorEntityPhysicalState = "STARTING"
-	ProcessorEntityPhysicalStateSTOPPED  ProcessorEntityPhysicalState = "STOPPED"
-	ProcessorEntityPhysicalStateSTOPPING ProcessorEntityPhysicalState = "STOPPING"
-)
-
-// Valid indicates whether the value is a known member of the ProcessorEntityPhysicalState enum.
-func (e ProcessorEntityPhysicalState) Valid() bool {
-	switch e {
-	case ProcessorEntityPhysicalStateDISABLED:
-		return true
-	case ProcessorEntityPhysicalStateRUNNING:
-		return true
-	case ProcessorEntityPhysicalStateRUNONCE:
-		return true
-	case ProcessorEntityPhysicalStateSTARTING:
-		return true
-	case ProcessorEntityPhysicalStateSTOPPED:
-		return true
-	case ProcessorEntityPhysicalStateSTOPPING:
-		return true
-	default:
-		return false
-	}
-}
-
 // Defines values for ProcessorRunStatusDetailsDTORunStatus.
 const (
-	ProcessorRunStatusDetailsDTORunStatusDisabled   ProcessorRunStatusDetailsDTORunStatus = "Disabled"
-	ProcessorRunStatusDetailsDTORunStatusInvalid    ProcessorRunStatusDetailsDTORunStatus = "Invalid"
-	ProcessorRunStatusDetailsDTORunStatusRunning    ProcessorRunStatusDetailsDTORunStatus = "Running"
-	ProcessorRunStatusDetailsDTORunStatusStopped    ProcessorRunStatusDetailsDTORunStatus = "Stopped"
-	ProcessorRunStatusDetailsDTORunStatusValidating ProcessorRunStatusDetailsDTORunStatus = "Validating"
+	RunningStoppedInvalidValidatingDisabled ProcessorRunStatusDetailsDTORunStatus = "Running, Stopped, Invalid, Validating, Disabled"
 )
 
 // Valid indicates whether the value is a known member of the ProcessorRunStatusDetailsDTORunStatus enum.
 func (e ProcessorRunStatusDetailsDTORunStatus) Valid() bool {
 	switch e {
-	case ProcessorRunStatusDetailsDTORunStatusDisabled:
-		return true
-	case ProcessorRunStatusDetailsDTORunStatusInvalid:
-		return true
-	case ProcessorRunStatusDetailsDTORunStatusRunning:
-		return true
-	case ProcessorRunStatusDetailsDTORunStatusStopped:
-		return true
-	case ProcessorRunStatusDetailsDTORunStatusValidating:
+	case RunningStoppedInvalidValidatingDisabled:
 		return true
 	default:
 		return false
@@ -1263,22 +810,13 @@ func (e ProcessorRunStatusDetailsDTORunStatus) Valid() bool {
 
 // Defines values for ProcessorRunStatusEntityState.
 const (
-	ProcessorRunStatusEntityStateDISABLED ProcessorRunStatusEntityState = "DISABLED"
-	ProcessorRunStatusEntityStateRUNNING  ProcessorRunStatusEntityState = "RUNNING"
-	ProcessorRunStatusEntityStateRUNONCE  ProcessorRunStatusEntityState = "RUN_ONCE"
-	ProcessorRunStatusEntityStateSTOPPED  ProcessorRunStatusEntityState = "STOPPED"
+	RUNNINGSTOPPEDDISABLEDRUNONCE ProcessorRunStatusEntityState = "RUNNING, STOPPED, DISABLED, RUN_ONCE"
 )
 
 // Valid indicates whether the value is a known member of the ProcessorRunStatusEntityState enum.
 func (e ProcessorRunStatusEntityState) Valid() bool {
 	switch e {
-	case ProcessorRunStatusEntityStateDISABLED:
-		return true
-	case ProcessorRunStatusEntityStateRUNNING:
-		return true
-	case ProcessorRunStatusEntityStateRUNONCE:
-		return true
-	case ProcessorRunStatusEntityStateSTOPPED:
+	case RUNNINGSTOPPEDDISABLEDRUNONCE:
 		return true
 	default:
 		return false
@@ -1287,25 +825,13 @@ func (e ProcessorRunStatusEntityState) Valid() bool {
 
 // Defines values for ProcessorStatusDTORunStatus.
 const (
-	ProcessorStatusDTORunStatusDisabled   ProcessorStatusDTORunStatus = "Disabled"
-	ProcessorStatusDTORunStatusInvalid    ProcessorStatusDTORunStatus = "Invalid"
-	ProcessorStatusDTORunStatusRunning    ProcessorStatusDTORunStatus = "Running"
-	ProcessorStatusDTORunStatusStopped    ProcessorStatusDTORunStatus = "Stopped"
-	ProcessorStatusDTORunStatusValidating ProcessorStatusDTORunStatus = "Validating"
+	ProcessorStatusDTORunStatusRunningStoppedValidatingDisabledInvalid ProcessorStatusDTORunStatus = "Running, Stopped, Validating, Disabled, Invalid"
 )
 
 // Valid indicates whether the value is a known member of the ProcessorStatusDTORunStatus enum.
 func (e ProcessorStatusDTORunStatus) Valid() bool {
 	switch e {
-	case ProcessorStatusDTORunStatusDisabled:
-		return true
-	case ProcessorStatusDTORunStatusInvalid:
-		return true
-	case ProcessorStatusDTORunStatusRunning:
-		return true
-	case ProcessorStatusDTORunStatusStopped:
-		return true
-	case ProcessorStatusDTORunStatusValidating:
+	case ProcessorStatusDTORunStatusRunningStoppedValidatingDisabledInvalid:
 		return true
 	default:
 		return false
@@ -1314,16 +840,13 @@ func (e ProcessorStatusDTORunStatus) Valid() bool {
 
 // Defines values for ProcessorStatusSnapshotDTOExecutionNode.
 const (
-	ProcessorStatusSnapshotDTOExecutionNodeALL     ProcessorStatusSnapshotDTOExecutionNode = "ALL"
-	ProcessorStatusSnapshotDTOExecutionNodePRIMARY ProcessorStatusSnapshotDTOExecutionNode = "PRIMARY"
+	ProcessorStatusSnapshotDTOExecutionNodeALLPRIMARY ProcessorStatusSnapshotDTOExecutionNode = "ALL, PRIMARY"
 )
 
 // Valid indicates whether the value is a known member of the ProcessorStatusSnapshotDTOExecutionNode enum.
 func (e ProcessorStatusSnapshotDTOExecutionNode) Valid() bool {
 	switch e {
-	case ProcessorStatusSnapshotDTOExecutionNodeALL:
-		return true
-	case ProcessorStatusSnapshotDTOExecutionNodePRIMARY:
+	case ProcessorStatusSnapshotDTOExecutionNodeALLPRIMARY:
 		return true
 	default:
 		return false
@@ -1332,25 +855,13 @@ func (e ProcessorStatusSnapshotDTOExecutionNode) Valid() bool {
 
 // Defines values for ProcessorStatusSnapshotDTORunStatus.
 const (
-	ProcessorStatusSnapshotDTORunStatusDisabled   ProcessorStatusSnapshotDTORunStatus = "Disabled"
-	ProcessorStatusSnapshotDTORunStatusInvalid    ProcessorStatusSnapshotDTORunStatus = "Invalid"
-	ProcessorStatusSnapshotDTORunStatusRunning    ProcessorStatusSnapshotDTORunStatus = "Running"
-	ProcessorStatusSnapshotDTORunStatusStopped    ProcessorStatusSnapshotDTORunStatus = "Stopped"
-	ProcessorStatusSnapshotDTORunStatusValidating ProcessorStatusSnapshotDTORunStatus = "Validating"
+	ProcessorStatusSnapshotDTORunStatusRunningStoppedValidatingDisabledInvalid ProcessorStatusSnapshotDTORunStatus = "Running, Stopped, Validating, Disabled, Invalid"
 )
 
 // Valid indicates whether the value is a known member of the ProcessorStatusSnapshotDTORunStatus enum.
 func (e ProcessorStatusSnapshotDTORunStatus) Valid() bool {
 	switch e {
-	case ProcessorStatusSnapshotDTORunStatusDisabled:
-		return true
-	case ProcessorStatusSnapshotDTORunStatusInvalid:
-		return true
-	case ProcessorStatusSnapshotDTORunStatusRunning:
-		return true
-	case ProcessorStatusSnapshotDTORunStatusStopped:
-		return true
-	case ProcessorStatusSnapshotDTORunStatusValidating:
+	case ProcessorStatusSnapshotDTORunStatusRunningStoppedValidatingDisabledInvalid:
 		return true
 	default:
 		return false
@@ -1372,24 +883,6 @@ func (e PropertyDescriptorExpressionLanguageScope) Valid() bool {
 	case PropertyDescriptorExpressionLanguageScopeFLOWFILEATTRIBUTES:
 		return true
 	case PropertyDescriptorExpressionLanguageScopeNONE:
-		return true
-	default:
-		return false
-	}
-}
-
-// Defines values for PropertyListenPortDefinitionTransportProtocol.
-const (
-	PropertyListenPortDefinitionTransportProtocolTCP PropertyListenPortDefinitionTransportProtocol = "TCP"
-	PropertyListenPortDefinitionTransportProtocolUDP PropertyListenPortDefinitionTransportProtocol = "UDP"
-)
-
-// Valid indicates whether the value is a known member of the PropertyListenPortDefinitionTransportProtocol enum.
-func (e PropertyListenPortDefinitionTransportProtocol) Valid() bool {
-	switch e {
-	case PropertyListenPortDefinitionTransportProtocolTCP:
-		return true
-	case PropertyListenPortDefinitionTransportProtocolUDP:
 		return true
 	default:
 		return false
@@ -1440,16 +933,13 @@ func (e PropertyResourceDefinitionResourceTypes) Valid() bool {
 
 // Defines values for ProvenanceNodeDTOType.
 const (
-	ProvenanceNodeDTOTypeEVENT    ProvenanceNodeDTOType = "EVENT"
-	ProvenanceNodeDTOTypeFLOWFILE ProvenanceNodeDTOType = "FLOWFILE"
+	FLOWFILEEVENT ProvenanceNodeDTOType = "FLOWFILE, EVENT"
 )
 
 // Valid indicates whether the value is a known member of the ProvenanceNodeDTOType enum.
 func (e ProvenanceNodeDTOType) Valid() bool {
 	switch e {
-	case ProvenanceNodeDTOTypeEVENT:
-		return true
-	case ProvenanceNodeDTOTypeFLOWFILE:
+	case FLOWFILEEVENT:
 		return true
 	default:
 		return false
@@ -1458,16 +948,13 @@ func (e ProvenanceNodeDTOType) Valid() bool {
 
 // Defines values for RemotePortRunStatusEntityState.
 const (
-	RemotePortRunStatusEntityStateSTOPPED      RemotePortRunStatusEntityState = "STOPPED"
-	RemotePortRunStatusEntityStateTRANSMITTING RemotePortRunStatusEntityState = "TRANSMITTING"
+	TRANSMITTINGSTOPPED RemotePortRunStatusEntityState = "TRANSMITTING, STOPPED"
 )
 
 // Valid indicates whether the value is a known member of the RemotePortRunStatusEntityState enum.
 func (e RemotePortRunStatusEntityState) Valid() bool {
 	switch e {
-	case RemotePortRunStatusEntityStateSTOPPED:
-		return true
-	case RemotePortRunStatusEntityStateTRANSMITTING:
+	case TRANSMITTINGSTOPPED:
 		return true
 	default:
 		return false
@@ -1476,19 +963,13 @@ func (e RemotePortRunStatusEntityState) Valid() bool {
 
 // Defines values for RemoteProcessGroupStatusDTOValidationStatus.
 const (
-	RemoteProcessGroupStatusDTOValidationStatusINVALID    RemoteProcessGroupStatusDTOValidationStatus = "INVALID"
-	RemoteProcessGroupStatusDTOValidationStatusVALID      RemoteProcessGroupStatusDTOValidationStatus = "VALID"
-	RemoteProcessGroupStatusDTOValidationStatusVALIDATING RemoteProcessGroupStatusDTOValidationStatus = "VALIDATING"
+	RemoteProcessGroupStatusDTOValidationStatusVALIDINVALIDVALIDATING RemoteProcessGroupStatusDTOValidationStatus = "VALID, INVALID, VALIDATING"
 )
 
 // Valid indicates whether the value is a known member of the RemoteProcessGroupStatusDTOValidationStatus enum.
 func (e RemoteProcessGroupStatusDTOValidationStatus) Valid() bool {
 	switch e {
-	case RemoteProcessGroupStatusDTOValidationStatusINVALID:
-		return true
-	case RemoteProcessGroupStatusDTOValidationStatusVALID:
-		return true
-	case RemoteProcessGroupStatusDTOValidationStatusVALIDATING:
+	case RemoteProcessGroupStatusDTOValidationStatusVALIDINVALIDVALIDATING:
 		return true
 	default:
 		return false
@@ -1497,16 +978,13 @@ func (e RemoteProcessGroupStatusDTOValidationStatus) Valid() bool {
 
 // Defines values for ReplayLastEventRequestEntityNodes.
 const (
-	ReplayLastEventRequestEntityNodesALL     ReplayLastEventRequestEntityNodes = "ALL"
-	ReplayLastEventRequestEntityNodesPRIMARY ReplayLastEventRequestEntityNodes = "PRIMARY"
+	ReplayLastEventRequestEntityNodesALLPRIMARY ReplayLastEventRequestEntityNodes = "ALL, PRIMARY"
 )
 
 // Valid indicates whether the value is a known member of the ReplayLastEventRequestEntityNodes enum.
 func (e ReplayLastEventRequestEntityNodes) Valid() bool {
 	switch e {
-	case ReplayLastEventRequestEntityNodesALL:
-		return true
-	case ReplayLastEventRequestEntityNodesPRIMARY:
+	case ReplayLastEventRequestEntityNodesALLPRIMARY:
 		return true
 	default:
 		return false
@@ -1515,16 +993,13 @@ func (e ReplayLastEventRequestEntityNodes) Valid() bool {
 
 // Defines values for ReplayLastEventResponseEntityNodes.
 const (
-	ReplayLastEventResponseEntityNodesALL     ReplayLastEventResponseEntityNodes = "ALL"
-	ReplayLastEventResponseEntityNodesPRIMARY ReplayLastEventResponseEntityNodes = "PRIMARY"
+	ReplayLastEventResponseEntityNodesALLPRIMARY ReplayLastEventResponseEntityNodes = "ALL, PRIMARY"
 )
 
 // Valid indicates whether the value is a known member of the ReplayLastEventResponseEntityNodes enum.
 func (e ReplayLastEventResponseEntityNodes) Valid() bool {
 	switch e {
-	case ReplayLastEventResponseEntityNodesALL:
-		return true
-	case ReplayLastEventResponseEntityNodesPRIMARY:
+	case ReplayLastEventResponseEntityNodesALLPRIMARY:
 		return true
 	default:
 		return false
@@ -1533,19 +1008,13 @@ func (e ReplayLastEventResponseEntityNodes) Valid() bool {
 
 // Defines values for ReportingTaskDTOState.
 const (
-	ReportingTaskDTOStateDISABLED ReportingTaskDTOState = "DISABLED"
-	ReportingTaskDTOStateRUNNING  ReportingTaskDTOState = "RUNNING"
-	ReportingTaskDTOStateSTOPPED  ReportingTaskDTOState = "STOPPED"
+	ReportingTaskDTOStateRUNNINGSTOPPEDDISABLED ReportingTaskDTOState = "RUNNING, STOPPED, DISABLED"
 )
 
 // Valid indicates whether the value is a known member of the ReportingTaskDTOState enum.
 func (e ReportingTaskDTOState) Valid() bool {
 	switch e {
-	case ReportingTaskDTOStateDISABLED:
-		return true
-	case ReportingTaskDTOStateRUNNING:
-		return true
-	case ReportingTaskDTOStateSTOPPED:
+	case ReportingTaskDTOStateRUNNINGSTOPPEDDISABLED:
 		return true
 	default:
 		return false
@@ -1554,19 +1023,13 @@ func (e ReportingTaskDTOState) Valid() bool {
 
 // Defines values for ReportingTaskDTOValidationStatus.
 const (
-	ReportingTaskDTOValidationStatusINVALID    ReportingTaskDTOValidationStatus = "INVALID"
-	ReportingTaskDTOValidationStatusVALID      ReportingTaskDTOValidationStatus = "VALID"
-	ReportingTaskDTOValidationStatusVALIDATING ReportingTaskDTOValidationStatus = "VALIDATING"
+	ReportingTaskDTOValidationStatusVALIDINVALIDVALIDATING ReportingTaskDTOValidationStatus = "VALID, INVALID, VALIDATING"
 )
 
 // Valid indicates whether the value is a known member of the ReportingTaskDTOValidationStatus enum.
 func (e ReportingTaskDTOValidationStatus) Valid() bool {
 	switch e {
-	case ReportingTaskDTOValidationStatusINVALID:
-		return true
-	case ReportingTaskDTOValidationStatusVALID:
-		return true
-	case ReportingTaskDTOValidationStatusVALIDATING:
+	case ReportingTaskDTOValidationStatusVALIDINVALIDVALIDATING:
 		return true
 	default:
 		return false
@@ -1575,16 +1038,13 @@ func (e ReportingTaskDTOValidationStatus) Valid() bool {
 
 // Defines values for ReportingTaskRunStatusEntityState.
 const (
-	ReportingTaskRunStatusEntityStateRUNNING ReportingTaskRunStatusEntityState = "RUNNING"
-	ReportingTaskRunStatusEntityStateSTOPPED ReportingTaskRunStatusEntityState = "STOPPED"
+	RUNNINGSTOPPED ReportingTaskRunStatusEntityState = "RUNNING, STOPPED"
 )
 
 // Valid indicates whether the value is a known member of the ReportingTaskRunStatusEntityState enum.
 func (e ReportingTaskRunStatusEntityState) Valid() bool {
 	switch e {
-	case ReportingTaskRunStatusEntityStateRUNNING:
-		return true
-	case ReportingTaskRunStatusEntityStateSTOPPED:
+	case RUNNINGSTOPPED:
 		return true
 	default:
 		return false
@@ -1593,19 +1053,13 @@ func (e ReportingTaskRunStatusEntityState) Valid() bool {
 
 // Defines values for ReportingTaskStatusDTORunStatus.
 const (
-	ReportingTaskStatusDTORunStatusDISABLED ReportingTaskStatusDTORunStatus = "DISABLED"
-	ReportingTaskStatusDTORunStatusRUNNING  ReportingTaskStatusDTORunStatus = "RUNNING"
-	ReportingTaskStatusDTORunStatusSTOPPED  ReportingTaskStatusDTORunStatus = "STOPPED"
+	ReportingTaskStatusDTORunStatusRUNNINGSTOPPEDDISABLED ReportingTaskStatusDTORunStatus = "RUNNING, STOPPED, DISABLED"
 )
 
 // Valid indicates whether the value is a known member of the ReportingTaskStatusDTORunStatus enum.
 func (e ReportingTaskStatusDTORunStatus) Valid() bool {
 	switch e {
-	case ReportingTaskStatusDTORunStatusDISABLED:
-		return true
-	case ReportingTaskStatusDTORunStatusRUNNING:
-		return true
-	case ReportingTaskStatusDTORunStatusSTOPPED:
+	case ReportingTaskStatusDTORunStatusRUNNINGSTOPPEDDISABLED:
 		return true
 	default:
 		return false
@@ -1614,19 +1068,13 @@ func (e ReportingTaskStatusDTORunStatus) Valid() bool {
 
 // Defines values for ReportingTaskStatusDTOValidationStatus.
 const (
-	ReportingTaskStatusDTOValidationStatusINVALID    ReportingTaskStatusDTOValidationStatus = "INVALID"
-	ReportingTaskStatusDTOValidationStatusVALID      ReportingTaskStatusDTOValidationStatus = "VALID"
-	ReportingTaskStatusDTOValidationStatusVALIDATING ReportingTaskStatusDTOValidationStatus = "VALIDATING"
+	ReportingTaskStatusDTOValidationStatusVALIDINVALIDVALIDATING ReportingTaskStatusDTOValidationStatus = "VALID, INVALID, VALIDATING"
 )
 
 // Valid indicates whether the value is a known member of the ReportingTaskStatusDTOValidationStatus enum.
 func (e ReportingTaskStatusDTOValidationStatus) Valid() bool {
 	switch e {
-	case ReportingTaskStatusDTOValidationStatusINVALID:
-		return true
-	case ReportingTaskStatusDTOValidationStatusVALID:
-		return true
-	case ReportingTaskStatusDTOValidationStatusVALIDATING:
+	case ReportingTaskStatusDTOValidationStatusVALIDINVALIDVALIDATING:
 		return true
 	default:
 		return false
@@ -1635,22 +1083,13 @@ func (e ReportingTaskStatusDTOValidationStatus) Valid() bool {
 
 // Defines values for ScheduleComponentsEntityState.
 const (
-	ScheduleComponentsEntityStateDISABLED ScheduleComponentsEntityState = "DISABLED"
-	ScheduleComponentsEntityStateENABLED  ScheduleComponentsEntityState = "ENABLED"
-	ScheduleComponentsEntityStateRUNNING  ScheduleComponentsEntityState = "RUNNING"
-	ScheduleComponentsEntityStateSTOPPED  ScheduleComponentsEntityState = "STOPPED"
+	RUNNINGSTOPPEDENABLEDDISABLED ScheduleComponentsEntityState = "RUNNING, STOPPED, ENABLED, DISABLED"
 )
 
 // Valid indicates whether the value is a known member of the ScheduleComponentsEntityState enum.
 func (e ScheduleComponentsEntityState) Valid() bool {
 	switch e {
-	case ScheduleComponentsEntityStateDISABLED:
-		return true
-	case ScheduleComponentsEntityStateENABLED:
-		return true
-	case ScheduleComponentsEntityStateRUNNING:
-		return true
-	case ScheduleComponentsEntityStateSTOPPED:
+	case RUNNINGSTOPPEDENABLEDDISABLED:
 		return true
 	default:
 		return false
@@ -1695,22 +1134,13 @@ func (e StatefulScopes) Valid() bool {
 
 // Defines values for UpdateControllerServiceReferenceRequestEntityState.
 const (
-	UpdateControllerServiceReferenceRequestEntityStateDISABLED UpdateControllerServiceReferenceRequestEntityState = "DISABLED"
-	UpdateControllerServiceReferenceRequestEntityStateENABLED  UpdateControllerServiceReferenceRequestEntityState = "ENABLED"
-	UpdateControllerServiceReferenceRequestEntityStateRUNNING  UpdateControllerServiceReferenceRequestEntityState = "RUNNING"
-	UpdateControllerServiceReferenceRequestEntityStateSTOPPED  UpdateControllerServiceReferenceRequestEntityState = "STOPPED"
+	ENABLEDDISABLEDRUNNINGSTOPPED UpdateControllerServiceReferenceRequestEntityState = "ENABLED, DISABLED, RUNNING, STOPPED"
 )
 
 // Valid indicates whether the value is a known member of the UpdateControllerServiceReferenceRequestEntityState enum.
 func (e UpdateControllerServiceReferenceRequestEntityState) Valid() bool {
 	switch e {
-	case UpdateControllerServiceReferenceRequestEntityStateDISABLED:
-		return true
-	case UpdateControllerServiceReferenceRequestEntityStateENABLED:
-		return true
-	case UpdateControllerServiceReferenceRequestEntityStateRUNNING:
-		return true
-	case UpdateControllerServiceReferenceRequestEntityStateSTOPPED:
+	case ENABLEDDISABLEDRUNNINGSTOPPED:
 		return true
 	default:
 		return false
@@ -1740,25 +1170,13 @@ func (e UseCaseInputRequirement) Valid() bool {
 
 // Defines values for VersionControlInformationDTOState.
 const (
-	VersionControlInformationDTOStateLOCALLYMODIFIED         VersionControlInformationDTOState = "LOCALLY_MODIFIED"
-	VersionControlInformationDTOStateLOCALLYMODIFIEDANDSTALE VersionControlInformationDTOState = "LOCALLY_MODIFIED_AND_STALE"
-	VersionControlInformationDTOStateSTALE                   VersionControlInformationDTOState = "STALE"
-	VersionControlInformationDTOStateSYNCFAILURE             VersionControlInformationDTOState = "SYNC_FAILURE"
-	VersionControlInformationDTOStateUPTODATE                VersionControlInformationDTOState = "UP_TO_DATE"
+	VersionControlInformationDTOStateLOCALLYMODIFIEDSTALELOCALLYMODIFIEDANDSTALEUPTODATESYNCFAILURE VersionControlInformationDTOState = "LOCALLY_MODIFIED, STALE, LOCALLY_MODIFIED_AND_STALE, UP_TO_DATE, SYNC_FAILURE"
 )
 
 // Valid indicates whether the value is a known member of the VersionControlInformationDTOState enum.
 func (e VersionControlInformationDTOState) Valid() bool {
 	switch e {
-	case VersionControlInformationDTOStateLOCALLYMODIFIED:
-		return true
-	case VersionControlInformationDTOStateLOCALLYMODIFIEDANDSTALE:
-		return true
-	case VersionControlInformationDTOStateSTALE:
-		return true
-	case VersionControlInformationDTOStateSYNCFAILURE:
-		return true
-	case VersionControlInformationDTOStateUPTODATE:
+	case VersionControlInformationDTOStateLOCALLYMODIFIEDSTALELOCALLYMODIFIEDANDSTALEUPTODATESYNCFAILURE:
 		return true
 	default:
 		return false
@@ -1768,7 +1186,6 @@ func (e VersionControlInformationDTOState) Valid() bool {
 // Defines values for VersionedConnectionComponentType.
 const (
 	VersionedConnectionComponentTypeCONNECTION         VersionedConnectionComponentType = "CONNECTION"
-	VersionedConnectionComponentTypeCONNECTOR          VersionedConnectionComponentType = "CONNECTOR"
 	VersionedConnectionComponentTypeCONTROLLERSERVICE  VersionedConnectionComponentType = "CONTROLLER_SERVICE"
 	VersionedConnectionComponentTypeFLOWANALYSISRULE   VersionedConnectionComponentType = "FLOW_ANALYSIS_RULE"
 	VersionedConnectionComponentTypeFLOWREGISTRYCLIENT VersionedConnectionComponentType = "FLOW_REGISTRY_CLIENT"
@@ -1790,8 +1207,6 @@ const (
 func (e VersionedConnectionComponentType) Valid() bool {
 	switch e {
 	case VersionedConnectionComponentTypeCONNECTION:
-		return true
-	case VersionedConnectionComponentTypeCONNECTOR:
 		return true
 	case VersionedConnectionComponentTypeCONTROLLERSERVICE:
 		return true
@@ -1828,10 +1243,39 @@ func (e VersionedConnectionComponentType) Valid() bool {
 	}
 }
 
+// Defines values for VersionedConnectionLoadBalanceCompression.
+const (
+	VersionedConnectionLoadBalanceCompressionDONOTCOMPRESSCOMPRESSATTRIBUTESONLYCOMPRESSATTRIBUTESANDCONTENT VersionedConnectionLoadBalanceCompression = "DO_NOT_COMPRESS, COMPRESS_ATTRIBUTES_ONLY, COMPRESS_ATTRIBUTES_AND_CONTENT"
+)
+
+// Valid indicates whether the value is a known member of the VersionedConnectionLoadBalanceCompression enum.
+func (e VersionedConnectionLoadBalanceCompression) Valid() bool {
+	switch e {
+	case VersionedConnectionLoadBalanceCompressionDONOTCOMPRESSCOMPRESSATTRIBUTESONLYCOMPRESSATTRIBUTESANDCONTENT:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for VersionedConnectionLoadBalanceStrategy.
+const (
+	VersionedConnectionLoadBalanceStrategyDONOTLOADBALANCEPARTITIONBYATTRIBUTEROUNDROBINSINGLENODE VersionedConnectionLoadBalanceStrategy = "DO_NOT_LOAD_BALANCE, PARTITION_BY_ATTRIBUTE, ROUND_ROBIN, SINGLE_NODE"
+)
+
+// Valid indicates whether the value is a known member of the VersionedConnectionLoadBalanceStrategy enum.
+func (e VersionedConnectionLoadBalanceStrategy) Valid() bool {
+	switch e {
+	case VersionedConnectionLoadBalanceStrategyDONOTLOADBALANCEPARTITIONBYATTRIBUTEROUNDROBINSINGLENODE:
+		return true
+	default:
+		return false
+	}
+}
+
 // Defines values for VersionedControllerServiceComponentType.
 const (
 	VersionedControllerServiceComponentTypeCONNECTION         VersionedControllerServiceComponentType = "CONNECTION"
-	VersionedControllerServiceComponentTypeCONNECTOR          VersionedControllerServiceComponentType = "CONNECTOR"
 	VersionedControllerServiceComponentTypeCONTROLLERSERVICE  VersionedControllerServiceComponentType = "CONTROLLER_SERVICE"
 	VersionedControllerServiceComponentTypeFLOWANALYSISRULE   VersionedControllerServiceComponentType = "FLOW_ANALYSIS_RULE"
 	VersionedControllerServiceComponentTypeFLOWREGISTRYCLIENT VersionedControllerServiceComponentType = "FLOW_REGISTRY_CLIENT"
@@ -1853,8 +1297,6 @@ const (
 func (e VersionedControllerServiceComponentType) Valid() bool {
 	switch e {
 	case VersionedControllerServiceComponentTypeCONNECTION:
-		return true
-	case VersionedControllerServiceComponentTypeCONNECTOR:
 		return true
 	case VersionedControllerServiceComponentTypeCONTROLLERSERVICE:
 		return true
@@ -1914,16 +1356,13 @@ func (e VersionedControllerServiceScheduledState) Valid() bool {
 
 // Defines values for VersionedFlowDTOAction.
 const (
-	COMMIT      VersionedFlowDTOAction = "COMMIT"
-	FORCECOMMIT VersionedFlowDTOAction = "FORCE_COMMIT"
+	COMMITFORCECOMMIT VersionedFlowDTOAction = "COMMIT, FORCE_COMMIT"
 )
 
 // Valid indicates whether the value is a known member of the VersionedFlowDTOAction enum.
 func (e VersionedFlowDTOAction) Valid() bool {
 	switch e {
-	case COMMIT:
-		return true
-	case FORCECOMMIT:
+	case COMMITFORCECOMMIT:
 		return true
 	default:
 		return false
@@ -1933,7 +1372,6 @@ func (e VersionedFlowDTOAction) Valid() bool {
 // Defines values for VersionedFunnelComponentType.
 const (
 	VersionedFunnelComponentTypeCONNECTION         VersionedFunnelComponentType = "CONNECTION"
-	VersionedFunnelComponentTypeCONNECTOR          VersionedFunnelComponentType = "CONNECTOR"
 	VersionedFunnelComponentTypeCONTROLLERSERVICE  VersionedFunnelComponentType = "CONTROLLER_SERVICE"
 	VersionedFunnelComponentTypeFLOWANALYSISRULE   VersionedFunnelComponentType = "FLOW_ANALYSIS_RULE"
 	VersionedFunnelComponentTypeFLOWREGISTRYCLIENT VersionedFunnelComponentType = "FLOW_REGISTRY_CLIENT"
@@ -1955,8 +1393,6 @@ const (
 func (e VersionedFunnelComponentType) Valid() bool {
 	switch e {
 	case VersionedFunnelComponentTypeCONNECTION:
-		return true
-	case VersionedFunnelComponentTypeCONNECTOR:
 		return true
 	case VersionedFunnelComponentTypeCONTROLLERSERVICE:
 		return true
@@ -1996,7 +1432,6 @@ func (e VersionedFunnelComponentType) Valid() bool {
 // Defines values for VersionedLabelComponentType.
 const (
 	VersionedLabelComponentTypeCONNECTION         VersionedLabelComponentType = "CONNECTION"
-	VersionedLabelComponentTypeCONNECTOR          VersionedLabelComponentType = "CONNECTOR"
 	VersionedLabelComponentTypeCONTROLLERSERVICE  VersionedLabelComponentType = "CONTROLLER_SERVICE"
 	VersionedLabelComponentTypeFLOWANALYSISRULE   VersionedLabelComponentType = "FLOW_ANALYSIS_RULE"
 	VersionedLabelComponentTypeFLOWREGISTRYCLIENT VersionedLabelComponentType = "FLOW_REGISTRY_CLIENT"
@@ -2018,8 +1453,6 @@ const (
 func (e VersionedLabelComponentType) Valid() bool {
 	switch e {
 	case VersionedLabelComponentTypeCONNECTION:
-		return true
-	case VersionedLabelComponentTypeCONNECTOR:
 		return true
 	case VersionedLabelComponentTypeCONTROLLERSERVICE:
 		return true
@@ -2056,28 +1489,9 @@ func (e VersionedLabelComponentType) Valid() bool {
 	}
 }
 
-// Defines values for VersionedListenPortDefinitionTransportProtocol.
-const (
-	VersionedListenPortDefinitionTransportProtocolTCP VersionedListenPortDefinitionTransportProtocol = "TCP"
-	VersionedListenPortDefinitionTransportProtocolUDP VersionedListenPortDefinitionTransportProtocol = "UDP"
-)
-
-// Valid indicates whether the value is a known member of the VersionedListenPortDefinitionTransportProtocol enum.
-func (e VersionedListenPortDefinitionTransportProtocol) Valid() bool {
-	switch e {
-	case VersionedListenPortDefinitionTransportProtocolTCP:
-		return true
-	case VersionedListenPortDefinitionTransportProtocolUDP:
-		return true
-	default:
-		return false
-	}
-}
-
 // Defines values for VersionedParameterContextComponentType.
 const (
 	VersionedParameterContextComponentTypeCONNECTION         VersionedParameterContextComponentType = "CONNECTION"
-	VersionedParameterContextComponentTypeCONNECTOR          VersionedParameterContextComponentType = "CONNECTOR"
 	VersionedParameterContextComponentTypeCONTROLLERSERVICE  VersionedParameterContextComponentType = "CONTROLLER_SERVICE"
 	VersionedParameterContextComponentTypeFLOWANALYSISRULE   VersionedParameterContextComponentType = "FLOW_ANALYSIS_RULE"
 	VersionedParameterContextComponentTypeFLOWREGISTRYCLIENT VersionedParameterContextComponentType = "FLOW_REGISTRY_CLIENT"
@@ -2099,8 +1513,6 @@ const (
 func (e VersionedParameterContextComponentType) Valid() bool {
 	switch e {
 	case VersionedParameterContextComponentTypeCONNECTION:
-		return true
-	case VersionedParameterContextComponentTypeCONNECTOR:
 		return true
 	case VersionedParameterContextComponentTypeCONTROLLERSERVICE:
 		return true
@@ -2140,7 +1552,6 @@ func (e VersionedParameterContextComponentType) Valid() bool {
 // Defines values for VersionedPortComponentType.
 const (
 	VersionedPortComponentTypeCONNECTION         VersionedPortComponentType = "CONNECTION"
-	VersionedPortComponentTypeCONNECTOR          VersionedPortComponentType = "CONNECTOR"
 	VersionedPortComponentTypeCONTROLLERSERVICE  VersionedPortComponentType = "CONTROLLER_SERVICE"
 	VersionedPortComponentTypeFLOWANALYSISRULE   VersionedPortComponentType = "FLOW_ANALYSIS_RULE"
 	VersionedPortComponentTypeFLOWREGISTRYCLIENT VersionedPortComponentType = "FLOW_REGISTRY_CLIENT"
@@ -2162,8 +1573,6 @@ const (
 func (e VersionedPortComponentType) Valid() bool {
 	switch e {
 	case VersionedPortComponentTypeCONNECTION:
-		return true
-	case VersionedPortComponentTypeCONNECTOR:
 		return true
 	case VersionedPortComponentTypeCONTROLLERSERVICE:
 		return true
@@ -2260,7 +1669,6 @@ func (e VersionedPortType) Valid() bool {
 // Defines values for VersionedProcessGroupComponentType.
 const (
 	VersionedProcessGroupComponentTypeCONNECTION         VersionedProcessGroupComponentType = "CONNECTION"
-	VersionedProcessGroupComponentTypeCONNECTOR          VersionedProcessGroupComponentType = "CONNECTOR"
 	VersionedProcessGroupComponentTypeCONTROLLERSERVICE  VersionedProcessGroupComponentType = "CONTROLLER_SERVICE"
 	VersionedProcessGroupComponentTypeFLOWANALYSISRULE   VersionedProcessGroupComponentType = "FLOW_ANALYSIS_RULE"
 	VersionedProcessGroupComponentTypeFLOWREGISTRYCLIENT VersionedProcessGroupComponentType = "FLOW_REGISTRY_CLIENT"
@@ -2282,8 +1690,6 @@ const (
 func (e VersionedProcessGroupComponentType) Valid() bool {
 	switch e {
 	case VersionedProcessGroupComponentTypeCONNECTION:
-		return true
-	case VersionedProcessGroupComponentTypeCONNECTOR:
 		return true
 	case VersionedProcessGroupComponentTypeCONTROLLERSERVICE:
 		return true
@@ -2362,10 +1768,24 @@ func (e VersionedProcessGroupScheduledState) Valid() bool {
 	}
 }
 
+// Defines values for VersionedProcessorBackoffMechanism.
+const (
+	VersionedProcessorBackoffMechanismPENALIZEFLOWFILEYIELDPROCESSOR VersionedProcessorBackoffMechanism = "PENALIZE_FLOWFILE, YIELD_PROCESSOR"
+)
+
+// Valid indicates whether the value is a known member of the VersionedProcessorBackoffMechanism enum.
+func (e VersionedProcessorBackoffMechanism) Valid() bool {
+	switch e {
+	case VersionedProcessorBackoffMechanismPENALIZEFLOWFILEYIELDPROCESSOR:
+		return true
+	default:
+		return false
+	}
+}
+
 // Defines values for VersionedProcessorComponentType.
 const (
 	VersionedProcessorComponentTypeCONNECTION         VersionedProcessorComponentType = "CONNECTION"
-	VersionedProcessorComponentTypeCONNECTOR          VersionedProcessorComponentType = "CONNECTOR"
 	VersionedProcessorComponentTypeCONTROLLERSERVICE  VersionedProcessorComponentType = "CONTROLLER_SERVICE"
 	VersionedProcessorComponentTypeFLOWANALYSISRULE   VersionedProcessorComponentType = "FLOW_ANALYSIS_RULE"
 	VersionedProcessorComponentTypeFLOWREGISTRYCLIENT VersionedProcessorComponentType = "FLOW_REGISTRY_CLIENT"
@@ -2387,8 +1807,6 @@ const (
 func (e VersionedProcessorComponentType) Valid() bool {
 	switch e {
 	case VersionedProcessorComponentTypeCONNECTION:
-		return true
-	case VersionedProcessorComponentTypeCONNECTOR:
 		return true
 	case VersionedProcessorComponentTypeCONTROLLERSERVICE:
 		return true
@@ -2449,7 +1867,6 @@ func (e VersionedProcessorScheduledState) Valid() bool {
 // Defines values for VersionedRemoteGroupPortComponentType.
 const (
 	VersionedRemoteGroupPortComponentTypeCONNECTION         VersionedRemoteGroupPortComponentType = "CONNECTION"
-	VersionedRemoteGroupPortComponentTypeCONNECTOR          VersionedRemoteGroupPortComponentType = "CONNECTOR"
 	VersionedRemoteGroupPortComponentTypeCONTROLLERSERVICE  VersionedRemoteGroupPortComponentType = "CONTROLLER_SERVICE"
 	VersionedRemoteGroupPortComponentTypeFLOWANALYSISRULE   VersionedRemoteGroupPortComponentType = "FLOW_ANALYSIS_RULE"
 	VersionedRemoteGroupPortComponentTypeFLOWREGISTRYCLIENT VersionedRemoteGroupPortComponentType = "FLOW_REGISTRY_CLIENT"
@@ -2471,8 +1888,6 @@ const (
 func (e VersionedRemoteGroupPortComponentType) Valid() bool {
 	switch e {
 	case VersionedRemoteGroupPortComponentTypeCONNECTION:
-		return true
-	case VersionedRemoteGroupPortComponentTypeCONNECTOR:
 		return true
 	case VersionedRemoteGroupPortComponentTypeCONTROLLERSERVICE:
 		return true
@@ -2533,7 +1948,6 @@ func (e VersionedRemoteGroupPortScheduledState) Valid() bool {
 // Defines values for VersionedRemoteProcessGroupComponentType.
 const (
 	VersionedRemoteProcessGroupComponentTypeCONNECTION         VersionedRemoteProcessGroupComponentType = "CONNECTION"
-	VersionedRemoteProcessGroupComponentTypeCONNECTOR          VersionedRemoteProcessGroupComponentType = "CONNECTOR"
 	VersionedRemoteProcessGroupComponentTypeCONTROLLERSERVICE  VersionedRemoteProcessGroupComponentType = "CONTROLLER_SERVICE"
 	VersionedRemoteProcessGroupComponentTypeFLOWANALYSISRULE   VersionedRemoteProcessGroupComponentType = "FLOW_ANALYSIS_RULE"
 	VersionedRemoteProcessGroupComponentTypeFLOWREGISTRYCLIENT VersionedRemoteProcessGroupComponentType = "FLOW_REGISTRY_CLIENT"
@@ -2555,8 +1969,6 @@ const (
 func (e VersionedRemoteProcessGroupComponentType) Valid() bool {
 	switch e {
 	case VersionedRemoteProcessGroupComponentTypeCONNECTION:
-		return true
-	case VersionedRemoteProcessGroupComponentTypeCONNECTOR:
 		return true
 	case VersionedRemoteProcessGroupComponentTypeCONTROLLERSERVICE:
 		return true
@@ -2593,10 +2005,24 @@ func (e VersionedRemoteProcessGroupComponentType) Valid() bool {
 	}
 }
 
+// Defines values for VersionedRemoteProcessGroupTransportProtocol.
+const (
+	RAWHTTP VersionedRemoteProcessGroupTransportProtocol = "RAW, HTTP"
+)
+
+// Valid indicates whether the value is a known member of the VersionedRemoteProcessGroupTransportProtocol enum.
+func (e VersionedRemoteProcessGroupTransportProtocol) Valid() bool {
+	switch e {
+	case RAWHTTP:
+		return true
+	default:
+		return false
+	}
+}
+
 // Defines values for VersionedReportingTaskComponentType.
 const (
 	VersionedReportingTaskComponentTypeCONNECTION         VersionedReportingTaskComponentType = "CONNECTION"
-	VersionedReportingTaskComponentTypeCONNECTOR          VersionedReportingTaskComponentType = "CONNECTOR"
 	VersionedReportingTaskComponentTypeCONTROLLERSERVICE  VersionedReportingTaskComponentType = "CONTROLLER_SERVICE"
 	VersionedReportingTaskComponentTypeFLOWANALYSISRULE   VersionedReportingTaskComponentType = "FLOW_ANALYSIS_RULE"
 	VersionedReportingTaskComponentTypeFLOWREGISTRYCLIENT VersionedReportingTaskComponentType = "FLOW_REGISTRY_CLIENT"
@@ -2618,8 +2044,6 @@ const (
 func (e VersionedReportingTaskComponentType) Valid() bool {
 	switch e {
 	case VersionedReportingTaskComponentTypeCONNECTION:
-		return true
-	case VersionedReportingTaskComponentTypeCONNECTOR:
 		return true
 	case VersionedReportingTaskComponentTypeCONTROLLERSERVICE:
 		return true
@@ -2721,12 +2145,11 @@ func (e VersionedResourceDefinitionResourceTypes) Valid() bool {
 
 // Defines values for GetFlowMetricsParamsIncludedRegistries.
 const (
-	GetFlowMetricsParamsIncludedRegistriesBULLETIN    GetFlowMetricsParamsIncludedRegistries = "BULLETIN"
-	GetFlowMetricsParamsIncludedRegistriesCLUSTER     GetFlowMetricsParamsIncludedRegistries = "CLUSTER"
-	GetFlowMetricsParamsIncludedRegistriesCONNECTION  GetFlowMetricsParamsIncludedRegistries = "CONNECTION"
-	GetFlowMetricsParamsIncludedRegistriesJVM         GetFlowMetricsParamsIncludedRegistries = "JVM"
-	GetFlowMetricsParamsIncludedRegistriesNIFI        GetFlowMetricsParamsIncludedRegistries = "NIFI"
-	GetFlowMetricsParamsIncludedRegistriesVERSIONINFO GetFlowMetricsParamsIncludedRegistries = "VERSION_INFO"
+	GetFlowMetricsParamsIncludedRegistriesBULLETIN   GetFlowMetricsParamsIncludedRegistries = "BULLETIN"
+	GetFlowMetricsParamsIncludedRegistriesCLUSTER    GetFlowMetricsParamsIncludedRegistries = "CLUSTER"
+	GetFlowMetricsParamsIncludedRegistriesCONNECTION GetFlowMetricsParamsIncludedRegistries = "CONNECTION"
+	GetFlowMetricsParamsIncludedRegistriesJVM        GetFlowMetricsParamsIncludedRegistries = "JVM"
+	GetFlowMetricsParamsIncludedRegistriesNIFI       GetFlowMetricsParamsIncludedRegistries = "NIFI"
 )
 
 // Valid indicates whether the value is a known member of the GetFlowMetricsParamsIncludedRegistries enum.
@@ -2741,44 +2164,6 @@ func (e GetFlowMetricsParamsIncludedRegistries) Valid() bool {
 	case GetFlowMetricsParamsIncludedRegistriesJVM:
 		return true
 	case GetFlowMetricsParamsIncludedRegistriesNIFI:
-		return true
-	case GetFlowMetricsParamsIncludedRegistriesVERSIONINFO:
-		return true
-	default:
-		return false
-	}
-}
-
-// Defines values for GetFlowMetricsParamsFlowMetricsReportingStrategy.
-const (
-	ALLCOMPONENTS    GetFlowMetricsParamsFlowMetricsReportingStrategy = "ALL_COMPONENTS"
-	ALLPROCESSGROUPS GetFlowMetricsParamsFlowMetricsReportingStrategy = "ALL_PROCESS_GROUPS"
-)
-
-// Valid indicates whether the value is a known member of the GetFlowMetricsParamsFlowMetricsReportingStrategy enum.
-func (e GetFlowMetricsParamsFlowMetricsReportingStrategy) Valid() bool {
-	switch e {
-	case ALLCOMPONENTS:
-		return true
-	case ALLPROCESSGROUPS:
-		return true
-	default:
-		return false
-	}
-}
-
-// Defines values for GetFlowMetricsParamsProducer.
-const (
-	JSON       GetFlowMetricsParamsProducer = "JSON"
-	PROMETHEUS GetFlowMetricsParamsProducer = "PROMETHEUS"
-)
-
-// Valid indicates whether the value is a known member of the GetFlowMetricsParamsProducer enum.
-func (e GetFlowMetricsParamsProducer) Valid() bool {
-	switch e {
-	case JSON:
-		return true
-	case PROMETHEUS:
 		return true
 	default:
 		return false
@@ -3151,9 +2536,6 @@ type AssetReferenceDTO struct {
 	// Id The identifier of the referenced asset.
 	Id *string `json:"id,omitempty"`
 
-	// MissingContent Indicates if the content of the asset is missing.
-	MissingContent *bool `json:"missingContent,omitempty"`
-
 	// Name The name of the referenced asset.
 	Name *string `json:"name,omitempty"`
 }
@@ -3205,93 +2587,6 @@ type AuthenticationConfigurationEntity struct {
 	AuthenticationConfiguration *AuthenticationConfigurationDTO `json:"authenticationConfiguration,omitempty"`
 }
 
-// BacklogDTO The backlog reported by the component, populated once the request has completed successfully.
-type BacklogDTO struct {
-	// ByteCount The total number of bytes remaining on the source, if the component can determine it.
-	ByteCount *int64 `json:"byteCount,omitempty"`
-
-	// FlowFileCount The number of FlowFiles remaining on the source, if the component can determine it.
-	FlowFileCount *int64 `json:"flowFileCount,omitempty"`
-
-	// FormattedByteCount The byte count formatted for display in human-readable units (for example, '4.89 GB'). Populated whenever byteCount is populated.
-	FormattedByteCount *string `json:"formattedByteCount,omitempty"`
-
-	// FormattedFlowFileCount The FlowFile count formatted for display with locale-appropriate grouping (for example, '1,025'). Populated whenever flowFileCount is populated.
-	FormattedFlowFileCount *string `json:"formattedFlowFileCount,omitempty"`
-
-	// FormattedLastCaughtUp Human-readable description of how long ago the component was last caught up, for example '5 mins ago', 'in 2 hours', or 'now'. Populated whenever lastCaughtUp is populated.
-	FormattedLastCaughtUp *string `json:"formattedLastCaughtUp,omitempty"`
-
-	// FormattedRecordCount The record count formatted for display with locale-appropriate grouping (for example, '1,025'). Populated whenever recordCount is populated.
-	FormattedRecordCount *string `json:"formattedRecordCount,omitempty"`
-
-	// LastCaughtUp The most recent moment the component observed itself as fully caught up with the source, formatted as an ISO-8601 UTC timestamp.
-	LastCaughtUp *string `json:"lastCaughtUp,omitempty"`
-
-	// Precision The precision of the numeric dimensions of this backlog.
-	Precision *BacklogDTOPrecision `json:"precision,omitempty"`
-
-	// RecordCount The number of records remaining on the source, if the component can determine it.
-	RecordCount *int64 `json:"recordCount,omitempty"`
-}
-
-// BacklogDTOPrecision The precision of the numeric dimensions of this backlog.
-type BacklogDTOPrecision string
-
-// BacklogRequestDTO The request
-type BacklogRequestDTO struct {
-	// Backlog The backlog reported by the component, populated once the request has completed successfully.
-	Backlog *BacklogDTO `json:"backlog,omitempty"`
-
-	// Complete Whether or not the request is completed
-	Complete *bool `json:"complete,omitempty"`
-
-	// ComponentId The ID of the Processor or Connector whose backlog is being determined
-	ComponentId *string `json:"componentId,omitempty"`
-
-	// FailureReason The reason for the request failing, or null if the request has not failed
-	FailureReason *string `json:"failureReason,omitempty"`
-
-	// LastUpdated The timestamp of when the request was last updated
-	LastUpdated *time.Time `json:"lastUpdated,omitempty"`
-
-	// PercentCompleted A value between 0 and 100 (inclusive) indicating how close the request is to completion
-	PercentCompleted *int32 `json:"percentCompleted,omitempty"`
-
-	// RequestId The ID of the request
-	RequestId *string `json:"requestId,omitempty"`
-
-	// State A description of the current state of the request
-	State *string `json:"state,omitempty"`
-
-	// SubmissionTime The timestamp of when the request was submitted
-	SubmissionTime *time.Time `json:"submissionTime,omitempty"`
-
-	// UpdateSteps The steps that are required in order to complete the request, along with the status of each
-	UpdateSteps *[]BacklogUpdateStepDTO `json:"updateSteps,omitempty"`
-
-	// Uri The URI for the request
-	Uri *string `json:"uri,omitempty"`
-}
-
-// BacklogRequestEntity defines model for BacklogRequestEntity.
-type BacklogRequestEntity struct {
-	// Request The request
-	Request *BacklogRequestDTO `json:"request,omitempty"`
-}
-
-// BacklogUpdateStepDTO The steps that are required in order to complete the request, along with the status of each
-type BacklogUpdateStepDTO struct {
-	// Complete Whether or not this step has completed
-	Complete *bool `json:"complete,omitempty"`
-
-	// Description Explanation of what happens in this step
-	Description *string `json:"description,omitempty"`
-
-	// FailureReason An explanation of why this step failed, or null if this step did not fail
-	FailureReason *string `json:"failureReason,omitempty"`
-}
-
 // BannerDTO defines model for BannerDTO.
 type BannerDTO struct {
 	// FooterText The footer text.
@@ -3308,7 +2603,7 @@ type BannerEntity struct {
 
 // BatchSettingsDTO The batch settings for data transmission.
 type BatchSettingsDTO struct {
-	// Count Preferred number of FlowFiles to include in a transaction.
+	// Count Preferred number of flow files to include in a transaction.
 	Count *int32 `json:"count,omitempty"`
 
 	// Duration Preferred amount of time that a transaction should span.
@@ -3320,7 +2615,7 @@ type BatchSettingsDTO struct {
 
 // BatchSize The batch settings for data transmission.
 type BatchSize struct {
-	// Count Preferred number of FlowFiles to include in a transaction.
+	// Count Preferred number of flow files to include in a transaction.
 	Count *int32 `json:"count,omitempty"`
 
 	// Duration Preferred amount of time that a transaction should span.
@@ -3400,14 +2695,8 @@ type BulletinDTO struct {
 	// SourceType The type of the source component
 	SourceType *string `json:"sourceType,omitempty"`
 
-	// StackTrace The stack trace associated with the bulletin, if any.
-	StackTrace *string `json:"stackTrace,omitempty"`
-
 	// Timestamp When this bulletin was generated.
 	Timestamp *string `json:"timestamp,omitempty"`
-
-	// TimestampIso When this bulletin was generated in ISO format with full date and milliseconds.
-	TimestampIso *string `json:"timestampIso,omitempty"`
 }
 
 // BulletinEntity The bulletins for this component.
@@ -3423,9 +2712,6 @@ type BulletinEntity struct {
 
 	// Timestamp When this bulletin was generated.
 	Timestamp *string `json:"timestamp,omitempty"`
-
-	// TimestampIso When this bulletin was generated in ISO format with full date and milliseconds.
-	TimestampIso *string `json:"timestampIso,omitempty"`
 }
 
 // Bundle The details of the artifact that bundled this parameter provider.
@@ -3450,42 +2736,6 @@ type BundleDTO struct {
 
 	// Version The version of the bundle.
 	Version *string `json:"version,omitempty"`
-}
-
-// ClearBulletinsForGroupRequestEntity defines model for ClearBulletinsForGroupRequestEntity.
-type ClearBulletinsForGroupRequestEntity struct {
-	// Components Optional component IDs for which to clear bulletins. If not specified, all authorized descendant components will be used.
-	Components *[]string `json:"components,omitempty"`
-
-	// FromTimestamp The timestamp from which to clear bulletins (inclusive). This field is required.
-	FromTimestamp string `json:"fromTimestamp"`
-
-	// Id The id of the ProcessGroup
-	Id *string `json:"id,omitempty"`
-}
-
-// ClearBulletinsForGroupResultsEntity defines model for ClearBulletinsForGroupResultsEntity.
-type ClearBulletinsForGroupResultsEntity struct {
-	// BulletinsCleared The total number of bulletins that were cleared.
-	BulletinsCleared *int32 `json:"bulletinsCleared,omitempty"`
-}
-
-// ClearBulletinsRequestEntity defines model for ClearBulletinsRequestEntity.
-type ClearBulletinsRequestEntity struct {
-	// FromTimestamp The timestamp from which to clear bulletins (inclusive). This field is required.
-	FromTimestamp string `json:"fromTimestamp"`
-}
-
-// ClearBulletinsResultEntity defines model for ClearBulletinsResultEntity.
-type ClearBulletinsResultEntity struct {
-	// Bulletins The current bulletins for the component after clearing.
-	Bulletins *[]BulletinEntity `json:"bulletins,omitempty"`
-
-	// BulletinsCleared The number of bulletins that were cleared.
-	BulletinsCleared *int32 `json:"bulletinsCleared,omitempty"`
-
-	// ComponentId The id of the component for which bulletins were cleared.
-	ComponentId *string `json:"componentId,omitempty"`
 }
 
 // ClientIdParameter defines model for ClientIdParameter.
@@ -3538,7 +2788,7 @@ type ClusterSummaryEntity struct {
 // ComponentDetailsDTO The details of the source component.
 type ComponentDetailsDTO = map[string]interface{}
 
-// ComponentDifferenceDTO The set of upstream changes between the current version and the target version in the flow registry
+// ComponentDifferenceDTO The list of differences for each component in the flow that is not the same between the two flows
 type ComponentDifferenceDTO struct {
 	// ComponentId The ID of the component
 	ComponentId *string `json:"componentId,omitempty"`
@@ -3575,17 +2825,11 @@ type ComponentManifest struct {
 	// Apis Public interfaces defined in this bundle
 	Apis *[]DefinedType `json:"apis,omitempty"`
 
-	// Connectors Connectors provided in this bundle
-	Connectors *[]ConnectorDefinition `json:"connectors,omitempty"`
-
 	// ControllerServices Controller Services provided in this bundle
 	ControllerServices *[]ControllerServiceDefinition `json:"controllerServices,omitempty"`
 
 	// FlowAnalysisRules Flow Analysis Rules provided in this bundle
 	FlowAnalysisRules *[]FlowAnalysisRuleDefinition `json:"flowAnalysisRules,omitempty"`
-
-	// FlowRegistryClients Flow Registry Clients provided in this bundle
-	FlowRegistryClients *[]FlowRegistryClientDefinition `json:"flowRegistryClients,omitempty"`
 
 	// ParameterProviders Parameter Providers provided in this bundle
 	ParameterProviders *[]ParameterProviderDefinition `json:"parameterProviders,omitempty"`
@@ -3681,9 +2925,6 @@ type ComponentStateDTO struct {
 	// ComponentId The component identifier.
 	ComponentId *string `json:"componentId,omitempty"`
 
-	// DropStateKeySupported Whether dropping state by key is supported for this component. Defaults to false when not specified by the component.
-	DropStateKeySupported *bool `json:"dropStateKeySupported,omitempty"`
-
 	// LocalState The local state for this component.
 	LocalState *StateMapDTO `json:"localState,omitempty"`
 
@@ -3772,9 +3013,6 @@ type ConfigVerificationResultDTO struct {
 	// Outcome The outcome of the verification
 	Outcome *ConfigVerificationResultDTOOutcome `json:"outcome,omitempty"`
 
-	// Subject The subject of the verification step
-	Subject *string `json:"subject,omitempty"`
-
 	// VerificationStepName The name of the verification step
 	VerificationStepName *string `json:"verificationStepName,omitempty"`
 }
@@ -3801,87 +3039,6 @@ type ConfigurationAnalysisDTO struct {
 type ConfigurationAnalysisEntity struct {
 	// ConfigurationAnalysis The configuration analysis
 	ConfigurationAnalysis *ConfigurationAnalysisDTO `json:"configurationAnalysis,omitempty"`
-}
-
-// ConfigurationStep The configuration steps for this connector
-type ConfigurationStep struct {
-	// Description The description of the configuration step
-	Description *string `json:"description,omitempty"`
-
-	// Documented Whether this configuration step has additional documentation
-	Documented *bool `json:"documented,omitempty"`
-
-	// Name The name of the configuration step
-	Name *string `json:"name,omitempty"`
-
-	// PropertyGroups The property groups in this configuration step
-	PropertyGroups *[]ConnectorPropertyGroup `json:"propertyGroups,omitempty"`
-
-	// StepDependencies The dependencies that this step has on other steps
-	StepDependencies *[]ConfigurationStepDependency `json:"stepDependencies,omitempty"`
-}
-
-// ConfigurationStepConfigurationDTO The list of configuration step configurations for this Connector.
-type ConfigurationStepConfigurationDTO struct {
-	// ConfigurationStepDescription The description of the configuration step.
-	ConfigurationStepDescription *string `json:"configurationStepDescription,omitempty"`
-
-	// ConfigurationStepName The name of the configuration step.
-	ConfigurationStepName *string `json:"configurationStepName,omitempty"`
-
-	// Dependencies The dependencies that this configuration step has on other configuration steps' properties.
-	Dependencies *[]ConfigurationStepDependencyDTO `json:"dependencies,omitempty"`
-
-	// Documented Whether extended documentation is available for this configuration step.
-	Documented *bool `json:"documented,omitempty"`
-
-	// PropertyGroupConfigurations The list of property group configurations for this configuration step.
-	PropertyGroupConfigurations *[]PropertyGroupConfigurationDTO `json:"propertyGroupConfigurations,omitempty"`
-}
-
-// ConfigurationStepDependency The dependencies that this step has on other steps
-type ConfigurationStepDependency struct {
-	// DependentValues The values of the dependent property that enable this step
-	DependentValues *[]string `json:"dependentValues,omitempty"`
-
-	// PropertyName The name of the property within the step that this step depends on
-	PropertyName *string `json:"propertyName,omitempty"`
-
-	// StepName The name of the step that this step depends on
-	StepName *string `json:"stepName,omitempty"`
-}
-
-// ConfigurationStepDependencyDTO The dependencies that this configuration step has on other configuration steps' properties.
-type ConfigurationStepDependencyDTO struct {
-	// DependentValues The values of the dependent property that satisfy this dependency. If null, any non-null value satisfies the dependency.
-	DependentValues *[]string `json:"dependentValues,omitempty"`
-
-	// PropertyName The name of the property within the dependent step that must have a value.
-	PropertyName *string `json:"propertyName,omitempty"`
-
-	// StepName The name of the configuration step that this step depends on.
-	StepName *string `json:"stepName,omitempty"`
-}
-
-// ConfigurationStepEntity defines model for ConfigurationStepEntity.
-type ConfigurationStepEntity struct {
-	// ConfigurationStep The list of configuration step configurations for this Connector.
-	ConfigurationStep *ConfigurationStepConfigurationDTO `json:"configurationStep,omitempty"`
-
-	// DisconnectedNodeAcknowledged Acknowledges that this node is disconnected to allow for mutable requests to proceed.
-	DisconnectedNodeAcknowledged *bool `json:"disconnectedNodeAcknowledged,omitempty"`
-
-	// ParentConnectorId The id of the parent connector.
-	ParentConnectorId *string `json:"parentConnectorId,omitempty"`
-
-	// ParentConnectorRevision The revision of the Process Group
-	ParentConnectorRevision *RevisionDTO `json:"parentConnectorRevision,omitempty"`
-}
-
-// ConfigurationStepNamesEntity defines model for ConfigurationStepNamesEntity.
-type ConfigurationStepNamesEntity struct {
-	// ConfigurationStepNames The list of configuration step names for a connector.
-	ConfigurationStepNames *[]string `json:"configurationStepNames,omitempty"`
 }
 
 // ConnectableComponent The destination of the connection.
@@ -3970,17 +3127,17 @@ type ConnectionDTO struct {
 	// LabelIndex The index of the bend point where to place the connection label.
 	LabelIndex *int32 `json:"labelIndex,omitempty"`
 
-	// LoadBalanceCompression Whether or not data should be compressed when being transferred between nodes in the cluster. Possible returned values: DO_NOT_COMPRESS, COMPRESS_ATTRIBUTES_ONLY, COMPRESS_ATTRIBUTES_AND_CONTENT. See LoadBalanceCompression.class for more details.
-	LoadBalanceCompression *string `json:"loadBalanceCompression,omitempty"`
+	// LoadBalanceCompression Whether or not data should be compressed when being transferred between nodes in the cluster.
+	LoadBalanceCompression *ConnectionDTOLoadBalanceCompression `json:"loadBalanceCompression,omitempty"`
 
 	// LoadBalancePartitionAttribute The FlowFile Attribute to use for determining which node a FlowFile will go to if the Load Balancing Strategy is set to PARTITION_BY_ATTRIBUTE
 	LoadBalancePartitionAttribute *string `json:"loadBalancePartitionAttribute,omitempty"`
 
-	// LoadBalanceStatus The current status of the Connection's Load Balancing Activities. Status can indicate that Load Balancing is not configured for the connection, that Load Balancing is configured but inactive (not currently transferring data to another node), or that Load Balancing is configured and actively transferring data to another node. Possible returned values: LOAD_BALANCE_NOT_CONFIGURED, LOAD_BALANCE_INACTIVE, LOAD_BALANCE_ACTIVE. See LoadBalanceStatus.class for more details.
-	LoadBalanceStatus *string `json:"loadBalanceStatus,omitempty"`
+	// LoadBalanceStatus The current status of the Connection's Load Balancing Activities. Status can indicate that Load Balancing is not configured for the connection, that Load Balancing is configured but inactive (not currently transferring data to another node), or that Load Balancing is configured and actively transferring data to another node.
+	LoadBalanceStatus *ConnectionDTOLoadBalanceStatus `json:"loadBalanceStatus,omitempty"`
 
-	// LoadBalanceStrategy How to load balance the data in this Connection across the nodes in the cluster. Possible returned values: DO_NOT_LOAD_BALANCE, PARTITION_BY_ATTRIBUTE, ROUND_ROBIN, SINGLE_NODE. See LoadBalanceStrategy.class for more details.
-	LoadBalanceStrategy *string `json:"loadBalanceStrategy,omitempty"`
+	// LoadBalanceStrategy How to load balance the data in this Connection across the nodes in the cluster.
+	LoadBalanceStrategy *ConnectionDTOLoadBalanceStrategy `json:"loadBalanceStrategy,omitempty"`
 
 	// Name The name of the connection.
 	Name *string `json:"name,omitempty"`
@@ -3994,9 +3151,6 @@ type ConnectionDTO struct {
 	// Prioritizers The comparators used to prioritize the queue.
 	Prioritizers *[]string `json:"prioritizers,omitempty"`
 
-	// RetriedRelationships The relationships from the source of the connection that are configured to be retried.
-	RetriedRelationships *[]string `json:"retriedRelationships,omitempty"`
-
 	// SelectedRelationships The selected relationship that comprise the connection.
 	SelectedRelationships *[]string `json:"selectedRelationships,omitempty"`
 
@@ -4006,6 +3160,15 @@ type ConnectionDTO struct {
 	// VersionedComponentId The ID of the corresponding component that is under version control
 	VersionedComponentId *string `json:"versionedComponentId,omitempty"`
 }
+
+// ConnectionDTOLoadBalanceCompression Whether or not data should be compressed when being transferred between nodes in the cluster.
+type ConnectionDTOLoadBalanceCompression string
+
+// ConnectionDTOLoadBalanceStatus The current status of the Connection's Load Balancing Activities. Status can indicate that Load Balancing is not configured for the connection, that Load Balancing is configured but inactive (not currently transferring data to another node), or that Load Balancing is configured and actively transferring data to another node.
+type ConnectionDTOLoadBalanceStatus string
+
+// ConnectionDTOLoadBalanceStrategy How to load balance the data in this Connection across the nodes in the cluster.
+type ConnectionDTOLoadBalanceStrategy string
 
 // ConnectionEntity The connections in this flow.
 type ConnectionEntity struct {
@@ -4174,10 +3337,10 @@ type ConnectionStatusPredictionsSnapshotDTO struct {
 	// PredictedMillisUntilCountBackpressure The predicted number of milliseconds before the connection will have backpressure applied, based on the queued count.
 	PredictedMillisUntilCountBackpressure *int64 `json:"predictedMillisUntilCountBackpressure,omitempty"`
 
-	// PredictedPercentBytes Predicted connection percent use regarding queued FlowFiles size and backpressure threshold if configured.
+	// PredictedPercentBytes Predicted connection percent use regarding queued flow files size and backpressure threshold if configured.
 	PredictedPercentBytes *int32 `json:"predictedPercentBytes,omitempty"`
 
-	// PredictedPercentCount Predicted connection percent use regarding queued FlowFiles count and backpressure threshold if configured.
+	// PredictedPercentCount Predicted connection percent use regarding queued flow files count and backpressure threshold if configured.
 	PredictedPercentCount *int32 `json:"predictedPercentCount,omitempty"`
 
 	// PredictionIntervalSeconds The configured interval (in seconds) for predicting connection queue count and size (and percent usage).
@@ -4222,31 +3385,28 @@ type ConnectionStatusSnapshotDTO struct {
 	// Input The input count/size for the connection in the last 5 minutes, pretty printed.
 	Input *string `json:"input,omitempty"`
 
-	// LoadBalanceStatus The load balance status of the connection
-	LoadBalanceStatus *ConnectionStatusSnapshotDTOLoadBalanceStatus `json:"loadBalanceStatus,omitempty"`
-
 	// Name The name of the connection.
 	Name *string `json:"name,omitempty"`
 
-	// Output The output count/size for the connection in the last 5 minutes, pretty printed.
+	// Output The output count/sie for the connection in the last 5 minutes, pretty printed.
 	Output *string `json:"output,omitempty"`
 
-	// PercentUseBytes Connection percent use regarding queued FlowFiles size and backpressure threshold if configured.
+	// PercentUseBytes Connection percent use regarding queued flow files size and backpressure threshold if configured.
 	PercentUseBytes *int32 `json:"percentUseBytes,omitempty"`
 
-	// PercentUseCount Connection percent use regarding queued FlowFiles count and backpressure threshold if configured.
+	// PercentUseCount Connection percent use regarding queued flow files count and backpressure threshold if configured.
 	PercentUseCount *int32 `json:"percentUseCount,omitempty"`
 
 	// Predictions Predictions, if available, for this connection (null if not available)
 	Predictions *ConnectionStatusPredictionsSnapshotDTO `json:"predictions,omitempty"`
 
-	// Queued The total count and size of queued FlowFiles formatted.
+	// Queued The total count and size of queued flowfiles formatted.
 	Queued *string `json:"queued,omitempty"`
 
-	// QueuedCount The number of FlowFiles that are queued, pretty printed.
+	// QueuedCount The number of flowfiles that are queued, pretty printed.
 	QueuedCount *string `json:"queuedCount,omitempty"`
 
-	// QueuedSize The total size of FlowFiles that are queued formatted.
+	// QueuedSize The total size of flowfiles that are queued formatted.
 	QueuedSize *string `json:"queuedSize,omitempty"`
 
 	// SourceId The id of the source of the connection.
@@ -4255,9 +3415,6 @@ type ConnectionStatusSnapshotDTO struct {
 	// SourceName The name of the source of the connection.
 	SourceName *string `json:"sourceName,omitempty"`
 }
-
-// ConnectionStatusSnapshotDTOLoadBalanceStatus The load balance status of the connection
-type ConnectionStatusSnapshotDTOLoadBalanceStatus string
 
 // ConnectionStatusSnapshotEntity The status of all connections in the process group.
 type ConnectionStatusSnapshotEntity struct {
@@ -4272,445 +3429,6 @@ type ConnectionStatusSnapshotEntity struct {
 // ConnectionsEntity defines model for ConnectionsEntity.
 type ConnectionsEntity struct {
 	Connections *[]ConnectionEntity `json:"connections,omitempty"`
-}
-
-// ConnectorActionDTO The available actions that can be performed on this Connector.
-type ConnectorActionDTO struct {
-	// Allowed Whether this action is currently allowed to be performed, based on the state of the Connector. Note that a value of 'true' does not imply that the user has permission to perform the action.
-	Allowed *bool `json:"allowed,omitempty"`
-
-	// Description A description of what this action does.
-	Description *string `json:"description,omitempty"`
-
-	// Name The name of the action.
-	Name *string `json:"name,omitempty"`
-
-	// ReasonNotAllowed The reason why this action is not allowed, or null if the action is allowed.
-	ReasonNotAllowed *string `json:"reasonNotAllowed,omitempty"`
-}
-
-// ConnectorConfigurationDTO The working configuration of the Connector.
-type ConnectorConfigurationDTO struct {
-	// ConfigurationStepConfigurations The list of configuration step configurations for this Connector.
-	ConfigurationStepConfigurations *[]ConfigurationStepConfigurationDTO `json:"configurationStepConfigurations,omitempty"`
-}
-
-// ConnectorDTO The Connector DTO
-type ConnectorDTO struct {
-	// ActiveConfiguration The working configuration of the Connector.
-	ActiveConfiguration *ConnectorConfigurationDTO `json:"activeConfiguration,omitempty"`
-
-	// AvailableActions The available actions that can be performed on this Connector.
-	AvailableActions *[]ConnectorActionDTO `json:"availableActions,omitempty"`
-
-	// Bundle If the property identifies a controller service this returns the bundle of the type, null otherwise.
-	Bundle *BundleDTO `json:"bundle,omitempty"`
-
-	// ConfigurationUrl The URL for this connector's configuration/wizard custom UI, if applicable.
-	ConfigurationUrl *string `json:"configurationUrl,omitempty"`
-
-	// DetailsUrl The URL for this connector's details custom UI, if applicable.
-	DetailsUrl *string `json:"detailsUrl,omitempty"`
-
-	// ExtensionMissing Whether the extension for this connector is missing.
-	ExtensionMissing *bool `json:"extensionMissing,omitempty"`
-
-	// Id The id of the component.
-	Id *string `json:"id,omitempty"`
-
-	// ManagedProcessGroupId The identifier of the root Process Group managed by this Connector.
-	ManagedProcessGroupId *string `json:"managedProcessGroupId,omitempty"`
-
-	// MultipleVersionsAvailable Whether multiple versions of this connector are available.
-	MultipleVersionsAvailable *bool `json:"multipleVersionsAvailable,omitempty"`
-
-	// Name The name of the Connector.
-	Name *string `json:"name,omitempty"`
-
-	// ParentGroupId The id of parent process group of this component if applicable.
-	ParentGroupId *string `json:"parentGroupId,omitempty"`
-
-	// Position The position of this component in the UI if applicable.
-	Position *PositionDTO `json:"position,omitempty"`
-
-	// State The state of the Connector.
-	State *ConnectorDTOState `json:"state,omitempty"`
-
-	// Type The fully qualified type of the Connector.
-	Type *string `json:"type,omitempty"`
-
-	// ValidationErrors The validation errors for the connector.
-	ValidationErrors *[]string `json:"validationErrors,omitempty"`
-
-	// ValidationStatus Indicates whether the Connector is valid, invalid, or still in the process of validating
-	ValidationStatus *string `json:"validationStatus,omitempty"`
-
-	// VersionedComponentId The ID of the corresponding component that is under version control
-	VersionedComponentId *string `json:"versionedComponentId,omitempty"`
-
-	// WorkingConfiguration The working configuration of the Connector.
-	WorkingConfiguration *ConnectorConfigurationDTO `json:"workingConfiguration,omitempty"`
-}
-
-// ConnectorDTOState The state of the Connector.
-type ConnectorDTOState string
-
-// ConnectorDefinition Connectors provided in this bundle
-type ConnectorDefinition struct {
-	// AdditionalDetails Indicates if the component has additional details documentation
-	AdditionalDetails *bool `json:"additionalDetails,omitempty"`
-
-	// Artifact The artifact name of the bundle that provides the referenced type.
-	Artifact *string `json:"artifact,omitempty"`
-
-	// BuildInfo The build metadata for this component
-	BuildInfo *BuildInfo `json:"buildInfo,omitempty"`
-
-	// ConfigurationSteps The configuration steps for this connector
-	ConfigurationSteps *[]ConfigurationStep `json:"configurationSteps,omitempty"`
-
-	// Deprecated Whether or not the component has been deprecated
-	Deprecated *bool `json:"deprecated,omitempty"`
-
-	// DeprecationAlternatives If this component has been deprecated, this optional field provides alternatives to use
-	DeprecationAlternatives *[]string `json:"deprecationAlternatives,omitempty"`
-
-	// DeprecationReason If this component has been deprecated, this optional field can be used to provide an explanation
-	DeprecationReason *string `json:"deprecationReason,omitempty"`
-
-	// ExplicitRestrictions Explicit restrictions that indicate a require permission to use the component
-	ExplicitRestrictions *[]Restriction `json:"explicitRestrictions,omitempty"`
-
-	// Group The group name of the bundle that provides the referenced type.
-	Group *string `json:"group,omitempty"`
-
-	// ProvidedApiImplementations If this type represents a provider for an interface, this lists the APIs it implements
-	ProvidedApiImplementations *[]DefinedType `json:"providedApiImplementations,omitempty"`
-
-	// Restricted Whether or not the component has a general restriction
-	Restricted *bool `json:"restricted,omitempty"`
-
-	// RestrictedExplanation An optional description of the general restriction
-	RestrictedExplanation *string `json:"restrictedExplanation,omitempty"`
-
-	// SeeAlso The names of other component types that may be related
-	SeeAlso *[]string `json:"seeAlso,omitempty"`
-
-	// Stateful Indicates if the component stores state
-	Stateful *Stateful `json:"stateful,omitempty"`
-
-	// SystemResourceConsiderations The system resource considerations for the given component
-	SystemResourceConsiderations *[]SystemResourceConsideration `json:"systemResourceConsiderations,omitempty"`
-
-	// Tags The tags associated with this type
-	Tags *[]string `json:"tags,omitempty"`
-
-	// Type The fully-qualified class type
-	Type *string `json:"type,omitempty"`
-
-	// TypeDescription The description of the type.
-	TypeDescription *string `json:"typeDescription,omitempty"`
-
-	// Version The version of the bundle that provides the referenced type.
-	Version *string `json:"version,omitempty"`
-}
-
-// ConnectorEntity defines model for ConnectorEntity.
-type ConnectorEntity struct {
-	// Bulletins The bulletins for this component.
-	Bulletins *[]BulletinEntity `json:"bulletins,omitempty"`
-
-	// Component The Connector DTO
-	Component *ConnectorDTO `json:"component,omitempty"`
-
-	// DisconnectedNodeAcknowledged Acknowledges that this node is disconnected to allow for mutable requests to proceed.
-	DisconnectedNodeAcknowledged *bool `json:"disconnectedNodeAcknowledged,omitempty"`
-
-	// Id The id of the component.
-	Id *string `json:"id,omitempty"`
-
-	// OperatePermissions The permissions for this component.
-	OperatePermissions *PermissionsDTO `json:"operatePermissions,omitempty"`
-
-	// Permissions The permissions for this component.
-	Permissions *PermissionsDTO `json:"permissions,omitempty"`
-
-	// Position The position of this component in the UI if applicable.
-	Position *PositionDTO `json:"position,omitempty"`
-
-	// Revision The revision of the Process Group
-	Revision *RevisionDTO `json:"revision,omitempty"`
-
-	// Status The status of the connector.
-	Status *ConnectorStatusDTO `json:"status,omitempty"`
-
-	// Uri The URI for futures requests to the component.
-	Uri *string `json:"uri,omitempty"`
-}
-
-// ConnectorPropertyAllowableValuesEntity defines model for ConnectorPropertyAllowableValuesEntity.
-type ConnectorPropertyAllowableValuesEntity struct {
-	// AllowableValues The allowable values for the property.
-	AllowableValues *[]AllowableValueEntity `json:"allowableValues,omitempty"`
-
-	// ConfigurationStepName The name of the configuration step.
-	ConfigurationStepName *string `json:"configurationStepName,omitempty"`
-
-	// PropertyGroupName The name of the property group.
-	PropertyGroupName *string `json:"propertyGroupName,omitempty"`
-
-	// PropertyName The name of the property.
-	PropertyName *string `json:"propertyName,omitempty"`
-}
-
-// ConnectorPropertyDependency The properties that this property depends on
-type ConnectorPropertyDependency struct {
-	// DependentValues The values of the dependent property that enable this property
-	DependentValues *[]string `json:"dependentValues,omitempty"`
-
-	// PropertyName The name of the property that this property depends on
-	PropertyName *string `json:"propertyName,omitempty"`
-}
-
-// ConnectorPropertyDependencyDTO The dependencies this property has on other properties.
-type ConnectorPropertyDependencyDTO struct {
-	// DependentValues The values of the dependent property that must be set for this property to be applicable.
-	DependentValues *[]string `json:"dependentValues,omitempty"`
-
-	// PropertyName The name of the property that this property depends on.
-	PropertyName *string `json:"propertyName,omitempty"`
-}
-
-// ConnectorPropertyDescriptor The properties in this group
-type ConnectorPropertyDescriptor struct {
-	// AllowableValues The allowable values for this property
-	AllowableValues *[]PropertyAllowableValue `json:"allowableValues,omitempty"`
-
-	// AllowableValuesFetchable Whether or not the allowable values can be fetched dynamically
-	AllowableValuesFetchable *bool `json:"allowableValuesFetchable,omitempty"`
-
-	// DefaultValue The default value of the property
-	DefaultValue *string `json:"defaultValue,omitempty"`
-
-	// Dependencies The properties that this property depends on
-	Dependencies *[]ConnectorPropertyDependency `json:"dependencies,omitempty"`
-
-	// Description The description of the property
-	Description *string `json:"description,omitempty"`
-
-	// Name The name of the property
-	Name *string `json:"name,omitempty"`
-
-	// PropertyType The type of the property
-	PropertyType *ConnectorPropertyDescriptorPropertyType `json:"propertyType,omitempty"`
-
-	// Required Whether or not the property is required
-	Required *bool `json:"required,omitempty"`
-}
-
-// ConnectorPropertyDescriptorPropertyType The type of the property
-type ConnectorPropertyDescriptorPropertyType string
-
-// ConnectorPropertyDescriptorDTO The property descriptors for this property group, keyed by property name.
-type ConnectorPropertyDescriptorDTO struct {
-	// AllowableValues Allowable values for the property. If empty then the allowed values are not constrained.
-	AllowableValues *[]AllowableValueEntity `json:"allowableValues,omitempty"`
-
-	// AllowableValuesFetchable Whether the allowable values are dynamically fetchable based on other property values.
-	AllowableValuesFetchable *bool `json:"allowableValuesFetchable,omitempty"`
-
-	// DefaultValue The default value for the property.
-	DefaultValue *string `json:"defaultValue,omitempty"`
-
-	// Dependencies The dependencies this property has on other properties.
-	Dependencies *[]ConnectorPropertyDependencyDTO `json:"dependencies,omitempty"`
-
-	// Description The description of the property.
-	Description *string `json:"description,omitempty"`
-
-	// Name The name of the property.
-	Name *string `json:"name,omitempty"`
-
-	// Required Whether the property is required.
-	Required *bool `json:"required,omitempty"`
-
-	// Type The type of the property (STRING, INTEGER, BOOLEAN, DOUBLE, STRING_LIST).
-	Type *string `json:"type,omitempty"`
-}
-
-// ConnectorPropertyGroup The property groups in this configuration step
-type ConnectorPropertyGroup struct {
-	// Description The description of the property group
-	Description *string `json:"description,omitempty"`
-
-	// Name The name of the property group
-	Name *string `json:"name,omitempty"`
-
-	// Properties The properties in this group
-	Properties *[]ConnectorPropertyDescriptor `json:"properties,omitempty"`
-}
-
-// ConnectorRunStatusEntity defines model for ConnectorRunStatusEntity.
-type ConnectorRunStatusEntity struct {
-	// DisconnectedNodeAcknowledged Acknowledges that this node is disconnected to allow for mutable requests to proceed.
-	DisconnectedNodeAcknowledged *bool `json:"disconnectedNodeAcknowledged,omitempty"`
-
-	// Revision The revision of the Process Group
-	Revision *RevisionDTO `json:"revision,omitempty"`
-
-	// State The run status of the Connector.
-	State *ConnectorRunStatusEntityState `json:"state,omitempty"`
-}
-
-// ConnectorRunStatusEntityState The run status of the Connector.
-type ConnectorRunStatusEntityState string
-
-// ConnectorStatusDTO The status of the connector.
-type ConnectorStatusDTO struct {
-	// AggregateSnapshot The connector status snapshot from the node.
-	AggregateSnapshot *ConnectorStatusSnapshotDTO `json:"aggregateSnapshot,omitempty"`
-
-	// GroupId The id of the group this connector belongs to.
-	GroupId *string `json:"groupId,omitempty"`
-
-	// Id The id of the connector.
-	Id *string `json:"id,omitempty"`
-
-	// Name The name of the connector.
-	Name *string `json:"name,omitempty"`
-
-	// NodeSnapshots A status snapshot for each node in the cluster. If the NiFi instance is a standalone instance, rather than a cluster, this may be null.
-	NodeSnapshots *[]NodeConnectorStatusSnapshotDTO `json:"nodeSnapshots,omitempty"`
-
-	// RunStatus The run status of the connector.
-	RunStatus *string `json:"runStatus,omitempty"`
-
-	// StatsLastRefreshed The timestamp of when the stats were last refreshed.
-	StatsLastRefreshed *string `json:"statsLastRefreshed,omitempty"`
-
-	// Type The type of the connector.
-	Type *string `json:"type,omitempty"`
-
-	// ValidationStatus The validation status of the connector.
-	ValidationStatus *ConnectorStatusDTOValidationStatus `json:"validationStatus,omitempty"`
-}
-
-// ConnectorStatusDTOValidationStatus The validation status of the connector.
-type ConnectorStatusDTOValidationStatus string
-
-// ConnectorStatusSnapshotDTO The connector status snapshot from the node.
-type ConnectorStatusSnapshotDTO struct {
-	// ActiveThreadCount The number of active threads for the connector.
-	ActiveThreadCount *int32 `json:"activeThreadCount,omitempty"`
-
-	// BytesQueued The number of bytes queued in this connector's managed process group.
-	BytesQueued *int64 `json:"bytesQueued,omitempty"`
-
-	// BytesRead The number of bytes read by processors in this connector's managed process group.
-	BytesRead *int64 `json:"bytesRead,omitempty"`
-
-	// BytesReceived The number of bytes received by this connector's managed process group.
-	BytesReceived *int64 `json:"bytesReceived,omitempty"`
-
-	// BytesSent The number of bytes sent by this connector's managed process group.
-	BytesSent *int64 `json:"bytesSent,omitempty"`
-
-	// BytesWritten The number of bytes written by processors in this connector's managed process group.
-	BytesWritten *int64 `json:"bytesWritten,omitempty"`
-
-	// FlowFilesQueued The number of FlowFiles queued in this connector's managed process group.
-	FlowFilesQueued *int32 `json:"flowFilesQueued,omitempty"`
-
-	// FlowFilesReceived The number of FlowFiles received by this connector's managed process group.
-	FlowFilesReceived *int32 `json:"flowFilesReceived,omitempty"`
-
-	// FlowFilesSent The number of FlowFiles sent by this connector's managed process group.
-	FlowFilesSent *int32 `json:"flowFilesSent,omitempty"`
-
-	// GroupId The id of the parent process group to which the connector belongs.
-	GroupId *string `json:"groupId,omitempty"`
-
-	// Id The id of the connector.
-	Id *string `json:"id,omitempty"`
-
-	// Idle Whether or not the connector is currently idle (no FlowFiles queued and no FlowFiles processed recently).
-	Idle *bool `json:"idle,omitempty"`
-
-	// IdleDuration A human-readable representation of how long the connector has been idle, or null if the connector is not idle.
-	IdleDuration *string `json:"idleDuration,omitempty"`
-
-	// IdleDurationMillis The number of milliseconds the connector has been idle, or null if the connector is not idle.
-	IdleDurationMillis *int64 `json:"idleDurationMillis,omitempty"`
-
-	// Name The name of the connector.
-	Name *string `json:"name,omitempty"`
-
-	// ProcessingPerformanceStatus Represents the processor's processing performance.
-	ProcessingPerformanceStatus *ProcessingPerformanceStatusDTO `json:"processingPerformanceStatus,omitempty"`
-
-	// Queued The count/size of queued data, pretty-printed.
-	Queued *string `json:"queued,omitempty"`
-
-	// QueuedCount The count of queued FlowFiles, pretty-printed.
-	QueuedCount *string `json:"queuedCount,omitempty"`
-
-	// QueuedSize The size of queued data, pretty-printed.
-	QueuedSize *string `json:"queuedSize,omitempty"`
-
-	// Read The number of bytes read, pretty-printed.
-	Read *string `json:"read,omitempty"`
-
-	// Received The count/size of data that has been received by this connector, pretty-printed.
-	Received *string `json:"received,omitempty"`
-
-	// RunStatus The run status of the connector.
-	RunStatus *string `json:"runStatus,omitempty"`
-
-	// Sent The count/size of data that has been sent by this connector, pretty-printed.
-	Sent *string `json:"sent,omitempty"`
-
-	// Type The type of the connector.
-	Type *string `json:"type,omitempty"`
-
-	// Written The number of bytes written, pretty-printed.
-	Written *string `json:"written,omitempty"`
-}
-
-// ConnectorTypesEntity defines model for ConnectorTypesEntity.
-type ConnectorTypesEntity struct {
-	ConnectorTypes *[]DocumentedTypeDTO `json:"connectorTypes,omitempty"`
-}
-
-// ConnectorValueReferenceDTO The property values for this property group.
-type ConnectorValueReferenceDTO struct {
-	// AssetReferences The asset references. Applicable when valueType is ASSET_REFERENCE.
-	AssetReferences *[]AssetReferenceDTO `json:"assetReferences,omitempty"`
-
-	// FullyQualifiedSecretName The fully qualified secret name. Applicable when valueType is SECRET_REFERENCE.
-	FullyQualifiedSecretName *string `json:"fullyQualifiedSecretName,omitempty"`
-
-	// SecretName The secret name. Applicable when valueType is SECRET_REFERENCE.
-	SecretName *string `json:"secretName,omitempty"`
-
-	// SecretProviderId The secret provider identifier. Applicable when valueType is SECRET_REFERENCE.
-	SecretProviderId *string `json:"secretProviderId,omitempty"`
-
-	// SecretProviderName The secret provider name. Applicable when valueType is SECRET_REFERENCE.
-	SecretProviderName *string `json:"secretProviderName,omitempty"`
-
-	// Value The string literal value. Applicable when valueType is STRING_LITERAL.
-	Value *string `json:"value,omitempty"`
-
-	// ValueType The type of value (STRING_LITERAL, ASSET_REFERENCE, or SECRET_REFERENCE).
-	ValueType *string `json:"valueType,omitempty"`
-}
-
-// ConnectorsEntity defines model for ConnectorsEntity.
-type ConnectorsEntity struct {
-	Connectors *[]ConnectorEntity `json:"connectors,omitempty"`
-
-	// CurrentTime The current time on the system.
-	CurrentTime *string `json:"currentTime,omitempty"`
 }
 
 // ContentViewerDTO The Content Viewers.
@@ -4811,10 +3529,10 @@ type ControllerDTO struct {
 	// OutputPorts The output ports available to received data from the NiFi.
 	OutputPorts *[]PortDTO `json:"outputPorts,omitempty"`
 
-	// RemoteSiteHttpListeningPort The HTTP(S) Port on which this instance is listening for Remote Transfers of FlowFiles. If this instance is not configured to receive FlowFiles from remote instances, this will be null.
+	// RemoteSiteHttpListeningPort The HTTP(S) Port on which this instance is listening for Remote Transfers of Flow Files. If this instance is not configured to receive Flow Files from remote instances, this will be null.
 	RemoteSiteHttpListeningPort *int32 `json:"remoteSiteHttpListeningPort,omitempty"`
 
-	// RemoteSiteListeningPort The Socket Port on which this instance is listening for Remote Transfers of FlowFiles. If this instance is not configured to receive FlowFiles from remote instances, this will be null.
+	// RemoteSiteListeningPort The Socket Port on which this instance is listening for Remote Transfers of Flow Files. If this instance is not configured to receive Flow Files from remote instances, this will be null.
 	RemoteSiteListeningPort *int32 `json:"remoteSiteListeningPort,omitempty"`
 
 	// RunningCount The number of running components in the NiFi.
@@ -4870,7 +3588,7 @@ type ControllerServiceDTO struct {
 	// CustomUiUrl The URL for the controller services custom configuration UI if applicable.
 	CustomUiUrl *string `json:"customUiUrl,omitempty"`
 
-	// Deprecated Whether the controller service has been deprecated.
+	// Deprecated Whether the ontroller service has been deprecated.
 	Deprecated *bool `json:"deprecated,omitempty"`
 
 	// Descriptors The descriptors for the controller service properties.
@@ -5195,7 +3913,7 @@ type ControllerStatusDTO struct {
 	// LocallyModifiedCount The number of locally modified versioned process groups in the NiFi.
 	LocallyModifiedCount *int32 `json:"locallyModifiedCount,omitempty"`
 
-	// Queued The number of FlowFiles queued in the NiFi.
+	// Queued The number of flowfiles queued in the NiFi.
 	Queued *string `json:"queued,omitempty"`
 
 	// RunningCount The number of running components in the NiFi.
@@ -5358,24 +4076,6 @@ type CreateActiveRequestEntity struct {
 	ProcessGroupId *string `json:"processGroupId,omitempty"`
 }
 
-// CreateFlowBranchRequestEntity defines model for CreateFlowBranchRequestEntity.
-type CreateFlowBranchRequestEntity struct {
-	// Branch The name of the new branch to create
-	Branch *string `json:"branch,omitempty"`
-
-	// DisconnectedNodeAcknowledged Acknowledges that this node is disconnected to allow for mutable requests to proceed.
-	DisconnectedNodeAcknowledged *bool `json:"disconnectedNodeAcknowledged,omitempty"`
-
-	// ProcessGroupRevision The revision of the Process Group
-	ProcessGroupRevision *RevisionDTO `json:"processGroupRevision,omitempty"`
-
-	// SourceBranch The name of the source branch to create the new branch from. Defaults to the branch currently tracking in NiFi.
-	SourceBranch *string `json:"sourceBranch,omitempty"`
-
-	// SourceVersion The version on the source branch to use when creating the new branch. Defaults to the version currently tracked by NiFi.
-	SourceVersion *string `json:"sourceVersion,omitempty"`
-}
-
 // CurrentUserEntity defines model for CurrentUserEntity.
 type CurrentUserEntity struct {
 	// Anonymous Whether the current user is anonymous.
@@ -5386,9 +4086,6 @@ type CurrentUserEntity struct {
 
 	// ComponentRestrictionPermissions Permissions for specific component restrictions.
 	ComponentRestrictionPermissions *[]ComponentRestrictionPermissionDTO `json:"componentRestrictionPermissions,omitempty"`
-
-	// ConnectorsPermissions The permissions for this component.
-	ConnectorsPermissions *PermissionsDTO `json:"connectorsPermissions,omitempty"`
 
 	// ControllerPermissions The permissions for this component.
 	ControllerPermissions *PermissionsDTO `json:"controllerPermissions,omitempty"`
@@ -5451,9 +4148,6 @@ type DifferenceDTO struct {
 
 	// DifferenceType The type of difference
 	DifferenceType *string `json:"differenceType,omitempty"`
-
-	// Environmental Whether this difference is environmental (e.g., bundle version change due to NiFi upgrade) rather than a user-initiated change. Environmental changes are typically not reverted when reverting local changes.
-	Environmental *bool `json:"environmental,omitempty"`
 }
 
 // DimensionsDTO defines model for DimensionsDTO.
@@ -5479,7 +4173,7 @@ type DocumentedTypeDTO struct {
 	// Description The description of the type.
 	Description *string `json:"description,omitempty"`
 
-	// ExplicitRestrictions An optional collection of explicit restrictions. If specified, these explicit restrictions will be enforced.
+	// ExplicitRestrictions An optional collection of explicit restrictions. If specified, these explicit restrictions will be enfored.
 	ExplicitRestrictions *[]ExplicitRestrictionDTO `json:"explicitRestrictions,omitempty"`
 
 	// Restricted Whether this type is restricted.
@@ -5497,22 +4191,22 @@ type DocumentedTypeDTO struct {
 
 // DropRequestDTO defines model for DropRequestDTO.
 type DropRequestDTO struct {
-	// Current The count and size of FlowFiles currently queued.
+	// Current The count and size of flow files currently queued.
 	Current *string `json:"current,omitempty"`
 
-	// CurrentCount The number of FlowFiles currently queued.
+	// CurrentCount The number of flow files currently queued.
 	CurrentCount *int32 `json:"currentCount,omitempty"`
 
-	// CurrentSize The size of FlowFiles currently queued in bytes.
+	// CurrentSize The size of flow files currently queued in bytes.
 	CurrentSize *int64 `json:"currentSize,omitempty"`
 
-	// Dropped The count and size of FlowFiles that have been dropped thus far.
+	// Dropped The count and size of flow files that have been dropped thus far.
 	Dropped *string `json:"dropped,omitempty"`
 
-	// DroppedCount The number of FlowFiles that have been dropped thus far.
+	// DroppedCount The number of flow files that have been dropped thus far.
 	DroppedCount *int32 `json:"droppedCount,omitempty"`
 
-	// DroppedSize The size of FlowFiles that have been dropped thus far in bytes.
+	// DroppedSize The size of flow files that have been dropped thus far in bytes.
 	DroppedSize *int64 `json:"droppedSize,omitempty"`
 
 	// FailureReason The reason, if any, that this drop request failed.
@@ -5527,13 +4221,13 @@ type DropRequestDTO struct {
 	// LastUpdated The last time this drop request was updated.
 	LastUpdated *string `json:"lastUpdated,omitempty"`
 
-	// Original The count and size of FlowFiles to be dropped as a result of this request.
+	// Original The count and size of flow files to be dropped as a result of this request.
 	Original *string `json:"original,omitempty"`
 
-	// OriginalCount The number of FlowFiles to be dropped as a result of this request.
+	// OriginalCount The number of flow files to be dropped as a result of this request.
 	OriginalCount *int32 `json:"originalCount,omitempty"`
 
-	// OriginalSize The size of FlowFiles to be dropped as a result of this request in bytes.
+	// OriginalSize The size of flow files to be dropped as a result of this request in bytes.
 	OriginalSize *int64 `json:"originalSize,omitempty"`
 
 	// PercentCompleted The current percent complete.
@@ -5581,7 +4275,7 @@ type DynamicRelationship struct {
 	Name *string `json:"name,omitempty"`
 }
 
-// ExplicitRestrictionDTO An optional collection of explicit restrictions. If specified, these explicit restrictions will be enforced.
+// ExplicitRestrictionDTO An optional collection of explicit restrictions. If specified, these explicit restrictions will be enfored.
 type ExplicitRestrictionDTO struct {
 	// Explanation The description of why the usage of this component is restricted for this required permission.
 	Explanation *string `json:"explanation,omitempty"`
@@ -6157,75 +4851,6 @@ type FlowRegistryClientDTO struct {
 // FlowRegistryClientDTOValidationStatus Indicates whether the Registry Client is valid, invalid, or still in the process of validating (i.e., it is unknown whether or not the Registry Client is valid)
 type FlowRegistryClientDTOValidationStatus string
 
-// FlowRegistryClientDefinition Flow Registry Clients provided in this bundle
-type FlowRegistryClientDefinition struct {
-	// AdditionalDetails Indicates if the component has additional details documentation
-	AdditionalDetails *bool `json:"additionalDetails,omitempty"`
-
-	// Artifact The artifact name of the bundle that provides the referenced type.
-	Artifact *string `json:"artifact,omitempty"`
-
-	// BuildInfo The build metadata for this component
-	BuildInfo *BuildInfo `json:"buildInfo,omitempty"`
-
-	// Deprecated Whether or not the component has been deprecated
-	Deprecated *bool `json:"deprecated,omitempty"`
-
-	// DeprecationAlternatives If this component has been deprecated, this optional field provides alternatives to use
-	DeprecationAlternatives *[]string `json:"deprecationAlternatives,omitempty"`
-
-	// DeprecationReason If this component has been deprecated, this optional field can be used to provide an explanation
-	DeprecationReason *string `json:"deprecationReason,omitempty"`
-
-	// DynamicProperties Describes the dynamic properties supported by this component
-	DynamicProperties *[]DynamicProperty `json:"dynamicProperties,omitempty"`
-
-	// ExplicitRestrictions Explicit restrictions that indicate a require permission to use the component
-	ExplicitRestrictions *[]Restriction `json:"explicitRestrictions,omitempty"`
-
-	// Group The group name of the bundle that provides the referenced type.
-	Group *string `json:"group,omitempty"`
-
-	// PropertyDescriptors Descriptions of configuration properties applicable to this component.
-	PropertyDescriptors *map[string]PropertyDescriptor `json:"propertyDescriptors,omitempty"`
-
-	// ProvidedApiImplementations If this type represents a provider for an interface, this lists the APIs it implements
-	ProvidedApiImplementations *[]DefinedType `json:"providedApiImplementations,omitempty"`
-
-	// Restricted Whether or not the component has a general restriction
-	Restricted *bool `json:"restricted,omitempty"`
-
-	// RestrictedExplanation An optional description of the general restriction
-	RestrictedExplanation *string `json:"restrictedExplanation,omitempty"`
-
-	// SeeAlso The names of other component types that may be related
-	SeeAlso *[]string `json:"seeAlso,omitempty"`
-
-	// Stateful Indicates if the component stores state
-	Stateful *Stateful `json:"stateful,omitempty"`
-
-	// SupportsDynamicProperties Whether or not this component makes use of dynamic (user-set) properties.
-	SupportsDynamicProperties *bool `json:"supportsDynamicProperties,omitempty"`
-
-	// SupportsSensitiveDynamicProperties Whether or not this component makes use of sensitive dynamic (user-set) properties.
-	SupportsSensitiveDynamicProperties *bool `json:"supportsSensitiveDynamicProperties,omitempty"`
-
-	// SystemResourceConsiderations The system resource considerations for the given component
-	SystemResourceConsiderations *[]SystemResourceConsideration `json:"systemResourceConsiderations,omitempty"`
-
-	// Tags The tags associated with this type
-	Tags *[]string `json:"tags,omitempty"`
-
-	// Type The fully-qualified class type
-	Type *string `json:"type,omitempty"`
-
-	// TypeDescription The description of the type.
-	TypeDescription *string `json:"typeDescription,omitempty"`
-
-	// Version The version of the bundle that provides the referenced type.
-	Version *string `json:"version,omitempty"`
-}
-
 // FlowRegistryClientEntity defines model for FlowRegistryClientEntity.
 type FlowRegistryClientEntity struct {
 	// Bulletins The bulletins for this component.
@@ -6528,14 +5153,14 @@ type LineageRequestDTO struct {
 	// If the lineageRequestType is FLOWFILE and the flowfile uuid is also included in the request, the event id will be ignored.
 	EventId *int64 `json:"eventId,omitempty"`
 
-	// LineageRequestType The type of lineage request. PARENTS will return the lineage for the FlowFiles that are parents of the specified event. CHILDREN will return the lineage for the FlowFiles that are children of the specified event. FLOWFILE will return the lineage for the specified flowfile.
+	// LineageRequestType The type of lineage request. PARENTS will return the lineage for the flowfiles that are parents of the specified event. CHILDREN will return the lineage for the flowfiles that are children of the specified event. FLOWFILE will return the lineage for the specified flowfile.
 	LineageRequestType *LineageRequestDTOLineageRequestType `json:"lineageRequestType,omitempty"`
 
 	// Uuid The flowfile uuid that was used to generate the lineage. The flowfile uuid is only allowed when the lineageRequestType is FLOWFILE and will take precedence over event id.
 	Uuid *string `json:"uuid,omitempty"`
 }
 
-// LineageRequestDTOLineageRequestType The type of lineage request. PARENTS will return the lineage for the FlowFiles that are parents of the specified event. CHILDREN will return the lineage for the FlowFiles that are children of the specified event. FLOWFILE will return the lineage for the specified flowfile.
+// LineageRequestDTOLineageRequestType The type of lineage request. PARENTS will return the lineage for the flowfiles that are parents of the specified event. CHILDREN will return the lineage for the flowfiles that are children of the specified event. FLOWFILE will return the lineage for the specified flowfile.
 type LineageRequestDTOLineageRequestType string
 
 // LineageResultsDTO The results of the lineage query.
@@ -6548,45 +5173,6 @@ type LineageResultsDTO struct {
 
 	// Nodes The nodes in the lineage.
 	Nodes *[]ProvenanceNodeDTO `json:"nodes,omitempty"`
-}
-
-// ListenPortDTO A list of ingress ports that are currently configured
-type ListenPortDTO struct {
-	// ApplicationProtocols Supported application protocols, if applicable
-	ApplicationProtocols *[]string `json:"applicationProtocols,omitempty"`
-
-	// ComponentClass The class type of the component providing the listen port
-	ComponentClass *string `json:"componentClass,omitempty"`
-
-	// ComponentId The id of the component providing the listen port
-	ComponentId *string `json:"componentId,omitempty"`
-
-	// ComponentName The name of the component providing the listen port
-	ComponentName *string `json:"componentName,omitempty"`
-
-	// ComponentType The type of component providing the listen port (e.g., Processor, ControllerService)
-	ComponentType *string `json:"componentType,omitempty"`
-
-	// ParentGroupId The id of the process group containing the component providing the listen port, if applicable
-	ParentGroupId *string `json:"parentGroupId,omitempty"`
-
-	// ParentGroupName The name of the process group containing the component providing the listen port, if applicable
-	ParentGroupName *string `json:"parentGroupName,omitempty"`
-
-	// PortName The name of the the listen port. Useful context for components that provide multiple ports.
-	PortName *string `json:"portName,omitempty"`
-
-	// PortNumber The ingress port number
-	PortNumber *int32 `json:"portNumber,omitempty"`
-
-	// TransportProtocol The ingress transport protocol (TCP or UDP)
-	TransportProtocol *string `json:"transportProtocol,omitempty"`
-}
-
-// ListenPortsEntity defines model for ListenPortsEntity.
-type ListenPortsEntity struct {
-	// ListenPorts A list of ingress ports that are currently configured
-	ListenPorts *[]ListenPortDTO `json:"listenPorts,omitempty"`
 }
 
 // ListingRequestDTO defines model for ListingRequestDTO.
@@ -6641,81 +5227,6 @@ type LongParameter struct {
 	Long *int64 `json:"long,omitempty"`
 }
 
-// MigrationPayloadDTO The uploaded migration payload metadata.
-type MigrationPayloadDTO struct {
-	// PayloadId The identifier of the uploaded migration payload.
-	PayloadId *string `json:"payloadId,omitempty"`
-}
-
-// MigrationPayloadEntity defines model for MigrationPayloadEntity.
-type MigrationPayloadEntity struct {
-	// Payload The uploaded migration payload metadata.
-	Payload *MigrationPayloadDTO `json:"payload,omitempty"`
-}
-
-// MigrationRequestDTO The migration request.
-type MigrationRequestDTO struct {
-	// Complete Whether or not the request is completed
-	Complete *bool `json:"complete,omitempty"`
-
-	// ConnectorId The identifier of the Connector receiving the migration.
-	ConnectorId *string `json:"connectorId,omitempty"`
-
-	// FailureReason The reason for the request failing, or null if the request has not failed
-	FailureReason *string `json:"failureReason,omitempty"`
-
-	// LastUpdated The timestamp of when the request was last updated
-	LastUpdated *time.Time `json:"lastUpdated,omitempty"`
-
-	// LocalSource The local Process Group source for the migration request.
-	LocalSource *MigrationRequestLocalSourceDTO `json:"localSource,omitempty"`
-
-	// PayloadId The identifier of a previously uploaded migration payload.
-	PayloadId *string `json:"payloadId,omitempty"`
-
-	// PercentCompleted A value between 0 and 100 (inclusive) indicating how close the request is to completion
-	PercentCompleted *int32 `json:"percentCompleted,omitempty"`
-
-	// RequestId The ID of the request
-	RequestId *string `json:"requestId,omitempty"`
-
-	// State A description of the current state of the request
-	State *string `json:"state,omitempty"`
-
-	// SubmissionTime The timestamp of when the request was submitted
-	SubmissionTime *time.Time `json:"submissionTime,omitempty"`
-
-	// UpdateSteps The steps that are required in order to complete the request, along with the status of each
-	UpdateSteps *[]MigrationUpdateStepDTO `json:"updateSteps,omitempty"`
-
-	// Uri The URI for the request
-	Uri *string `json:"uri,omitempty"`
-}
-
-// MigrationRequestEntity defines model for MigrationRequestEntity.
-type MigrationRequestEntity struct {
-	// Request The migration request.
-	Request *MigrationRequestDTO `json:"request,omitempty"`
-}
-
-// MigrationRequestLocalSourceDTO The local Process Group source for the migration request.
-type MigrationRequestLocalSourceDTO struct {
-	// ProcessGroupId The identifier of the local source Process Group to migrate.
-	ProcessGroupId *string `json:"processGroupId,omitempty"`
-}
-
-// MigrationUpdateStepDTO The steps that are required in order to complete the request, along with the status of each
-type MigrationUpdateStepDTO struct {
-	// Complete Whether or not this step has completed
-	Complete *bool `json:"complete,omitempty"`
-
-	// Description Explanation of what happens in this step
-	Description *string `json:"description,omitempty"`
-
-	// FailureReason An explanation of why this step failed, or null if this step did not fail
-	FailureReason *string `json:"failureReason,omitempty"`
-}
-
 // MultiProcessorUseCase A list of use cases that have been documented that involve this Processor in conjunction with other Processors
 type MultiProcessorUseCase struct {
 	// Configurations A description of how to configure the Processor to perform the task described in the use case
@@ -6745,9 +5256,6 @@ type NarCoordinateDTO struct {
 
 // NarDetailsEntity defines model for NarDetailsEntity.
 type NarDetailsEntity struct {
-	// ConnectorTypes The Connector types contained in the NAR
-	ConnectorTypes *[]DocumentedTypeDTO `json:"connectorTypes,omitempty"`
-
 	// ControllerServiceTypes The ControllerService types contained in the NAR
 	ControllerServiceTypes *[]DocumentedTypeDTO `json:"controllerServiceTypes,omitempty"`
 
@@ -6853,21 +5361,6 @@ type NodeConnectionStatusSnapshotDTO struct {
 	// NodeId The unique ID that identifies the node
 	NodeId         *string                      `json:"nodeId,omitempty"`
 	StatusSnapshot *ConnectionStatusSnapshotDTO `json:"statusSnapshot,omitempty"`
-}
-
-// NodeConnectorStatusSnapshotDTO A status snapshot for each node in the cluster. If the NiFi instance is a standalone instance, rather than a cluster, this may be null.
-type NodeConnectorStatusSnapshotDTO struct {
-	// Address The API address of the node
-	Address *string `json:"address,omitempty"`
-
-	// ApiPort The API port used to communicate with the node
-	ApiPort *int32 `json:"apiPort,omitempty"`
-
-	// NodeId The unique ID that identifies the node
-	NodeId *string `json:"nodeId,omitempty"`
-
-	// StatusSnapshot The connector status snapshot from the node.
-	StatusSnapshot *ConnectorStatusSnapshotDTO `json:"statusSnapshot,omitempty"`
 }
 
 // NodeCountersSnapshotDTO A Counters snapshot for each node in the cluster. If the NiFi instance is a standalone instance, rather than a cluster, this may be null.
@@ -7898,13 +6391,13 @@ type PortStatusSnapshotDTO struct {
 	// Id The id of the port.
 	Id *string `json:"id,omitempty"`
 
-	// Input The count/size of FlowFiles that have been accepted in the last 5 minutes.
+	// Input The count/size of flowfiles that have been accepted in the last 5 minutes.
 	Input *string `json:"input,omitempty"`
 
 	// Name The name of the port.
 	Name *string `json:"name,omitempty"`
 
-	// Output The count/size of FlowFiles that have been processed in the last 5 minutes.
+	// Output The count/size of flowfiles that have been processed in the last 5 minutes.
 	Output *string `json:"output,omitempty"`
 
 	// RunStatus The run status of the port.
@@ -8469,14 +6962,14 @@ type ProcessingPerformanceStatusDTO struct {
 
 // ProcessorConfigDTO The configuration details for the processor. These details will be included in a response if the verbose flag is included in a request.
 type ProcessorConfigDTO struct {
-	// AnnotationData The annotation data for the processor used to relay configuration between a custom UI and the processor.
+	// AnnotationData The annotation data for the processor used to relay configuration between a custom UI and the procesosr.
 	AnnotationData *string `json:"annotationData,omitempty"`
 
 	// AutoTerminatedRelationships The names of all relationships that cause a flow file to be terminated if the relationship is not connected elsewhere. This property differs from the 'isAutoTerminate' property of the RelationshipDTO in that the RelationshipDTO is meant to depict the current configuration, whereas this property can be set in a DTO when updating a Processor in order to change which Relationships should be auto-terminated.
 	AutoTerminatedRelationships *[]string `json:"autoTerminatedRelationships,omitempty"`
 
-	// BackoffMechanism Determines whether the FlowFile should be penalized or the processor should be yielded between retries. Possible returned values: PENALIZE_FLOWFILE, YIELD_PROCESSOR. See BackoffMechanism.class for more details.
-	BackoffMechanism *string `json:"backoffMechanism,omitempty"`
+	// BackoffMechanism Determines whether the FlowFile should be penalized or the processor should be yielded between retries.
+	BackoffMechanism *ProcessorConfigDTOBackoffMechanism `json:"backoffMechanism,omitempty"`
 
 	// BulletinLevel The level at which the processor will report bulletins.
 	BulletinLevel *string `json:"bulletinLevel,omitempty"`
@@ -8484,7 +6977,7 @@ type ProcessorConfigDTO struct {
 	// Comments The comments for the processor.
 	Comments *string `json:"comments,omitempty"`
 
-	// ConcurrentlySchedulableTaskCount The number of tasks that should be concurrently schedule for the processor. If the processor doesn't allow parallel processing then any positive input will be ignored.
+	// ConcurrentlySchedulableTaskCount The number of tasks that should be concurrently schedule for the processor. If the processor doesn't allow parallol processing then any positive input will be ignored.
 	ConcurrentlySchedulableTaskCount *int32 `json:"concurrentlySchedulableTaskCount,omitempty"`
 
 	// CustomUiUrl The URL for the processor's custom configuration UI if applicable.
@@ -8536,6 +7029,9 @@ type ProcessorConfigDTO struct {
 	YieldDuration *string `json:"yieldDuration,omitempty"`
 }
 
+// ProcessorConfigDTOBackoffMechanism Determines whether the FlowFile should be penalized or the processor should be yielded between retries.
+type ProcessorConfigDTOBackoffMechanism string
+
 // ProcessorConfiguration A description of how to configure the Processor to perform the task described in the use case
 type ProcessorConfiguration struct {
 	// Configuration A description of how the Processor should be configured in order to accomplish the use case
@@ -8583,9 +7079,6 @@ type ProcessorDTO struct {
 	// PersistsState Whether the processor persists state.
 	PersistsState *bool `json:"persistsState,omitempty"`
 
-	// PhysicalState The physical state of the processor, including transition states
-	PhysicalState *ProcessorDTOPhysicalState `json:"physicalState,omitempty"`
-
 	// Position The position of this component in the UI if applicable.
 	Position *PositionDTO `json:"position,omitempty"`
 
@@ -8600,9 +7093,6 @@ type ProcessorDTO struct {
 
 	// Style Styles for the processor (background-color : #eee).
 	Style *map[string]string `json:"style,omitempty"`
-
-	// SupportsBacklogReporting Whether the processor implements BacklogReportingProcessor and can report a backlog.
-	SupportsBacklogReporting *bool `json:"supportsBacklogReporting,omitempty"`
 
 	// SupportsBatching Whether the processor supports batching. This makes the run duration settings available.
 	SupportsBatching *bool `json:"supportsBatching,omitempty"`
@@ -8625,9 +7115,6 @@ type ProcessorDTO struct {
 	// VersionedComponentId The ID of the corresponding component that is under version control
 	VersionedComponentId *string `json:"versionedComponentId,omitempty"`
 }
-
-// ProcessorDTOPhysicalState The physical state of the processor, including transition states
-type ProcessorDTOPhysicalState string
 
 // ProcessorDTOState The state of the processor
 type ProcessorDTOState string
@@ -8791,9 +7278,6 @@ type ProcessorEntity struct {
 	// Permissions The permissions for this component.
 	Permissions *PermissionsDTO `json:"permissions,omitempty"`
 
-	// PhysicalState The physical state of the processor, including transition states
-	PhysicalState *ProcessorEntityPhysicalState `json:"physicalState,omitempty"`
-
 	// Position The position of this component in the UI if applicable.
 	Position *PositionDTO `json:"position,omitempty"`
 
@@ -8804,9 +7288,6 @@ type ProcessorEntity struct {
 	// Uri The URI for futures requests to the component.
 	Uri *string `json:"uri,omitempty"`
 }
-
-// ProcessorEntityPhysicalState The physical state of the processor, including transition states
-type ProcessorEntityPhysicalState string
 
 // ProcessorRunStatusDetailsDTO The details of a Processor's run status
 type ProcessorRunStatusDetailsDTO struct {
@@ -8904,7 +7385,7 @@ type ProcessorStatusSnapshotDTO struct {
 	// BytesOut The size of the FlowFiles transferred to a Connection in the last 5 minutes
 	BytesOut *int64 `json:"bytesOut,omitempty"`
 
-	// BytesRead The number of bytes read by this Processor in the last 5 minutes
+	// BytesRead The number of bytes read by this Processor in the last 5 mintues
 	BytesRead *int64 `json:"bytesRead,omitempty"`
 
 	// BytesWritten The number of bytes written by this Processor in the last 5 minutes
@@ -8925,13 +7406,13 @@ type ProcessorStatusSnapshotDTO struct {
 	// Id The id of the processor.
 	Id *string `json:"id,omitempty"`
 
-	// Input The count/size of FlowFiles that have been accepted in the last 5 minutes.
+	// Input The count/size of flowfiles that have been accepted in the last 5 minutes.
 	Input *string `json:"input,omitempty"`
 
-	// Name The name of the processor.
+	// Name The name of the prcessor.
 	Name *string `json:"name,omitempty"`
 
-	// Output The count/size of FlowFiles that have been processed in the last 5 minutes.
+	// Output The count/size of flowfiles that have been processed in the last 5 minutes.
 	Output *string `json:"output,omitempty"`
 
 	// ProcessingPerformanceStatus Represents the processor's processing performance.
@@ -8998,7 +7479,7 @@ type ProcessorsRunStatusDetailsEntity struct {
 	RunStatusDetails *[]ProcessorRunStatusDetailsEntity `json:"runStatusDetails,omitempty"`
 }
 
-// PropertyAllowableValue The allowable values for this property
+// PropertyAllowableValue A list of the allowable values for the property
 type PropertyAllowableValue struct {
 	// Description The description of the value, e.g., the behavior it produces.
 	Description *string `json:"description,omitempty"`
@@ -9056,9 +7537,6 @@ type PropertyDescriptor struct {
 
 	// ExpressionLanguageScopeDescription The description of the expression language scope supported by this property
 	ExpressionLanguageScopeDescription *string `json:"expressionLanguageScopeDescription,omitempty"`
-
-	// ListenPortDefinition Indicates that this property defines a listen port
-	ListenPortDefinition *PropertyListenPortDefinition `json:"listenPortDefinition,omitempty"`
 
 	// Name The name of the property key
 	Name *string `json:"name,omitempty"`
@@ -9133,38 +7611,11 @@ type PropertyDescriptorEntity struct {
 	PropertyDescriptor *PropertyDescriptorDTO `json:"propertyDescriptor,omitempty"`
 }
 
-// PropertyGroupConfigurationDTO The list of property group configurations for this configuration step.
-type PropertyGroupConfigurationDTO struct {
-	// PropertyDescriptors The property descriptors for this property group, keyed by property name.
-	PropertyDescriptors *map[string]ConnectorPropertyDescriptorDTO `json:"propertyDescriptors,omitempty"`
-
-	// PropertyGroupDescription The description of the property group.
-	PropertyGroupDescription *string `json:"propertyGroupDescription,omitempty"`
-
-	// PropertyGroupName The name of the property group.
-	PropertyGroupName *string `json:"propertyGroupName,omitempty"`
-
-	// PropertyValues The property values for this property group.
-	PropertyValues *map[string]ConnectorValueReferenceDTO `json:"propertyValues,omitempty"`
-}
-
 // PropertyHistoryDTO The history for the properties of the component.
 type PropertyHistoryDTO struct {
 	// PreviousValues Previous values for a given property.
 	PreviousValues *[]PreviousValueDTO `json:"previousValues,omitempty"`
 }
-
-// PropertyListenPortDefinition Indicates that this property defines a listen port
-type PropertyListenPortDefinition struct {
-	// ApplicationProtocols The application protocols that this listen port could support (if any)
-	ApplicationProtocols *[]string `json:"applicationProtocols,omitempty"`
-
-	// TransportProtocol The transport protocol used by this listen port
-	TransportProtocol *PropertyListenPortDefinitionTransportProtocol `json:"transportProtocol,omitempty"`
-}
-
-// PropertyListenPortDefinitionTransportProtocol The transport protocol used by this listen port
-type PropertyListenPortDefinitionTransportProtocol string
 
 // PropertyResourceDefinition Indicates that this property references external resources
 type PropertyResourceDefinition struct {
@@ -9239,9 +7690,6 @@ type ProvenanceEventDTO struct {
 	// ComponentType The type of the component that generated the event.
 	ComponentType *string `json:"componentType,omitempty"`
 
-	// ConnectorId The id of the connector that manages the component that generated the event. If the component is not managed by a connector, this will not be set.
-	ConnectorId *string `json:"connectorId,omitempty"`
-
 	// ContentEqual Whether the input and output content claim is the same.
 	ContentEqual *bool `json:"contentEqual,omitempty"`
 
@@ -9251,14 +7699,11 @@ type ProvenanceEventDTO struct {
 	// EventDuration The event duration in milliseconds.
 	EventDuration *int64 `json:"eventDuration,omitempty"`
 
-	// EventId The event id. This is a one up number that's unique per node.
+	// EventId The event id. This is a one up number thats unique per node.
 	EventId *int64 `json:"eventId,omitempty"`
 
 	// EventTime The timestamp of the event.
 	EventTime *string `json:"eventTime,omitempty"`
-
-	// EventTimestamp Event Timestamp formatted using ISO8601
-	EventTimestamp *string `json:"eventTimestamp,omitempty"`
 
 	// EventType The type of the event.
 	EventType *string `json:"eventType,omitempty"`
@@ -9293,7 +7738,7 @@ type ProvenanceEventDTO struct {
 	// InputContentClaimIdentifier The identifier of the input content claim.
 	InputContentClaimIdentifier *string `json:"inputContentClaimIdentifier,omitempty"`
 
-	// InputContentClaimOffset The offset into the input content claim where the FlowFiles content begins.
+	// InputContentClaimOffset The offset into the input content claim where the flowfiles content begins.
 	InputContentClaimOffset *int64 `json:"inputContentClaimOffset,omitempty"`
 
 	// InputContentClaimSection The section in which the input content claim lives.
@@ -9317,7 +7762,7 @@ type ProvenanceEventDTO struct {
 	// OutputContentClaimIdentifier The identifier of the output content claim.
 	OutputContentClaimIdentifier *string `json:"outputContentClaimIdentifier,omitempty"`
 
-	// OutputContentClaimOffset The offset into the output content claim where the FlowFiles content begins.
+	// OutputContentClaimOffset The offset into the output content claim where the flowfiles content begins.
 	OutputContentClaimOffset *int64 `json:"outputContentClaimOffset,omitempty"`
 
 	// OutputContentClaimSection The section in which the output content claim lives.
@@ -9335,7 +7780,7 @@ type ProvenanceEventDTO struct {
 	// ReplayExplanation Explanation as to why replay is unavailable.
 	ReplayExplanation *string `json:"replayExplanation,omitempty"`
 
-	// SourceConnectionIdentifier The identifier of the queue/connection from which the flowfile was pulled to generate this event. May be null if the queue/connection is unknown or the flowfile was generated from this event.
+	// SourceConnectionIdentifier The identifier of the queue/connection from which the flowfile was pulled to genereate this event. May be null if the queue/connection is unknown or the flowfile was generated from this event.
 	SourceConnectionIdentifier *string `json:"sourceConnectionIdentifier,omitempty"`
 
 	// SourceSystemFlowFileId The source system flowfile id.
@@ -9371,14 +7816,11 @@ type ProvenanceLinkDTO struct {
 
 // ProvenanceNodeDTO The nodes in the lineage.
 type ProvenanceNodeDTO struct {
-	// ChildUuids The uuid of the children FlowFiles of the provenance event.
+	// ChildUuids The uuid of the childrent flowfiles of the provenance event.
 	ChildUuids *[]string `json:"childUuids,omitempty"`
 
 	// ClusterNodeIdentifier The identifier of the node that this event/flowfile originated from.
 	ClusterNodeIdentifier *string `json:"clusterNodeIdentifier,omitempty"`
-
-	// ComponentType If the type is EVENT, this is the type of the component that generated the event.
-	ComponentType *string `json:"componentType,omitempty"`
 
 	// EventType If the type is EVENT, this is the type of event.
 	EventType *string `json:"eventType,omitempty"`
@@ -9392,7 +7834,7 @@ type ProvenanceNodeDTO struct {
 	// Millis The timestamp of the node in milliseconds.
 	Millis *int64 `json:"millis,omitempty"`
 
-	// ParentUuids The uuid of the parent FlowFiles of the provenance event.
+	// ParentUuids The uuid of the parent flowfiles of the provenance event.
 	ParentUuids *[]string `json:"parentUuids,omitempty"`
 
 	// Timestamp The timestamp of the node formatted.
@@ -9503,73 +7945,6 @@ type QueueSizeDTO struct {
 	ObjectCount *int32 `json:"objectCount,omitempty"`
 }
 
-// RebaseAnalysisEntity defines model for RebaseAnalysisEntity.
-type RebaseAnalysisEntity struct {
-	// AnalysisFingerprint A fingerprint representing the state of this analysis, used to verify the analysis is still valid when executing the rebase
-	AnalysisFingerprint *string `json:"analysisFingerprint,omitempty"`
-
-	// CurrentVersion The current version of the flow in the Process Group
-	CurrentVersion *string `json:"currentVersion,omitempty"`
-
-	// FailureReason The reason the rebase is not allowed, or null if the rebase is allowed
-	FailureReason *string `json:"failureReason,omitempty"`
-
-	// LocalChanges The list of local changes that were made to the flow since the last version control operation
-	LocalChanges *[]RebaseChangeDTO `json:"localChanges,omitempty"`
-
-	// ProcessGroupId The ID of the Process Group being rebased
-	ProcessGroupId *string `json:"processGroupId,omitempty"`
-
-	// RebaseAllowed Whether the rebase is allowed based on the analysis of local and upstream changes
-	RebaseAllowed *bool `json:"rebaseAllowed,omitempty"`
-
-	// TargetVersion The target version to rebase to
-	TargetVersion *string `json:"targetVersion,omitempty"`
-
-	// UpstreamChanges The set of upstream changes between the current version and the target version in the flow registry
-	UpstreamChanges *[]ComponentDifferenceDTO `json:"upstreamChanges,omitempty"`
-}
-
-// RebaseChangeDTO The list of local changes that were made to the flow since the last version control operation
-type RebaseChangeDTO struct {
-	// Classification The classification of this change: COMPATIBLE, CONFLICTING, or UNSUPPORTED
-	Classification *string `json:"classification,omitempty"`
-
-	// ComponentId The ID of the component that was changed
-	ComponentId *string `json:"componentId,omitempty"`
-
-	// ComponentName The name of the component that was changed
-	ComponentName *string `json:"componentName,omitempty"`
-
-	// ComponentType The type of the component that was changed
-	ComponentType *string `json:"componentType,omitempty"`
-
-	// ConflictCode A code identifying the type of conflict, or null if the change is not conflicting
-	ConflictCode *string `json:"conflictCode,omitempty"`
-
-	// ConflictDetail A detailed description of the conflict, or null if the change is not conflicting
-	ConflictDetail *string `json:"conflictDetail,omitempty"`
-
-	// DifferenceType The type of difference detected for this change
-	DifferenceType *string `json:"differenceType,omitempty"`
-
-	// FieldName The name of the field that was changed, or null if not applicable
-	FieldName *string `json:"fieldName,omitempty"`
-
-	// LocalValue The local value of the field, or null if not applicable
-	LocalValue *string `json:"localValue,omitempty"`
-
-	// RegistryValue The registry value of the field, or null if not applicable
-	RegistryValue *string `json:"registryValue,omitempty"`
-}
-
-// RebaseRequestEntity defines model for RebaseRequestEntity.
-type RebaseRequestEntity struct {
-	// AnalysisFingerprint The fingerprint of the rebase analysis, used to verify the analysis is still valid when executing the rebase
-	AnalysisFingerprint             *string                          `json:"analysisFingerprint,omitempty"`
-	VersionControlInformationEntity *VersionControlInformationEntity `json:"versionControlInformationEntity,omitempty"`
-}
-
 // RegisteredFlow defines model for RegisteredFlow.
 type RegisteredFlow struct {
 	Branch                *string                    `json:"branch,omitempty"`
@@ -9600,16 +7975,13 @@ type RegisteredFlowSnapshot struct {
 
 // RegisteredFlowSnapshotMetadata defines model for RegisteredFlowSnapshotMetadata.
 type RegisteredFlowSnapshotMetadata struct {
-	Author             *string `json:"author,omitempty"`
-	Branch             *string `json:"branch,omitempty"`
-	BucketIdentifier   *string `json:"bucketIdentifier,omitempty"`
-	Comments           *string `json:"comments,omitempty"`
-	FlowIdentifier     *string `json:"flowIdentifier,omitempty"`
-	FlowName           *string `json:"flowName,omitempty"`
-	RegistryIdentifier *string `json:"registryIdentifier,omitempty"`
-	RegistryName       *string `json:"registryName,omitempty"`
-	Timestamp          *int64  `json:"timestamp,omitempty"`
-	Version            *string `json:"version,omitempty"`
+	Author           *string `json:"author,omitempty"`
+	Branch           *string `json:"branch,omitempty"`
+	BucketIdentifier *string `json:"bucketIdentifier,omitempty"`
+	Comments         *string `json:"comments,omitempty"`
+	FlowIdentifier   *string `json:"flowIdentifier,omitempty"`
+	Timestamp        *int64  `json:"timestamp,omitempty"`
+	Version          *string `json:"version,omitempty"`
 }
 
 // RegisteredFlowVersionInfo defines model for RegisteredFlowVersionInfo.
@@ -9628,7 +8000,7 @@ type Relationship struct {
 
 // RelationshipDTO The available relationships that the processor currently supports.
 type RelationshipDTO struct {
-	// AutoTerminate Whether or not FlowFiles sent to this relationship should auto terminate.
+	// AutoTerminate Whether or not flowfiles sent to this relationship should auto terminate.
 	AutoTerminate *bool `json:"autoTerminate,omitempty"`
 
 	// Description The relationship description.
@@ -9637,7 +8009,7 @@ type RelationshipDTO struct {
 	// Name The relationship name.
 	Name *string `json:"name,omitempty"`
 
-	// Retry Whether or not FlowFiles sent to this relationship should retry.
+	// Retry Whether or not flowfiles sent to this relationship should retry.
 	Retry *bool `json:"retry,omitempty"`
 }
 
@@ -9788,7 +8160,7 @@ type RemoteProcessGroupPortDTO struct {
 	// Comments The comments as configured on the target port.
 	Comments *string `json:"comments,omitempty"`
 
-	// ConcurrentlySchedulableTaskCount The number of task that may transmit FlowFiles to the target port concurrently.
+	// ConcurrentlySchedulableTaskCount The number of task that may transmit flowfiles to the target port concurrently.
 	ConcurrentlySchedulableTaskCount *int32 `json:"concurrentlySchedulableTaskCount,omitempty"`
 
 	// Connected Whether the port has either an incoming or outgoing connection.
@@ -9815,7 +8187,7 @@ type RemoteProcessGroupPortDTO struct {
 	// Transmitting Whether the remote port is configured for transmission.
 	Transmitting *bool `json:"transmitting,omitempty"`
 
-	// UseCompression Whether the FlowFiles are compressed when sent to the target port.
+	// UseCompression Whether the flowfiles are compressed when sent to the target port.
 	UseCompression *bool `json:"useCompression,omitempty"`
 
 	// VersionedComponentId The ID of the corresponding component that is under version control
@@ -9920,10 +8292,10 @@ type RemoteProcessGroupStatusSnapshotDTO struct {
 	// Name The name of the remote process group.
 	Name *string `json:"name,omitempty"`
 
-	// Received The count/size of the FlowFiles received from the remote process group in the last 5 minutes.
+	// Received The count/size of the flowfiles received from the remote process group in the last 5 minutes.
 	Received *string `json:"received,omitempty"`
 
-	// Sent The count/size of the FlowFiles sent to the remote process group in the last 5 minutes.
+	// Sent The count/size of the flowfiles sent to the remote process group in the last 5 minutes.
 	Sent *string `json:"sent,omitempty"`
 
 	// TargetUri The URI of the target system.
@@ -9997,7 +8369,7 @@ type ReportingTaskDTO struct {
 	// ActiveThreadCount The number of active threads for the reporting task.
 	ActiveThreadCount *int32 `json:"activeThreadCount,omitempty"`
 
-	// AnnotationData The annotation data for the reporting task. This is how the custom UI relays configuration to the reporting task.
+	// AnnotationData The annotation data for the repoting task. This is how the custom UI relays configuration to the reporting task.
 	AnnotationData *string `json:"annotationData,omitempty"`
 
 	// Bundle If the property identifies a controller service this returns the bundle of the type, null otherwise.
@@ -10437,33 +8809,6 @@ type SearchResultsEntity struct {
 	SearchResultsDTO *SearchResultsDTO `json:"searchResultsDTO,omitempty"`
 }
 
-// SecretDTO The list of secrets available from all secret providers.
-type SecretDTO struct {
-	// Description A description of the secret.
-	Description *string `json:"description,omitempty"`
-
-	// FullyQualifiedName The fully qualified name of the secret, including the group name.
-	FullyQualifiedName *string `json:"fullyQualifiedName,omitempty"`
-
-	// GroupName The name of the group this secret belongs to.
-	GroupName *string `json:"groupName,omitempty"`
-
-	// Name The name of the secret.
-	Name *string `json:"name,omitempty"`
-
-	// ProviderId The identifier of the secret provider that manages this secret.
-	ProviderId *string `json:"providerId,omitempty"`
-
-	// ProviderName The name of the secret provider that manages this secret.
-	ProviderName *string `json:"providerName,omitempty"`
-}
-
-// SecretsEntity defines model for SecretsEntity.
-type SecretsEntity struct {
-	// Secrets The list of secrets available from all secret providers.
-	Secrets *[]SecretDTO `json:"secrets,omitempty"`
-}
-
 // SnippetDTO The snippet.
 type SnippetDTO struct {
 	// Connections The ids of the connections in this snippet. These ids will be populated within each response. They can be specified when creating a snippet. However, once a snippet has been created its contents cannot be modified (these ids are ignored during update requests).
@@ -10610,11 +8955,6 @@ type StatusSnapshotDTO struct {
 
 	// Timestamp The timestamp of the snapshot.
 	Timestamp *time.Time `json:"timestamp,omitempty"`
-}
-
-// StepDocumentationEntity defines model for StepDocumentationEntity.
-type StepDocumentationEntity struct {
-	StepDocumentation *string `json:"stepDocumentation,omitempty"`
 }
 
 // StorageUsageDTO The provenance repository storage usage.
@@ -11058,54 +9398,6 @@ type VerifyConfigUpdateStepDTO struct {
 	FailureReason *string `json:"failureReason,omitempty"`
 }
 
-// VerifyConnectorConfigStepRequestDTO The verification request
-type VerifyConnectorConfigStepRequestDTO struct {
-	// Complete Whether or not the request is completed
-	Complete *bool `json:"complete,omitempty"`
-
-	// ConfigurationStep The list of configuration step configurations for this Connector.
-	ConfigurationStep *ConfigurationStepConfigurationDTO `json:"configurationStep,omitempty"`
-
-	// ConfigurationStepName The name of the configuration step being verified
-	ConfigurationStepName *string `json:"configurationStepName,omitempty"`
-
-	// ConnectorId The ID of the connector whose configuration step is being verified
-	ConnectorId *string `json:"connectorId,omitempty"`
-
-	// FailureReason The reason for the request failing, or null if the request has not failed
-	FailureReason *string `json:"failureReason,omitempty"`
-
-	// LastUpdated The timestamp of when the request was last updated
-	LastUpdated *time.Time `json:"lastUpdated,omitempty"`
-
-	// PercentCompleted A value between 0 and 100 (inclusive) indicating how close the request is to completion
-	PercentCompleted *int32 `json:"percentCompleted,omitempty"`
-
-	// RequestId The ID of the request
-	RequestId *string `json:"requestId,omitempty"`
-
-	// Results The results of the verification
-	Results *[]ConfigVerificationResultDTO `json:"results,omitempty"`
-
-	// State A description of the current state of the request
-	State *string `json:"state,omitempty"`
-
-	// SubmissionTime The timestamp of when the request was submitted
-	SubmissionTime *time.Time `json:"submissionTime,omitempty"`
-
-	// UpdateSteps The steps that are required in order to complete the request, along with the status of each
-	UpdateSteps *[]VerifyConfigUpdateStepDTO `json:"updateSteps,omitempty"`
-
-	// Uri The URI for the request
-	Uri *string `json:"uri,omitempty"`
-}
-
-// VerifyConnectorConfigStepRequestEntity defines model for VerifyConnectorConfigStepRequestEntity.
-type VerifyConnectorConfigStepRequestEntity struct {
-	// Request The verification request
-	Request *VerifyConnectorConfigStepRequestDTO `json:"request,omitempty"`
-}
-
 // VersionControlComponentMappingEntity defines model for VersionControlComponentMappingEntity.
 type VersionControlComponentMappingEntity struct {
 	// DisconnectedNodeAcknowledged Acknowledges that this node is disconnected to allow for mutable requests to proceed.
@@ -11220,15 +9512,6 @@ type VersionedAsset struct {
 	Name *string `json:"name,omitempty"`
 }
 
-// VersionedComponentState The state of the component, if exported with state
-type VersionedComponentState struct {
-	// ClusterState The cluster-scoped state of the component, or null if not exported
-	ClusterState *map[string]string `json:"clusterState,omitempty"`
-
-	// LocalNodeStates The local-scoped state of the component ordered by node ordinal index, or null if not exported
-	LocalNodeStates *[]VersionedNodeState `json:"localNodeStates,omitempty"`
-}
-
 // VersionedConnection The Connections
 type VersionedConnection struct {
 	// BackPressureDataSizeThreshold The object data size threshold for determining when back pressure is applied. Updating this value is a passive change in the sense that it won't impact whether existing files over the limit are affected but it does help feeder processors to stop pushing too much into this work queue.
@@ -11247,7 +9530,7 @@ type VersionedConnection struct {
 	// Destination The destination of the connection.
 	Destination *ConnectableComponent `json:"destination,omitempty"`
 
-	// FlowFileExpiration The amount of time a FlowFile may be in the flow before it will be automatically aged out of the flow. Once a FlowFile reaches this age it will be terminated from the flow the next time a processor attempts to start work on it.
+	// FlowFileExpiration The amount of time a flow file may be in the flow before it will be automatically aged out of the flow. Once a flow file reaches this age it will be terminated from the flow the next time a processor attempts to start work on it.
 	FlowFileExpiration *string `json:"flowFileExpiration,omitempty"`
 
 	// GroupIdentifier The ID of the Process Group that this component belongs to
@@ -11262,11 +9545,11 @@ type VersionedConnection struct {
 	// LabelIndex The index of the bend point where to place the connection label.
 	LabelIndex *int32 `json:"labelIndex,omitempty"`
 
-	// LoadBalanceCompression Whether or not compression should be used when transferring FlowFiles between nodes Possible returned values: DO_NOT_COMPRESS, COMPRESS_ATTRIBUTES_ONLY, COMPRESS_ATTRIBUTES_AND_CONTENT. See LoadBalanceCompression.class for more details.
-	LoadBalanceCompression *string `json:"loadBalanceCompression,omitempty"`
+	// LoadBalanceCompression Whether or not compression should be used when transferring FlowFiles between nodes
+	LoadBalanceCompression *VersionedConnectionLoadBalanceCompression `json:"loadBalanceCompression,omitempty"`
 
-	// LoadBalanceStrategy The Strategy to use for load balancing data across the cluster, or null, if no Load Balance Strategy has been specified. Possible returned values: DO_NOT_LOAD_BALANCE, PARTITION_BY_ATTRIBUTE, ROUND_ROBIN, SINGLE_NODE. See LoadBalanceStrategy.class for more details.
-	LoadBalanceStrategy *string `json:"loadBalanceStrategy,omitempty"`
+	// LoadBalanceStrategy The Strategy to use for load balancing data across the cluster, or null, if no Load Balance Strategy has been specified.
+	LoadBalanceStrategy *VersionedConnectionLoadBalanceStrategy `json:"loadBalanceStrategy,omitempty"`
 
 	// Name The component's name
 	Name *string `json:"name,omitempty"`
@@ -11293,6 +9576,12 @@ type VersionedConnection struct {
 // VersionedConnectionComponentType defines model for VersionedConnection.ComponentType.
 type VersionedConnectionComponentType string
 
+// VersionedConnectionLoadBalanceCompression Whether or not compression should be used when transferring FlowFiles between nodes
+type VersionedConnectionLoadBalanceCompression string
+
+// VersionedConnectionLoadBalanceStrategy The Strategy to use for load balancing data across the cluster, or null, if no Load Balance Strategy has been specified.
+type VersionedConnectionLoadBalanceStrategy string
+
 // VersionedControllerService The Controller Services
 type VersionedControllerService struct {
 	// AnnotationData The annotation for the controller service. This is how the custom UI relays configuration to the controller service.
@@ -11305,11 +9594,8 @@ type VersionedControllerService struct {
 	Bundle *Bundle `json:"bundle,omitempty"`
 
 	// Comments The user-supplied comments for the component
-	Comments *string `json:"comments,omitempty"`
-
-	// ComponentState The state of the component, if exported with state
-	ComponentState *VersionedComponentState                 `json:"componentState,omitempty"`
-	ComponentType  *VersionedControllerServiceComponentType `json:"componentType,omitempty"`
+	Comments      *string                                  `json:"comments,omitempty"`
+	ComponentType *VersionedControllerServiceComponentType `json:"componentType,omitempty"`
 
 	// ControllerServiceApis Lists the APIs this Controller Service implements.
 	ControllerServiceApis *[]ControllerServiceAPI `json:"controllerServiceApis,omitempty"`
@@ -11406,45 +9692,6 @@ type VersionedFlowDTOAction string
 type VersionedFlowEntity struct {
 	// VersionedFlow The versioned flow
 	VersionedFlow *VersionedFlowDTO `json:"versionedFlow,omitempty"`
-}
-
-// VersionedFlowMigrationSourceDTO The Versioned Process Groups that the Connector can be migrated from.
-type VersionedFlowMigrationSourceDTO struct {
-	// BucketId The Flow Registry bucket identifier for the source Process Group.
-	BucketId *string `json:"bucketId,omitempty"`
-
-	// FlowId The Flow Registry flow identifier for the source Process Group.
-	FlowId *string `json:"flowId,omitempty"`
-
-	// FlowName The name of the versioned flow backing the source Process Group, as recorded in the Flow Registry. May be null when the registry has not yet supplied a name (for example, while the source's version control state is SYNC_FAILURE).
-	FlowName *string `json:"flowName,omitempty"`
-
-	// IneligibilityReasons User-facing descriptions of all conditions that currently prevent the source Process Group from being migrated. Empty when readyForMigration is true. Each entry describes a single remediable condition (running processors, queued FlowFiles, etc.); every applicable condition is included so the user can address them together.
-	IneligibilityReasons *[]string `json:"ineligibilityReasons,omitempty"`
-
-	// ParentProcessGroupId The identifier of the parent Process Group of the source Process Group.
-	ParentProcessGroupId *string `json:"parentProcessGroupId,omitempty"`
-
-	// ProcessGroupId The identifier of the source Process Group.
-	ProcessGroupId *string `json:"processGroupId,omitempty"`
-
-	// ProcessGroupName The name of the source Process Group.
-	ProcessGroupName *string `json:"processGroupName,omitempty"`
-
-	// ReadyForMigration Whether the source Process Group is currently in a state that allows it to be migrated into the target Connector. When false, ineligibilityReasons describes what must change before the migration can proceed.
-	ReadyForMigration *bool `json:"readyForMigration,omitempty"`
-
-	// RegistryClientId The identifier of the Flow Registry client backing the source Process Group.
-	RegistryClientId *string `json:"registryClientId,omitempty"`
-
-	// Version The published version of the source Process Group.
-	Version *string `json:"version,omitempty"`
-}
-
-// VersionedFlowMigrationSourcesEntity defines model for VersionedFlowMigrationSourcesEntity.
-type VersionedFlowMigrationSourcesEntity struct {
-	// MigrationSources The Versioned Process Groups that the Connector can be migrated from.
-	MigrationSources *[]VersionedFlowMigrationSourceDTO `json:"migrationSources,omitempty"`
 }
 
 // VersionedFlowSnapshotEntity defines model for VersionedFlowSnapshotEntity.
@@ -11584,24 +9831,6 @@ type VersionedLabel struct {
 
 // VersionedLabelComponentType defines model for VersionedLabel.ComponentType.
 type VersionedLabelComponentType string
-
-// VersionedListenPortDefinition Returns the Listen Port Definition for the port this property specifies, if applicable
-type VersionedListenPortDefinition struct {
-	// ApplicationProtocols The application protocol(s) that the listen port could support (if any)
-	ApplicationProtocols *[]string `json:"applicationProtocols,omitempty"`
-
-	// TransportProtocol The transport protocol used by the listen port
-	TransportProtocol *VersionedListenPortDefinitionTransportProtocol `json:"transportProtocol,omitempty"`
-}
-
-// VersionedListenPortDefinitionTransportProtocol The transport protocol used by the listen port
-type VersionedListenPortDefinitionTransportProtocol string
-
-// VersionedNodeState The state entries for a single node
-type VersionedNodeState struct {
-	// State The state key-value pairs for this node
-	State *map[string]string `json:"state,omitempty"`
-}
 
 // VersionedParameter The parameters in the context
 type VersionedParameter struct {
@@ -11812,14 +10041,14 @@ type VersionedProcessGroupScheduledState string
 
 // VersionedProcessor The Processors
 type VersionedProcessor struct {
-	// AnnotationData The annotation data for the processor used to relay configuration between a custom UI and the processor.
+	// AnnotationData The annotation data for the processor used to relay configuration between a custom UI and the procesosr.
 	AnnotationData *string `json:"annotationData,omitempty"`
 
-	// AutoTerminatedRelationships The names of all relationships that cause a FlowFile to be terminated if the relationship is not connected elsewhere. This property differs from the 'isAutoTerminate' property of the RelationshipDTO in that the RelationshipDTO is meant to depict the current configuration, whereas this property can be set in a DTO when updating a Processor in order to change which Relationships should be auto-terminated.
+	// AutoTerminatedRelationships The names of all relationships that cause a flow file to be terminated if the relationship is not connected elsewhere. This property differs from the 'isAutoTerminate' property of the RelationshipDTO in that the RelationshipDTO is meant to depict the current configuration, whereas this property can be set in a DTO when updating a Processor in order to change which Relationships should be auto-terminated.
 	AutoTerminatedRelationships *[]string `json:"autoTerminatedRelationships,omitempty"`
 
-	// BackoffMechanism Determines whether the FlowFile should be penalized or the processor should be yielded between retries. Possible returned values: PENALIZE_FLOWFILE, YIELD_PROCESSOR.
-	BackoffMechanism *string `json:"backoffMechanism,omitempty"`
+	// BackoffMechanism Determines whether the FlowFile should be penalized or the processor should be yielded between retries.
+	BackoffMechanism *VersionedProcessorBackoffMechanism `json:"backoffMechanism,omitempty"`
 
 	// BulletinLevel The level at which the processor will report bulletins.
 	BulletinLevel *string `json:"bulletinLevel,omitempty"`
@@ -11828,13 +10057,10 @@ type VersionedProcessor struct {
 	Bundle *Bundle `json:"bundle,omitempty"`
 
 	// Comments The user-supplied comments for the component
-	Comments *string `json:"comments,omitempty"`
+	Comments      *string                          `json:"comments,omitempty"`
+	ComponentType *VersionedProcessorComponentType `json:"componentType,omitempty"`
 
-	// ComponentState The state of the component, if exported with state
-	ComponentState *VersionedComponentState         `json:"componentState,omitempty"`
-	ComponentType  *VersionedProcessorComponentType `json:"componentType,omitempty"`
-
-	// ConcurrentlySchedulableTaskCount The number of tasks that should be concurrently schedule for the processor. If the processor doesn't allow parallel processing then any positive input will be ignored.
+	// ConcurrentlySchedulableTaskCount The number of tasks that should be concurrently schedule for the processor. If the processor doesn't allow parallol processing then any positive input will be ignored.
 	ConcurrentlySchedulableTaskCount *int32 `json:"concurrentlySchedulableTaskCount,omitempty"`
 
 	// ExecutionNode Indicates the node where the process will execute.
@@ -11855,7 +10081,7 @@ type VersionedProcessor struct {
 	// Name The component's name
 	Name *string `json:"name,omitempty"`
 
-	// PenaltyDuration The amount of time that is used when the process penalizes a FlowFile.
+	// PenaltyDuration The amout of time that is used when the process penalizes a flowfile.
 	PenaltyDuration *string `json:"penaltyDuration,omitempty"`
 
 	// Position The position of a component on the graph
@@ -11895,6 +10121,9 @@ type VersionedProcessor struct {
 	YieldDuration *string `json:"yieldDuration,omitempty"`
 }
 
+// VersionedProcessorBackoffMechanism Determines whether the FlowFile should be penalized or the processor should be yielded between retries.
+type VersionedProcessorBackoffMechanism string
+
 // VersionedProcessorComponentType defines model for VersionedProcessor.ComponentType.
 type VersionedProcessorComponentType string
 
@@ -11911,9 +10140,6 @@ type VersionedPropertyDescriptor struct {
 
 	// IdentifiesControllerService Whether or not the property provides the identifier of a Controller Service
 	IdentifiesControllerService *bool `json:"identifiesControllerService,omitempty"`
-
-	// ListenPortDefinition Returns the Listen Port Definition for the port this property specifies, if applicable
-	ListenPortDefinition *VersionedListenPortDefinition `json:"listenPortDefinition,omitempty"`
 
 	// Name The name of the property
 	Name *string `json:"name,omitempty"`
@@ -11934,7 +10160,7 @@ type VersionedRemoteGroupPort struct {
 	Comments      *string                                `json:"comments,omitempty"`
 	ComponentType *VersionedRemoteGroupPortComponentType `json:"componentType,omitempty"`
 
-	// ConcurrentlySchedulableTaskCount The number of task that may transmit FlowFiles to the target port concurrently.
+	// ConcurrentlySchedulableTaskCount The number of task that may transmit flowfiles to the target port concurrently.
 	ConcurrentlySchedulableTaskCount *int32 `json:"concurrentlySchedulableTaskCount,omitempty"`
 
 	// GroupIdentifier The ID of the Process Group that this component belongs to
@@ -11961,7 +10187,7 @@ type VersionedRemoteGroupPort struct {
 	// TargetId The ID of the port on the target NiFi instance
 	TargetId *string `json:"targetId,omitempty"`
 
-	// UseCompression Whether the FlowFiles are compressed when sent to the target port.
+	// UseCompression Whether the flowfiles are compressed when sent to the target port.
 	UseCompression *bool `json:"useCompression,omitempty"`
 }
 
@@ -12011,8 +10237,8 @@ type VersionedRemoteProcessGroup struct {
 	// TargetUris The target URIs of the remote process group. If target uris is not set but target uri is set, then returns the single target uri. If neither target uris nor target uri is set, then returns null.
 	TargetUris *string `json:"targetUris,omitempty"`
 
-	// TransportProtocol The Transport Protocol that is used for Site-to-Site communications. Possible returned values: RAW, HTTP.
-	TransportProtocol *string `json:"transportProtocol,omitempty"`
+	// TransportProtocol The Transport Protocol that is used for Site-to-Site communications
+	TransportProtocol *VersionedRemoteProcessGroupTransportProtocol `json:"transportProtocol,omitempty"`
 
 	// YieldDuration When yielding, this amount of time must elapse before the remote process group is scheduled again.
 	YieldDuration *string `json:"yieldDuration,omitempty"`
@@ -12020,6 +10246,9 @@ type VersionedRemoteProcessGroup struct {
 
 // VersionedRemoteProcessGroupComponentType defines model for VersionedRemoteProcessGroup.ComponentType.
 type VersionedRemoteProcessGroupComponentType string
+
+// VersionedRemoteProcessGroupTransportProtocol The Transport Protocol that is used for Site-to-Site communications
+type VersionedRemoteProcessGroupTransportProtocol string
 
 // VersionedReportingTask The reporting tasks
 type VersionedReportingTask struct {
@@ -12030,11 +10259,8 @@ type VersionedReportingTask struct {
 	Bundle *Bundle `json:"bundle,omitempty"`
 
 	// Comments The user-supplied comments for the component
-	Comments *string `json:"comments,omitempty"`
-
-	// ComponentState The state of the component, if exported with state
-	ComponentState *VersionedComponentState             `json:"componentState,omitempty"`
-	ComponentType  *VersionedReportingTaskComponentType `json:"componentType,omitempty"`
+	Comments      *string                              `json:"comments,omitempty"`
+	ComponentType *VersionedReportingTaskComponentType `json:"componentType,omitempty"`
 
 	// GroupIdentifier The ID of the Process Group that this component belongs to
 	GroupIdentifier *string `json:"groupIdentifier,omitempty"`
@@ -12134,101 +10360,6 @@ type DeleteConnectionParams struct {
 	DisconnectedNodeAcknowledged *bool `form:"disconnectedNodeAcknowledged,omitempty" json:"disconnectedNodeAcknowledged,omitempty"`
 }
 
-// GetFlowParams defines parameters for GetFlow.
-type GetFlowParams struct {
-	// UiOnly Whether to return only UI-specific fields
-	UiOnly *bool `form:"uiOnly,omitempty" json:"uiOnly,omitempty"`
-}
-
-// GetControllerServicesFromConnectorProcessGroupParams defines parameters for GetControllerServicesFromConnectorProcessGroup.
-type GetControllerServicesFromConnectorProcessGroupParams struct {
-	// IncludeAncestorGroups Whether or not to include parent/ancestor process groups
-	IncludeAncestorGroups *bool `form:"includeAncestorGroups,omitempty" json:"includeAncestorGroups,omitempty"`
-
-	// IncludeDescendantGroups Whether or not to include descendant process groups
-	IncludeDescendantGroups *bool `form:"includeDescendantGroups,omitempty" json:"includeDescendantGroups,omitempty"`
-
-	// IncludeReferencingComponents Whether or not to include services' referencing components in the response
-	IncludeReferencingComponents *bool `form:"includeReferencingComponents,omitempty" json:"includeReferencingComponents,omitempty"`
-}
-
-// DeleteConnectorParams defines parameters for DeleteConnector.
-type DeleteConnectorParams struct {
-	// Version The revision is used to verify the client is working with the latest version of the flow.
-	Version *LongParameter `form:"version,omitempty" json:"version,omitempty"`
-
-	// ClientId If the client id is not specified, new one will be generated. This value (whether specified or generated) is included in the response.
-	ClientId *ClientIdParameter `form:"clientId,omitempty" json:"clientId,omitempty"`
-
-	// DisconnectedNodeAcknowledged Acknowledges that this node is disconnected to allow for mutable requests to proceed.
-	DisconnectedNodeAcknowledged *bool `form:"disconnectedNodeAcknowledged,omitempty" json:"disconnectedNodeAcknowledged,omitempty"`
-}
-
-// CreateAssetParams defines parameters for CreateAsset.
-type CreateAssetParams struct {
-	Filename *string `json:"Filename,omitempty"`
-}
-
-// GetConnectorPropertyAllowableValuesParams defines parameters for GetConnectorPropertyAllowableValues.
-type GetConnectorPropertyAllowableValuesParams struct {
-	// Filter Optional filter to narrow down the allowable values.
-	Filter *string `form:"filter,omitempty" json:"filter,omitempty"`
-}
-
-// CancelDrainParams defines parameters for CancelDrain.
-type CancelDrainParams struct {
-	// Version The revision is used to verify the client is working with the latest version of the flow.
-	Version *LongParameter `form:"version,omitempty" json:"version,omitempty"`
-
-	// ClientId If the client id is not specified, new one will be generated. This value (whether specified or generated) is included in the response.
-	ClientId *ClientIdParameter `form:"clientId,omitempty" json:"clientId,omitempty"`
-
-	// DisconnectedNodeAcknowledged Acknowledges that this node is disconnected to allow for mutable requests to proceed.
-	DisconnectedNodeAcknowledged *bool `form:"disconnectedNodeAcknowledged,omitempty" json:"disconnectedNodeAcknowledged,omitempty"`
-}
-
-// SearchConnectorParams defines parameters for SearchConnector.
-type SearchConnectorParams struct {
-	// Q The search term.
-	Q *string `form:"q,omitempty" json:"q,omitempty"`
-}
-
-// GetConnectorStatusParams defines parameters for GetConnectorStatus.
-type GetConnectorStatusParams struct {
-	// Recursive Whether all descendant groups and the status of their content will be included. Optional, defaults to false
-	Recursive *bool `form:"recursive,omitempty" json:"recursive,omitempty"`
-
-	// Nodewise Whether or not to include the breakdown per node. Optional, defaults to false
-	Nodewise *bool `form:"nodewise,omitempty" json:"nodewise,omitempty"`
-
-	// ClusterNodeId The id of the node where to get the status.
-	ClusterNodeId *string `form:"clusterNodeId,omitempty" json:"clusterNodeId,omitempty"`
-}
-
-// EndTroubleshootingParams defines parameters for EndTroubleshooting.
-type EndTroubleshootingParams struct {
-	// Version The revision is used to verify the client is working with the latest version of the flow.
-	Version *LongParameter `form:"version,omitempty" json:"version,omitempty"`
-
-	// ClientId If the client id is not specified, new one will be generated. This value (whether specified or generated) is included in the response.
-	ClientId *ClientIdParameter `form:"clientId,omitempty" json:"clientId,omitempty"`
-
-	// DisconnectedNodeAcknowledged Acknowledges that this node is disconnected to allow for mutable requests to proceed.
-	DisconnectedNodeAcknowledged *bool `form:"disconnectedNodeAcknowledged,omitempty" json:"disconnectedNodeAcknowledged,omitempty"`
-}
-
-// DiscardConnectorUpdateParams defines parameters for DiscardConnectorUpdate.
-type DiscardConnectorUpdateParams struct {
-	// Version The revision is used to verify the client is working with the latest version of the flow.
-	Version *LongParameter `form:"version,omitempty" json:"version,omitempty"`
-
-	// ClientId If the client id is not specified, new one will be generated. This value (whether specified or generated) is included in the response.
-	ClientId *ClientIdParameter `form:"clientId,omitempty" json:"clientId,omitempty"`
-
-	// DisconnectedNodeAcknowledged Acknowledges that this node is disconnected to allow for mutable requests to proceed.
-	DisconnectedNodeAcknowledged *bool `form:"disconnectedNodeAcknowledged,omitempty" json:"disconnectedNodeAcknowledged,omitempty"`
-}
-
 // RemoveControllerServiceParams defines parameters for RemoveControllerService.
 type RemoveControllerServiceParams struct {
 	// Version The revision is used to verify the client is working with the latest version of the flow.
@@ -12289,11 +10420,8 @@ type UploadNarParams struct {
 
 // DeleteNarParams defines parameters for DeleteNar.
 type DeleteNarParams struct {
-	// DisconnectedNodeAcknowledged Acknowledges that this node is disconnected to allow for mutable requests to proceed.
 	DisconnectedNodeAcknowledged *bool `form:"disconnectedNodeAcknowledged,omitempty" json:"disconnectedNodeAcknowledged,omitempty"`
-
-	// Force Indicates if the NAR should be deleted even when components are instantiated.
-	Force *bool `form:"force,omitempty" json:"force,omitempty"`
+	Force                        *bool `form:"force,omitempty" json:"force,omitempty"`
 }
 
 // DeleteFlowRegistryClientParams defines parameters for DeleteFlowRegistryClient.
@@ -12358,7 +10486,7 @@ type GetBulletinBoardParams struct {
 	// GroupId Includes bulletins originating from this sources whose group id match this regular expression.
 	GroupId *BulletinBoardPatternParameter `form:"groupId,omitempty" json:"groupId,omitempty"`
 
-	// Limit The number of bulletins to limit the response to. Optional, default is no limit.
+	// Limit The number of bulletins to limit the response to.
 	Limit *IntegerParameter `form:"limit,omitempty" json:"limit,omitempty"`
 }
 
@@ -12384,18 +10512,6 @@ type GetConnectionStatusParams struct {
 
 	// ClusterNodeId The id of the node where to get the status.
 	ClusterNodeId *string `form:"clusterNodeId,omitempty" json:"clusterNodeId,omitempty"`
-}
-
-// GetConnectorTypesParams defines parameters for GetConnectorTypes.
-type GetConnectorTypesParams struct {
-	// BundleGroupFilter If specified, will only return types that are a member of this bundle group.
-	BundleGroupFilter *string `form:"bundleGroupFilter,omitempty" json:"bundleGroupFilter,omitempty"`
-
-	// BundleArtifactFilter If specified, will only return types that are a member of this bundle artifact.
-	BundleArtifactFilter *string `form:"bundleArtifactFilter,omitempty" json:"bundleArtifactFilter,omitempty"`
-
-	// Type If specified, will only return types whose fully qualified classname matches.
-	Type *string `form:"type,omitempty" json:"type,omitempty"`
 }
 
 // GetControllerServiceTypesParams defines parameters for GetControllerServiceTypes.
@@ -12424,9 +10540,10 @@ type GetControllerServiceTypesParams struct {
 
 // GetControllerServicesFromControllerParams defines parameters for GetControllerServicesFromController.
 type GetControllerServicesFromControllerParams struct {
+	UiOnly *bool `form:"uiOnly,omitempty" json:"uiOnly,omitempty"`
+
 	// IncludeReferencingComponents Whether or not to include services' referencing components in the response
 	IncludeReferencingComponents *bool `form:"includeReferencingComponents,omitempty" json:"includeReferencingComponents,omitempty"`
-	UiOnly                       *bool `form:"uiOnly,omitempty" json:"uiOnly,omitempty"`
 }
 
 // GetFlowAnalysisRuleTypesParams defines parameters for GetFlowAnalysisRuleTypes.
@@ -12479,8 +10596,8 @@ type GetInputPortStatusParams struct {
 
 // GetFlowMetricsParams defines parameters for GetFlowMetrics.
 type GetFlowMetricsParams struct {
-	// IncludedRegistries Set of included metrics registries. Duplicate the parameter to include multiple registries. All registries are included by default.
-	IncludedRegistries *GetFlowMetricsParamsIncludedRegistries `form:"includedRegistries,omitempty" json:"includedRegistries,omitempty"`
+	// IncludedRegistries Set of included metrics registries
+	IncludedRegistries *[]GetFlowMetricsParamsIncludedRegistries `form:"includedRegistries,omitempty" json:"includedRegistries,omitempty"`
 
 	// SampleName Regular Expression Pattern to be applied against the sample name field
 	SampleName *string `form:"sampleName,omitempty" json:"sampleName,omitempty"`
@@ -12490,19 +10607,10 @@ type GetFlowMetricsParams struct {
 
 	// RootFieldName Name of the first field of JSON object. Applicable for JSON producer only.
 	RootFieldName *string `form:"rootFieldName,omitempty" json:"rootFieldName,omitempty"`
-
-	// FlowMetricsReportingStrategy Flow metrics reporting strategy limits collected metrics
-	FlowMetricsReportingStrategy *GetFlowMetricsParamsFlowMetricsReportingStrategy `form:"flowMetricsReportingStrategy,omitempty" json:"flowMetricsReportingStrategy,omitempty"`
 }
 
 // GetFlowMetricsParamsIncludedRegistries defines parameters for GetFlowMetrics.
 type GetFlowMetricsParamsIncludedRegistries string
-
-// GetFlowMetricsParamsFlowMetricsReportingStrategy defines parameters for GetFlowMetrics.
-type GetFlowMetricsParamsFlowMetricsReportingStrategy string
-
-// GetFlowMetricsParamsProducer defines parameters for GetFlowMetrics.
-type GetFlowMetricsParamsProducer string
 
 // GetOutputPortStatusParams defines parameters for GetOutputPortStatus.
 type GetOutputPortStatusParams struct {
@@ -12525,8 +10633,8 @@ type GetParameterProviderTypesParams struct {
 	Type *string `form:"type,omitempty" json:"type,omitempty"`
 }
 
-// GetFlow1Params defines parameters for GetFlow1.
-type GetFlow1Params struct {
+// GetFlowParams defines parameters for GetFlow.
+type GetFlowParams struct {
 	UiOnly *bool `form:"uiOnly,omitempty" json:"uiOnly,omitempty"`
 }
 
@@ -12644,10 +10752,7 @@ type GetReportingTaskSnapshotParams struct {
 
 // SearchFlowParams defines parameters for SearchFlow.
 type SearchFlowParams struct {
-	// Q The search term.
 	Q *string `form:"q,omitempty" json:"q,omitempty"`
-
-	// A The id of the currently visited process group. If not specified, then the root process group is used.
 	A *string `form:"a,omitempty" json:"a,omitempty"`
 }
 
@@ -12717,14 +10822,13 @@ type RemoveOutputPortParams struct {
 	DisconnectedNodeAcknowledged *bool `form:"disconnectedNodeAcknowledged,omitempty" json:"disconnectedNodeAcknowledged,omitempty"`
 }
 
-// CreateAsset1Params defines parameters for CreateAsset1.
-type CreateAsset1Params struct {
+// CreateAssetParams defines parameters for CreateAsset.
+type CreateAssetParams struct {
 	Filename *string `json:"Filename,omitempty"`
 }
 
 // DeleteAssetParams defines parameters for DeleteAsset.
 type DeleteAssetParams struct {
-	// DisconnectedNodeAcknowledged Acknowledges that this node is disconnected to allow for mutable requests to proceed.
 	DisconnectedNodeAcknowledged *bool `form:"disconnectedNodeAcknowledged,omitempty" json:"disconnectedNodeAcknowledged,omitempty"`
 }
 
@@ -12816,9 +10920,6 @@ type RemoveProcessGroupParams struct {
 type ExportProcessGroupParams struct {
 	// IncludeReferencedServices If referenced services from outside the target group should be included
 	IncludeReferencedServices *bool `form:"includeReferencedServices,omitempty" json:"includeReferencedServices,omitempty"`
-
-	// IncludeComponentState If component state should be included in the exported flow definition. Requires all processors to be stopped and all controller services to be disabled.
-	IncludeComponentState *bool `form:"includeComponentState,omitempty" json:"includeComponentState,omitempty"`
 }
 
 // CreateProcessGroupParams defines parameters for CreateProcessGroup.
@@ -12836,10 +10937,8 @@ type UploadProcessGroupMultipartBody struct {
 	ClientId string `json:"clientId"`
 
 	// DisconnectedNodeAcknowledged Acknowledges that this node is disconnected to allow for mutable requests to proceed.
-	DisconnectedNodeAcknowledged *bool `json:"disconnectedNodeAcknowledged,omitempty"`
-
-	// File The flow definition content
-	File *map[string]interface{} `json:"file,omitempty"`
+	DisconnectedNodeAcknowledged *bool                   `json:"disconnectedNodeAcknowledged,omitempty"`
+	File                         *map[string]interface{} `json:"file,omitempty"`
 
 	// GroupName The process group name.
 	GroupName string `json:"groupName"`
@@ -12934,10 +11033,10 @@ type GetProvenanceParams struct {
 	// ClusterNodeId The id of the node where this query exists if clustered.
 	ClusterNodeId *string `form:"clusterNodeId,omitempty" json:"clusterNodeId,omitempty"`
 
-	// Summarize Whether or not to summarize provenance events returned. This property is false by default.
+	// Summarize Whether or not incremental results are returned. If false, provenance events are only returned once the query completes. This property is true by default.
 	Summarize *bool `form:"summarize,omitempty" json:"summarize,omitempty"`
 
-	// IncrementalResults Whether or not incremental results are returned. If false, provenance events are only returned once the query completes. This property is true by default.
+	// IncrementalResults Whether or not to summarize provenance events returned. This property is false by default.
 	IncrementalResults *bool `form:"incrementalResults,omitempty" json:"incrementalResults,omitempty"`
 }
 
@@ -12985,7 +11084,7 @@ type GetSystemDiagnosticsParams struct {
 	// Nodewise Whether or not to include the breakdown per node. Optional, defaults to false
 	Nodewise *bool `form:"nodewise,omitempty" json:"nodewise,omitempty"`
 
-	// DiagnosticLevel BASIC or VERBOSE verbosity details. Optional, defaults to BASIC
+	// DiagnosticLevel Whether or not to include verbose details. Optional, defaults to false
 	DiagnosticLevel *GetSystemDiagnosticsParamsDiagnosticLevel `form:"diagnosticLevel,omitempty" json:"diagnosticLevel,omitempty"`
 
 	// ClusterNodeId The id of the node where to get the status.
@@ -13049,18 +11148,6 @@ type StopVersionControlParams struct {
 	DisconnectedNodeAcknowledged *bool `form:"disconnectedNodeAcknowledged,omitempty" json:"disconnectedNodeAcknowledged,omitempty"`
 }
 
-// GetRebaseAnalysisParams defines parameters for GetRebaseAnalysis.
-type GetRebaseAnalysisParams struct {
-	// TargetVersion The target version to rebase to.
-	TargetVersion string `form:"targetVersion" json:"targetVersion"`
-}
-
-// DeleteRebaseRequestParams defines parameters for DeleteRebaseRequest.
-type DeleteRebaseRequestParams struct {
-	// DisconnectedNodeAcknowledged Acknowledges that this node is disconnected to allow for mutable requests to proceed.
-	DisconnectedNodeAcknowledged *bool `form:"disconnectedNodeAcknowledged,omitempty" json:"disconnectedNodeAcknowledged,omitempty"`
-}
-
 // DeleteRevertRequestParams defines parameters for DeleteRevertRequest.
 type DeleteRevertRequestParams struct {
 	// DisconnectedNodeAcknowledged Acknowledges that this node is disconnected to allow for mutable requests to proceed.
@@ -13079,44 +11166,8 @@ type CreateAccessTokenFormdataRequestBody CreateAccessTokenFormdataBody
 // UpdateConnectionJSONRequestBody defines body for UpdateConnection for application/json ContentType.
 type UpdateConnectionJSONRequestBody = ConnectionEntity
 
-// CreateConnectorJSONRequestBody defines body for CreateConnector for application/json ContentType.
-type CreateConnectorJSONRequestBody = ConnectorEntity
-
-// UpdateConnectorJSONRequestBody defines body for UpdateConnector for application/json ContentType.
-type UpdateConnectorJSONRequestBody = ConnectorEntity
-
-// ApplyConnectorUpdateJSONRequestBody defines body for ApplyConnectorUpdate for application/json ContentType.
-type ApplyConnectorUpdateJSONRequestBody = ConnectorEntity
-
-// UpdateConnectorConfigurationStepJSONRequestBody defines body for UpdateConnectorConfigurationStep for application/json ContentType.
-type UpdateConnectorConfigurationStepJSONRequestBody = ConfigurationStepEntity
-
-// SubmitConfigurationStepVerificationRequestJSONRequestBody defines body for SubmitConfigurationStepVerificationRequest for application/json ContentType.
-type SubmitConfigurationStepVerificationRequestJSONRequestBody = VerifyConnectorConfigStepRequestEntity
-
-// ClearConnectorControllerServiceStateJSONRequestBody defines body for ClearConnectorControllerServiceState for application/json ContentType.
-type ClearConnectorControllerServiceStateJSONRequestBody = ComponentStateEntity
-
-// InitiateDrainJSONRequestBody defines body for InitiateDrain for application/json ContentType.
-type InitiateDrainJSONRequestBody = ConnectorEntity
-
-// CreateMigrationRequestJSONRequestBody defines body for CreateMigrationRequest for application/json ContentType.
-type CreateMigrationRequestJSONRequestBody = MigrationRequestEntity
-
-// ClearConnectorProcessorStateJSONRequestBody defines body for ClearConnectorProcessorState for application/json ContentType.
-type ClearConnectorProcessorStateJSONRequestBody = ComponentStateEntity
-
-// UpdateRunStatusJSONRequestBody defines body for UpdateRunStatus for application/json ContentType.
-type UpdateRunStatusJSONRequestBody = ConnectorRunStatusEntity
-
-// EnterTroubleshootingJSONRequestBody defines body for EnterTroubleshooting for application/json ContentType.
-type EnterTroubleshootingJSONRequestBody = ConnectorEntity
-
 // UpdateControllerServiceJSONRequestBody defines body for UpdateControllerService for application/json ContentType.
 type UpdateControllerServiceJSONRequestBody = ControllerServiceEntity
-
-// ClearBulletinsJSONRequestBody defines body for ClearBulletins for application/json ContentType.
-type ClearBulletinsJSONRequestBody = ClearBulletinsRequestEntity
 
 // AnalyzeConfigurationJSONRequestBody defines body for AnalyzeConfiguration for application/json ContentType.
 type AnalyzeConfigurationJSONRequestBody = ConfigurationAnalysisEntity
@@ -13127,11 +11178,8 @@ type SubmitConfigVerificationRequestJSONRequestBody = VerifyConfigRequestEntity
 // UpdateControllerServiceReferencesJSONRequestBody defines body for UpdateControllerServiceReferences for application/json ContentType.
 type UpdateControllerServiceReferencesJSONRequestBody = UpdateControllerServiceReferenceRequestEntity
 
-// UpdateRunStatus2JSONRequestBody defines body for UpdateRunStatus2 for application/json ContentType.
-type UpdateRunStatus2JSONRequestBody = ControllerServiceRunStatusEntity
-
-// ClearState1JSONRequestBody defines body for ClearState1 for application/json ContentType.
-type ClearState1JSONRequestBody = ComponentStateEntity
+// UpdateRunStatus1JSONRequestBody defines body for UpdateRunStatus1 for application/json ContentType.
+type UpdateRunStatus1JSONRequestBody = ControllerServiceRunStatusEntity
 
 // CreateBulletinJSONRequestBody defines body for CreateBulletin for application/json ContentType.
 type CreateBulletinJSONRequestBody = BulletinEntity
@@ -13151,41 +11199,23 @@ type CreateFlowAnalysisRuleJSONRequestBody = FlowAnalysisRuleEntity
 // UpdateFlowAnalysisRuleJSONRequestBody defines body for UpdateFlowAnalysisRule for application/json ContentType.
 type UpdateFlowAnalysisRuleJSONRequestBody = FlowAnalysisRuleEntity
 
-// ClearFlowAnalysisRuleBulletinsJSONRequestBody defines body for ClearFlowAnalysisRuleBulletins for application/json ContentType.
-type ClearFlowAnalysisRuleBulletinsJSONRequestBody = ClearBulletinsRequestEntity
-
 // AnalyzeFlowAnalysisRuleConfigurationJSONRequestBody defines body for AnalyzeFlowAnalysisRuleConfiguration for application/json ContentType.
 type AnalyzeFlowAnalysisRuleConfigurationJSONRequestBody = ConfigurationAnalysisEntity
 
 // SubmitFlowAnalysisRuleConfigVerificationRequestJSONRequestBody defines body for SubmitFlowAnalysisRuleConfigVerificationRequest for application/json ContentType.
 type SubmitFlowAnalysisRuleConfigVerificationRequestJSONRequestBody = VerifyConfigRequestEntity
 
-// UpdateRunStatus1JSONRequestBody defines body for UpdateRunStatus1 for application/json ContentType.
-type UpdateRunStatus1JSONRequestBody = FlowAnalysisRuleRunStatusEntity
-
-// ClearStateJSONRequestBody defines body for ClearState for application/json ContentType.
-type ClearStateJSONRequestBody = ComponentStateEntity
+// UpdateRunStatusJSONRequestBody defines body for UpdateRunStatus for application/json ContentType.
+type UpdateRunStatusJSONRequestBody = FlowAnalysisRuleRunStatusEntity
 
 // CreateParameterProviderJSONRequestBody defines body for CreateParameterProvider for application/json ContentType.
 type CreateParameterProviderJSONRequestBody = ParameterProviderEntity
-
-// ClearParameterProviderBulletinsJSONRequestBody defines body for ClearParameterProviderBulletins for application/json ContentType.
-type ClearParameterProviderBulletinsJSONRequestBody = ClearBulletinsRequestEntity
 
 // CreateFlowRegistryClientJSONRequestBody defines body for CreateFlowRegistryClient for application/json ContentType.
 type CreateFlowRegistryClientJSONRequestBody = FlowRegistryClientEntity
 
 // UpdateFlowRegistryClientJSONRequestBody defines body for UpdateFlowRegistryClient for application/json ContentType.
 type UpdateFlowRegistryClientJSONRequestBody = FlowRegistryClientEntity
-
-// ClearRegistryClientBulletinsJSONRequestBody defines body for ClearRegistryClientBulletins for application/json ContentType.
-type ClearRegistryClientBulletinsJSONRequestBody = ClearBulletinsRequestEntity
-
-// AnalyzeFlowRegistryClientConfigurationJSONRequestBody defines body for AnalyzeFlowRegistryClientConfiguration for application/json ContentType.
-type AnalyzeFlowRegistryClientConfigurationJSONRequestBody = ConfigurationAnalysisEntity
-
-// SubmitRegistryClientConfigVerificationRequestJSONRequestBody defines body for SubmitRegistryClientConfigVerificationRequest for application/json ContentType.
-type SubmitRegistryClientConfigVerificationRequestJSONRequestBody = VerifyConfigRequestEntity
 
 // CreateReportingTaskJSONRequestBody defines body for CreateReportingTask for application/json ContentType.
 type CreateReportingTaskJSONRequestBody = ReportingTaskEntity
@@ -13196,9 +11226,6 @@ type ImportReportingTaskSnapshotJSONRequestBody = VersionedReportingTaskImportRe
 // ScheduleComponentsJSONRequestBody defines body for ScheduleComponents for application/json ContentType.
 type ScheduleComponentsJSONRequestBody = ScheduleComponentsEntity
 
-// ClearBulletins1JSONRequestBody defines body for ClearBulletins1 for application/json ContentType.
-type ClearBulletins1JSONRequestBody = ClearBulletinsForGroupRequestEntity
-
 // ActivateControllerServicesJSONRequestBody defines body for ActivateControllerServices for application/json ContentType.
 type ActivateControllerServicesJSONRequestBody = ActivateControllerServicesEntity
 
@@ -13208,11 +11235,8 @@ type UpdateFunnelJSONRequestBody = FunnelEntity
 // UpdateInputPortJSONRequestBody defines body for UpdateInputPort for application/json ContentType.
 type UpdateInputPortJSONRequestBody = PortEntity
 
-// ClearBulletins2JSONRequestBody defines body for ClearBulletins2 for application/json ContentType.
-type ClearBulletins2JSONRequestBody = ClearBulletinsRequestEntity
-
-// UpdateRunStatus3JSONRequestBody defines body for UpdateRunStatus3 for application/json ContentType.
-type UpdateRunStatus3JSONRequestBody = PortRunStatusEntity
+// UpdateRunStatus2JSONRequestBody defines body for UpdateRunStatus2 for application/json ContentType.
+type UpdateRunStatus2JSONRequestBody = PortRunStatusEntity
 
 // UpdateLabelJSONRequestBody defines body for UpdateLabel for application/json ContentType.
 type UpdateLabelJSONRequestBody = LabelEntity
@@ -13220,11 +11244,8 @@ type UpdateLabelJSONRequestBody = LabelEntity
 // UpdateOutputPortJSONRequestBody defines body for UpdateOutputPort for application/json ContentType.
 type UpdateOutputPortJSONRequestBody = PortEntity
 
-// ClearBulletins3JSONRequestBody defines body for ClearBulletins3 for application/json ContentType.
-type ClearBulletins3JSONRequestBody = ClearBulletinsRequestEntity
-
-// UpdateRunStatus4JSONRequestBody defines body for UpdateRunStatus4 for application/json ContentType.
-type UpdateRunStatus4JSONRequestBody = PortRunStatusEntity
+// UpdateRunStatus3JSONRequestBody defines body for UpdateRunStatus3 for application/json ContentType.
+type UpdateRunStatus3JSONRequestBody = PortRunStatusEntity
 
 // CreateParameterContextJSONRequestBody defines body for CreateParameterContext for application/json ContentType.
 type CreateParameterContextJSONRequestBody = ParameterContextEntity
@@ -13241,9 +11262,6 @@ type UpdateParameterContextJSONRequestBody = ParameterContextEntity
 // UpdateParameterProviderJSONRequestBody defines body for UpdateParameterProvider for application/json ContentType.
 type UpdateParameterProviderJSONRequestBody = ParameterProviderEntity
 
-// ClearBulletins4JSONRequestBody defines body for ClearBulletins4 for application/json ContentType.
-type ClearBulletins4JSONRequestBody = ClearBulletinsRequestEntity
-
 // AnalyzeConfiguration1JSONRequestBody defines body for AnalyzeConfiguration1 for application/json ContentType.
 type AnalyzeConfiguration1JSONRequestBody = ConfigurationAnalysisEntity
 
@@ -13252,9 +11270,6 @@ type SubmitConfigVerificationRequest1JSONRequestBody = VerifyConfigRequestEntity
 
 // FetchParametersJSONRequestBody defines body for FetchParameters for application/json ContentType.
 type FetchParametersJSONRequestBody = ParameterProviderParameterFetchEntity
-
-// ClearState2JSONRequestBody defines body for ClearState2 for application/json ContentType.
-type ClearState2JSONRequestBody = ComponentStateEntity
 
 // SubmitApplyParametersJSONRequestBody defines body for SubmitApplyParameters for application/json ContentType.
 type SubmitApplyParametersJSONRequestBody = ParameterProviderParameterApplicationEntity
@@ -13322,20 +11337,14 @@ type GetProcessorRunStatusDetailsJSONRequestBody = RunStatusDetailsRequestEntity
 // UpdateProcessorJSONRequestBody defines body for UpdateProcessor for application/json ContentType.
 type UpdateProcessorJSONRequestBody = ProcessorEntity
 
-// ClearBulletins5JSONRequestBody defines body for ClearBulletins5 for application/json ContentType.
-type ClearBulletins5JSONRequestBody = ClearBulletinsRequestEntity
-
 // AnalyzeConfiguration2JSONRequestBody defines body for AnalyzeConfiguration2 for application/json ContentType.
 type AnalyzeConfiguration2JSONRequestBody = ConfigurationAnalysisEntity
 
 // SubmitProcessorVerificationRequestJSONRequestBody defines body for SubmitProcessorVerificationRequest for application/json ContentType.
 type SubmitProcessorVerificationRequestJSONRequestBody = VerifyConfigRequestEntity
 
-// UpdateRunStatus5JSONRequestBody defines body for UpdateRunStatus5 for application/json ContentType.
-type UpdateRunStatus5JSONRequestBody = ProcessorRunStatusEntity
-
-// ClearState3JSONRequestBody defines body for ClearState3 for application/json ContentType.
-type ClearState3JSONRequestBody = ComponentStateEntity
+// UpdateRunStatus4JSONRequestBody defines body for UpdateRunStatus4 for application/json ContentType.
+type UpdateRunStatus4JSONRequestBody = ProcessorRunStatusEntity
 
 // SubmitProvenanceRequestJSONRequestBody defines body for SubmitProvenanceRequest for application/json ContentType.
 type SubmitProvenanceRequestJSONRequestBody = ProvenanceEntity
@@ -13355,9 +11364,6 @@ type UpdateRemoteProcessGroupRunStatusesJSONRequestBody = RemotePortRunStatusEnt
 // UpdateRemoteProcessGroupJSONRequestBody defines body for UpdateRemoteProcessGroup for application/json ContentType.
 type UpdateRemoteProcessGroupJSONRequestBody = RemoteProcessGroupEntity
 
-// ClearBulletins6JSONRequestBody defines body for ClearBulletins6 for application/json ContentType.
-type ClearBulletins6JSONRequestBody = ClearBulletinsRequestEntity
-
 // UpdateRemoteProcessGroupInputPortJSONRequestBody defines body for UpdateRemoteProcessGroupInputPort for application/json ContentType.
 type UpdateRemoteProcessGroupInputPortJSONRequestBody = RemoteProcessGroupPortEntity
 
@@ -13376,20 +11382,14 @@ type UpdateRemoteProcessGroupRunStatusJSONRequestBody = RemotePortRunStatusEntit
 // UpdateReportingTaskJSONRequestBody defines body for UpdateReportingTask for application/json ContentType.
 type UpdateReportingTaskJSONRequestBody = ReportingTaskEntity
 
-// ClearBulletins7JSONRequestBody defines body for ClearBulletins7 for application/json ContentType.
-type ClearBulletins7JSONRequestBody = ClearBulletinsRequestEntity
-
 // AnalyzeConfiguration3JSONRequestBody defines body for AnalyzeConfiguration3 for application/json ContentType.
 type AnalyzeConfiguration3JSONRequestBody = ConfigurationAnalysisEntity
 
 // SubmitConfigVerificationRequest2JSONRequestBody defines body for SubmitConfigVerificationRequest2 for application/json ContentType.
 type SubmitConfigVerificationRequest2JSONRequestBody = VerifyConfigRequestEntity
 
-// UpdateRunStatus6JSONRequestBody defines body for UpdateRunStatus6 for application/json ContentType.
-type UpdateRunStatus6JSONRequestBody = ReportingTaskRunStatusEntity
-
-// ClearState4JSONRequestBody defines body for ClearState4 for application/json ContentType.
-type ClearState4JSONRequestBody = ComponentStateEntity
+// UpdateRunStatus5JSONRequestBody defines body for UpdateRunStatus5 for application/json ContentType.
+type UpdateRunStatus5JSONRequestBody = ReportingTaskRunStatusEntity
 
 // CreateSnippetJSONRequestBody defines body for CreateSnippet for application/json ContentType.
 type CreateSnippetJSONRequestBody = SnippetEntity
@@ -13420,15 +11420,6 @@ type SaveToFlowRegistryJSONRequestBody = StartVersionControlRequestEntity
 
 // UpdateFlowVersionJSONRequestBody defines body for UpdateFlowVersion for application/json ContentType.
 type UpdateFlowVersionJSONRequestBody = VersionedFlowSnapshotEntity
-
-// CreateFlowBranchJSONRequestBody defines body for CreateFlowBranch for application/json ContentType.
-type CreateFlowBranchJSONRequestBody = CreateFlowBranchRequestEntity
-
-// ApplyRebasedFlowVersionJSONRequestBody defines body for ApplyRebasedFlowVersion for application/json ContentType.
-type ApplyRebasedFlowVersionJSONRequestBody = VersionedFlowSnapshotEntity
-
-// InitiateRebaseJSONRequestBody defines body for InitiateRebase for application/json ContentType.
-type InitiateRebaseJSONRequestBody = RebaseRequestEntity
 
 // InitiateRevertFlowVersionJSONRequestBody defines body for InitiateRevertFlowVersion for application/json ContentType.
 type InitiateRevertFlowVersionJSONRequestBody = VersionControlInformationEntity
