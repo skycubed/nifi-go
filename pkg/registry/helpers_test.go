@@ -41,10 +41,11 @@ func TestAuthenticatedVersionRequest(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if response.StatusCode() != http.StatusOK || response.JSONDefault == nil || response.JSONDefault.RegistryAboutVersion == nil {
+	entity := JSONResponseBody[RegistryAbout](response)
+	if response.StatusCode() != http.StatusOK || entity == nil || entity.RegistryAboutVersion == nil {
 		t.Fatalf("unexpected response: status=%d body=%s", response.StatusCode(), response.Body)
 	}
-	if got, want := *response.JSONDefault.RegistryAboutVersion, TargetRegistryVersion; got != want {
+	if got, want := *entity.RegistryAboutVersion, TargetRegistryVersion; got != want {
 		t.Errorf("version = %q, want %q", got, want)
 	}
 }
