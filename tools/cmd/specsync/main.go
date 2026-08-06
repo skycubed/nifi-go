@@ -24,6 +24,7 @@ import (
 )
 
 const maxSpecBytes = 32 << 20
+const userAgent = "nifi-go-bindings/2 (+https://github.com/skycubed/nifi-go)"
 
 var versionPattern = regexp.MustCompile(`^2\.[0-9]+\.[0-9]+$`)
 
@@ -168,6 +169,7 @@ func ensureArtifact(path string, a artifact) error {
 	if err != nil {
 		return err
 	}
+	req.Header.Set("User-Agent", userAgent)
 	resp, err := client.Do(req)
 	if err != nil {
 		return err
