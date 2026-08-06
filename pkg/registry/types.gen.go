@@ -3401,7 +3401,7 @@ type GetBundleVersions1Params struct {
 	// ArtifactId Optional artifactId to filter results. The value may be an exact match, or a wildcard, such as 'nifi-%' to select all bundle versions where the artifactId starts with 'nifi-'.
 	ArtifactId *string `form:"artifactId,omitempty" json:"artifactId,omitempty"`
 
-	// Version Optional version to filter results. The value may be an exact match, or a wildcard, such as '1.0.%' to select all bundle versions where the version starts with '1.0.'.
+	// Version Optional version to filter results. The value maye be an exact match, or a wildcard, such as '1.0.%' to select all bundle versions where the version starts with '1.0.'.
 	Version *string `form:"version,omitempty" json:"version,omitempty"`
 }
 

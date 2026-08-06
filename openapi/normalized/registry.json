@@ -3586,7 +3586,7 @@
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
     "title": "Apache NiFi Registry REST API",
-    "version": "2.11.0"
+    "version": "2.10.0"
   },
   "openapi": "3.0.1",
   "paths": {
@@ -5330,7 +5330,7 @@
             }
           },
           {
-            "description": "Optional version to filter results. The value may be an exact match, or a wildcard, such as '1.0.%' to select all bundle versions where the version starts with '1.0.'.",
+            "description": "Optional version to filter results. The value maye be an exact match, or a wildcard, such as '1.0.%' to select all bundle versions where the version starts with '1.0.'.",
             "in": "query",
             "name": "version",
             "schema": {

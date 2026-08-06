@@ -124,24 +124,6 @@ func (e AffectedComponentEntityReferenceType) Valid() bool {
 	}
 }
 
-// Defines values for BacklogDTOPrecision.
-const (
-	ATLEAST BacklogDTOPrecision = "AT_LEAST"
-	EXACT   BacklogDTOPrecision = "EXACT"
-)
-
-// Valid indicates whether the value is a known member of the BacklogDTOPrecision enum.
-func (e BacklogDTOPrecision) Valid() bool {
-	switch e {
-	case ATLEAST:
-		return true
-	case EXACT:
-		return true
-	default:
-		return false
-	}
-}
-
 // Defines values for ComponentValidationResultDTOReferenceType.
 const (
 	ComponentValidationResultDTOReferenceTypeCONTROLLERSERVICE ComponentValidationResultDTOReferenceType = "CONTROLLER_SERVICE"
@@ -3205,93 +3187,6 @@ type AuthenticationConfigurationEntity struct {
 	AuthenticationConfiguration *AuthenticationConfigurationDTO `json:"authenticationConfiguration,omitempty"`
 }
 
-// BacklogDTO The backlog reported by the component, populated once the request has completed successfully.
-type BacklogDTO struct {
-	// ByteCount The total number of bytes remaining on the source, if the component can determine it.
-	ByteCount *int64 `json:"byteCount,omitempty"`
-
-	// FlowFileCount The number of FlowFiles remaining on the source, if the component can determine it.
-	FlowFileCount *int64 `json:"flowFileCount,omitempty"`
-
-	// FormattedByteCount The byte count formatted for display in human-readable units (for example, '4.89 GB'). Populated whenever byteCount is populated.
-	FormattedByteCount *string `json:"formattedByteCount,omitempty"`
-
-	// FormattedFlowFileCount The FlowFile count formatted for display with locale-appropriate grouping (for example, '1,025'). Populated whenever flowFileCount is populated.
-	FormattedFlowFileCount *string `json:"formattedFlowFileCount,omitempty"`
-
-	// FormattedLastCaughtUp Human-readable description of how long ago the component was last caught up, for example '5 mins ago', 'in 2 hours', or 'now'. Populated whenever lastCaughtUp is populated.
-	FormattedLastCaughtUp *string `json:"formattedLastCaughtUp,omitempty"`
-
-	// FormattedRecordCount The record count formatted for display with locale-appropriate grouping (for example, '1,025'). Populated whenever recordCount is populated.
-	FormattedRecordCount *string `json:"formattedRecordCount,omitempty"`
-
-	// LastCaughtUp The most recent moment the component observed itself as fully caught up with the source, formatted as an ISO-8601 UTC timestamp.
-	LastCaughtUp *string `json:"lastCaughtUp,omitempty"`
-
-	// Precision The precision of the numeric dimensions of this backlog.
-	Precision *BacklogDTOPrecision `json:"precision,omitempty"`
-
-	// RecordCount The number of records remaining on the source, if the component can determine it.
-	RecordCount *int64 `json:"recordCount,omitempty"`
-}
-
-// BacklogDTOPrecision The precision of the numeric dimensions of this backlog.
-type BacklogDTOPrecision string
-
-// BacklogRequestDTO The request
-type BacklogRequestDTO struct {
-	// Backlog The backlog reported by the component, populated once the request has completed successfully.
-	Backlog *BacklogDTO `json:"backlog,omitempty"`
-
-	// Complete Whether or not the request is completed
-	Complete *bool `json:"complete,omitempty"`
-
-	// ComponentId The ID of the Processor or Connector whose backlog is being determined
-	ComponentId *string `json:"componentId,omitempty"`
-
-	// FailureReason The reason for the request failing, or null if the request has not failed
-	FailureReason *string `json:"failureReason,omitempty"`
-
-	// LastUpdated The timestamp of when the request was last updated
-	LastUpdated *time.Time `json:"lastUpdated,omitempty"`
-
-	// PercentCompleted A value between 0 and 100 (inclusive) indicating how close the request is to completion
-	PercentCompleted *int32 `json:"percentCompleted,omitempty"`
-
-	// RequestId The ID of the request
-	RequestId *string `json:"requestId,omitempty"`
-
-	// State A description of the current state of the request
-	State *string `json:"state,omitempty"`
-
-	// SubmissionTime The timestamp of when the request was submitted
-	SubmissionTime *time.Time `json:"submissionTime,omitempty"`
-
-	// UpdateSteps The steps that are required in order to complete the request, along with the status of each
-	UpdateSteps *[]BacklogUpdateStepDTO `json:"updateSteps,omitempty"`
-
-	// Uri The URI for the request
-	Uri *string `json:"uri,omitempty"`
-}
-
-// BacklogRequestEntity defines model for BacklogRequestEntity.
-type BacklogRequestEntity struct {
-	// Request The request
-	Request *BacklogRequestDTO `json:"request,omitempty"`
-}
-
-// BacklogUpdateStepDTO The steps that are required in order to complete the request, along with the status of each
-type BacklogUpdateStepDTO struct {
-	// Complete Whether or not this step has completed
-	Complete *bool `json:"complete,omitempty"`
-
-	// Description Explanation of what happens in this step
-	Description *string `json:"description,omitempty"`
-
-	// FailureReason An explanation of why this step failed, or null if this step did not fail
-	FailureReason *string `json:"failureReason,omitempty"`
-}
-
 // BannerDTO defines model for BannerDTO.
 type BannerDTO struct {
 	// FooterText The footer text.
@@ -3538,7 +3433,7 @@ type ClusterSummaryEntity struct {
 // ComponentDetailsDTO The details of the source component.
 type ComponentDetailsDTO = map[string]interface{}
 
-// ComponentDifferenceDTO The set of upstream changes between the current version and the target version in the flow registry
+// ComponentDifferenceDTO The list of differences for each component in the flow that is not the same between the two flows
 type ComponentDifferenceDTO struct {
 	// ComponentId The ID of the component
 	ComponentId *string `json:"componentId,omitempty"`
@@ -4870,7 +4765,7 @@ type ControllerServiceDTO struct {
 	// CustomUiUrl The URL for the controller services custom configuration UI if applicable.
 	CustomUiUrl *string `json:"customUiUrl,omitempty"`
 
-	// Deprecated Whether the controller service has been deprecated.
+	// Deprecated Whether the ontroller service has been deprecated.
 	Deprecated *bool `json:"deprecated,omitempty"`
 
 	// Descriptors The descriptors for the controller service properties.
@@ -5479,7 +5374,7 @@ type DocumentedTypeDTO struct {
 	// Description The description of the type.
 	Description *string `json:"description,omitempty"`
 
-	// ExplicitRestrictions An optional collection of explicit restrictions. If specified, these explicit restrictions will be enforced.
+	// ExplicitRestrictions An optional collection of explicit restrictions. If specified, these explicit restrictions will be enfored.
 	ExplicitRestrictions *[]ExplicitRestrictionDTO `json:"explicitRestrictions,omitempty"`
 
 	// Restricted Whether this type is restricted.
@@ -5581,7 +5476,7 @@ type DynamicRelationship struct {
 	Name *string `json:"name,omitempty"`
 }
 
-// ExplicitRestrictionDTO An optional collection of explicit restrictions. If specified, these explicit restrictions will be enforced.
+// ExplicitRestrictionDTO An optional collection of explicit restrictions. If specified, these explicit restrictions will be enfored.
 type ExplicitRestrictionDTO struct {
 	// Explanation The description of why the usage of this component is restricted for this required permission.
 	Explanation *string `json:"explanation,omitempty"`
@@ -6639,81 +6534,6 @@ type ListingRequestEntity struct {
 // LongParameter defines model for LongParameter.
 type LongParameter struct {
 	Long *int64 `json:"long,omitempty"`
-}
-
-// MigrationPayloadDTO The uploaded migration payload metadata.
-type MigrationPayloadDTO struct {
-	// PayloadId The identifier of the uploaded migration payload.
-	PayloadId *string `json:"payloadId,omitempty"`
-}
-
-// MigrationPayloadEntity defines model for MigrationPayloadEntity.
-type MigrationPayloadEntity struct {
-	// Payload The uploaded migration payload metadata.
-	Payload *MigrationPayloadDTO `json:"payload,omitempty"`
-}
-
-// MigrationRequestDTO The migration request.
-type MigrationRequestDTO struct {
-	// Complete Whether or not the request is completed
-	Complete *bool `json:"complete,omitempty"`
-
-	// ConnectorId The identifier of the Connector receiving the migration.
-	ConnectorId *string `json:"connectorId,omitempty"`
-
-	// FailureReason The reason for the request failing, or null if the request has not failed
-	FailureReason *string `json:"failureReason,omitempty"`
-
-	// LastUpdated The timestamp of when the request was last updated
-	LastUpdated *time.Time `json:"lastUpdated,omitempty"`
-
-	// LocalSource The local Process Group source for the migration request.
-	LocalSource *MigrationRequestLocalSourceDTO `json:"localSource,omitempty"`
-
-	// PayloadId The identifier of a previously uploaded migration payload.
-	PayloadId *string `json:"payloadId,omitempty"`
-
-	// PercentCompleted A value between 0 and 100 (inclusive) indicating how close the request is to completion
-	PercentCompleted *int32 `json:"percentCompleted,omitempty"`
-
-	// RequestId The ID of the request
-	RequestId *string `json:"requestId,omitempty"`
-
-	// State A description of the current state of the request
-	State *string `json:"state,omitempty"`
-
-	// SubmissionTime The timestamp of when the request was submitted
-	SubmissionTime *time.Time `json:"submissionTime,omitempty"`
-
-	// UpdateSteps The steps that are required in order to complete the request, along with the status of each
-	UpdateSteps *[]MigrationUpdateStepDTO `json:"updateSteps,omitempty"`
-
-	// Uri The URI for the request
-	Uri *string `json:"uri,omitempty"`
-}
-
-// MigrationRequestEntity defines model for MigrationRequestEntity.
-type MigrationRequestEntity struct {
-	// Request The migration request.
-	Request *MigrationRequestDTO `json:"request,omitempty"`
-}
-
-// MigrationRequestLocalSourceDTO The local Process Group source for the migration request.
-type MigrationRequestLocalSourceDTO struct {
-	// ProcessGroupId The identifier of the local source Process Group to migrate.
-	ProcessGroupId *string `json:"processGroupId,omitempty"`
-}
-
-// MigrationUpdateStepDTO The steps that are required in order to complete the request, along with the status of each
-type MigrationUpdateStepDTO struct {
-	// Complete Whether or not this step has completed
-	Complete *bool `json:"complete,omitempty"`
-
-	// Description Explanation of what happens in this step
-	Description *string `json:"description,omitempty"`
-
-	// FailureReason An explanation of why this step failed, or null if this step did not fail
-	FailureReason *string `json:"failureReason,omitempty"`
 }
 
 // MultiProcessorUseCase A list of use cases that have been documented that involve this Processor in conjunction with other Processors
@@ -8469,7 +8289,7 @@ type ProcessingPerformanceStatusDTO struct {
 
 // ProcessorConfigDTO The configuration details for the processor. These details will be included in a response if the verbose flag is included in a request.
 type ProcessorConfigDTO struct {
-	// AnnotationData The annotation data for the processor used to relay configuration between a custom UI and the processor.
+	// AnnotationData The annotation data for the processor used to relay configuration between a custom UI and the procesosr.
 	AnnotationData *string `json:"annotationData,omitempty"`
 
 	// AutoTerminatedRelationships The names of all relationships that cause a flow file to be terminated if the relationship is not connected elsewhere. This property differs from the 'isAutoTerminate' property of the RelationshipDTO in that the RelationshipDTO is meant to depict the current configuration, whereas this property can be set in a DTO when updating a Processor in order to change which Relationships should be auto-terminated.
@@ -8484,7 +8304,7 @@ type ProcessorConfigDTO struct {
 	// Comments The comments for the processor.
 	Comments *string `json:"comments,omitempty"`
 
-	// ConcurrentlySchedulableTaskCount The number of tasks that should be concurrently schedule for the processor. If the processor doesn't allow parallel processing then any positive input will be ignored.
+	// ConcurrentlySchedulableTaskCount The number of tasks that should be concurrently schedule for the processor. If the processor doesn't allow parallol processing then any positive input will be ignored.
 	ConcurrentlySchedulableTaskCount *int32 `json:"concurrentlySchedulableTaskCount,omitempty"`
 
 	// CustomUiUrl The URL for the processor's custom configuration UI if applicable.
@@ -8600,9 +8420,6 @@ type ProcessorDTO struct {
 
 	// Style Styles for the processor (background-color : #eee).
 	Style *map[string]string `json:"style,omitempty"`
-
-	// SupportsBacklogReporting Whether the processor implements BacklogReportingProcessor and can report a backlog.
-	SupportsBacklogReporting *bool `json:"supportsBacklogReporting,omitempty"`
 
 	// SupportsBatching Whether the processor supports batching. This makes the run duration settings available.
 	SupportsBatching *bool `json:"supportsBatching,omitempty"`
@@ -8904,7 +8721,7 @@ type ProcessorStatusSnapshotDTO struct {
 	// BytesOut The size of the FlowFiles transferred to a Connection in the last 5 minutes
 	BytesOut *int64 `json:"bytesOut,omitempty"`
 
-	// BytesRead The number of bytes read by this Processor in the last 5 minutes
+	// BytesRead The number of bytes read by this Processor in the last 5 mintues
 	BytesRead *int64 `json:"bytesRead,omitempty"`
 
 	// BytesWritten The number of bytes written by this Processor in the last 5 minutes
@@ -8928,7 +8745,7 @@ type ProcessorStatusSnapshotDTO struct {
 	// Input The count/size of FlowFiles that have been accepted in the last 5 minutes.
 	Input *string `json:"input,omitempty"`
 
-	// Name The name of the processor.
+	// Name The name of the prcessor.
 	Name *string `json:"name,omitempty"`
 
 	// Output The count/size of FlowFiles that have been processed in the last 5 minutes.
@@ -9251,7 +9068,7 @@ type ProvenanceEventDTO struct {
 	// EventDuration The event duration in milliseconds.
 	EventDuration *int64 `json:"eventDuration,omitempty"`
 
-	// EventId The event id. This is a one up number that's unique per node.
+	// EventId The event id. This is a one up number thats unique per node.
 	EventId *int64 `json:"eventId,omitempty"`
 
 	// EventTime The timestamp of the event.
@@ -9335,7 +9152,7 @@ type ProvenanceEventDTO struct {
 	// ReplayExplanation Explanation as to why replay is unavailable.
 	ReplayExplanation *string `json:"replayExplanation,omitempty"`
 
-	// SourceConnectionIdentifier The identifier of the queue/connection from which the flowfile was pulled to generate this event. May be null if the queue/connection is unknown or the flowfile was generated from this event.
+	// SourceConnectionIdentifier The identifier of the queue/connection from which the flowfile was pulled to genereate this event. May be null if the queue/connection is unknown or the flowfile was generated from this event.
 	SourceConnectionIdentifier *string `json:"sourceConnectionIdentifier,omitempty"`
 
 	// SourceSystemFlowFileId The source system flowfile id.
@@ -9501,73 +9318,6 @@ type QueueSizeDTO struct {
 
 	// ObjectCount The count of objects in a queue.
 	ObjectCount *int32 `json:"objectCount,omitempty"`
-}
-
-// RebaseAnalysisEntity defines model for RebaseAnalysisEntity.
-type RebaseAnalysisEntity struct {
-	// AnalysisFingerprint A fingerprint representing the state of this analysis, used to verify the analysis is still valid when executing the rebase
-	AnalysisFingerprint *string `json:"analysisFingerprint,omitempty"`
-
-	// CurrentVersion The current version of the flow in the Process Group
-	CurrentVersion *string `json:"currentVersion,omitempty"`
-
-	// FailureReason The reason the rebase is not allowed, or null if the rebase is allowed
-	FailureReason *string `json:"failureReason,omitempty"`
-
-	// LocalChanges The list of local changes that were made to the flow since the last version control operation
-	LocalChanges *[]RebaseChangeDTO `json:"localChanges,omitempty"`
-
-	// ProcessGroupId The ID of the Process Group being rebased
-	ProcessGroupId *string `json:"processGroupId,omitempty"`
-
-	// RebaseAllowed Whether the rebase is allowed based on the analysis of local and upstream changes
-	RebaseAllowed *bool `json:"rebaseAllowed,omitempty"`
-
-	// TargetVersion The target version to rebase to
-	TargetVersion *string `json:"targetVersion,omitempty"`
-
-	// UpstreamChanges The set of upstream changes between the current version and the target version in the flow registry
-	UpstreamChanges *[]ComponentDifferenceDTO `json:"upstreamChanges,omitempty"`
-}
-
-// RebaseChangeDTO The list of local changes that were made to the flow since the last version control operation
-type RebaseChangeDTO struct {
-	// Classification The classification of this change: COMPATIBLE, CONFLICTING, or UNSUPPORTED
-	Classification *string `json:"classification,omitempty"`
-
-	// ComponentId The ID of the component that was changed
-	ComponentId *string `json:"componentId,omitempty"`
-
-	// ComponentName The name of the component that was changed
-	ComponentName *string `json:"componentName,omitempty"`
-
-	// ComponentType The type of the component that was changed
-	ComponentType *string `json:"componentType,omitempty"`
-
-	// ConflictCode A code identifying the type of conflict, or null if the change is not conflicting
-	ConflictCode *string `json:"conflictCode,omitempty"`
-
-	// ConflictDetail A detailed description of the conflict, or null if the change is not conflicting
-	ConflictDetail *string `json:"conflictDetail,omitempty"`
-
-	// DifferenceType The type of difference detected for this change
-	DifferenceType *string `json:"differenceType,omitempty"`
-
-	// FieldName The name of the field that was changed, or null if not applicable
-	FieldName *string `json:"fieldName,omitempty"`
-
-	// LocalValue The local value of the field, or null if not applicable
-	LocalValue *string `json:"localValue,omitempty"`
-
-	// RegistryValue The registry value of the field, or null if not applicable
-	RegistryValue *string `json:"registryValue,omitempty"`
-}
-
-// RebaseRequestEntity defines model for RebaseRequestEntity.
-type RebaseRequestEntity struct {
-	// AnalysisFingerprint The fingerprint of the rebase analysis, used to verify the analysis is still valid when executing the rebase
-	AnalysisFingerprint             *string                          `json:"analysisFingerprint,omitempty"`
-	VersionControlInformationEntity *VersionControlInformationEntity `json:"versionControlInformationEntity,omitempty"`
 }
 
 // RegisteredFlow defines model for RegisteredFlow.
@@ -9997,7 +9747,7 @@ type ReportingTaskDTO struct {
 	// ActiveThreadCount The number of active threads for the reporting task.
 	ActiveThreadCount *int32 `json:"activeThreadCount,omitempty"`
 
-	// AnnotationData The annotation data for the reporting task. This is how the custom UI relays configuration to the reporting task.
+	// AnnotationData The annotation data for the repoting task. This is how the custom UI relays configuration to the reporting task.
 	AnnotationData *string `json:"annotationData,omitempty"`
 
 	// Bundle If the property identifies a controller service this returns the bundle of the type, null otherwise.
@@ -11406,45 +11156,6 @@ type VersionedFlowDTOAction string
 type VersionedFlowEntity struct {
 	// VersionedFlow The versioned flow
 	VersionedFlow *VersionedFlowDTO `json:"versionedFlow,omitempty"`
-}
-
-// VersionedFlowMigrationSourceDTO The Versioned Process Groups that the Connector can be migrated from.
-type VersionedFlowMigrationSourceDTO struct {
-	// BucketId The Flow Registry bucket identifier for the source Process Group.
-	BucketId *string `json:"bucketId,omitempty"`
-
-	// FlowId The Flow Registry flow identifier for the source Process Group.
-	FlowId *string `json:"flowId,omitempty"`
-
-	// FlowName The name of the versioned flow backing the source Process Group, as recorded in the Flow Registry. May be null when the registry has not yet supplied a name (for example, while the source's version control state is SYNC_FAILURE).
-	FlowName *string `json:"flowName,omitempty"`
-
-	// IneligibilityReasons User-facing descriptions of all conditions that currently prevent the source Process Group from being migrated. Empty when readyForMigration is true. Each entry describes a single remediable condition (running processors, queued FlowFiles, etc.); every applicable condition is included so the user can address them together.
-	IneligibilityReasons *[]string `json:"ineligibilityReasons,omitempty"`
-
-	// ParentProcessGroupId The identifier of the parent Process Group of the source Process Group.
-	ParentProcessGroupId *string `json:"parentProcessGroupId,omitempty"`
-
-	// ProcessGroupId The identifier of the source Process Group.
-	ProcessGroupId *string `json:"processGroupId,omitempty"`
-
-	// ProcessGroupName The name of the source Process Group.
-	ProcessGroupName *string `json:"processGroupName,omitempty"`
-
-	// ReadyForMigration Whether the source Process Group is currently in a state that allows it to be migrated into the target Connector. When false, ineligibilityReasons describes what must change before the migration can proceed.
-	ReadyForMigration *bool `json:"readyForMigration,omitempty"`
-
-	// RegistryClientId The identifier of the Flow Registry client backing the source Process Group.
-	RegistryClientId *string `json:"registryClientId,omitempty"`
-
-	// Version The published version of the source Process Group.
-	Version *string `json:"version,omitempty"`
-}
-
-// VersionedFlowMigrationSourcesEntity defines model for VersionedFlowMigrationSourcesEntity.
-type VersionedFlowMigrationSourcesEntity struct {
-	// MigrationSources The Versioned Process Groups that the Connector can be migrated from.
-	MigrationSources *[]VersionedFlowMigrationSourceDTO `json:"migrationSources,omitempty"`
 }
 
 // VersionedFlowSnapshotEntity defines model for VersionedFlowSnapshotEntity.
@@ -13049,18 +12760,6 @@ type StopVersionControlParams struct {
 	DisconnectedNodeAcknowledged *bool `form:"disconnectedNodeAcknowledged,omitempty" json:"disconnectedNodeAcknowledged,omitempty"`
 }
 
-// GetRebaseAnalysisParams defines parameters for GetRebaseAnalysis.
-type GetRebaseAnalysisParams struct {
-	// TargetVersion The target version to rebase to.
-	TargetVersion string `form:"targetVersion" json:"targetVersion"`
-}
-
-// DeleteRebaseRequestParams defines parameters for DeleteRebaseRequest.
-type DeleteRebaseRequestParams struct {
-	// DisconnectedNodeAcknowledged Acknowledges that this node is disconnected to allow for mutable requests to proceed.
-	DisconnectedNodeAcknowledged *bool `form:"disconnectedNodeAcknowledged,omitempty" json:"disconnectedNodeAcknowledged,omitempty"`
-}
-
 // DeleteRevertRequestParams defines parameters for DeleteRevertRequest.
 type DeleteRevertRequestParams struct {
 	// DisconnectedNodeAcknowledged Acknowledges that this node is disconnected to allow for mutable requests to proceed.
@@ -13099,9 +12798,6 @@ type ClearConnectorControllerServiceStateJSONRequestBody = ComponentStateEntity
 
 // InitiateDrainJSONRequestBody defines body for InitiateDrain for application/json ContentType.
 type InitiateDrainJSONRequestBody = ConnectorEntity
-
-// CreateMigrationRequestJSONRequestBody defines body for CreateMigrationRequest for application/json ContentType.
-type CreateMigrationRequestJSONRequestBody = MigrationRequestEntity
 
 // ClearConnectorProcessorStateJSONRequestBody defines body for ClearConnectorProcessorState for application/json ContentType.
 type ClearConnectorProcessorStateJSONRequestBody = ComponentStateEntity
@@ -13423,12 +13119,6 @@ type UpdateFlowVersionJSONRequestBody = VersionedFlowSnapshotEntity
 
 // CreateFlowBranchJSONRequestBody defines body for CreateFlowBranch for application/json ContentType.
 type CreateFlowBranchJSONRequestBody = CreateFlowBranchRequestEntity
-
-// ApplyRebasedFlowVersionJSONRequestBody defines body for ApplyRebasedFlowVersion for application/json ContentType.
-type ApplyRebasedFlowVersionJSONRequestBody = VersionedFlowSnapshotEntity
-
-// InitiateRebaseJSONRequestBody defines body for InitiateRebase for application/json ContentType.
-type InitiateRebaseJSONRequestBody = RebaseRequestEntity
 
 // InitiateRevertFlowVersionJSONRequestBody defines body for InitiateRevertFlowVersion for application/json ContentType.
 type InitiateRevertFlowVersionJSONRequestBody = VersionControlInformationEntity
