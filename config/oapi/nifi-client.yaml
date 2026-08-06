@@ -1,0 +1,6 @@
+package: nifi
+output: ../pkg/nifi/client.gen.go
+generate:
+  client: true
+output-options:
+  skip-prune: true

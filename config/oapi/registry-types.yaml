@@ -1,0 +1,6 @@
+package: registry
+output: ../pkg/registry/types.gen.go
+generate:
+  models: true
+output-options:
+  skip-prune: true

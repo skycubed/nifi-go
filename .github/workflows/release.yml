@@ -1,0 +1,116 @@
+name: Prepare or publish a binding release
+
+on:
+  workflow_dispatch:
+    inputs:
+      action:
+        description: Prepare a generated PR or publish an approved exact-version branch
+        type: choice
+        options: [prepare, publish]
+        required: true
+      version:
+        description: Exact Apache NiFi release (for example 2.11.0)
+        type: string
+        required: true
+      revision:
+        description: Binding revision number
+        type: number
+        default: 1
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  prepare:
+    if: inputs.action == 'prepare'
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.0.0
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-go@924ae3a1cded613372ab5595356fb5720e22ba16 # v6.0.0
+        with:
+          go-version: "1.26.x"
+          check-latest: true
+          cache-dependency-path: |
+            go.sum
+            tools/go.sum
+      - name: Create exact-version base and generated release branch
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ inputs.version }}
+          REVISION: ${{ inputs.revision }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          [[ "$VERSION" =~ ^2\.[0-9]+\.[0-9]+$ ]]
+          [[ "$REVISION" =~ ^[1-9][0-9]*$ ]]
+          exact_branch="nifi-$VERSION"
+          release_branch="release/nifi-$VERSION-bindings-$REVISION"
+          git ls-remote --exit-code --tags https://github.com/apache/nifi.git "refs/tags/rel/nifi-$VERSION" >/dev/null
+          if ! git ls-remote --exit-code --heads origin "$exact_branch" >/dev/null 2>&1; then
+            git push origin "HEAD:refs/heads/$exact_branch"
+          fi
+          git fetch origin "$exact_branch" main
+          git checkout -B "$release_branch" "origin/$exact_branch"
+          git restore --source origin/main --staged --worktree :/
+          cd tools
+          go run ./cmd/releaselock -version "$VERSION" -output ../source.lock.json
+          cd ..
+          make generate
+          make test vet
+          git add source.lock.json openapi pkg/nifi pkg/registry
+          if git diff --cached --quiet; then
+            echo "Release branch already matches the official artifacts."
+            exit 0
+          fi
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git commit -m "Generate NiFi $VERSION bindings.$REVISION"
+          git push --force-with-lease origin "$release_branch"
+          gh pr create --draft --base "$exact_branch" --head "$release_branch" \
+            --title "Generate NiFi $VERSION bindings.$REVISION" \
+            --body "Generated from the locked official NiFi $VERSION Maven Central artifacts. Publishing remains a separate approved action."
+
+  publish:
+    if: inputs.action == 'publish'
+    runs-on: ubuntu-24.04
+    environment: release
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.0.0
+        with:
+          ref: nifi-${{ inputs.version }}
+          fetch-depth: 0
+      - uses: actions/setup-go@924ae3a1cded613372ab5595356fb5720e22ba16 # v6.0.0
+        with:
+          go-version: "1.26.x"
+          check-latest: true
+          cache-dependency-path: |
+            go.sum
+            tools/go.sum
+      - name: Verify and publish immutable annotated tag
+        env:
+          VERSION: ${{ inputs.version }}
+          REVISION: ${{ inputs.revision }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(jq -r .version source.lock.json)" = "$VERSION"
+          tag="v$VERSION-bindings.$REVISION"
+          if git rev-parse "$tag" >/dev/null 2>&1; then
+            echo "Refusing to rewrite existing tag $tag" >&2
+            exit 1
+          fi
+          make verify-generated test test-race vet lint vuln
+          ./scripts/integration-smoke.sh "$VERSION"
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git tag -a "$tag" -m "Apache NiFi $VERSION Go bindings revision $REVISION"
+          git push origin "refs/tags/$tag"

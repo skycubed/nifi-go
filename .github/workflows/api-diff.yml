@@ -1,0 +1,55 @@
+name: Public API diff
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  compare:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Check out the base revision
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.0.0
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+          path: old
+      - name: Check out the proposed revision
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.0.0
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          path: new
+      - uses: actions/setup-go@924ae3a1cded613372ab5595356fb5720e22ba16 # v6.0.0
+        with:
+          go-version: "1.26.x"
+          check-latest: true
+          cache-dependency-path: new/tools/go.sum
+      - name: Compare exported module APIs
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p new/.cache/bin
+          (cd new/tools && go build -o ../.cache/bin/apidiff golang.org/x/exp/cmd/apidiff)
+          (cd old && ../new/.cache/bin/apidiff -m -w ../old.api github.com/skycubed/nifi-go/v2)
+          (cd new && .cache/bin/apidiff -m -w ../new.api github.com/skycubed/nifi-go/v2)
+          old_version=$(jq -r '.version // "legacy"' old/source.lock.json 2>/dev/null || echo legacy)
+          new_version=$(jq -r '.version // "legacy"' new/source.lock.json 2>/dev/null || echo legacy)
+          set +e
+          new/.cache/bin/apidiff -m old.api new.api >api-diff.txt
+          result=$?
+          set -e
+          {
+            echo '## Public Go API diff'
+            echo
+            echo "Base target: $old_version; proposed target: $new_version"
+            echo
+            echo '```text'
+            cat api-diff.txt
+            echo '```'
+          } >>"$GITHUB_STEP_SUMMARY"
+          if [ "$old_version" = "$new_version" ]; then
+            exit "$result"
+          fi
+          echo "Upstream version change: incompatibilities are reported for review but do not fail this job."
+
