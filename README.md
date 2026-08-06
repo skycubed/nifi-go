@@ -12,25 +12,25 @@ assumed or guaranteed.
 
 | NiFi / Registry | Branch | Binding tag |
 | --- | --- | --- |
-| 2.0.0 | `nifi-2.0.0` | `v2.0.0-bindings.1` |
-| 2.1.0 | `nifi-2.1.0` | `v2.1.0-bindings.1` |
-| 2.2.0 | `nifi-2.2.0` | `v2.2.0-bindings.1` |
-| 2.3.0 | `nifi-2.3.0` | `v2.3.0-bindings.1` |
-| 2.4.0 | `nifi-2.4.0` | `v2.4.0-bindings.1` |
-| 2.5.0 | `nifi-2.5.0` | `v2.5.0-bindings.1` |
-| 2.6.0 | `nifi-2.6.0` | `v2.6.0-bindings.1` |
-| 2.7.0 | `nifi-2.7.0` | `v2.7.0-bindings.1` |
-| 2.7.1 | `nifi-2.7.1` | `v2.7.1-bindings.1` |
-| 2.7.2 | `nifi-2.7.2` | `v2.7.2-bindings.1` |
-| 2.8.0 | `nifi-2.8.0` | `v2.8.0-bindings.1` |
-| 2.9.0 | `nifi-2.9.0` | `v2.9.0-bindings.1` |
-| 2.10.0 | `nifi-2.10.0` | `v2.10.0-bindings.1` |
-| 2.11.0 | `nifi-2.11.0` | `v2.11.0-bindings.1` |
+| 2.0.0 | `nifi-2.0.0` | `v2.0.0-bindings.2` |
+| 2.1.0 | `nifi-2.1.0` | `v2.1.0-bindings.2` |
+| 2.2.0 | `nifi-2.2.0` | `v2.2.0-bindings.2` |
+| 2.3.0 | `nifi-2.3.0` | `v2.3.0-bindings.2` |
+| 2.4.0 | `nifi-2.4.0` | `v2.4.0-bindings.2` |
+| 2.5.0 | `nifi-2.5.0` | `v2.5.0-bindings.2` |
+| 2.6.0 | `nifi-2.6.0` | `v2.6.0-bindings.2` |
+| 2.7.0 | `nifi-2.7.0` | `v2.7.0-bindings.2` |
+| 2.7.1 | `nifi-2.7.1` | `v2.7.1-bindings.2` |
+| 2.7.2 | `nifi-2.7.2` | `v2.7.2-bindings.2` |
+| 2.8.0 | `nifi-2.8.0` | `v2.8.0-bindings.2` |
+| 2.9.0 | `nifi-2.9.0` | `v2.9.0-bindings.2` |
+| 2.10.0 | `nifi-2.10.0` | `v2.10.0-bindings.2` |
+| 2.11.0 | `nifi-2.11.0` | `v2.11.0-bindings.2` |
 
 For example:
 
 ```sh
-go get github.com/skycubed/nifi-go/v2@v2.11.0-bindings.1
+go get github.com/skycubed/nifi-go/v2@v2.11.0-bindings.2
 ```
 
 Legacy `*-beta.*` tags remain available but are not rewritten or promoted as
@@ -68,10 +68,11 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	if response.StatusCode() != 200 || response.JSON200 == nil {
+	about := nifi.JSONResponseBody[nifi.AboutEntity](response)
+	if response.StatusCode() != 200 || about == nil {
 		log.Fatalf("NiFi returned %s: %s", response.Status(), response.Body)
 	}
-	fmt.Println(*response.JSON200.About.Version)
+	fmt.Println(*about.About.Version)
 }
 ```
 
@@ -88,16 +89,17 @@ current, err := client.GetProcessorWithResponse(ctx, processorID)
 if err != nil {
 	return err
 }
-if current.JSON200 == nil || current.JSON200.Component == nil {
+currentEntity := nifi.JSONResponseBody[nifi.ProcessorEntity](current)
+if currentEntity == nil || currentEntity.Component == nil {
 	return fmt.Errorf("read processor failed: %s: %s", current.Status(), current.Body)
 }
 newName := "Renamed processor"
-current.JSON200.Component.Name = &newName
-updated, err := client.UpdateProcessorWithResponse(ctx, processorID, *current.JSON200)
+currentEntity.Component.Name = &newName
+updated, err := client.UpdateProcessorWithResponse(ctx, processorID, *currentEntity)
 if err != nil {
 	return err
 }
-if updated.JSON200 == nil {
+if nifi.JSONResponseBody[nifi.ProcessorEntity](updated) == nil {
 	return fmt.Errorf("update failed: %s: %s", updated.Status(), updated.Body)
 }
 ```
