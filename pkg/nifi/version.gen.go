@@ -3,4 +3,4 @@
 package nifi
 
 // TargetNiFiVersion is the exact Apache NiFi version represented by this binding release.
-const TargetNiFiVersion = "2.11.0"
+const TargetNiFiVersion = "2.7.0"

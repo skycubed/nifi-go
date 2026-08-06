@@ -3,4 +3,4 @@
 package registry
 
 // TargetRegistryVersion is the exact Apache NiFi Registry version represented by this binding release.
-const TargetRegistryVersion = "2.11.0"
+const TargetRegistryVersion = "2.7.0"
