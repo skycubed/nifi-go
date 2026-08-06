@@ -44,23 +44,13 @@ func TestNiFiAbout(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	entity := nifiAboutEntity(response)
+	entity := nifi.JSONResponseBody[nifi.AboutEntity](response)
 	if response.StatusCode() != http.StatusOK || entity == nil || entity.About == nil || entity.About.Version == nil {
 		t.Fatalf("unexpected response: status=%d body=%s", response.StatusCode(), response.Body)
 	}
 	if got, want := *entity.About.Version, nifi.TargetNiFiVersion; got != want {
 		t.Fatalf("server version = %q, binding version = %q", got, want)
 	}
-}
-
-func nifiAboutEntity(response *nifi.GetAboutInfoResponse) *nifi.AboutEntity {
-	if typed, ok := any(response).(interface{ GetJSON200() *nifi.AboutEntity }); ok {
-		return typed.GetJSON200()
-	}
-	if typed, ok := any(response).(interface{ GetJSONDefault() *nifi.AboutEntity }); ok {
-		return typed.GetJSONDefault()
-	}
-	return nil
 }
 
 func TestRegistryAbout(t *testing.T) {
@@ -83,10 +73,11 @@ func TestRegistryAbout(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if response.StatusCode() != http.StatusOK || response.JSONDefault == nil || response.JSONDefault.RegistryAboutVersion == nil {
+	entity := registry.JSONResponseBody[registry.RegistryAbout](response)
+	if response.StatusCode() != http.StatusOK || entity == nil || entity.RegistryAboutVersion == nil {
 		t.Fatalf("unexpected response: status=%d body=%s", response.StatusCode(), response.Body)
 	}
-	if got, want := *response.JSONDefault.RegistryAboutVersion, registry.TargetRegistryVersion; got != want {
+	if got, want := *entity.RegistryAboutVersion, registry.TargetRegistryVersion; got != want {
 		t.Fatalf("server version = %q, binding version = %q", got, want)
 	}
 }
