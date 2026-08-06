@@ -7616,13 +7616,13 @@ func (r GetVersionResponse) ContentType() string {
 type GetAccessStatusResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *CurrentUser
+	// JSONDefault the response for an HTTP default `application/json` response
+	JSONDefault *CurrentUser
 }
 
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetAccessStatusResponse) GetJSON200() *CurrentUser {
-	return r.JSON200
+// GetJSONDefault returns the response for an HTTP default `application/json` response
+func (r GetAccessStatusResponse) GetJSONDefault() *CurrentUser {
+	return r.JSONDefault
 }
 
 // GetBody returns the raw response body bytes
@@ -8099,13 +8099,13 @@ func (r CreateAccessTokenUsingBasicAuthCredentialsResponse) ContentType() string
 type GetBucketsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *[]Bucket
+	// JSONDefault the response for an HTTP default `application/json` response
+	JSONDefault *[]Bucket
 }
 
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetBucketsResponse) GetJSON200() *[]Bucket {
-	return r.JSON200
+// GetJSONDefault returns the response for an HTTP default `application/json` response
+func (r GetBucketsResponse) GetJSONDefault() *[]Bucket {
+	return r.JSONDefault
 }
 
 // GetBody returns the raw response body bytes
@@ -8140,13 +8140,13 @@ func (r GetBucketsResponse) ContentType() string {
 type CreateBucketResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *Bucket
+	// JSONDefault the response for an HTTP default `application/json` response
+	JSONDefault *Bucket
 }
 
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r CreateBucketResponse) GetJSON200() *Bucket {
-	return r.JSON200
+// GetJSONDefault returns the response for an HTTP default `application/json` response
+func (r CreateBucketResponse) GetJSONDefault() *Bucket {
+	return r.JSONDefault
 }
 
 // GetBody returns the raw response body bytes
@@ -8222,13 +8222,13 @@ func (r GetAvailableBucketFieldsResponse) ContentType() string {
 type DeleteBucketResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *Bucket
+	// JSONDefault the response for an HTTP default `application/json` response
+	JSONDefault *Bucket
 }
 
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r DeleteBucketResponse) GetJSON200() *Bucket {
-	return r.JSON200
+// GetJSONDefault returns the response for an HTTP default `application/json` response
+func (r DeleteBucketResponse) GetJSONDefault() *Bucket {
+	return r.JSONDefault
 }
 
 // GetBody returns the raw response body bytes
@@ -8263,13 +8263,13 @@ func (r DeleteBucketResponse) ContentType() string {
 type GetBucketResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *Bucket
+	// JSONDefault the response for an HTTP default `application/json` response
+	JSONDefault *Bucket
 }
 
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetBucketResponse) GetJSON200() *Bucket {
-	return r.JSON200
+// GetJSONDefault returns the response for an HTTP default `application/json` response
+func (r GetBucketResponse) GetJSONDefault() *Bucket {
+	return r.JSONDefault
 }
 
 // GetBody returns the raw response body bytes
@@ -8304,13 +8304,13 @@ func (r GetBucketResponse) ContentType() string {
 type UpdateBucketResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *Bucket
+	// JSONDefault the response for an HTTP default `application/json` response
+	JSONDefault *Bucket
 }
 
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r UpdateBucketResponse) GetJSON200() *Bucket {
-	return r.JSON200
+// GetJSONDefault returns the response for an HTTP default `application/json` response
+func (r UpdateBucketResponse) GetJSONDefault() *Bucket {
+	return r.JSONDefault
 }
 
 // GetBody returns the raw response body bytes
@@ -8345,13 +8345,13 @@ func (r UpdateBucketResponse) ContentType() string {
 type GetExtensionBundlesResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *[]Bundle
+	// JSONDefault the response for an HTTP default `application/json` response
+	JSONDefault *[]Bundle
 }
 
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetExtensionBundlesResponse) GetJSON200() *[]Bundle {
-	return r.JSON200
+// GetJSONDefault returns the response for an HTTP default `application/json` response
+func (r GetExtensionBundlesResponse) GetJSONDefault() *[]Bundle {
+	return r.JSONDefault
 }
 
 // GetBody returns the raw response body bytes
@@ -8386,13 +8386,13 @@ func (r GetExtensionBundlesResponse) ContentType() string {
 type CreateExtensionBundleVersionResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *BundleVersion
+	// JSONDefault the response for an HTTP default `application/json` response
+	JSONDefault *BundleVersion
 }
 
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r CreateExtensionBundleVersionResponse) GetJSON200() *BundleVersion {
-	return r.JSON200
+// GetJSONDefault returns the response for an HTTP default `application/json` response
+func (r CreateExtensionBundleVersionResponse) GetJSONDefault() *BundleVersion {
+	return r.JSONDefault
 }
 
 // GetBody returns the raw response body bytes
@@ -8427,13 +8427,13 @@ func (r CreateExtensionBundleVersionResponse) ContentType() string {
 type GetFlowsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *[]VersionedFlow
+	// JSONDefault the response for an HTTP default `application/json` response
+	JSONDefault *[]VersionedFlow
 }
 
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetFlowsResponse) GetJSON200() *[]VersionedFlow {
-	return r.JSON200
+// GetJSONDefault returns the response for an HTTP default `application/json` response
+func (r GetFlowsResponse) GetJSONDefault() *[]VersionedFlow {
+	return r.JSONDefault
 }
 
 // GetBody returns the raw response body bytes
@@ -8468,13 +8468,13 @@ func (r GetFlowsResponse) ContentType() string {
 type CreateFlowResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *VersionedFlow
+	// JSONDefault the response for an HTTP default `application/json` response
+	JSONDefault *VersionedFlow
 }
 
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r CreateFlowResponse) GetJSON200() *VersionedFlow {
-	return r.JSON200
+// GetJSONDefault returns the response for an HTTP default `application/json` response
+func (r CreateFlowResponse) GetJSONDefault() *VersionedFlow {
+	return r.JSONDefault
 }
 
 // GetBody returns the raw response body bytes
@@ -8509,13 +8509,13 @@ func (r CreateFlowResponse) ContentType() string {
 type DeleteFlowResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *VersionedFlow
+	// JSONDefault the response for an HTTP default `application/json` response
+	JSONDefault *VersionedFlow
 }
 
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r DeleteFlowResponse) GetJSON200() *VersionedFlow {
-	return r.JSON200
+// GetJSONDefault returns the response for an HTTP default `application/json` response
+func (r DeleteFlowResponse) GetJSONDefault() *VersionedFlow {
+	return r.JSONDefault
 }
 
 // GetBody returns the raw response body bytes
@@ -8550,13 +8550,13 @@ func (r DeleteFlowResponse) ContentType() string {
 type GetFlowResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *VersionedFlow
+	// JSONDefault the response for an HTTP default `application/json` response
+	JSONDefault *VersionedFlow
 }
 
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetFlowResponse) GetJSON200() *VersionedFlow {
-	return r.JSON200
+// GetJSONDefault returns the response for an HTTP default `application/json` response
+func (r GetFlowResponse) GetJSONDefault() *VersionedFlow {
+	return r.JSONDefault
 }
 
 // GetBody returns the raw response body bytes
@@ -8591,13 +8591,13 @@ func (r GetFlowResponse) ContentType() string {
 type UpdateFlowResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *VersionedFlow
+	// JSONDefault the response for an HTTP default `application/json` response
+	JSONDefault *VersionedFlow
 }
 
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r UpdateFlowResponse) GetJSON200() *VersionedFlow {
-	return r.JSON200
+// GetJSONDefault returns the response for an HTTP default `application/json` response
+func (r UpdateFlowResponse) GetJSONDefault() *VersionedFlow {
+	return r.JSONDefault
 }
 
 // GetBody returns the raw response body bytes
@@ -8632,13 +8632,13 @@ func (r UpdateFlowResponse) ContentType() string {
 type GetFlowDiffResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *VersionedFlowDifference
+	// JSONDefault the response for an HTTP default `application/json` response
+	JSONDefault *VersionedFlowDifference
 }
 
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetFlowDiffResponse) GetJSON200() *VersionedFlowDifference {
-	return r.JSON200
+// GetJSONDefault returns the response for an HTTP default `application/json` response
+func (r GetFlowDiffResponse) GetJSONDefault() *VersionedFlowDifference {
+	return r.JSONDefault
 }
 
 // GetBody returns the raw response body bytes
@@ -8673,13 +8673,13 @@ func (r GetFlowDiffResponse) ContentType() string {
 type GetFlowVersionsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *[]VersionedFlowSnapshotMetadata
+	// JSONDefault the response for an HTTP default `application/json` response
+	JSONDefault *[]VersionedFlowSnapshotMetadata
 }
 
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetFlowVersionsResponse) GetJSON200() *[]VersionedFlowSnapshotMetadata {
-	return r.JSON200
+// GetJSONDefault returns the response for an HTTP default `application/json` response
+func (r GetFlowVersionsResponse) GetJSONDefault() *[]VersionedFlowSnapshotMetadata {
+	return r.JSONDefault
 }
 
 // GetBody returns the raw response body bytes
@@ -8714,13 +8714,13 @@ func (r GetFlowVersionsResponse) ContentType() string {
 type CreateFlowVersionResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *VersionedFlowSnapshot
+	// JSONDefault the response for an HTTP default `application/json` response
+	JSONDefault *VersionedFlowSnapshot
 }
 
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r CreateFlowVersionResponse) GetJSON200() *VersionedFlowSnapshot {
-	return r.JSON200
+// GetJSONDefault returns the response for an HTTP default `application/json` response
+func (r CreateFlowVersionResponse) GetJSONDefault() *VersionedFlowSnapshot {
+	return r.JSONDefault
 }
 
 // GetBody returns the raw response body bytes
@@ -8755,13 +8755,13 @@ func (r CreateFlowVersionResponse) ContentType() string {
 type ImportVersionedFlowResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	// JSON201 the response for an HTTP 201 `application/json` response
-	JSON201 *VersionedFlowSnapshot
+	// JSONDefault the response for an HTTP default `application/json` response
+	JSONDefault *VersionedFlowSnapshot
 }
 
-// GetJSON201 returns the response for an HTTP 201 `application/json` response
-func (r ImportVersionedFlowResponse) GetJSON201() *VersionedFlowSnapshot {
-	return r.JSON201
+// GetJSONDefault returns the response for an HTTP default `application/json` response
+func (r ImportVersionedFlowResponse) GetJSONDefault() *VersionedFlowSnapshot {
+	return r.JSONDefault
 }
 
 // GetBody returns the raw response body bytes
@@ -8796,13 +8796,13 @@ func (r ImportVersionedFlowResponse) ContentType() string {
 type GetLatestFlowVersionResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *VersionedFlowSnapshot
+	// JSONDefault the response for an HTTP default `application/json` response
+	JSONDefault *VersionedFlowSnapshot
 }
 
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetLatestFlowVersionResponse) GetJSON200() *VersionedFlowSnapshot {
-	return r.JSON200
+// GetJSONDefault returns the response for an HTTP default `application/json` response
+func (r GetLatestFlowVersionResponse) GetJSONDefault() *VersionedFlowSnapshot {
+	return r.JSONDefault
 }
 
 // GetBody returns the raw response body bytes
@@ -8837,13 +8837,13 @@ func (r GetLatestFlowVersionResponse) ContentType() string {
 type GetLatestFlowVersionMetadataResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *VersionedFlowSnapshotMetadata
+	// JSONDefault the response for an HTTP default `application/json` response
+	JSONDefault *VersionedFlowSnapshotMetadata
 }
 
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetLatestFlowVersionMetadataResponse) GetJSON200() *VersionedFlowSnapshotMetadata {
-	return r.JSON200
+// GetJSONDefault returns the response for an HTTP default `application/json` response
+func (r GetLatestFlowVersionMetadataResponse) GetJSONDefault() *VersionedFlowSnapshotMetadata {
+	return r.JSONDefault
 }
 
 // GetBody returns the raw response body bytes
@@ -8878,13 +8878,13 @@ func (r GetLatestFlowVersionMetadataResponse) ContentType() string {
 type GetFlowVersionResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *VersionedFlowSnapshot
+	// JSONDefault the response for an HTTP default `application/json` response
+	JSONDefault *VersionedFlowSnapshot
 }
 
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetFlowVersionResponse) GetJSON200() *VersionedFlowSnapshot {
-	return r.JSON200
+// GetJSONDefault returns the response for an HTTP default `application/json` response
+func (r GetFlowVersionResponse) GetJSONDefault() *VersionedFlowSnapshot {
+	return r.JSONDefault
 }
 
 // GetBody returns the raw response body bytes
@@ -8919,13 +8919,13 @@ func (r GetFlowVersionResponse) ContentType() string {
 type ExportVersionedFlowResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *VersionedFlowSnapshot
+	// JSONDefault the response for an HTTP default `application/json` response
+	JSONDefault *VersionedFlowSnapshot
 }
 
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r ExportVersionedFlowResponse) GetJSON200() *VersionedFlowSnapshot {
-	return r.JSON200
+// GetJSONDefault returns the response for an HTTP default `application/json` response
+func (r ExportVersionedFlowResponse) GetJSONDefault() *VersionedFlowSnapshot {
+	return r.JSONDefault
 }
 
 // GetBody returns the raw response body bytes
@@ -8960,13 +8960,13 @@ func (r ExportVersionedFlowResponse) ContentType() string {
 type GetBundlesResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *[]Bundle
+	// JSONDefault the response for an HTTP default `application/json` response
+	JSONDefault *[]Bundle
 }
 
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetBundlesResponse) GetJSON200() *[]Bundle {
-	return r.JSON200
+// GetJSONDefault returns the response for an HTTP default `application/json` response
+func (r GetBundlesResponse) GetJSONDefault() *[]Bundle {
+	return r.JSONDefault
 }
 
 // GetBody returns the raw response body bytes
@@ -9001,13 +9001,13 @@ func (r GetBundlesResponse) ContentType() string {
 type GetBundleVersions1Response struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *[]BundleVersionMetadata
+	// JSONDefault the response for an HTTP default `application/json` response
+	JSONDefault *[]BundleVersionMetadata
 }
 
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetBundleVersions1Response) GetJSON200() *[]BundleVersionMetadata {
-	return r.JSON200
+// GetJSONDefault returns the response for an HTTP default `application/json` response
+func (r GetBundleVersions1Response) GetJSONDefault() *[]BundleVersionMetadata {
+	return r.JSONDefault
 }
 
 // GetBody returns the raw response body bytes
@@ -9042,13 +9042,13 @@ func (r GetBundleVersions1Response) ContentType() string {
 type DeleteBundleResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *Bundle
+	// JSONDefault the response for an HTTP default `application/json` response
+	JSONDefault *Bundle
 }
 
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r DeleteBundleResponse) GetJSON200() *Bundle {
-	return r.JSON200
+// GetJSONDefault returns the response for an HTTP default `application/json` response
+func (r DeleteBundleResponse) GetJSONDefault() *Bundle {
+	return r.JSONDefault
 }
 
 // GetBody returns the raw response body bytes
@@ -9083,13 +9083,13 @@ func (r DeleteBundleResponse) ContentType() string {
 type GetBundleResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *Bundle
+	// JSONDefault the response for an HTTP default `application/json` response
+	JSONDefault *Bundle
 }
 
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetBundleResponse) GetJSON200() *Bundle {
-	return r.JSON200
+// GetJSONDefault returns the response for an HTTP default `application/json` response
+func (r GetBundleResponse) GetJSONDefault() *Bundle {
+	return r.JSONDefault
 }
 
 // GetBody returns the raw response body bytes
@@ -9124,13 +9124,13 @@ func (r GetBundleResponse) ContentType() string {
 type GetBundleVersionsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *[]BundleVersionMetadata
+	// JSONDefault the response for an HTTP default `application/json` response
+	JSONDefault *[]BundleVersionMetadata
 }
 
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetBundleVersionsResponse) GetJSON200() *[]BundleVersionMetadata {
-	return r.JSON200
+// GetJSONDefault returns the response for an HTTP default `application/json` response
+func (r GetBundleVersionsResponse) GetJSONDefault() *[]BundleVersionMetadata {
+	return r.JSONDefault
 }
 
 // GetBody returns the raw response body bytes
@@ -9165,13 +9165,13 @@ func (r GetBundleVersionsResponse) ContentType() string {
 type DeleteBundleVersionResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *BundleVersion
+	// JSONDefault the response for an HTTP default `application/json` response
+	JSONDefault *BundleVersion
 }
 
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r DeleteBundleVersionResponse) GetJSON200() *BundleVersion {
-	return r.JSON200
+// GetJSONDefault returns the response for an HTTP default `application/json` response
+func (r DeleteBundleVersionResponse) GetJSONDefault() *BundleVersion {
+	return r.JSONDefault
 }
 
 // GetBody returns the raw response body bytes
@@ -9206,13 +9206,13 @@ func (r DeleteBundleVersionResponse) ContentType() string {
 type GetBundleVersionResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *BundleVersion
+	// JSONDefault the response for an HTTP default `application/json` response
+	JSONDefault *BundleVersion
 }
 
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetBundleVersionResponse) GetJSON200() *BundleVersion {
-	return r.JSON200
+// GetJSONDefault returns the response for an HTTP default `application/json` response
+func (r GetBundleVersionResponse) GetJSONDefault() *BundleVersion {
+	return r.JSONDefault
 }
 
 // GetBody returns the raw response body bytes
@@ -9281,13 +9281,13 @@ func (r GetBundleVersionContentResponse) ContentType() string {
 type GetBundleVersionExtensionsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *[]ExtensionMetadata
+	// JSONDefault the response for an HTTP default `application/json` response
+	JSONDefault *[]ExtensionMetadata
 }
 
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetBundleVersionExtensionsResponse) GetJSON200() *[]ExtensionMetadata {
-	return r.JSON200
+// GetJSONDefault returns the response for an HTTP default `application/json` response
+func (r GetBundleVersionExtensionsResponse) GetJSONDefault() *[]ExtensionMetadata {
+	return r.JSONDefault
 }
 
 // GetBody returns the raw response body bytes
@@ -9322,13 +9322,13 @@ func (r GetBundleVersionExtensionsResponse) ContentType() string {
 type GetBundleVersionExtensionResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *[]Extension
+	// JSONDefault the response for an HTTP default `application/json` response
+	JSONDefault *[]Extension
 }
 
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetBundleVersionExtensionResponse) GetJSON200() *[]Extension {
-	return r.JSON200
+// GetJSONDefault returns the response for an HTTP default `application/json` response
+func (r GetBundleVersionExtensionResponse) GetJSONDefault() *[]Extension {
+	return r.JSONDefault
 }
 
 // GetBody returns the raw response body bytes
@@ -9431,13 +9431,13 @@ func (r GetBundleVersionExtensionAdditionalDetailsDocsResponse) ContentType() st
 type GetConfigurationResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *RegistryConfiguration
+	// JSONDefault the response for an HTTP default `application/json` response
+	JSONDefault *RegistryConfiguration
 }
 
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetConfigurationResponse) GetJSON200() *RegistryConfiguration {
-	return r.JSON200
+// GetJSONDefault returns the response for an HTTP default `application/json` response
+func (r GetConfigurationResponse) GetJSONDefault() *RegistryConfiguration {
+	return r.JSONDefault
 }
 
 // GetBody returns the raw response body bytes
@@ -9472,13 +9472,13 @@ func (r GetConfigurationResponse) ContentType() string {
 type GetExtensionRepoBucketsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *[]ExtensionRepoBucket
+	// JSONDefault the response for an HTTP default `application/json` response
+	JSONDefault *[]ExtensionRepoBucket
 }
 
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetExtensionRepoBucketsResponse) GetJSON200() *[]ExtensionRepoBucket {
-	return r.JSON200
+// GetJSONDefault returns the response for an HTTP default `application/json` response
+func (r GetExtensionRepoBucketsResponse) GetJSONDefault() *[]ExtensionRepoBucket {
+	return r.JSONDefault
 }
 
 // GetBody returns the raw response body bytes
@@ -9513,13 +9513,13 @@ func (r GetExtensionRepoBucketsResponse) ContentType() string {
 type GetExtensionRepoGroupsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *[]ExtensionRepoGroup
+	// JSONDefault the response for an HTTP default `application/json` response
+	JSONDefault *[]ExtensionRepoGroup
 }
 
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetExtensionRepoGroupsResponse) GetJSON200() *[]ExtensionRepoGroup {
-	return r.JSON200
+// GetJSONDefault returns the response for an HTTP default `application/json` response
+func (r GetExtensionRepoGroupsResponse) GetJSONDefault() *[]ExtensionRepoGroup {
+	return r.JSONDefault
 }
 
 // GetBody returns the raw response body bytes
@@ -9554,13 +9554,13 @@ func (r GetExtensionRepoGroupsResponse) ContentType() string {
 type GetExtensionRepoArtifactsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *[]ExtensionRepoArtifact
+	// JSONDefault the response for an HTTP default `application/json` response
+	JSONDefault *[]ExtensionRepoArtifact
 }
 
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetExtensionRepoArtifactsResponse) GetJSON200() *[]ExtensionRepoArtifact {
-	return r.JSON200
+// GetJSONDefault returns the response for an HTTP default `application/json` response
+func (r GetExtensionRepoArtifactsResponse) GetJSONDefault() *[]ExtensionRepoArtifact {
+	return r.JSONDefault
 }
 
 // GetBody returns the raw response body bytes
@@ -9595,13 +9595,13 @@ func (r GetExtensionRepoArtifactsResponse) ContentType() string {
 type GetExtensionRepoVersionsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *[]ExtensionRepoVersionSummary
+	// JSONDefault the response for an HTTP default `application/json` response
+	JSONDefault *[]ExtensionRepoVersionSummary
 }
 
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetExtensionRepoVersionsResponse) GetJSON200() *[]ExtensionRepoVersionSummary {
-	return r.JSON200
+// GetJSONDefault returns the response for an HTTP default `application/json` response
+func (r GetExtensionRepoVersionsResponse) GetJSONDefault() *[]ExtensionRepoVersionSummary {
+	return r.JSONDefault
 }
 
 // GetBody returns the raw response body bytes
@@ -9636,13 +9636,13 @@ func (r GetExtensionRepoVersionsResponse) ContentType() string {
 type GetExtensionRepoVersionResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *ExtensionRepoVersion
+	// JSONDefault the response for an HTTP default `application/json` response
+	JSONDefault *ExtensionRepoVersion
 }
 
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetExtensionRepoVersionResponse) GetJSON200() *ExtensionRepoVersion {
-	return r.JSON200
+// GetJSONDefault returns the response for an HTTP default `application/json` response
+func (r GetExtensionRepoVersionResponse) GetJSONDefault() *ExtensionRepoVersion {
+	return r.JSONDefault
 }
 
 // GetBody returns the raw response body bytes
@@ -9711,13 +9711,13 @@ func (r GetExtensionRepoVersionContentResponse) ContentType() string {
 type GetExtensionRepoVersionExtensionsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *[]ExtensionMetadata
+	// JSONDefault the response for an HTTP default `application/json` response
+	JSONDefault *[]ExtensionMetadata
 }
 
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetExtensionRepoVersionExtensionsResponse) GetJSON200() *[]ExtensionMetadata {
-	return r.JSON200
+// GetJSONDefault returns the response for an HTTP default `application/json` response
+func (r GetExtensionRepoVersionExtensionsResponse) GetJSONDefault() *[]ExtensionMetadata {
+	return r.JSONDefault
 }
 
 // GetBody returns the raw response body bytes
@@ -9752,13 +9752,13 @@ func (r GetExtensionRepoVersionExtensionsResponse) ContentType() string {
 type GetExtensionRepoVersionExtensionResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *Extension
+	// JSONDefault the response for an HTTP default `application/json` response
+	JSONDefault *Extension
 }
 
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetExtensionRepoVersionExtensionResponse) GetJSON200() *Extension {
-	return r.JSON200
+// GetJSONDefault returns the response for an HTTP default `application/json` response
+func (r GetExtensionRepoVersionExtensionResponse) GetJSONDefault() *Extension {
+	return r.JSONDefault
 }
 
 // GetBody returns the raw response body bytes
@@ -9929,13 +9929,13 @@ func (r GetGlobalExtensionRepoVersionSha256Response) ContentType() string {
 type GetExtensionsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *ExtensionMetadataContainer
+	// JSONDefault the response for an HTTP default `application/json` response
+	JSONDefault *ExtensionMetadataContainer
 }
 
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetExtensionsResponse) GetJSON200() *ExtensionMetadataContainer {
-	return r.JSON200
+// GetJSONDefault returns the response for an HTTP default `application/json` response
+func (r GetExtensionsResponse) GetJSONDefault() *ExtensionMetadataContainer {
+	return r.JSONDefault
 }
 
 // GetBody returns the raw response body bytes
@@ -9970,13 +9970,13 @@ func (r GetExtensionsResponse) ContentType() string {
 type GetExtensionsProvidingServiceAPIResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *ExtensionMetadataContainer
+	// JSONDefault the response for an HTTP default `application/json` response
+	JSONDefault *ExtensionMetadataContainer
 }
 
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetExtensionsProvidingServiceAPIResponse) GetJSON200() *ExtensionMetadataContainer {
-	return r.JSON200
+// GetJSONDefault returns the response for an HTTP default `application/json` response
+func (r GetExtensionsProvidingServiceAPIResponse) GetJSONDefault() *ExtensionMetadataContainer {
+	return r.JSONDefault
 }
 
 // GetBody returns the raw response body bytes
@@ -10011,13 +10011,13 @@ func (r GetExtensionsProvidingServiceAPIResponse) ContentType() string {
 type GetTagsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *[]TagCount
+	// JSONDefault the response for an HTTP default `application/json` response
+	JSONDefault *[]TagCount
 }
 
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetTagsResponse) GetJSON200() *[]TagCount {
-	return r.JSON200
+// GetJSONDefault returns the response for an HTTP default `application/json` response
+func (r GetTagsResponse) GetJSONDefault() *[]TagCount {
+	return r.JSONDefault
 }
 
 // GetBody returns the raw response body bytes
@@ -10093,13 +10093,13 @@ func (r GetAvailableFlowFieldsResponse) ContentType() string {
 type GetFlow1Response struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *VersionedFlow
+	// JSONDefault the response for an HTTP default `application/json` response
+	JSONDefault *VersionedFlow
 }
 
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetFlow1Response) GetJSON200() *VersionedFlow {
-	return r.JSON200
+// GetJSONDefault returns the response for an HTTP default `application/json` response
+func (r GetFlow1Response) GetJSONDefault() *VersionedFlow {
+	return r.JSONDefault
 }
 
 // GetBody returns the raw response body bytes
@@ -10134,13 +10134,13 @@ func (r GetFlow1Response) ContentType() string {
 type GetFlowVersions1Response struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *[]VersionedFlowSnapshotMetadata
+	// JSONDefault the response for an HTTP default `application/json` response
+	JSONDefault *[]VersionedFlowSnapshotMetadata
 }
 
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetFlowVersions1Response) GetJSON200() *[]VersionedFlowSnapshotMetadata {
-	return r.JSON200
+// GetJSONDefault returns the response for an HTTP default `application/json` response
+func (r GetFlowVersions1Response) GetJSONDefault() *[]VersionedFlowSnapshotMetadata {
+	return r.JSONDefault
 }
 
 // GetBody returns the raw response body bytes
@@ -10175,13 +10175,13 @@ func (r GetFlowVersions1Response) ContentType() string {
 type GetLatestFlowVersion1Response struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *VersionedFlowSnapshot
+	// JSONDefault the response for an HTTP default `application/json` response
+	JSONDefault *VersionedFlowSnapshot
 }
 
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetLatestFlowVersion1Response) GetJSON200() *VersionedFlowSnapshot {
-	return r.JSON200
+// GetJSONDefault returns the response for an HTTP default `application/json` response
+func (r GetLatestFlowVersion1Response) GetJSONDefault() *VersionedFlowSnapshot {
+	return r.JSONDefault
 }
 
 // GetBody returns the raw response body bytes
@@ -10216,13 +10216,13 @@ func (r GetLatestFlowVersion1Response) ContentType() string {
 type GetLatestFlowVersionMetadata1Response struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *VersionedFlowSnapshotMetadata
+	// JSONDefault the response for an HTTP default `application/json` response
+	JSONDefault *VersionedFlowSnapshotMetadata
 }
 
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetLatestFlowVersionMetadata1Response) GetJSON200() *VersionedFlowSnapshotMetadata {
-	return r.JSON200
+// GetJSONDefault returns the response for an HTTP default `application/json` response
+func (r GetLatestFlowVersionMetadata1Response) GetJSONDefault() *VersionedFlowSnapshotMetadata {
+	return r.JSONDefault
 }
 
 // GetBody returns the raw response body bytes
@@ -10257,13 +10257,13 @@ func (r GetLatestFlowVersionMetadata1Response) ContentType() string {
 type GetFlowVersion1Response struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *VersionedFlowSnapshot
+	// JSONDefault the response for an HTTP default `application/json` response
+	JSONDefault *VersionedFlowSnapshot
 }
 
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetFlowVersion1Response) GetJSON200() *VersionedFlowSnapshot {
-	return r.JSON200
+// GetJSONDefault returns the response for an HTTP default `application/json` response
+func (r GetFlowVersion1Response) GetJSONDefault() *VersionedFlowSnapshot {
+	return r.JSONDefault
 }
 
 // GetBody returns the raw response body bytes
@@ -10298,13 +10298,13 @@ func (r GetFlowVersion1Response) ContentType() string {
 type GetItemsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *[]BucketItem
+	// JSONDefault the response for an HTTP default `application/json` response
+	JSONDefault *[]BucketItem
 }
 
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetItemsResponse) GetJSON200() *[]BucketItem {
-	return r.JSON200
+// GetJSONDefault returns the response for an HTTP default `application/json` response
+func (r GetItemsResponse) GetJSONDefault() *[]BucketItem {
+	return r.JSONDefault
 }
 
 // GetBody returns the raw response body bytes
@@ -10380,13 +10380,13 @@ func (r GetAvailableBucketItemFieldsResponse) ContentType() string {
 type GetItems1Response struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *[]BucketItem
+	// JSONDefault the response for an HTTP default `application/json` response
+	JSONDefault *[]BucketItem
 }
 
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetItems1Response) GetJSON200() *[]BucketItem {
-	return r.JSON200
+// GetJSONDefault returns the response for an HTTP default `application/json` response
+func (r GetItems1Response) GetJSONDefault() *[]BucketItem {
+	return r.JSONDefault
 }
 
 // GetBody returns the raw response body bytes
@@ -10421,13 +10421,13 @@ func (r GetItems1Response) ContentType() string {
 type GetAccessPoliciesResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *[]AccessPolicy
+	// JSONDefault the response for an HTTP default `application/json` response
+	JSONDefault *[]AccessPolicy
 }
 
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetAccessPoliciesResponse) GetJSON200() *[]AccessPolicy {
-	return r.JSON200
+// GetJSONDefault returns the response for an HTTP default `application/json` response
+func (r GetAccessPoliciesResponse) GetJSONDefault() *[]AccessPolicy {
+	return r.JSONDefault
 }
 
 // GetBody returns the raw response body bytes
@@ -10503,13 +10503,13 @@ func (r CreateAccessPolicyResponse) ContentType() string {
 type GetResourcesResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *[]Resource
+	// JSONDefault the response for an HTTP default `application/json` response
+	JSONDefault *[]Resource
 }
 
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetResourcesResponse) GetJSON200() *[]Resource {
-	return r.JSON200
+// GetJSONDefault returns the response for an HTTP default `application/json` response
+func (r GetResourcesResponse) GetJSONDefault() *[]Resource {
+	return r.JSONDefault
 }
 
 // GetBody returns the raw response body bytes
@@ -10544,13 +10544,13 @@ func (r GetResourcesResponse) ContentType() string {
 type GetAccessPolicyForResourceResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *AccessPolicy
+	// JSONDefault the response for an HTTP default `application/json` response
+	JSONDefault *AccessPolicy
 }
 
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetAccessPolicyForResourceResponse) GetJSON200() *AccessPolicy {
-	return r.JSON200
+// GetJSONDefault returns the response for an HTTP default `application/json` response
+func (r GetAccessPolicyForResourceResponse) GetJSONDefault() *AccessPolicy {
+	return r.JSONDefault
 }
 
 // GetBody returns the raw response body bytes
@@ -10585,13 +10585,13 @@ func (r GetAccessPolicyForResourceResponse) ContentType() string {
 type RemoveAccessPolicyResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *AccessPolicy
+	// JSONDefault the response for an HTTP default `application/json` response
+	JSONDefault *AccessPolicy
 }
 
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r RemoveAccessPolicyResponse) GetJSON200() *AccessPolicy {
-	return r.JSON200
+// GetJSONDefault returns the response for an HTTP default `application/json` response
+func (r RemoveAccessPolicyResponse) GetJSONDefault() *AccessPolicy {
+	return r.JSONDefault
 }
 
 // GetBody returns the raw response body bytes
@@ -10626,13 +10626,13 @@ func (r RemoveAccessPolicyResponse) ContentType() string {
 type GetAccessPolicyResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *AccessPolicy
+	// JSONDefault the response for an HTTP default `application/json` response
+	JSONDefault *AccessPolicy
 }
 
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetAccessPolicyResponse) GetJSON200() *AccessPolicy {
-	return r.JSON200
+// GetJSONDefault returns the response for an HTTP default `application/json` response
+func (r GetAccessPolicyResponse) GetJSONDefault() *AccessPolicy {
+	return r.JSONDefault
 }
 
 // GetBody returns the raw response body bytes
@@ -10667,13 +10667,13 @@ func (r GetAccessPolicyResponse) ContentType() string {
 type UpdateAccessPolicyResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *AccessPolicy
+	// JSONDefault the response for an HTTP default `application/json` response
+	JSONDefault *AccessPolicy
 }
 
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r UpdateAccessPolicyResponse) GetJSON200() *AccessPolicy {
-	return r.JSON200
+// GetJSONDefault returns the response for an HTTP default `application/json` response
+func (r UpdateAccessPolicyResponse) GetJSONDefault() *AccessPolicy {
+	return r.JSONDefault
 }
 
 // GetBody returns the raw response body bytes
@@ -10708,13 +10708,13 @@ func (r UpdateAccessPolicyResponse) ContentType() string {
 type GetUserGroupsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *[]UserGroup
+	// JSONDefault the response for an HTTP default `application/json` response
+	JSONDefault *[]UserGroup
 }
 
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetUserGroupsResponse) GetJSON200() *[]UserGroup {
-	return r.JSON200
+// GetJSONDefault returns the response for an HTTP default `application/json` response
+func (r GetUserGroupsResponse) GetJSONDefault() *[]UserGroup {
+	return r.JSONDefault
 }
 
 // GetBody returns the raw response body bytes
@@ -10749,13 +10749,13 @@ func (r GetUserGroupsResponse) ContentType() string {
 type CreateUserGroupResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	// JSON201 the response for an HTTP 201 `application/json` response
-	JSON201 *UserGroup
+	// JSONDefault the response for an HTTP default `application/json` response
+	JSONDefault *UserGroup
 }
 
-// GetJSON201 returns the response for an HTTP 201 `application/json` response
-func (r CreateUserGroupResponse) GetJSON201() *UserGroup {
-	return r.JSON201
+// GetJSONDefault returns the response for an HTTP default `application/json` response
+func (r CreateUserGroupResponse) GetJSONDefault() *UserGroup {
+	return r.JSONDefault
 }
 
 // GetBody returns the raw response body bytes
@@ -10790,13 +10790,13 @@ func (r CreateUserGroupResponse) ContentType() string {
 type RemoveUserGroupResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *UserGroup
+	// JSONDefault the response for an HTTP default `application/json` response
+	JSONDefault *UserGroup
 }
 
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r RemoveUserGroupResponse) GetJSON200() *UserGroup {
-	return r.JSON200
+// GetJSONDefault returns the response for an HTTP default `application/json` response
+func (r RemoveUserGroupResponse) GetJSONDefault() *UserGroup {
+	return r.JSONDefault
 }
 
 // GetBody returns the raw response body bytes
@@ -10831,13 +10831,13 @@ func (r RemoveUserGroupResponse) ContentType() string {
 type GetUserGroupResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *UserGroup
+	// JSONDefault the response for an HTTP default `application/json` response
+	JSONDefault *UserGroup
 }
 
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetUserGroupResponse) GetJSON200() *UserGroup {
-	return r.JSON200
+// GetJSONDefault returns the response for an HTTP default `application/json` response
+func (r GetUserGroupResponse) GetJSONDefault() *UserGroup {
+	return r.JSONDefault
 }
 
 // GetBody returns the raw response body bytes
@@ -10872,13 +10872,13 @@ func (r GetUserGroupResponse) ContentType() string {
 type UpdateUserGroupResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *UserGroup
+	// JSONDefault the response for an HTTP default `application/json` response
+	JSONDefault *UserGroup
 }
 
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r UpdateUserGroupResponse) GetJSON200() *UserGroup {
-	return r.JSON200
+// GetJSONDefault returns the response for an HTTP default `application/json` response
+func (r UpdateUserGroupResponse) GetJSONDefault() *UserGroup {
+	return r.JSONDefault
 }
 
 // GetBody returns the raw response body bytes
@@ -10913,13 +10913,13 @@ func (r UpdateUserGroupResponse) ContentType() string {
 type GetUsersResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *[]User
+	// JSONDefault the response for an HTTP default `application/json` response
+	JSONDefault *[]User
 }
 
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetUsersResponse) GetJSON200() *[]User {
-	return r.JSON200
+// GetJSONDefault returns the response for an HTTP default `application/json` response
+func (r GetUsersResponse) GetJSONDefault() *[]User {
+	return r.JSONDefault
 }
 
 // GetBody returns the raw response body bytes
@@ -10954,13 +10954,13 @@ func (r GetUsersResponse) ContentType() string {
 type CreateUserResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	// JSON201 the response for an HTTP 201 `application/json` response
-	JSON201 *User
+	// JSONDefault the response for an HTTP default `application/json` response
+	JSONDefault *User
 }
 
-// GetJSON201 returns the response for an HTTP 201 `application/json` response
-func (r CreateUserResponse) GetJSON201() *User {
-	return r.JSON201
+// GetJSONDefault returns the response for an HTTP default `application/json` response
+func (r CreateUserResponse) GetJSONDefault() *User {
+	return r.JSONDefault
 }
 
 // GetBody returns the raw response body bytes
@@ -10995,13 +10995,13 @@ func (r CreateUserResponse) ContentType() string {
 type RemoveUserResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *User
+	// JSONDefault the response for an HTTP default `application/json` response
+	JSONDefault *User
 }
 
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r RemoveUserResponse) GetJSON200() *User {
-	return r.JSON200
+// GetJSONDefault returns the response for an HTTP default `application/json` response
+func (r RemoveUserResponse) GetJSONDefault() *User {
+	return r.JSONDefault
 }
 
 // GetBody returns the raw response body bytes
@@ -11036,13 +11036,13 @@ func (r RemoveUserResponse) ContentType() string {
 type GetUserResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *User
+	// JSONDefault the response for an HTTP default `application/json` response
+	JSONDefault *User
 }
 
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetUserResponse) GetJSON200() *User {
-	return r.JSON200
+// GetJSONDefault returns the response for an HTTP default `application/json` response
+func (r GetUserResponse) GetJSONDefault() *User {
+	return r.JSONDefault
 }
 
 // GetBody returns the raw response body bytes
@@ -11077,13 +11077,13 @@ func (r GetUserResponse) ContentType() string {
 type UpdateUserResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *User
+	// JSONDefault the response for an HTTP default `application/json` response
+	JSONDefault *User
 }
 
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r UpdateUserResponse) GetJSON200() *User {
-	return r.JSON200
+// GetJSONDefault returns the response for an HTTP default `application/json` response
+func (r UpdateUserResponse) GetJSONDefault() *User {
+	return r.JSONDefault
 }
 
 // GetBody returns the raw response body bytes
@@ -12708,15 +12708,15 @@ func ParseGetAccessStatusResponse(rsp *http.Response) (*GetAccessStatusResponse,
 	}
 
 	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+	case rsp.StatusCode == 409:
+		break // No content-type
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && true:
 		var dest CurrentUser
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 409:
-		break // No content-type
+		response.JSONDefault = &dest
 
 	}
 
@@ -12945,15 +12945,15 @@ func ParseGetBucketsResponse(rsp *http.Response) (*GetBucketsResponse, error) {
 	}
 
 	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+	case rsp.StatusCode == 401:
+		break // No content-type
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && true:
 		var dest []Bucket
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 401:
-		break // No content-type
+		response.JSONDefault = &dest
 
 	}
 
@@ -12974,13 +12974,6 @@ func ParseCreateBucketResponse(rsp *http.Response) (*CreateBucketResponse, error
 	}
 
 	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest Bucket
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
 	case rsp.StatusCode == 400:
 		break // No content-type
 
@@ -12989,6 +12982,13 @@ func ParseCreateBucketResponse(rsp *http.Response) (*CreateBucketResponse, error
 
 	case rsp.StatusCode == 403:
 		break // No content-type
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && true:
+		var dest Bucket
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSONDefault = &dest
 
 	}
 
@@ -13035,13 +13035,6 @@ func ParseDeleteBucketResponse(rsp *http.Response) (*DeleteBucketResponse, error
 	}
 
 	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest Bucket
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
 	case rsp.StatusCode == 400:
 		break // No content-type
 
@@ -13053,6 +13046,13 @@ func ParseDeleteBucketResponse(rsp *http.Response) (*DeleteBucketResponse, error
 
 	case rsp.StatusCode == 404:
 		break // No content-type
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && true:
+		var dest Bucket
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSONDefault = &dest
 
 	}
 
@@ -13073,13 +13073,6 @@ func ParseGetBucketResponse(rsp *http.Response) (*GetBucketResponse, error) {
 	}
 
 	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest Bucket
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
 	case rsp.StatusCode == 401:
 		break // No content-type
 
@@ -13088,6 +13081,13 @@ func ParseGetBucketResponse(rsp *http.Response) (*GetBucketResponse, error) {
 
 	case rsp.StatusCode == 404:
 		break // No content-type
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && true:
+		var dest Bucket
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSONDefault = &dest
 
 	}
 
@@ -13108,13 +13108,6 @@ func ParseUpdateBucketResponse(rsp *http.Response) (*UpdateBucketResponse, error
 	}
 
 	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest Bucket
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
 	case rsp.StatusCode == 400:
 		break // No content-type
 
@@ -13129,6 +13122,13 @@ func ParseUpdateBucketResponse(rsp *http.Response) (*UpdateBucketResponse, error
 
 	case rsp.StatusCode == 409:
 		break // No content-type
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && true:
+		var dest Bucket
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSONDefault = &dest
 
 	}
 
@@ -13149,13 +13149,6 @@ func ParseGetExtensionBundlesResponse(rsp *http.Response) (*GetExtensionBundlesR
 	}
 
 	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest []Bundle
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
 	case rsp.StatusCode == 400:
 		break // No content-type
 
@@ -13170,6 +13163,13 @@ func ParseGetExtensionBundlesResponse(rsp *http.Response) (*GetExtensionBundlesR
 
 	case rsp.StatusCode == 409:
 		break // No content-type
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && true:
+		var dest []Bundle
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSONDefault = &dest
 
 	}
 
@@ -13190,13 +13190,6 @@ func ParseCreateExtensionBundleVersionResponse(rsp *http.Response) (*CreateExten
 	}
 
 	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest BundleVersion
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
 	case rsp.StatusCode == 400:
 		break // No content-type
 
@@ -13211,6 +13204,13 @@ func ParseCreateExtensionBundleVersionResponse(rsp *http.Response) (*CreateExten
 
 	case rsp.StatusCode == 409:
 		break // No content-type
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && true:
+		var dest BundleVersion
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSONDefault = &dest
 
 	}
 
@@ -13231,13 +13231,6 @@ func ParseGetFlowsResponse(rsp *http.Response) (*GetFlowsResponse, error) {
 	}
 
 	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest []VersionedFlow
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
 	case rsp.StatusCode == 400:
 		break // No content-type
 
@@ -13252,6 +13245,13 @@ func ParseGetFlowsResponse(rsp *http.Response) (*GetFlowsResponse, error) {
 
 	case rsp.StatusCode == 409:
 		break // No content-type
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && true:
+		var dest []VersionedFlow
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSONDefault = &dest
 
 	}
 
@@ -13272,13 +13272,6 @@ func ParseCreateFlowResponse(rsp *http.Response) (*CreateFlowResponse, error) {
 	}
 
 	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest VersionedFlow
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
 	case rsp.StatusCode == 400:
 		break // No content-type
 
@@ -13293,6 +13286,13 @@ func ParseCreateFlowResponse(rsp *http.Response) (*CreateFlowResponse, error) {
 
 	case rsp.StatusCode == 409:
 		break // No content-type
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && true:
+		var dest VersionedFlow
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSONDefault = &dest
 
 	}
 
@@ -13313,13 +13313,6 @@ func ParseDeleteFlowResponse(rsp *http.Response) (*DeleteFlowResponse, error) {
 	}
 
 	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest VersionedFlow
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
 	case rsp.StatusCode == 401:
 		break // No content-type
 
@@ -13331,6 +13324,13 @@ func ParseDeleteFlowResponse(rsp *http.Response) (*DeleteFlowResponse, error) {
 
 	case rsp.StatusCode == 409:
 		break // No content-type
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && true:
+		var dest VersionedFlow
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSONDefault = &dest
 
 	}
 
@@ -13351,13 +13351,6 @@ func ParseGetFlowResponse(rsp *http.Response) (*GetFlowResponse, error) {
 	}
 
 	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest VersionedFlow
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
 	case rsp.StatusCode == 400:
 		break // No content-type
 
@@ -13372,6 +13365,13 @@ func ParseGetFlowResponse(rsp *http.Response) (*GetFlowResponse, error) {
 
 	case rsp.StatusCode == 409:
 		break // No content-type
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && true:
+		var dest VersionedFlow
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSONDefault = &dest
 
 	}
 
@@ -13392,13 +13392,6 @@ func ParseUpdateFlowResponse(rsp *http.Response) (*UpdateFlowResponse, error) {
 	}
 
 	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest VersionedFlow
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
 	case rsp.StatusCode == 400:
 		break // No content-type
 
@@ -13413,6 +13406,13 @@ func ParseUpdateFlowResponse(rsp *http.Response) (*UpdateFlowResponse, error) {
 
 	case rsp.StatusCode == 409:
 		break // No content-type
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && true:
+		var dest VersionedFlow
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSONDefault = &dest
 
 	}
 
@@ -13433,13 +13433,6 @@ func ParseGetFlowDiffResponse(rsp *http.Response) (*GetFlowDiffResponse, error) 
 	}
 
 	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest VersionedFlowDifference
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
 	case rsp.StatusCode == 400:
 		break // No content-type
 
@@ -13454,6 +13447,13 @@ func ParseGetFlowDiffResponse(rsp *http.Response) (*GetFlowDiffResponse, error) 
 
 	case rsp.StatusCode == 409:
 		break // No content-type
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && true:
+		var dest VersionedFlowDifference
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSONDefault = &dest
 
 	}
 
@@ -13474,13 +13474,6 @@ func ParseGetFlowVersionsResponse(rsp *http.Response) (*GetFlowVersionsResponse,
 	}
 
 	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest []VersionedFlowSnapshotMetadata
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
 	case rsp.StatusCode == 401:
 		break // No content-type
 
@@ -13492,6 +13485,13 @@ func ParseGetFlowVersionsResponse(rsp *http.Response) (*GetFlowVersionsResponse,
 
 	case rsp.StatusCode == 409:
 		break // No content-type
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && true:
+		var dest []VersionedFlowSnapshotMetadata
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSONDefault = &dest
 
 	}
 
@@ -13512,13 +13512,6 @@ func ParseCreateFlowVersionResponse(rsp *http.Response) (*CreateFlowVersionRespo
 	}
 
 	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest VersionedFlowSnapshot
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
 	case rsp.StatusCode == 400:
 		break // No content-type
 
@@ -13533,6 +13526,13 @@ func ParseCreateFlowVersionResponse(rsp *http.Response) (*CreateFlowVersionRespo
 
 	case rsp.StatusCode == 409:
 		break // No content-type
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && true:
+		var dest VersionedFlowSnapshot
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSONDefault = &dest
 
 	}
 
@@ -13553,12 +13553,8 @@ func ParseImportVersionedFlowResponse(rsp *http.Response) (*ImportVersionedFlowR
 	}
 
 	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 201:
-		var dest VersionedFlowSnapshot
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON201 = &dest
+	case rsp.StatusCode == 201:
+		break // No content-type
 
 	case rsp.StatusCode == 400:
 		break // No content-type
@@ -13574,6 +13570,13 @@ func ParseImportVersionedFlowResponse(rsp *http.Response) (*ImportVersionedFlowR
 
 	case rsp.StatusCode == 409:
 		break // No content-type
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && true:
+		var dest VersionedFlowSnapshot
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSONDefault = &dest
 
 	}
 
@@ -13594,13 +13597,6 @@ func ParseGetLatestFlowVersionResponse(rsp *http.Response) (*GetLatestFlowVersio
 	}
 
 	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest VersionedFlowSnapshot
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
 	case rsp.StatusCode == 401:
 		break // No content-type
 
@@ -13612,6 +13608,13 @@ func ParseGetLatestFlowVersionResponse(rsp *http.Response) (*GetLatestFlowVersio
 
 	case rsp.StatusCode == 409:
 		break // No content-type
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && true:
+		var dest VersionedFlowSnapshot
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSONDefault = &dest
 
 	}
 
@@ -13632,13 +13635,6 @@ func ParseGetLatestFlowVersionMetadataResponse(rsp *http.Response) (*GetLatestFl
 	}
 
 	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest VersionedFlowSnapshotMetadata
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
 	case rsp.StatusCode == 401:
 		break // No content-type
 
@@ -13650,6 +13646,13 @@ func ParseGetLatestFlowVersionMetadataResponse(rsp *http.Response) (*GetLatestFl
 
 	case rsp.StatusCode == 409:
 		break // No content-type
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && true:
+		var dest VersionedFlowSnapshotMetadata
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSONDefault = &dest
 
 	}
 
@@ -13670,13 +13673,6 @@ func ParseGetFlowVersionResponse(rsp *http.Response) (*GetFlowVersionResponse, e
 	}
 
 	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest VersionedFlowSnapshot
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
 	case rsp.StatusCode == 400:
 		break // No content-type
 
@@ -13691,6 +13687,13 @@ func ParseGetFlowVersionResponse(rsp *http.Response) (*GetFlowVersionResponse, e
 
 	case rsp.StatusCode == 409:
 		break // No content-type
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && true:
+		var dest VersionedFlowSnapshot
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSONDefault = &dest
 
 	}
 
@@ -13711,13 +13714,6 @@ func ParseExportVersionedFlowResponse(rsp *http.Response) (*ExportVersionedFlowR
 	}
 
 	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest VersionedFlowSnapshot
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
 	case rsp.StatusCode == 401:
 		break // No content-type
 
@@ -13729,6 +13725,13 @@ func ParseExportVersionedFlowResponse(rsp *http.Response) (*ExportVersionedFlowR
 
 	case rsp.StatusCode == 409:
 		break // No content-type
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && true:
+		var dest VersionedFlowSnapshot
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSONDefault = &dest
 
 	}
 
@@ -13749,15 +13752,15 @@ func ParseGetBundlesResponse(rsp *http.Response) (*GetBundlesResponse, error) {
 	}
 
 	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+	case rsp.StatusCode == 401:
+		break // No content-type
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && true:
 		var dest []Bundle
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 401:
-		break // No content-type
+		response.JSONDefault = &dest
 
 	}
 
@@ -13778,15 +13781,15 @@ func ParseGetBundleVersions1Response(rsp *http.Response) (*GetBundleVersions1Res
 	}
 
 	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+	case rsp.StatusCode == 401:
+		break // No content-type
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && true:
 		var dest []BundleVersionMetadata
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 401:
-		break // No content-type
+		response.JSONDefault = &dest
 
 	}
 
@@ -13807,13 +13810,6 @@ func ParseDeleteBundleResponse(rsp *http.Response) (*DeleteBundleResponse, error
 	}
 
 	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest Bundle
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
 	case rsp.StatusCode == 400:
 		break // No content-type
 
@@ -13828,6 +13824,13 @@ func ParseDeleteBundleResponse(rsp *http.Response) (*DeleteBundleResponse, error
 
 	case rsp.StatusCode == 409:
 		break // No content-type
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && true:
+		var dest Bundle
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSONDefault = &dest
 
 	}
 
@@ -13848,13 +13851,6 @@ func ParseGetBundleResponse(rsp *http.Response) (*GetBundleResponse, error) {
 	}
 
 	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest Bundle
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
 	case rsp.StatusCode == 400:
 		break // No content-type
 
@@ -13869,6 +13865,13 @@ func ParseGetBundleResponse(rsp *http.Response) (*GetBundleResponse, error) {
 
 	case rsp.StatusCode == 409:
 		break // No content-type
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && true:
+		var dest Bundle
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSONDefault = &dest
 
 	}
 
@@ -13889,13 +13892,6 @@ func ParseGetBundleVersionsResponse(rsp *http.Response) (*GetBundleVersionsRespo
 	}
 
 	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest []BundleVersionMetadata
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
 	case rsp.StatusCode == 400:
 		break // No content-type
 
@@ -13910,6 +13906,13 @@ func ParseGetBundleVersionsResponse(rsp *http.Response) (*GetBundleVersionsRespo
 
 	case rsp.StatusCode == 409:
 		break // No content-type
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && true:
+		var dest []BundleVersionMetadata
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSONDefault = &dest
 
 	}
 
@@ -13930,13 +13933,6 @@ func ParseDeleteBundleVersionResponse(rsp *http.Response) (*DeleteBundleVersionR
 	}
 
 	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest BundleVersion
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
 	case rsp.StatusCode == 400:
 		break // No content-type
 
@@ -13951,6 +13947,13 @@ func ParseDeleteBundleVersionResponse(rsp *http.Response) (*DeleteBundleVersionR
 
 	case rsp.StatusCode == 409:
 		break // No content-type
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && true:
+		var dest BundleVersion
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSONDefault = &dest
 
 	}
 
@@ -13971,13 +13974,6 @@ func ParseGetBundleVersionResponse(rsp *http.Response) (*GetBundleVersionRespons
 	}
 
 	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest BundleVersion
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
 	case rsp.StatusCode == 400:
 		break // No content-type
 
@@ -13992,6 +13988,13 @@ func ParseGetBundleVersionResponse(rsp *http.Response) (*GetBundleVersionRespons
 
 	case rsp.StatusCode == 409:
 		break // No content-type
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && true:
+		var dest BundleVersion
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSONDefault = &dest
 
 	}
 
@@ -14028,13 +14031,6 @@ func ParseGetBundleVersionExtensionsResponse(rsp *http.Response) (*GetBundleVers
 	}
 
 	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest []ExtensionMetadata
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
 	case rsp.StatusCode == 400:
 		break // No content-type
 
@@ -14049,6 +14045,13 @@ func ParseGetBundleVersionExtensionsResponse(rsp *http.Response) (*GetBundleVers
 
 	case rsp.StatusCode == 409:
 		break // No content-type
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && true:
+		var dest []ExtensionMetadata
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSONDefault = &dest
 
 	}
 
@@ -14069,13 +14072,6 @@ func ParseGetBundleVersionExtensionResponse(rsp *http.Response) (*GetBundleVersi
 	}
 
 	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest []Extension
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
 	case rsp.StatusCode == 400:
 		break // No content-type
 
@@ -14090,6 +14086,13 @@ func ParseGetBundleVersionExtensionResponse(rsp *http.Response) (*GetBundleVersi
 
 	case rsp.StatusCode == 409:
 		break // No content-type
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && true:
+		var dest []Extension
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSONDefault = &dest
 
 	}
 
@@ -14142,15 +14145,15 @@ func ParseGetConfigurationResponse(rsp *http.Response) (*GetConfigurationRespons
 	}
 
 	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+	case rsp.StatusCode == 401:
+		break // No content-type
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && true:
 		var dest RegistryConfiguration
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 401:
-		break // No content-type
+		response.JSONDefault = &dest
 
 	}
 
@@ -14171,13 +14174,6 @@ func ParseGetExtensionRepoBucketsResponse(rsp *http.Response) (*GetExtensionRepo
 	}
 
 	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest []ExtensionRepoBucket
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
 	case rsp.StatusCode == 400:
 		break // No content-type
 
@@ -14192,6 +14188,13 @@ func ParseGetExtensionRepoBucketsResponse(rsp *http.Response) (*GetExtensionRepo
 
 	case rsp.StatusCode == 409:
 		break // No content-type
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && true:
+		var dest []ExtensionRepoBucket
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSONDefault = &dest
 
 	}
 
@@ -14212,13 +14215,6 @@ func ParseGetExtensionRepoGroupsResponse(rsp *http.Response) (*GetExtensionRepoG
 	}
 
 	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest []ExtensionRepoGroup
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
 	case rsp.StatusCode == 400:
 		break // No content-type
 
@@ -14233,6 +14229,13 @@ func ParseGetExtensionRepoGroupsResponse(rsp *http.Response) (*GetExtensionRepoG
 
 	case rsp.StatusCode == 409:
 		break // No content-type
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && true:
+		var dest []ExtensionRepoGroup
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSONDefault = &dest
 
 	}
 
@@ -14253,13 +14256,6 @@ func ParseGetExtensionRepoArtifactsResponse(rsp *http.Response) (*GetExtensionRe
 	}
 
 	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest []ExtensionRepoArtifact
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
 	case rsp.StatusCode == 400:
 		break // No content-type
 
@@ -14274,6 +14270,13 @@ func ParseGetExtensionRepoArtifactsResponse(rsp *http.Response) (*GetExtensionRe
 
 	case rsp.StatusCode == 409:
 		break // No content-type
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && true:
+		var dest []ExtensionRepoArtifact
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSONDefault = &dest
 
 	}
 
@@ -14294,13 +14297,6 @@ func ParseGetExtensionRepoVersionsResponse(rsp *http.Response) (*GetExtensionRep
 	}
 
 	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest []ExtensionRepoVersionSummary
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
 	case rsp.StatusCode == 400:
 		break // No content-type
 
@@ -14315,6 +14311,13 @@ func ParseGetExtensionRepoVersionsResponse(rsp *http.Response) (*GetExtensionRep
 
 	case rsp.StatusCode == 409:
 		break // No content-type
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && true:
+		var dest []ExtensionRepoVersionSummary
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSONDefault = &dest
 
 	}
 
@@ -14335,13 +14338,6 @@ func ParseGetExtensionRepoVersionResponse(rsp *http.Response) (*GetExtensionRepo
 	}
 
 	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest ExtensionRepoVersion
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
 	case rsp.StatusCode == 400:
 		break // No content-type
 
@@ -14356,6 +14352,13 @@ func ParseGetExtensionRepoVersionResponse(rsp *http.Response) (*GetExtensionRepo
 
 	case rsp.StatusCode == 409:
 		break // No content-type
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && true:
+		var dest ExtensionRepoVersion
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSONDefault = &dest
 
 	}
 
@@ -14392,13 +14395,6 @@ func ParseGetExtensionRepoVersionExtensionsResponse(rsp *http.Response) (*GetExt
 	}
 
 	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest []ExtensionMetadata
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
 	case rsp.StatusCode == 400:
 		break // No content-type
 
@@ -14413,6 +14409,13 @@ func ParseGetExtensionRepoVersionExtensionsResponse(rsp *http.Response) (*GetExt
 
 	case rsp.StatusCode == 409:
 		break // No content-type
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && true:
+		var dest []ExtensionMetadata
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSONDefault = &dest
 
 	}
 
@@ -14433,13 +14436,6 @@ func ParseGetExtensionRepoVersionExtensionResponse(rsp *http.Response) (*GetExte
 	}
 
 	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest Extension
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
 	case rsp.StatusCode == 400:
 		break // No content-type
 
@@ -14454,6 +14450,13 @@ func ParseGetExtensionRepoVersionExtensionResponse(rsp *http.Response) (*GetExte
 
 	case rsp.StatusCode == 409:
 		break // No content-type
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && true:
+		var dest Extension
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSONDefault = &dest
 
 	}
 
@@ -14538,13 +14541,6 @@ func ParseGetExtensionsResponse(rsp *http.Response) (*GetExtensionsResponse, err
 	}
 
 	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest ExtensionMetadataContainer
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
 	case rsp.StatusCode == 400:
 		break // No content-type
 
@@ -14559,6 +14555,13 @@ func ParseGetExtensionsResponse(rsp *http.Response) (*GetExtensionsResponse, err
 
 	case rsp.StatusCode == 409:
 		break // No content-type
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && true:
+		var dest ExtensionMetadataContainer
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSONDefault = &dest
 
 	}
 
@@ -14579,13 +14582,6 @@ func ParseGetExtensionsProvidingServiceAPIResponse(rsp *http.Response) (*GetExte
 	}
 
 	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest ExtensionMetadataContainer
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
 	case rsp.StatusCode == 400:
 		break // No content-type
 
@@ -14600,6 +14596,13 @@ func ParseGetExtensionsProvidingServiceAPIResponse(rsp *http.Response) (*GetExte
 
 	case rsp.StatusCode == 409:
 		break // No content-type
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && true:
+		var dest ExtensionMetadataContainer
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSONDefault = &dest
 
 	}
 
@@ -14620,13 +14623,6 @@ func ParseGetTagsResponse(rsp *http.Response) (*GetTagsResponse, error) {
 	}
 
 	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest []TagCount
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
 	case rsp.StatusCode == 400:
 		break // No content-type
 
@@ -14641,6 +14637,13 @@ func ParseGetTagsResponse(rsp *http.Response) (*GetTagsResponse, error) {
 
 	case rsp.StatusCode == 409:
 		break // No content-type
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && true:
+		var dest []TagCount
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSONDefault = &dest
 
 	}
 
@@ -14687,13 +14690,6 @@ func ParseGetFlow1Response(rsp *http.Response) (*GetFlow1Response, error) {
 	}
 
 	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest VersionedFlow
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
 	case rsp.StatusCode == 400:
 		break // No content-type
 
@@ -14708,6 +14704,13 @@ func ParseGetFlow1Response(rsp *http.Response) (*GetFlow1Response, error) {
 
 	case rsp.StatusCode == 409:
 		break // No content-type
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && true:
+		var dest VersionedFlow
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSONDefault = &dest
 
 	}
 
@@ -14728,13 +14731,6 @@ func ParseGetFlowVersions1Response(rsp *http.Response) (*GetFlowVersions1Respons
 	}
 
 	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest []VersionedFlowSnapshotMetadata
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
 	case rsp.StatusCode == 401:
 		break // No content-type
 
@@ -14746,6 +14742,13 @@ func ParseGetFlowVersions1Response(rsp *http.Response) (*GetFlowVersions1Respons
 
 	case rsp.StatusCode == 409:
 		break // No content-type
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && true:
+		var dest []VersionedFlowSnapshotMetadata
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSONDefault = &dest
 
 	}
 
@@ -14766,13 +14769,6 @@ func ParseGetLatestFlowVersion1Response(rsp *http.Response) (*GetLatestFlowVersi
 	}
 
 	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest VersionedFlowSnapshot
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
 	case rsp.StatusCode == 401:
 		break // No content-type
 
@@ -14784,6 +14780,13 @@ func ParseGetLatestFlowVersion1Response(rsp *http.Response) (*GetLatestFlowVersi
 
 	case rsp.StatusCode == 409:
 		break // No content-type
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && true:
+		var dest VersionedFlowSnapshot
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSONDefault = &dest
 
 	}
 
@@ -14804,13 +14807,6 @@ func ParseGetLatestFlowVersionMetadata1Response(rsp *http.Response) (*GetLatestF
 	}
 
 	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest VersionedFlowSnapshotMetadata
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
 	case rsp.StatusCode == 401:
 		break // No content-type
 
@@ -14822,6 +14818,13 @@ func ParseGetLatestFlowVersionMetadata1Response(rsp *http.Response) (*GetLatestF
 
 	case rsp.StatusCode == 409:
 		break // No content-type
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && true:
+		var dest VersionedFlowSnapshotMetadata
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSONDefault = &dest
 
 	}
 
@@ -14842,13 +14845,6 @@ func ParseGetFlowVersion1Response(rsp *http.Response) (*GetFlowVersion1Response,
 	}
 
 	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest VersionedFlowSnapshot
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
 	case rsp.StatusCode == 400:
 		break // No content-type
 
@@ -14863,6 +14859,13 @@ func ParseGetFlowVersion1Response(rsp *http.Response) (*GetFlowVersion1Response,
 
 	case rsp.StatusCode == 409:
 		break // No content-type
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && true:
+		var dest VersionedFlowSnapshot
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSONDefault = &dest
 
 	}
 
@@ -14883,15 +14886,15 @@ func ParseGetItemsResponse(rsp *http.Response) (*GetItemsResponse, error) {
 	}
 
 	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+	case rsp.StatusCode == 401:
+		break // No content-type
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && true:
 		var dest []BucketItem
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 401:
-		break // No content-type
+		response.JSONDefault = &dest
 
 	}
 
@@ -14938,13 +14941,6 @@ func ParseGetItems1Response(rsp *http.Response) (*GetItems1Response, error) {
 	}
 
 	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest []BucketItem
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
 	case rsp.StatusCode == 400:
 		break // No content-type
 
@@ -14956,6 +14952,13 @@ func ParseGetItems1Response(rsp *http.Response) (*GetItems1Response, error) {
 
 	case rsp.StatusCode == 404:
 		break // No content-type
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && true:
+		var dest []BucketItem
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSONDefault = &dest
 
 	}
 
@@ -14976,13 +14979,6 @@ func ParseGetAccessPoliciesResponse(rsp *http.Response) (*GetAccessPoliciesRespo
 	}
 
 	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest []AccessPolicy
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
 	case rsp.StatusCode == 401:
 		break // No content-type
 
@@ -14991,6 +14987,13 @@ func ParseGetAccessPoliciesResponse(rsp *http.Response) (*GetAccessPoliciesRespo
 
 	case rsp.StatusCode == 409:
 		break // No content-type
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && true:
+		var dest []AccessPolicy
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSONDefault = &dest
 
 	}
 
@@ -15049,18 +15052,18 @@ func ParseGetResourcesResponse(rsp *http.Response) (*GetResourcesResponse, error
 	}
 
 	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest []Resource
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
 	case rsp.StatusCode == 401:
 		break // No content-type
 
 	case rsp.StatusCode == 403:
 		break // No content-type
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && true:
+		var dest []Resource
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSONDefault = &dest
 
 	}
 
@@ -15081,13 +15084,6 @@ func ParseGetAccessPolicyForResourceResponse(rsp *http.Response) (*GetAccessPoli
 	}
 
 	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest AccessPolicy
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
 	case rsp.StatusCode == 400:
 		break // No content-type
 
@@ -15102,6 +15098,13 @@ func ParseGetAccessPolicyForResourceResponse(rsp *http.Response) (*GetAccessPoli
 
 	case rsp.StatusCode == 409:
 		break // No content-type
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && true:
+		var dest AccessPolicy
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSONDefault = &dest
 
 	}
 
@@ -15122,13 +15125,6 @@ func ParseRemoveAccessPolicyResponse(rsp *http.Response) (*RemoveAccessPolicyRes
 	}
 
 	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest AccessPolicy
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
 	case rsp.StatusCode == 401:
 		break // No content-type
 
@@ -15140,6 +15136,13 @@ func ParseRemoveAccessPolicyResponse(rsp *http.Response) (*RemoveAccessPolicyRes
 
 	case rsp.StatusCode == 409:
 		break // No content-type
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && true:
+		var dest AccessPolicy
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSONDefault = &dest
 
 	}
 
@@ -15160,13 +15163,6 @@ func ParseGetAccessPolicyResponse(rsp *http.Response) (*GetAccessPolicyResponse,
 	}
 
 	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest AccessPolicy
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
 	case rsp.StatusCode == 401:
 		break // No content-type
 
@@ -15178,6 +15174,13 @@ func ParseGetAccessPolicyResponse(rsp *http.Response) (*GetAccessPolicyResponse,
 
 	case rsp.StatusCode == 409:
 		break // No content-type
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && true:
+		var dest AccessPolicy
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSONDefault = &dest
 
 	}
 
@@ -15198,13 +15201,6 @@ func ParseUpdateAccessPolicyResponse(rsp *http.Response) (*UpdateAccessPolicyRes
 	}
 
 	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest AccessPolicy
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
 	case rsp.StatusCode == 400:
 		break // No content-type
 
@@ -15219,6 +15215,13 @@ func ParseUpdateAccessPolicyResponse(rsp *http.Response) (*UpdateAccessPolicyRes
 
 	case rsp.StatusCode == 409:
 		break // No content-type
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && true:
+		var dest AccessPolicy
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSONDefault = &dest
 
 	}
 
@@ -15239,13 +15242,6 @@ func ParseGetUserGroupsResponse(rsp *http.Response) (*GetUserGroupsResponse, err
 	}
 
 	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest []UserGroup
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
 	case rsp.StatusCode == 400:
 		break // No content-type
 
@@ -15260,6 +15256,13 @@ func ParseGetUserGroupsResponse(rsp *http.Response) (*GetUserGroupsResponse, err
 
 	case rsp.StatusCode == 409:
 		break // No content-type
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && true:
+		var dest []UserGroup
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSONDefault = &dest
 
 	}
 
@@ -15280,13 +15283,6 @@ func ParseCreateUserGroupResponse(rsp *http.Response) (*CreateUserGroupResponse,
 	}
 
 	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 201:
-		var dest UserGroup
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON201 = &dest
-
 	case rsp.StatusCode == 400:
 		break // No content-type
 
@@ -15301,6 +15297,13 @@ func ParseCreateUserGroupResponse(rsp *http.Response) (*CreateUserGroupResponse,
 
 	case rsp.StatusCode == 409:
 		break // No content-type
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && true:
+		var dest UserGroup
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSONDefault = &dest
 
 	}
 
@@ -15321,13 +15324,6 @@ func ParseRemoveUserGroupResponse(rsp *http.Response) (*RemoveUserGroupResponse,
 	}
 
 	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest UserGroup
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
 	case rsp.StatusCode == 400:
 		break // No content-type
 
@@ -15342,6 +15338,13 @@ func ParseRemoveUserGroupResponse(rsp *http.Response) (*RemoveUserGroupResponse,
 
 	case rsp.StatusCode == 409:
 		break // No content-type
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && true:
+		var dest UserGroup
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSONDefault = &dest
 
 	}
 
@@ -15362,13 +15365,6 @@ func ParseGetUserGroupResponse(rsp *http.Response) (*GetUserGroupResponse, error
 	}
 
 	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest UserGroup
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
 	case rsp.StatusCode == 400:
 		break // No content-type
 
@@ -15383,6 +15379,13 @@ func ParseGetUserGroupResponse(rsp *http.Response) (*GetUserGroupResponse, error
 
 	case rsp.StatusCode == 409:
 		break // No content-type
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && true:
+		var dest UserGroup
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSONDefault = &dest
 
 	}
 
@@ -15403,13 +15406,6 @@ func ParseUpdateUserGroupResponse(rsp *http.Response) (*UpdateUserGroupResponse,
 	}
 
 	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest UserGroup
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
 	case rsp.StatusCode == 400:
 		break // No content-type
 
@@ -15424,6 +15420,13 @@ func ParseUpdateUserGroupResponse(rsp *http.Response) (*UpdateUserGroupResponse,
 
 	case rsp.StatusCode == 409:
 		break // No content-type
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && true:
+		var dest UserGroup
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSONDefault = &dest
 
 	}
 
@@ -15444,13 +15447,6 @@ func ParseGetUsersResponse(rsp *http.Response) (*GetUsersResponse, error) {
 	}
 
 	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest []User
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
 	case rsp.StatusCode == 400:
 		break // No content-type
 
@@ -15462,6 +15458,13 @@ func ParseGetUsersResponse(rsp *http.Response) (*GetUsersResponse, error) {
 
 	case rsp.StatusCode == 409:
 		break // No content-type
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && true:
+		var dest []User
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSONDefault = &dest
 
 	}
 
@@ -15482,13 +15485,6 @@ func ParseCreateUserResponse(rsp *http.Response) (*CreateUserResponse, error) {
 	}
 
 	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 201:
-		var dest User
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON201 = &dest
-
 	case rsp.StatusCode == 400:
 		break // No content-type
 
@@ -15503,6 +15499,13 @@ func ParseCreateUserResponse(rsp *http.Response) (*CreateUserResponse, error) {
 
 	case rsp.StatusCode == 409:
 		break // No content-type
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && true:
+		var dest User
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSONDefault = &dest
 
 	}
 
@@ -15523,13 +15526,6 @@ func ParseRemoveUserResponse(rsp *http.Response) (*RemoveUserResponse, error) {
 	}
 
 	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest User
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
 	case rsp.StatusCode == 400:
 		break // No content-type
 
@@ -15544,6 +15540,13 @@ func ParseRemoveUserResponse(rsp *http.Response) (*RemoveUserResponse, error) {
 
 	case rsp.StatusCode == 409:
 		break // No content-type
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && true:
+		var dest User
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSONDefault = &dest
 
 	}
 
@@ -15564,13 +15567,6 @@ func ParseGetUserResponse(rsp *http.Response) (*GetUserResponse, error) {
 	}
 
 	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest User
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
 	case rsp.StatusCode == 400:
 		break // No content-type
 
@@ -15585,6 +15581,13 @@ func ParseGetUserResponse(rsp *http.Response) (*GetUserResponse, error) {
 
 	case rsp.StatusCode == 409:
 		break // No content-type
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && true:
+		var dest User
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSONDefault = &dest
 
 	}
 
@@ -15605,13 +15608,6 @@ func ParseUpdateUserResponse(rsp *http.Response) (*UpdateUserResponse, error) {
 	}
 
 	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest User
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
 	case rsp.StatusCode == 400:
 		break // No content-type
 
@@ -15626,6 +15622,13 @@ func ParseUpdateUserResponse(rsp *http.Response) (*UpdateUserResponse, error) {
 
 	case rsp.StatusCode == 409:
 		break // No content-type
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && true:
+		var dest User
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSONDefault = &dest
 
 	}
 
