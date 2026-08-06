@@ -131,16 +131,20 @@ func syncArtifact(name, version string, a artifact, cacheDir, outputDir string) 
 }
 
 func validateArtifactSource(name, version, rawURL string) error {
-	var expected string
+	var path string
 	switch name {
 	case "nifi":
-		expected = fmt.Sprintf("https://repo1.maven.org/maven2/org/apache/nifi/nifi-web-api/%[1]s/nifi-web-api-%[1]s.war", version)
+		path = fmt.Sprintf("org/apache/nifi/nifi-web-api/%[1]s/nifi-web-api-%[1]s.war", version)
 	case "registry":
-		expected = fmt.Sprintf("https://repo1.maven.org/maven2/org/apache/nifi/registry/nifi-registry-web-api/%[1]s/nifi-registry-web-api-%[1]s.war", version)
+		path = fmt.Sprintf("org/apache/nifi/registry/nifi-registry-web-api/%[1]s/nifi-registry-web-api-%[1]s.war", version)
 	default:
 		return fmt.Errorf("unknown artifact %q", name)
 	}
-	if rawURL != expected {
+	expected := []string{
+		"https://repo.maven.apache.org/maven2/" + path,
+		"https://repo1.maven.org/maven2/" + path,
+	}
+	if rawURL != expected[0] && rawURL != expected[1] {
 		return fmt.Errorf("%s URL must be the exact Maven Central release artifact: got %q", name, rawURL)
 	}
 	return nil

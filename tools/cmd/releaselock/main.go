@@ -41,12 +41,12 @@ func main() {
 
 	artifacts := map[string]artifact{
 		"nifi": {
-			URL:      fmt.Sprintf("https://repo1.maven.org/maven2/org/apache/nifi/nifi-web-api/%[1]s/nifi-web-api-%[1]s.war", version),
+			URL:      fmt.Sprintf("https://repo.maven.apache.org/maven2/org/apache/nifi/nifi-web-api/%[1]s/nifi-web-api-%[1]s.war", version),
 			Entry:    archiveEntry,
 			MaxBytes: 10 << 20,
 		},
 		"registry": {
-			URL:      fmt.Sprintf("https://repo1.maven.org/maven2/org/apache/nifi/registry/nifi-registry-web-api/%[1]s/nifi-registry-web-api-%[1]s.war", version),
+			URL:      fmt.Sprintf("https://repo.maven.apache.org/maven2/org/apache/nifi/registry/nifi-registry-web-api/%[1]s/nifi-registry-web-api-%[1]s.war", version),
 			Entry:    archiveEntry,
 			MaxBytes: 100 << 20,
 		},
