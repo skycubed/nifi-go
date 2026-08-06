@@ -1,16 +1,16 @@
 {
-  "version": "2.11.0",
+  "version": "2.8.0",
   "artifacts": {
     "nifi": {
-      "url": "https://repo1.maven.org/maven2/org/apache/nifi/nifi-web-api/2.11.0/nifi-web-api-2.11.0.war",
+      "url": "https://repo1.maven.org/maven2/org/apache/nifi/nifi-web-api/2.8.0/nifi-web-api-2.8.0.war",
       "entry": "docs/rest-api/swagger.json",
-      "sha512": "28260281db09caceecb3ecc3d5c6db1532113aea0ee8c2b1be4b9af594c677111cbab3cff9baf20ffb2d012331bb8d7ef1d96dc38a2da5a103f1f59689a693c6",
+      "sha512": "d9c95ce2afb0e6606eacd0898bf65253a8339d8ef5436e96dd061ef3b9084d3de5876395c1cbab0da5024edee690061621f8748c258eec947d8e37fe234ee750",
       "maxBytes": 10485760
     },
     "registry": {
-      "url": "https://repo1.maven.org/maven2/org/apache/nifi/registry/nifi-registry-web-api/2.11.0/nifi-registry-web-api-2.11.0.war",
+      "url": "https://repo1.maven.org/maven2/org/apache/nifi/registry/nifi-registry-web-api/2.8.0/nifi-registry-web-api-2.8.0.war",
       "entry": "docs/rest-api/swagger.json",
-      "sha512": "65d3f1aa101d0a4c6ba789965f0fcfe2f48da8d78ed07b33ccd0e66edafde67a301dc22690d7d23ba2172534b09c2472a00623735b480a89c9f2ad343857cc3f",
+      "sha512": "b311f8572b2c618ef658634e7833facb38ee6eec3037ab365dd80e3a9451c461116c3e01e06c6591301cda605a337102479140aa2b38008491888df0690d657a",
       "maxBytes": 104857600
     }
   }
