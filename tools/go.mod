@@ -9,7 +9,7 @@ tool (
 	honnef.co/go/tools/cmd/staticcheck
 )
 
-require github.com/getkin/kin-openapi v0.146.0
+require github.com/getkin/kin-openapi v0.147.0
 
 require (
 	github.com/BurntSushi/toml v1.4.1-0.20240526193622-a339e1f7089c // indirect
